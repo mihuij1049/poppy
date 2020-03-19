@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Poppy-Poppy</title>
+    <!-- 모바일 웹 페이지 설정 -->
+    <link rel="shortcut icon" href="../share/assets/ico/favicon.png" />
+    <link rel="apple-touch-icon-precomposed" href="../share/assets/ico/apple-touch-icon-144-precomposed.png" />
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="../share/assets/css/bootstrap.min.css" />
+    <!-- 나눔고딕 웹 폰트 적용 -->
+    <link rel="stylesheet" type="text/css" href="../share/assets/css/nanumfont.css" />
+    <link rel="stylesheet" type="text/css" href="../share/tmpl.css" />
+    <!-- 반응형 웹을 지원하지 않을 경우 -->
+    <!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
+    <!-- IE8 이하 버전 지원 -->
+    <!--[if lt IE 9]>
+        <script type="text/javascript" src="assets/js/html5shiv.js"></script>
+        <script type="text/javascript" src="assets/js/respond.min.js"></script>
+        <![endif]-->
+    <!-- IE10 반응형 웹 버그 보완 -->
+    <!--[if gt IE 9]>
+        <link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
+        <script type="text/javascript" src="assets/js/ie10.js"></script>
+        <![endif]-->
+    <style type="text/css">
+    .page-title {
+        vertical-align: middle;
+        width: auto;
+    }
+
+    .page-title a {
+        display: block;
+        float: left;
+        padding-top: 5px;
+        position: relative;
+        z-index: 10;
+    }
+
+    .page-title h3 {
+        padding-top: 5px;
+        margin-top: 5px;
+        text-align: center;
+        padding-right: 35px;
+    }
+
+    * {
+                margin: 0;
+                padding: 0;
+            }
+            
+
+            .btn1 {
+                position: absolute;
+                right: 30px;
+                top:105px;
+                height: 30px;
+                z-index: -1;
+            }
+            .media-list {
+                margin-top: 10px;
+            }
+            .margin-left {
+                margin-left: 30px;
+            }
+            .margin-right {
+                margin-right: 30px;
+            }
+            
+            .re {
+                display: inline-block;
+                border: 1px solid #eee;
+                background-color: #eee;
+                width: 50px;
+                height: 30px;
+                text-align: center;
+                padding-top: 5px;
+                margin-left: 30px;
+            }
+            .media-body span {
+                margin-left: 20px;
+            }
+            .nai {
+                margin-left: 90px;
+            }
+            small .nai {
+                display: block;
+            }
+            .paging {
+                width: 110px;
+                margin: auto;
+            }
+            .glyphicon-lock {
+                z-index: -1;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="#" id="logo">
+                <img src="../share/img/logojpg.jpg">
+            </a>
+            <a href="#">
+                <span class="glyphicon glyphicon-shopping-cart" id="cart">
+                    <h1>장바구니</h1>
+                </span>
+                <span class="badge">
+                    <p>11</p>
+                </span>
+            </a>
+            <hr>
+            <ul class="category">
+                <a href="#">
+                    <li>BEST</li>
+                </a>
+                <a href="#">
+                    <li>NEW</li>
+                </a>
+                <a href="#">
+                    <li>푸드</li>
+                </a>
+                <a href="#">
+                    <li>의류</li>
+                </a>
+                <a href="#">
+                    <li>외출용품</li>
+                </a>
+                <a href="#">
+                    <li>홈리빙</li>
+                </a>
+                <a href="#">
+                    <li>대형견</li>
+                </a>
+                <a href="#">
+                    <li>타임세일</li>
+                </a>
+                <a href="#">
+                    <li>유통임박</li>
+                </a>
+            </ul>
+            <hr>
+        </div>
+        <div class="content">
+            <!-- 여기에 작성 -->
+            <div class="container">
+                <div class="page-title clearfix">
+                    <a href="#"><img src="../share/img/back.jpg"></a>
+                    <h3><b>상품Q&A</b></h3>
+                    <button type="button" class="btn btn-primary btn1">글쓰기</button>
+                    
+                </div>
+            <hr>
+                
+               <!-- 웹진 박스를 목록으로 구성하기 위한 구조 입니다. -->
+            <ul class="media-list">
+                
+                <!-- 문의글 -->
+                <li class="media">
+                    <a class="pull-left" href="#"> <img class="media-object margin-left" src="../share/img/s1.jpg" width="60" height="60" alt="Generic placeholder image"> </a>
+                    <div class="media-body">
+                        <!-- 제목영역의 float 처리를 위한 마감제 박스 -->
+                        <div class="clearfix">
+                                <span class="glyphicon glyphicon-lock"></span>
+                                <b>문의합니다~^^</b><small><br>&nbsp;2019-11-20 13:12:32</small></h4>
+                        </div>
+                        <p>박** 조회3</p>
+                    </div>
+                </li>
+                <hr>
+                
+                <!-- 문의글 답변 -->
+                <li class="media">
+                    
+                    <div class="media-body">
+                            <b class="re">RE</b>
+                            <span class="glyphicon glyphicon-lock"></span>
+                        <b>답변드립니다!</b>
+                        <br>
+                        <small class="nai">&nbsp;2019-11-20 16:12:12</small>
+                        <p class="nai">(주) 뽀삐뽀삐 조회3</p>
+                    </div>
+                </li>
+                <hr>
+                <!-- 문의글 -->
+                <li class="media">
+                    <a class="pull-left" href="#"> <img class="media-object margin-left" src="../share/img/s1.jpg" width="60" height="60" alt="Generic placeholder image"> </a>
+                    <div class="media-body">
+                        <!-- 제목영역의 float 처리를 위한 마감제 박스 -->
+                        <div class="clearfix">
+                                <span class="glyphicon glyphicon-lock"></span>
+                                <b>궁금합니다.</b><small><br>&nbsp;2019-10-20 13:12:32</small></h4>
+                        </div>
+                        <p>김** 조회5</p>
+                    </div>
+                </li>
+                <hr>
+                
+                <!-- 문의글 답변 -->
+                <li class="media">
+                    
+                    <div class="media-body">
+                            <b class="re">RE</b>
+                            <span class="glyphicon glyphicon-lock"></span>
+                        <b>답변드립니다!</b>
+                        <br>
+                        <small class="nai">&nbsp;2019-10-20 17:12:12</small>
+                        <p class="nai">(주) 뽀삐뽀삐 조회2</p>
+                    </div>
+                </li>
+                <hr>
+             </ul>
+            <div class="paging">
+                <ul class="pagination pagination-sm">
+                    <li class="disabled"><a href="#">&laquo;</a></li>
+                    <!-- 활성화 버튼은 아래의 구조로 구성하시면 됩니다. sr-only는 스크린리더 전용입니다. -->
+                    <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
+                    <li><a href="#">&raquo;</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer">
+            <!-- 하단 네비게이션 고정-->
+            <!--- 소개 4인방 링크 -->
+            <hr />
+            <div class="etc">
+                <a href="#">회사소개</a>
+                <a href="#">이용약관</a>
+                <a href="#">개인정보취급방침</a>
+                <a href="#">이용안내</a>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-xs-6 etc">
+                    <h5><b>상담센터</b></h5>
+                    <p style="font-size: 18px; font-weight:bold;">070-123-4567</p>
+                    <p style="font-size: 12px"> 운영시간 : 오전 10:00 - 오후 6:00<br />주말, 공휴일은 후뮤입니다.</p>
+                </div>
+                <div class="col-xs-6 etc">
+                    <h5><b>입금계좌안내</b></h5>
+                    <br />
+                    <p>하나 355-342432-23445<br>예금주 : (주)뽀삐뽀삐</p>
+                </div>
+            </div>
+            <address class="clearfix">
+                <p>상점명: (주)뽀삐뽀삐 대표 : 아무개
+                    <br>주소 : 서울특별시 행복구 존버동 8282-5959 102호 - 물류팀<br>
+                    사업자등록번호 : 123-86-43567<br>
+                    통신판매업신고 : 제2020-서울서초-0082호<br>
+                    개인정보관리책임 : 아무개 <br>
+                    <br />
+                    COPYRIGHT&copy; (주)뽀삐뽀삐 ALL RIGHTS RESERVED
+                    <br />
+                    <i>DESIGN BY EZEN-team4</i>
+                </p>
+            </address>
+            <div class="navbar" id="navbarback">
+                <ul class="btmbar-nav clearfix navbar-fixed-bottom">
+                    <hr />
+                    <a href="#">
+                        <span class="glyphicon glyphicon-comment">
+                            <p>커뮤니티</p>
+                        </span>
+                    </a>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-list-alt">
+                            <p>주문조회</p>
+                        </span>
+                    </a>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-search">
+                            <p>&nbsp;검색&nbsp;</p>
+                        </span>
+                    </a>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-th-large">
+                            <p>카테고리</p>
+                        </span>
+                    </a>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-user">
+                            <p>MY정보</p>
+                        </span>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Javascript -->
+    <script src="../share/assets/js/jquery-1.10.2.min.js"></script>
+    <script src="../share/assets/js/bootstrap.min.js"></script>
+</body>
+
+</html>
