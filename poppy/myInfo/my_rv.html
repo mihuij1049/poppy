@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>Poppy-Poppy</title>
     <!-- 모바일 웹 페이지 설정 -->
-    <link rel="shortcut icon" href="assets/ico/favicon.png" />
+    <link rel="shortcut icon" href="../share/assets/ico/favicon.png" />
     <link rel="apple-touch-icon-precomposed" href="../share/assets/ico/apple-touch-icon-144-precomposed.png" />
     <!-- bootstrap -->
     <link rel="stylesheet" type="text/css" href="../share/assets/css/bootstrap.min.css" />
@@ -27,41 +27,126 @@
         <script type="text/javascript" src="assets/js/ie10.js"></script>
         <![endif]-->
     <style type="text/css">
-        .page-title {
-        vertical-align: middle;
-        width: auto;
-    }
-
-    .page-title a {
-        display: block;
-        float: left;
-        padding-top: 5px;
-        position: relative;
-        z-index: 10;
-    }
-
-    .page-title h3 {
-        padding-top: 5px;
-        margin-top: 5px;
-        text-align: center;
-        padding-right: 35px;
-    }
-
     * {
         margin: 0;
         padding: 0;
     }
-    .nav-tabs a {
-        color: #333;
-    }
-    .tab1 {
+
+    .tab>#mytab>li {
+        float: left;
         width: 50%;
     }
-    .tab2 {
-        width: 50%;
+
+    .tab>#mytab>li>.tab1 {
+        float: left;
+        width: 100%;
     }
+
+    .tab-content {
+
+        margin: auto;
+    }
+
+    .val {
+        display: block;
+        margin: auto;
+        margin-top: 15px;
+        width: 70%;
+        margin-top: 10px;
+    }
+
+    .search {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .nemo {
+        display: inline-block;
+        margin: auto;
+        width: 55%;
+        margin-left: 15%;
+    }
+
+    .btn {
+        display: inline-block;
+        margin: auto;
+    }
+
+    .mycart {
+        border: 1px solid #eee;
+        width: 95%;
+        margin: auto;
+    }
+
+    .mygoods {
+        padding-top: 20px;
+    }
+
+    .mygoods:hover {
+        cursor: pointer;
+    }
+
+    .mygoods a {
+        display: block;
+        float: left;
+        margin: 5px;
+        height: auto;
+        padding-left: 5px;
+    }
+
+    .word {
+        float: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 62%;
+    }
+
+    .word>b {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .cart-img {
+        width: 80px;
+        border: 1px solid #333;
+    }
+
+    .summ {
+        text-align: right;
+        padding-bottom: 10px;
+    }
+
+    .word span {
+        border: 1px solid #FFD9FA;
+        background-color: #FFD9FA;
+    }
+
+    .btns {
+        padding-left: 30px;
+        padding-bottom: 20px;
+        padding-top: 100px;
+        padding-right: 20px;
+        hei
+    }
+
+    .btn1 {
+        float: right;
+    }
+
+    .selectbtn {
+        border: 1px solid #eee;
+        width: 95%;
+        margin: auto;
+        padding: 10px 30px;
+    }
+
+    .lastbtn {
+        text-align: center;
+        padding-top: 10px;
     </style>
-    </head>
+</head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -117,111 +202,133 @@
                 </div>
                 <hr>
                 <div class="tab">
-                    <!-- 탭 메뉴 시작 -->
-            <ul class="nav nav-tabs">
-                <li class="active tab1"><a href="#home" data-toggle="tab">게시글(<span>0</span>)</a></li>
-                <li class="tab2"><a href="#home" data-toggle="tab">댓글(<span>0</span>)</a></li>
-            
-            </ul>
-            <!--// 탭 메뉴 끝 -->
-            <!-- 탭 화면 시작 -->
-            <div class="tab-content">
-                <div class="tab-pane fade in acti/ve" id="home">
-                    <select name="select1" class="select1">
-                        <option value="제목">제목</option>
-                        <option value="내용">내용</option>
-
-                    </select>
-                    dd
+                    <!-- 탭 버튼 구성 -->
+                    <ul class="nav nav-tabs nav-justified clearfix" id="mytab">
+                        <li class="active"><a href="#page1" data-toggle="tab" class="tab1">
+                                게시물 (<span>0</span>건)</a></li>
+                        <li><a href="#page2" data-toggle="tab" class="tab1">
+                                댓글 (<span>0</span>건)</a></li>
+                    </ul>
                 </div>
-                <div class="tab-pane fade" id="profile">
-                    <select name="select1" class="select1">
-                        <option value="제목">제목</option>
-                        <option value="내용">내용</option>
-                    </select>
+                <!-- 탭 페이지 구성 -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active in" id="page1">
+                        <div class="check">
+                            <select name="val" class="val">
+                                <option value="제목">제목</option>
+                                <option value="내용">내용</option>
+                                <option value="상품이름">상품이름</option>
+                            </select>
+                        </div>
+                        <div class="search">
+                            <input type="text" name="search" class="nemo">
+                            <button type="submit" class="btn">검색</button>
+                        </div>
+                        <hr />
+                     <div class="mycart">
+    <div class="mygoods clearfix"> <a href="#"><img src="../share/img/4_M.jpg" class="cart-img"></a>
+                                <div class="word">
+                                    <b>펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식</b><br>
+                                    <div class="wrap-star">
+                                        <div class="star-rating">
+                                            <span style="width: 50%"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="page2">
+                            <div class="check">
+                                <select name="val" class="val">
+                                    <option value="제목">제목</option>
+                                    <option value="내용">내용</option>
+                                    <option value="상품이름">상품이름</option>
+                                </select>
+                            </div>
+                            <div class="search">
+                                <input type="text" name="search" class="nemo">
+                                <button type="submit" class="btn">검색</button>
+                            </div>
+                            <hr />
+                            <div class="">
+                                내일할래
+                            </div>
+                        </div>
+                    </div>
                 </div>
-           
-            <!--// 탭 화면 끝 -->
-                </div>                
+            </div>
+            <div class="footer">
+                <!-- 하단 네비게이션 고정-->
+                <!--- 소개 4인방 링크 -->
+                <hr />
+                <div class="etc">
+                    <a href="#">회사소개</a>
+                    <a href="#">이용약관</a>
+                    <a href="#">개인정보취급방침</a>
+                    <a href="#">이용안내</a>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-xs-6 etc">
+                        <h5><b>상담센터</b></h5>
+                        <p style="font-size: 18px; font-weight:bold;">070-123-4567</p>
+                        <p style="font-size: 12px"> 운영시간 : 오전 10:00 - 오후 6:00<br />주말, 공휴일은 후뮤입니다.</p>
+                    </div>
+                    <div class="col-xs-6 etc">
+                        <h5><b>입금계좌안내</b></h5>
+                        <br />
+                        <p>하나 355-342432-23445<br>예금주 : (주)뽀삐뽀삐</p>
+                    </div>
+                </div>
+                <address class="clearfix">
+                    <p>상점명: (주)뽀삐뽀삐 대표 : 아무개
+                        <br>주소 : 서울특별시 행복구 존버동 8282-5959 102호 - 물류팀<br>
+                        사업자등록번호 : 123-86-43567<br>
+                        통신판매업신고 : 제2020-서울서초-0082호<br>
+                        개인정보관리책임 : 아무개 <br>
+                        <br />
+                        COPYRIGHT&copy; (주)뽀삐뽀삐 ALL RIGHTS RESERVED
+                        <br />
+                        <i>DESIGN BY EZEN-team4</i>
+                    </p>
+                </address>
+                <div class="navbar" id="navbarback">
+                    <ul class="btmbar-nav clearfix navbar-fixed-bottom">
+                        <hr />
+                        <a href="#">
+                            <span class="glyphicon glyphicon-comment">
+                                <p>커뮤니티</p>
+                            </span>
+                        </a>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-list-alt">
+                                <p>주문조회</p>
+                            </span>
+                        </a>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-search">
+                                <p>&nbsp;검색&nbsp;</p>
+                            </span>
+                        </a>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-th-large">
+                                <p>카테고리</p>
+                            </span>
+                        </a>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-user">
+                                <p>MY정보</p>
+                            </span>
+                        </a>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div class="footer">
-            <!-- 하단 네비게이션 고정-->
-            <!--- 소개 4인방 링크 -->
-            <hr />
-            <div class="etc">
-                <a href="#">회사소개</a>
-                <a href="#">이용약관</a>
-                <a href="#">개인정보취급방침</a>
-                <a href="#">이용안내</a>
-            </div>
-            <hr />
-            <div class="row">
-                <div class="col-xs-6 etc">
-                    <h5><b>상담센터</b></h5>
-                    <p style="font-size: 18px; font-weight:bold;">070-123-4567</p>
-                    <p style="font-size: 12px"> 운영시간 : 오전 10:00 - 오후 6:00<br />주말, 공휴일은 후뮤입니다.</p>
-                </div>
-                <div class="col-xs-6 etc">
-                    <h5><b>입금계좌안내</b></h5>
-                    <br />
-                    <p>하나 355-342432-23445<br>예금주 : (주)뽀삐뽀삐</p>
-                </div>
-            </div>
-            <address class="clearfix">
-                <p>상점명: (주)뽀삐뽀삐 대표 : 아무개
-                    <br>주소 : 서울특별시 행복구 존버동 8282-5959 102호 - 물류팀<br>
-                    사업자등록번호 : 123-86-43567<br>
-                    통신판매업신고 : 제2020-서울서초-0082호<br>
-                    개인정보관리책임 : 아무개 <br>
-                    <br />
-                    COPYRIGHT&copy; (주)뽀삐뽀삐 ALL RIGHTS RESERVED
-                    <br />
-                    <i>DESIGN BY EZEN-team4</i>
-                </p>
-            </address>
-            <div class="navbar" id="navbarback">
-                <ul class="btmbar-nav clearfix navbar-fixed-bottom">
-                    <hr />
-                    <a href="#">
-                        <span class="glyphicon glyphicon-comment">
-                            <p>커뮤니티</p>
-                        </span>
-                    </a>
-                    <a href="#">
-                        <span class="glyphicon glyphicon-list-alt">
-                            <p>주문조회</p>
-                        </span>
-                    </a>
-                    <a href="#">
-                        <span class="glyphicon glyphicon-search">
-                            <p>&nbsp;검색&nbsp;</p>
-                        </span>
-                    </a>
-                    <a href="#">
-                        <span class="glyphicon glyphicon-th-large">
-                            <p>카테고리</p>
-                        </span>
-                    </a>
-                    <a href="#">
-                        <span class="glyphicon glyphicon-user">
-                            <p>MY정보</p>
-                        </span>
-                    </a>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- Javascript -->
-    <script src="assets/js/jquery-1.10.2.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            $(".word").click(function() {
-                alert("클릭한 상품의 상세정보 페이지로 이동");
-            });
-        });
-    </script>
+        <!-- Javascript -->
+        <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
+        <script src="../share/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+        </script>
 </body>
 
 </html>

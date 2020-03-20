@@ -27,33 +27,15 @@
         <script type="text/javascript" src="assets/js/ie10.js"></script>
         <![endif]-->
     <style type="text/css">
-    .page-title {
-        vertical-align: middle;
-        width: auto;
-    }
-
-    .page-title a {
-        display: block;
-        float: left;
-        padding-top: 5px;
-        position: relative;
-        z-index: 10;
-    }
-
-    .page-title h3 {
-        padding-top: 5px;
-        margin-top: 5px;
-        text-align: center;
-        padding-right: 35px;
-    }
-
     * {
         margin: 0;
         padding: 0;
     }
+
     .find {
         margin-top: 10px;
     }
+
     .member {
         border: 1px solid #eee;
         width: 95%;
@@ -61,6 +43,7 @@
         margin: auto;
         padding-top: 8px;
     }
+
     .auth {
         border: 1px solid #eee;
         width: 95%;
@@ -68,9 +51,11 @@
         margin: auto;
         padding-top: 8px;
     }
+
     .auth input {
         margin-left: 30px;
     }
+
     .name {
         border: 1px solid #eee;
         width: 95%;
@@ -78,6 +63,7 @@
         margin: auto;
         padding-top: 8px;
     }
+
     .email {
         border: 1px solid #eee;
         width: 95%;
@@ -85,27 +71,32 @@
         margin: auto;
         padding-top: 8px;
     }
-    
+
     .find b {
         padding-left: 50px;
     }
+
     .m_type {
         margin-left: 30px;
     }
-   .name input {
+
+    .name input {
         margin-left: 55px;
-   }
-   .email input {
+    }
+
+    .email input {
         margin-left: 40px;
-   }
-   .btn {
-    width: 100%;
-    margin: auto;
-    margin-top: 5px;
-    margin-bottom: 10px;
-   }
+    }
+
+    .btn {
+        width: 100%;
+        margin: auto;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -162,9 +153,9 @@
                 <hr>
                 <div class="find">
                     <div class="member">
-                         <b>회원구분</b>
-                         <select name="m_type" class="m_type">
-                             <option value="개인회원">개인회원</option>
+                        <b>회원구분</b>
+                        <select name="m_type" class="m_type">
+                            <option value="개인회원">개인회원</option>
                             <option value="개인 사업자회원">개인 사업자회원</option>
                             <option value="법인 사업자회원">법인 사업자회원</option>
                             <option value="외국인회원">외국인회원</option>
@@ -172,20 +163,16 @@
                     </div>
                     <div class="auth">
                         <b>인증방법</b>
-                        
-                            <input type="radio" name="auth" value="email">이메일
-
-                            
-                        
+                        <input type="radio" name="auth" value="email">이메일
                     </div>
                     <div class="name">
                         <b>이름</b>
                         <input type="text" name="name" maxlength="20" placeholder="이름을 입력해주세요.">
-                    </div>  
+                    </div>
                     <div class="email">
                         <b>이메일</b>
                         <input type="email" name="email" maxlength="20" placeholder="이메일을 입력해주세요.">
-                    </div>  
+                    </div>
                 </div>
             </div>
             <div class="btn">
@@ -263,11 +250,11 @@
     <script src="assets/js/jquery-1.10.2.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-        $(function() {
-            $(".word").click(function() {
-                alert("클릭한 상품의 상세정보 페이지로 이동");
-            });
+    $(function() {
+        $(".word").click(function() {
+            alert("클릭한 상품의 상세정보 페이지로 이동");
         });
+    });
     </script>
 </body>
 

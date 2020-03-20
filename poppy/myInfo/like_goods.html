@@ -46,25 +46,31 @@
         text-align: center;
         padding-right: 35px;
     }
+
     .align {
         text-align: center;
         padding-bottom: 20px;
     }
+
     .mycart {
         border: 1px solid #eee;
         width: 95%;
         margin: auto;
     }
+
     .mygoods {
         padding-top: 20px;
     }
+
     .mygoods:hover {
         cursor: pointer;
     }
+
     .chkbox {
         float: left;
         padding-left: 10px;
     }
+
     .mygoods a {
         display: block;
         float: left;
@@ -72,6 +78,7 @@
         height: auto;
         padding-left: 5px;
     }
+
     .word {
         float: left;
         white-space: nowrap;
@@ -79,6 +86,7 @@
         text-overflow: ellipsis;
         width: 62%;
     }
+
     .word>b {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -88,10 +96,12 @@
         width: 80px;
         border: 1px solid #333;
     }
+
     .summ {
         text-align: right;
         padding-bottom: 10px;
     }
+
     .word span {
         border: 1px solid #FFD9FA;
         background-color: #FFD9FA;
@@ -104,6 +114,7 @@
         padding-right: 20px;
         hei
     }
+
     .btn1 {
         float: right;
     }
@@ -114,15 +125,16 @@
         margin: auto;
         padding: 10px 30px;
     }
+
     .lastbtn {
         text-align: center;
         padding-top: 10px;
         padding-bottom: 15px;
     }
+
     .btn2 {
         width: 95%;
     }
-
     </style>
 </head>
 
@@ -192,26 +204,23 @@
                             <b>3,500원</b>
                         </div>
                     </div>
-                    
                     <div class="btns">
                         <div class="summ">
-                        <b>합계:6000원</b>
-                        </div>
-                            <button type="button">선택</button>
-                            <button type="button">장바구니담기</button>
-                            <button type="button" class="btn btn-primary btn1">주문하기</button>
-                        </div>
+                            <b>합계:6000원</b>
+                        </div> <button type="button">선택</button>
+                        <button type="button">장바구니담기</button>
+                        <button type="button" class="btn btn-primary btn1">주문하기</button>
                     </div>
-                    <div class="selectbtn">
-                        <button type="button">전체선택</button>
-                        <button type="button">선택삭제</button>
-                    </div>  
-                    <div class="lastbtn">
-                        <button type="button" class="btn btn-primary btn2">전체상품주문</button>
-                    </div>
-            </div>  
-
-        </div>      
+                </div>
+                <div class="selectbtn">
+                    <button type="button">전체선택</button>
+                    <button type="button">선택삭제</button>
+                </div>
+                <div class="lastbtn">
+                    <button type="button" class="btn btn-primary btn2">전체상품주문</button>
+                </div>
+            </div>
+        </div>
         <div class="footer">
             <!-- 하단 네비게이션 고정-->
             <!--- 소개 4인방 링크 -->
@@ -283,11 +292,11 @@
     <script src="assets/js/jquery-1.10.2.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-        $(function() {
-            $(".word").click(function() {
-                alert("클릭한 상품의 상세정보 페이지로 이동");
-            });
+    $(function() {
+        $(".word").click(function() {
+            alert("클릭한 상품의 상세정보 페이지로 이동");
         });
+    });
     </script>
 </body>
 
