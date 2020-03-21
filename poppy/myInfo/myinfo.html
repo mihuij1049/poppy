@@ -61,6 +61,18 @@
         width: 33.33%;
     }
 
+    .myinfo-list td:hover {
+        width: 33.33%;
+        background: #ffffdd;
+
+    }
+
+    .myinfo-list td a {
+        color: #333;
+        display: block;
+        text-decoration: none;
+    }
+
     .myinfo-list .glyphicon {
         font-size: 20px;
         line-height: 30px;
@@ -71,10 +83,10 @@
 <body>
     <div class="container">
         <div class="header">
-            <a href="#" id="logo">
+            <a href="../index.html" id="logo">
                 <img src="../share/img/logojpg.jpg">
             </a>
-            <a href="#">
+            <a href="../pay/cart.html">
                 <span class="glyphicon glyphicon-shopping-cart" id="cart">
                     <h1>장바구니</h1>
                 </span>
@@ -118,7 +130,7 @@
             <!-- 여기에 작성 -->
             <div class="container">
                 <div class="page-title clearfix">
-                    <a href="#"><img src="../share/img/img_back.jpg"></a>
+                    <a href="#" onclick="history.back(); return false;"><img src="../share/img/img_back.jpg"></a>
                     <h4><b>내정보</b></h4>
                 </div>
                 <div class="mypoint">&nbsp;적립금 : <b>3,000</b></div>
@@ -149,14 +161,14 @@
                     <table class="table table-responsive myinfo-list">
                         <tbody>
                             <tr>
-                                <td><span class="glyphicon glyphicon-list-alt"></span></span><br>주문조회</td>
-                                <td><span class="glyphicon glyphicon-user"></span><br>회원정보</td>
-                                <td><span class="glyphicon glyphicon-thumbs-up"></span><br>좋아요</td>
+                                <td id="list-alt"><a href="order_list.html"><span class="glyphicon glyphicon-list-alt"></span></span><br>주문조회 </a></td>
+                                <td id="user"><a href="myinfo_edit.html"><span class="glyphicon glyphicon-user"></span><br>회원정보</a></td>
+                                <td id="thumb"><a href="like_goods.html"><span class="glyphicon glyphicon-thumbs-up"></span><br>좋아요</a></td>
                             </tr>
                             <tr>
-                                <td><span class="glyphicon glyphicon-usd"></span><br>적립금</td>
-                                <td><span class="glyphicon glyphicon-folder-open"></span><br>후기관리</td>
-                                <td><span class="glyphicon glyphicon-eye-open"></span><br>최근본상품</td>
+                                <td id="point"><a href="point.html"><span class="glyphicon glyphicon-usd"></span><br>적립금</a></td>
+                                <td id="commu"><a href="my_rv.html"><span class="glyphicon glyphicon-folder-open"></span><br>후기관리</a></td>
+                                <td id="recent"><a href="recent.html"><span class="glyphicon glyphicon-eye-open"></span><br>최근본상품</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -168,10 +180,10 @@
             <!--- 소개 4인방 링크 -->
             <hr />
             <div class="etc">
-                <a href="#">회사소개</a>
-                <a href="#">이용약관</a>
-                <a href="#">개인정보취급방침</a>
-                <a href="#">이용안내</a>
+                <a href="../etc/page_info1.html">회사소개</a>
+                <a href="../etc/page_info2.html">이용약관</a>
+                <a href="../etc/page_info3.html">개인정보취급방침</a>
+                <a href="../etc/page_info4.html">이용안내</a>
             </div>
             <hr />
             <div class="row">
@@ -221,7 +233,7 @@
                             <p>카테고리</p>
                         </span>
                     </a>
-                    <a href="#">
+                    <a href="../myinfo/myinfo.html">
                         <span class="glyphicon glyphicon-user">
                             <p>MY정보</p>
                         </span>
@@ -233,6 +245,8 @@
     <!-- Javascript -->
     <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
     <script src="../share/assets/js/bootstrap.min.js"></script>
-</body>
+    <script type="text/javascript">
+    < /body>
 
-</html>
+    <
+    /html>
