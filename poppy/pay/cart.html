@@ -30,6 +30,179 @@
     .col-xs-6 {
         padding: 0;
     }
+
+    .content {
+        width: 95%;
+        margin: auto;
+    }
+
+    .panel-heading a {
+        padding: 10px 15px;
+        display: block;
+        text-decoration: none;
+    }
+
+    .panel-heading {
+        padding: 0;
+    }
+
+    .panel-title {
+        background: #777;
+        border-left: 1px solid #777;
+        border-right: 1px solid #777;
+        background-color: #777;
+        color: #fff;
+    }
+
+    .panel-header {
+        padding: 10px 15px;
+        font-size: 16px;
+        background: #e5e6e7;
+        border: 1px solid #e5e6e7;
+    }
+
+    .panel-body {
+        padding: 0;
+        border-bottom: none;
+    }
+
+    .panel.panel-default {
+        border-bottom: none;
+        margin: 0;
+    }
+
+    .mycart {
+        border: 1px solid #eee;
+    }
+
+    .mygoods {
+        padding-top: 20px;
+    }
+
+    .mygoods:hover {
+        cursor: pointer;
+    }
+
+    .chkbox {
+        float: left;
+        padding-left: 10px;
+    }
+
+    .mygoods a {
+        display: block;
+        float: left;
+        margin: 5px;
+        height: auto;
+        padding-left: 5px;
+    }
+
+    .word {
+        float: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 62%;
+    }
+
+    .word>b {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .cart-img {
+        width: 80px;
+        border: 1px solid #333;
+    }
+
+    .summ {
+        text-align: right;
+        padding-bottom: 10px;
+    }
+
+    .word span {
+        border: 1px solid #FFD9FA;
+        background-color: #FFD9FA;
+    }
+
+    .count {
+        padding: 0;
+        border: none;
+    }
+
+    .count-label {
+        width: 20%;
+    }
+
+    .summ {
+        text-align: left;
+        padding-bottom: 10px;
+    }
+
+    .btn1 {
+        float: right;
+    }
+
+    .selectbtn {
+        border: 1px solid #eee;
+        border-bottom: none;
+        width: auto;
+        padding: 10px 30px;
+    }
+
+    .black-btn {
+        float: right;
+        background: #777;
+        border: 1px solid #777;
+        color: #fff;
+    }
+
+    #cart-move {
+        float: left;
+        margin-bottom: 10px;
+        border: 1px solid #777;
+    }
+
+    .table {
+        border: 1px solid #e5e6e7;
+        margin: auto;
+    }
+
+    .table thead {
+        border-left: 1px solid #777;
+        border-right: 1px solid #777;
+        background-color: #777;
+        color: #fff;
+    }
+
+    .table>thead>tr>th {
+
+        border: 0px;
+    }
+
+    .td-mny {
+        text-align: right;
+    }
+
+    .pay {
+        padding-top: 10px;
+    }
+
+    .pay button {
+        padding: 10px 15px;
+    }
+
+    .coice {
+        border: 1px solid #fff;
+        background: #fff;
+        color: #777;
+    }
+
+    .all {
+        border: 1px solid #777;
+        height: 44px;
+        background: #777;
+        color: #fff;
+    }
     </style>
 </head>
 
@@ -86,17 +259,169 @@
                     <a href="#" onclick="history.back(); return false;"><img src="../share/img/back.jpg"></a>
                     <h4><b>장바구니</b></h4>
                 </div>
-                <ul class="nav nav-tabs">
-                    <li class="active col-xs-6 etc"><a href="cart.html">국내배송상품</a></li>
-                    <li class="col-xs-6 etc"><a href="#">해외배송상품</a></li>
+                <!-- 탭 버튼 구성 -->
+                <ul class="nav nav-tabs" id="mytab">
+                    <li class="active col-xs-6 etc"><a href="#page1" data-toggle="tab">국내배송상품</a></li>
+                    <li class="col-xs-6 etc"><a href="#page2" data-toggle="tab">해외배송상품</a></li>
                 </ul>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">장바구니 상품</a></h4>
+                <!-- 탭 페이지 구성 -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active in" id="page1">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">장바구니 상품</a></h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-header clearfix">
+                                    일반상품 (n)
+                                </div>
+                                <div class="panel-body">
+                                    <div class="mycart">
+                                        <div class="mygoods clearfix">
+                                            <span class="chkbox"><input type="checkbox" class="cart" value="check"></span>
+                                            <a href="#"><img src="../share/img/4_M.jpg" class="cart-img"></a>
+                                            <div class="word">
+                                                <b>펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식</b><br>
+                                                <small>배송:2500원[조건]/기본배송</small><br>
+                                                <small><span>적</span>40원</small><br>
+                                                <b>3,500원</b>
+                                                <br>
+                                                <button class="count">
+                                                    <img src="../share/img/마이너스.png">
+                                                </button>
+                                                <input type="number" class="count-label">
+                                                <button class="count">
+                                                    <img src="../share/img/플러스.png">
+                                                </button>
+                                                <button type="button">변경</button>
+                                            </div>
+                                        </div>
+                                        <div class="selectbtn">
+                                            <div class=summ>
+                                                <b class="summ">합계:6000원</b>
+                                            </div>
+                                            <button type="button">삭제</button>
+                                            <button type="button">관심상품</button>
+                                            <button type="button" class="black-btn">주문하기</button>
+                                        </div>
+                                    </div>
+                                    <div class="panel-header clearfix">
+                                        [기본배송]
+                                    </div>
+                                    <div class="selectbtn">
+                                        <button type="button">전체선택</button>
+                                        <button type="button">선택삭제</button>
+                                    </div>
+                                    <div class="selectbtn">
+                                        <button type="button" class="black-btn" id="cart-move">해외장바구니로 이동</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>결제예정금액</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="td-title">총 상품금액</td>
+                                    <td class="td-mny">3,500원</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-title">총 배송비</td>
+                                    <td class="td-mny">2,500원</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="pay">
+                            <button class="col-xs-6 choice">
+                                선택상품주문
+                            </button>
+                            <button class="col-xs-6 all">
+                                전체상품주문
+                            </button>
+                        </div>
                     </div>
-                    <div id="collapseOne" class="panel-collapse collapse in">
-                        <div class="panel-body">
-                            첫 번째 항목의 내용입니다.
+                    <div role="tabpanel" class="tab-pane" id="page2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">장바구니 상품</a></h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse in">
+                                <div class="panel-header clearfix">
+                                    일반상품 (n)
+                                </div>
+                                <div class="panel-body">
+                                    <div class="mycart">
+                                        <div class="mygoods clearfix">
+                                            <span class="chkbox"><input type="checkbox" class="cart" value="check"></span>
+                                            <a href="#"><img src="../share/img/4_M.jpg" class="cart-img"></a>
+                                            <div class="word">
+                                                <b>펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식</b><br>
+                                                <small>배송:2500원[조건]/기본배송</small><br>
+                                                <small><span>적</span>40원</small><br>
+                                                <b>3,500원</b>
+                                                <br>
+                                                <button class="count">
+                                                    <img src="../share/img/마이너스.png">
+                                                </button>
+                                                <input type="number" class="count-label">
+                                                <button class="count">
+                                                    <img src="../share/img/플러스.png">
+                                                </button>
+                                                <button type="button">변경</button>
+                                            </div>
+                                        </div>
+                                        <div class="selectbtn">
+                                            <div class=summ>
+                                                <b class="summ">합계:6000원</b>
+                                            </div>
+                                            <button type="button">삭제</button>
+                                            <button type="button">관심상품</button>
+                                            <button type="button" class="black-btn">주문하기</button>
+                                        </div>
+                                    </div>
+                                    <div class="panel-header clearfix">
+                                        [기본배송]
+                                    </div>
+                                    <div class="selectbtn">
+                                        <button type="button">전체선택</button>
+                                        <button type="button">선택삭제</button>
+                                    </div>
+                                    <div class="selectbtn">
+                                        <button type="button" class="black-btn" id="cart-move">해외장바구니로 이동</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>결제예정금액</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="td-title">총 상품금액</td>
+                                    <td class="td-mny">3,500원</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-title">총 배송비</td>
+                                    <td class="td-mny">2,500원</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="pay">
+                            <button class="col-xs-6 choice">
+                                선택상품주문
+                            </button>
+                            <button class="col-xs-6 all">
+                                전체상품주문
+                            </button>
                         </div>
                     </div>
                 </div>
