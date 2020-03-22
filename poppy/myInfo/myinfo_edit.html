@@ -15,38 +15,18 @@
     <link rel="stylesheet" type="text/css" href="../share/assets/css/nanumfont.css" />
     <link rel="stylesheet" type="text/css" href="../share/tmpl.css" />
     <!-- 반응형 웹을 지원하지 않을 경우 -->
-    <!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
+    <!-- <link rel="stylesheet" href="../share/assets/css/non-responsive.css" /> -->
     <!-- IE8 이하 버전 지원 -->
     <!--[if lt IE 9]>
-        <script type="text/javascript" src="assets/js/html5shiv.js"></script>
-        <script type="text/javascript" src="assets/js/respond.min.js"></script>
+        <script type="text/javascript" src="../share/assets/js/html5shiv.js"></script>
+        <script type="text/javascript" src="../share/assets/js/respond.min.js"></script>
         <![endif]-->
     <!-- IE10 반응형 웹 버그 보완 -->
     <!--[if gt IE 9]>
-        <link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
-        <script type="text/javascript" src="assets/js/ie10.js"></script>
+        <link rel="stylesheet" type="text/css" href="../share/assets/css/ie10.css" />
+        <script type="text/javascript" src="../share/assets/js/ie10.js"></script>
         <![endif]-->
     <style type="text/css">
-    .page-title {
-        vertical-align: middle;
-        width: auto;
-    }
-
-    .page-title a {
-        display: block;
-        float: left;
-        padding-top: 5px;
-        position: relative;
-        z-index: 10;
-    }
-
-    .page-title h3 {
-        padding-top: 5px;
-        margin-top: 5px;
-        text-align: center;
-        padding-right: 35px;
-    }
-
     .table_header {
         display: inline-block;
     }
@@ -162,8 +142,8 @@
             <!-- 여기에 작성 -->
             <div class="container">
                 <div class="page-title clearfix">
-                    <a href="#"><img src="../share/img/img_back.jpg"></a>
-                    <h3><b>회원정보수정</b></h3>
+                    <a href="#" onclick="history.back(); return false;"><img src="../share/img/back.jpg"></a>
+                    <h4><b>뽀삐뽀삐</b></h4>
                 </div>
                 <div class="table_container">
                     <form class="form-horizontal" name="edit_form" id="edit_form">
@@ -285,20 +265,20 @@
                         <div class="form-group">
                             <div class="text-center">
                                 <button type="submit" class="submit_b submit_y">회원정보수정</button>
-                                <button type="reset" class="submit_b submit_n">취소</button>
+                                <button type="reset" class="submit_b submit_n" onclick="history.back();">취소</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-            <div class="footer">
+            <div class=" footer">
                 <!-- 하단 네비게이션 고정-->
                 <!--- 소개 4인방 링크 -->
                 <hr />
                 <div class="etc">
-                    <a href="#">회사소개</a>
-                    <a href="#">이용약관</a>
-                    <a href="#">개인정보취급방침</a>
+                    <a href="../etc/page_info1.html">회사소개</a>
+                    <a href="../etc/page_info2.html">이용약관</a>
+                    <a href="../etc/page_info3.html">개인정보취급방침</a>
                     <a href="../etc/page_info4.html">이용안내</a>
                 </div>
                 <hr />
@@ -334,7 +314,7 @@
                                 <p>커뮤니티</p>
                             </span>
                         </a>
-                        <a href="../myInfo/order_list.html">
+                        <a href="../myinfo/order_list.html">
                             <span class="glyphicon glyphicon-list-alt">
                                 <p>주문조회</p>
                             </span>
@@ -349,7 +329,7 @@
                                 <p>카테고리</p>
                             </span>
                         </a>
-                        <a href="../myInfo/myinfo.html">
+                        <a href="../myinfo/myinfo.html">
                             <span class="glyphicon glyphicon-user">
                                 <p>MY정보</p>
                             </span>
