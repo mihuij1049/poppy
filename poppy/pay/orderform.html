@@ -32,6 +32,10 @@
         margin: 0;
     }
 
+    .required {
+        color: #DD5850;
+    }
+
     #title {
         top: 0;
         left: 0;
@@ -113,9 +117,13 @@
         border: 1px solid #ddd;
     }
 
+    hr {
+        width: 100%;
+    }
+
     .form-group {
-        border-top: 1px solid #ddd;
         text-align: center;
+        margin: auto;
     }
 
     .form-group #selbox {
@@ -131,10 +139,175 @@
         width: 90%;
         height: 60px;
         border: 1px solid #ddd;
+        margin-bottom: 10px;
+
+    }
+
+    .same-addr {
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 10px;
+        font-size: 16px;
+    }
+
+    .same-addr .same {
+        display: inline;
+        width: 50%;
+    }
+
+    .same-addr .new {
+        float: right;
+        width: 50%;
+    }
+
+    .same-addr #same-addr1 {
+        position: relative;
+        top: 4px;
+        margin-right: 3px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .same-addr label {
+        font-weight: lighter;
+    }
+
+    .same-addr #same-addr2 {
+        position: relative;
+        top: 4px;
+        margin-left: 10px;
+        margin-right: 3px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .new-addr {
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-top: 15px;
+    }
+
+    .na-name .receiver {
+        display: inline;
+        font-weight: lighter;
+    }
+
+    .na-name .required {
+        float: left;
+    }
+
+    .na-name #delivery-name {
+        width: 100%;
+        height: 30px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+    }
+
+    .na-address-head {
+        margin-top: 10px;
+    }
+
+    .na-address .receiver {
+        display: inline;
+        font-weight: lighter;
+    }
+
+    .na-address .required {
+        float: left;
+    }
+
+    .na-address-body #delivery-zipcode {
+        width: auto;
+        height: 30px;
+        margin-top: 5px;
+        padding-left: 3px;
+        border: 1px solid #ddd;
+    }
+
+    .na-address-body #delivery-address1 {
+        width: 100%;
+        height: 30px;
+        margin-top: 8px;
+        padding-left: 3px;
+        border: 1px solid #ddd;
+    }
+
+    .na-address-body #delivery-address2 {
+        width: 100%;
+        height: 30px;
+        margin-top: 10px;
+        padding-left: 3px;
+        border: 1px solid #ddd;
+    }
+
+    .na-address-body .addInfo {
+        margin-top: 8px;
     }
 
     .panel-body .discount {
         padding: 20px 15px;
+    }
+
+    .na-address .na-phone {
+        margin-top: 10px;
+    }
+
+    .na-phone #delivery-phone {
+        width: 100%;
+        height: 30px;
+        margin-top: 8px;
+        border: 1px solid #ddd;
+    }
+
+    .na-email {
+        margin-top: 10px;
+    }
+
+    .na-email #delivery-email {
+        width: 100%;
+        height: 30px;
+        margin-top: 8px;
+        border: 1px solid #ddd;
+    }
+
+    .form-group2 {
+        text-align: center;
+        margin: auto;
+    }
+
+    .form-group2 #selbox2 {
+        width: 90%;
+        height: 40px;
+        position: relative;
+        bottom: 10px;
+        border: 1px solid #ddd;
+        padding-left: 5px;
+    }
+
+    .form-group2 #selboxDirect2 {
+        width: 90%;
+        height: 60px;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+    }
+
+    .addr-save {
+        border-top: 1px solid #eee;
+        height: 50px;
+    }
+
+    .addr-save input {
+        margin-left: 15px;
+        width: 20px;
+        height: 20px;
+        position: relative;
+        top: 10px;
+    }
+
+    .addr-save span {
+        margin-left: 3px;
+        position: relative;
+        top: 5px;
     }
 
     .discount .head {
@@ -191,31 +364,107 @@
                                             배송지 목록
                                         </button>
                                     </span>
-                                </div>
-                                <div class="form-group">
-                                    <select id="selbox">
-                                        <option value=""> -- 메시지 선택(선택사항) -- </option>
-                                        <option value="1"> 배송전에 미리 연락바랍니다. </option>
-                                        <option value="2"> 부재시 경비실에 맡겨주세요. </option>
-                                        <option value="3"> 부재시 문 앞에 놓아주세요. </option>
-                                        <option value="4"> 빠른 배송 부탁드립니다. </option>
-                                        <option value="5"> 택배함에 보관해 주세요. </option>
-                                        <option value="direct"> 직접입력 </option>
-                                    </select>
-                                    <input type="text" id="selboxDirect" name="selboxDirect" />
+                                    <hr>
+                                    <div class="form-group">
+                                        <select id="selbox">
+                                            <option value=""> -- 메시지 선택(선택사항) -- </option>
+                                            <option value="1"> 배송전에 미리 연락바랍니다. </option>
+                                            <option value="2"> 부재시 경비실에 맡겨주세요. </option>
+                                            <option value="3"> 부재시 문 앞에 놓아주세요. </option>
+                                            <option value="4"> 빠른 배송 부탁드립니다. </option>
+                                            <option value="5"> 택배함에 보관해 주세요. </option>
+                                            <option value="direct"> 직접입력 </option>
+                                        </select>
+                                        <input type="text" id="selboxDirect" name="selboxDirect" />
+                                    </div>
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane fade" id="page2">
-                                <div class="new-addr">
-                                    <div class="same-addr">
-                                        <input type="radio" name="same-addr" id="same-addr1">
-                                        <label for="same-addr1">회원 정보와 동일</label>
-                                        <input type="radio" name="same-addr" id="same-addr2">
-                                        <label for="same-addr2">새로운 배송지</label>
+                                <div class="new-address">
+                                    <div class="segment same-addr">
+                                        <div class="same">
+                                            <input type="radio" name="same-addr" id="same-addr1">
+                                            <label for="same-addr1">회원 정보와 동일</label>
+                                        </div>
+                                        <div class="new">
+                                            <input type="radio" name="same-addr" id="same-addr2" />
+                                            <label for="same-addr2">새로운 배송지</label>
+                                        </div>
                                     </div>
-                                    <h1>Tab Page2</h1>
-                                    <div>
-                                        <input type="checkbox" name="default"> 기본 배송지로 저장
+                                    <div class="new-addr">
+                                        <div class="na-name">
+                                            <label class="receiver">받는분</label>
+                                            <div class="required">＊</div>
+                                            <div class="na-body">
+                                                <div class="input-text">
+                                                    <input type="text" name="delivery-name" id="delivery-name" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="na-address">
+                                            <div class="na-address-head">
+                                                <label class="receiver">주소</label>
+                                                <div class="required">＊</div>
+                                            </div>
+                                            <div class="na-address-body">
+                                                <div class="zipcode">
+                                                    <input type="text" name="delivery-zipcode" id="delivery-zipcode" placeholder="우편번호" />
+                                                    <button type="button" class="btn">주소 찾기</button>
+                                                </div>
+                                                <div class="input-text">
+                                                    <input type="text" name="delivery-address1" id="delivery-address1" placeholder="기본 주소" />
+                                                </div>
+                                                <div class="input-text">
+                                                    <input type="text" name="delivery-address2" id="delivery-address2" placeholder="상세 주소" />
+                                                </div>
+                                                <div class="addInfo">
+                                                    나머지 주소는 선택입력이 가능합니다.
+                                                </div>
+                                            </div>
+                                            <div class="na-phone">
+                                                <div class="na-phone-head">
+                                                    <label class="receiver">휴대전화</label>
+                                                    <div class="required">＊</div>
+                                                </div>
+                                                <div class="na-phone-body">
+                                                    <div class="input-text">
+                                                        <input type="text" name="delivery-phone" id="delivery-phone" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class=" na-email">
+                                                <div class="na-email-head">
+                                                    <label class="receiver">
+                                                        이메일
+                                                    </label>
+                                                    <div class="required">＊</div>
+                                                </div>
+                                                <div class="na-email-body">
+                                                    <div class="input-text">
+                                                        <input type="text" name="delivery-email" id="delivery-email" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group2">
+                                        <select id="selbox2">
+                                            <option value=""> -- 메시지 선택(선택사항) -- </option>
+                                            <option value="1"> 배송전에 미리 연락바랍니다. </option>
+                                            <option value="2"> 부재시 경비실에 맡겨주세요. </option>
+                                            <option value="3"> 부재시 문 앞에 놓아주세요. </option>
+                                            <option value="4"> 빠른 배송 부탁드립니다. </option>
+                                            <option value="5"> 택배함에 보관해 주세요. </option>
+                                            <option value="direct2"> 직접입력 </option>
+                                        </select>
+                                        <input type="text" id="selboxDirect2" name="selboxDirect" />
+                                    </div>
+                                    <div class="addr-save">
+                                        <input type="checkbox" name="default">
+                                        <span>
+                                            기본 배송지로 저장
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -414,6 +663,19 @@
                 $("#selboxDirect").show();
             } else {
                 $("#selboxDirect").hide();
+            }
+        })
+    });
+
+    $(function() {
+        $("#selboxDirect2").hide();
+
+        $("#selbox2").change(function() {
+            // 직접입력을 누를 때 나타남
+            if ($("#selbox2").val() == "direct2") {
+                $("#selboxDirect2").show();
+            } else {
+                $("#selboxDirect2").hide();
             }
         })
     });
