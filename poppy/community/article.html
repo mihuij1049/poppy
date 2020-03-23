@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Poppy-Poppy</title>
+    <!-- 모바일 웹 페이지 설정 -->
+    <link rel="shortcut icon" href="../share/assets/ico/favicon.png" />
+    <link rel="apple-touch-icon-precomposed" href="../share/assets/ico/apple-touch-icon-144-precomposed.png" />
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="../share/assets/css/bootstrap.min.css" />
+    <!-- 나눔고딕 웹 폰트 적용 -->
+    <link rel="stylesheet" type="text/css" href="../share/assets/css/nanumfont.css" />
+    <link rel="stylesheet" type="text/css" href="../share/tmpl.css" />
+    <!-- 반응형 웹을 지원하지 않을 경우 -->
+    <!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
+    <!-- IE8 이하 버전 지원 -->
+    <!--[if lt IE 9]>
+        <script type="text/javascript" src="assets/js/html5shiv.js"></script>
+        <script type="text/javascript" src="assets/js/respond.min.js"></script>
+        <![endif]-->
+    <!-- IE10 반응형 웹 버그 보완 -->
+    <!--[if gt IE 9]>
+        <link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
+        <script type="text/javascript" src="assets/js/ie10.js"></script>
+        <![endif]-->
+    <style type="text/css">
+
+        .subject {
+            margin: 10px 15px;
+        }
+        .subject b {
+            display: inline-block;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .nai {
+            text-align: center;
+            font-size: 17px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        .list {
+            margin: 10px 10px;
+        }
+        .list-subject {
+            border: 1px solid #eee;
+            background-color: #EAEAEA;
+        }
+        .list-subject b {
+            display: inline-block;
+            padding: 10px 10px;
+        }
+        .small {
+            display: inline-block;
+            padding-top: 25px;
+            padding-bottom: 5px;
+            padding-left: 15px;
+        }
+        .span {
+            display: inline-block;
+            padding-left: 20px;
+            padding-bottom: 25px;
+        }
+        
+        .button2 {
+            display: inline-block;
+            float: right;
+            margin-right: 15px;
+            margin-top: 60px;
+        }
+        .comment-nai {
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comment-ana {
+            padding: 20px 15px;
+            border: solid 1px #eee;
+            background: #eee;
+        }
+        
+        .memory {
+            display: inline-block;
+        }
+        .comment_area {
+        display: block;
+        margin: auto;
+        width: 95%;
+        min-height: 150px;
+        resize: none;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        border: solid 1px #8C8C8C;
+        }
+        .info {
+            margin: auto;
+            margin: 20px 15px;
+        }
+        .information {
+            width: 110px;
+            border: solid 1px #8C8C8C;
+        }
+        .enter {
+            display: block;
+            float: right;
+            margin-right: 15px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        .next {
+            border-top: 1px solid #eee;
+            padding-left: 10px;
+            padding-top: 8px;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../index.html" id="logo">
+                <img src="../share/img/logojpg.jpg">
+            </a>
+            <a href="../pay/cart.html">
+                <span class="glyphicon glyphicon-shopping-cart" id="cart">
+                    <h1>장바구니</h1>
+                </span>
+                <span class="badge">
+                    <p>11</p>
+                </span>
+            </a>
+            <hr>
+            <ul class="category">
+                <a href="#">
+                    <li>BEST</li>
+                </a>
+                <a href="#">
+                    <li>NEW</li>
+                </a>
+                <a href="#">
+                    <li>푸드</li>
+                </a>
+                <a href="#">
+                    <li>의류</li>
+                </a>
+                <a href="#">
+                    <li>외출용품</li>
+                </a>
+                <a href="#">
+                    <li>홈리빙</li>
+                </a>
+                <a href="#">
+                    <li>대형견</li>
+                </a>
+                <a href="#">
+                    <li>타임세일</li>
+                </a>
+                <a href="#">
+                    <li>유통임박</li>
+                </a>
+            </ul>
+            <hr>
+        </div>
+            <!-- 여기에 작성 -->
+        <div class="content">
+            <div class="container">
+                <div class="page-title clearfix">
+                    <a href="#" onclick="history.back(); return false;"><img src="../share/img/img_back.jpg"></a>
+                    <h4><b>공지사항</b></h4>
+                </div>
+                <div class="subject">
+                    <b>☆뽀삐뽀삐 사이트 오픈 공지☆</b><br>
+                    <small>(주)뽀삐뽀삐 | <span>2020.01.29</span> | 조회<span>215</span></small>
+                </div>
+                <hr>
+                <div class="nai">
+                    <p>
+                    안녕하세요! 뽀삐뽀삐 입니다:)<br>
+                    premium dog food and itet<br>
+                    댕댕이들을 위한 쇼핑몰 뽀삐뽀삐<br>
+                    사이트를 오픈하였습니다.<br>
+                    </p>
+                </div>
+                <div class="comment">
+                    <button type="submit" class="btn btn-default btn-sm list ">목록</button>
+                </div>
+                <div class="comment-list">
+                    <div class="list-subject">
+                        <b>댓글목록</b>
+                    </div>
+                    <div class="comment-nai">
+                        <div class="memory">
+                            <small class="small"><span>박** | </span><span>20.02.01</span></small><br />
+                            <span class="span">자주 이용할게요~</span><br />
+                        </div>
+                        <div class="button2">
+                            <button type="submit" class="btn btn-success btn-sm">수정</button>
+                            <button type="submit" class="btn btn-default btn-sm">삭제</button>
+                        </div>
+                    </div>
+                    <div class="comment-nai">
+                        <div class="memory">
+                            <small class="small"><span>김** | </span><span>20.02.03</span></small><br />
+                            <span class="span">할인 많이 해주세요!!</span><br />
+                        </div>
+                        <div class="button2">
+                            <button type="submit" class="btn btn-success btn-sm">수정</button>
+                            <button type="submit" class="btn btn-default btn-sm">삭제</button>
+                        </div>
+                    </div>
+                    <div class="comment-nai">
+                        <div class="memory">
+                            <small class="small"><span>최** | </span><span>20.02.07</span></small><br />
+                            <span class="span">매일 놀러올게요>_<</span><br />
+                        </div>
+                        <div class="button2">
+                            <button type="submit" class="btn btn-success btn-sm">수정</button>
+                            <button type="submit" class="btn btn-default btn-sm">삭제</button>
+                        </div>
+                    </div>
+                    <div class="comment-nai">
+                        <div class="memory">
+                            <small class="small"><span>이** | </span><span>20.02.10</span></small><br />
+                            <span class="span">맛난 개껌 많이 팔아주세여~!</span><br />
+                        </div>
+                        <div class="button2">
+                            <button type="submit" class="btn btn-success btn-sm">수정</button>
+                            <button type="submit" class="btn btn-default btn-sm">삭제</button>
+                        </div>
+                    </div>
+                    <div class="comment-nai">
+                        <div class="memory">
+                            <small class="small"><span>박** | </span><span>20.02.015</span></small><br />
+                            <span class="span">번창하세용^___^</span><br />
+                        </div>
+                        <div class="button2">
+                            <button type="submit" class="btn btn-success btn-sm">수정</button>
+                            <button type="submit" class="btn btn-default btn-sm">삭제</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment-ana" id="comment-ana">
+                    <small>회원에게만 댓글권한이 있습니다.</small>
+                </div>
+                <div class="comment-write">
+                    <div class="info">
+                        <label for="name-write">이름</label>
+                        <input type="text" name="name-write" class="information" id="name-write">
+                        &nbsp;&nbsp;
+                        <label for="pass-write">비밀번호</label>
+                        <input type="text" name="pass-write" class="information" id="pass-write">
+                    </div>
+                    <textarea class="comment_area" placeholder="내용을 입력하세요." maxlength="1800"></textarea>
+                    <button type="submit" class="enter btn btn-primary btn-sm">등록</button>
+                </div>
+            </div>
+            <div class="next">
+                    <p><b>다음글&nbsp;&nbsp;&nbsp;</b>
+                    <span>신규 회원가입 고객 혜택안내</span></p>
+                </div>
+        </div>
+
+        <div class="footer">
+            <!-- 하단 네비게이션 고정-->
+            <!--- 소개 4인방 링크 -->
+            <hr />
+            <div class="etc">
+                <a href="../etc/page_info1.html">회사소개</a>
+                <a href="../etc/page_info2.html">이용약관</a>
+                <a href="../etc/page_info3.html">개인정보취급방침</a>
+                <a href="../etc/page_info4.html">이용안내</a>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-xs-6 etc">
+                    <h5><b>상담센터</b></h5>
+                    <p style="font-size: 18px; font-weight:bold;">070-123-4567</p>
+                    <p style="font-size: 12px"> 운영시간 : 오전 10:00 - 오후 6:00<br />주말, 공휴일은 후뮤입니다.</p>
+                </div>
+                <div class="col-xs-6 etc">
+                    <h5><b>입금계좌안내</b></h5>
+                    <br />
+                    <p>하나 355-342432-23445<br>예금주 : (주)뽀삐뽀삐</p>
+                </div>
+            </div>
+            <address class="clearfix">
+                <p>상점명: (주)뽀삐뽀삐 대표 : 아무개
+                    <br>주소 : 서울특별시 행복구 존버동 8282-5959 102호 - 물류팀<br>
+                    사업자등록번호 : 123-86-43567<br>
+                    통신판매업신고 : 제2020-서울서초-0082호<br>
+                    개인정보관리책임 : 아무개 <br>
+                    <br />
+                    COPYRIGHT&copy; (주)뽀삐뽀삐 ALL RIGHTS RESERVED
+                    <br />
+                    <i>DESIGN BY EZEN-team4</i>
+                </p>
+            </address>
+            <div class="navbar" id="navbarback">
+                <ul class="btmbar-nav clearfix navbar-fixed-bottom">
+                    <hr />
+                    <a href="#">
+                        <span class="glyphicon glyphicon-comment">
+                            <p>커뮤니티</p>
+                        </span>
+                    </a>
+                    <a href="../myInfo/order_list.html">
+                        <span class="glyphicon glyphicon-list-alt">
+                            <p>주문조회</p>
+                        </span>
+                    </a>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-search">
+                            <p>&nbsp;검색&nbsp;</p>
+                        </span>
+                    </a>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-th-large">
+                            <p>카테고리</p>
+                        </span>
+                    </a>
+                    <a href="../myinfo/myinfo.html">
+                        <span class="glyphicon glyphicon-user">
+                            <p>MY정보</p>
+                        </span>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Javascript -->
+    <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="../share/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $("#comment").click(function() {
+                $(this).slideToggle(300);
+            }); //end click
+        }); // end function
+    </script>
+    </body>
+
+    </html>
