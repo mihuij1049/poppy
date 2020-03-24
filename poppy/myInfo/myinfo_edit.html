@@ -27,67 +27,84 @@
         <script type="text/javascript" src="../share/assets/js/ie10.js"></script>
         <![endif]-->
     <style type="text/css">
-    .table_header {
-        display: inline-block;
-    }
-
-    .h_header {
-        display: inline-block;
-    }
-
-    .table_header h4 {
-        display: inline-block;
-    }
-
-    .table_header .h_out {
-        display: inline-block;
-    }
-
-    .table_container {
-        margin: 20px;
-        padding: 5px;
-    }
-
-    .f_input {
-        width: 100%;
-        border-radius: 3px;
-        border: 1px solid #000;
-        height: 20px;
-    }
-
-    table {
-        border: 1px solid #000;
-        border-radius: 3px;
-        padding: 5px;
-    }
-
-
-    select {
-        width: 100%;
-        border-radius: 3px;
-        border: 1px solid #000;
-        height: 30px;
-    }
-
-    .submit_b {
-        width: 46%;
-        margin-top: 10px;
-        border-radius: 3px;
-        border: 1px solid #000;
-        height: 50px;
-    }
-
-    .submit_y {
-        background-color: #909090;
-        color: #fff;
-    }
-
-    .submit_n {
-        background-color: #fff;
-    }
-
-    .text-center {
+    /* 폼 전체 박스 */
+    .form-horizontal {
+        width: 90%;
         margin: auto;
+    }
+
+    /* 입력요소 단위 박스 */
+    .form-group {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px dotted #eee;
+    }
+
+    /* 마지막 입력 단위의 border 제거 */
+    .form-group:last-child {
+        border-bottom: 0;
+    }
+
+    /* Float 마감제 */
+    .form-group:after {
+        content: '';
+        display: block;
+        clear: both;
+        float: none;
+    }
+
+    /* <label>에 대한 박스 처리 */
+    .col-md-2 {
+        width: 25%;
+        display: block;
+        float: left;
+        font-size: 14px;
+        padding-top: 7px;
+        text-indent: 5px;
+    }
+
+    /* <input>태그가 배치되는 박스의 처리 */
+    .col-md-10 {
+        width: 75%;
+        display: block;
+        float: left;
+    }
+
+    /* <input>태그 */
+    .form-control {
+        width: 100%;
+        padding: 5px 0;
+        font-size: 14px;
+        border: 1px solid #eee;
+    }
+
+    /* 글자 중앙 정렬 */
+    .text-center {
+        text-align: center;
+    }
+
+    /* 필수항목 표시를 위한 `*` */
+    .identify {
+        font-size: 14px;
+        color: #f00;
+    }
+
+    /* 에러 메시지에 대한 글자 색상 */
+    .error {
+        color: red;
+    }
+
+    /* 에러가 발생한 <input>태그 */
+    input.error {
+        background-color: #ffff00;
+    }
+
+    /* 에러메시지가 표시중인 <label>태그 */
+    label.error {
+        font-size: 10px;
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 0;
     }
     </style>
 </head>
@@ -143,204 +160,219 @@
             <div class="container">
                 <div class="page-title clearfix">
                     <a href="#" onclick="history.back(); return false;"><img src="../share/img/back.jpg"></a>
-                    <h4><b>뽀삐뽀삐</b></h4>
+                    <h4><b>회원정보수정</b></h4>
                 </div>
-                <div class="table_container">
-                    <form class="form-horizontal" name="edit_form" id="edit_form">
-                        <table border="0" width=100% cellpadding="2">
-                            <tr>
-                                <td width=130px>기본정보</td>
-                                <td colspan="4" style="text-align: right">*필수</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="user_id">아이디*</label>
-                                </td>
-                                <td colspan="4">
-                                    <input type="text" name="user_id" id="user_id" class="f_input" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="user_pw">비밀번호*</label>
-                                </td>
-                                <td colspan="4">
-                                    <input type="password" name="user_pw1" id="user_pw1" class="f_input" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="user_pw">비밀번호 확인*</label>
-                                </td>
-                                <td colspan="4">
-                                    <input type="password" name="user_pw2" id="user_pw2" class="f_input" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="user_id">이름*</label>
-                                </td>
-                                <td colspan="4">
-                                    <input type="text" name="user_name" id="user_name" class="f_input" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td rowspan="3">
-                                    <label for="user_address">주소*</label>
-                                </td>
-                                <td>
-                                    <input type="text" name="user_address" id="user_address" class="f_input" />
-                                </td>
-                                <td colspan="3"><button>우편번호</button></td>
-                            </tr>
-                            <tr>
-                                <td colspan="4">
-                                    <input type="text" name="user_address" id="user_address" class="f_input" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="4">
-                                    <input type="text" name="user_address" id="user_address" class="f_input" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="home_number">일반전화</label>
-                                </td>
-                                <td width=80px>
-                                    <select name="home_number" id="home_number">
-                                        <option>-----</option>
-                                        <option value="02">02</option>
-                                        <option value="032">032</option>
-                                        <option value="041">041</option>
-                                    </select>
-                                </td>
-                                <td width=80px>
-                                    <input type="text" name="home_number" id="home_number" class="f_input" />
-                                </td>
-                                <td width=80px>
-                                    <input type="text" name="home_number" id="home_number" class="f_input" />
-                                </td>
-                                <td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="phone_number">휴대전화*</label>
-                                </td>
-                                <td width=80px>
-                                    <select name="phone_number" id="phone_number">
-                                        <option>-----</option>
-                                        <option value="010">010</option>
-                                        <option8 value="011">011</option>
-                                            <option value="016">016</option>
-                                    </select>
-                                </td>
-                                <td width=80px>
-                                    <input type="text" name="phone_number" id="phone_number" class="f_input" />
-                                </td>
-                                <td width=80px>
-                                    <input type="text" name="phone_number" id="phone_number" class="f_input" />
-                                </td>
-                                <td>
-                                </td>
-                            </tr>
-                            <tr></tr>
-                            <td><label for="user_email">이메일*</label></td>
-                            <td colspan="2">
-                                <input type="email" name="user_email" id="user_email" class="f_input" />
-                            </td>
-                            <td colspan="2"><button>중복확인</button></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="email_yn">이메일<br />수신여부*</label>
-                                </td>
-                                <td colspan="4">
-                                    <label><input type="radio" name="email_yn" id="email_yn1" value="y">수신함</label>
-                                    <label><input type="radio" name="email_yn" id="email_yn2" value="n">수신안함</label>
-                                </td>
-                            </tr>
-                        </table>
-                        <div class="form-group">
-                            <div class="text-center">
-                                <button type="submit" class="submit_b submit_y">회원정보수정</button>
-                                <button type="reset" class="submit_b submit_n" onclick="history.back();">취소</button>
-                            </div>
+                <div>
+                    기본정보
+                </div>
+                <!-- 가입폼 시작 -->
+                <form class="form-horizontal" name="join_form" id="join_form">
+                    <div class="form-group">
+                        <label for='user_id' class="col-md-2">아이디 <span class='identify'>*</span></label>
+                        <div class="col-md-10">
+                            <input type="text" name="user_id" id="user_id" class="form-control" />
                         </div>
-                    </form>
-                </div>
-            </div>
-            <div class=" footer">
-                <!-- 하단 네비게이션 고정-->
-                <!--- 소개 4인방 링크 -->
-                <hr />
-                <div class="etc">
-                    <a href="../etc/page_info1.html">회사소개</a>
-                    <a href="../etc/page_info2.html">이용약관</a>
-                    <a href="../etc/page_info3.html">개인정보취급방침</a>
-                    <a href="../etc/page_info4.html">이용안내</a>
-                </div>
-                <hr />
-                <div class="row">
-                    <div class="col-xs-6 etc">
-                        <h5><b>상담센터</b></h5>
-                        <p style="font-size: 18px; font-weight:bold;">070-123-4567</p>
-                        <p style="font-size: 12px"> 운영시간 : 오전 10:00 - 오후 6:00<br />주말, 공휴일은 후뮤입니다.</p>
                     </div>
-                    <div class="col-xs-6 etc">
-                        <h5><b>입금계좌안내</b></h5>
-                        <br />
-                        <p>하나 355-342432-23445<br>예금주 : (주)뽀삐뽀삐</p>
+                    <div class="form-group">
+                        <label for='user_pw' class="col-md-2">비밀번호 <span class='identify'>*</span></label>
+                        <div class="col-md-10">
+                            <input type="password" name="user_pw" id="user_pw" class="form-control" />
+                        </div>
                     </div>
-                </div>
-                <address class="clearfix">
-                    <p>상점명: (주)뽀삐뽀삐 대표 : 아무개
-                        <br>주소 : 서울특별시 행복구 존버동 8282-5959 102호 - 물류팀<br>
-                        사업자등록번호 : 123-86-43567<br>
-                        통신판매업신고 : 제2020-서울서초-0082호<br>
-                        개인정보관리책임 : 아무개 <br>
-                        <br />
-                        COPYRIGHT&copy; (주)뽀삐뽀삐 ALL RIGHTS RESERVED
-                        <br />
-                        <i>DESIGN BY EZEN-team4</i>
-                    </p>
-                </address>
-                <div class="navbar" id="navbarback">
-                    <ul class="btmbar-nav clearfix navbar-fixed-bottom">
-                        <hr />
-                        <a href="#">
-                            <span class="glyphicon glyphicon-comment">
-                                <p>커뮤니티</p>
-                            </span>
-                        </a>
-                        <a href="../myinfo/order_list.html">
-                            <span class="glyphicon glyphicon-list-alt">
-                                <p>주문조회</p>
-                            </span>
-                        </a>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-search">
-                                <p>&nbsp;검색&nbsp;</p>
-                            </span>
-                        </a>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-th-large">
-                                <p>카테고리</p>
-                            </span>
-                        </a>
-                        <a href="../myinfo/myinfo.html">
-                            <span class="glyphicon glyphicon-user">
-                                <p>MY정보</p>
-                            </span>
-                        </a>
-                    </ul>
-                </div>
+                    <div class="form-group">
+                        <label for='user_pw' class="col-md-2">비밀번호 확인 <span class='identify'>*</span></label>
+                        <div class="col-md-10">
+                            <input type="password" name="user_pw_re" id="user_pw_re" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for='user_name' class="col-md-2">이름 <span class='identify'>*</span></label>
+                        <div class="col-md-10">
+                            <input type="text" name="user_name" id="user_name" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for='email' class="col-md-2">이메일 <span class='identify'>*</span></label>
+                        <div class="col-md-10">
+                            <input type="email" name="email" id="email" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for='tel' class="col-md-2">연락처 <span class='identify'>*</span></label>
+                        <div class="col-md-10">
+                            <input type="tel" name="tel" id="tel" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for='birthdate' class="col-md-2">생년월일 <span class='identify'>*</span></label>
+                        <div class="col-md-10">
+                            <input type="date" name="birthdate" id="birthdate" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for='gender1' class="col-md-2">SMS 수신여부 <span class='identify'>*</span></label>
+                        <div class="col-md-10">
+                            <label>
+                                <input type='radio' name='gender' id='gender1' value='M'>남자</label>
+                            <label>
+                                <input type='radio' name='gender' id='gender2' value='F'>여자</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="text-center">
+                            <button type="submit">가입하기</button>
+                            <button type="reset">다시작성</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-        <!-- Javascript -->
-        <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
-        <script src="../share/assets/js/bootstrap.min.js"></script>
+    </div>
+    <div class="footer">
+        <!-- 하단 네비게이션 고정-->
+        <!--- 소개 4인방 링크 -->
+        <hr />
+        <div class="etc">
+            <a href="../etc/page_info1.html">회사소개</a>
+            <a href="../etc/page_info2.html">이용약관</a>
+            <a href="../etc/page_info3.html">개인정보취급방침</a>
+            <a href="../etc/page_info4.html">이용안내</a>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-xs-6 etc">
+                <h5><b>상담센터</b></h5>
+                <p style="font-size: 18px; font-weight:bold;">070-123-4567</p>
+                <p style="font-size: 12px"> 운영시간 : 오전 10:00 - 오후 6:00<br />주말, 공휴일은 후뮤입니다.</p>
+            </div>
+            <div class="col-xs-6 etc">
+                <h5><b>입금계좌안내</b></h5>
+                <br />
+                <p>하나 355-342432-23445<br>예금주 : (주)뽀삐뽀삐</p>
+            </div>
+        </div>
+        <address class="clearfix">
+            <p>상점명: (주)뽀삐뽀삐 대표 : 아무개
+                <br>주소 : 서울특별시 행복구 존버동 8282-5959 102호 - 물류팀<br>
+                사업자등록번호 : 123-86-43567<br>
+                통신판매업신고 : 제2020-서울서초-0082호<br>
+                개인정보관리책임 : 아무개 <br>
+                <br />
+                COPYRIGHT&copy; (주)뽀삐뽀삐 ALL RIGHTS RESERVED
+                <br />
+                <i>DESIGN BY EZEN-team4</i>
+            </p>
+        </address>
+        <div class="navbar" id="navbarback">
+            <ul class="btmbar-nav clearfix navbar-fixed-bottom">
+                <hr />
+                <a href="#">
+                    <span class="glyphicon glyphicon-comment">
+                        <p>커뮤니티</p>
+                    </span>
+                </a>
+                <a href="../myinfo/order_list.html">
+                    <span class="glyphicon glyphicon-list-alt">
+                        <p>주문조회</p>
+                    </span>
+                </a>
+                <a href="#">
+                    <span class="glyphicon glyphicon-search">
+                        <p>&nbsp;검색&nbsp;</p>
+                    </span>
+                </a>
+                <a href="#">
+                    <span class="glyphicon glyphicon-th-large">
+                        <p>카테고리</p>
+                    </span>
+                </a>
+                <a href="../myinfo/myinfo.html">
+                    <span class="glyphicon glyphicon-user">
+                        <p>MY정보</p>
+                    </span>
+                </a>
+            </ul>
+        </div>
+    </div>
+    </div>
+    <!-- Javascript -->
+    <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="../share/assets/js/bootstrap.min.js"></script>
+    <!-- validate 플러그인 참조 -->
+    <script src="../share/plugins/validate/jquery.validate.min.js"></script>
+    <script src="../share/plugins/validate/additional-methods.min.js"></script>
+    <!-- sweetalert 플러그인 참조 -->
+    <script type="text/javascript">
+    $(function() {
+
+        /** 유효성 검사 추가 함수 */
+        $.validator.addMethod("kor", function(value, element) {
+            return this.optional(element) || /^[ㄱ-ㅎ가-힣]*$/i.test(value);
+        });
+
+        $.validator.addMethod("phone", function(value, element) {
+            return this.optional(element) ||
+                /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/i.test(value) ||
+                /^\d{2,3}\d{3,4}\d{4}$/i.test(value);
+        });
+
+        /** form태그에 부여한 id속성에 대한 유효성 검사 함수 호출 */
+        $("#join_form").validate({
+            /** 입력검사 규칙 */
+            rules: {
+                // [아이디] 필수 + 알파벳,숫자 조합만 허용
+                user_id: { required: true, alphanumeric: true },
+                // [비밀번호] 필수 + 글자수 길이 제한
+                user_pw: { required: true, minlength: 4, maxlength: 20 },
+                // [비밀번호 확인] 필수 + 특정 항목과 일치 (id로 연결)
+                user_pw_re: { required: true, equalTo: "#user_pw" },
+                // [이름] 필수
+                user_name: { required: true, kor: true },
+                // [이메일] 필수 + 이메일 형식 일치 필요
+                email: { required: true, email: true },
+                // [연락처] 필수
+                tel: { required: true, phone: true },
+                // [생년월일] 필수 + 날짜 형식 일치 필요
+                birthdate: { required: true, date: true },
+                // [성별] 필수 입력,
+                gender: "required"
+            },
+            /** 규칙이 맞지 않을 경우의 메시지 */
+            messages: {
+                user_id: {
+                    required: "아이디를 입력하세요.",
+                    alphanumeric: "아이디는 영어,숫자만 입력 가능합니다."
+                },
+                user_pw: {
+                    required: "비밀번호를 입력하세요.",
+                    minlength: "비밀번호는 4글자 이상 입력하셔야 합니다.",
+                    maxlength: "비밀번호는 최대 20자까지 가능합니다."
+                },
+                user_pw_re: {
+                    required: "비밀번호 확인값을 입력하세요.",
+                    equalTo: "비밀번호 확인이 잘못되었습니다."
+                },
+                user_name: {
+                    required: "이름을 입력하세요.",
+                    kor: "이름은 한글만 입력 가능합니다."
+                },
+                email: {
+                    required: "이메일을 입력하세요.",
+                    email: "이메일 형식이 잘못되었습니다."
+                },
+                tel: {
+                    required: "연락처를 입력하세요.",
+                    phone: "연락처 형식이 잘못되었습니다."
+                },
+                birthdate: {
+                    required: "생년월일을 입력하세요.",
+                    date: "생년월일의 형식이 잘못되었습니다."
+                },
+                gender: "성별을 선택해 주세요.",
+            }
+        }); // end validate()
+    });
+    </script>
 </body>
 
 </html>
