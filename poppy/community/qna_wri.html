@@ -27,29 +27,33 @@
         <script type="text/javascript" src="../share/assets/js/ie10.js"></script>
         <![endif]-->
     <style type="text/css">
-    .table {
-        width: 95%;
-        border: 1px solid #e5e6e7;
-        margin: auto;
+    .choice {
+        margin-top: 30px;
+        margin-bottom: 10px;
     }
 
-    .table>thead>.th-img {
-        width: 25%;
-        min-height: 96px;
+    .choice .col-xs-8 {
+        margin-top: 30px;
     }
+
+    .qna-title,
+    .qna-desc,
+    .qna-url,
+    .qna-pw,
+    .qna-private {
+        margin-bottom: 10px;
+    }
+
+    .col-xs-4,
+    .col-xs-8,
+    .col-xs-12 {
+        margin-bottom: 15px;
+    }
+
 
     .item-img>img {
-        width: 85px;
-        height: 85px;
-    }
-
-    .table>thead>tr>th {
-        vertical-align: middle !important;
-        border-bottom: 0px;
-    }
-
-    .td-lb {
-        width: 25%;
+        width: 100px;
+        height: 100px;
     }
 
     input[type=text],
@@ -59,14 +63,16 @@
 
     .qna_area {
         width: 100%;
-        min-height: 150px;
+        min-height: 180px;
         resize: none;
     }
+
+    .qna_private {}
 
     .qna_btn {
         margin-top: 15px;
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 
     #qna_ok {
@@ -132,59 +138,57 @@
                     <a href="#" onclick="history.back(); return false;"><img src="../share/img/img_back.jpg"></a>
                     <h4><b>상 품 Q & A</b></h4>
                 </div>
-                <table class="table table-responsive">
-                    <thead>
-                        <tr>
-                            <th class="th-img"><a href="#" class="item-img"><img src="../share/img/slide.jpg"></a></th>
-                            <th><button type="button" class="item-select">상품정보선택</button></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="td-lb">
+                <form method="post" action="">
+                    <div class="container">
+                        <div class="choice clearfix">
+                            <div class="col-xs-4"><a href="#" class="item-img"><img src="../share/img/slide.jpg"></a></div>
+                            <div class="col-xs-8"><button type="button" class="item-select">상품정보선택</button></div>
+                        </div>
+                        <div class="qna-title">
+                            <div class="col-xs-4">
                                 <label>제목</label>
-                            </td>
-                            <td><input type="text">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
+                            </div>
+                            <div class="col-xs-8"><input type="text">
+                            </div>
+                        </div>
+                        <div class="qna-desc">
+                            <div class="col-xs-12">
                                 <textarea class="qna_area" placeholder="내용을 입력하세요." maxlength="1800"></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="td-lb">
+                            </div>
+                        </div>
+                        <div class="qna-url">
+                            <div class="col-xs-4">
                                 <label>UCC URL</label>
-                            </td>
-                            <td>
+                            </div>
+                            <div class="col-xs-8">
                                 <input type="text">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="td-lb">
+                            </div>
+                        </div>
+                        <div class="qna-pw">
+                            <div class="col-xs-4">
                                 <label>비밀번호</label>
-                            </td>
-                            <td>
+                            </div>
+                            <div class="col-xs-8">
                                 <input type="password">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="td-lb">
+                            </div>
+                        </div>
+                        <div class="qna-private">
+                            <div class="col-xs-4">
                                 <label>비밀글설정</label>
-                            </td>
-                            <td>
-                                <input type="radio">
-                                <label>공개글 </label>
-                                <input type="radio">
+                            </div>
+                            <div class="col-xs-8">
+                                <input type="radio" name="public">
+                                <label>공개글 &nbsp;</label>
+                                <input type="radio" name="public">
                                 <label>비밀글</label>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="qna_btn">
-                    <button type="submit" id="qna_ok" class="btn btn-primary">등록</button>
-                    <button type="reset" id="qna_re" class="btn btn-danger">취소</button>
-                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qna_btn">
+                        <button type="submit" id="qna_ok" class="btn btn-primary">등록</button>
+                        <button type="reset" id="qna_re" class="btn btn-danger">취소</button>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="footer">
