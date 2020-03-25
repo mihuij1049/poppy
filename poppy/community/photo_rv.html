@@ -15,41 +15,90 @@
     <link rel="stylesheet" type="text/css" href="../share/assets/css/nanumfont.css" />
     <link rel="stylesheet" type="text/css" href="../share/tmpl.css" />
     <!-- 반응형 웹을 지원하지 않을 경우 -->
-    <!-- <link rel="stylesheet" href="../share/assets/css/non-responsive.css" /> -->
+    <!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
     <!-- IE8 이하 버전 지원 -->
     <!--[if lt IE 9]>
-        <script type="text/javascript" src="../share/assets/js/html5shiv.js"></script>
-        <script type="text/javascript" src="../share/assets/js/respond.min.js"></script>
+        <script type="text/javascript" src="assets/js/html5shiv.js"></script>
+        <script type="text/javascript" src="assets/js/respond.min.js"></script>
         <![endif]-->
     <!-- IE10 반응형 웹 버그 보완 -->
     <!--[if gt IE 9]>
-        <link rel="stylesheet" type="text/css" href="../share/assets/css/ie10.css" />
-        <script type="text/javascript" src="../share/assets/js/ie10.js"></script>
+        <link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
+        <script type="text/javascript" src="assets/js/ie10.js"></script>
         <![endif]-->
     <style type="text/css">
+    .search_tab_bg {
+        width: 100%;
+        background-color: #eee;
+        padding-top: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .search_tab {
+        width: 95%;
+        padding: 10px;
+        padding-left: 15px;
+        margin: auto;
+    }
+
+    .search_tab .cate_ip {
+        float: left;
+        width: 35%;
+    }
+
+    .search_tab .cate_ip .icon_size {
+        font-size: 15px;
+        position: relative;
+        top: 3px;
+    }
+
+    .search_tab input {
+        height: 23px;
+        width: 40%;
+    }
+
+    .container .cate_select {
+        width: 65%;
+        height: 23px;
+        margin-bottom: 10px;
+    }
+
+    .h_input {
+        width: 70%;
+        height: 20px;
+    }
+
+    .container #sc_bt {
+        padding-top: 3px;
+        margin-bottom: 3px;
+        width: 40px;
+        padding-right: 35px;
+    }
+
+    /** 포토리뷰 시작 */
+
     .pr_box {
         float: left;
         width: 50%;
         padding: 5px;
     }
 
-
-
     .pr_in_box {
         border: 1px solid #777;
         padding: 5px;
     }
 
-    .img_size {
+    .container .img_size {
         width: 100%;
     }
 
-    .icon_size {
+    .container .icon_size {
         height: 8px;
         font-size: 10px;
     }
 
-    .btn {
+    .container .btn {
         padding-right: 50px;
         padding-bottom: 20px;
         width: 50px;
@@ -57,26 +106,7 @@
         font-size: 12px;
     }
 
-    #sc_bt {
-        width: 40px;
-        padding-right: 35px;
-    }
-
-    table {
-        width: 98%;
-        margin: auto;
-    }
-
-    .cate_select {
-        width: 100%;
-    }
-
-    .h_input {
-        width: 100%;
-        height: 20px;
-    }
-
-    hr {
+    .container_1 hr {
         margin: 2px;
         padding: 0;
     }
@@ -86,7 +116,7 @@
         border-color: #777;
     }
 
-    a {
+    .container a {
         color: #777;
     }
     </style>
@@ -98,7 +128,7 @@
             <a href="../index.html" id="logo">
                 <img src="../share/img/logojpg.jpg">
             </a>
-            <a href="#">
+            <a href="../pay/cart.html">
                 <span class="glyphicon glyphicon-shopping-cart" id="cart">
                     <h1>장바구니</h1>
                 </span>
@@ -142,34 +172,36 @@
             <!-- 여기에 작성 -->
             <div class="container">
                 <div class="page-title clearfix">
-                    <a href="#" onclick="history.back(); return false;"><img src="../share/img/back.jpg"></a>
-                    <h4><b>포토리뷰</b></h4>
+                    <a href="#" onclick="history.back(); return false;"><img src="../share/img/img_back.jpg"></a>
+                    <h4><b>포토리뷰 </b></h4>
                 </div>
                 <div class="container_1">
                     <div>
-                        <from>
-                            <table>
-                                <tr>
-                                    <td width=100px>카테고리선택</td>
-                                    <td colspan="2">
-                                        <select name="category" class="cate_select">
-                                            <option value="">best</option>
-                                            <option value="">new</option>
-                                            <option value="">푸드</option>
-                                            <option value="">의류</option>
-                                            <option value="">외출용품</option>
-                                            <option value="">대형견코너</option>
-                                            <option value="">홈리빙</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>상품검색</td>
-                                    <td><input type="text" name="search" class="h_input"></td>
-                                    <td width=100px><button class="btn btn-default" id="sc_bt">검색</button></td>
-                                </tr>
-                            </table>
-                        </from>
+                        <form>
+                            <div class="search_tab_bg">
+                                <div class="search_tab">
+                                    <div class="cate_ip">
+                                        <i class="glyphicon glyphicon-th-list icon_size"></i> 카테고리선택
+                                    </div>
+                                    <select name="category" class="cate_select">
+                                        <option value="">best</option>
+                                        <option value="">new</option>
+                                        <option value="">푸드</option>
+                                        <option value="">의류</option>
+                                        <option value="">외출용품</option>
+                                        <option value="">대형견코너</option>
+                                        <option value="">홈리빙</option>
+                                    </select>
+                                    <div>
+                                        <div class="cate_ip">
+                                            <i class="glyphicon glyphicon-search icon_size"></i> 상품검색
+                                        </div>
+                                        <input type="text" name="search" class="h_input">
+                                        <button class="btn btn-dark" id="sc_bt">검색</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <div>
                         <!-- 게시물 하나 시작 -->
@@ -302,7 +334,7 @@
                             <p>커뮤니티</p>
                         </span>
                     </a>
-                    <a href="../myinfo/order_list.html">
+                    <a href="../myInfo/order_list.html">
                         <span class="glyphicon glyphicon-list-alt">
                             <p>주문조회</p>
                         </span>
@@ -329,6 +361,8 @@
     <!-- Javascript -->
     <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
     <script src="../share/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    </script>
 </body>
 
 </html>
