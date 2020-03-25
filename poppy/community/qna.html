@@ -27,38 +27,11 @@
         <script type="text/javascript" src="assets/js/ie10.js"></script>
         <![endif]-->
     <style type="text/css">
-    .page-title {
-        vertical-align: middle;
-        width: auto;
-    }
-
-    .page-title a {
-        display: block;
-        float: left;
-        padding-top: 5px;
-        position: relative;
-        z-index: 10;
-    }
-
-    .page-title h3 {
-        padding-top: 5px;
-        margin-top: 5px;
-        text-align: center;
-        padding-right: 35px;
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-    }
-
-
     .btn1 {
         position: absolute;
         right: 30px;
         top: 100px;
         height: 30px;
-        z-index: -1;
     }
 
     .media-list {
@@ -83,7 +56,9 @@
         padding-top: 5px;
         margin-left: 30px;
     }
-
+    .media-body {
+        margin-left: 40px;
+    }
     .media-body span {
         margin-left: 20px;
     }
@@ -101,9 +76,7 @@
         margin: auto;
     }
 
-    .glyphicon-lock {
-        z-index: -1;
-    }
+    
     </style>
 </head>
 
@@ -159,8 +132,7 @@
                 <div class="page-title clearfix">
                     <a href="#" onclick="history.back(); return false;"><img src="../share/img/img_back.jpg"></a>
                     <h4><b>상품Q&A</b></h4>
-                    <button type="button" class="btn btn-primary btn1">글쓰기</button>
-                </div>
+                    <button type="button" onclick="location.href='qna_wri.html'"class="btn btn-primary btn1">글쓰기</button>
                 <hr>
                 <!-- 웹진 박스를 목록으로 구성하기 위한 구조 입니다. -->
                 <ul class="media-list">

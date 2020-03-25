@@ -27,29 +27,11 @@
         <script type="text/javascript" src="../share/assets/js/ie10.js"></script>
         <![endif]-->
     <style type="text/css">
-    .page-title {
-        vertical-align: middle;
-        width: auto;
-    }
-
-    .page-title a {
-        display: block;
-        float: left;
-        padding-top: 5px;
-        position: relative;
-        z-index: 10;
-    }
-
-    .page-title h3 {
-        padding-top: 5px;
-        margin-top: 5px;
-        text-align: center;
-        padding-right: 35px;
-    }
-
+    
     .align {
         text-align: center;
-        padding-bottom: 20px;
+       padding-top: 10px;
+       font-size: 15px;
     }
 
     .mycart {
@@ -97,10 +79,7 @@
         border: 1px solid #333;
     }
 
-    .summ {
-        text-align: right;
-        padding-bottom: 10px;
-    }
+   
 
     .word span {
         border: 1px solid #FFD9FA;
@@ -108,17 +87,10 @@
     }
 
     .btns {
-        padding-left: 30px;
-        padding-bottom: 20px;
-        padding-top: 100px;
-        padding-right: 20px;
-        hei
+        margin-left: 10px;
+        margin-top: 50px;    
+        margin-bottom: 20px;    
     }
-
-    .btn1 {
-        float: right;
-    }
-
     .selectbtn {
         border: 1px solid #eee;
         width: 95%;
@@ -192,7 +164,8 @@
                     <h4><b>관심상품</b></h4>
                 </div>
                 <hr>
-                <h4 class="align">My상품(<span>0</span>)</h4>
+                <p class="align">My상품(<span>2</span>)</p>
+                <!-- 물건 1 -->
                 <div class="mycart">
                     <div class="mygoods clearfix">
                         <span class="chkbox"><input type="checkbox" class="cart" value="check"></span>
@@ -205,15 +178,29 @@
                         </div>
                     </div>
                     <div class="btns">
-                        <div class="summ">
-                            <b>합계:6000원</b>
-                        </div> <button type="button">선택</button>
+                        <button type="button">삭제</button>
                         <button type="button">장바구니담기</button>
-                        <button type="button" class="btn btn-primary btn1">주문하기</button>
+                    </div>
+                </div>
+                <!-- 물건 2 -->
+                <div class="mycart">
+                    <div class="mygoods clearfix">
+                        <span class="chkbox"><input type="checkbox" class="cart" value="check"></span>
+                        <a href="#"><img src="../share/img/4_M.jpg" class="cart-img"></a>
+                        <div class="word">
+                            <b>펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식</b><br>
+                            <small>배송:2500원[조건]/기본배송</small><br>
+                            <small><span>적</span>40원</small><br>
+                            <b>3,500원</b>
+                        </div>
+                    </div>
+                    <div class="btns">
+                        <button type="button" >삭제</button>
+                        <button type="button" id="gotocart">장바구니담기</button>
                     </div>
                 </div>
                 <div class="selectbtn">
-                    <button type="button">전체선택</button>
+                    <button type="button" id="select">전체선택</button>
                     <button type="button">선택삭제</button>
                 </div>
                 <div class="lastbtn">
@@ -294,6 +281,13 @@
     <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
     <script src="../share/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-    < /body>
+            $(function() {
+                $("#select").click(function() {
+                    $(".cart").prop('checked',$(this).prop('checked'));
+                    
+              });        
+            });
+    </script>
+    </body>
 
     </html>

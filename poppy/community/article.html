@@ -91,17 +91,41 @@
         width: 95%;
         min-height: 150px;
         resize: none;
-        margin-top: 10px;
+        margin-top: 20px;
         margin-bottom: 15px;
         border: solid 1px #8C8C8C;
+        border-radius: 5px;
+        padding-left: 10px;
+        
+        }
+        .comment-write {
+            margin-top: 20px;
         }
         .info {
-            margin: auto;
-            margin: 20px 15px;
+            display: inline-block;
+           
         }
-        .information {
-            width: 110px;
+        .info-name {
+            display: inline-block;
+            margin-left: 15px;
+        }
+        .info-pass {
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .information1 {
+            width: 70px;
+            margin-right: 20px;
             border: solid 1px #8C8C8C;
+            border-radius: 2px;
+            padding-left: 10px;
+
+        }
+        .information2 {
+            width: 100px;
+            border: solid 1px #8C8C8C;
+            border-radius: 2px;
+            padding-left: 10px;
         }
         .enter {
             display: block;
@@ -115,6 +139,13 @@
             padding-left: 10px;
             padding-top: 8px;
             border-bottom: 1px solid #eee;
+        }
+        .next a {
+            text-decoration: none;
+            color: #333;
+        }
+        .next a:hover {
+           font-weight:bold;
         }
     </style>
 </head>
@@ -186,7 +217,7 @@
                     </p>
                 </div>
                 <div class="comment">
-                    <button type="submit" class="btn btn-default btn-sm list ">목록</button>
+                    <button type="button" onclick="location.href='notice.html'"class="btn btn-default btn-sm list"><b>목록</b></button>
                 </div>
                 <div class="comment-list">
                     <div class="list-subject">
@@ -247,20 +278,22 @@
                     <small>회원에게만 댓글권한이 있습니다.</small>
                 </div>
                 <div class="comment-write">
-                    <div class="info">
+                    <div class="info-name">
                         <label for="name-write">이름</label>
-                        <input type="text" name="name-write" class="information" id="name-write">
-                        &nbsp;&nbsp;
-                        <label for="pass-write">비밀번호</label>
-                        <input type="text" name="pass-write" class="information" id="pass-write">
+                        <input type="text" name="name-write" class="information1" id="name-write">
                     </div>
+                    <div class=info-pass>
+                        <label for="pass-write">비밀번호</label>
+                        <input type="text" name="pass-write" class="information2" id="pass-write">
+                    </div>
+                </div>
                     <textarea class="comment_area" placeholder="내용을 입력하세요." maxlength="1800"></textarea>
                     <button type="submit" class="enter btn btn-primary btn-sm">등록</button>
-                </div>
+                
             </div>
             <div class="next">
                     <p><b>다음글&nbsp;&nbsp;&nbsp;</b>
-                    <span>신규 회원가입 고객 혜택안내</span></p>
+                    <span><a href="#"/>신규 회원가입 고객 혜택안내</span></p>
                 </div>
         </div>
 
