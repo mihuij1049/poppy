@@ -28,17 +28,16 @@
         <![endif]-->
     <style type="text/css">
     .open-btn {
-        transition: all .4s ease;
         cursor: pointer;
     }
 
-    .modal {
+    .modal-search {
         background: #fff;
         width: 100%;
         height: 300px;
         margin-left: 100px;
         padding: 0;
-        transition: all 200ms cubic-bezier(0.86, 0, 0.07, 1);
+        transition: all 500ms cubic-bezier(0.53, 0, 0.77, 1);
         top: 100%;
         position: fixed;
         left: 0;
@@ -46,7 +45,27 @@
         display: block;
     }
 
-    .modal .header {
+    .modal-category {
+        background: #fff;
+        width: 100%;
+        height: 300px;
+        margin-left: 100px;
+        padding: 0;
+        transition: all 500ms cubic-bezier(0.53, 0, 0.77, 1);
+        top: 100%;
+        position: fixed;
+        left: 0;
+        text-align: left;
+        display: block;
+    }
+
+    .modal-search .header {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+    }
+
+    .modal-category .header {
         padding: 10px;
         border-bottom: 1px solid #ddd;
         position: relative;
@@ -68,7 +87,8 @@
         cursor: pointer;
     }
 
-    .modal-container.modal-open .modal {
+    .modal-container-sc.modal-open .modal-search,
+    .modal-container-ct.modal-open .modal-category {
         top: 300px;
         z-index: 0;
     }
@@ -178,12 +198,12 @@
                             <p>주문조회</p>
                         </span>
                     </a>
-                    <a class='open-btn js-click-modal'>
+                    <a class='open-btn js-click-modal-sc'>
                         <span class="glyphicon glyphicon-search">
                             <p>&nbsp;검색&nbsp;</p>
                         </span>
                     </a>
-                    <a href="#">
+                    <a class="open-btn js-click-modal-ct">
                         <span class="glyphicon glyphicon-th-large">
                             <p>카테고리</p>
                         </span>
@@ -195,14 +215,35 @@
                     </a>
                 </ul>
             </div>
-            <div class="modal-container">
-                <div class="modal">
+            <div class="modal-container-sc">
+                <div class="modal-search">
                     <div class="header">
-                        검색창 만들 예정 입니다.<a class="close-btn js-close-modal">X</a>
+                        검색창 만들 예정 입니다.<a class="close-btn js-close-modal-sc">X</a>
                     </div>
                     <div class="body">
                         <p>검색 순위가 나왔으면 조켓쥬~?.</p>
-                        <a class="close-btn js-close-modal">X</a>
+                        <a class="close-btn js-close-modal-sc">X</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-container-ct">
+                <div class="modal-category">
+                    <div class="header">
+                        카테고리 모달창 <a class="close-btn js-close-modal-ct">X</a>
+                    </div>
+                    <div class="body">
+                        <ul>
+                            <li><a href="#">BEST</a></li>
+                            <li><a href="#">NEW</a></li>
+                            <li><a href="#">푸드</a></li>
+                            <li><a href="#">의류</a></li>
+                            <li><a href="#">외출용품</a></li>
+                            <li><a href="#">홈리빙</a></li>
+                            <li><a href="#">대형견</a></li>
+                            <li><a href="#">타임세일관</a></li>
+                            <li><a href="#">유통기한임박</a></li>
+                        </ul>
+                        <a class="close-btn js-close-modal-ct">X</a>
                     </div>
                 </div>
             </div>
@@ -215,12 +256,20 @@
     $(function() {
         // 커뮤니티 메뉴 //
         // 검색 모달창 //
-        $('.js-click-modal').click(function(e) {
-            $('.modal-container').addClass('modal-open');
+        $('.js-click-modal-sc').click(function(e) {
+            $('.modal-container-sc').addClass('modal-open');
         });
 
-        $('.js-close-modal').click(function() {
-            $('.modal-container').removeClass('modal-open');
+        $('.js-close-modal-sc').click(function() {
+            $('.modal-container-sc').removeClass('modal-open');
+        });
+
+        $('.js-click-modal-ct').click(function(e) {
+            $('.modal-container-ct').addClass('modal-open');
+        });
+
+        $('.js-close-modal-ct').click(function() {
+            $('.modal-container-ct').removeClass('modal-open');
         });
     }); // end jQuery!
     </script>

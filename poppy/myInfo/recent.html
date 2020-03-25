@@ -153,7 +153,7 @@
                 <!-- 최근본 상품 목록 시작 -->
                 <ul class="recent" id="recent-item-group">
                     <!-- 첫번째 아이템 -->
-                    <li class="recent-item-list">
+                    <li class="recent-item-list" id="item-list-1">
                         <div class="mycart">
                             <div class="mygoods clearfix">
                                 <a href="#"><img src="../share/img/4_M.jpg" class="cart-img"></a>
@@ -166,14 +166,14 @@
                                 </div>
                             </div>
                             <div class="btns">
-                                <button type="button">삭제</button>
+                                <button type="button" id="delete-list-item">삭제</button>
                                 <button type="button">장바구니담기</button>
                                 <button type="button" class="btn btn-primary btn1" id="order">주문하기</button>
                             </div>
                         </div>
                     </li>
                     <!-- 두번째 아이템 -->
-                    <li class="recent-item-list">
+                    <li class="recent-item-list" id="item-list-2">
                         <div class="mycart">
                             <div class="mygoods clearfix">
                                 <a href="#"><img src="../share/img/4_M.jpg" class="cart-img"></a>
@@ -186,7 +186,7 @@
                                 </div>
                             </div>
                             <div class="btns">
-                                <button type="button">삭제</button>
+                                <button type="button" id="delete-list-item">삭제</button>
                                 <button type="button">장바구니담기</button>
                                 <button type="button" class="btn btn-primary btn1" id="order">주문하기</button>
                             </div>
@@ -270,7 +270,10 @@
         $("#order").click(function(e) {
             location.href = "../pay/orderform.html";
         })
-    })
+        $("#delete-list-item").click(function(e) {
+            $("li").remove("#item-list-1");
+        });
+    });
     </script>
 </body>
 
