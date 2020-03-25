@@ -32,6 +32,12 @@
         margin: 0;
     }
 
+    .img-fade {
+        -webkit-transform: rotate(180deg);
+        -webkit-transition-duration: 1s;
+    }
+
+
     .required {
         color: #DD5850;
     }
@@ -86,6 +92,10 @@
     .panel-body a {
         text-align: center;
         font-weight: bold;
+    }
+
+    .nav-tabs>li>a {
+        margin: 0;
     }
 
     .name #delivery-info-name {
@@ -232,16 +242,12 @@
         padding-left: 5px;
     }
 
-
-
     .zipcode .btn {
         height: 30px;
         margin-bottom: 4px;
         font-size: 12px;
         color: #777;
     }
-
-
 
     .na-address-body #delivery-address1 {
         width: 100%;
@@ -412,9 +418,10 @@
     }
 
     .total {
-        margin-bottom: 18px;
-        margin-right: 15px;
-        margin-left: 15px;
+        height: 54px;
+        padding: 15px;
+        border-top: 1px solid #ddd;
+        background-color: #eff1f4;
     }
 
     .total .head {
@@ -424,6 +431,245 @@
     }
 
     .total .total-sum {
+        float: right;
+        font-size: 16px;
+        color: #508bed;
+    }
+
+    /** 결제 정보  */
+
+    .pay-info {
+        padding: 30px;
+        padding-bottom: 15px;
+    }
+
+    .pay-info .pay-content {
+
+        margin: 5px;
+    }
+
+    .pay-info .pay-con1 {
+        font-size: 15px;
+        width: 100;
+        display: flex;
+    }
+
+    .pay-info .pay-con1 h5 {
+        width: 50%;
+        margin: 0;
+
+    }
+
+    .pay-info .pay-con1 span {
+        width: 50%;
+        text-align: right;
+    }
+
+    .pay-info .pay-con2 {
+        font-size: 15px;
+        width: 100;
+        display: flex;
+        margin-top: 8px;
+    }
+
+    .pay-info .pay-con2 h5 {
+        width: 50%;
+        margin: 0;
+    }
+
+    .pay-info .pay-con2 span {
+        width: 50%;
+        text-align: right;
+    }
+
+    .pay-info .pay-con3 {
+        font-size: 15px;
+        width: 100;
+        display: flex;
+        margin-top: 8px;
+    }
+
+    .pay-info .pay-con3 h5 {
+        width: 50%;
+        margin: 0;
+
+    }
+
+    .pay-info .pay-con3 span {
+        width: 50%;
+        text-align: right;
+    }
+
+    .pay-info .pay-price {
+        width: 100;
+        height: 40px;
+        padding: 10px;
+        margin-top: 8px;
+        margin-left: -10px;
+        margin-right: -10px;
+        background-color: #eff1f4;
+        display: flex;
+    }
+
+    .pay-info .pay-price h4 {
+        font-size: 16px;
+        font-weight: bold;
+        width: 50%;
+        margin: 0;
+
+    }
+
+    .pay-info .pay-price strong {
+        width: 50%;
+        text-align: right;
+    }
+
+    /** // 결제 정보 */
+
+    .pay-box {
+        padding: 15px;
+    }
+
+    .pay-method {
+        padding: 0;
+        margin: 0;
+        height: 160px;
+        border: 1px solid #ddd;
+    }
+
+    .panel-body .pay-box li {
+        width: 100%;
+        height: 30%;
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+        padding: 10px;
+        color: #fff;
+        background-color: #dd5850;
+    }
+
+    .pay-method .content {
+        padding: 0;
+        height: 70%;
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }
+
+    .button-list {
+        width: 100%;
+    }
+
+    .button-list div {
+        display: inline-block;
+        padding: 8px;
+        width: 40%;
+        height: 30%;
+        margin: 5px;
+        border: 1px solid #ddd;
+        color: #fff;
+        background-color: #997C7A;
+    }
+
+    .content-detail {
+        color: #777;
+        padding: 15px;
+        padding-top: 0px;
+    }
+
+    .save {
+        color: #666;
+        font-size: 16px;
+        height: 54px;
+        padding: 10px;
+        padding-left: 15px;
+        text-align: left;
+        background-color: #eff1f4;
+        border-top: 1px solid #ddd;
+    }
+
+    .save #pay-method-save {
+        width: 17px;
+        height: 17px;
+        position: relative;
+        top: 3px;
+    }
+
+    .save-point {
+        padding: 30px;
+        padding-bottom: 15px;
+    }
+
+    .save-point .save-content {
+        margin: 5px;
+    }
+
+    .save-point .save-con1 {
+        font-size: 15px;
+        width: 100;
+        display: flex;
+    }
+
+    .save-point .save-con1 h5 {
+        width: 50%;
+        margin: 0;
+
+    }
+
+    .save-point .save-con1 span {
+        width: 50%;
+        text-align: right;
+    }
+
+    .save-point .save-con2 {
+        font-size: 15px;
+        width: 100;
+        display: flex;
+        margin-top: 8px;
+    }
+
+    .save-point .save-con2 h5 {
+        width: 50%;
+        margin: 0;
+
+    }
+
+    .save-point .save-con2 span {
+        width: 50%;
+        text-align: right;
+    }
+
+    .save-point .save-con3 {
+        font-size: 15px;
+        width: 100;
+        display: flex;
+        margin-top: 8px;
+    }
+
+    .save-point .save-con3 h5 {
+        width: 50%;
+        margin: 0;
+
+    }
+
+    .save-point .save-con3 span {
+        width: 50%;
+        text-align: right;
+    }
+
+    .save-price {
+        height: 54px;
+        padding: 15px;
+        border-top: 1px solid #ddd;
+        background-color: #eff1f4;
+    }
+
+    .save-price .head {
+        font-size: 16px;
+        font-weight: bold;
+        display: inline;
+    }
+
+    .save-price .total-price {
         float: right;
         font-size: 16px;
         color: #508bed;
@@ -670,7 +916,6 @@
                                 </span>
                             </div>
                         </div>
-                        <hr>
                         <div class="total">
                             <h4 class="head">적용금액</h4>
                             <strong class="total-sum">
@@ -695,37 +940,35 @@
                 <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                     <div class="panel-body">
                         <div class="pay-info">
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <th>주문상품</th>
-                                        <td class="total-price">
-                                            <span id="total-gallery-price">19,800</span>원
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>할인/부가결제</th>
-                                        <td class="total-price">
-                                            -
-                                            <span id="totla-sale-price">0</span>원
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>배송비</th>
-                                        <td class="total-price">
-                                            +
-                                            <span id="delivery-price">2,500</span>원
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="pay-content">
+                                <div class="pay-con1">
+                                    <h5>주문상품</h5>
+                                    <span class="total-price">
+                                        <span id="total-gallery-price">6,900</span>원
+                                    </span>
+                                </div>
+                                <div class="pay-con2">
+                                    <h5>할인/부가결제</h5>
+                                    <span class="total-price">
+                                        -
+                                        <span id="totla-sale-price">0</span>원
+                                    </span>
+                                </div>
+                                <div class="pay-con3">
+                                    <h5>배송비</h5>
+                                    <span class="total-price">
+                                        +
+                                        <span id="delivery-price">2,500</span>원
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="pay-price">
+                                <h4 class="head">결제금액</h4>
+                                <strong class="total-price">
+                                    <span id="pay-price">9,400</span>원
+                                </strong>
+                            </div>
                         </div>
-                    </div>
-                    <div class="pay-price">
-                        <h4 class="head">결제금액</h4>
-                        <strong class="total-price">
-                            <span id="pay-price">22,300</span>원
-                        </strong>
                     </div>
                 </div>
             </div>
@@ -744,19 +987,19 @@
                     <div class="panel-body">
                         <div class="pay-box">
                             <ul class="pay-method">
-                                <li class="pay-sel">
+                                <li class="pay-sel" style="list-style: none">
                                     <label class="pay-method-sel">
                                         <span>결제수단 선택</span>
                                     </label>
-                                    <div class="content">
-                                        <div class="button-list">
-                                            <span>신용카드</span>
-                                            <span>계좌이체</span>
-                                            <span>휴대폰</span>
-                                            <span>무통장입금</span>
-                                        </div>
-                                    </div>
                                 </li>
+                                <div class="content">
+                                    <div class="button-list">
+                                        <div>신용카드</div>
+                                        <div>계좌이체</div>
+                                        <div>휴대폰</div>
+                                        <div>무통장입금</div>
+                                    </div>
+                                </div>
                             </ul>
                         </div>
                         <div class="content-detail">
@@ -782,36 +1025,34 @@
                 </div>
                 <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
                     <div class="panel-body">
-                        <div class="save-points">
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <th>상품별 적립금</th>
-                                        <td class="save-point">
-                                            <span id="gallery-point">200</span>원
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>회원 적립금</th>
-                                        <td class="save-point">
-                                            <span id="member-point">0</span>원
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>쿠폰 적립금</th>
-                                        <td class="save-point">
-                                            <span id="coupon-point">0</span>원
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="save-point">
+                            <div class="save-content">
+                                <div class="save-con1">
+                                    <h5>상품별 적립금</h5>
+                                    <span class="total-price">
+                                        <span id="total-gallery-price">70</span>원
+                                    </span>
+                                </div>
+                                <div class="save-con2">
+                                    <h5>회원 적립금</h5>
+                                    <span class="total-price">
+                                        <span id="totla-sale-price">0</span>원
+                                    </span>
+                                </div>
+                                <div class="save-con3">
+                                    <h5>쿠폰 적립금</h5>
+                                    <span class="total-price">
+                                        <span id="delivery-price">0</span>원
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="total-pay">
-                        <h4 class="head">적립 예정금액</h4>
-                        <strong class="total-sum">
-                            <span id="except-pay">200</span>원
-                        </strong>
+                        <div class="save-price">
+                            <h4 class="head">적립 예정금액</h4>
+                            <strong class="total-price">
+                                <span id="pay-price">70</span>원
+                            </strong>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -849,6 +1090,12 @@
                 $("#selboxDirect2").hide();
             }
         })
+    });
+
+    $(document).ready(function() {
+        $("#arrow-down").click(function() {
+            $("img").toggleClass("img-fade");
+        });
     });
     </script>
 </body>
