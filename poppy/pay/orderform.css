@@ -155,8 +155,9 @@
      position: relative;
      bottom: 124px;
      right: 15px;
+     color: #FF8F83;
      background-color: #ffffff;
-     border: 1px solid #ddd;
+     border: 1px solid #FF8F83;
  }
 
  .form-group {
@@ -445,6 +446,8 @@
 
  .discount-re .btn {
      float: right;
+     color: #FF8F83;
+     border: 1px solid #FF8F83;
 
  }
 
