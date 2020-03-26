@@ -120,11 +120,15 @@
         margin-left: 40px;
     }
 
-    .btn {
+    .btn-ok {
         width: 100%;
-        margin: auto;
-        margin-top: 5px;
-        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .btn {
+        width: 95%;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
     </style>
 </head>
@@ -183,7 +187,7 @@
                     <h4><b>비밀번호 찾기</b></h4>
                 </div>
                 <hr>
-                <div class="find">
+                <form method="post" class="find" action="../member/find_pw_ok.html">
                     <div class="member">
                         <b>회원구분</b>
                         <select name="m_type" class="m_type">
@@ -209,12 +213,10 @@
                         <b>이메일</b>
                         <input type="email" name="email" maxlength="20" placeholder="이메일을 입력해주세요.">
                     </div>
+                </form>
+                <div class="btn-ok">
+                    <button type="submit" class="btn btn1">확인</button>
                 </div>
-            </div>
-            <div class="btn">
-                <a href="../member/find_pw_email.html">
-                    <button type="button" class="btn btn-primary btn">확인</button>
-                </a>
             </div>
         </div>
         <div class="footer">
@@ -290,4 +292,5 @@
     <script type="text/javascript">
     < /body>
 
-    </html>
+    <
+    /html>

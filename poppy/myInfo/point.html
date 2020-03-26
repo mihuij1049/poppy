@@ -27,36 +27,93 @@
         <script type="text/javascript" src="../share/assets/js/ie10.js"></script>
         <![endif]-->
     <style type="text/css">
-    .table {
+    .point {
         width: 95%;
-        border: 1px solid #e5e6e7;
         margin: auto;
+        margin-top: 15px;
+        border: 1px solid #ff8f83;
+
     }
 
-    .table thead {
-        border-left: 1px solid #777;
-        border-right: 1px solid #777;
-        background-color: #777;
+    .point-header {
+        background-color: #ff8f83;
+        text-indent: 10px;
+        font-weight: bold;
         color: #fff;
+        line-height: 40px;
+        font-size: 16px;
     }
 
-    .table>thead>tr>th {
-
-        border: 0px;
+    .point-sub {
+        width: 70%;
+        float: left;
+        line-height: 40px;
+        padding: 0px 5px;
+        border-bottom: 1px dotted #ffc7c1;
     }
 
-    .td-mny {
+    .point-save {
         text-align: right;
+        width: 30%;
+        float: left;
+        line-height: 40px;
+        padding: 0px 5px;
+        border-bottom: 1px dotted #ffc7c1;
     }
 
-    .table-link {
+    .point-sub:nth-child(10) {
+        border-bottom: none;
+    }
+
+    .point-save:nth-child(11) {
+        border-bottom: none;
+    }
+
+    .point-list {
         width: 95%;
-        margin-top: 10px;
-        background-color: #f1f1f1;
+        margin: auto;
+        margin-top: 15px;
+        margin-bottom: 30px;
+        background-color: #ffc7c1;
     }
 
-    .table-link:hover {
+    .point-link {
+        width: 100%;
+        height: 46px;
+        border-bottom: 1px dotted #fff;
+        letter-spacing: 1px;
+    }
+
+    .point-link:hover {
         cursor: pointer;
+        color: #fff;
+        background-color: #ff8f83;
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    .point-list-item {
+        width: 70%;
+        float: left;
+        line-height: 45px;
+        padding: 0px 5px;
+    }
+
+    .point-list-link {
+        text-align: right;
+        width: 30%;
+        float: left;
+        line-height: 45px;
+        padding: 0px 10px;
+
+    }
+
+    .point-link:nth-child(3) {
+        border-bottom: none;
+    }
+
+    .point-list-link:nth-child(4) {
+        border-bottom: none;
     }
     </style>
 </head>
@@ -114,53 +171,33 @@
                     <a href="#" onclick="history.back(); return false;"><img src="../share/img/img_back.jpg"></a>
                     <h4><b>적립금</b></h4>
                 </div>
-                <table class="table table-responsive">
-                    <thead>
-                        <tr>
-                            <th>적립금</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="td-title">총 적립금</td>
-                            <td class="td-mny">3,000원</td>
-                        </tr>
-                        <tr>
-                            <td class="td-title">사용가능 적립금</td>
-                            <td class="td-mny">3,000원</td>
-                        </tr>
-                        <tr>
-                            <td class="td-title">사용된 적립금</td>
-                            <td class="td-mny">0원</td>
-                        </tr>
-                        <tr>
-                            <td class="td-title">미가용 적립금</td>
-                            <td class="td-mny">0원</td>
-                        </tr>
-                        <tr>
-                            <td class="td-title">환불예정 적립금</td>
-                            <td class="td-mny">0원</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="table table-link table-responsive">
-                    <tbody>
-                        <tr onclick="location.href='plist.html'">
-                            <td class="td-title">적립내역</td>
-                            <td class="td-mny">></td>
-                        </tr>
-                        <tr onclick="location.href='plist_nota.html'">
-                            <td class="td-title">미가용 적립내역</td>
-                            <td class="td-mny">></td>
-                        </tr>
-                        <tr onclick="location.href='plist_grd.html'">
-                            <td class="td-title">회원등급 적립내역</td>
-                            <td class="td-mny">></td>
-                        </tr>
-                        </a>
-                    </tbody>
-                </table>
+                <div class="point clearfix">
+                    <div class="point-header">적립금</div>
+                    <div class="point-sub">총 적립금</div>
+                    <div class="point-save">3,000원</div>
+                    <div class="point-sub">사용가능 적립금</div>
+                    <div class="point-save">3,000원</div>
+                    <div class="point-sub">사용된 적립금</div>
+                    <div class="point-save">0원</div>
+                    <div class="point-sub">미가용 적립금</div>
+                    <div class="point-save">0원</div>
+                    <div class="point-sub">환불예정 적립금</div>
+                    <div class="point-save">0원</div>
+                </div>
+                <div class="point-list clearfix">
+                    <div class="point-link" onclick="location.href='plist.html'">
+                        <div class="point-list-item">적립내역</div>
+                        <div class="point-list-link">></div>
+                    </div>
+                    <div class="point-link" onclick="location.href='plist_nota.html'">
+                        <div class="point-list-item">미가용 적립내역</div>
+                        <div class="point-list-link">></div>
+                    </div>
+                    <div class="point-link" onclick="location.href='plist_grd.html'">
+                        <div class="point-list-item">회원등급 적립내역</div>
+                        <div class="point-list-link">></div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="footer">

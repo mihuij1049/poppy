@@ -27,17 +27,19 @@
         <script type="text/javascript" src="../share/assets/js/ie10.js"></script>
         <![endif]-->
     <style type="text/css">
-    
     .align {
         text-align: center;
-       padding-top: 10px;
-       font-size: 15px;
+        padding-top: 10px;
+        font-size: 15px;
     }
 
     .mycart {
-        border: 1px solid #eee;
-        width: 95%;
+        border: 1px solid #ffb0a8;
         margin: auto;
+        margin-left: 15px;
+        margin-right: 15px;
+        padding-right: 15px;
+        list-style: none;
     }
 
     .mygoods {
@@ -79,7 +81,7 @@
         border: 1px solid #333;
     }
 
-   
+
 
     .word span {
         border: 1px solid #FFD9FA;
@@ -88,14 +90,17 @@
 
     .btns {
         margin-left: 10px;
-        margin-top: 50px;    
-        margin-bottom: 20px;    
+        margin-top: 50px;
+        margin-bottom: 20px;
+
     }
+
     .selectbtn {
-        border: 1px solid #eee;
-        width: 95%;
+        border: 1px solid #FFB0A8;
         margin: auto;
         padding: 10px 30px;
+        margin-left: 15px;
+        margin-right: 15px;
     }
 
     .lastbtn {
@@ -105,7 +110,13 @@
     }
 
     .btn2 {
-        width: 95%;
+        width: 90%;
+    }
+
+    .gocart {
+        background: #FF8F83;
+        border: 1px solid #FF8F83;
+        color: white;
     }
     </style>
 </head>
@@ -164,49 +175,52 @@
                     <h4><b>관심상품</b></h4>
                 </div>
                 <hr>
-                <p class="align">My상품(<span>2</span>)</p>
-                <!-- 물건 1 -->
-                <div class="mycart">
-                    <div class="mygoods clearfix">
-                        <span class="chkbox"><input type="checkbox" class="cart" value="check"></span>
-                        <a href="#"><img src="../share/img/4_M.jpg" class="cart-img"></a>
-                        <div class="word">
-                            <b>펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식</b><br>
-                            <small>배송:2500원[조건]/기본배송</small><br>
-                            <small><span>적</span>40원</small><br>
-                            <b>3,500원</b>
-                        </div>
+                <div class="favorite">
+                    <p class="align">My상품(<span>2</span>)</p>
+                    <!-- 물건 1 -->
+                    <ul class="mycart-list">
+                        <li class="mycart" id="mycart1">
+                            <div class="mygoods clearfix">
+                                <span class="chkbox"><input type="checkbox" class="cart" value="check"></span>
+                                <a href="#"><img src="../share/img/4_M.jpg" class="cart-img"></a>
+                                <div class="word">
+                                    <b>1펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식</b><br>
+                                    <small>배송:2500원[조건]/기본배송</small><br>
+                                    <small><span>적</span>40원</small><br>
+                                    <b>3,500원</b>
+                                </div>
+                            </div>
+                            <div class="btns">
+                                <button type="button" id="delete-one">삭제</button>
+                                <button type="button" class="gocart" id="gotocart">장바구니담기</button>
+                            </div>
+                        </li>
+                        <!-- 물건 2 -->
+                        <li class="mycart" id="mycart2">
+                            <div class="mygoods clearfix">
+                                <span class="chkbox"><input type="checkbox" class="cart" value="check"></span>
+                                <a href="#"><img src="../share/img/4_M.jpg" class="cart-img"></a>
+                                <div class="word">
+                                    <b>2펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식</b><br>
+                                    <small>배송:2500원[조건]/기본배송</small><br>
+                                    <small><span>적</span>40원</small><br>
+                                    <b>3,500원</b>
+                                </div>
+                            </div>
+                            <div class="btns">
+                                <button type="button" id="delete-one">삭제</button>
+                                <button type="button" class="gocart" id="gotocart">장바구니담기</button>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="selectbtn">
+                        <button type="button" id="select">전체선택</button>
+                        <button type="button">선택삭제</button>
                     </div>
-                    <div class="btns">
-                        <button type="button">삭제</button>
-                        <button type="button">장바구니담기</button>
+                    <div class="lastbtn">
+                        <a href="../pay/orderform.html">
+                            <button type="button" class="btn btn2">전체상품주문</button> </a>
                     </div>
-                </div>
-                <!-- 물건 2 -->
-                <div class="mycart">
-                    <div class="mygoods clearfix">
-                        <span class="chkbox"><input type="checkbox" class="cart" value="check"></span>
-                        <a href="#"><img src="../share/img/4_M.jpg" class="cart-img"></a>
-                        <div class="word">
-                            <b>펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식</b><br>
-                            <small>배송:2500원[조건]/기본배송</small><br>
-                            <small><span>적</span>40원</small><br>
-                            <b>3,500원</b>
-                        </div>
-                    </div>
-                    <div class="btns">
-                        <button type="button" >삭제</button>
-                        <button type="button" id="gotocart">장바구니담기</button>
-                    </div>
-                </div>
-                <div class="selectbtn">
-                    <button type="button" id="select">전체선택</button>
-                    <button type="button">선택삭제</button>
-                </div>
-                <div class="lastbtn">
-                    <a href="../pay/orderform.html">
-                        <button type="button" class="btn btn-primary btn2">전체상품주문</button>
-                    </a>
                 </div>
             </div>
         </div>
@@ -281,13 +295,13 @@
     <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
     <script src="../share/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-            $(function() {
-                $("#select").click(function() {
-                    $(".cart").prop('checked',$(this).prop('checked'));
-                    
-              });        
-            });
-    </script>
-    </body>
+    $(function() {
 
-    </html>
+        $("#delete-one").click(function(e) {
+            $("li").remove("#mycart1");
+        });
+    });
+    </script>
+</body>
+
+</html>

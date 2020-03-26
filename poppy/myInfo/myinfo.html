@@ -28,71 +28,125 @@
         <![endif]-->
     <style type="text/css">
     .mypoint {
-        border: 2px solid #e5e6e7;
+        border: 2px solid #ff8f83;
         border-radius: 2px;
         width: 96%;
         margin: auto;
-        line-height: 30px;
+        line-height: 35px;
         margin-bottom: 15px;
-        margin-top: 20px;
+        margin-top: 15px;
     }
 
     .myorderinfo {
-        border: 2px solid #e5e6e7;
+        border: 2px solid #ffc7c1;
         border-radius: 2px;
         width: 96%;
         margin: auto;
-        line-height: 30px;
+        line-height: 35px;
         margin-bottom: 15px;
 
     }
 
-    .table {
+    .mydelivery {
+        border: 2px solid #ff8f83;
+        border-radius: 2px;
         width: 96%;
         margin: auto;
-        margin-bottom: 7px;
+        line-height: 35px;
+        margin-bottom: 15px;
+    }
+
+    .mydelivery-current {
         text-align: center;
-        border: 2px solid #e5e6e7;
-        border-radius: 2px;
-
-    }
-
-    .table td {
-        border: 1px solid #e5e6e7;
-        border-left: 0px;
-        width: auto;
-    }
-
-    .current td {
+        float: left;
         width: 25%;
+        border-right: 1px solid #ffc7c1;
+    }
+
+    .mydelivery-current:nth-child(4) {
+        border-right: none;
+    }
+
+    .od-state {
+        width: 96%;
+        margin: auto;
+        text-align: center;
+        border: 2px solid #ffc7c1;
+        border-radius: 2px;
+        line-height: 35px;
+    }
+
+    .od-state-title {
+        float: left;
+        width: 18%;
+    }
+
+    .od-state-qty {
+        float: left;
+        width: 15.33%;
+        border-right: 1px solid #ffc7c1;
+    }
+
+    .od-state-qty:nth-child(6) {
+        border-right: none;
     }
 
     .myinfo-list {
-        margin-top: 25px;
+        width: 96%;
+        margin: auto;
+        margin-top: 15px;
         margin-bottom: 30px;
+        text-align: center;
+        border: 2px solid #ff8f83;
+        border-radius: 2px;
     }
 
-    .myinfo-list td {
+    .myinfo-list-item {
+        height: 110px;
         width: 33.33%;
-        padding: 20px 10px !important;
+        float: left;
+        border-right: 1px dotted #ffc7c1;
+        border-bottom: 1px dotted #ffc7c1;
     }
 
-    .myinfo-list td:hover {
+    .myinfo-list-item:nth-child(3) {
+        border-right: none;
+    }
+
+    .myinfo-list-item:nth-child(4) {
+
+        border-bottom: none;
+    }
+
+    .myinfo-list-item:nth-child(5) {
+
+        border-bottom: none;
+    }
+
+    .myinfo-list-item:nth-child(6) {
+        border-right: none;
+        border-bottom: none;
+    }
+
+    .myinfo-list-item:hover {
         width: 33.33%;
-        background: #ffffdd;
+        background: #ffc7c1;
         font-size: 18px;
         font-weight: bold;
     }
 
-    .myinfo-list td a {
+    .myinfo-list-item>a {
+        padding-top: 30px;
         color: #333;
         display: block;
         text-decoration: none;
+        vertical-align: middle;
     }
 
     .myinfo-list .glyphicon {
         font-size: 20px;
         line-height: 30px;
+
     }
     </style>
 </head>
@@ -152,42 +206,27 @@
                 </div>
                 <div class="mypoint">&nbsp;적립금 : <b>3,000</b></div>
                 <div class="myorderinfo">&nbsp;나의 주문처리 현황 (최근 3개월 기준)</div>
-                <div class="myinfotable">
-                    <table class="table table-responsive current">
-                        <tbody>
-                            <tr>
-                                <td>입금전<br><span>0</span></td>
-                                <td>배송준비중<br><span>0</span></td>
-                                <td>배송중<br><span>0</span></td>
-                                <td>배송완료<br><span>0</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-responsive od-state">
-                        <tbody>
-                            <tr>
-                                <th>-취소 :</th>
-                                <td><span>0</span></td>
-                                <th>-교환 :</th>
-                                <td><span>0</span></td>
-                                <th>-반품 :</th>
-                                <td><span>0</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-responsive myinfo-list">
-                        <tbody>
-                            <tr>
-                                <td id="list-alt"><a href="order_list.html"><span class="glyphicon glyphicon-list-alt"></span></span><br>주문조회 </a></td>
-                                <td id="user"><a href="myinfo_edit.html"><span class="glyphicon glyphicon-user"></span><br>회원정보</a></td>
-                                <td id="thumb"><a href="like_goods.html"><span class="glyphicon glyphicon-thumbs-up"></span><br>좋아요</a></td>
-                            </tr>
-                            <tr>
-                                <td id="point"><a href="point.html"><span class="glyphicon glyphicon-usd"></span><br>적립금</a></td>
-                                <td id="commu"><a href="my_rv.html"><span class="glyphicon glyphicon-folder-open"></span><br>후기관리</a></td>
-                                <td id="recent"><a href="recent.html"><span class="glyphicon glyphicon-eye-open"></span><br>최근본상품</a></td>
-                        </tbody>
-                    </table>
+                <div class="mydelivery clearfix">
+                    <div class="mydelivery-current">입금전<br><span>0</span></div>
+                    <div class="mydelivery-current">배송준비중<br><span>0</span></div>
+                    <div class="mydelivery-current">배송중<br><span>0</span></div>
+                    <div class="mydelivery-current">배송완료<br><span>0</span></div>
+                </div>
+                <div class="od-state clearfix">
+                    <div class="od-state-title">-취소 :</div>
+                    <div class="od-state-qty"><span>0</span></div>
+                    <div class="od-state-title">-교환 :</div>
+                    <div class="od-state-qty"><span>0</span></div>
+                    <div class="od-state-title">-반품 :</div>
+                    <div class="od-state-qty"><span>0</span></div>
+                </div>
+                <div class="myinfo-list clearfix">
+                    <div id="list-alt" class="myinfo-list-item"><a href="order_list.html"><span class="glyphicon glyphicon-list-alt"></span></span><br>주문조회 </a></div>
+                    <div id="user" class="myinfo-list-item"><a href="myinfo_edit.html"><span class="glyphicon glyphicon-user"></span><br>회원정보</a></div>
+                    <div id="thumb" class="myinfo-list-item"><a href="like_goods.html"><span class="glyphicon glyphicon-thumbs-up"></span><br>좋아요</a></div>
+                    <div id="point" class="myinfo-list-item"><a href="point.html"><span class="glyphicon glyphicon-usd"></span><br>적립금</a></div>
+                    <div id="commu" class="myinfo-list-item"><a href="my_rv.html"><span class="glyphicon glyphicon-folder-open"></span><br>후기관리</a></div>
+                    <div id="recent" class="myinfo-list-item"><a href="recent.html"><span class="glyphicon glyphicon-eye-open"></span><br>최근본상품</a></div>
                 </div>
             </div>
         </div>

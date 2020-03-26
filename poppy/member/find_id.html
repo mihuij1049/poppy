@@ -27,11 +27,6 @@
         <script type="text/javascript" src="assets/js/ie10.js"></script>
         <![endif]-->
     <style type="text/css">
-    * {
-        margin: 0;
-        padding: 0;
-    }
-
     .find {
         margin-top: 10px;
     }
@@ -88,11 +83,14 @@
         margin-left: 40px;
     }
 
-    .btn {
+    .btn-ok {
         width: 100%;
-        margin: auto;
-        margin-top: 5px;
-        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .btn {
+        width: 95%;
+        margin-top: 20px;
     }
     </style>
 </head>
@@ -151,7 +149,7 @@
                     <h4><b>아이디찾기</b></h4>
                 </div>
                 <hr>
-                <div class="find">
+                <form method="post" class="find" action="../member/find_id_ok.html">
                     <div class="member">
                         <b>회원구분</b>
                         <select name="m_type" class="m_type">
@@ -173,12 +171,10 @@
                         <b>이메일</b>
                         <input type="email" name="email" maxlength="20" placeholder="이메일을 입력해주세요.">
                     </div>
-                </div>
+                </form>
             </div>
-            <div class="btn">
-                <a href="../member/find_id_ok.html">
-                    <button type="button" class="btn btn-primary btn">확인</button>
-                </a>
+            <div class="btn-ok">
+                <button type="submit" class="btn btn1">확인</button>
             </div>
         </div>
         <div class="footer">
@@ -249,14 +245,9 @@
         </div>
     </div>
     <!-- Javascript -->
-    <script src="assets/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="../share/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-    $(function() {
-        $(".word").click(function() {
-            alert("클릭한 상품의 상세정보 페이지로 이동");
-        });
-    });
     </script>
 </body>
 
