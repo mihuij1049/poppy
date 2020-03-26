@@ -27,21 +27,45 @@
         <script type="text/javascript" src="assets/js/ie10.js"></script>
         <![endif]-->
     <style type="text/css">
+    .tabtab {
+        margin-top: 10px;
+    }
+
+    .nav-tabs {
+        width: 100%;
+    }
+
+    .nav-tabs li {
+        width: 50%;
+        text-align: center;
+    }
+
+    .nav-tabs a {
+        width: 100%;
+        color: #333;
+    }
+
+    .bar1 {
+        padding: 10px 15px;
+        background: #eee;
+    }
+
+    .bar1-good {
+        display: block;
+        padding-top: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
     .onegood {
-        border: 1px solid #eee;
         width: 95%;
         margin: auto;
-        margin-top: 15px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 20px;
+        border: 1px solid #eee;
     }
-
-    .tab-content {
-        margin-top: 25px;
-        margin-left: 20px;
-
-        margin-right: 10px;
-    }
-
-    .good {}
 
     .cart-img {
         display: inline-block;
@@ -61,6 +85,12 @@
         padding-bottom: 10px;
     }
 
+    .mybought small {
+        display: inline-block;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
     .star {
         width: 70%;
         display: inline-block;
@@ -73,7 +103,16 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        padding-bottom: 25px;
+    }
+
+    .btn1 {
+        display: inline-block;
+        float: right;
+        margin-top: 20px;
+    }
+
+    .solid-bottom {
+        border-bottom: 1px solid #eee;
     }
     </style>
 </head>
@@ -129,57 +168,51 @@
                 <a href="#" onclick="history.back(); return false;"><img src="../share/img/img_back.jpg"></a>
                 <h4><b>후기관리</b></h4>
             </div>
-            <hr>
-            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                <!-- 탭메뉴 시작 -->
-                <div class="panel-body">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#good1" data-toggle="tab">작성 가능한 리뷰</a></li>
-                        <li><a href="#good2" data-toggle="tab">내가 작성한 리뷰</a></li>
-                    </ul>
-                    <!-- 탭화면 시작 -->
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane fade active in" id="good1">
-                            <div class=onegood>
+            <!-- 탭 메뉴 시작 -->
+            <div class="tabtab">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#good1" data-toggle="tab">작성 가능한 리뷰</a></li>
+                    <li><a href="#good2" data-toggle="tab">내가 작성한 리뷰</a></li>
+                </ul>
+                <!-- 탭화면 시작 -->
+                <div class="tab-content">
+                    <div class="tab-pane fade in active all1" id="good1">
+                        <div class="bar1">
+                            <b>작성 가능한 리뷰<span style="color: orange;"> 1</span></b>
+                        </div>
+                        <div class="onegood clearfix">
+                            <div class="solid-bottom clearfix">
                                 <a href="#"><img src="../share/img/4_M.jpg" class="cart-img"></a>
                                 <div class="mybought">
-                                    <span><b>펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식1</b></span><br>
-                                </div>
-                                <div class="star">
-                                    <p class="star-rating">
-                                        <a href="#" class="on">★</a>
-                                        <a href="#" class="on">★</a>
-                                        <a href="#" class="on">★</a>
-                                        <a href="#" class="on">★</a>
-                                        <a href="#" class="on">★</a>
-                                    </p>
-                                </div>
-                                <br />
-                                <div class="review" id="review">
-                                    <span>만족합니다~ 항상 여기서만 구매합니다!</span>
+                                    <span><b class="bar1-good">펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식1</b></span><br>
+                                    <small>구매날짜: <span>20.02.22</span></small>
                                 </div>
                             </div>
+                            <button type="button" onclick="location.href='qna_wri.html'" class="btn btn1">리뷰쓰기</button>
                         </div>
                     </div>
-                </div>
-                <div role="tabpanel" class="tab-pane fade" id="good2">
-                    <div class=onegood>
-                        <a href="#"><img src="../share/img/4_M.jpg" class="cart-img"></a>
-                        <div class="mybought">
-                            <span><b>펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식2</b></span><br>
+                    <div class="tab-pane fade" id="good2">
+                        <div class="bar1">
+                            <b>내가 작성한 리뷰<span style="color: orange;"> 1</span></b>
                         </div>
-                        <div class="star">
-                            <p class="star-rating">
-                                <a href="#" class="on">★</a>
-                                <a href="#" class="on">★</a>
-                                <a href="#" class="on">★</a>
-                                <a href="#" class="on">★</a>
-                                <a href="#" class="on">★</a>
-                            </p>
-                        </div>
-                        <br />
-                        <div class="review" id="review">
-                            <span>만족합니다~ 항상 여기서만 구매합니다!</span>
+                        <div class="onegood onegood-bottom">
+                            <a href="#"><img src="../share/img/4_M.jpg" class="cart-img"></a>
+                            <div class="mybought">
+                                <span><b>펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식1</b></span><br>
+                            </div>
+                            <div class="star">
+                                <p class="star-rating">
+                                    <a href="#" class="on">★</a>
+                                    <a href="#" class="on">★</a>
+                                    <a href="#" class="on">★</a>
+                                    <a href="#" class="on">★</a>
+                                    <a href="#" class="on">★</a>
+                                </p>
+                            </div>
+                            <br />
+                            <div class="review" id="review">
+                                <span>만족합니다~ 항상 여기서만 구매합니다!</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -255,85 +288,11 @@
     <!-- Javascript -->
     <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
     <script src="../share/assets/js/bootstrap.min.js"></script>
-</body>
-
-</html>
-</div>
-<div class="footer">
-    <!-- 하단 네비게이션 고정-->
-    <!--- 소개 4인방 링크 -->
-    <hr />
-    <div class="etc">
-        <a href="#">회사소개</a>
-        <a href="#">이용약관</a>
-        <a href="#">개인정보취급방침</a>
-        <a href="../etc/page_info4.html">이용안내</a>
-    </div>
-    <hr />
-    <div class="row">
-        <div class="col-xs-6 etc">
-            <h5><b>상담센터</b></h5>
-            <p style="font-size: 18px; font-weight:bold;">070-123-4567</p>
-            <p style="font-size: 12px"> 운영시간 : 오전 10:00 - 오후 6:00<br />주말, 공휴일은 후뮤입니다.</p>
-        </div>
-        <div class="col-xs-6 etc">
-            <h5><b>입금계좌안내</b></h5>
-            <br />
-            <p>하나 355-342432-23445<br>예금주 : (주)뽀삐뽀삐</p>
-        </div>
-    </div>
-    <address class="clearfix">
-        <p>상점명: (주)뽀삐뽀삐 대표 : 아무개
-            <br>주소 : 서울특별시 행복구 존버동 8282-5959 102호 - 물류팀<br>
-            사업자등록번호 : 123-86-43567<br>
-            통신판매업신고 : 제2020-서울서초-0082호<br>
-            개인정보관리책임 : 아무개 <br>
-            <br />
-            COPYRIGHT&copy; (주)뽀삐뽀삐 ALL RIGHTS RESERVED
-            <br />
-            <i>DESIGN BY EZEN-team4</i>
-        </p>
-    </address>
-    <div class="navbar" id="navbarback">
-        <ul class="btmbar-nav clearfix navbar-fixed-bottom">
-            <hr />
-            <a href="#">
-                <span class="glyphicon glyphicon-comment">
-                    <p>커뮤니티</p>
-                </span>
-            </a>
-            <a href="../myInfo/order_list.html">
-                <span class="glyphicon glyphicon-list-alt">
-                    <p>주문조회</p>
-                </span>
-            </a>
-            <a href="#">
-                <span class="glyphicon glyphicon-search">
-                    <p>&nbsp;검색&nbsp;</p>
-                </span>
-            </a>
-            <a href="#">
-                <span class="glyphicon glyphicon-th-large">
-                    <p>카테고리</p>
-                </span>
-            </a>
-            <a href="../myInfo/myinfo.html">
-                <span class="glyphicon glyphicon-user">
-                    <p>MY정보</p>
-                </span>
-            </a>
-        </ul>
-    </div>
-</div>
-</div>
-<!-- Javascript -->
-<script src="../share/assets/js/jquery-3.2.1.min.js"></script>
-<script src="../share/assets/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-$(function() {
-    $(".collapse").collapse({ toggle: false })
-});
-</script>
+    <script type="text/javascript">
+    $(function() {
+        $(".collapse").collapse({ toggle: false })
+    });
+    </script>
 </body>
 
 </html>
