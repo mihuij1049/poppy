@@ -13,104 +13,8 @@
     <link rel="stylesheet" type="text/css" href="../share/assets/css/bootstrap.min.css" />
     <!-- 나눔고딕 웹 폰트 적용 -->
     <link rel="stylesheet" type="text/css" href="../share/assets/css/nanumfont.css" />
-    <link rel="stylesheet" type="text/css" href="../share/tmpl.css" />
-    <!-- 반응형 웹을 지원하지 않을 경우 -->
-    <!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
-    <!-- IE8 이하 버전 지원 -->
-    <!--[if lt IE 9]>
-        <script type="text/javascript" src="assets/js/html5shiv.js"></script>
-        <script type="text/javascript" src="assets/js/respond.min.js"></script>
-        <![endif]-->
-    <!-- IE10 반응형 웹 버그 보완 -->
-    <!--[if gt IE 9]>
-        <link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
-        <script type="text/javascript" src="assets/js/ie10.js"></script>
-        <![endif]-->
+    <link rel="stylesheet" type="text/css" href="../share/tmpl-수정중.css" />
     <style type="text/css">
-    .page-title {
-        vertical-align: middle;
-        width: auto;
-    }
-
-    .page-title a {
-        display: block;
-        float: left;
-        padding-top: 5px;
-        position: relative;
-        z-index: 10;
-    }
-
-    .page-title h3 {
-        padding-top: 5px;
-        margin-top: 5px;
-        text-align: center;
-        padding-right: 35px;
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-    }
-
-    .message {
-        border: 1px solid #eee;
-        text-align: center;
-        width: 95%;
-        margin: auto;
-        margin-top: 10px;
-        height: 100px;
-        padding-top: 30px;
-    }
-
-    .info {
-        border: 1px solid #eee;
-        width: 95%;
-        height: 100px;
-        margin: auto;
-        margin-top: 15px;
-        padding-top: 25px;
-        padding-left: 25px;
-    }
-
-    .info-name {
-        padding-left: 30px;
-        margin-bottom: 20px;
-    }
-
-    .info-email {
-        padding-left: 22px;
-
-    }
-
-    .id {
-        border: 1px solid #eee;
-        width: 95%;
-        height: 50px;
-        margin: auto;
-        margin-bottom: 15px;
-        padding-left: 25px;
-        padding-top: 10px;
-        border-top: none;
-    }
-
-    .id-info {
-        margin-left: 10px;
-    }
-
-    .btns {
-        text-align: center;
-        margin-bottom: 30px;
-    }
-
-    .btn {
-        background-color: #ff8f83;
-        color: #fff;
-    }
-
-    .btn1 {
-        width: 95%;
-
-    }
     </style>
 </head>
 
@@ -122,7 +26,7 @@
             </a>
             <a href="../pay/cart.html">
                 <span class="glyphicon glyphicon-shopping-cart" id="cart">
-                    <h1>관심상품</h1>
+                    <h1>장바구니</h1>
                 </span>
                 <span class="badge">
                     <p>11</p>
@@ -164,22 +68,26 @@
             <!-- 여기에 작성 -->
             <div class="container">
                 <div class="page-title clearfix">
-                    <a href="#"><img src="../share/img/back.jpg"></a>
-                    <h3><b>비밀번호찾기</b></h3>
+                    <a href="#" onclick="history.back(); return false;"><img src="../share/img/img_back.jpg"></a>
+                    <h4><b>비밀번호 찾기</b></h4>
                 </div>
-                <hr>
-                <div class="info">
-                    <b>이 &nbsp;름</b><span class="info-name">김뽀삐</span><br>
-                    <b>이메일</b><span class="info-email">abc123@naver.com</span>
-                </div>
-                <div class=id>
-                    <input type="radio" value="id"><span class="id-info">abc123&nbsp;(개인회원, 2020-02-12 가입)</span>
-                </div>
-            </div>
-            <div class="btns">
-                <a href="../member/find_pw_ok.html">
-                    <button type="button" class="btn btn1">임시 비밀번호 이메일로 전송</button>
-                </a>
+                <br />
+                <br />
+                <br />
+                이쪽은 컨테이너입니다.<br />
+                템플릿 수정중이예요.<br />
+                어떻게 나올지 나도 모르겠어요.<br />
+                색 넣는거<br />
+                완전<br />
+                별론데...<br />
+                그래도 넣어야해ㅠ <br />
+                <br />
+                <br />
+                <br />
+                내용...<br />
+                내용...<br />
+                내용...<br />
+                내용...<br />
             </div>
         </div>
         <div class="footer">
@@ -187,9 +95,9 @@
             <!--- 소개 4인방 링크 -->
             <hr />
             <div class="etc">
-                <a href="#">회사소개</a>
-                <a href="#">이용약관</a>
-                <a href="#">개인정보취급방침</a>
+                <a href="../etc/page_info1.html">회사소개</a>
+                <a href="../etc/page_info2.html">이용약관</a>
+                <a href="../etc/page_info3.html">개인정보취급방침</a>
                 <a href="../etc/page_info4.html">이용안내</a>
             </div>
             <hr />
@@ -240,7 +148,7 @@
                             <p>카테고리</p>
                         </span>
                     </a>
-                    <a href="../myInfo/myinfo.html">
+                    <a href="../myinfo/myinfo.html">
                         <span class="glyphicon glyphicon-user">
                             <p>MY정보</p>
                         </span>
@@ -250,14 +158,9 @@
         </div>
     </div>
     <!-- Javascript -->
-    <script src="assets/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="../share/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-    $(function() {
-        $(".word").click(function() {
-            alert("클릭한 상품의 상세정보 페이지로 이동");
-        });
-    });
     </script>
 </body>
 
