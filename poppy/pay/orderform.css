@@ -4,12 +4,6 @@
      margin: 0;
  }
 
- .img-fade {
-     -webkit-transform: rotate(180deg);
-     -webkit-transition-duration: 1s;
- }
-
-
  .required {
      color: #DD5850;
  }
@@ -18,6 +12,59 @@
      width: 100%;
  }
 
+ .rotate1 {
+     -webkit-transform: rotate(180deg);
+
+ }
+
+ .icon-rotate1 {
+     -webkit-transition-duration: 1s;
+ }
+
+ .rotate2 {
+     -webkit-transform: rotate(180deg);
+
+ }
+
+ .icon-rotate2 {
+     -webkit-transition-duration: 1s;
+ }
+
+ .rotate3 {
+     -webkit-transform: rotate(180deg);
+
+ }
+
+ .icon-rotate3 {
+     -webkit-transition-duration: 1s;
+ }
+
+ .rotate4 {
+     -webkit-transform: rotate(180deg);
+
+ }
+
+ .icon-rotate4 {
+     -webkit-transition-duration: 1s;
+ }
+
+ .rotate5 {
+     -webkit-transform: rotate(180deg);
+
+ }
+
+ .icon-rotate5 {
+     -webkit-transition-duration: 1s;
+ }
+
+ .rotate6 {
+     -webkit-transform: rotate(180deg);
+
+ }
+
+ .icon-rotate6 {
+     -webkit-transition-duration: 1s;
+ }
 
  #title {
      top: 0;
@@ -134,41 +181,37 @@
      font-size: 16px;
  }
 
- .save {
+ .same-addr .same {
+     display: inline;
+     width: 50%;
+ }
+
+ .same-addr #same-addr1 {
      position: relative;
- }
-
- input[type=radio] {
-     display: none;
- }
-
- input[type=radio]+label {
-     cursor: pointer;
-     padding-left: 10px;
- }
-
- input[type=radio]+label:before {
-     content: "";
+     top: 4px;
+     margin-right: 3px;
      width: 18px;
      height: 18px;
-     margin-right: 10px;
-     position: absolute;
-     left: 0;
-     background-color: #f7f7f7;
-     border-radius: 50%;
-     box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
  }
 
- input[type=radio]:checked+label:before {
-     content: "\2714";
-     text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
-     font-size: 18px;
-     font-weight: 600;
-     color: #fff;
-     background: #DD5850;
-     text-align: center;
+ .same-addr label {
+     font-weight: lighter;
+     font-size: 15px;
  }
 
+ .same-addr .new {
+     float: right;
+     width: 50%;
+ }
+
+ .same-addr #same-addr2 {
+     position: relative;
+     top: 4px;
+     margin-left: 10px;
+     margin-right: 3px;
+     width: 18px;
+     height: 18px;
+ }
 
 
  .new-addr {

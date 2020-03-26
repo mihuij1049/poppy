@@ -41,9 +41,7 @@
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             <b>배송지</b>
-                            <span id="arrow-down">
-                                <img src="../share/img/arrow-down.png" align=right>
-                            </span>
+                            <img src="../share/img/arrow-down.png" align=right class="arrow-down1 icon-rotate1">
                         </a>
                     </h4>
                 </div>
@@ -191,7 +189,7 @@
                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             <b>주문상품</b>
                             <span id="arrow-down">
-                                <img src="../share/img/arrow-down.png" align=right>
+                                <img src="../share/img/arrow-down.png" align=right class="arrow-down2 icon-rotate2">
                             </span>
                         </a>
                     </h4>
@@ -226,7 +224,10 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <button type="button" class="btn btn-default" id="prd-del"></button>
+                                <div class="cencel-btn">
+                                    <button type="button" class="btn btn-default" id="prd-del">
+                                    </button>
+                                </div>
                             </div>
                             <div class="prd-foot" title="합계">
                                 <span id="prd-total">합계</span>
@@ -246,7 +247,7 @@
                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                             <b>할인/부가결제</b>
                             <span id="arrow-down">
-                                <img src="../share/img/arrow-down.png" align=right>
+                                <img src="../share/img/arrow-down.png" align=right class="arrow-down3 icon-rotate3">
                             </span>
                         </a>
                     </h4>
@@ -285,7 +286,7 @@
                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                             <b>결제정보</b>
                             <span id="arrow-down">
-                                <img src="../share/img/arrow-down.png" align=right>
+                                <img src="../share/img/arrow-down.png" align=right class="arrow-down4 icon-rotate4">
                             </span>
                         </a>
                     </h4>
@@ -331,7 +332,7 @@
                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                             <b>결제수단</b>
                             <span id="arrow-down">
-                                <img src="../share/img/arrow-down.png" align=right>
+                                <img src="../share/img/arrow-down.png" align=right class="arrow-down5 icon-rotate5">
                             </span>
                         </a>
                     </h4>
@@ -371,7 +372,7 @@
                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                             <b>적립 혜택</b>
                             <span id="arrow-down">
-                                <img src="../share/img/arrow-down.png" align=right>
+                                <img src="../share/img/arrow-down.png" align=right class="arrow-down6 icon-rotate6">
                             </span>
                         </a>
                     </h4>
@@ -463,9 +464,39 @@
         })
     });
 
-    $(document).ready(function() {
-        $("#arrow-down").click(function() {
-            $("img").toggleClass("img-fade");
+    $(function() {
+        $("#headingOne").on('click', function() {
+            $(".arrow-down1").toggleClass("rotate1");
+        });
+    });
+
+    $(function() {
+        $("#headingTwo").on('click', function() {
+            $(".arrow-down2").toggleClass("rotate2");
+        });
+    });
+
+    $(function() {
+        $("#headingThree").on('click', function() {
+            $(".arrow-down3").toggleClass("rotate3");
+        });
+    });
+
+    $(function() {
+        $("#headingFour").on('click', function() {
+            $(".arrow-down4").toggleClass("rotate4");
+        });
+    });
+
+    $(function() {
+        $("#headingFive").on('click', function() {
+            $(".arrow-down5").toggleClass("rotate5");
+        });
+    });
+
+    $(function() {
+        $("#headingSix").on('click', function() {
+            $(".arrow-down6").toggleClass("rotate6");
         });
     });
     </script>
