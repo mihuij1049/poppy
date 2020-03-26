@@ -34,7 +34,7 @@
     }
 
     .mycart {
-        border: 1px solid #eee;
+        border: 1px solid #ffb0a8;
         margin: auto;
         margin-left: 15px;
         margin-right: 15px;
@@ -96,7 +96,7 @@
     }
 
     .selectbtn {
-        border: 1px solid #eee;
+        border: 1px solid #FFB0A8;
         margin: auto;
         padding: 10px 30px;
         margin-left: 15px;
@@ -111,6 +111,12 @@
 
     .btn2 {
         width: 90%;
+    }
+
+    .gocart {
+        background: #FF8F83;
+        border: 1px solid #FF8F83;
+        color: white;
     }
     </style>
 </head>
@@ -186,7 +192,7 @@
                             </div>
                             <div class="btns">
                                 <button type="button" id="delete-one">삭제</button>
-                                <button type="button">장바구니담기</button>
+                                <button type="button" class="gocart" id="gotocart">장바구니담기</button>
                             </div>
                         </li>
                         <!-- 물건 2 -->
@@ -203,7 +209,7 @@
                             </div>
                             <div class="btns">
                                 <button type="button" id="delete-one">삭제</button>
-                                <button type="button" id="gotocart">장바구니담기</button>
+                                <button type="button" class="gocart" id="gotocart">장바구니담기</button>
                             </div>
                         </li>
                     </ul>
