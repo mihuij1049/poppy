@@ -63,7 +63,7 @@
     }
 
     .backg {
-        margin-top: 10px;
+        margin-top: 1px;
         height: 94px;
         background-color: #ffc7c1;
     }
@@ -230,7 +230,7 @@
         color: #ffc7c1;
     }
 
-        {
+    .pagination>li>a {
         color: #ffc7c1;
     }
 
@@ -239,7 +239,11 @@
         z-index: 100000000000;
         /*display: hidden;*/
         width: 80%;
-        overflow: auto !important;
+        overflow: auto;
+    }
+
+    .datepicker {
+        z-index: 999999 !important;
     }
     </style>
 </head>
@@ -333,7 +337,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <p>Hello Modal</p>
-                                    <input type="text" id="datepicker" />
+                                    <input type="text" class="form-control datepicker" id="datepicker" />
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn" data-dismiss="modal">Close</button>
@@ -474,21 +478,19 @@
                 $("#myModal").modal("show");
                 // 아래는 창을 강제로 닫기 처리
                 // $("#myModal").modal("hide");
+                $(".datepicker").datepicker({
+                    // 날짜 선택후 사동 숨김 (true/false)
+                    autoHide: true,
+                    // 날짜 형식
+                    format: "yyyy-mm-dd",
+                    // 언어
+                    language: "ko-KR",
+                    // 시작요일 (0=일요일~6=토요일)
+                    weekStart: 0
+                });
             });
         });
-
-        $(function() {
-            $("#datepicker").datepicker({
-                // 날짜 선택후 사동 숨김 (true/false)
-                autoHide: true,
-                // 날짜 형식
-                format: "yyyy-mm-dd",
-                // 언어
-                language: "ko-KR",
-                // 시작요일 (0=일요일~6=토요일)
-                weekStart: 0
-            });
-        });
+        $(function() {});
         </script>
 </body>
 
