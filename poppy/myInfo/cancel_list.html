@@ -96,10 +96,20 @@
         padding: 0;
     }
 
-    .btn {
+    .period .btn {
         font-size: 12px;
         width: 16%;
-        height: 30px;
+        height: 30px
+    }
+
+    .btn:hover {
+        background-color: #FF6261;
+        color: #fff;
+    }
+
+    .btn-default.active {
+        background-color: #FF6261;
+        color: #fff;
     }
 
     /** 주문상세보기 시작 */
@@ -216,7 +226,7 @@
         color: #ffc7c1;
     }
 
-    a {
+    .pagination>li>a {
         color: #ffc7c1;
     }
     </style>
@@ -278,7 +288,7 @@
                 <li class="col-xs-6 etc"><a href="order_list.html">주문조회</a></li>
                 <li class="active col-xs-6 etc"><a href="cancel_list.html">취소/교환/반품내역</a></li>
             </ul>
-            <div class="backg">
+            <div class="backg fade in">
                 <div class="container">
                     <div class="period">
                         <p class="col-xs-1">기간</p>

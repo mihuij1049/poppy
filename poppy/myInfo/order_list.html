@@ -11,6 +11,8 @@
     <link rel="apple-touch-icon-precomposed" href="../share/assets/ico/apple-touch-icon-144-precomposed.png" />
     <!-- bootstrap -->
     <link rel="stylesheet" type="text/css" href="../share/assets/css/bootstrap.min.css" />
+    <!-- 플러그인 CSS 참조 -->
+    <link rel="stylesheet" type="text/css" href="../share/plugins/datepicker/datepicker.min.css">
     <!-- 나눔고딕 웹 폰트 적용 -->
     <link rel="stylesheet" type="text/css" href="../share/assets/css/nanumfont.css" />
     <link rel="stylesheet" type="text/css" href="../share/tmpl.css" />
@@ -112,6 +114,16 @@
         font-size: 12px;
         width: 16%;
         height: 30px
+    }
+
+    .btn:hover {
+        background-color: #FF6261;
+        color: #fff;
+    }
+
+    .btn-default.active {
+        background-color: #FF6261;
+        color: #fff;
     }
 
     /** 주문상세보기 시작 */
@@ -218,8 +230,16 @@
         color: #ffc7c1;
     }
 
-    a {
+        {
         color: #ffc7c1;
+    }
+
+    /** Modal */
+    .datepicker-container {
+        z-index: 100000000000;
+        /*display: hidden;*/
+        width: 80%;
+        overflow: auto !important;
     }
     </style>
 </head>
@@ -299,7 +319,27 @@
                         <button class="btn btn-default col-xs-2">1개월</button>
                         <button class="btn btn-default col-xs-2">3개월</button>
                         <button class="btn btn-default col-xs-2">6개월</button>
-                        <button class="btn btn-default col-xs-3">기간설정</button>
+                        <button class="btn btn-default col-xs-3" id="open_modal_btn">기간설정</button>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">Modal</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Hello Modal</p>
+                                    <input type="text" id="datepicker" />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -423,7 +463,32 @@
         <!-- Javascript -->
         <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
         <script src="../share/assets/js/bootstrap.min.js"></script>
+        <!-- 플러그인 JS 참조 -->
+        <script src="../share/plugins/datepicker/datepicker.min.js"></script>
+        <script src="../share/plugins/datepicker/datepicker.ko-KR.js"></script>
+        <!-- 사용자 정의 스크립트 -->
         <script type="text/javascript">
+        $(function() {
+            $("#open_modal_btn").click(function(e) {
+                // 스크립트를 사용하여 특정 Modal을 강제로 열기
+                $("#myModal").modal("show");
+                // 아래는 창을 강제로 닫기 처리
+                // $("#myModal").modal("hide");
+            });
+        });
+
+        $(function() {
+            $("#datepicker").datepicker({
+                // 날짜 선택후 사동 숨김 (true/false)
+                autoHide: true,
+                // 날짜 형식
+                format: "yyyy-mm-dd",
+                // 언어
+                language: "ko-KR",
+                // 시작요일 (0=일요일~6=토요일)
+                weekStart: 0
+            });
+        });
         </script>
 </body>
 
