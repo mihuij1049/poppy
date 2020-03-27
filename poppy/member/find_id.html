@@ -25,26 +25,29 @@
     <!--[if gt IE 9]>
         <link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
         <script type="text/javascript" src="assets/js/ie10.js"></script>
-        <![endif]-->
+<![endif]-->
     <style type="text/css">
     .find {
         margin-top: 10px;
     }
 
     .member {
-        border: 1px solid #eee;
+        border: 1px solid #ffc7c1;
+        border-bottom: none;
         width: 95%;
-        height: 40px;
+        height: 65px;
         margin: auto;
-        padding-top: 8px;
+        margin-top: 20px;
+        padding-top: 19px;
     }
 
     .auth {
-        border: 1px solid #eee;
+        border: 1px solid #ffc7c1;
+        border-bottom: none;
         width: 95%;
-        height: 40px;
+        height: 65px;
         margin: auto;
-        padding-top: 8px;
+        padding-top: 19px;
     }
 
     .auth input {
@@ -52,19 +55,20 @@
     }
 
     .name {
-        border: 1px solid #eee;
+        border: 1px solid #ffc7c1;
+        border-bottom: none;
         width: 95%;
-        height: 40px;
+        height: 65px;
         margin: auto;
-        padding-top: 8px;
+        padding-top: 19px;
     }
 
     .email {
-        border: 1px solid #eee;
+        border: 1px solid #ffc7c1;
         width: 95%;
-        height: 40px;
+        height: 65px;
         margin: auto;
-        padding-top: 8px;
+        padding-top: 19px;
     }
 
     .find b {
@@ -89,8 +93,14 @@
     }
 
     .btn {
-        width: 95%;
+        width: 90%;
+        height: 40px;
         margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .btn:hover {
+        color: white;
     }
     </style>
 </head>
@@ -145,7 +155,7 @@
             <!-- 여기에 작성 -->
             <div class="container">
                 <div class="page-title clearfix">
-                    <a href="#"><img src="../share/img/back.jpg"></a>
+                    <a href="#" onclick="history.back(); return false;"><img src="../share/img/img_back.jpg"></a>
                     <h4><b>아이디찾기</b></h4>
                 </div>
                 <hr>
