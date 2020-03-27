@@ -34,6 +34,10 @@ hr {
     top: 15px;
 }
 
+#cart:hover {
+    color: #FF8F83;
+}
+
 #cart h1 {
     font-size: 10px;
     position: relative;
@@ -58,8 +62,11 @@ hr {
     right: 3px;
 }
 
+/** 상단 카테고리 탭 시작!!!!!!!!!!!! */
+
 .category {
     margin-bottom: 0;
+    height: 40px;
     white-space: nowrap;
     overflow-x: scroll;
     list-style: none;
@@ -73,11 +80,14 @@ hr {
 
 .category li {
     color: black;
+    padding-top: 7px;
     margin: 0 5px;
+    font-size: 13.5px;
 }
 
 .category a {
     display: inline-block;
+    height: 40px;
     padding: 5px 8px;
 }
 
@@ -90,6 +100,17 @@ hr {
     padding-top: 90px;
     width: auto;
 }
+
+
+.content ul {
+    padding-left: 0;
+}
+
+
+/** 상단 카테고리 탭 끝!!!!!!!!!!!!!!!!!! */
+
+
+/** 여기는 상단탭 아래 페이지 이름이랑 뒤로가기 이미지 탭 시작부분! */
 
 .page-title {
     vertical-align: middle;
@@ -104,31 +125,29 @@ hr {
 }
 
 .page-title>h4 {
-    padding-top: 5px;
+    padding-top: 15px;
     margin-top: 5px;
     text-align: center;
     padding-right: 35px;
 }
 
-.content ul {
-    padding-left: 0;
+.page-title img {
+    position: relative;
+    top: 9px;
 }
 
-#back {
-    position: relative;
-    left: 5px;
-    bottom: 35px;
-}
+/** 여기는 상단탭 아래 페이지 이름이랑 뒤로가기 이미지 탭 끝!!!1! */
+
+
+/** 푸터 포함 etc 탭 시작 */
 
 .footer {
     width: auto;
     padding-top: 10px;
 }
 
-/** etc 탭 시작 */
-
 .etc {
-    padding: 5px 0 5px 0;
+    padding: 8px 0 8px 0;
     text-align: center;
     font-size: 12px;
 }
@@ -144,7 +163,7 @@ hr {
 }
 
 .etc>a:hover {
-    color: #FFBB00;
+    color: #ff8f83;
     text-decoration: none;
 }
 
@@ -155,9 +174,7 @@ hr {
 
 address {
     margin: 0;
-}
-
-address {
+    padding: 6px 0 6px 0;
     background-color: #eaeaea;
     text-align: center;
     line-height: 15px;
@@ -178,6 +195,7 @@ address>p {
 .row {
     margin-left: 0px;
     margin-right: 0px;
+    padding: 10px 0 10px 0;
 }
 
 /** 하단 row 탭 끝 */
