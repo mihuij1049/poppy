@@ -31,7 +31,7 @@
         z-index: 1004;
     }
 
-    .content {
+    .content .container {
         width: 95%;
         margin: auto;
         z-index: 104;
@@ -283,71 +283,73 @@
                 <a href="#" onclick="history.back(); return false;"><img src="../share/img/img_back.jpg"></a>
                 <h4><b>취소/교환/반품내역</b></h4>
             </div>
-            <ul class="nav nav-tabs">
-                <li class="col-xs-6 etc"><a href="order_list.html">주문조회</a></li>
-                <li class="active col-xs-6 etc"><a href="cancel_list.html">취소/교환/반품내역</a></li>
-            </ul>
-            <div class="backg fade in">
-                <div class="container">
-                    <div class="period">
-                        <p class="col-xs-1">기간</p>
-                        <button class="active btn btn-default col-xs-2">오늘</button>
-                        <button class="btn btn-default col-xs-2">1개월</button>
-                        <button class="btn btn-default col-xs-2">3개월</button>
-                        <button class="btn btn-default col-xs-2">6개월</button>
-                        <button class="btn btn-default col-xs-3">기간설정</button>
-                    </div>
-                </div>
-            </div>
-            <div class="view">
-                <button class="btn">
-                    <span class="date" title="주문일자">
-                        2020-03-18
-                    </span>
-                    <span class="number" title="주문번호">
-                        <a href="#">
-                            (20200318-0000195)
-                        </a>
-                    </span>
-                    <a href="#" class="btn-detail"><span id="GGuc">&#62;</span>상세보기</a>
-                </button>
-            </div>
-            <div class="prd-info">
-                <div class="prd-box">
-                    <div class="thumbnail">
-                        <a href="#">
-                            <img src="../share/img/slide.jpg" width="70" height="70">
-                        </a>
-                    </div>
-                    <div class="prd-content">
-                        <strong class="prd-name" title="상품명">
-                            <a href="#">펫클럽 세나개 고부해 사은품 증정</a>
-                        </strong>
-                        <ul class="prd-li">
-                            <li>
-                                <span class="price" title="판매가">
-                                    <strong>14,000</strong>원
-                                </span>
-                                <span class="prd-count" title="수량">
-                                    <strong>1</strong>개
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <hr>
-                <p class="option">[옵션: 세나개 고부해]</p>
-                <div class="prd-foot" title="주문처리상태">
-                    <div class="ready">취소완료</div>
-                </div>
-            </div>
-            <div class=" paging">
-                <ul class="pagination pagination-sm">
-                    <li class="disabled"><a href="#">&laquo;</a></li>
-                    <!-- 활성화 버튼은 아래의 구조로 구성하시면 됩니다. sr-only는 스크린리더 전용입니다. -->
-                    <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
-                    <li class="paging-right"><a href="#">&raquo;</a></li>
+            <div class="container">
+                <ul class="nav nav-tabs">
+                    <li class="col-xs-6 etc"><a href="order_list.html">주문조회</a></li>
+                    <li class="active col-xs-6 etc"><a href="cancel_list.html">취소/교환/반품내역</a></li>
                 </ul>
+                <div class="backg fade in">
+                    <div class="container">
+                        <div class="period">
+                            <p class="col-xs-1">기간</p>
+                            <button class="active btn btn-default col-xs-2">오늘</button>
+                            <button class="btn btn-default col-xs-2">1개월</button>
+                            <button class="btn btn-default col-xs-2">3개월</button>
+                            <button class="btn btn-default col-xs-2">6개월</button>
+                            <button class="btn btn-default col-xs-3">기간설정</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="view">
+                    <button class="btn">
+                        <span class="date" title="주문일자">
+                            2020-03-18
+                        </span>
+                        <span class="number" title="주문번호">
+                            <a href="#">
+                                (20200318-0000195)
+                            </a>
+                        </span>
+                        <a href="#" class="btn-detail"><span id="GGuc">&#62;</span>상세보기</a>
+                    </button>
+                </div>
+                <div class="prd-info">
+                    <div class="prd-box">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img src="../share/img/slide.jpg" width="70" height="70">
+                            </a>
+                        </div>
+                        <div class="prd-content">
+                            <strong class="prd-name" title="상품명">
+                                <a href="#">펫클럽 세나개 고부해 사은품 증정</a>
+                            </strong>
+                            <ul class="prd-li">
+                                <li>
+                                    <span class="price" title="판매가">
+                                        <strong>14,000</strong>원
+                                    </span>
+                                    <span class="prd-count" title="수량">
+                                        <strong>1</strong>개
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+                    <p class="option">[옵션: 세나개 고부해]</p>
+                    <div class="prd-foot" title="주문처리상태">
+                        <div class="ready">취소완료</div>
+                    </div>
+                </div>
+                <div class=" paging">
+                    <ul class="pagination pagination-sm">
+                        <li class="disabled"><a href="#">&laquo;</a></li>
+                        <!-- 활성화 버튼은 아래의 구조로 구성하시면 됩니다. sr-only는 스크린리더 전용입니다. -->
+                        <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
+                        <li class="paging-right"><a href="#">&raquo;</a></li>
+                    </ul>
+                </div>
             </div>
             <div class="footer">
                 <!-- 하단 네비게이션 고정-->
