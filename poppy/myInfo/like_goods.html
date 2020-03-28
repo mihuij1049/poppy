@@ -28,17 +28,26 @@
         <![endif]-->
     <style type="text/css">
     .align {
+        width: 96%;
+        font-weight: bold;
         text-align: center;
-        padding-top: 10px;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 5px;
+        padding-top: 20px;
+        padding-bottom: 20px;
         font-size: 15px;
+        color: white;
+        border: #ff6261;
+        border-radius: 5px;
+        background: #ff6261;
     }
 
     .mycart {
         border: 1px solid #ffc7c1;
+        width: 96%;
         margin: auto;
-        margin-left: 15px;
-        margin-right: 15px;
-        padding-right: 15px;
+        margin-bottom: 3px;
         list-style: none;
     }
 
@@ -69,6 +78,8 @@
         overflow: hidden;
         text-overflow: ellipsis;
         width: 62%;
+        padding-left: 10px;
+        padding-top: 5px;
     }
 
     .word>b {
@@ -78,7 +89,7 @@
 
     .cart-img {
         width: 80px;
-        border: 1px solid #333;
+        border: 1px solid #ff6261;
     }
 
 
@@ -97,8 +108,8 @@
 
     .selectbtn {
         border: 1px solid #ffc7c1;
-        margin: auto;
-        margin: 15px;
+        width: 96%;
+        margin: 15px 3.6px;
         padding: 10px 30px;
 
     }
@@ -106,22 +117,32 @@
     .lastbtn {
         text-align: center;
         padding-bottom: 20px;
+
     }
 
     .btn2 {
         width: 90%;
         height: 40px;
+        margin-bottom: 50px;
+        margin-top: 5px;
     }
 
     .btn2:hover {
         font-size: 15px;
         color: white;
+
     }
 
     .gocart {
         background: #FF8F83;
         border: 1px solid #FF8F83;
         color: white;
+        font-size: 15px;
+        padding: 7px;
+    }
+
+    .border-botton {
+        border-radius: 3px;
     }
     </style>
 </head>
@@ -179,7 +200,6 @@
                     <a href="#" onclick="history.back(); return false;"><img src="../share/img/img_back.jpg"></a>
                     <h4><b>관심상품</b></h4>
                 </div>
-                <hr>
                 <div class="favorite">
                     <p class="align">My상품(<span>2</span>)</p>
                     <!-- 물건 1 -->
@@ -196,8 +216,8 @@
                                 </div>
                             </div>
                             <div class="btns">
-                                <button type="button" id="delete-one">삭제</button>
-                                <button type="button" class="gocart" id="gotocart">장바구니담기</button>
+                                <button type="button" id="delete-one border-botton">삭제</button>
+                                <button type="button" class="gocart border-botton" id="gotocart">장바구니담기</button>
                             </div>
                         </li>
                         <!-- 물건 2 -->
@@ -213,14 +233,14 @@
                                 </div>
                             </div>
                             <div class="btns">
-                                <button type="button" id="delete-one">삭제</button>
-                                <button type="button" class="gocart" id="gotocart">장바구니담기</button>
+                                <button type="button" class="delete-one border-botton">삭제</button>
+                                <button type="button" class="gocart border-botton" id="gotocart">장바구니담기</button>
                             </div>
                         </li>
                     </ul>
                     <div class="selectbtn">
-                        <button type="button" id="select">전체선택</button>
-                        <button type="button">선택삭제</button>
+                        <button type="button" class="border-botton" id="select-all">전체선택</button>
+                        <button type="button" class="border-botton" id="select-choice">선택삭제</button>
                     </div>
                     <div class="lastbtn">
                         <a href="../pay/orderform.html">
