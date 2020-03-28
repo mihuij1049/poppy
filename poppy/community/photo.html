@@ -27,50 +27,24 @@
         <script type="text/javascript" src="../share/assets/js/ie10.js"></script>
         <![endif]-->
     <style type="text/css">
-    .open-btn {
-        transition: all .4s ease;
-        cursor: pointer;
+    .page-title {
+        vertical-align: middle;
+        width: auto;
     }
 
-    .modal {
-        background: #fff;
-        width: 100%;
-        height: 300px;
-        margin-left: 100px;
-        padding: 0;
-        transition: all 200ms cubic-bezier(0.86, 0, 0.07, 1);
-        top: 100%;
-        position: fixed;
-        left: 0;
-        text-align: left;
+    .page-title a {
         display: block;
-    }
-
-    .modal .header {
-        padding: 10px;
-        border-bottom: 1px solid #ddd;
+        float: left;
+        padding-top: 5px;
         position: relative;
+        z-index: 10;
     }
 
-    .modal .body {
-        padding: 20px;
-    }
-
-    .close-btn {
-        background: linear-gradient(to right, #dce35b, #45b649);
-        padding: 5px 15px;
-        display: inline-block;
-        border-radius: 25px;
-        margin: 0;
-        color: #fff;
-        position: relative;
-        transition: all .4s ease;
-        cursor: pointer;
-    }
-
-    .modal-container.modal-open .modal {
-        top: 300px;
-        z-index: 0;
+    .page-title h4 {
+        padding-top: 5px;
+        margin-top: 5px;
+        text-align: center;
+        padding-right: 35px;
     }
 
     p {
@@ -78,12 +52,15 @@
     }
 
     .content .container {
+        margin-top: 20px;
+        margin-bottom: 50px;
         width: 95%;
-        border: 1px solid #ddd;
+        border: 1px solid #ffc7c1;
         padding: 10px;
     }
 
     .big-image {
+        border: 1px solid #ffc7c1;
         width: 100%;
     }
 
@@ -103,6 +80,7 @@
     }
 
     .small-image {
+        border: 1px solid #ffc7c1;
         width: 20%;
         float: left;
     }
@@ -146,11 +124,17 @@
         padding-right: 10px;
     }
 
+    .btn:hover {
+        background-color: #FF6261;
+        color: #fff;
+    }
+
     .rv-footer {
         padding: 15px 0;
         height: 50px;
         text-align: center;
-        background: #d5d5d5;
+        color: #fff;
+        background: #ffc7c1;
     }
 
     .clear:after {
@@ -239,7 +223,7 @@
                 </div>
                 <div class="recommend">
                     <p>이 리뷰가 도움이 되셨다면 눌러주세요</p>
-                    <button class="btn btn-default">추천</button>
+                    <button class="btn">추천</button>
                 </div>
                 <div class="rv-footer">
                     <p>관리자에게만 댓글작성 권한이 있습니다.</p>

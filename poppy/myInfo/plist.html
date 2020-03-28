@@ -27,6 +27,30 @@
         <script type="text/javascript" src="assets/js/ie10.js"></script>
         <![endif]-->
     <style type="text/css">
+    .page-title {
+        vertical-align: middle;
+        width: auto;
+    }
+
+    .page-title a {
+        display: block;
+        float: left;
+        padding-top: 5px;
+        position: relative;
+        z-index: 10;
+    }
+
+    .page-title h4 {
+        padding-top: 5px;
+        margin-top: 5px;
+        text-align: center;
+        padding-right: 35px;
+    }
+
+    .content .container {
+        margin-top: 20px;
+    }
+
     .table {
         width: 95%;
         border: 1px solid #ffc7c1;
@@ -54,8 +78,19 @@
         padding-top: 15px;
     }
 
-    #page {
+    .paging {
         text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .paging .disabled {
+        position: relative;
+        right: 10px;
+    }
+
+    .paging .paging-right {
+        position: relative;
+        left: 10px;
     }
 
     .pagination>.active>span {
@@ -125,32 +160,34 @@
                 <a href="#" onclick="history.back(); return false;"><img src="../share/img/img_back.jpg"></a>
                 <h4><b>적립내역</b></h4>
             </div>
-            <table class="table table-responsive">
-                <thead>
-                    <tr>
-                        <th id="today"></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="td-title">적립금</td>
-                        <td class="td-mny">3,000원</td>
-                    </tr>
-                    <tr id="table-content">
-                        <td class="td-title">내용</td>
-                        <td class="td-mny">신규회원 적립금</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div id="page">
-            <ul class="pagination">
-                <li class="disabled"><a href="#">&laquo;</a></li>
-                <!-- 활성화 버튼은 아래의 구조로 구성하시면 됩니다. sr-only는 스크린리더 전용 입니다 .-->
-                <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
-                <li><a href="#">&raquo;</a></li>
-            </ul>
+            <div class="container">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th id="today"></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="td-title">적립금</td>
+                            <td class="td-mny">3,000원</td>
+                        </tr>
+                        <tr id="table-content">
+                            <td class="td-title">내용</td>
+                            <td class="td-mny">신규회원 적립금</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class=" paging">
+                <ul class="pagination pagination-sm">
+                    <li class="disabled"><a href="#">&laquo;</a></li>
+                    <!-- 활성화 버튼은 아래의 구조로 구성하시면 됩니다. sr-only는 스크린리더 전용입니다. -->
+                    <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
+                    <li class="paging-right"><a href="#">&raquo;</a></li>
+                </ul>
+            </div>
         </div>
         <div class="footer">
             <!-- 하단 네비게이션 고정-->

@@ -29,6 +29,7 @@
     <style type="text/css">
     .col-xs-6 {
         padding: 0;
+        margin-top: 20px;
     }
 
     .content {
@@ -58,23 +59,18 @@
         padding: 10px 8px;
         font-size: 16px;
         background: #ffc7c1;
-        border: 1px solid #ffc7c1;
         color: #fff;
         font-weight: bold;
     }
 
     .panel-body {
         padding: 0;
-        border-bottom: none;
+        border: 1px solid #ffc7c1;
     }
 
     .panel.panel-default {
         border-bottom: none;
         margin: 0;
-    }
-
-    .mycart {
-        border: 1px solid #eee;
     }
 
     .mygoods {
@@ -113,7 +109,7 @@
 
     .cart-img {
         width: 80px;
-        border: 1px solid #333;
+        border: 1px solid #ffc7c1;
     }
 
     .summ {
@@ -152,9 +148,12 @@
     }
 
     .selectbtn {
-        border: 1px solid #eee;
-        border-bottom: none;
+        border-bottom: 1px solid #ffc7c1;
         width: auto;
+        padding: 10px 30px;
+    }
+
+    .cart-move {
         padding: 10px 30px;
     }
 
@@ -164,8 +163,8 @@
     }
 
     .table {
-        border: 1px solid #e5e6e7;
         margin: auto;
+        margin-bottom: 15px;
     }
 
     .table thead {
@@ -176,24 +175,22 @@
         font-weight: bold;
     }
 
-    .table>thead>tr>th {
+    tr {
+        border: 1px solid #ffc7c1;
+    }
 
-        border: 0px;
+    td {
+        border-bottom: 1px solid #ffc7c1;
     }
 
     .td-mny {
         text-align: right;
     }
 
-    .pay {
-        padding-top: 10px;
-        margin: auto;
-        padding-top: 10px;
-    }
-
     .pay .btn {
         padding: 10px 15px;
         width: 49%;
+        margin-bottom: 50px;
     }
 
     .pay a {
@@ -281,7 +278,7 @@
                                                 <small>배송:2500원[조건]/기본배송</small><br>
                                                 <small><span>적</span>40원</small><br>
                                                 <b>3,500원</b>
-                                                <br>
+                                                <br><br>
                                                 <button class="count">
                                                     <img src="../share/img/마이너스.png">
                                                 </button>
@@ -308,7 +305,7 @@
                                         <button type="button">전체선택</button>
                                         <button type="button">선택삭제</button>
                                     </div>
-                                    <div class="selectbtn">
+                                    <div class="cart-move">
                                         <button type="button" class="btn" id="cart-move">해외장바구니로 이동</button>
                                     </div>
                                 </div>
@@ -364,7 +361,7 @@
                                                 <small>배송:2500원[조건]/기본배송</small><br>
                                                 <small><span>적</span>40원</small><br>
                                                 <b>3,500원</b>
-                                                <br>
+                                                <br><br>
                                                 <button class="count">
                                                     <img src="../share/img/마이너스.png">
                                                 </button>
@@ -391,7 +388,7 @@
                                         <button type="button">전체선택</button>
                                         <button type="button">선택삭제</button>
                                     </div>
-                                    <div class="selectbtn">
+                                    <div class="cart-move">
                                         <button type="button" class="btn" id="cart-move">국내장바구니로 이동</button>
                                     </div>
                                 </div>
