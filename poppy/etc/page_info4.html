@@ -27,6 +27,10 @@
         <script type="text/javascript" src="assets/js/ie10.js"></script>
         <![endif]-->
     <style type="text/css">
+    .info {
+        margin-top: 15px;
+    }
+
     .panel-heading {
         padding: 0;
     }
@@ -40,6 +44,72 @@
     .content {
         padding-bottom: 50px;
     }
+
+    /** 아코디언 클릭이벤트시 화살표 transform 회전 */
+    .rotate1 {
+        -webkit-transform: rotate(180deg);
+
+    }
+
+    .icon-rotate1 {
+        -webkit-transition-duration: 1s;
+    }
+
+    .rotate2 {
+        -webkit-transform: rotate(180deg);
+
+    }
+
+    .icon-rotate2 {
+        -webkit-transition-duration: 1s;
+    }
+
+    .rotate3 {
+        -webkit-transform: rotate(180deg);
+
+    }
+
+    .icon-rotate3 {
+        -webkit-transition-duration: 1s;
+    }
+
+    .rotate4 {
+        -webkit-transform: rotate(180deg);
+
+    }
+
+    .icon-rotate4 {
+        -webkit-transition-duration: 1s;
+    }
+
+    .rotate5 {
+        -webkit-transform: rotate(180deg);
+
+    }
+
+    .icon-rotate5 {
+        -webkit-transition-duration: 1s;
+    }
+
+    .rotate6 {
+        -webkit-transform: rotate(180deg);
+
+    }
+
+    .icon-rotate6 {
+        -webkit-transition-duration: 1s;
+    }
+
+    .rotate7 {
+        -webkit-transform: rotate(180deg);
+
+    }
+
+    .icon-rotate7 {
+        -webkit-transition-duration: 1s;
+    }
+
+    /** 아코디언 클릭이벤트시 화살표 transform 회전 끝 */
     </style>
 </head>
 
@@ -104,7 +174,7 @@
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     회원가입 안내
                                     <span id="arrow-down">
-                                        <img src="../share/img/arrow-down.png" align=right>
+                                        <img src="../share/img/arrow-down.png" align=right class="arrow-down1 icon-rotate1">
                                     </span>
                                 </a>
                             </h5>
@@ -128,7 +198,7 @@
                                 <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     주문 안내
                                     <span id="arrow-down">
-                                        <img src="../share/img/arrow-down.png" align=right>
+                                        <img src="../share/img/arrow-down.png" align=right class="arrow-down2 icon-rotate2">
                                     </span>
                                 </a>
                             </h5>
@@ -168,7 +238,7 @@
                                 <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                     결제 안내
                                     <span id="arrow-down">
-                                        <img src="../share/img/arrow-down.png" align=right>
+                                        <img src="../share/img/arrow-down.png" align=right class="arrow-down3 icon-rotate3">
                                     </span>
                                 </a>
                             </h5>
@@ -197,7 +267,7 @@
                                 <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                     배송 안내
                                     <span id="arrow-down">
-                                        <img src="../share/img/arrow-down.png" align=right>
+                                        <img src="../share/img/arrow-down.png" align=right class="arrow-down4 icon-rotate4">
                                     </span>
                                 </a>
                             </h5>
@@ -229,7 +299,7 @@
                                 <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                                     교환/반품 안내
                                     <span id="arrow-down">
-                                        <img src="../share/img/arrow-down.png" align=right>
+                                        <img src="../share/img/arrow-down.png" align=right class="arrow-down5 icon-rotate5">
                                     </span>
                                 </a>
                             </h5>
@@ -287,7 +357,7 @@
                                 <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                                     환불 안내
                                     <span id="arrow-down">
-                                        <img src="../share/img/arrow-down.png" align=right>
+                                        <img src="../share/img/arrow-down.png" align=right class="arrow-down6 icon-rotate6">
                                     </span>
                                 </a>
                             </h5>
@@ -311,7 +381,7 @@
                                 <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
                                     기타 안내
                                     <span id="arrow-down">
-                                        <img src="../share/img/arrow-down.png" align=right>
+                                        <img src="../share/img/arrow-down.png" align=right class="arrow-down7 icon-rotate7">
                                     </span>
                                 </a>
                             </h5>
@@ -418,6 +488,49 @@
     <!-- Javascript -->
     <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
     <script src="../share/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $("#headingOne").on('click', function() {
+            $(".arrow-down1").toggleClass("rotate1");
+        });
+    });
+
+    $(function() {
+        $("#headingTwo").on('click', function() {
+            $(".arrow-down2").toggleClass("rotate2");
+        });
+    });
+
+    $(function() {
+        $("#headingThree").on('click', function() {
+            $(".arrow-down3").toggleClass("rotate3");
+        });
+    });
+
+    $(function() {
+        $("#headingFour").on('click', function() {
+            $(".arrow-down4").toggleClass("rotate4");
+        });
+    });
+
+    $(function() {
+        $("#headingFive").on('click', function() {
+            $(".arrow-down5").toggleClass("rotate5");
+        });
+    });
+
+    $(function() {
+        $("#headingSix").on('click', function() {
+            $(".arrow-down6").toggleClass("rotate6");
+        });
+    });
+
+    $(function() {
+        $("#headingSeven").on('click', function() {
+            $(".arrow-down7").toggleClass("rotate7");
+        });
+    });
+    </script>
 </body>
 
 </html>
