@@ -27,6 +27,148 @@
         <script type="text/javascript" src="assets/js/ie10.js"></script>
         <![endif]-->
     <style type="text/css">
+    .product {
+        margin-bottom: 40px;
+    }
+
+    .prd-img {
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .prd-img img {
+        width: 100%;
+    }
+
+    .prd-title {
+        width: 96%;
+        margin-left: 2%;
+    }
+
+    .prd-name {
+        font-size: 15px;
+        font-weight: bold;
+        padding-top: 20px;
+        margin-bottom: 15px;
+    }
+
+    .prd-price {
+        margin-bottom: 15px;
+    }
+
+    .prd-price div {
+        display: inline;
+    }
+
+    .prd-delivery {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .prd-delivery ul li:nth-child(odd) {
+        width: 25%;
+    }
+
+    .prd-delivery ul li {
+        display: inline-block;
+        font-size: 12px;
+    }
+
+    .prd-option {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    table .quantity {
+        width: 100%;
+    }
+
+    .prd-option .quantity th {
+        font-size: 12px;
+        font-weight: lighter;
+        width: 49%;
+    }
+
+    .prd-option button {
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        background-color: #fff;
+        border: 1px solid #ddd;
+    }
+
+    .prd-option input {
+        width: 30px;
+        height: 28px;
+        text-align: center;
+        font-size: 12px;
+        display: inline-block;
+        border: 1px solid #ddd;
+        border-radius: 2px;
+    }
+
+    .total-price {
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 10px;
+        margin-bottom: 30px;
+        border-top: 1px solid #000;
+    }
+
+    .total-price .price {
+        float: right;
+    }
+
+    .prd-action .action-btn {
+        width: 100%;
+    }
+
+    .prd-action button {
+        width: 32%;
+        height: 40px;
+        font-size: 12px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+    }
+
+    .prd-action #action-cart {
+        display: inline;
+        font-size: 12px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        margin-right: 3px;
+    }
+
+    .prd-action #action-like {
+        margin-right: 3px;
+    }
+
+    .prd-action #action-orderform {
+        color: #fff;
+        background-color: #ff8f83;
+    }
+
+    .prd-tab {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .prd-tab li {
+        width: 25%;
+    }
+
+    .prd-tab li a {
+        margin: 0;
+        padding: 8px;
+        height: 36px;
+        text-align: center;
+        font-size: 12px;
+        margin-bottom: 50px;
+        color: #000;
+        border: 1px solid #ddd;
+    }
     </style>
 </head>
 
@@ -78,19 +220,70 @@
         </div>
         <div class="content">
             <!-- 여기에 작성 -->
+            <div class="page-title clearfix">
+                <a href="#" onclick="history.back();return false;">
+                    <img src="../share/img/back.jpg">
+                </a>
+                <h4><b>상품상세정보</b></h>
+            </div>
             <div class="product">
                 <div class="prd-img">
-                    <img src="#">
+                    <img src="../share/img/goods_header.jpg">
                 </div>
-                <div class="prd-header">
-                    <div class="prd-title"></div>
-                    <div class="prd-option"></div>
-                    <div class="prd-add"></div>
-                    <div class="total-price"></div>
-                    <div class="prd-action"></div>
+                <div class="prd-title">
+                    <div class="prd-name">대용량노즈워크용 간식/벨버드 순삭져키 1kg 강아지져키</div>
+                    <div class="prd-price">
+                        <div class>19,900</div>원
+                    </div>
+                    <div class="prd-delivery">
+                        <ul>
+                            <li>배송방법</li>
+                            <li>택배</li>
+                        </ul>
+                        <ul>
+                            <li>배송비</li>
+                            <li><strong>2,500원</strong>(30,000원 이상 구매시 무료)</li>
+                        </ul>
+                    </div>
+                    <div class="prd-option">
+                        <table>
+                            <tbody>
+                                <tr class="quantity">
+                                    <th>수량</th>
+                                    <td>
+                                        <button type="button" class="btn">-</button>
+                                        <input type="number" value="1" min="1" max="999" name="count">
+                                        <button type="button" class="btn">+</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="prd-add">
+                    </div>
+                    <div class="total-price">
+                        <strong>총 상품금액(수량)</strong>
+                        <div class="price">
+                            <strong>9,900원</strong> (1개)
+                        </div>
+                    </div>
+                    <div class="prd-action">
+                        <div class="action-btn">
+                            <button type="button" onclick="location.href='../pay/cart.html'" id="action-cart">장바구니</button>
+                            <button type="button" onclick="location.href='../myInfo/like_goods.html'" id="action-like">관심상품</button>
+                            <button type="button" onclick="location.href='../pay/orderform.html'" id="action-orderform">구매하기</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="product-tab"></div>
+            <div class="prd-tab">
+                <ul class="nav nav-tabs" id="mytab">
+                    <li class="active"><a href="#page1" data-toggle="tab">상세정보</a></li>
+                    <li><a href="#page2" data-toggle="tab">구매안내</a></li>
+                    <li><a href="#page3" data-toggle="tab">상품후기(2)</a></li>
+                    <li><a href="#page4" data-toggle="tab">Q&A(0)</a></li>
+                </ul>
+            </div>
             <div class="product-detail"></div>
             <div class="footer">
                 <!-- 하단 네비게이션 고정-->
@@ -127,36 +320,6 @@
                         <i>DESIGN BY EZEN-team4</i>
                     </p>
                 </address>
-                <div class="navbar" id="navbarback">
-                    <ul class="btmbar-nav clearfix navbar-fixed-bottom">
-                        <hr />
-                        <a href="#">
-                            <span class="glyphicon glyphicon-comment">
-                                <p>커뮤니티</p>
-                            </span>
-                        </a>
-                        <a href="../myInfo/order_list.html">
-                            <span class="glyphicon glyphicon-list-alt">
-                                <p>주문조회</p>
-                            </span>
-                        </a>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-search">
-                                <p>&nbsp;검색&nbsp;</p>
-                            </span>
-                        </a>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-th-large">
-                                <p>카테고리</p>
-                            </span>
-                        </a>
-                        <a href="../myInfo/myinfo.html">
-                            <span class="glyphicon glyphicon-user">
-                                <p>MY정보</p>
-                            </span>
-                        </a>
-                    </ul>
-                </div>
             </div>
         </div>
         <!-- Javascript -->
