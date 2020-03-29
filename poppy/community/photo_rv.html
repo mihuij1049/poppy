@@ -14,25 +14,20 @@
     <!-- 나눔고딕 웹 폰트 적용 -->
     <link rel="stylesheet" type="text/css" href="../share/assets/css/nanumfont.css" />
     <link rel="stylesheet" type="text/css" href="../share/tmpl.css" />
-    <!-- 반응형 웹을 지원하지 않을 경우 -->
-    <!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
-    <!-- IE8 이하 버전 지원 -->
-    <!--[if lt IE 9]>
-        <script type="text/javascript" src="assets/js/html5shiv.js"></script>
-        <script type="text/javascript" src="assets/js/respond.min.js"></script>
-        <![endif]-->
-    <!-- IE10 반응형 웹 버그 보완 -->
-    <!--[if gt IE 9]>
-        <link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
-        <script type="text/javascript" src="assets/js/ie10.js"></script>
-        <![endif]-->
     <style type="text/css">
+    /** 전체 마진 */
+    .container_1 {
+        margin-bottom: 50px
+    }
+
+    /** 전체 마진 끝 */
     .search_tab_bg {
         width: 100%;
-        background-color: #eee;
+        background-color: #ffc7c1;
         padding-top: 10px;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin-top: 20px;
+        margin-bottom: 15px;
+        color: #fff;
     }
 
     .search_tab {
@@ -40,6 +35,14 @@
         padding: 10px;
         padding-left: 15px;
         margin: auto;
+    }
+
+    .search_tab_bg .btn {
+        background-color: #ff8f83;
+        color: #fff;
+        font-size: 13px;
+        height: 25px;
+
     }
 
     .search_tab .cate_ip {
@@ -85,7 +88,7 @@
     }
 
     .pr_in_box {
-        border: 1px solid #777;
+        border: 1px solid #FF8F83;
         padding: 5px;
     }
 
@@ -98,12 +101,14 @@
         font-size: 10px;
     }
 
-    .container .btn {
+    .pr_box .btn {
         padding-right: 50px;
         padding-bottom: 20px;
         width: 50px;
         height: 25px;
         font-size: 12px;
+        background-color: #ffc7c1;
+        color: #fff;
     }
 
     .container_1 hr {
@@ -111,9 +116,13 @@
         padding: 0;
     }
 
+    .container_1 h5 {
+        color: #FF8F83;
+    }
+
     .pagination>.active>span {
-        background-color: #777;
-        border-color: #777;
+        background-color: #FF8F83;
+        border-color: #FF8F83;
     }
 
     .container a {
@@ -173,7 +182,7 @@
             <div class="container">
                 <div class="page-title clearfix">
                     <a href="#" onclick="history.back(); return false;"><img src="../share/img/img_back.jpg"></a>
-                    <h4><b>포토리뷰 </b></h4>
+                    <h4><b>포토리뷰</b></h4>
                 </div>
                 <div class="container_1">
                     <div>
@@ -197,7 +206,7 @@
                                             <i class="glyphicon glyphicon-search icon_size"></i> 상품검색
                                         </div>
                                         <input type="text" name="search" class="h_input">
-                                        <button class="btn btn-dark" id="sc_bt">검색</button>
+                                        <button class="btn" id="sc_bt">검색</button>
                                     </div>
                                 </div>
                             </div>
@@ -216,7 +225,7 @@
                                         글내용<br>
                                         글내용<br>
                                         <br>
-                                        <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</a>
+                                        <a href="#" class="btn"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</a>
                                     </div>
                                 </div>
                             </div>
@@ -234,7 +243,7 @@
                                         글내용<br>
                                         글내용<br>
                                         <br>
-                                        <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</a>
+                                        <a href="#" class="btn"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</a>
                                     </div>
                                 </div>
                             </div>
@@ -252,7 +261,7 @@
                                         글내용<br>
                                         글내용<br>
                                         <br>
-                                        <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</a>
+                                        <a href="#" class="btn"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</a>
                                     </div>
                                 </div>
                             </div>
@@ -270,7 +279,7 @@
                                         글내용<br>
                                         글내용<br>
                                         <br>
-                                        <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</a>
+                                        <a href="#" class="btn"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</a>
                                     </div>
                                 </div>
                             </div>
@@ -305,8 +314,8 @@
             <div class="row">
                 <div class="col-xs-6 etc">
                     <h5><b>상담센터</b></h5>
-                    <p style="font-size: 18px; font-weight:bold;">070-123-4567</p>
-                    <p style="font-size: 12px"> 운영시간 : 오전 10:00 - 오후 6:00<br />주말, 공휴일은 후뮤입니다.</p>
+                    <p style="font-size: 15px; font-weight:bold;">070-123-4567</p>
+                    <p style="font-size: 12px"> 운영시간 : 10:00 - 18:00<br />주말, 공휴일은 후뮤입니다.</p>
                 </div>
                 <div class="col-xs-6 etc">
                     <h5><b>입금계좌안내</b></h5>
@@ -329,7 +338,7 @@
             <div class="navbar" id="navbarback">
                 <ul class="btmbar-nav clearfix navbar-fixed-bottom">
                     <hr />
-                    <a href="#">
+                    <a href="../community/photo_rv.html">
                         <span class="glyphicon glyphicon-comment">
                             <p>커뮤니티</p>
                         </span>

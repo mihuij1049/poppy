@@ -14,84 +14,7 @@
     <!-- 나눔고딕 웹 폰트 적용 -->
     <link rel="stylesheet" type="text/css" href="../share/assets/css/nanumfont.css" />
     <link rel="stylesheet" type="text/css" href="../share/tmpl.css" />
-    <!-- 반응형 웹을 지원하지 않을 경우 -->
-    <!-- <link rel="stylesheet" href="../share/assets/css/non-responsive.css" /> -->
-    <!-- IE8 이하 버전 지원 -->
-    <!--[if lt IE 9]>
-        <script type="text/javascript" src="../share/assets/js/html5shiv.js"></script>
-        <script type="text/javascript" src="../share/assets/js/respond.min.js"></script>
-        <![endif]-->
-    <!-- IE10 반응형 웹 버그 보완 -->
-    <!--[if gt IE 9]>
-        <link rel="stylesheet" type="text/css" href="../share/assets/css/ie10.css" />
-        <script type="text/javascript" src="../share/assets/js/ie10.js"></script>
-        <![endif]-->
     <style type="text/css">
-    .open-btn {
-        cursor: pointer;
-    }
-
-    .modal-search {
-        background: #fff;
-        width: 100%;
-        height: 300px;
-        margin-left: 100px;
-        padding: 0;
-        transition: all 500ms cubic-bezier(0.53, 0, 0.77, 1);
-        top: 100%;
-        position: fixed;
-        left: 0;
-        text-align: left;
-        display: block;
-    }
-
-    .modal-category {
-        background: #fff;
-        width: 100%;
-        height: 300px;
-        margin-left: 100px;
-        padding: 0;
-        transition: all 500ms cubic-bezier(0.53, 0, 0.77, 1);
-        top: 100%;
-        position: fixed;
-        left: 0;
-        text-align: left;
-        display: block;
-    }
-
-    .modal-search .header {
-        padding: 10px;
-        border-bottom: 1px solid #ddd;
-        position: relative;
-    }
-
-    .modal-category .header {
-        padding: 10px;
-        border-bottom: 1px solid #ddd;
-        position: relative;
-    }
-
-    .modal .body {
-        padding: 20px;
-    }
-
-    .close-btn {
-        background: linear-gradient(to right, #dce35b, #45b649);
-        padding: 5px 15px;
-        display: inline-block;
-        border-radius: 25px;
-        margin: 0;
-        color: #fff;
-        position: relative;
-        transition: all .4s ease;
-        cursor: pointer;
-    }
-
-    .modal-container-sc.modal-open .modal-search,
-    .modal-container-ct.modal-open .modal-category {
-        top: 300px;
-        z-index: 0;
-    }
     </style>
 </head>
 
@@ -145,9 +68,27 @@
             <!-- 여기에 작성 -->
             <div class="container">
                 <div class="page-title clearfix">
-                    <a href="#" onclick="history.back(); return false;"><img src="../share/img/back.jpg"></a>
-                    <h4><b>뽀삐뽀삐</b></h4>
+                    <a href="#" onclick="history.back(); return false;"><img src="../share/img/img_back.jpg"></a>
+                    <h4><b>비밀번호 찾기</b></h4>
                 </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
             </div>
         </div>
         <div class="footer">
@@ -164,8 +105,8 @@
             <div class="row">
                 <div class="col-xs-6 etc">
                     <h5><b>상담센터</b></h5>
-                    <p style="font-size: 18px; font-weight:bold;">070-123-4567</p>
-                    <p style="font-size: 12px"> 운영시간 : 오전 10:00 - 오후 6:00<br />주말, 공휴일은 후뮤입니다.</p>
+                    <p style="font-size: 15px; font-weight:bold;">070-123-4567</p>
+                    <p style="font-size: 12px"> 운영시간 : 10:00 - 18:00<br />주말, 공휴일은 후뮤입니다.</p>
                 </div>
                 <div class="col-xs-6 etc">
                     <h5><b>입금계좌안내</b></h5>
@@ -188,22 +129,22 @@
             <div class="navbar" id="navbarback">
                 <ul class="btmbar-nav clearfix navbar-fixed-bottom">
                     <hr />
-                    <a href="#" id="toggle1">
+                    <a href="../community/photo_rv.html">
                         <span class="glyphicon glyphicon-comment">
                             <p>커뮤니티</p>
                         </span>
                     </a>
-                    <a href="../myinfo/order_list.html">
+                    <a href="../myInfo/order_list.html">
                         <span class="glyphicon glyphicon-list-alt">
                             <p>주문조회</p>
                         </span>
                     </a>
-                    <a class='open-btn js-click-modal-sc'>
+                    <a href="#">
                         <span class="glyphicon glyphicon-search">
                             <p>&nbsp;검색&nbsp;</p>
                         </span>
                     </a>
-                    <a class="open-btn js-click-modal-ct">
+                    <a href="#">
                         <span class="glyphicon glyphicon-th-large">
                             <p>카테고리</p>
                         </span>
@@ -215,63 +156,12 @@
                     </a>
                 </ul>
             </div>
-            <div class="modal-container-sc">
-                <div class="modal-search">
-                    <div class="header">
-                        검색창 만들 예정 입니다.<a class="close-btn js-close-modal-sc">X</a>
-                    </div>
-                    <div class="body">
-                        <p>검색 순위가 나왔으면 조켓쥬~?.</p>
-                        <a class="close-btn js-close-modal-sc">X</a>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-container-ct">
-                <div class="modal-category">
-                    <div class="header">
-                        카테고리 모달창 <a class="close-btn js-close-modal-ct">X</a>
-                    </div>
-                    <div class="body">
-                        <ul>
-                            <li><a href="#">BEST</a></li>
-                            <li><a href="#">NEW</a></li>
-                            <li><a href="#">푸드</a></li>
-                            <li><a href="#">의류</a></li>
-                            <li><a href="#">외출용품</a></li>
-                            <li><a href="#">홈리빙</a></li>
-                            <li><a href="#">대형견</a></li>
-                            <li><a href="#">타임세일관</a></li>
-                            <li><a href="#">유통기한임박</a></li>
-                        </ul>
-                        <a class="close-btn js-close-modal-ct">X</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <!-- Javascript -->
     <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
     <script src="../share/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-    $(function() {
-        // 커뮤니티 메뉴 //
-        // 검색 모달창 //
-        $('.js-click-modal-sc').click(function(e) {
-            $('.modal-container-sc').addClass('modal-open');
-        });
-
-        $('.js-close-modal-sc').click(function() {
-            $('.modal-container-sc').removeClass('modal-open');
-        });
-
-        $('.js-click-modal-ct').click(function(e) {
-            $('.modal-container-ct').addClass('modal-open');
-        });
-
-        $('.js-close-modal-ct').click(function() {
-            $('.modal-container-ct').removeClass('modal-open');
-        });
-    }); // end jQuery!
     </script>
 </body>
 
