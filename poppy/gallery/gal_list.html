@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Poppy-Poppy</title>
+    <!-- 모바일 웹 페이지 설정 -->
+    <link rel="shortcut icon" href="../share/assets/ico/favicon.png" />
+    <link rel="apple-touch-icon-precomposed" href="../share/assets/ico/apple-touch-icon-144-precomposed.png" />
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="../share/assets/css/bootstrap.min.css" />
+    <!-- 나눔고딕 웹 폰트 적용 -->
+    <link rel="stylesheet" type="text/css" href="../share/assets/css/nanumfont.css" />
+    <link rel="stylesheet" type="text/css" href="../share/tmpl.css" />
+    <style type="text/css">
+    /** 전체 마진 */
+    .container_1 {
+        margin-bottom: 50px
+    }
+
+    /** 전체 마진 끝 */
+    .search_tab_bg {
+        width: 100%;
+        background-color: #ffc7c1;
+        padding-top: 10px;
+        margin-top: 20px;
+        margin-bottom: 15px;
+        color: #fff;
+    }
+
+    .container .cate_select {
+        width: 30%;
+        height: 23px;
+        margin: 0 0 10px 10px;
+    }
+
+    .h_input {
+        width: 70%;
+        height: 20px;
+    }
+
+    .container #sc_bt {
+        padding-top: 3px;
+        margin-bottom: 3px;
+        width: 40px;
+        padding-right: 35px;
+    }
+
+    /** 포토리뷰 시작 */
+
+    .pr_box {
+        float: left;
+        width: 50%;
+        padding: 5px;
+    }
+
+    .pr_in_box {
+        border: none;
+        padding: 5px;
+        margin: 10px 0 10px 0;
+    }
+
+    .container .img_size {
+        width: 100%;
+    }
+
+    .container .icon_size {
+        height: 8px;
+        font-size: 13px;
+        color: #ff8f83;
+    }
+
+    .pr_box .btn {
+        padding-right: 50px;
+        padding-bottom: 20px;
+        width: 50px;
+        height: 25px;
+        font-size: 12px;
+        background-color: #ffc7c1;
+        color: #fff;
+    }
+
+    .container_1 hr {
+        margin: 2px 2px 10px 2px;
+        padding: 0;
+    }
+
+    .container_1 h5 {
+        color: #FF8F83;
+    }
+
+    .pagination>.active>span {
+        background-color: #FF8F83;
+        border-color: #FF8F83;
+    }
+
+    .container a {
+        color: #777;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../index.html" id="logo">
+                <img src="../share/img/logojpg.jpg">
+            </a>
+            <a href="../pay/cart.html">
+                <span class="glyphicon glyphicon-shopping-cart" id="cart">
+                    <h1>장바구니</h1>
+                </span>
+                <span class="badge">
+                    <p>11</p>
+                </span>
+            </a>
+            <hr>
+            <ul class="category">
+                <a href="#">
+                    <li>BEST</li>
+                </a>
+                <a href="#">
+                    <li>NEW</li>
+                </a>
+                <a href="#">
+                    <li>푸드</li>
+                </a>
+                <a href="#">
+                    <li>의류</li>
+                </a>
+                <a href="#">
+                    <li>외출용품</li>
+                </a>
+                <a href="#">
+                    <li>홈리빙</li>
+                </a>
+                <a href="#">
+                    <li>대형견</li>
+                </a>
+                <a href="#">
+                    <li>타임세일</li>
+                </a>
+                <a href="#">
+                    <li>유통임박</li>
+                </a>
+            </ul>
+            <hr>
+        </div>
+        <div class="content">
+            <!-- 여기에 작성 -->
+            <div class="container">
+                <div class="page-title clearfix">
+                    <a href="#" onclick="history.back(); return false;"><img src="../share/img/img_back.jpg"></a>
+                    <h4><b>인기상품</b></h4>
+                </div>
+                <div class="container_1">
+                    <div>
+                        <form>
+                            <div class="search_tab_bg">
+                                <select name="category" class="cate_select">
+                                    <option value="">정렬방식</option>
+                                    <option value="">신상품</option>
+                                    <option value="">상품명</option>
+                                    <option value="">낮은가격</option>
+                                    <option value="">높은가격</option>
+                                    <option value="">상품후기</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div>
+                        <!-- 게시물 하나 시작 -->
+                        <div width="50%">
+                            <div class="pr_box">
+                                <div class="pr_in_box">
+                                    <a href="goods.html"><img alt="사진" src="../share/img/gal_list_img1.jpg" class="img_size"></a>
+                                    <div>
+                                        <h5><b>상품명</b></h5>
+                                        <hr />
+                                        <i class="glyphicon glyphicon-heart icon_size"></i> 50,000원
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 게시물 하나 끝 -->
+                        <!-- 게시물 하나 시작 -->
+                        <div>
+                            <div class="pr_box">
+                                <div class="pr_in_box">
+                                    <img alt="사진" src="../share/img/gal_list_img2.jpg" class="img_size">
+                                    <div>
+                                        <h5><b>상품명</b></h5>
+                                        <hr />
+                                        <i class="glyphicon glyphicon-heart icon_size"></i> 50,000원
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--// 게시물 하나 끝 -->
+                        <!-- 게시물 하나 시작 -->
+                        <div>
+                            <div class="pr_box">
+                                <div class="pr_in_box">
+                                    <img alt="사진" src="../share/img/gal_list_img3.jpg" class="img_size">
+                                    <div>
+                                        <h5><b>상품명</b></h5>
+                                        <hr />
+                                        <i class="glyphicon glyphicon-heart icon_size"></i> 50,000원
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--// 게시물 하나 끝 -->
+                        <!-- 게시물 하나 시작 -->
+                        <div>
+                            <div class="pr_box">
+                                <div class="pr_in_box">
+                                    <img alt="사진" src="../share/img/gal_list_img4.jpg" class="img_size">
+                                    <div>
+                                        <h5><b>상품명</b></h5>
+                                        <hr />
+                                        <i class="glyphicon glyphicon-heart icon_size"></i> 50,000원
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--// 게시물 하나 끝 -->
+                        <!-- 게시물 하나 시작 -->
+                        <div>
+                            <div class="pr_box">
+                                <div class="pr_in_box">
+                                    <img alt="사진" src="../share/img/gal_list_img1.jpg" class="img_size">
+                                    <div>
+                                        <h5><b>상품명</b></h5>
+                                        <hr />
+                                        <i class="glyphicon glyphicon-heart icon_size"></i> 50,000원
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--// 게시물 하나 끝 -->
+                        <!-- 게시물 하나 시작 -->
+                        <div>
+                            <div class="pr_box">
+                                <div class="pr_in_box">
+                                    <img alt="사진" src="../share/img/gal_list_img2.jpg" class="img_size">
+                                    <div>
+                                        <h5><b>상품명</b></h5>
+                                        <hr />
+                                        <i class="glyphicon glyphicon-heart icon_size"></i> 50,000원
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--// 게시물 하나 끝 -->
+                        <!-- 게시물 하나 시작 -->
+                        <div>
+                            <div class="pr_box">
+                                <div class="pr_in_box">
+                                    <img alt="사진" src="../share/img/gal_list_img3.jpg" class="img_size">
+                                    <div>
+                                        <h5><b>상품명</b></h5>
+                                        <hr />
+                                        <i class="glyphicon glyphicon-heart icon_size"></i> 50,000원
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--// 게시물 하나 끝 -->
+                        <!-- 게시물 하나 시작 -->
+                        <div>
+                            <div class="pr_box">
+                                <div class="pr_in_box">
+                                    <img alt="사진" src="../share/img/gal_list_img4.jpg" class="img_size">
+                                    <div>
+                                        <h5><b>상품명</b></h5>
+                                        <hr />
+                                        <i class="glyphicon glyphicon-heart icon_size"></i> 50,000원
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--// 게시물 하나 끝 -->
+                    </div>
+                    <div class="text-center">
+                        <ul class="pagination pagination-sm">
+                            <li class="disabled"><a href="#">&laquo;</a></li>
+                            <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">&raquo;</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <!-- 하단 네비게이션 고정-->
+            <!--- 소개 4인방 링크 -->
+            <hr />
+            <div class="etc">
+                <a href="../etc/page_info1.html">회사소개</a>
+                <a href="../etc/page_info2.html">이용약관</a>
+                <a href="../etc/page_info3.html">개인정보취급방침</a>
+                <a href="../etc/page_info4.html">이용안내</a>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-xs-6 etc">
+                    <h5><b>상담센터</b></h5>
+                    <p style="font-size: 15px; font-weight:bold;">070-123-4567</p>
+                    <p style="font-size: 12px"> 운영시간 : 10:00 - 18:00<br />주말, 공휴일은 후뮤입니다.</p>
+                </div>
+                <div class="col-xs-6 etc">
+                    <h5><b>입금계좌안내</b></h5>
+                    <br />
+                    <p>하나 355-342432-23445<br>예금주 : (주)뽀삐뽀삐</p>
+                </div>
+            </div>
+            <address class="clearfix">
+                <p>상점명: (주)뽀삐뽀삐 대표 : 아무개
+                    <br>주소 : 서울특별시 행복구 존버동 8282-5959 102호 - 물류팀<br>
+                    사업자등록번호 : 123-86-43567<br>
+                    통신판매업신고 : 제2020-서울서초-0082호<br>
+                    개인정보관리책임 : 아무개 <br>
+                    <br />
+                    COPYRIGHT&copy; (주)뽀삐뽀삐 ALL RIGHTS RESERVED
+                    <br />
+                    <i>DESIGN BY EZEN-team4</i>
+                </p>
+            </address>
+            <div class="navbar" id="navbarback">
+                <ul class="btmbar-nav clearfix navbar-fixed-bottom">
+                    <hr />
+                    <a href="../community/photo_rv.html">
+                        <span class="glyphicon glyphicon-comment">
+                            <p>커뮤니티</p>
+                        </span>
+                    </a>
+                    <a href="../myInfo/order_list.html">
+                        <span class="glyphicon glyphicon-list-alt">
+                            <p>주문조회</p>
+                        </span>
+                    </a>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-search">
+                            <p>&nbsp;검색&nbsp;</p>
+                        </span>
+                    </a>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-th-large">
+                            <p>카테고리</p>
+                        </span>
+                    </a>
+                    <a href="../myinfo/myinfo.html">
+                        <span class="glyphicon glyphicon-user">
+                            <p>MY정보</p>
+                        </span>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Javascript -->
+    <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="../share/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    </script>
+</body>
+
+</html>
