@@ -234,3 +234,24 @@ address>p {
 }
 
 /** 하단 네비 바 끝 */
+/** 버튼 기본 색상 적용 */
+.btn {
+    background-color: #ff8f83;
+    color: #fff;
+}
+
+.btn-inverse {
+    border: 1px solid;
+    background-color: #fff;
+    color: #ff8f83;
+}
+
+.btn:hover {
+    color: #fff;
+    font-weight: bold;
+}
+
+.btn-inverse:hover {
+    color: #ff8f83;
+    font-weight: bold;
+}
