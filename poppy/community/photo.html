@@ -54,7 +54,7 @@
     .content .container {
         margin-top: 20px;
         margin-bottom: 50px;
-        width: 95%;
+        width: 96%;
         border: 1px solid #ffc7c1;
         padding: 10px;
     }
@@ -244,8 +244,8 @@
             <div class="row">
                 <div class="col-xs-6 etc">
                     <h5><b>상담센터</b></h5>
-                    <p style="font-size: 18px; font-weight:bold;">070-123-4567</p>
-                    <p style="font-size: 12px"> 운영시간 : 오전 10:00 - 오후 6:00<br />주말, 공휴일은 후뮤입니다.</p>
+                    <p style="font-size: 15px; font-weight:bold;">070-123-4567</p>
+                    <p style="font-size: 12px"> 운영시간 : 10:00 - 18:00<br />주말, 공휴일은 후뮤입니다.</p>
                 </div>
                 <div class="col-xs-6 etc">
                     <h5><b>입금계좌안내</b></h5>
@@ -268,17 +268,17 @@
             <div class="navbar" id="navbarback">
                 <ul class="btmbar-nav clearfix navbar-fixed-bottom">
                     <hr />
-                    <a href="#" id="toggle1">
+                    <a href="../community/photo_rv.html">
                         <span class="glyphicon glyphicon-comment">
                             <p>커뮤니티</p>
                         </span>
                     </a>
-                    <a href="../myinfo/order_list.html">
+                    <a href="../myInfo/order_list.html">
                         <span class="glyphicon glyphicon-list-alt">
                             <p>주문조회</p>
                         </span>
                     </a>
-                    <a class='open-btn js-click-modal'>
+                    <a href="#">
                         <span class="glyphicon glyphicon-search">
                             <p>&nbsp;검색&nbsp;</p>
                         </span>
@@ -295,34 +295,12 @@
                     </a>
                 </ul>
             </div>
-            <div class="modal-container">
-                <div class="modal">
-                    <div class="header">
-                        검색창 만들 예정 입니다.<a class="close-btn js-close-modal">X</a>
-                    </div>
-                    <div class="body">
-                        <p>검색 순위가 나왔으면 조켓쥬~?.</p>
-                        <a class="close-btn js-close-modal">X</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <!-- Javascript -->
     <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
     <script src="../share/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-    $(function() {
-        // 커뮤니티 메뉴 //
-        // 검색 모달창 //
-        $('.js-click-modal').click(function(e) {
-            $('.modal-container').addClass('modal-open');
-        });
-
-        $('.js-close-modal').click(function() {
-            $('.modal-container').removeClass('modal-open');
-        });
-    }); // end jQuery!
     </script>
 </body>
 
