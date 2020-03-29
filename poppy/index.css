@@ -1,12 +1,12 @@
 /* 캐러셀 시작 */
 
-.container {
-    margin: 0;
+.container_in {
+    margin-top: 5px;
     padding: 0;
 }
 
 #carousel-example-generic {
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 .carousel-inner>.item>img {
@@ -28,21 +28,32 @@
 
 .gal_sug_main {
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .gal_sug {
     display: inline-block;
     width: 30%;
     margin: 3px;
+    margin-top: 10px;
 }
 
 .gal_sug_img {
     width: 100%;
+    margin-bottom: 10px;
 }
 
 #img_sug {
     max-width: 100%;
     height: auto;
+}
+
+#sale_h3 {
+    color: #ff8f83;
+}
+
+.gal_sug_main hr {
+    margin: 2px 0 2px 0;
 }
 
 /* 추천상품 끝 */
@@ -59,20 +70,32 @@
     margin: 3px;
 }
 
+.gal_best_main img {
+    margin-top: 10px;
+}
+
+.gal_best_main hr {
+    margin: 2px 0 2px 0;
+}
+
+.gal_best_main button {
+    margin: 40px 0 20px 0;
+}
+
 /* 타임세일 끝 */
 
 /* 글리피콘, 버튼, 기타옵션 시작 */
 
 #glyp_gal {
     float: left;
-    color: #ff0000;
+    color: #ff8f83;
     font-size: 15px;
     margin: 3px;
 }
 
 #glyp_list {
     font-size: 30px;
-    color: #f39c12;
+    color: #ff8f83;
 }
 
 .t_btn {
@@ -90,8 +113,7 @@
 .img_banner {
     display: inline-block;
     text-align: center;
-    margin-top: 30px;
-    margin-bottom: 10px;
+    margin: 10px 0 30px 0;
 }
 
 .img_banner img {
@@ -108,57 +130,57 @@
     padding: 5px;
 }
 
-.container h4 {
+.review h3 {
     text-align: center;
+    color: #ff8f83;
 }
 
-.pr_in_box {
-    border: 1px solid #777;
+.pr_box {
+    float: left;
+    width: 50%;
     padding: 5px;
 }
 
-.img_size {
+.pr_in_box {
+    border: 1px solid #FF8F83;
+    padding: 5px;
+}
+
+.container .img_size {
     width: 100%;
 }
 
-.icon_size {
+.container .icon_size {
     height: 8px;
     font-size: 10px;
 }
 
-.btn {
+.pr_box .btn {
     padding-right: 50px;
     padding-bottom: 20px;
     width: 50px;
     height: 25px;
     font-size: 12px;
+    background-color: #ffc7c1;
+    border-color: #ffc7c1;
+    color: #fff;
 }
 
-table {
-    width: 98%;
-    margin: auto;
-}
-
-.cate_select {
-    width: 100%;
-}
-
-.h_input {
-    width: 100%;
-    height: 20px;
-}
-
-hr {
+.container_1 hr {
     margin: 2px;
     padding: 0;
 }
 
-.pagination>.active>span {
-    background-color: #777;
-    border-color: #777;
+.container_1 h5 {
+    color: #FF8F83;
 }
 
-a {
+.pagination>.active>span {
+    background-color: #FF8F83;
+    border-color: #FF8F83;
+}
+
+.container a {
     color: #777;
 }
 

@@ -14,18 +14,6 @@
     <!-- 나눔고딕 웹 폰트 적용 -->
     <link rel="stylesheet" type="text/css" href="../share/assets/css/nanumfont.css" />
     <link rel="stylesheet" type="text/css" href="../share/tmpl.css" />
-    <!-- 반응형 웹을 지원하지 않을 경우 -->
-    <!-- <link rel="stylesheet" href="../share/assets/css/non-responsive.css" /> -->
-    <!-- IE8 이하 버전 지원 -->
-    <!--[if lt IE 9]>
-        <script type="text/javascript" src="../share/assets/js/html5shiv.js"></script>
-        <script type="text/javascript" src="../share/assets/js/respond.min.js"></script>
-        <![endif]-->
-    <!-- IE10 반응형 웹 버그 보완 -->
-    <!--[if gt IE 9]>
-        <link rel="stylesheet" type="text/css" href="../share/assets/css/ie10.css" />
-        <script type="text/javascript" src="../share/assets/js/ie10.js"></script>
-        <![endif]-->
     <style type="text/css">
     /* 폼 전체 박스 */
     .form-horizontal {
@@ -159,7 +147,7 @@
             <!-- 여기에 작성 -->
             <div class="container">
                 <div class="page-title clearfix">
-                    <a href="#" onclick="history.back(); return false;"><img src="../share/img/back.jpg"></a>
+                    <a href="#" onclick="history.back(); return false;"><img src="../share/img/img_back.jpg"></a>
                     <h4><b>회원정보수정</b></h4>
                 </div>
                 <div>
@@ -210,12 +198,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for='gender1' class="col-md-2">SMS 수신여부 <span class='identify'>*</span></label>
+                        <label for='emailok1' class="col-md-2">E-mail 수신여부 <span class='identify'>*</span></label>
                         <div class="col-md-10">
                             <label>
-                                <input type='radio' name='gender' id='gender1' value='M'>남자</label>
+                                <input type='radio' name='emailok' id='emailok1' value='Y'>남자</label>
                             <label>
-                                <input type='radio' name='gender' id='gender2' value='F'>여자</label>
+                                <input type='radio' name='emailok' id='emailok2' value='N'>여자</label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -242,8 +230,8 @@
         <div class="row">
             <div class="col-xs-6 etc">
                 <h5><b>상담센터</b></h5>
-                <p style="font-size: 18px; font-weight:bold;">070-123-4567</p>
-                <p style="font-size: 12px"> 운영시간 : 오전 10:00 - 오후 6:00<br />주말, 공휴일은 후뮤입니다.</p>
+                <p style="font-size: 15px; font-weight:bold;">070-123-4567</p>
+                <p style="font-size: 12px"> 운영시간 : 10:00 - 18:00<br />주말, 공휴일은 후뮤입니다.</p>
             </div>
             <div class="col-xs-6 etc">
                 <h5><b>입금계좌안내</b></h5>
@@ -266,12 +254,12 @@
         <div class="navbar" id="navbarback">
             <ul class="btmbar-nav clearfix navbar-fixed-bottom">
                 <hr />
-                <a href="#">
+                <a href="../community/photo_rv.html">
                     <span class="glyphicon glyphicon-comment">
                         <p>커뮤니티</p>
                     </span>
                 </a>
-                <a href="../myinfo/order_list.html">
+                <a href="../myInfo/order_list.html">
                     <span class="glyphicon glyphicon-list-alt">
                         <p>주문조회</p>
                     </span>
@@ -334,8 +322,8 @@
                 tel: { required: true, phone: true },
                 // [생년월일] 필수 + 날짜 형식 일치 필요
                 birthdate: { required: true, date: true },
-                // [성별] 필수 입력,
-                gender: "required"
+                // [이메일 수신여부] 필수 입력,
+                emailok: "required"
             },
             /** 규칙이 맞지 않을 경우의 메시지 */
             messages: {
@@ -368,7 +356,7 @@
                     required: "생년월일을 입력하세요.",
                     date: "생년월일의 형식이 잘못되었습니다."
                 },
-                gender: "성별을 선택해 주세요.",
+                emailok: "이메일 수신여부를 선택해 주세요.",
             }
         }); // end validate()
     });
