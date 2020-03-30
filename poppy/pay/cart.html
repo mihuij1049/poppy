@@ -63,6 +63,7 @@
         height: 42px;
         color: #fff;
         font-weight: bold;
+        font-size: 14px;
     }
 
     .panel-header {
@@ -70,6 +71,7 @@
         font-size: 16px;
         background: #ffc7c1;
         color: #fff;
+        font-size: 14px;
         font-weight: bold;
     }
 
@@ -302,11 +304,11 @@
                                                 <b>3,500원</b>
                                                 <br><br>
                                                 <div class="word-btn">
-                                                    <button class="count">
+                                                    <button class="count" id="minus">
                                                         <img src="../share/img/마이너스.png">
                                                     </button>
-                                                    <input type="number" class="count-label">
-                                                    <button class="count">
+                                                    <input type="number" class="count-label" value="1" id="count-label">
+                                                    <button class="count" id="plus">
                                                         <img src="../share/img/플러스.png">
                                                     </button>
                                                     <button type="button">변경</button>
@@ -384,11 +386,11 @@
                                                 <b>3,500원</b>
                                                 <br><br>
                                                 <div class="word-btn">
-                                                    <button class="count">
+                                                    <button class="count" id="minus">
                                                         <img src="../share/img/마이너스.png">
                                                     </button>
-                                                    <input type="number" class="count-label">
-                                                    <button class="count">
+                                                    <input type="number" class="count-label" value="1" id="count-label">
+                                                    <button class="count" id="plus">
                                                         <img src="../share/img/플러스.png">
                                                     </button>
                                                     <button type="button">변경</button>
@@ -521,6 +523,25 @@
     $(function() {
         $(".panel-heading").on('click', function() {
             $(".arrow-down1").toggleClass("rotate1");
+        });
+
+        var counter = 1;
+
+        $("#plus").click(function(e) {
+            counter++;
+            $(document).ready(function() {
+                $("#count-label").val(counter);
+            });
+        });
+        $("#minus").click(function(e) {
+            if (counter < 2) {
+                alert("구매수량은 1미만으로 불가합니다.");
+                return;
+            }
+            counter--;
+            $(document).ready(function() {
+                $("#count-label").val(counter);
+            });
         });
     });
     </script>

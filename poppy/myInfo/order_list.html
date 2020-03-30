@@ -33,7 +33,7 @@
         z-index: 1004;
     }
 
-    .content .container {
+    .content>.container {
         width: 96%;
         margin: auto;
         z-index: 104;
@@ -69,6 +69,11 @@
         margin-top: 1px;
         height: 94px;
         background-color: #ffc7c1;
+    }
+
+    .dateSearch {
+        padding-bottom: 10px;
+        background: #ffc7c1;
     }
 
     .backg .container {
@@ -114,6 +119,7 @@
     }
 
     .period .btn {
+        border: 1px solid #ff8f83;
         font-size: 12px;
         width: 16%;
         height: 30px
@@ -121,12 +127,25 @@
 
     .btn:hover {
         background-color: #FF6261;
+        border: 1px solid #FF6261;
         color: #fff;
     }
 
     .btn-default.active {
         background-color: #FF6261;
         color: #fff;
+    }
+
+    .dateSearch input {
+        width: 22%;
+        border: 1px solid #ff8f83;
+        font-size: 12px;
+    }
+
+    .dateSearch button {
+        margin-left: 5px;
+        height: 30px;
+        line-height: 3px;
     }
 
     /** 주문상세보기 시작 */
@@ -232,18 +251,6 @@
     .pagination>li>a {
         color: #ffc7c1;
     }
-
-    /** Modal */
-    .datepicker-container {
-        z-index: 100000000000;
-        /*display: hidden;*/
-        width: 80%;
-        overflow: auto;
-    }
-
-    .datepicker {
-        z-index: 999999 !important;
-    }
     </style>
 </head>
 
@@ -319,33 +326,19 @@
                         </select>
                         <div class="period">
                             <p class="col-xs-1">기간</p>
-                            <button class="active btn btn-default col-xs-2">오늘</button>
-                            <button class="btn btn-default col-xs-2">1개월</button>
-                            <button class="btn btn-default col-xs-2">3개월</button>
-                            <button class="btn btn-default col-xs-2">6개월</button>
-                            <button class="btn btn-default col-xs-3" id="open_modal_btn">기간설정</button>
-                        </div>
-                        <!-- Modal -->
-                        <div class="modal fade" id="myModal">
-                            <div class="modal-dialog modal-sm">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <h4 class="modal-title">Modal</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Hello Modal</p>
-                                        <input type="text" class="form-control datepicker" id="datepicker" />
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
+                            <button class="btn btn-default col-xs-2" onclick="set_term(0)">오늘</button>
+                            <button class="btn btn-default col-xs-2" onclick="set_term(30)">1개월</button>
+                            <button class="btn btn-default col-xs-2" onclick="set_term(90)">3개월</button>
+                            <button class="btn btn-default col-xs-2" onclick="set_term(180)">6개월</button>
+                            <button class="btn btn-default col-xs-3" id="period_set">기간설정</button>
                         </div>
                     </div>
+                </div>
+                <div class="dateSearch">
+                    <div class="col-xs-1"></div>
+                    <input type="text" id="datepicker_before" />&nbsp;~
+                    <input type="text" id="datepicker_after" />
+                    <button type="button" class="btn">조회</button>
                 </div>
                 <div class="view">
                     <button class="btn">
@@ -473,25 +466,51 @@
         <script src="../share/plugins/datepicker/datepicker.ko-KR.js"></script>
         <!-- 사용자 정의 스크립트 -->
         <script type="text/javascript">
+        function set_term(days) {
+            days = days * 24 * 60 * 60 * 1000;
+
+            var date = new Date();
+            var yy = date.getFullYear();
+            var mm = date.getMonth() + 1;
+            var dd = date.getDate();
+
+            var setday = date.getTime() - days;
+            date.setTime(setday);
+
+            var s_yy = date.getFullYear();
+            var s_mm = date.getMonth() + 1;
+            var s_dd = date.getDate();
+            alert(s_yy + "년 " + s_mm + "월 " + s_dd + "일 " + "~" + yy + "년 " + mm + "월 " + dd + "일" + "의 주문조회 결과");
+        }
+
         $(function() {
-            $("#open_modal_btn").click(function(e) {
-                // 스크립트를 사용하여 특정 Modal을 강제로 열기
-                $("#myModal").modal("show");
-                // 아래는 창을 강제로 닫기 처리
-                // $("#myModal").modal("hide");
-                $(".datepicker").datepicker({
-                    // 날짜 선택후 사동 숨김 (true/false)
-                    autoHide: true,
-                    // 날짜 형식
-                    format: "yyyy-mm-dd",
-                    // 언어
-                    language: "ko-KR",
-                    // 시작요일 (0=일요일~6=토요일)
-                    weekStart: 0
-                });
+            $(".dateSearch").hide();
+            $("#period_set").click(function() {
+                $(".dateSearch").toggle();
+            });
+
+            $("#datepicker_before").datepicker({
+                // 날짜 선택후 사동 숨김 (true/false)
+                autoHide: true,
+                // 날짜 형식
+                format: "yyyy-mm-dd",
+                // 언어
+                language: "ko-KR",
+                // 시작요일 (0=일요일~6=토요일)
+                weekStart: 0
+            });
+
+            $("#datepicker_after").datepicker({
+                // 날짜 선택후 사동 숨김 (true/false)
+                autoHide: true,
+                // 날짜 형식
+                format: "yyyy-mm-dd",
+                // 언어
+                language: "ko-KR",
+                // 시작요일 (0=일요일~6=토요일)
+                weekStart: 0
             });
         });
-        $(function() {});
         </script>
 </body>
 
