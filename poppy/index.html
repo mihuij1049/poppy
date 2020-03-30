@@ -13,6 +13,8 @@
     <link rel="stylesheet" type="text/css" href="share/assets/css/bootstrap.min.css" />
     <!-- 나눔고딕 웹 폰트 적용 -->
     <link rel="stylesheet" type="text/css" href="share/assets/css/nanumfont.css" />
+    <!-- 스위퍼 슬라이드 적용 -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
     <link rel="stylesheet" type="text/css" href="share/tmpl.css" />
     <link rel="stylesheet" type="text/css" href="index.css" />
 </head>
@@ -99,29 +101,88 @@
                     <i class="glyphicon glyphicon-thumbs-up icon_size1" id="glyp_list"></i>
                     <h3 id="sale_h3">추천상품</h3>
                 </center>
-                <div class="gal_sug_main">
-                    <div class="gal_sug">
-                        <div class="gal_sug_img"><img src="share/img/index_gal_img1.jpg" id="img_sug"></div>
-                        강아지간식
-                        <hr />
-                        5,400원
-                        <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
-                    </div>
-                    <div class="gal_sug">
-                        <div class="gal_sug_img"><img src="share/img/index_gal_img2.jpg" id="img_sug"></div>
-                        강아지간식
-                        <hr />
-                        5,400원
-                        <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
-                    </div>
-                    <div class="gal_sug">
-                        <div class="gal_sug_img"><img src="share/img/index_gal_img3.jpg" id="img_sug"></div>
-                        강아지간식
-                        <hr />
-                        5,400원
-                        <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
-                    </div>
+                <!-- 스와이퍼 플러그인 갤러리 시작!!! -->
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="gal_sug_main">
+                                <div class="gal_sug">
+                                    <div class="gal_sug_img"><img src="share/img/index_gal_img1.jpg" id="img_sug"></div>
+                                    강아지간식
+                                    <hr />
+                                    5,400원
+                                    <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                                </div>
+                                <div class="gal_sug">
+                                    <div class="gal_sug_img"><img src="share/img/index_gal_img2.jpg" id="img_sug"></div>
+                                    강아지간식
+                                    <hr />
+                                    5,400원
+                                    <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                                </div>
+                                <div class="gal_sug">
+                                    <div class="gal_sug_img"><img src="share/img/index_gal_img3.jpg" id="img_sug"></div>
+                                    강아지간식
+                                    <hr />
+                                    5,400원
+                                    <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gal_sug_main">
+                                <div class="gal_sug">
+                                    <div class="gal_sug_img"><img src="share/img/index_gal_img1.jpg" id="img_sug"></div>
+                                    강아지간식
+                                    <hr />
+                                    5,400원
+                                    <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                                </div>
+                                <div class="gal_sug">
+                                    <div class="gal_sug_img"><img src="share/img/index_gal_img2.jpg" id="img_sug"></div>
+                                    강아지간식
+                                    <hr />
+                                    5,400원
+                                    <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                                </div>
+                                <div class="gal_sug">
+                                    <div class="gal_sug_img"><img src="share/img/index_gal_img3.jpg" id="img_sug"></div>
+                                    강아지간식
+                                    <hr />
+                                    5,400원
+                                    <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gal_sug_main">
+                                <div class="gal_sug">
+                                    <div class="gal_sug_img"><img src="share/img/index_gal_img1.jpg" id="img_sug"></div>
+                                    고양이간식
+                                    <hr />
+                                    5,400원
+                                    <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                                </div>
+                                <div class="gal_sug">
+                                    <div class="gal_sug_img"><img src="share/img/index_gal_img2.jpg" id="img_sug"></div>
+                                    고양이간식
+                                    <hr />
+                                    5,400원
+                                    <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                                </div>
+                                <div class="gal_sug">
+                                    <div class="gal_sug_img"><img src="share/img/index_gal_img3.jpg" id="img_sug"></div>
+                                    고양이간식
+                                    <hr />
+                                    5,400원
+                                    <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
                 </div>
+                <!-- 스와이퍼 플러그인 갤러리 끝!!! -->
                 <center>
                     <i class="glyphicon glyphicon-bullhorn icon_size1 t_btn" id="glyp_list"></i>
                     <h3 id="sale_h3">TIME SALE</h3>
@@ -325,6 +386,19 @@
         <!-- Javascript -->
         <script src="share/assets/js/jquery-3.2.1.min.js"></script>
         <script src="share/assets/js/bootstrap.min.js"></script>
+        <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+        <script>
+        var mySwiper = new Swiper('.swiper-container', {
+
+
+            // 현재 페이지를 나타내는 점이 생깁니다. 클릭하면 이동합니다.
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'bullets',
+            },
+
+        });
+        </script>
 </body>
 
 </html>
