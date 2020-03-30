@@ -82,6 +82,70 @@
     #qna_re {
         width: 45%;
     }
+
+    .modal-wrapper {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.25s ease-in-out;
+    }
+
+    .modal-wrapper.open-select {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .modal-select {
+        width: 320px;
+        height: 300px;
+        display: block;
+        margin: 50% 0 0 -300px;
+        position: relative;
+        top: 40%;
+        left: 100%;
+        background: #fff;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .modal-wrapper.open-select .modal-select {
+        margin-top: -200px;
+        opacity: 1;
+    }
+
+    .head {
+        width: 96%;
+        height: 32px;
+        padding: 12px 30px;
+        overflow: hidden;
+        background: #e2525c;
+    }
+
+    .btn-close {
+        font-size: 20px;
+        color: #333;
+        width: 50px;
+        height: 30px;
+        padding: 0px 0px
+    }
+
+    .good-job {
+        text-align: center;
+        font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+        color: #e2525c;
+    }
+
+    .good-job .fa-thumbs-o-up {
+        font-size: 60px;
+    }
+
+    .good-job h1 {
+        font-size: 45px;
+    }
     </style>
 </head>
 
@@ -142,7 +206,7 @@
                     <div class="container">
                         <div class="choice clearfix">
                             <div class="col-xs-4"><a href="#" class="item-img"><img src="../share/img/slide.jpg"></a></div>
-                            <div class="col-xs-8"><button type="button" class="item-select">상품정보선택</button></div>
+                            <div class="col-xs-8"><button type="button" class="item-select trigger-select">상품정보선택</button></div>
                         </div>
                         <div class="qna-title">
                             <div class="col-xs-4">
@@ -257,9 +321,33 @@
                 </ul>
             </div>
         </div>
+        <!-- Modal -->
+        <div class="modal-wrapper">
+            <div class="modal-select">
+                <div class="head">
+                    <a class="btn btn-close trigger-select" href="#">
+                        X
+                    </a>
+                </div>
+                <div class="content">
+                    <div class="good-job">
+                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                        <h1>Good Job!</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Javascript -->
         <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
         <script src="../share/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $('.trigger-select').on('click', function() {
+                $('.modal-wrapper').toggleClass('open-select');
+                return false;
+            });
+        });
+        </script>
 </body>
 
 </html>
