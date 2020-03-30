@@ -33,7 +33,7 @@
         text-align: center;
         margin: auto;
         margin-top: 20px;
-        margin-bottom: 5px;
+        margin-bottom: 15px;
         padding-top: 20px;
         padding-bottom: 20px;
         font-size: 15px;
@@ -47,7 +47,7 @@
         border: 1px solid #ffc7c1;
         width: 96%;
         margin: auto;
-        margin-bottom: 3px;
+        margin-bottom: 15px;
         list-style: none;
     }
 
@@ -197,8 +197,9 @@
             <!-- 여기에 작성 -->
             <div class="container">
                 <div class="page-title clearfix">
-                    <a href="#" onclick="history.back(); return false;"><img src="../share/img/img_back.jpg"></a>
-                    <h4><b>관심상품</b></h4>
+                    <h4><b>
+                            <a href="#" onclick="history.back(); return false;"><i class="glyphicon glyphicon-chevron-left"></i></a>관신상품
+                        </b></h4>
                 </div>
                 <div class="favorite">
                     <p class="align">My상품(<span>2</span>)</p>
@@ -263,8 +264,8 @@
             <div class="row">
                 <div class="col-xs-6 etc">
                     <h5><b>상담센터</b></h5>
-                    <p style="font-size: 18px; font-weight:bold;">070-123-4567</p>
-                    <p style="font-size: 12px"> 운영시간 : 오전 10:00 - 오후 6:00<br />주말, 공휴일은 후뮤입니다.</p>
+                    <p style="font-size: 15px; font-weight:bold;">070-123-4567</p>
+                    <p style="font-size: 12px"> 운영시간 : 10:00 - 18:00<br />주말, 공휴일은 후뮤입니다.</p>
                 </div>
                 <div class="col-xs-6 etc">
                     <h5><b>입금계좌안내</b></h5>
@@ -287,7 +288,7 @@
             <div class="navbar" id="navbarback">
                 <ul class="btmbar-nav clearfix navbar-fixed-bottom">
                     <hr />
-                    <a href="#">
+                    <a href="../community/photo_rv.html">
                         <span class="glyphicon glyphicon-comment">
                             <p>커뮤니티</p>
                         </span>
@@ -320,12 +321,6 @@
     <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
     <script src="../share/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-    $(function() {
-
-        $("#delete-one").click(function(e) {
-            $("li").remove("#mycart1");
-        });
-    });
     </script>
 </body>
 

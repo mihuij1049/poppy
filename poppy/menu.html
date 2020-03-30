@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Poppy-Poppy</title>
+    <!-- 모바일 웹 페이지 설정 -->
+    <link rel="shortcut icon" href="share/assets/ico/favicon.png" />
+    <link rel="apple-touch-icon-precomposed" href="share/assets/ico/apple-touch-icon-144-precomposed.png" />
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="share/assets/css/bootstrap.min.css" />
+    <!-- 나눔고딕 웹 폰트 적용 -->
+    <link rel="stylesheet" type="text/css" href="share/assets/css/nanumfont.css" />
+    <!-- 스위퍼 슬라이드 적용 -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="share/tmpl.css" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <link rel="stylesheet" type="text/css" href="menu.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" id="logo">
+                <img src="share/img/logojpg.jpg">
+            </a>
+            <a href="pay/cart.html">
+                <span class="glyphicon glyphicon-shopping-cart" id="cart">
+                    <h1>장바구니</h1>
+                </span>
+                <span class="badge">
+                    <p>11</p>
+                </span>
+            </a>
+            <hr>
+            <ul class="category">
+                <a href="gallery/gal_list.html">
+                    <li>BEST</li>
+                </a>
+                <a href="#">
+                    <li>NEW</li>
+                </a>
+                <a href="#">
+                    <li>푸드</li>
+                </a>
+                <a href="#">
+                    <li>의류</li>
+                </a>
+                <a href="#">
+                    <li>외출용품</li>
+                </a>
+                <a href="#">
+                    <li>홈리빙</li>
+                </a>
+                <a href="#">
+                    <li>대형견</li>
+                </a>
+                <a href="#">
+                    <li>타임세일</li>
+                </a>
+                <a href="#">
+                    <li>유통임박</li>
+                </a>
+            </ul>
+            <hr>
+        </div>
+        <div class="content">
+            <!-- 여기에 작성 -->
+            <div class="container_in">
+                <!-- 캐러셀 영역 구성 -->
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- 현재 위치 표시 -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    </ol>
+                    <!-- 내용 영역 -->
+                    <div class="carousel-inner">
+                        <!-- 항목 (1) -->
+                        <div class="item active">
+                            <img src="share/img/main_M.jpg" alt="슬라이더(1)">
+                        </div>
+                        <!-- 항목 (2) -->
+                        <div class="item">
+                            <img src="share/img/2_M.jpg" alt="슬라이더(2)">
+                        </div>
+                        <!-- 항목 (3) -->
+                        <div class="item">
+                            <img src="share/img/3_M.jpg" alt="슬라이더(3)">
+                        </div>
+                    </div>
+                    <!-- // 내용영역 구성 -->
+                    <!-- 이동 버튼 -->
+                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"> <span class="icon-prev"></span> </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"> <span class="icon-next"></span> </a>
+                </div>
+                <!-- 캐러셀 영역 끝 -->
+                <center>
+                    <i class="glyphicon glyphicon-thumbs-up icon_size1" id="glyp_list"></i>
+                    <h3 id="sale_h3">추천상품</h3>
+                </center>
+                <!-- 스와이퍼 플러그인 갤러리 시작!!! -->
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="gal_sug_main">
+                                <div class="gal_sug">
+                                    <div class="gal_sug_img"><img src="share/img/index_gal_img1.jpg" id="img_sug"></div>
+                                    강아지간식
+                                    <hr />
+                                    5,400원
+                                    <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                                </div>
+                                <div class="gal_sug">
+                                    <div class="gal_sug_img"><img src="share/img/index_gal_img2.jpg" id="img_sug"></div>
+                                    강아지간식
+                                    <hr />
+                                    5,400원
+                                    <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                                </div>
+                                <div class="gal_sug">
+                                    <div class="gal_sug_img"><img src="share/img/index_gal_img3.jpg" id="img_sug"></div>
+                                    강아지간식
+                                    <hr />
+                                    5,400원
+                                    <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gal_sug_main">
+                                <div class="gal_sug">
+                                    <div class="gal_sug_img"><img src="share/img/index_gal_img1.jpg" id="img_sug"></div>
+                                    강아지간식
+                                    <hr />
+                                    5,400원
+                                    <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                                </div>
+                                <div class="gal_sug">
+                                    <div class="gal_sug_img"><img src="share/img/index_gal_img2.jpg" id="img_sug"></div>
+                                    강아지간식
+                                    <hr />
+                                    5,400원
+                                    <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                                </div>
+                                <div class="gal_sug">
+                                    <div class="gal_sug_img"><img src="share/img/index_gal_img3.jpg" id="img_sug"></div>
+                                    강아지간식
+                                    <hr />
+                                    5,400원
+                                    <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gal_sug_main">
+                                <div class="gal_sug">
+                                    <div class="gal_sug_img"><img src="share/img/index_gal_img1.jpg" id="img_sug"></div>
+                                    고양이간식
+                                    <hr />
+                                    5,400원
+                                    <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                                </div>
+                                <div class="gal_sug">
+                                    <div class="gal_sug_img"><img src="share/img/index_gal_img2.jpg" id="img_sug"></div>
+                                    고양이간식
+                                    <hr />
+                                    5,400원
+                                    <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                                </div>
+                                <div class="gal_sug">
+                                    <div class="gal_sug_img"><img src="share/img/index_gal_img3.jpg" id="img_sug"></div>
+                                    고양이간식
+                                    <hr />
+                                    5,400원
+                                    <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+                <!-- 스와이퍼 플러그인 갤러리 끝!!! -->
+                <center>
+                    <i class="glyphicon glyphicon-bullhorn icon_size1 t_btn" id="glyp_list"></i>
+                    <h3 id="sale_h3">TIME SALE</h3>
+                </center>
+                <div class="gal_best_main">
+                    <div class="gal_best">
+                        <div class="gal_sug_img"><img src="share/img/index_gal_img1.jpg" id="img_sug"></div>
+                        타임세일
+                        <hr />
+                        5,400원
+                        <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                    </div>
+                    <div class="gal_best">
+                        <div class="gal_sug_img"><img src="share/img/index_gal_img2.jpg" id="img_sug"></div>
+                        타임세일
+                        <hr />
+                        5,400원
+                        <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                    </div>
+                    <div class="gal_best">
+                        <div class="gal_sug_img"><img src="share/img/index_gal_img3.jpg" id="img_sug"></div>
+                        타임세일
+                        <hr />
+                        5,400원
+                        <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                    </div>
+                    <div class="gal_best">
+                        <div class="gal_sug_img"><img src="share/img/index_gal_img1.jpg" id="img_sug"></div>
+                        타임세일ㅎㅎ
+                        <hr />
+                        5,400원
+                        <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                    </div>
+                    <div class="gal_best">
+                        <div class="gal_sug_img"><img src="share/img/index_gal_img2.jpg" id="img_sug"></div>
+                        타임세일
+                        <hr />
+                        5,400원
+                        <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                    </div>
+                    <div class="gal_best">
+                        <div class="gal_sug_img"><img src="share/img/index_gal_img3.jpg" id="img_sug"></div>
+                        타임세일
+                        <hr />
+                        5,400원
+                        <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+                    </div>
+                    <button type="button" class="btn btn-inverse index_btn">뽀삐뽀삐 단독 최저가 보장</button>
+                </div>
+                <div class="img_banner">
+                    <img src="share/img/index_banner1.jpg">
+                    <img src="share/img/index_banner2.jpg">
+                    <img src="share/img/index_banner3.jpg">
+                </div>
+                <div class="review">
+                    <center>
+                        <h3>실시간 리뷰</h3>
+                    </center>
+                    <!-- 게시물 하나 시작 -->
+                    <div width="50%">
+                        <div class="pr_box">
+                            <div class="pr_in_box">
+                                <a href="#"><img alt="사진" src="share/img/img1.jpg" class="img_size"></a>
+                                <div>
+                                    <h5><b>글제목</b></h5>
+                                    아이디<br>
+                                    <hr />
+                                    글내용<br>
+                                    글내용<br>
+                                    <br>
+                                    <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 게시물 하나 끝 -->
+                    <!-- 게시물 하나 시작 -->
+                    <div>
+                        <div class="pr_box">
+                            <div class="pr_in_box">
+                                <img alt="사진" src="share/img/img2.jpg" class="img_size">
+                                <div>
+                                    <h5><b>글제목</b></h5>
+                                    아이디<br>
+                                    <hr />
+                                    글내용<br>
+                                    글내용<br>
+                                    <br>
+                                    <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--// 게시물 하나 끝 -->
+                    <!-- 게시물 하나 시작 -->
+                    <div>
+                        <div class="pr_box">
+                            <div class="pr_in_box">
+                                <img alt="사진" src="share/img/img3.jpg" class="img_size">
+                                <div>
+                                    <h5><b>글제목</b></h5>
+                                    아이디<br>
+                                    <hr />
+                                    글내용<br>
+                                    글내용<br>
+                                    <br>
+                                    <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--// 게시물 하나 끝 -->
+                    <!-- 게시물 하나 시작 -->
+                    <div>
+                        <div class="pr_box">
+                            <div class="pr_in_box">
+                                <img alt="사진" src="share/img/img4.jpg" class="img_size">
+                                <div>
+                                    <h5><b>글제목</b></h5>
+                                    아이디<br>
+                                    <hr />
+                                    글내용<br>
+                                    글내용<br>
+                                    <br>
+                                    <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--// 게시물 하나 끝 -->
+                </div>
+                <center><button type="button" class="btn btn-inverse index_btn" onclick="location.href='community/photo_rv.html'">실시간 리뷰 더보기</button></center>
+            </div>
+            <div class="footer">
+                <!-- 하단 네비게이션 고정-->
+                <!--- 소개 4인방 링크 -->
+                <hr />
+                <div class="etc">
+                    <a href="etc/page_info1.html">회사소개</a>
+                    <a href="etc/page_info2.html">이용약관</a>
+                    <a href="etc/page_info3.html">개인정보취급방침</a>
+                    <a href="etc/page_info4.html">이용안내</a>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-xs-6 etc">
+                        <h5><b>상담센터</b></h5>
+                        <p style="font-size: 15px; font-weight:bold;">070-123-4567</p>
+                        <p style="font-size: 12px"> 운영시간 : 10:00 - 18:00<br />주말, 공휴일은 후뮤입니다.</p>
+                    </div>
+                    <div class="col-xs-6 etc">
+                        <h5><b>입금계좌안내</b></h5>
+                        <br />
+                        <p>하나 355-342432-23445<br>예금주 : (주)뽀삐뽀삐</p>
+                    </div>
+                </div>
+                <address class="clearfix">
+                    <p>상점명: (주)뽀삐뽀삐 대표 : 아무개
+                        <br>주소 : 서울특별시 행복구 존버동 8282-5959 102호 - 물류팀<br>
+                        사업자등록번호 : 123-86-43567<br>
+                        통신판매업신고 : 제2020-서울서초-0082호<br>
+                        개인정보관리책임 : 아무개 <br>
+                        <br />
+                        COPYRIGHT&copy; (주)뽀삐뽀삐 ALL RIGHTS RESERVED
+                        <br />
+                        <i>DESIGN BY EZEN-team4</i>
+                    </p>
+                </address>
+                <div class="navbar" id="navbarback">
+                    <ul class="btmbar-nav clearfix navbar-fixed-bottom">
+                        <hr />
+                        <a href="#">
+                            <span class="glyphicon glyphicon-comment">
+                                <p>커뮤니티</p>
+                            </span>
+                        </a>
+                        <a href="myInfo/order_list.html">
+                            <span class="glyphicon glyphicon-list-alt">
+                                <p>주문조회</p>
+                            </span>
+                        </a>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-search">
+                                <p>&nbsp;검색&nbsp;</p>
+                            </span>
+                        </a>
+                        <!-- .modal -->
+                        <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <!-- .modal-dialog -->
+                            <div class="modal-dialog" style="width: 96%; margin: auto;">
+                                <!-- .modal-content -->
+                                <div class="modal-content clearfix">
+                                    <!-- 제목 -->
+                                    <div class="modal-header">
+                                        <div class="logo">
+                                            <img alt="사진" src="share/img/logojpg.jpg">
+                                        </div>
+                                        <!-- 닫기버튼 -->
+                                        <div class="button-close">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                &times;
+                                            </button>
+                                        </div>
+                                        <div class="buttons">
+                                            <button type="button" onclick="location.href='member/agree_0.html'" class="btn btn1">회원가입</button>
+                                            <button type="button" onclick="location.href='member/login.html'" class="btn btn1">로그인</button>
+                                        </div>
+                                    </div>
+                                    <!-- 내용 -->
+                                    <div class="modal-body">
+                                        <div class="kategorie">
+                                            <b>카테고리</b>
+                                        </div>
+                                        <div class="ka-list">
+                                            <a href="#">
+                                        </div>
+                                        <!-- 아코디언 영역 -->
+                                        <div class="panel-group clearfix" id="accordion">
+                                            <!-- 항목(1) -->
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> 신상품 </a></h4>
+                                                </div>
+                                            </div>
+                                            <!-- 항목(2) -->
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"> 인기상품 </a></h4>
+                                                </div>
+                                            </div>
+                                            <!-- 항목(3) -->
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"> 푸드 </a></h4>
+                                                </div>
+                                                <div id="collapseThree" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        사료
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        간식
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        영양제
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        우유
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 항목(4) -->
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"> 의류 </a></h4>
+                                                </div>
+                                                <div id="collapseFour" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        아우터
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        티셔츠
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        신발
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        양말
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 항목(5) -->
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive"> 외출용품 </a></h4>
+                                                </div>
+                                                <div id="collapseFive" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        목줄/리드줄
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        자동줄
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        이동장
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        배변봉투
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        휴대용식기
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        입마개
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 항목(6) -->
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSix"> 대형견코너 </a></h4>
+                                                </div>
+                                                <div id="collapseSix" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        사료,간식
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        목줄/리드줄
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        의류
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        장난감
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 항목(7) -->
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven"> 홈/리빙 </a></h4>
+                                                </div>
+                                                <div id="collapseSeven" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        방석
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        계단
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        식기
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        하우스/울타리
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        매트
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--// 아코디언 영역 -->
+                                    </div>
+                                    <!-- 하단 -->
+                                    <div class="modal-footer">
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+                        <!-- 화면 영역 -->
+                        <a data-toggle="modal" href="#myModal"><span class="glyphicon glyphicon-th-large">
+                                <p>카테고리</p>
+                            </span>
+                        </a>
+                        <!-- 화면 영역 끝 -->
+                        <span class="glyphicon glyphicon-user">
+                            <p>MY정보</p>
+                        </span>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Javascript -->
+        <script src="share/assets/js/jquery-3.2.1.min.js"></script>
+        <script src="share/assets/js/bootstrap.min.js"></script>
+        <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+        <script>
+        var mySwiper = new Swiper('.swiper-container', {
+
+
+            // 현재 페이지를 나타내는 점이 생깁니다. 클릭하면 이동합니다.
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'bullets',
+            },
+
+        });
+        </script>
+</body>
+
+</html>
