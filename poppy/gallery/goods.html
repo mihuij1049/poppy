@@ -95,6 +95,8 @@
         width: 28px;
         height: 28px;
         padding: 0;
+        color: #000;
+        font-size: 15px;
         background-color: #fff;
         border: 1px solid #ddd;
     }
@@ -165,9 +167,50 @@
         height: 36px;
         text-align: center;
         font-size: 12px;
-        margin-bottom: 50px;
+        margin-bottom: 20px;
         color: #000;
         border: 1px solid #ddd;
+    }
+
+    .tab-content .prd-detail img {
+        width: 100%;
+    }
+
+    .tab-content .prd-detail #prd-foot {
+        padding-bottom: 50px;
+    }
+
+    .tab-content .prd-Info {
+        border-bottom: 1px solid #ddd;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-bottom: 10px
+    }
+
+    .tab-content .prd-Info tbody {
+        font-size: 12px;
+    }
+
+    .prd-Info tr {
+        height: 26px;
+    }
+
+    .prd-Info th {
+        width: 25%;
+    }
+
+    .starR {
+        background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+        background-size: auto 100%;
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        text-indent: -9999px;
+        cursor: pointer;
+    }
+
+    .starR.on {
+        background-position: 0 0;
     }
     </style>
 </head>
@@ -251,9 +294,9 @@
                                 <tr class="quantity">
                                     <th>수량</th>
                                     <td>
-                                        <button type="button" class="btn">-</button>
-                                        <input type="number" value="1" min="1" max="999" name="count">
-                                        <button type="button" class="btn">+</button>
+                                        <button type="button" class="btn btnDown">-</button>
+                                        <input type="number" value="1" min="1" max="99" name="count" id="count" />
+                                        <button type="button" class="btn btnUp">+</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -283,8 +326,80 @@
                     <li><a href="#page3" data-toggle="tab">상품후기(2)</a></li>
                     <li><a href="#page4" data-toggle="tab">Q&A(0)</a></li>
                 </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active in" id="page1">
+                        <div class="prd-detail">
+                            <img src="../share/img/goods_content.jpg">
+                            <img src="../share/img/goods_content2.jpg">
+                            <img src="../share/img/goods_footer.jpg" id="prd-foot">
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade active in" id="page2">
+                        <div class="prd-Info">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th><span>상품명</span></th>
+                                        <td>
+                                            <sapn>
+                                                대용량노즈워크용 간식/벨버드 순삭져키 1kg 강아지져키
+                                            </sapn>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th><span>소비자가</span></th>
+                                        <td>
+                                            <sapn>
+                                                <b>19,900원</b>
+                                            </sapn>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th><span>판매가</span></th>
+                                        <td>
+                                            <sapn>
+                                                <b>19,900원</b>
+                                            </sapn>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th><span>배송방법</span></th>
+                                        <td>
+                                            <sapn>
+                                                택배
+                                            </sapn>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th><span>배송비</span></th>
+                                        <td>
+                                            <sapn>
+                                                <b>2,500원<b>(30,000원 이상 구매시 무료)
+                                            </sapn>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade active in" id="page3">
+                        <div class="prd-photo">
+                            <div class="photo">
+                                <div class="star">
+                                    <span class="starR on">별1</span>
+                                    <span class="starR">별2</span>
+                                    <span class="starR">별3</span>
+                                    <span class="starR">별4</span>
+                                    <span class="starR">별5</span>
+                                </div>
+                                <div class="photo-add"></div>
+                            </div>
+                            <div class="write"></div>
+                            <div class="photo-button"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="product-detail"></div>
             <div class="footer">
                 <!-- 하단 네비게이션 고정-->
                 <!--- 소개 4인방 링크 -->
@@ -325,6 +440,13 @@
         <!-- Javascript -->
         <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
         <script src="../share/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+        $('.star span').click(function() {
+            $(this).parent().children('span').removeClass('on');
+            $(this).addClass('on').prevAll('span').addClass('on');
+            return false;
+        });
+        </script>
 </body>
 
 </html>
