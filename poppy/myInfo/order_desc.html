@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Poppy-Poppy</title>
+    <!-- 모바일 웹 페이지 설정 -->
+    <link rel="shortcut icon" href="../share/assets/ico/favicon.png" />
+    <link rel="apple-touch-icon-precomposed" href="../share/assets/ico/apple-touch-icon-144-precomposed.png" />
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="../share/assets/css/bootstrap.min.css" />
+    <!-- 나눔고딕 웹 폰트 적용 -->
+    <link rel="stylesheet" type="text/css" href="../share/assets/css/nanumfont.css" />
+    <link rel="stylesheet" type="text/css" href="../share/tmpl.css" />
+    <style type="text/css">
+    /** 아코디언 클릭이벤트시 화살표 transform 회전 */
+    .rotate1 {
+        -webkit-transform: rotate(180deg);
+
+    }
+
+    .icon-rotate1 {
+        -webkit-transition-duration: 0.5s;
+    }
+
+    .rotate2 {
+        -webkit-transform: rotate(180deg);
+
+    }
+
+    .icon-rotate2 {
+        -webkit-transition-duration: 0.5s;
+    }
+
+    .rotate3 {
+        -webkit-transform: rotate(180deg);
+
+    }
+
+    .icon-rotate3 {
+        -webkit-transition-duration: 0.5s;
+    }
+
+    .rotate4 {
+        -webkit-transform: rotate(180deg);
+
+    }
+
+    .icon-rotate4 {
+        -webkit-transition-duration: 0.5s;
+    }
+
+    .rotate5 {
+        -webkit-transform: rotate(180deg);
+
+    }
+
+    .icon-rotate5 {
+        -webkit-transition-duration: 0.5s;
+    }
+
+    .rotate6 {
+        -webkit-transform: rotate(180deg);
+
+    }
+
+    .icon-rotate6 {
+        -webkit-transition-duration: 0.5s;
+    }
+
+    #accordion {
+        width: 96%;
+        margin: auto;
+    }
+
+    .info-title {
+        width: 30%;
+
+    }
+
+    .info-desc1 {
+        width: 70%;
+
+    }
+
+    /** 아코디언 클릭이벤트시 화살표 transform 회전 끝 */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../index.html" id="logo">
+                <img src="../share/img/logojpg.jpg">
+            </a>
+            <a href="../pay/cart.html">
+                <span class="glyphicon glyphicon-shopping-cart" id="cart">
+                    <h1>장바구니</h1>
+                </span>
+                <span class="badge">
+                    <p>11</p>
+                </span>
+            </a>
+            <hr>
+            <ul class="category">
+                <a href="#">
+                    <li>BEST</li>
+                </a>
+                <a href="#">
+                    <li>NEW</li>
+                </a>
+                <a href="#">
+                    <li>푸드</li>
+                </a>
+                <a href="#">
+                    <li>의류</li>
+                </a>
+                <a href="#">
+                    <li>외출용품</li>
+                </a>
+                <a href="#">
+                    <li>홈리빙</li>
+                </a>
+                <a href="#">
+                    <li>대형견</li>
+                </a>
+                <a href="#">
+                    <li>타임세일</li>
+                </a>
+                <a href="#">
+                    <li>유통임박</li>
+                </a>
+            </ul>
+            <hr>
+        </div>
+        <div class="content">
+            <!-- 여기에 작성 -->
+            <div class="container">
+                <div class="page-title clearfix">
+                    <h4><b>
+                            <a href="#" onclick="history.back(); return false;"><i class="glyphicon glyphicon-chevron-left"></i></a>주문상세조회
+                        </b></h4>
+                </div>
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default panel-desc">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <b>주문정보</b>
+                                    <img src="../share/img/arrow-down.png" align=right class="arrow-down1 icon-rotate1">
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="panel-body">
+                                <table class="order-info">
+                                    <tbody>
+                                        <tr>
+                                            <th class="info-title">주문번호</th>
+                                            <td class="info-desc1 order-num">20200318-0000195</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="info-title">주문일자</th>
+                                            <td class="info-desc1 order-date">2020-03-18 21:07:17</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="info-title">주문고객</th>
+                                            <td class="info-desc1 order-name">조대철</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="info-title">주문처리상태</th>
+                                            <td class="info-desc1 order-state">취소</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div> <!-- end panelOne -->
+                    <div class="panel panel-default panel-desc">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                    <b>주문상품 (총 1개/ 0원)</b>
+                                    <img src="../share/img/arrow-down.png" align=right class="arrow-down2 icon-rotate2">
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="panel-body">
+                                <div class="prd-info">
+                                    <div class="prd-img">
+                                        <a href="#">
+                                            <img src="../share/img/slide.jpg" width="80" height="80">
+                                        </a>
+                                    </div>
+                                    <div class="prd">
+                                        <div id="prd-title">
+                                            <strong class="prd-name" title="상품명">
+                                                <a href="#">펫클럽 벨버드 토일렛/애견토일렛/강아지화장실/패드</a>
+                                            </strong>
+                                        </div>
+                                        <ul class="prd-li">
+                                            <li style="list-style: none">
+                                                <span class="prd-price" title="판매가">
+                                                    <strong>6,900</strong>원
+                                                </span>
+                                                <span class="prd-count" title="수량">
+                                                    <strong>1</strong>개
+                                                </span>
+                                                <br>
+                                                <span class="prd-deli">
+                                                    <span>[조건]/기본배송</span>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="prd-foot" title="합계">
+                                        <span id="prd-total">합계</span>
+                                        <span class="pt-right">
+                                            <span id="prd-tal-pri">
+                                                6,900
+                                            </span>원
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end panelTwo -->
+                    <div class="panel panel-default panel-desc">
+                        <div class="panel-heading" role="tab" id="headingThree">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                    <b>결제 정보</b>
+                                    <img src="../share/img/arrow-down.png" align=right class="arrow-down3 icon-rotate3">
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                            <div class="panel-body">
+                                <table class="order-info">
+                                    <tbody>
+                                        <tr>
+                                            <th class="info-title">결제수단</th>
+                                            <td class="info-desc1 payment-method">신용카드</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="info-title">총 결제금액</th>
+                                            <td class="info-desc2 price-all">5,400원</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="info-title">총 주문금액</th>
+                                            <td class="info-desc2 price-order">0원</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="info-title">총 할인금액</th>
+                                            <td class="info-desc2 price-disc">0원</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div> <!-- end panelThree -->
+                    <div class="panel panel-default panel-desc">
+                        <div class="panel-heading" role="tab" id="headingFour">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                    <b>최종 결제 정보</b>
+                                    <img src="../share/img/arrow-down.png" align=right class="arrow-down4 icon-rotate4">
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                            <div class="panel-body">
+                                <table class="order-info">
+                                    <tbody>
+                                        <tr>
+                                            <th class="info-title">총 결제금액</th>
+                                            <td class="info-desc2 price-all">0원</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="info-title">상품구매금액</th>
+                                            <td class="info-desc2 price-good">0원</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="info-title">배송비</th>
+                                            <td class="info-desc2 price-delivery">0원</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="info-title">결제예정금액</th>
+                                            <td class="info-desc2 price-pre">0원</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div> <!-- end panelFour -->
+                    <div class="panel panel-default panel-desc">
+                        <div class="panel-heading" role="tab" id="headingFive">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                                    <b>배송지 정보</b>
+                                    <img src="../share/img/arrow-down.png" align=right class="arrow-down5 icon-rotate5">
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                            <div class="panel-body">
+                                <table class="order-info">
+                                    <tbody>
+                                        <tr>
+                                            <th class="info-title">받는사람</th>
+                                            <td class="info-desc1 price-all">조대철</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="info-title">우편번호</th>
+                                            <td class="info-desc1 price-good">05218</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="info-title">주소</th>
+                                            <td class="info-desc1 price-delivery">서울특별시 행복구 존버동 8282-5959 이젠아파트 3층 302호</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="info-title">일반전화</th>
+                                            <td class="info-desc1 price-pre">02-777-5959</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="info-title">휴대전화</th>
+                                            <td class="info-desc1 price-pre">010-8282-2-5959</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="info-title">배송메시지</th>
+                                            <td class="info-desc1 price-pre">부재시 경비실로!</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div> <!-- end panelFive -->
+                    <div class="panel panel-default panel-desc">
+                        <div class="panel-heading" role="tab" id="headingSix">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                                    <b>환불 정보</b>
+                                    <img src="../share/img/arrow-down.png" align=right class="arrow-down6 icon-rotate6">
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+                            <div class="panel-body">
+                                <table class="order-info">
+                                    <thead>
+                                        <tr>
+                                            <th class="refund-title">취소 상품</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th class="info-title">상품정보</th>
+                                            <th class="info-title">수량</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="goods-info">
+                                                <p class="prd-name">펫클럽 알파독 칼슘 덴탈껌간식/강아지간식/치석제거</p>
+                                                <p class="prd-option">[옵션: 알파독칼슘밀크덴탈껌]</p>
+                                            </td>
+                                            <td class="goods-qty">1</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="info-title">환불일자<br>(처리상태)</th>
+                                            <td class="refund-date">2020-03-19 10:26:35<br>(환불완료)</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="info-title">환불금액</th>
+                                            <td class="refund-price">상품금액 2,900+2,500(배송비) = 합계 : <b class="price-all">5,400원</b></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="info-title">환불수단</th>
+                                            <td class="price-pre">신용카드</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div> <!-- end panelSix -->
+                </div>
+            </div> <!-- end container -->
+        </div> <!-- end content -->
+        <div class="footer">
+            <!-- 하단 네비게이션 고정-->
+            <!--- 소개 4인방 링크 -->
+            <hr />
+            <div class="etc">
+                <a href="../etc/page_info1.html">회사소개</a>
+                <a href="../etc/page_info2.html">이용약관</a>
+                <a href="../etc/page_info3.html">개인정보취급방침</a>
+                <a href="../etc/page_info4.html">이용안내</a>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-xs-6 etc">
+                    <h5><b>상담센터</b></h5>
+                    <p style="font-size: 15px; font-weight:bold;">070-123-4567</p>
+                    <p style="font-size: 12px"> 운영시간 : 10:00 - 18:00<br />주말, 공휴일은 후뮤입니다.</p>
+                </div>
+                <div class="col-xs-6 etc">
+                    <h5><b>입금계좌안내</b></h5>
+                    <br />
+                    <p>하나 355-342432-23445<br>예금주 : (주)뽀삐뽀삐</p>
+                </div>
+            </div>
+            <address class="clearfix">
+                <p>상점명: (주)뽀삐뽀삐 대표 : 아무개
+                    <br>주소 : 서울특별시 행복구 존버동 8282-5959 102호 - 물류팀<br>
+                    사업자등록번호 : 123-86-43567<br>
+                    통신판매업신고 : 제2020-서울서초-0082호<br>
+                    개인정보관리책임 : 아무개 <br>
+                    <br />
+                    COPYRIGHT&copy; (주)뽀삐뽀삐 ALL RIGHTS RESERVED
+                    <br />
+                    <i>DESIGN BY EZEN-team4</i>
+                </p>
+            </address>
+            <div class="navbar" id="navbarback">
+                <ul class="btmbar-nav clearfix navbar-fixed-bottom">
+                    <hr />
+                    <a href="../community/photo_rv.html">
+                        <span class="glyphicon glyphicon-comment">
+                            <p>커뮤니티</p>
+                        </span>
+                    </a>
+                    <a href="../myInfo/order_list.html">
+                        <span class="glyphicon glyphicon-list-alt">
+                            <p>주문조회</p>
+                        </span>
+                    </a>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-search">
+                            <p>&nbsp;검색&nbsp;</p>
+                        </span>
+                    </a>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-th-large">
+                            <p>카테고리</p>
+                        </span>
+                    </a>
+                    <a href="../myinfo/myinfo.html">
+                        <span class="glyphicon glyphicon-user">
+                            <p>MY정보</p>
+                        </span>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Javascript -->
+    <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="../share/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $(".collapse").collapse({ toggle: false })
+    });
+    $(function() {
+        $("#headingOne").on('click', function() {
+            $(".arrow-down1").toggleClass("rotate1");
+        });
+    });
+
+    $(function() {
+        $("#headingTwo").on('click', function() {
+            $(".arrow-down2").toggleClass("rotate2");
+        });
+    });
+
+    $(function() {
+        $("#headingThree").on('click', function() {
+            $(".arrow-down3").toggleClass("rotate3");
+        });
+    });
+
+    $(function() {
+        $("#headingFour").on('click', function() {
+            $(".arrow-down4").toggleClass("rotate4");
+        });
+    });
+
+    $(function() {
+        $("#headingFive").on('click', function() {
+            $(".arrow-down5").toggleClass("rotate5");
+        });
+    });
+
+    $(function() {
+        $("#headingSix").on('click', function() {
+            $(".arrow-down6").toggleClass("rotate6");
+        });
+    });
+    </script>
+</body>
+
+</html>
