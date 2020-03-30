@@ -27,6 +27,15 @@
         <script type="text/javascript" src="assets/js/ie10.js"></script>
         <![endif]-->
     <style type="text/css">
+    .rotate1 {
+        -webkit-transform: rotate(180deg);
+
+    }
+
+    .icon-rotate1 {
+        -webkit-transition-duration: 1s;
+    }
+
     .col-xs-6 {
         padding: 0;
         margin-top: 20px;
@@ -95,7 +104,10 @@
         padding-left: 5px;
     }
 
-    .word {
+    .word a {
+        padding: 0;
+        margin: 0;
+        color: #000;
         float: left;
         white-space: nowrap;
         overflow: hidden;
@@ -106,6 +118,10 @@
     .word>b {
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+
+    .word-btn {
+        padding-left: 120px;
     }
 
     .cart-img {
@@ -196,6 +212,11 @@
     .pay a {
         text-decoration: none;
     }
+
+    button {
+        background: #fff;
+        border: 1px solid #777;
+    }
     </style>
 </head>
 
@@ -262,7 +283,8 @@
                     <div role="tabpanel" class="tab-pane active fade in" id="page1">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">장바구니 상품</a></h4>
+                                <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">장바구니 상품
+                                        <img src="../share/img/arrow-down.png" align=right class="arrow-down1 icon-rotate1"></a></h4>
                             </div>
                             <div id="collapseOne" class="panel-collapse collapse in">
                                 <div class="panel-header clearfix">
@@ -272,21 +294,23 @@
                                     <div class="mycart">
                                         <div class="mygoods clearfix">
                                             <span class="chkbox"><input type="checkbox" class="cart" value="check"></span>
-                                            <a href="#"><img src="../share/img/4_M.jpg" class="cart-img"></a>
+                                            <a href="../gallery/goods.html"><img src="../share/img/4_M.jpg" class="cart-img"></a>
                                             <div class="word">
-                                                <b>펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식</b><br>
+                                                <b><a href="../gallery/goods.html">펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식</a></b><br>
                                                 <small>배송:2500원[조건]/기본배송</small><br>
                                                 <small><span>적</span>40원</small><br>
                                                 <b>3,500원</b>
                                                 <br><br>
-                                                <button class="count">
-                                                    <img src="../share/img/마이너스.png">
-                                                </button>
-                                                <input type="number" class="count-label">
-                                                <button class="count">
-                                                    <img src="../share/img/플러스.png">
-                                                </button>
-                                                <button type="button">변경</button>
+                                                <div class="word-btn">
+                                                    <button class="count">
+                                                        <img src="../share/img/마이너스.png">
+                                                    </button>
+                                                    <input type="number" class="count-label">
+                                                    <button class="count">
+                                                        <img src="../share/img/플러스.png">
+                                                    </button>
+                                                    <button type="button">변경</button>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="selectbtn">
@@ -295,7 +319,7 @@
                                             </div>
                                             <button type="button">삭제</button>
                                             <button type="button">관심상품</button>
-                                            <a href="orderform.html"><button type="button" class="btn right-btn">주문하기</button></a>
+                                            <button type="button" class="btn right-btn" onclick="location.href='orderform.html'">주문하기</button>
                                         </div>
                                     </div>
                                     <div class="panel-header clearfix">
@@ -330,22 +354,19 @@
                             </tbody>
                         </table>
                         <div class="pay">
-                            <a href="orderform.html">
-                                <button class="btn btn-inverse">
-                                    선택상품주문
-                                </button>
-                            </a>
-                            <a href="orderform.html">
-                                <button class="btn">
-                                    전체상품주문
-                                </button>
-                            </a>
+                            <button class="btn btn-inverse" onclick="location.href='orderform.html'">
+                                선택상품주문
+                            </button>
+                            <button class="btn" onclick="location.href='orderform.html'">
+                                전체상품주문
+                            </button>
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="page2">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">장바구니 상품</a></h4>
+                                <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">장바구니 상품
+                                        <img src="../share/img/arrow-down.png" align=right class="arrow-down1 icon-rotate1"></a></h4>
                             </div>
                             <div id="collapseTwo" class="panel-collapse collapse in">
                                 <div class="panel-header clearfix">
@@ -357,19 +378,21 @@
                                             <span class="chkbox"><input type="checkbox" class="cart" value="check"></span>
                                             <a href="#"><img src="../share/img/4_M.jpg" class="cart-img"></a>
                                             <div class="word">
-                                                <b>펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식</b><br>
+                                                <b><a href="../gallery/goods.html">펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식</a></b><br>
                                                 <small>배송:2500원[조건]/기본배송</small><br>
                                                 <small><span>적</span>40원</small><br>
                                                 <b>3,500원</b>
                                                 <br><br>
-                                                <button class="count">
-                                                    <img src="../share/img/마이너스.png">
-                                                </button>
-                                                <input type="number" class="count-label">
-                                                <button class="count">
-                                                    <img src="../share/img/플러스.png">
-                                                </button>
-                                                <button type="button">변경</button>
+                                                <div class="word-btn">
+                                                    <button class="count">
+                                                        <img src="../share/img/마이너스.png">
+                                                    </button>
+                                                    <input type="number" class="count-label">
+                                                    <button class="count">
+                                                        <img src="../share/img/플러스.png">
+                                                    </button>
+                                                    <button type="button">변경</button>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="selectbtn">
@@ -378,7 +401,7 @@
                                             </div>
                                             <button type="button">삭제</button>
                                             <button type="button">관심상품</button>
-                                            <a href="orderform.html"><button type="button" class="btn right-btn">주문하기</button></a>
+                                            <button type="button" class="btn right-btn" onclick="location.href='orderform.html'">주문하기</button>
                                         </div>
                                     </div>
                                     <div class="panel-header clearfix">
@@ -413,16 +436,12 @@
                             </tbody>
                         </table>
                         <div class="pay">
-                            <a href="orderform.html">
-                                <button class="btn btn-inverse">
-                                    선택상품주문
-                                </button>
-                            </a>
-                            <a href="orderform.html">
-                                <button class="btn">
-                                    전체상품주문
-                                </button>
-                            </a>
+                            <button class="btn btn-inverse" onclick="location.href='orderform.html'">
+                                선택상품주문
+                            </button>
+                            <button class="btn" onclick="location.href='orderform.html'">
+                                전체상품주문
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -498,6 +517,13 @@
     <!-- Javascript -->
     <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
     <script src="../share/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $(".panel-heading").on('click', function() {
+            $(".arrow-down1").toggleClass("rotate1");
+        });
+    });
+    </script>
 </body>
 
 </html>
