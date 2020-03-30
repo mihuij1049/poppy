@@ -41,7 +41,7 @@
         margin-top: 20px;
     }
 
-    .content {
+    .content .container {
         width: 96%;
         margin: auto;
     }
@@ -270,11 +270,12 @@
         </div>
         <div class="content">
             <!-- 여기에 작성 -->
+            <div class="page-title clearfix">
+                <h4><b>
+                        <a href="#" onclick="history.back(); return false;"><i class="glyphicon glyphicon-chevron-left"></i></a>장바구니
+                    </b></h4>
+            </div>
             <div class="container">
-                <div class="page-title clearfix">
-                    <a href="#" onclick="history.back(); return false;"><img src="../share/img/back.jpg"></a>
-                    <h4><b>장바구니</b></h4>
-                </div>
                 <!-- 탭 버튼 구성 -->
                 <ul class="nav nav-tabs" id="mytab">
                     <li class="active col-xs-6 etc"><a href="#page1" data-toggle="tab">국내배송상품</a></li>

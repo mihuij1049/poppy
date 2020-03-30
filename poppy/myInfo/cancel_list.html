@@ -39,27 +39,6 @@
         z-index: 104;
     }
 
-    .page-title {
-        vertical-align: middle;
-        width: auto;
-        margin-bottom: 20px;
-    }
-
-    .page-title a {
-        display: block;
-        float: left;
-        padding-top: 5px;
-        position: relative;
-        z-index: 10;
-    }
-
-    .page-title h4 {
-        padding-top: 5px;
-        margin-top: 5px;
-        text-align: center;
-        padding-right: 35px;
-    }
-
     .nav-tabs>li>a {
         margin-right: 0;
         font-weight: bold;
@@ -301,8 +280,9 @@
         <div class="content">
             <!-- 취소/교환/반품내역 -->
             <div class="page-title clearfix">
-                <a href="#" onclick="history.back(); return false;"><img src="../share/img/img_back.jpg"></a>
-                <h4><b>취소/교환/반품내역</b></h4>
+                <h4><b>
+                        <a href="#" onclick="history.back(); return false;"><i class="glyphicon glyphicon-chevron-left"></i></a>취소/교환/반품내역
+                    </b></h4>
             </div>
             <div class="container">
                 <ul class="nav nav-tabs">
@@ -333,11 +313,11 @@
                             2020-03-18
                         </span>
                         <span class="number" title="주문번호">
-                            <a href="../gallery/goods.html">
+                            <a href="order_desc.html">
                                 (20200318-0000195)
                             </a>
                         </span>
-                        <a href="../gallery/goods.html" class="btn-detail"><span id="GGuc">&#62;</span>상세보기</a>
+                        <a href="order_desc.html" class="btn-detail"><span id="GGuc">&#62;</span>상세보기</a>
                     </button>
                 </div>
                 <div class="prd-info">
