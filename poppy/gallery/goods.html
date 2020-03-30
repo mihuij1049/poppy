@@ -97,7 +97,7 @@
         padding: 0;
         color: #000;
         font-size: 15px;
-        background-color: #fff;
+        text background-color: #fff;
         border: 1px solid #ddd;
     }
 
@@ -199,6 +199,22 @@
         width: 25%;
     }
 
+    .prd-photo .photo {
+        padding-top: 20px;
+    }
+
+    .prd-photo h5 {
+        width: 25%;
+        padding-left: 15px;
+        display: inline-block;
+    }
+
+    .prd-photo .star {
+        float: right;
+        display: inline-block;
+        width: 75%;
+    }
+
     .starR {
         background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
         background-size: auto 100%;
@@ -211,6 +227,10 @@
 
     .starR.on {
         background-position: 0 0;
+    }
+
+    .prd-photo .photo-add {
+        margin-top: 10px;
     }
     </style>
 </head>
@@ -267,7 +287,7 @@
                 <a href="#" onclick="history.back();return false;">
                     <img src="../share/img/back.jpg">
                 </a>
-                <h4><b>상품상세정보</b></h>
+                <h4><b>상품상세정보</b></h4>
             </div>
             <div class="product">
                 <div class="prd-img">
@@ -334,7 +354,7 @@
                             <img src="../share/img/goods_footer.jpg" id="prd-foot">
                         </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane fade active in" id="page2">
+                    <div role="tabpanel" class="tab-pane fade" id="page2">
                         <div class="prd-Info">
                             <table>
                                 <tbody>
@@ -374,7 +394,7 @@
                                         <th><span>배송비</span></th>
                                         <td>
                                             <sapn>
-                                                <b>2,500원<b>(30,000원 이상 구매시 무료)
+                                                <b>2,500원</b>(30,000원 이상 구매시 무료)
                                             </sapn>
                                         </td>
                                     </tr>
@@ -382,9 +402,10 @@
                             </table>
                         </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane fade active in" id="page3">
+                    <div role="tabpanel" class="tab-pane fade" id="page3">
                         <div class="prd-photo">
                             <div class="photo">
+                                <h5>별점</h5>
                                 <div class="star">
                                     <span class="starR on">별1</span>
                                     <span class="starR">별2</span>
@@ -392,61 +413,120 @@
                                     <span class="starR">별4</span>
                                     <span class="starR">별5</span>
                                 </div>
-                                <div class="photo-add"></div>
+                                <div class="photo-add">
+                                    <h5>사진첨부</h5>
+                                    <div class="photo-files">
+                                        <ul>
+                                            <li>
+                                                <div class="afile">
+                                                    <input type="file" name="file1" style="display: none;">
+                                                    <input type="text" name="file2" id="file2" style="display: none;">
+                                                    <img src="../share/img/photo-file.PNG" border="0" onclick="document.all.file1.click(); document.all.file2.value=document.all.file1.value">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="afile">
+                                                    <input type="file" name="photo-file">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="afile">
+                                                    <input type="file" name="photo-file">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="afile">
+                                                    <input type="file" name="photo-file">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="afile">
+                                                    <input type="file" name="photo-file">
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="write"></div>
-                            <div class="photo-button"></div>
+                            <div class="write">
+                                <textarea placeholder="리뷰를 남겨주세요."></textarea>
+                            </div>
+                            <div class="photo-button">
+                                <button type="button" id="review-submit">리뷰 등록</button>
+                                <button type="button" id="review-all">리뷰 전체보기</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="footer">
-                <!-- 하단 네비게이션 고정-->
-                <!--- 소개 4인방 링크 -->
-                <hr />
-                <div class="etc">
-                    <a href="#">회사소개</a>
-                    <a href="#">이용약관</a>
-                    <a href="#">개인정보취급방침</a>
-                    <a href="../etc/page_info4.html">이용안내</a>
-                </div>
-                <hr />
-                <div class="row">
-                    <div class="col-xs-6 etc">
-                        <h5><b>상담센터</b></h5>
-                        <p style="font-size: 18px; font-weight:bold;">070-123-4567</p>
-                        <p style="font-size: 12px"> 운영시간 : 오전 10:00 - 오후 6:00<br />주말, 공휴일은 후뮤입니다.</p>
-                    </div>
-                    <div class="col-xs-6 etc">
-                        <h5><b>입금계좌안내</b></h5>
-                        <br />
-                        <p>하나 355-342432-23445<br>예금주 : (주)뽀삐뽀삐</p>
-                    </div>
-                </div>
-                <address class="clearfix">
-                    <p>상점명: (주)뽀삐뽀삐 대표 : 아무개
-                        <br>주소 : 서울특별시 행복구 존버동 8282-5959 102호 - 물류팀<br>
-                        사업자등록번호 : 123-86-43567<br>
-                        통신판매업신고 : 제2020-서울서초-0082호<br>
-                        개인정보관리책임 : 아무개 <br>
-                        <br />
-                        COPYRIGHT&copy; (주)뽀삐뽀삐 ALL RIGHTS RESERVED
-                        <br />
-                        <i>DESIGN BY EZEN-team4</i>
-                    </p>
-                </address>
-            </div>
         </div>
-        <!-- Javascript -->
-        <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
-        <script src="../share/assets/js/bootstrap.min.js"></script>
-        <script type="text/javascript">
+        <div class="footer">
+            <!-- 하단 네비게이션 고정-->
+            <!--- 소개 4인방 링크 -->
+            <hr />
+            <div class="etc">
+                <a href="#">회사소개</a>
+                <a href="#">이용약관</a>
+                <a href="#">개인정보취급방침</a>
+                <a href="../etc/page_info4.html">이용안내</a>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-xs-6 etc">
+                    <h5><b>상담센터</b></h5>
+                    <p style="font-size: 18px; font-weight:bold;">070-123-4567</p>
+                    <p style="font-size: 12px"> 운영시간 : 오전 10:00 - 오후 6:00<br />주말, 공휴일은 후뮤입니다.</p>
+                </div>
+                <div class="col-xs-6 etc">
+                    <h5><b>입금계좌안내</b></h5>
+                    <br />
+                    <p>하나 355-342432-23445<br>예금주 : (주)뽀삐뽀삐</p>
+                </div>
+            </div>
+            <address class="clearfix">
+                <p>상점명: (주)뽀삐뽀삐 대표 : 아무개
+                    <br>주소 : 서울특별시 행복구 존버동 8282-5959 102호 - 물류팀<br>
+                    사업자등록번호 : 123-86-43567<br>
+                    통신판매업신고 : 제2020-서울서초-0082호<br>
+                    개인정보관리책임 : 아무개 <br>
+                    <br />
+                    COPYRIGHT&copy; (주)뽀삐뽀삐 ALL RIGHTS RESERVED
+                    <br />
+                    <i>DESIGN BY EZEN-team4</i>
+                </p>
+            </address>
+        </div>
+    </div>
+    <!-- Javascript -->
+    <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="../share/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
         $('.star span').click(function() {
             $(this).parent().children('span').removeClass('on');
             $(this).addClass('on').prevAll('span').addClass('on');
             return false;
         });
-        </script>
+
+        var counter = 1;
+        $(".btnUp").click(function(e) {
+            counter++;
+            $(document).ready(function() {
+                $("#count").val(counter);
+            });
+        });
+        $(".btnDown").click(function(e) {
+            if (counter < 2) {
+                alert("최소 주문수량은 1개 입니다.");
+                return;
+            }
+            counter--;
+            $(document).ready(function() {
+                $("#count").val(counter);
+            });
+        });
+    });
+    </script>
 </body>
 
 </html>
