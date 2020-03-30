@@ -20,8 +20,8 @@ body {
 
 .header hr {
     margin: 0;
-    color: #FF8F83;
-    border-top: 1px solid;
+    background-color: #fff;
+    border-bottom: 1px solid #FF8F83;
 }
 
 .header a {
@@ -218,6 +218,10 @@ address>p {
 
 
 /** 하단 네비 바 시작 */
+
+.navbar {
+    z-index: 10000;
+}
 
 .navbar span {
     display: inline-block;

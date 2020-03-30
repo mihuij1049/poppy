@@ -141,6 +141,10 @@
     padding: 5px;
 }
 
+.pr_box hr {
+    margin: 5px;
+}
+
 .review h3 {
     text-align: center;
     color: #ff8f83;

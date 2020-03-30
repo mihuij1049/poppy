@@ -14,8 +14,7 @@
     <!-- 나눔고딕 웹 폰트 적용 -->
     <link rel="stylesheet" type="text/css" href="../share/assets/css/nanumfont.css" />
     <link rel="stylesheet" type="text/css" href="../share/tmpl.css" />
-    <style type="text/css">
-    </style>
+    <link rel="stylesheet" type="text/css" href="../share/searchtab.css" />
 </head>
 
 <body>
@@ -85,11 +84,13 @@
                 <br />
                 <br />
                 <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
+                <!-- 검색탭 영역 시작!-->
+                <div class="searchtab">
+                    <div class="body">
+                        <input type="searchtab" name="searctab">
+                    </div>
+                </div>
+                <!-- 검색탭 영역 끝!-->
             </div>
         </div>
         <div class="footer">
@@ -140,7 +141,7 @@
                             <p>주문조회</p>
                         </span>
                     </a>
-                    <a href="#">
+                    <a class="click-searchtab">
                         <span class="glyphicon glyphicon-search">
                             <p>&nbsp;검색&nbsp;</p>
                         </span>
@@ -162,7 +163,13 @@
     <!-- Javascript -->
     <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
     <script src="../share/assets/js/bootstrap.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script type="text/javascript">
+    /** 검색탭 영역 시작! */
+    $(".click-searchtab").click(function() {
+        $(".container").toggleClass("searchtab-open");
+    })
+    /** 검색탭 영역 끝! */
     </script>
 </body>
 
