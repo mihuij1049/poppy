@@ -130,34 +130,37 @@
     }
 
     /** 주문상세보기 시작 */
-    .view .btn {
+    .view {
         font-size: 12px;
         width: 100%;
-        height: 40px;
+        height: 42px;
         margin-top: 15px;
         background-color: #FF6261;
-        border: 1px solid #FF6261;
+        border-left: 1px solid #FF6261;
+        border-right: 1px solid #FF6261;
         text-align: left;
+        padding: 10px 15px;
     }
 
-    .view .btn span {
+    .view span {
         color: #fff;
+        vertical-align: -2px;
     }
 
-    .view .btn .date {
+    .view .date {
         font-weight: bold;
     }
 
-    .view .btn .number a {
+    .view .number a {
         color: #fff;
     }
 
-    .view .btn .btn-detail {
+    .view .btn-detail {
         color: #fff;
         float: right;
     }
 
-    .view .btn #GGuc {
+    .view #GGuc {
         font-weight: bold;
         float: right;
     }
@@ -323,17 +326,15 @@
                     <button type="button" class="btn">조회</button>
                 </div>
                 <div class="view">
-                    <button class="btn">
-                        <span class="date" title="주문일자">
-                            2020-03-18
-                        </span>
-                        <span class="number" title="주문번호">
-                            <a href="order_desc.html">
-                                (20200318-0000195)
-                            </a>
-                        </span>
-                        <a href="order_desc.html" class="btn-detail"><span id="GGuc">&#62;</span>상세보기</a>
-                    </button>
+                    <span class="date" title="주문일자">
+                        2020-03-18
+                    </span>
+                    <span class="number" title="주문번호">
+                        <a href="order_desc.html">
+                            (20200318-0000195)
+                        </a>
+                    </span>
+                    <a href="order_desc.html" class="btn-detail"><span id="GGuc">&#62;</span>상세보기</a>
                 </div>
                 <div class="prd-info">
                     <div class="prd-box">

@@ -98,6 +98,11 @@
         padding-left: 10px;
     }
 
+    #all_check {
+        width: 66.64px;
+        height: 24px;
+    }
+
     .mygoods a {
         display: block;
         float: left;
@@ -148,6 +153,13 @@
 
     .count-label {
         width: 20%;
+        height: 28px;
+        vertical-align: -1px;
+    }
+
+    .word-btn #change {
+        vertical-align: -1px;
+        height: 28px;
     }
 
     .summ {
@@ -312,13 +324,15 @@
                                                     <button class="count" id="plus">
                                                         <img src="../share/img/플러스.png">
                                                     </button>
-                                                    <button type="button">변경</button>
+                                                    <button type="button" id="change">변경</button>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="selectbtn">
                                             <div class=summ>
-                                                <b class="summ">합계:6000원</b>
+                                                <b class="summ">합계:</b>
+                                                <b class="summ" id="price"></b>
+                                                <b class="summ">원</b>
                                             </div>
                                             <button type="button">삭제</button>
                                             <button type="button">관심상품</button>
@@ -329,7 +343,9 @@
                                         [기본배송]
                                     </div>
                                     <div class="selectbtn">
-                                        <button type="button">전체선택</button>
+                                        <button>
+                                            <input type="checkbox" name="all_check" value="전체선택" id="all_check">전체선택
+                                        </button>
                                         <button type="button">선택삭제</button>
                                     </div>
                                     <div class="cart-move">
@@ -341,18 +357,21 @@
                         <table class="table table-responsive">
                             <thead>
                                 <tr>
-                                    <th>결제예정금액</th>
-                                    <th></th>
+                                    <td>결제예정금액</td>
+                                    <td class="td-mny"><span id="table-sum">
+                                        </span>원</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td class="td-title">총 상품금액</td>
-                                    <td class="td-mny">3,500원</td>
+                                    <td class="td-mny"><span id="table-price">
+                                        </span>원</td>
                                 </tr>
                                 <tr>
                                     <td class="td-title">총 배송비</td>
-                                    <td class="td-mny">2,500원</td>
+                                    <td class="td-mny"><span id="table-delivery">
+                                        </span>원</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -387,20 +406,22 @@
                                                 <b>3,500원</b>
                                                 <br><br>
                                                 <div class="word-btn">
-                                                    <button class="count" id="minus">
+                                                    <button class="count" id="minus2">
                                                         <img src="../share/img/마이너스.png">
                                                     </button>
-                                                    <input type="number" class="count-label" value="1" id="count-label">
-                                                    <button class="count" id="plus">
+                                                    <input type="number" class="count-label" value="1" id="count-label2">
+                                                    <button class="count" id="plus2">
                                                         <img src="../share/img/플러스.png">
                                                     </button>
-                                                    <button type="button">변경</button>
+                                                    <button type="button" id="change2">변경</button>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="selectbtn">
                                             <div class=summ>
-                                                <b class="summ">합계:6000원</b>
+                                                <b class="summ">합계:</b>
+                                                <b class="summ" id="price2"></b>
+                                                <b class="summ">원</b>
                                             </div>
                                             <button type="button">삭제</button>
                                             <button type="button">관심상품</button>
@@ -411,7 +432,9 @@
                                         [기본배송]
                                     </div>
                                     <div class="selectbtn">
-                                        <button type="button">전체선택</button>
+                                        <button>
+                                            <input type="checkbox" value="전체선택" id="all_check">전체선택
+                                        </button>
                                         <button type="button">선택삭제</button>
                                     </div>
                                     <div class="cart-move">
@@ -423,18 +446,21 @@
                         <table class="table table-responsive">
                             <thead>
                                 <tr>
-                                    <th>결제예정금액</th>
-                                    <th></th>
+                                    <td>결제예정금액</td>
+                                    <td class="td-mny"><span id="table-sum2">
+                                        </span>원</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td class="td-title">총 상품금액</td>
-                                    <td class="td-mny">3,500원</td>
+                                    <td class="td-mny"><span id="table-price2">
+                                        </span>원</td>
                                 </tr>
                                 <tr>
                                     <td class="td-title">총 배송비</td>
-                                    <td class="td-mny">2,500원</td>
+                                    <td class="td-mny"><span id="table-delivery2">
+                                        </span>원</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -526,23 +552,115 @@
             $(".arrow-down1").toggleClass("rotate1");
         });
 
+        function checkAll() {
+            if ($("#all_check").is(':checked')) {
+                $("input[name=all_check]").prop("checked", true);
+            } else {
+                $("input[name=all_check]").prop("checked", false);
+            }
+        }
+
         var counter = 1;
+        var counter2 = 1;
+        var price = 3500;
+        var delivery = 2500;
+
+        $("#price").html(counter * price);
+        $("#table-price").html(counter * price);
+        $("#table-sum").html((counter * price) + delivery);
+        $("#table-delivery").html(delivery);
+        $("#price2").html(counter2 * price);
+        $("#table-price2").html(counter2 * price);
+        $("#table-sum2").html((counter2 * price) + delivery);
+        $("#table-delivery2").html(delivery);
 
         $("#plus").click(function(e) {
             counter++;
-            $(document).ready(function() {
-                $("#count-label").val(counter);
-            });
+            if (counter * price >= 30000) {
+                delivery = 0;
+            }
+            $("#count-label").val(counter);
+            $("#price").html(counter * price);
+            $("#table-price").html(counter * price);
+            $("#table-sum").html((counter * price) + delivery);
+            $("#table-delivery").html(delivery);
         });
+        $("#plus2").click(function(e) {
+            counter2++;
+            if (counter2 * price >= 30000) {
+                delivery = 0;
+            }
+            $("#count-label2").val(counter2);
+            $("#price2").html(counter2 * price);
+            $("#table-price2").html(counter2 * price);
+            $("#table-sum2").html((counter2 * price) + delivery);
+            $("#table-delivery2").html(delivery);
+        });
+
         $("#minus").click(function(e) {
             if (counter < 2) {
                 alert("구매수량은 1미만으로 불가합니다.");
                 return;
             }
             counter--;
-            $(document).ready(function() {
-                $("#count-label").val(counter);
-            });
+            if (counter * price >= 30000) {
+                delivery = 0;
+            }
+            if (counter * price < 30000) {
+                delivery = 2500;
+            }
+            $("#count-label").val(counter);
+            $("#price").html(counter * price);
+            $("#table-price").html(counter * price);
+            $("#table-sum").html((counter * price) + delivery);
+            $("#table-delivery").html(delivery);
+        });
+        $("#minus2").click(function(e) {
+            if (counter2 < 2) {
+                alert("구매수량은 1미만으로 불가합니다.");
+                return;
+            }
+            counter2--;
+            if (counter2 * price >= 30000) {
+                delivery = 0;
+            }
+            if (counter2 * price < 30000) {
+                delivery = 2500;
+            }
+            $("#count-label2").val(counter2);
+            $("#price2").html(counter2 * price);
+            $("#table-price2").html(counter2 * price);
+            $("#table-sum2").html((counter2 * price) + delivery);
+            $("#table-delivery2").html(delivery);
+        });
+
+        $("#change").click(function(e) {
+            counter = $("#count-label").val();
+            $("#count-label").val(counter);
+            if (counter * price >= 30000) {
+                delivery = 0;
+            }
+            if (counter * price < 30000) {
+                delivery = 2500;
+            }
+            $("#price").html(counter * price);
+            $("#table-price").html(counter * price);
+            $("#table-sum").html((counter * price) + delivery);
+            $("#table-delivery").html(delivery);
+        });
+        $("#change2").click(function(e) {
+            counter2 = $("#count-label2").val();
+            $("#count-label2").val(counter2);
+            if (counter2 * price >= 30000) {
+                delivery = 0;
+            }
+            if (counter2 * price < 30000) {
+                delivery = 2500;
+            }
+            $("#price2").html(counter2 * price);
+            $("#table-price2").html(counter2 * price);
+            $("#table-sum2").html((counter2 * price) + delivery);
+            $("#table-delivery2").html(delivery);
         });
     });
     </script>
