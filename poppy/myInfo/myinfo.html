@@ -33,61 +33,32 @@
         width: 96%;
         margin: auto;
         line-height: 35px;
-        margin-bottom: 15px;
+        margin-bottom: 25px;
         margin-top: 20px;
+        padding: 5px 15px;
+        font-size: 16px;
+        letter-spacing: 2px;
     }
 
-    .myorderinfo {
+    .mydelivery {
         border: 2px solid #ffc7c1;
         border-radius: 2px;
         width: 96%;
         margin: auto;
-        line-height: 35px;
-        margin-bottom: 15px;
-
-    }
-
-    .mydelivery {
-        border: 2px solid #ff8f83;
-        border-radius: 2px;
-        width: 96%;
-        margin: auto;
-        line-height: 35px;
-        margin-bottom: 15px;
+        line-height: 40px;
+        margin-bottom: 25px;
+        padding: 10px 0px;
+        font-size: 16px;
     }
 
     .mydelivery-current {
         text-align: center;
         float: left;
         width: 25%;
-        border-right: 1px solid #ffc7c1;
+        border-right: 1px solid #ff8f83;
     }
 
     .mydelivery-current:nth-child(4) {
-        border-right: none;
-    }
-
-    .od-state {
-        width: 96%;
-        margin: auto;
-        text-align: center;
-        border: 2px solid #ffc7c1;
-        border-radius: 2px;
-        line-height: 35px;
-    }
-
-    .od-state-title {
-        float: left;
-        width: 18%;
-    }
-
-    .od-state-qty {
-        float: left;
-        width: 15.33%;
-        border-right: 1px solid #ffc7c1;
-    }
-
-    .od-state-qty:nth-child(6) {
         border-right: none;
     }
 
@@ -204,21 +175,12 @@
                     <a href="#" onclick="history.back(); return false;"><img src="../share/img/img_back.jpg"></a>
                     <h4><b>내정보</b></h4>
                 </div>
-                <div class="mypoint">&nbsp;적립금 : <b>3,000</b></div>
-                <div class="myorderinfo">&nbsp;나의 주문처리 현황 (최근 3개월 기준)</div>
+                <div class="mypoint">&nbsp;적립금 :&nbsp; <b>3,000</b>원</div>
                 <div class="mydelivery clearfix">
                     <div class="mydelivery-current">입금전<br><span>0</span></div>
                     <div class="mydelivery-current">배송준비중<br><span>0</span></div>
                     <div class="mydelivery-current">배송중<br><span>0</span></div>
                     <div class="mydelivery-current">배송완료<br><span>0</span></div>
-                </div>
-                <div class="od-state clearfix">
-                    <div class="od-state-title">-취소 :</div>
-                    <div class="od-state-qty"><span>0</span></div>
-                    <div class="od-state-title">-교환 :</div>
-                    <div class="od-state-qty"><span>0</span></div>
-                    <div class="od-state-title">-반품 :</div>
-                    <div class="od-state-qty"><span>0</span></div>
                 </div>
                 <div class="myinfo-list clearfix">
                     <div id="list-alt" class="myinfo-list-item"><a href="order_list.html"><span class="glyphicon glyphicon-list-alt"></span></span><br>주문조회 </a></div>
