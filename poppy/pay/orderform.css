@@ -487,8 +487,8 @@
  }
 
  .pay-info .pay-content {
-
      margin: 5px;
+     margin-bottom: 15px;
  }
 
  .pay-info .pay-con1 {
@@ -555,16 +555,21 @@
  }
 
  .pay-info .pay-price h4 {
-     font-size: 16px;
-     font-weight: bold;
-     width: 50%;
      margin: 0;
-
+     width: 50%;
+     font-size: 17px;
+     font-weight: bold;
+     padding-left: 5px;
  }
 
  .pay-info .pay-price strong {
      width: 50%;
+     font-size: 17px;
+     font-weight: bold;
      text-align: right;
+     padding-right: 5px;
+     position: relative;
+     bottom: 3px;
  }
 
  /** // 결제 정보 끝*/
