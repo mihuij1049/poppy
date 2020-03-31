@@ -92,12 +92,12 @@
     }
 
     .prd-option button {
-        width: 28px;
+        width: 30px;
         height: 28px;
         padding: 0;
         color: #000;
         font-size: 15px;
-        text background-color: #fff;
+        background-color: #fff;
         border: 1px solid #ddd;
     }
 
@@ -108,7 +108,7 @@
         font-size: 12px;
         display: inline-block;
         border: 1px solid #ddd;
-        border-radius: 2px;
+        border-radius: 4px;
     }
 
     .total-price {
@@ -124,6 +124,7 @@
     }
 
     .prd-action .action-btn {
+        text-align: center;
         width: 100%;
     }
 
@@ -149,6 +150,7 @@
 
     .prd-action #action-orderform {
         color: #fff;
+        border: 1px #ff8f83;
         background-color: #ff8f83;
     }
 
@@ -200,11 +202,12 @@
     }
 
     .prd-photo .photo {
-        padding-top: 20px;
+        padding-top: 10px;
     }
 
     .prd-photo h5 {
         width: 25%;
+        font-size: 12px;
         padding-left: 15px;
         display: inline-block;
     }
@@ -231,6 +234,202 @@
 
     .prd-photo .photo-add {
         margin-top: 10px;
+        height: 53px;
+    }
+
+    .photo-add li {
+        width: 20%;
+        height: 100%;
+        list-style: none;
+        float: right;
+    }
+
+    .photo-add h5 {
+        font-size: 12px;
+        width: 25%;
+        padding-left: 15px;
+        display: inline-block;
+    }
+
+    .photo-add .photo-files {
+        float: right;
+        width: 75%;
+    }
+
+    .clearfix:before {
+        content: "";
+        display: block;
+        float: none;
+        clear: both;
+    }
+
+    .photo-add img {
+        width: 100%;
+        image-rendering: pixelated;
+    }
+
+    .photo {
+        margin-bottom: 10px;
+    }
+
+    .write {
+        padding-top: 10px;
+        border-top: 1px solid #ddd;
+    }
+
+    .write textarea {
+        resize: none;
+        width: 100%;
+        height: 100px;
+        padding: 10px;
+        font-size: 14px;
+        background-color: #f5f5f5;
+        border: 1px solid #ffc7c1;
+    }
+
+    .photo-button {
+        text-align: right;
+        padding-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .photo-button #review-submit {
+        width: 70px;
+        height: 34px;
+        font-size: 12px;
+        color: #fff;
+        border: 1px solid #ff8f83;
+        background-color: #ff8f83;
+    }
+
+    .photo-button #review-all {
+        width: 90px;
+        height: 34px;
+        font-size: 12px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+    }
+
+    .prd-review {
+        border-top: 1px solid #000;
+        padding-top: 10px;
+    }
+
+    .prd-review .list1 {
+        width: 100%;
+    }
+
+    .prd-review .writer {
+        color: #777;
+        font-size: 11px;
+        display: inline-block;
+    }
+
+    .prd-review .writeDate {
+        color: #777;
+        font-size: 11px;
+        display: inline-block;
+    }
+
+    .prd-review .review-content {
+        font-size: 12px;
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+
+    dl {
+        margin-bottom: 15px;
+    }
+
+    .box-left .editt {
+        font-size: 11px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .box-left .txt {
+        color: #777;
+        font-size: 11px;
+        margin-top: 12px;
+    }
+
+    .txt span a {
+        font-size: 11px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .prd-review .list2 {
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .paging {
+        text-align: center;
+    }
+
+    .paging .disabled {
+        position: relative;
+        right: 10px;
+    }
+
+    .paging .paging-right {
+        position: relative;
+        left: 10px;
+    }
+
+    .pagination>.active>span {
+        background-color: #ffc7c1;
+        border-color: #ffc7c1;
+    }
+
+    .pagination>.disabled>a {
+        height: 30px;
+        color: #ffc7c1;
+        padding-top: 6px;
+    }
+
+    .pagination>li>a {
+        height: 30px;
+        color: #ffc7c1;
+        padding-top: 6px;
+    }
+
+    .qna-btn {
+        text-align: center;
+        padding-top: 15px;
+    }
+
+
+    .qna-btn #qna-write {
+        display: inline;
+        width: 47%;
+        height: 36px;
+        font-size: 12px;
+        color: #fff;
+        background: #ff8f83;
+        border: 1px #ff8f83;
+        text-align: center;
+        padding: 8px;
+    }
+
+    .qna-btn #qna-all {
+        width: 47%;
+        height: 36px;
+        font-size: 12px;
+        color: #000;
+        background: #fff;
+        border: 1px solid #ddd;
+        margin-left: 2%;
+    }
+
+    .prd-qna .nodata {
+        height: 50px;
+        text-align: center;
+        padding-top: 20px;
     }
     </style>
 </head>
@@ -426,34 +625,119 @@
                                             </li>
                                             <li>
                                                 <div class="afile">
-                                                    <input type="file" name="photo-file">
+                                                    <input type="file" name="file2" style="display: none;">
+                                                    <input type="text" name="file2" id="file2" style="display: none;">
+                                                    <img src="../share/img/photo-file.PNG" border="0" onclick="document.all.file1.click(); document.all.file2.value=document.all.file1.value">
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="afile">
-                                                    <input type="file" name="photo-file">
+                                                    <input type="file" name="file2" style="display: none;">
+                                                    <input type="text" name="file2" id="file2" style="display: none;">
+                                                    <img src="../share/img/photo-file.PNG" border="0" onclick="document.all.file1.click(); document.all.file2.value=document.all.file1.value">
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="afile">
-                                                    <input type="file" name="photo-file">
+                                                    <input type="file" name="file2" style="display: none;">
+                                                    <input type="text" name="file2" id="file2" style="display: none;">
+                                                    <img src="../share/img/photo-file.PNG" border="0" onclick="document.all.file1.click(); document.all.file2.value=document.all.file1.value">
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="afile">
-                                                    <input type="file" name="photo-file">
+                                                    <input type="file" name="file2" style="display: none;">
+                                                    <input type="text" name="file2" id="file2" style="display: none;">
+                                                    <img src="../share/img/photo-file.PNG" border="0" onclick="document.all.file1.click(); document.all.file2.value=document.all.file1.value">
                                                 </div>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            <div class="write">
+                            <div class="write  clearfix">
                                 <textarea placeholder="리뷰를 남겨주세요."></textarea>
                             </div>
                             <div class="photo-button">
                                 <button type="button" id="review-submit">리뷰 등록</button>
-                                <button type="button" id="review-all">리뷰 전체보기</button>
+                                <button type="button" id="review-all" onclick="location.href='../community/photo_rv.html'">리뷰 전체보기</button>
+                            </div>
+                            <div class="prd-review">
+                                <ul class="review-list">
+                                    <li class="list1">
+                                        <div class="box">
+                                            <dl class="box-left">
+                                                <dd class="star"></dd>
+                                                <dd class="writer">조**</dd>
+                                                <dd class="writeDate">2020/03/31</dd>
+                                                <dd class="review-content">
+                                                    대용량 간식 찾고있었는데 너무 좋아요<br>
+                                                    크기도 적당해서잘먹네요 <br>많이 파세요많이 파세요많이 파세요많이 파세요많이 파세요<br>
+                                                </dd>
+                                                <dd class="edit">
+                                                    <a href="#" class="editt">수정</a>
+                                                </dd>
+                                                <dd class="txt">
+                                                    <span>
+                                                        리뷰가 도움이 되었나요?
+                                                        <a href="#">추천</a>
+                                                        <span class="voteCount">
+                                                            3
+                                                        </span>
+                                                    </span>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </li>
+                                    <li class="list2">
+                                        <div class="box">
+                                            <dl class="box-left">
+                                                <dd class="star"></dd>
+                                                <dd class="writer">(주)펫클럽</dd>
+                                                <dd class="writeDate">2020/03/31</dd>
+                                                <dd class="review-content">
+                                                    구매해주셔서 정말 감사합니다~!<br>
+                                                    리뉴얼 한만큼 더 열심히 더 좋은 상품으로 보답하겠습니다.<br>
+                                                    오늘 하루 행복한 하루되세요~!<br>
+                                                    리뷰 정말 감사합니다!
+                                                </dd>
+                                                <dd class="edit">
+                                                    <a href="#" class="editt">수정</a>
+                                                </dd>
+                                                <dd class="txt">
+                                                    <span>
+                                                        리뷰가 도움이 되었나요?
+                                                        <a href="#">추천</a>
+                                                        <span class="voteCount">
+                                                            3
+                                                        </span>
+                                                    </span>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="paging">
+                                <ul class="pagination pagination-sm">
+                                    <li class="disabled"><a href="#">&laquo;</a></li>
+                                    <!-- 활성화 버튼은 아래의 구조로 구성하시면 됩니다. sr-only는 스크린리더 전용입니다. -->
+                                    <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
+                                    <li class="paging-right"><a href="#">&raquo;</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="page4">
+                        <div class="prd-qna">
+                            <div class="qna-head">
+                                <p class="qna-btn">
+                                    <button type="button" onclick="location.href='../community/qna_wri.html'" id="qna-write">상품문의하기</button>
+                                    <button type="button" onclick="location.href='../community/qna.html'" id="qna-all">모두보기</button>
+                                </p>
+                                <p class="nodata">
+                                    게시물이 없습니다
+                                </p>
                             </div>
                         </div>
                     </div>
