@@ -57,6 +57,11 @@
     margin: 0px;
 }
 
+.panel-body a {
+    display: block;
+    color: #333;
+}
+
 .panel-default {
     margin: auto;
     width: 96%;
