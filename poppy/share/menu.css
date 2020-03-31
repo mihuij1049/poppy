@@ -1,0 +1,135 @@
+.modal-content {
+    width: 90%;
+    margin: auto;
+}
+
+/** 헤더영역 */
+
+.modal-header {
+    min-height: 110px;
+    padding: 10px;
+    border-bottom: none;
+}
+
+.modal-header img {
+    width: 180px;
+    float: left;
+}
+
+.modal-header button {
+    float: right;
+    margin: 5px;
+}
+
+.buttons {
+    margin-top: 50px;
+}
+
+/** 바디영역 */
+.kategorie {
+    border: 1px solid #ff6261;
+    background: #ff6261;
+    padding: 15px;
+    padding-left: 25px;
+    color: white;
+    text-align: left;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.modal-body {
+    min-height: 200px;
+    padding: 0px;
+}
+
+.panel-heading {
+    padding-left: 25px;
+}
+
+.panel-heading a {
+    color: #333;
+}
+
+.panel-heading h4 {
+    text-align: left;
+
+    margin: 0px;
+}
+
+.panel-default {
+    margin: auto;
+    width: 96%;
+}
+
+.panel-body {
+    text-align: left;
+    padding-left: 40px;
+}
+
+.accordion-toggle a {
+    display: block;
+
+}
+
+.panel-default>.panel-heading {
+    border: 1px solid #ffc7c1;
+
+}
+
+/** 아코디언 클릭이벤트시 화살표 transform 회전 */
+.rotate1 {
+    -webkit-transform: rotate(180deg);
+
+}
+
+.icon-rotate1 {
+    -webkit-transition-duration: 0.5s;
+}
+
+.rotate2 {
+    -webkit-transform: rotate(180deg);
+
+}
+
+.icon-rotate2 {
+    -webkit-transition-duration: 0.5s;
+}
+
+.rotate3 {
+    -webkit-transform: rotate(180deg);
+
+}
+
+.icon-rotate3 {
+    -webkit-transition-duration: 0.5s;
+}
+
+.rotate4 {
+    -webkit-transform: rotate(180deg);
+
+}
+
+.icon-rotate4 {
+    -webkit-transition-duration: 0.5s;
+}
+
+.rotate5 {
+    -webkit-transform: rotate(180deg);
+
+}
+
+.icon-rotate5 {
+    -webkit-transition-duration: 0.5s;
+}
+
+.box1 {}
+
+.box2 {
+    color: red;
+}
+
+/** 하단영역 */
+.modal-footer {
+    border-top: none;
+}
