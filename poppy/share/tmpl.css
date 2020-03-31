@@ -20,8 +20,13 @@ body {
 
 .header hr {
     margin: 0;
+    padding: 0;
+}
+
+.header hr:last-child {
     background-color: #fff;
     border-bottom: 1px solid #FF8F83;
+    border-top: none;
 }
 
 .header a {
