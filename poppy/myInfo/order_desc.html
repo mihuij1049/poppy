@@ -14,6 +14,8 @@
     <!-- 나눔고딕 웹 폰트 적용 -->
     <link rel="stylesheet" type="text/css" href="../share/assets/css/nanumfont.css" />
     <link rel="stylesheet" type="text/css" href="../share/tmpl.css" />
+    <link rel="stylesheet" type="text/css" href="../share/searchtab.css" />
+    <link rel="stylesheet" type="text/css" href="../share/menu.css" />
     <style type="text/css">
     /** 아코디언 클릭이벤트시 화살표 transform 회전 */
     .rotate1 {
@@ -151,6 +153,19 @@
 
     .refund-date {
         width: 70%;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .refund-price {
+        width: 70%;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .price-pre {
+        width: 70%;
+        text-align: center;
     }
 
     .panel-heading a {
@@ -158,6 +173,10 @@
         text-decoration: none;
         width: 100%;
         padding: 10px 15px;
+    }
+
+    .panel-order {
+        padding: 15px;
     }
 
     /** 아코디언 클릭이벤트시 화살표 transform 회전 끝 */
@@ -215,7 +234,7 @@
             <div class="container">
                 <div class="page-title clearfix">
                     <h4><b>
-                            <a href="#" onclick="history.back(); return false;"><i class="glyphicon glyphicon-chevron-left"></i></a>주문상세조회
+                            <a href="#" onclick="history.back(); return false;"><i class="glyphicon glyphicon-chevron-left"></i></a>주문내역 상세조회
                         </b></h4>
                 </div>
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -229,7 +248,7 @@
                             </h4>
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                            <div class="panel-body">
+                            <div class="panel-body panel-order">
                                 <div class="order-info clearfix">
                                     <div class="info-title pull-left">주문번호</div>
                                     <div class="info-desc1 order-num pull-left">20200318-0000195</div>
@@ -253,7 +272,7 @@
                             </h4>
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                            <div class="panel-body">
+                            <div class="panel-body panel-order">
                                 <div class="prd-info clearfix">
                                     <div class="prd-img pull-left">
                                         <a href="#">
@@ -302,7 +321,7 @@
                             </h4>
                         </div>
                         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                            <div class="panel-body">
+                            <div class="panel-body panel-order">
                                 <div class="order-info">
                                     <div class="info-title pull-left">결제수단</div>
                                     <div class="info-desc2 payment-method pull-left">신용카드</div>
@@ -326,7 +345,7 @@
                             </h4>
                         </div>
                         <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                            <div class="panel-body">
+                            <div class="panel-body panel-order">
                                 <div class="order-info clearfix">
                                     <div class="info-title pull-left">총 결제금액</div>
                                     <div class="info-desc2 price-all pull-left">0원</div>
@@ -335,7 +354,7 @@
                                     <div class="info-title pull-left">배송비</div>
                                     <div class="info-desc2 price-delivery pull-left">0원</div>
                                     <div class="info-title pull-left">결제예정금액</div>
-                                    <div class="info-desc2 price-pre pull-left">0원</div>
+                                    <div class="info-desc2 pull-left">0원</div>
                                 </div>
                             </div>
                         </div>
@@ -350,7 +369,7 @@
                             </h4>
                         </div>
                         <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-                            <div class="panel-body">
+                            <div class="panel-body panel-order">
                                 <div class="order-info clearfix">
                                     <div class="info-title pull-left">받는사람</div>
                                     <div class="info-desc1 price-all pull-left">조대철</div>
@@ -359,11 +378,11 @@
                                     <div class="info-title pull-left">주소</div>
                                     <div class="info-desc1 price-delivery pull-left">서울특별시 행복구 존버동 8282-5959 이젠아파트 3층 302호</div>
                                     <div class="info-title pull-left">일반전화</div>
-                                    <div class="info-desc1 price-pre pull-left">02-777-5959</div>
+                                    <div class="info-desc1 pull-left">02-777-5959</div>
                                     <div class="info-title pull-left">휴대전화</div>
-                                    <div class="info-desc1 price-pre pull-left">010-8282-2-5959</div>
+                                    <div class="info-desc1 pull-left">010-8282-2-5959</div>
                                     <div class="info-title pull-left">배송메시지</div>
-                                    <div class="info-desc1 price-pre pull-left">부재시 경비실로!</div>
+                                    <div class="info-desc1 pull-left">부재시 경비실로!</div>
                                 </div>
                             </div>
                         </div>
@@ -378,7 +397,7 @@
                             </h4>
                         </div>
                         <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
-                            <div class="panel-body">
+                            <div class="panel-body panel-order">
                                 <div class="order-info clreafix">
                                     <div class="refund-title" colspan="2">취소 상품</div>
                                     <div class="info-title1 pull-left">상품정보</div>
@@ -388,11 +407,11 @@
                                         <p class="prd-option">[옵션: 알파독칼슘밀크덴탈껌]</p>
                                     </div>
                                     <div class="goods-qty pull-left">1</div>
-                                    <div class="info-title pull-left">환불일자<br>(처리상태)</div>
+                                    <div class="info-title pull-left">&nbsp;환불일자<br>(처리상태)</div>
                                     <div class="refund-date pull-left">2020-03-19 10:26:35<br><b>(환불완료)</b></div>
-                                    <div class="info-title pull-left">환불금액</div>
+                                    <div class="info-title pull-left">&nbsp;환불금액</div>
                                     <div class="refund-price pull-left">상품금액 2,900+2,500(배송비) = 합계 : <b class="price-all">5,400원</b></div>
-                                    <div class="info-title pull-left">환불수단</div>
+                                    <div class="info-title pull-left">&nbsp;환불수단</div>
                                     <div class="price-pre pull-left">신용카드</div>
                                     </tr>
                                     </tbody>
@@ -451,16 +470,201 @@
                                 <p>주문조회</p>
                             </span>
                         </a>
-                        <a href="#">
+                        <a class="click-searchtab">
                             <span class="glyphicon glyphicon-search">
                                 <p>&nbsp;검색&nbsp;</p>
                             </span>
                         </a>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-th-large">
+                        <!-- .modal -->
+                        <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <!-- .modal-dialog -->
+                            <div class="modal-dialog" style="width: 96%; margin: auto;">
+                                <!-- .modal-content -->
+                                <div class="modal-content clearfix">
+                                    <!-- 제목 -->
+                                    <div class="modal-header">
+                                        <div class="logo">
+                                            <img alt="사진" src="../share/img/logojpg.jpg">
+                                        </div>
+                                        <!-- 닫기버튼 -->
+                                        <div class="button-close">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                &times;
+                                            </button>
+                                        </div>
+                                        <div class="buttons">
+                                            <button type="button" onclick="location.href='member/agree_0.html'" class="btn btn1">회원가입</button>
+                                            <button type="button" onclick="location.href='member/login.html'" class="btn btn1">로그인</button>
+                                        </div>
+                                    </div>
+                                    <!-- 내용 -->
+                                    <div class="modal-body">
+                                        <div class="kategorie">
+                                            <b>카테고리</b>
+                                        </div>
+                                        <div class="ka-list">
+                                            <a href="#">
+                                        </div>
+                                        <!-- 아코디언 영역 -->
+                                        <div class="panel-group clearfix" id="accordion">
+                                            <!-- 항목(1) -->
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading ">
+                                                    <a class="accordion-toggle clearfix" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                                        <h4 class="panel-title"> 신상품
+                                                        </h4>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <!-- 항목(2) -->
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                                        <h4 class="panel-title"> 인기상품 </h4>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <!-- 항목(3) -->
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <a class="accordion-toggle" id="accordion-toggle1" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                                        <h4 class="panel-title1"> 푸드<img src="../share/img/arrow-down.png" align=right class="arrow-down1 icon-rotate1"></h4>
+                                                    </a>
+                                                </div>
+                                                <div id="collapseThree" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        <a href="#">- 사료 </a>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <a href="#">- 간식 </a>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <a href="#">- 영양제 </a>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <a href="#">- 우유 </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 항목(4) -->
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <a class="accordion-toggle" id="accordion-toggle2" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                                        <h4 class="panel-title2"> 의류<img src="../share/img/arrow-down.png" align=right class="arrow-down2 icon-rotate2">
+                                                        </h4>
+                                                    </a>
+                                                </div>
+                                                <div id="collapseFour" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        <a href="#">- 아우터 </a>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <a href="#">- 티셔츠 </a>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <a href="#">- 신발 </a>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <a href="#">- 양말 </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 항목(5) -->
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <a class="accordion-toggle" id="accordion-toggle3" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                                                        <h4 class="panel-title3"> 외출용품<img src="../share/img/arrow-down.png" align=right class="arrow-down3 icon-rotate3">
+                                                        </h4>
+                                                    </a>
+                                                </div>
+                                                <div id="collapseFive" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        <a href="#">- 목줄/리드줄 </a>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <a href="#">- 자동줄 </a>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <a href="#">- 이동장 </a>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <a href="#">- 배변봉투 </a>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <a href="#">- 휴대용식기 </a>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <a href="#">- 입마개 </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 항목(6) -->
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <a class="accordion-toggle" id="accordion-toggle4" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+                                                        <h4 class="panel-title4"> 대형견코너<img src="../share/img/arrow-down.png" align=right class="arrow-down4 icon-rotate4">
+                                                        </h4>
+                                                    </a>
+                                                </div>
+                                                <div id="collapseSix" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        <a href="#">- 사료,간식 </a>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <a href="#">- 목줄/리드줄 </a>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <a href="#">- 의류 </a>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <a href="#">- 장난감 </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 항목(7) -->
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <a class="accordion-toggle" id="accordion-toggle5" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
+                                                        <h4 class="panel-title5"> 홈/리빙<img src="../share/img/arrow-down.png" align=right class="arrow-down5 icon-rotate5">
+                                                        </h4>
+                                                    </a>
+                                                </div>
+                                                <div id="collapseSeven" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        <a href="#">- 방석 </a>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <a href="#">- 계단 </a>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <a href="#">- 식기 </a>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <a href="#">- 하우스/울타리 </a>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <a href="#">- 매트 </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--// 아코디언 영역 -->
+                                    </div>
+                                    <!-- 하단 -->
+                                    <div class="modal-footer">
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+                        <!-- 화면 영역 -->
+                        <a data-toggle="modal" href="#myModal"><span class="glyphicon glyphicon-th-large">
                                 <p>카테고리</p>
                             </span>
                         </a>
+                        <!-- 화면 영역 끝 -->
                         <a href="../myinfo/myinfo.html">
                             <span class="glyphicon glyphicon-user">
                                 <p>MY정보</p>
@@ -474,44 +678,87 @@
         <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
         <script src="../share/assets/js/bootstrap.min.js"></script>
         <script type="text/javascript">
+        /** 검색탭 영역 시작! */
         $(function() {
             $(".collapse").collapse({ toggle: false })
+        });
+
+        $(".click-searchtab").click(function() {
+            $(".container").toggleClass("searchtab-open");
+        });
+        $(function() {
+            $("#accordion-toggle1").on('click', function() {
+                $(".arrow-down1").toggleClass("rotate1");
+                $(".panel-title1").toggleClass("box1, box2");
+            });
+        });
+
+        $(function() {
+            $("#accordion-toggle2").on('click', function() {
+                $(".arrow-down2").toggleClass("rotate2");
+                $(".panel-title2").toggleClass("box1, box2");
+            });
+        });
+
+        $(function() {
+            $("#accordion-toggle3").on('click', function() {
+                $(".arrow-down3").toggleClass("rotate3");
+                $(".panel-title3").toggleClass("box1, box2");
+            });
+        });
+
+        $(function() {
+            $("#accordion-toggle4").on('click', function() {
+                $(".arrow-down4").toggleClass("rotate4");
+                $(".panel-title4").toggleClass("box1, box2");
+            });
+        });
+        $(function() {
+            $("#accordion-toggle5").on('click', function() {
+                $(".arrow-down5").toggleClass("rotate5");
+                $(".panel-title5").toggleClass("box1, box2");
+            });
         });
         $(function() {
             $("#headingOne").on('click', function() {
                 $(".arrow-down1").toggleClass("rotate1");
+
             });
         });
 
         $(function() {
             $("#headingTwo").on('click', function() {
                 $(".arrow-down2").toggleClass("rotate2");
+
             });
         });
 
         $(function() {
             $("#headingThree").on('click', function() {
                 $(".arrow-down3").toggleClass("rotate3");
+
             });
         });
 
         $(function() {
             $("#headingFour").on('click', function() {
                 $(".arrow-down4").toggleClass("rotate4");
+
             });
         });
-
         $(function() {
             $("#headingFive").on('click', function() {
                 $(".arrow-down5").toggleClass("rotate5");
+
             });
         });
-
         $(function() {
             $("#headingSix").on('click', function() {
                 $(".arrow-down6").toggleClass("rotate6");
+
             });
         });
+        /** 검색탭 영역 끝! */
         </script>
 </body>
 
