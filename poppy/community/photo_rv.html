@@ -14,6 +14,8 @@
     <!-- 나눔고딕 웹 폰트 적용 -->
     <link rel="stylesheet" type="text/css" href="../share/assets/css/nanumfont.css" />
     <link rel="stylesheet" type="text/css" href="../share/tmpl.css" />
+    <link rel="stylesheet" type="text/css" href="../share/searchtab.css" />
+    <link rel="stylesheet" type="text/css" href="../share/menu.css" />
     <style type="text/css">
     /** 전체 마진 */
     .container_1 {
@@ -21,7 +23,7 @@
     }
 
     /** 전체 마진 끝 */
-    .search_tab_bg {
+    .pr_search_tab_bg {
         width: 100%;
         background-color: #ffc7c1;
         padding-top: 10px;
@@ -30,14 +32,14 @@
         color: #fff;
     }
 
-    .search_tab {
+    .pr_search_tab {
         width: 95%;
         padding: 10px;
         padding-left: 15px;
         margin: auto;
     }
 
-    .search_tab_bg .btn {
+    .pr_search_tab_bg .btn {
         background-color: #ff8f83;
         color: #fff;
         font-size: 13px;
@@ -45,18 +47,18 @@
 
     }
 
-    .search_tab .cate_ip {
+    .pr_search_tab .cate_ip {
         float: left;
         width: 35%;
     }
 
-    .search_tab .cate_ip .icon_size {
+    .pr_search_tab .cate_ip .icon_size {
         font-size: 15px;
         position: relative;
         top: 3px;
     }
 
-    .search_tab input {
+    .pr_search_tab input {
         height: 23px;
         width: 40%;
     }
@@ -106,13 +108,21 @@
     }
 
     .pr_box .btn {
-        padding-right: 50px;
-        padding-bottom: 20px;
+        margin: 0;
+        padding: 5px 50px 22px 10px;
         width: 50px;
         height: 25px;
         font-size: 12px;
-        background-color: #ffc7c1;
-        color: #fff;
+        font-color: #fff;
+    }
+
+    .pr_box .btn-inverse {
+        margin: 0;
+        padding: 5px 50px 22px 10px;
+        width: 50px;
+        height: 25px;
+        font-size: 12px;
+        font-color: #ff8f83;
     }
 
     .container_1 hr {
@@ -192,8 +202,8 @@
                 <div class="container_1">
                     <div>
                         <form>
-                            <div class="search_tab_bg">
-                                <div class="search_tab">
+                            <div class="pr_search_tab_bg">
+                                <div class="pr_search_tab">
                                     <div class="cate_ip">
                                         <i class="glyphicon glyphicon-th-list icon_size"></i> 카테고리선택
                                     </div>
@@ -231,9 +241,9 @@
                                             글내용<br>
                                             글내용<br>
                                             <br>
-                                            <a href="#" class="btn"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</a>
                                         </div>
                                     </a>
+                                    <button class="btn btn-inverse" id="heart_bt"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</button>
                                 </div>
                             </div>
                         </div>
@@ -251,9 +261,9 @@
                                             글내용<br>
                                             글내용<br>
                                             <br>
-                                            <a href="#" class="btn"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</a>
                                         </div>
                                     </a>
+                                    <button class="btn btn-inverse" id="heart_bt"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</button>
                                 </div>
                             </div>
                         </div>
@@ -271,9 +281,9 @@
                                             글내용<br>
                                             글내용<br>
                                             <br>
-                                            <a href="#" class="btn"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</a>
                                         </div>
                                     </a>
+                                    <button class="btn btn-inverse" id="heart_bt"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</button>
                                 </div>
                             </div>
                         </div>
@@ -291,9 +301,9 @@
                                             글내용<br>
                                             글내용<br>
                                             <br>
-                                            <a href="#" class="btn"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</a>
                                         </div>
                                     </a>
+                                    <button class="btn btn-inverse" id="heart_bt"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</button>
                                 </div>
                             </div>
                         </div>
@@ -384,6 +394,11 @@
     <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
     <script src="../share/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
+    $(function() {
+        $('#heart_bt').click(function() {
+            $(this).toggleClass("btn, btn-inverse");
+        });
+    });
     </script>
 </body>
 

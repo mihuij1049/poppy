@@ -83,21 +83,12 @@
 
     .btns {
         text-align: center;
+        margin: auto;
         margin: 15px 0 50px 0;
-
     }
 
-    .btn1 {
+    .btn {
         width: 45%;
-        margin-right: 10px;
-        background-color: #FF8F83;
-        border-color: #FF8F83;
-    }
-
-    .btn2 {
-        width: 45%;
-        background-color: #ffc7c1;
-        border-color: #FF8F83;
 
     }
     </style>
@@ -302,10 +293,10 @@
                     </div>
                     <div class="btns">
                         <a href="myinfo_wri.html">
-                            <button type="button" class="btn btn-primary btn1">다음</button>
+                            <button type="button" class="btn">다음</button>
                         </a>
                         <a href="#" onclick="history.back();">
-                            <button type=" button" class="btn btn-default btn2">취소</button>
+                            <button type=" button" class="btn btn-inverse">취소</button>
                         </a>
                     </div>
                 </div>
@@ -383,6 +374,11 @@
     <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
     <script src="../share/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
+    if (!$("input:checked[Name='checkbox']").is(":checked")) {
+        alert("에러문구를 표시");
+        $("#checkbox").focus();
+        return;
+    }
     </script>
 </body>
 

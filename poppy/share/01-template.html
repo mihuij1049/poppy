@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="../share/assets/css/nanumfont.css" />
     <link rel="stylesheet" type="text/css" href="../share/tmpl.css" />
     <link rel="stylesheet" type="text/css" href="../share/searchtab.css" />
+    <link rel="stylesheet" type="text/css" href="../share/categorytab.css" />
     <link rel="stylesheet" type="text/css" href="../share/menu.css" />
 </head>
 
@@ -100,9 +101,24 @@
                     </div>
                 </div>
                 <!-- 검색탭 영역 끝!-->
+                <!-- 카테고리탭 영역 시작!-->
+                <div class="categorytab">
+                    <div class="body">
+                        <form>
+                            <div class="category_tab">
+                                <a href="../community/notice.html">공지사항</a>
+                                <hr />
+                                <a href="../community/photo_rv.html">포토리뷰</a>
+                                <hr />
+                                <a href="../community/qna.html">Q & A</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- 카테고리탭 영역 끝!-->
             </div>
         </div>
-        <div class="footer">
+        <div class=" footer">
             <!-- 하단 네비게이션 고정-->
             <!--- 소개 4인방 링크 -->
             <hr />
@@ -140,7 +156,7 @@
             <div class="navbar" id="navbarback">
                 <ul class="btmbar-nav clearfix navbar-fixed-bottom">
                     <hr />
-                    <a href="../community/photo_rv.html">
+                    <a class="click-categorytab">
                         <span class="glyphicon glyphicon-comment">
                             <p>커뮤니티</p>
                         </span>
@@ -357,15 +373,17 @@
     <!-- Javascript -->
     <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
     <script src="../share/assets/js/bootstrap.min.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script type="text/javascript">
     /** 검색탭 영역 시작! */
     $(".click-searchtab").click(function() {
         $(".container").toggleClass("searchtab-open");
     })
-    $(function() {
-        $(".collapse").collapse({ toggle: false })
-    });
+    /** 검색탭 영역 끝! */
+    /** 카테고리탭 영역 시작! */
+    $(".click-categorytab").click(function() {
+        $(".container").toggleClass("categorytab-open");
+    })
+    /** 카테고리탭 영역 끝! */
     $(function() {
         $("#accordion-toggle1").on('click', function() {
             $(".arrow-down1").toggleClass("rotate1");
@@ -399,7 +417,6 @@
             $(".panel-title5").toggleClass("box1, box2");
         });
     });
-    /** 검색탭 영역 끝! */
     </script>
 </body>
 
