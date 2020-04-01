@@ -17,7 +17,6 @@
  /** 아코디언 클릭이벤트시 화살표 transform 회전 */
  .rotate1 {
      -webkit-transform: rotate(180deg);
-
  }
 
  .icon-rotate1 {
@@ -160,6 +159,11 @@
      border: 1px solid #FF8F83;
  }
 
+ .side-right #recent-address-list:hover {
+     color: #fff;
+     background-color: #ff6261;
+ }
+
  .form-group {
      text-align: center;
      margin: auto;
@@ -260,7 +264,7 @@
      float: left;
  }
 
- .na-address-body #delivery-zipcode {
+ .na-address-body #zonecode {
      width: auto;
      height: 30px;
      margin-top: 5px;
@@ -273,21 +277,28 @@
      padding-left: 5px;
  }
 
- .zipcode .btn {
+ .na-address-body #address-btn {
      height: 30px;
-     margin-bottom: 4px;
      font-size: 12px;
-     color: #777;
+     color: #FFF;
+     background-color: #FF8F83;
+     border: 1px solid #FF8F83;
+     margin-top: 5px;
+     vertical-align: top;
  }
 
- .na-address-body #delivery-address1 {
+ .na-address-body #address-btn:hover {
+     background-color: #ff6261;
+ }
+
+ .na-address-body #address {
      width: 100%;
      height: 30px;
      margin-top: 8px;
      border: 1px solid #ddd;
  }
 
- .na-address-body #delivery-address2 {
+ .na-address-body #detail-address {
      width: 100%;
      height: 30px;
      margin-top: 10px;
@@ -389,10 +400,34 @@
      color: #000;
  }
 
- .prd-box #prd-del {
+ .cencel-btn {
      margin-right: 15px;
-     width: 24px;
+     height: 30px;
+ }
+
+ .prd-box #prd-del {
+     width: 26px;
      height: 24px;
+     padding: 0;
+     font-size: 24px;
+     text-align: center;
+     background-color: #fff;
+     border: 1px solid #FF8F83;
+ }
+
+ #prd-del span {
+     color: #FF8F83;
+     position: relative;
+     bottom: 6px;
+ }
+
+ .modal {
+     padding-top: 150px;
+ }
+
+ .modal-footer .btn {
+     color: #fff;
+     background-color: #FF8F83;
  }
 
  .prd-box .prd-li {
@@ -448,6 +483,11 @@
      float: right;
      color: #FF8F83;
      border: 1px solid #FF8F83;
+ }
+
+ .discount-re .btn:hover {
+     color: #fff;
+     background-color: #ff6261;
 
  }
 
@@ -748,6 +788,10 @@
      font-weight: bold;
      color: #fff;
      background-color: #FF8F83;
+ }
+
+ .order .btn:hover {
+     background-color: #ff6261;
  }
 
  .order-info {
