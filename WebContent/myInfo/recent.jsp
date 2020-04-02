@@ -122,7 +122,7 @@
                     <h1>장바구니</h1>
                 </span>
                 <span class="badge">
-                    <p>11</p>
+                    <p id="cart-qty">11</p>
                 </span>
             </a>
             <hr>
@@ -180,7 +180,7 @@
                             </div>
                             <div class="btns">
                                 <button type="button" class="btn btn-inverse" id="delete-list-item">삭제</button>
-                                <button type="button" class="btn btn-inverse in-cart">장바구니담기</button>
+                                <button type="button" class="btn btn-inverse in-cart" id="put-cart">장바구니담기</button>
                                 <button type="button" class="btn btn1" id="order">주문하기</button>
                             </div>
                         </div>
@@ -198,7 +198,7 @@
                             </div>
                             <div class="btns">
                                 <button type="button" class="btn btn-inverse" id="delete-list-item">삭제</button>
-                                <button type="button" class="btn btn-inverse in-cart">장바구니담기</button>
+                                <button type="button" class="btn btn-inverse in-cart" id="put-cart">장바구니담기</button>
                                 <button type="button" class="btn btn1" id="order">주문하기</button>
                             </div>
                         </div>
@@ -503,14 +503,31 @@
         });
     });
     /** 검색탭 영역 끝! */
+    
     $(function() {
+    	/** 주문하기 */
         $("#order").click(function(e) {
             location.href = "../pay/orderform.jsp";
-        })
+        });
+    	/** 최근 본 상품에서 삭제 */
         $("#delete-list-item").click(function(e) {
             $("li").remove("#item-list-1");
         });
+    	/** 장바구니 담기 */
+    	var count = $("#cart-qty").text();
+ 	    var put_cart = count;
+    	$("#cart-qty").text(put_cart);
+    	$("#put-cart").click(function(e) {
+    		put_cart++;
+    		if (put_cart==Number(count)+1) {
+    			$("#cart-qty").text(put_cart);
+        		alert("해당 상품을 장바구니에 담았습니다.");
+    		} else {
+    		alert("이미 해당 상품을 장바구니에 담았습니다.");
+    		}
+    	});
     });
+    
     </script>
 </body>
 

@@ -138,10 +138,10 @@
                         </b></h4>
                 </div>
                 <div class="login">
-                    <form method="post">
-                        <p><input type="text" placeholder="&nbsp;아이디"></p>
-                        <p><input type="password" placeholder="&nbsp;비밀번호"></p>
-                        <p><input type="checkbox" value="Y" /> 로그인 상태유지&nbsp;
+                    <form id="login" name="login" method="post">
+                        <p><input type="text" name="user-id" placeholder="&nbsp;아이디"></p>
+                        <p><input type="password" name="user_pw" placeholder="&nbsp;비밀번호"></p>
+                        <p><input type="checkbox" name="login_keep value="Y" /> 로그인 상태유지&nbsp;
                             <span class="glyphicon glyphicon-lock"></span> 보안접속
                         </p>
                         <p><button type="submit" class="login-go btn">로 그 인</button></p>
