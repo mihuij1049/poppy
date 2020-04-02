@@ -2,18 +2,21 @@
     width: 90%;
     margin: auto;
     margin-top: 13px;
+
 }
 
 .modal.in .modal-dialog {
     position: relative;
-    top: 180px;
+    top: 195px;
     transform: translateY(-170px);
+
 }
 
 .modal-header {
+
     min-height: 110px;
     padding: 10px;
-    border-bottom: none;
+    border-bottom: 1px solid #ffc7c1;
 }
 
 .modal-header img {
@@ -28,22 +31,24 @@
 
 .buttons {
     margin-top: 50px;
+
 }
 
 /** 바디영역 */
 .kategorie {
     border: 1px solid #ff6261;
     background: #ff6261;
-    padding: 15px;
+    padding: 10px;
     padding-left: 25px;
     color: white;
     text-align: left;
     width: 100%;
-    margin-top: 5px;
     margin-bottom: 15px;
 }
 
 .modal-body {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
     min-height: 200px;
     padding: 0px;
 
@@ -134,7 +139,9 @@
     -webkit-transition-duration: 0.5s;
 }
 
-.box1 {}
+.box1 {
+    color: black;
+}
 
 .box2 {
     color: red;
