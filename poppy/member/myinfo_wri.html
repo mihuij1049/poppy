@@ -215,7 +215,7 @@
                     </b></h4>
             </div>
             <div class="container">
-                <form class="form-horizontal" name="join_form" id="join_form">
+                <form class="form-horizontal" name="join_form" id="join_form" action="myinfo_wri_ok.html">
                     <div class="id-box join-form">
                         <label for="user_id">
                             아이디<span>＊</span>
@@ -403,36 +403,30 @@
                     alphanumeric: true,
                     minlength: 4
                 },
-
                 // [비밀번호] 필수 + 글자수 길이 제한
                 user_pw: {
                     required: true,
                     minlength: 4
                 },
-
                 // [비밀번호 확인] 필수 + 특정 항목과 일치 (id로 연결)
                 user_pw_re: {
                     required: true,
                     equalTo: "#user_pw"
                 },
-
                 // [이름] 필수
                 user_name: {
                     required: true,
                     kor: true
                 },
-
                 // [연락처] 필수
                 tel: {
                     required: false,
                     phone: true
                 },
-
                 // [이메일] 필수 + 이메일 형식 일치 필요
                 email: {
                     required: true,
                     email: true
-
                 }
             },
             messages: {
@@ -441,36 +435,30 @@
                     alphanumeric: "아이디는 영어, 숫자만 입력 가능 합니다.",
                     minlength: "아이디는 4글자 이상 입력하셔야 합니다.",
                 },
-
                 // [비밀번호] 필수 + 글자수 길이 제한
                 user_pw: {
                     required: "비밀번호를 입력하세요.",
                     minlength: "비밀번호는 4글자 이상 입력하셔야 합니다."
                 },
-
                 // [비밀번호 확인] 필수 + 특정 항목과 일치 (id로 연결)
                 user_pw_re: {
                     required: "비밀번호 확인값을 입력하세요.",
                     equalTo: "비밀번호 확인이 잘못되었습니다."
                 },
-
                 // [이름] 필수
                 user_name: {
                     required: "이름을 입력하세요.",
                     kor: "이름은 한글만 입력 가능합니다."
                 },
-
                 // [연락처] 필수
                 tel: {
                     required: "연락처를 입력하세요.",
                     phone: "연락처 형식이 잘못되었습니다"
                 },
-
                 // [이메일] 필수 + 이메일 형식 일치 필요
                 email: {
                     required: "이메일을 입력하세요.",
                     email: "이메일 형식이 잘못되었습니다"
-
                 }
             }
         });

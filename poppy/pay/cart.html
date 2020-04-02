@@ -29,7 +29,6 @@
     <style type="text/css">
     .rotate1 {
         -webkit-transform: rotate(180deg);
-
     }
 
     .icon-rotate1 {
@@ -98,6 +97,11 @@
         padding-left: 10px;
     }
 
+    .cart-size {
+        width: 17px;
+        height: 17px;
+    }
+
     #all_check {
         width: 66.64px;
         height: 24px;
@@ -127,6 +131,10 @@
         text-overflow: ellipsis;
     }
 
+    .btn {
+        border-color: #ff8f83;
+    }
+
     .word-btn {
         padding-left: 120px;
     }
@@ -154,11 +162,16 @@
     .count-label {
         width: 20%;
         height: 28px;
-        vertical-align: -1px;
+        vertical-align: -0.5px;
     }
 
     .word-btn #change {
-        vertical-align: -1px;
+        vertical-align: -0.5px;
+        height: 28px;
+    }
+
+    .word-btn #change2 {
+        vertical-align: -0.5px;
         height: 28px;
     }
 
@@ -201,6 +214,14 @@
         font-weight: bold;
     }
 
+    .table-header {
+        border-left: 1px solid #ff6261;
+    }
+
+    .table-header2 {
+        border-right: 1px solid #ff6261;
+    }
+
     tr {
         border: 1px solid #ffc7c1;
     }
@@ -230,6 +251,15 @@
     button {
         background: #fff;
         border: 1px solid #777;
+    }
+
+    #myModal {
+        padding-top: 50%;
+    }
+
+    .modal-footer .btn {
+        width: 65px;
+        height: 34px;
     }
     </style>
 </head>
@@ -308,8 +338,8 @@
                                 <div class="panel-body">
                                     <div class="mycart">
                                         <div class="mygoods clearfix">
-                                            <span class="chkbox"><input type="checkbox" class="cart" value="check"></span>
-                                            <a href="../gallery/goods.html"><img src="../share/img/4_M.jpg" class="cart-img"></a>
+                                            <span class="chkbox"><input type="checkbox" class="cart cart-size"></span>
+                                            <a href=" ../gallery/goods.html"> <img src="../share/img/4_M.jpg" class="cart-img"></a>
                                             <div class="word">
                                                 <b><a href="../gallery/goods.html">펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식</a></b><br>
                                                 <small>배송:2500원[조건]/기본배송</small><br>
@@ -334,8 +364,8 @@
                                                 <b class="summ" id="price"></b>
                                                 <b class="summ">원</b>
                                             </div>
-                                            <button type="button">삭제</button>
-                                            <button type="button">관심상품</button>
+                                            <button type="button" id="delete">삭제</button>
+                                            <button type="button" id="like">관심상품</button>
                                             <button type="button" class="btn right-btn" onclick="location.href='orderform.html'">주문하기</button>
                                         </div>
                                     </div>
@@ -343,13 +373,11 @@
                                         [기본배송]
                                     </div>
                                     <div class="selectbtn">
-                                        <button>
-                                            <input type="checkbox" name="all_check" value="전체선택" id="all_check">전체선택
-                                        </button>
-                                        <button type="button">선택삭제</button>
+                                        <button type="button" id="all-check">전체선택</button>
+                                        <button type="button" id="select-delete">선택삭제</button>
                                     </div>
                                     <div class="cart-move">
-                                        <button type="button" class="btn">해외장바구니로 이동</button>
+                                        <button type="button" class="btn" id="cart-move">해외장바구니로 이동</button>
                                     </div>
                                 </div>
                             </div>
@@ -357,8 +385,8 @@
                         <table class="table table-responsive">
                             <thead>
                                 <tr>
-                                    <td>결제예정금액</td>
-                                    <td class="td-mny"><span id="table-sum">
+                                    <td class="table-header">결제예정금액</td>
+                                    <td class="table-header2 td-mny"><span id="table-sum">
                                         </span>원</td>
                                 </tr>
                             </thead>
@@ -397,7 +425,7 @@
                                 <div class="panel-body">
                                     <div class="mycart">
                                         <div class="mygoods clearfix">
-                                            <span class="chkbox"><input type="checkbox" class="cart" value="check"></span>
+                                            <span class="chkbox"><input type="checkbox" class="cart2 cart-size"></span>
                                             <a href="#"><img src="../share/img/4_M.jpg" class="cart-img"></a>
                                             <div class="word">
                                                 <b><a href="../gallery/goods.html">펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식</a></b><br>
@@ -423,8 +451,8 @@
                                                 <b class="summ" id="price2"></b>
                                                 <b class="summ">원</b>
                                             </div>
-                                            <button type="button">삭제</button>
-                                            <button type="button">관심상품</button>
+                                            <button type="button" id="delete2">삭제</button>
+                                            <button type="button" id="like2">관심상품</button>
                                             <button type="button" class="btn right-btn" onclick="location.href='orderform.html'">주문하기</button>
                                         </div>
                                     </div>
@@ -432,13 +460,11 @@
                                         [기본배송]
                                     </div>
                                     <div class="selectbtn">
-                                        <button>
-                                            <input type="checkbox" value="전체선택" id="all_check">전체선택
-                                        </button>
-                                        <button type="button">선택삭제</button>
+                                        <button type="button" id="all-check2">전체선택</button>
+                                        <button type="button" id="select-delete2">선택삭제</button>
                                     </div>
                                     <div class="cart-move">
-                                        <button type="button" class="btn">국내장바구니로 이동</button>
+                                        <button type="button" class="btn" id="cart-move2">국내장바구니로 이동</button>
                                     </div>
                                 </div>
                             </div>
@@ -446,8 +472,8 @@
                         <table class="table table-responsive">
                             <thead>
                                 <tr>
-                                    <td>결제예정금액</td>
-                                    <td class="td-mny"><span id="table-sum2">
+                                    <td class="table-header">결제예정금액</td>
+                                    <td class="table-header2 td-mny"><span id="table-sum2">
                                         </span>원</td>
                                 </tr>
                             </thead>
@@ -472,6 +498,26 @@
                                 전체상품주문
                             </button>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">상품 삭제</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>선택하신 상품을 정말 삭제하시겠습니까?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-dismiss="modal">예</button>
+                        <button type="button" class="btn" data-dismiss="modal">아니오</button>
                     </div>
                 </div>
             </div>
@@ -552,13 +598,23 @@
             $(".arrow-down1").toggleClass("rotate1");
         });
 
-        function checkAll() {
-            if ($("#all_check").is(':checked')) {
-                $("input[name=all_check]").prop("checked", true);
+        $("#all-check").click(function() {
+            var choice = $(".cart").prop("checked");
+            if (!choice) {
+                $(".cart").prop("checked", true);
             } else {
-                $("input[name=all_check]").prop("checked", false);
+                $(".cart").prop("checked", false);
             }
-        }
+        });
+
+        $("#all-check2").click(function() {
+            var choice2 = $(".cart2").prop("checked");
+            if (!choice2) {
+                $(".cart2").prop("checked", true);
+            } else {
+                $(".cart2").prop("checked", false);
+            }
+        });
 
         var counter = 1;
         var counter2 = 1;
@@ -661,6 +717,38 @@
             $("#table-price2").html(counter2 * price);
             $("#table-sum2").html((counter2 * price) + delivery);
             $("#table-delivery2").html(delivery);
+        });
+
+        $("#delete").click(function(e) {
+            $("#myModal").modal("show");
+        });
+
+        $("#select-delete").click(function(e) {
+            $("#myModal").modal("show");
+        });
+
+        $("#delete2").click(function(e) {
+            $("#myModal").modal("show");
+        });
+
+        $("#select-delete2").click(function(e) {
+            $("#myModal").modal("show");
+        });
+
+        $("#like").click(function(e) {
+            alert("해당상품이 관심상품으로 등록되었습니다.")
+        })
+
+        $("#like2").click(function(e) {
+            alert("해당상품이 관심상품으로 등록되었습니다.")
+        })
+
+        $("#cart-move").click(function(e) {
+            alert("해외장바구니로 해당 상품이 이동 되었습니다.");
+        });
+
+        $("#cart-move2").click(function(e) {
+            alert("국내장바구니로 해당 상품이 이동 되었습니다.");
         });
     });
     </script>
