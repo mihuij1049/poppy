@@ -62,17 +62,21 @@
         margin: 10px 0 10px 0;
     }
 
+    .pr_in_box h5 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        /* 라인수 */
+        -webkit-box-orient: vertical;
+        word-wrap: break-word;
+    }
+
     .container .img_size {
         width: 100%;
     }
 
-    .container .icon_size {
-        height: 8px;
-        font-size: 13px;
-        color: #ff8f83;
-    }
-
-    .pr_box .btn {
+    .container . .pr_box .btn {
         padding-right: 50px;
         padding-bottom: 20px;
         width: 50px;
@@ -96,8 +100,29 @@
         border-color: #FF8F83;
     }
 
+    .pr_in_box #pay {
+        display: inline-block;
+        float: right;
+    }
+
+    .container .glyphicon-heart {
+        height: 8px;
+        font-size: 20px;
+        color: #ff8f83;
+        margin-right: 10px;
+        z-index: 10000;
+    }
+
+    .container .glyphicon-heart-empty {
+        height: 8px;
+        font-size: 20px;
+        color: #ff8f83;
+        margin-right: 10px;
+    }
+
     .container a {
         color: #777;
+        text-decoration: none;
     }
     </style>
 </head>
@@ -175,200 +200,216 @@
                         <div width="50%">
                             <div class="pr_box">
                                 <div class="pr_in_box">
-                                    <a href="goods.html"><img alt="사진" src="../share/img/gal_list_img1.jpg" class="img_size"></a>
-                                    <div>
-                                        <h5><b>상품명</b></h5>
-                                        <hr />
-                                        <i class="glyphicon glyphicon-heart icon_size"></i> 50,000원
-                                    </div>
+                                    <a href="goods.html">
+                                        <img alt="사진" src="../share/img/gal_list_img1.jpg" class="img_size">
+                                        <div>
+                                            <h5><b>벨버드 고흡수 30g 오리지날패드 300매 대용량애견패드</b></h5>
+                                            <hr />
+                                            50,000원
+                                    </a>
+                                    <div id="pay"><i class="glyphicon glyphicon-heart-empty"></i></div>
                                 </div>
                             </div>
                         </div>
-                        <!-- 게시물 하나 끝 -->
-                        <!-- 게시물 하나 시작 -->
-                        <div>
-                            <div class="pr_box">
-                                <div class="pr_in_box">
-                                    <img alt="사진" src="../share/img/gal_list_img2.jpg" class="img_size">
-                                    <div>
-                                        <h5><b>상품명</b></h5>
-                                        <hr />
-                                        <i class="glyphicon glyphicon-heart icon_size"></i> 50,000원
-                                    </div>
+                    </div>
+                    <!-- 게시물 하나 끝 -->
+                    <!-- 게시물 하나 시작 -->
+                    <div>
+                        <div class="pr_box">
+                            <div class="pr_in_box">
+                                <img alt="사진" src="../share/img/gal_list_img2.jpg" class="img_size">
+                                <div>
+                                    <h5><b>펫클럽 시간순삭노즈워크매트 옐로 원형/애견노즈워크</b></h5>
+                                    <hr />
+                                    50,000원
+                                    <div id="pay"><i class="glyphicon glyphicon-heart-empty icon_size"></i></div>
                                 </div>
                             </div>
                         </div>
-                        <!--// 게시물 하나 끝 -->
-                        <!-- 게시물 하나 시작 -->
-                        <div>
-                            <div class="pr_box">
-                                <div class="pr_in_box">
-                                    <img alt="사진" src="../share/img/gal_list_img3.jpg" class="img_size">
-                                    <div>
-                                        <h5><b>상품명</b></h5>
-                                        <hr />
-                                        <i class="glyphicon glyphicon-heart icon_size"></i> 50,000원
-                                    </div>
+                    </div>
+                    <!--// 게시물 하나 끝 -->
+                    <!-- 게시물 하나 시작 -->
+                    <div>
+                        <div class="pr_box">
+                            <div class="pr_in_box">
+                                <img alt="사진" src="../share/img/gal_list_img3.jpg" class="img_size">
+                                <div>
+                                    <h5><b>펫클럽 벨버드 순삭져키 1kg 1+1/강아지간식/애견간식</b></h5>
+                                    <hr />
+                                    50,000원
+                                    <div id="pay"><i class="glyphicon glyphicon-heart-empty icon_size"></i></div>
                                 </div>
                             </div>
                         </div>
-                        <!--// 게시물 하나 끝 -->
-                        <!-- 게시물 하나 시작 -->
-                        <div>
-                            <div class="pr_box">
-                                <div class="pr_in_box">
-                                    <img alt="사진" src="../share/img/gal_list_img4.jpg" class="img_size">
-                                    <div>
-                                        <h5><b>상품명</b></h5>
-                                        <hr />
-                                        <i class="glyphicon glyphicon-heart icon_size"></i> 50,000원
-                                    </div>
+                    </div>
+                    <!--// 게시물 하나 끝 -->
+                    <!-- 게시물 하나 시작 -->
+                    <div>
+                        <div class="pr_box">
+                            <div class="pr_in_box">
+                                <img alt="사진" src="../share/img/gal_list_img4.jpg" class="img_size">
+                                <div>
+                                    <h5><b>펫클럽 데이스포 케어츄르 오리 닭 관절 15g 32개입</b></h5>
+                                    <hr />
+                                    50,000원
+                                    <div id="pay"><i class="glyphicon glyphicon-heart-empty icon_size"></i></div>
                                 </div>
                             </div>
                         </div>
-                        <!--// 게시물 하나 끝 -->
-                        <!-- 게시물 하나 시작 -->
-                        <div>
-                            <div class="pr_box">
-                                <div class="pr_in_box">
+                    </div>
+                    <!--// 게시물 하나 끝 -->
+                    <div>
+                        <div class="pr_box">
+                            <div class="pr_in_box">
+                                <a href="goods.html">
                                     <img alt="사진" src="../share/img/gal_list_img1.jpg" class="img_size">
-                                    <div>
-                                        <h5><b>상품명</b></h5>
-                                        <hr />
-                                        <i class="glyphicon glyphicon-heart icon_size"></i> 50,000원
-                                    </div>
+                                </a>
+                                <div>
+                                    <h5><b>벨버드 고흡수 30g 오리지날패드 300매 대용량애견패드</b></h5>
+                                    <hr />
+                                    50,000원
+                                    <div id="pay"><i class="glyphicon glyphicon-heart-empty icon_size"></i></div>
                                 </div>
                             </div>
                         </div>
-                        <!--// 게시물 하나 끝 -->
-                        <!-- 게시물 하나 시작 -->
-                        <div>
-                            <div class="pr_box">
-                                <div class="pr_in_box">
-                                    <img alt="사진" src="../share/img/gal_list_img2.jpg" class="img_size">
-                                    <div>
-                                        <h5><b>상품명</b></h5>
-                                        <hr />
-                                        <i class="glyphicon glyphicon-heart icon_size"></i> 50,000원
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--// 게시물 하나 끝 -->
-                        <!-- 게시물 하나 시작 -->
-                        <div>
-                            <div class="pr_box">
-                                <div class="pr_in_box">
-                                    <img alt="사진" src="../share/img/gal_list_img3.jpg" class="img_size">
-                                    <div>
-                                        <h5><b>상품명</b></h5>
-                                        <hr />
-                                        <i class="glyphicon glyphicon-heart icon_size"></i> 50,000원
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--// 게시물 하나 끝 -->
-                        <!-- 게시물 하나 시작 -->
-                        <div>
-                            <div class="pr_box">
-                                <div class="pr_in_box">
-                                    <img alt="사진" src="../share/img/gal_list_img4.jpg" class="img_size">
-                                    <div>
-                                        <h5><b>상품명</b></h5>
-                                        <hr />
-                                        <i class="glyphicon glyphicon-heart icon_size"></i> 50,000원
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--// 게시물 하나 끝 -->
                     </div>
-                    <div class="text-center">
-                        <ul class="pagination pagination-sm">
-                            <li class="disabled"><a href="#">&laquo;</a></li>
-                            <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">&raquo;</a></li>
-                        </ul>
+                    <!-- 게시물 하나 끝 -->
+                    <!-- 게시물 하나 시작 -->
+                    <div>
+                        <div class="pr_box">
+                            <div class="pr_in_box">
+                                <img alt="사진" src="../share/img/gal_list_img2.jpg" class="img_size">
+                                <div>
+                                    <h5><b>펫클럽 시간순삭노즈워크매트 옐로 원형/애견노즈워크</b></h5>
+                                    <hr />
+                                    50,000원
+                                    <div id="pay"><i class="glyphicon glyphicon-heart-empty icon_size"></i></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <!--// 게시물 하나 끝 -->
+                    <!-- 게시물 하나 시작 -->
+                    <div>
+                        <div class="pr_box">
+                            <div class="pr_in_box">
+                                <img alt="사진" src="../share/img/gal_list_img3.jpg" class="img_size">
+                                <div>
+                                    <h5><b>펫클럽 벨버드 순삭져키 1kg 1+1/강아지간식/애견간식</b></h5>
+                                    <hr />
+                                    50,000원
+                                    <div id="pay"><i class="glyphicon glyphicon-heart-empty icon_size"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--// 게시물 하나 끝 -->
+                    <!-- 게시물 하나 시작 -->
+                    <div>
+                        <div class="pr_box">
+                            <div class="pr_in_box">
+                                <img alt="사진" src="../share/img/gal_list_img4.jpg" class="img_size">
+                                <div>
+                                    <h5><b>펫클럽 데이스포 케어츄르 오리 닭 관절 15g 32개입</b></h5>
+                                    <hr />
+                                    50,000원
+                                    <div id="pay"><i class="glyphicon glyphicon-heart-empty icon_size"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--// 게시물 하나 끝 -->
+                </div>
+                <div class="text-center">
+                    <ul class="pagination pagination-sm">
+                        <li class="disabled"><a href="#">&laquo;</a></li>
+                        <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div class="footer">
-            <!-- 하단 네비게이션 고정-->
-            <!--- 소개 4인방 링크 -->
-            <hr />
-            <div class="etc">
-                <a href="../etc/page_info1.html">회사소개</a>
-                <a href="../etc/page_info2.html">이용약관</a>
-                <a href="../etc/page_info3.html">개인정보취급방침</a>
-                <a href="../etc/page_info4.html">이용안내</a>
+    </div>
+    <div class="footer">
+        <!-- 하단 네비게이션 고정-->
+        <!--- 소개 4인방 링크 -->
+        <hr />
+        <div class="etc">
+            <a href="../etc/page_info1.html">회사소개</a>
+            <a href="../etc/page_info2.html">이용약관</a>
+            <a href="../etc/page_info3.html">개인정보취급방침</a>
+            <a href="../etc/page_info4.html">이용안내</a>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-xs-6 etc">
+                <h5><b>상담센터</b></h5>
+                <p style="font-size: 15px; font-weight:bold;">070-123-4567</p>
+                <p style="font-size: 12px"> 운영시간 : 10:00 - 18:00<br />주말, 공휴일은 후뮤입니다.</p>
             </div>
-            <hr />
-            <div class="row">
-                <div class="col-xs-6 etc">
-                    <h5><b>상담센터</b></h5>
-                    <p style="font-size: 15px; font-weight:bold;">070-123-4567</p>
-                    <p style="font-size: 12px"> 운영시간 : 10:00 - 18:00<br />주말, 공휴일은 후뮤입니다.</p>
-                </div>
-                <div class="col-xs-6 etc">
-                    <h5><b>입금계좌안내</b></h5>
-                    <br />
-                    <p>하나 355-342432-23445<br>예금주 : (주)뽀삐뽀삐</p>
-                </div>
-            </div>
-            <address class="clearfix">
-                <p>상점명: (주)뽀삐뽀삐 대표 : 아무개
-                    <br>주소 : 서울특별시 행복구 존버동 8282-5959 102호 - 물류팀<br>
-                    사업자등록번호 : 123-86-43567<br>
-                    통신판매업신고 : 제2020-서울서초-0082호<br>
-                    개인정보관리책임 : 아무개 <br>
-                    <br />
-                    COPYRIGHT&copy; (주)뽀삐뽀삐 ALL RIGHTS RESERVED
-                    <br />
-                    <i>DESIGN BY EZEN-team4</i>
-                </p>
-            </address>
-            <div class="navbar" id="navbarback">
-                <ul class="btmbar-nav clearfix navbar-fixed-bottom">
-                    <hr />
-                    <a href="../community/photo_rv.html">
-                        <span class="glyphicon glyphicon-comment">
-                            <p>커뮤니티</p>
-                        </span>
-                    </a>
-                    <a href="../myInfo/order_list.html">
-                        <span class="glyphicon glyphicon-list-alt">
-                            <p>주문조회</p>
-                        </span>
-                    </a>
-                    <a href="#">
-                        <span class="glyphicon glyphicon-search">
-                            <p>&nbsp;검색&nbsp;</p>
-                        </span>
-                    </a>
-                    <a href="#">
-                        <span class="glyphicon glyphicon-th-large">
-                            <p>카테고리</p>
-                        </span>
-                    </a>
-                    <a href="../myinfo/myinfo.html">
-                        <span class="glyphicon glyphicon-user">
-                            <p>MY정보</p>
-                        </span>
-                    </a>
-                </ul>
+            <div class="col-xs-6 etc">
+                <h5><b>입금계좌안내</b></h5>
+                <br />
+                <p>하나 355-342432-23445<br>예금주 : (주)뽀삐뽀삐</p>
             </div>
         </div>
+        <address class="clearfix">
+            <p>상점명: (주)뽀삐뽀삐 대표 : 아무개
+                <br>주소 : 서울특별시 행복구 존버동 8282-5959 102호 - 물류팀<br>
+                사업자등록번호 : 123-86-43567<br>
+                통신판매업신고 : 제2020-서울서초-0082호<br>
+                개인정보관리책임 : 아무개 <br>
+                <br />
+                COPYRIGHT&copy; (주)뽀삐뽀삐 ALL RIGHTS RESERVED
+                <br />
+                <i>DESIGN BY EZEN-team4</i>
+            </p>
+        </address>
+        <div class="navbar" id="navbarback">
+            <ul class="btmbar-nav clearfix navbar-fixed-bottom">
+                <hr />
+                <a href="../community/photo_rv.html">
+                    <span class="glyphicon glyphicon-comment">
+                        <p>커뮤니티</p>
+                    </span>
+                </a>
+                <a href="../myInfo/order_list.html">
+                    <span class="glyphicon glyphicon-list-alt">
+                        <p>주문조회</p>
+                    </span>
+                </a>
+                <a href="#">
+                    <span class="glyphicon glyphicon-search">
+                        <p>&nbsp;검색&nbsp;</p>
+                    </span>
+                </a>
+                <a href="#">
+                    <span class="glyphicon glyphicon-th-large">
+                        <p>카테고리</p>
+                    </span>
+                </a>
+                <a href="../myinfo/myinfo.html">
+                    <span class="glyphicon glyphicon-user">
+                        <p>MY정보</p>
+                    </span>
+                </a>
+            </ul>
+        </div>
+    </div>
     </div>
     <!-- Javascript -->
     <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
     <script src="../share/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
+    $(function() {
+        $('.pr_in_box i').click(function() {
+            $(this).toggleClass("glyphicon-heart glyphicon-heart-empty");
+        });
+    });
     </script>
 </body>
 

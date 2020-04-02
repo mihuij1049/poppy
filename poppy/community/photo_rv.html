@@ -91,6 +91,7 @@
 
     .pr_box a {
         display: block;
+        text-decoration: none;
     }
 
     .pr_in_box {
@@ -116,12 +117,20 @@
         font-color: #fff;
     }
 
+    .pr_box .btn:active {
+        font-color: #fff;
+    }
+
     .pr_box .btn-inverse {
         margin: 10px 0px 0px 0px;
         padding: 5px 50px 22px 10px;
         width: 50px;
         height: 25px;
         font-size: 12px;
+        font-color: #ff8f83;
+    }
+
+    .pr_box .btn-inverse:active {
         font-color: #ff8f83;
     }
 
@@ -409,7 +418,7 @@
     <script src="../share/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
     $(function() {
-        $('#heart_bt').click(function() {
+        $('.pr_box button').click(function() {
             $(this).toggleClass("btn, btn-inverse");
         });
     });
