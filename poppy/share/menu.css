@@ -1,9 +1,14 @@
 .modal-content {
     width: 90%;
     margin: auto;
+    margin-top: 13px;
 }
 
-/** 헤더영역 */
+.modal.in .modal-dialog {
+    position: relative;
+    top: 180px;
+    transform: translateY(-170px);
+}
 
 .modal-header {
     min-height: 110px;
@@ -41,6 +46,7 @@
 .modal-body {
     min-height: 200px;
     padding: 0px;
+
 }
 
 .panel-heading {
@@ -53,7 +59,7 @@
 
 .panel-heading h4 {
     text-align: left;
-
+    font-size: 16px;
     margin: 0px;
 }
 
@@ -137,4 +143,5 @@
 /** 하단영역 */
 .modal-footer {
     border-top: none;
+    padding-bottom: 10px;
 }

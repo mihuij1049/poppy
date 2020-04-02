@@ -174,7 +174,7 @@
                     <!-- .modal -->
                     <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <!-- .modal-dialog -->
-                        <div class="modal-dialog" style="width: 96%; margin: auto;">
+                        <div class="modal-dialog" id=="modal-dialog">
                             <!-- .modal-content -->
                             <div class="modal-content clearfix">
                                 <!-- 제목 -->
@@ -415,6 +415,17 @@
         $("#accordion-toggle5").on('click', function() {
             $(".arrow-down5").toggleClass("rotate5");
             $(".panel-title5").toggleClass("box1, box2");
+        });
+    });
+
+    /** 모달창 나오는 위치 */
+    $(function() {
+        $("#modal-dialog").dialog(function() {
+            autoOpen: false,
+            height: 300,
+            width: 350,
+            modal: true,
+            position: [100, 200]
         });
     });
     </script>
