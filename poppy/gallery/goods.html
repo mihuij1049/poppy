@@ -40,6 +40,39 @@
         width: 100%;
     }
 
+    .product .btn-group {
+        width: 96%;
+        margin-left: 2%;
+        margin-top: 10px;
+    }
+
+    .product .btn-group button {
+        width: 100px;
+        height: 28px;
+        font-size: 12px;
+        padding: 3px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        background-color: #fff;
+    }
+
+    .product .btn-group .glyphicon-heart-empty {
+        position: relative;
+        right: 3px;
+        top: 3px;
+    }
+
+    .product .btn-group .like-btn:hover {
+        color: #ff8f83;
+        border-color: #ff8f83;
+    }
+
+    .product .btn-group .glyphicon-link {
+        position: relative;
+        right: 3px;
+        top: 2px;
+    }
+
     .prd-title {
         width: 96%;
         margin-left: 2%;
@@ -94,25 +127,31 @@
     .prd-option button {
         width: 30px;
         height: 28px;
-        padding: 0;
         color: #000;
+        padding: 0;
         font-size: 15px;
         text-decoration: none;
         background-color: #fff;
-        border: 1px solid #ddd;
+        border: none;
+    }
+
+    .prd-option button img {
+        width: auto;
+        height: 28px;
     }
 
     .prd-option input {
         width: 30px;
-        height: 28px;
+        height: 26.5px;
         text-align: center;
         font-size: 12px;
         display: inline-block;
         border: 1px solid #ddd;
-        border-radius: 4px;
+        border-radius: 2px;
+        vertical-align: -0.5px;
     }
 
-    .total-price {
+    .prd-total {
         padding-left: 15px;
         padding-right: 15px;
         padding-top: 10px;
@@ -120,7 +159,7 @@
         border-top: 1px solid #000;
     }
 
-    .total-price .price {
+    .prd-total .total-price {
         float: right;
     }
 
@@ -493,10 +532,22 @@
                 <div class="prd-img">
                     <img src="../share/img/goods_header.jpg">
                 </div>
+                <fieldset class="btn-group">
+                    <button type="button" class="like-btn" aria-label="좋아요">
+                        <span class="glyphicon glyphicon-heart-empty"></span>
+                        <span>좋아요</span>
+                        <span class="like-count">11</span>
+                    </button>
+                    <button type="button" class="share-btn" aria-label="공유하기">
+                        <span class="glyphicon glyphicon-link"></span>
+                        <span>공유하기</span>
+                    </button>
+                    <input id="my-url" type="text" value="<?php echo esc_url($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'])?>" style="display: none;">
+                </fieldset>
                 <div class="prd-title">
                     <div class="prd-name">대용량노즈워크용 간식/벨버드 순삭져키 1kg 강아지져키</div>
                     <div class="prd-price">
-                        <div class>19,900</div>원
+                        <div class="price">19,900</div>원
                     </div>
                     <div class="prd-delivery">
                         <ul>
@@ -514,9 +565,9 @@
                                 <tr class="quantity">
                                     <th>수량</th>
                                     <td>
-                                        <button type="button" class="btn btnDown">-</button>
+                                        <button type="button" class="btn btnDown"><img src="../share/img/마이너스.png"></button>
                                         <input type="number" value="1" min="1" max="99" name="count" id="count" />
-                                        <button type="button" class="btn btnUp">+</button>
+                                        <button type="button" class="btn btnUp"><img src="../share/img/플러스.png"></button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -524,10 +575,12 @@
                     </div>
                     <div class="prd-add">
                     </div>
-                    <div class="total-price">
+                    <div class="prd-total">
                         <strong>총 상품금액(수량)</strong>
-                        <div class="price">
-                            <strong>9,900원</strong> (1개)
+                        <div class="total-price">
+                            <b id="total-price">19,900</b>
+                            <b>원</b>
+                            <b>(</b><b id="price-count">1</b><b>개)</b>
                         </div>
                     </div>
                     <div class="prd-action">
@@ -750,9 +803,9 @@
             <!--- 소개 4인방 링크 -->
             <hr />
             <div class="etc">
-                <a href="#">회사소개</a>
-                <a href="#">이용약관</a>
-                <a href="#">개인정보취급방침</a>
+                <a href="../etc/page_info1.html">회사소개</a>
+                <a href="../etc/page_info2.html">이용약관</a>
+                <a href="../etc/page_info3.html">개인정보취급방침</a>
                 <a href="../etc/page_info4.html">이용안내</a>
             </div>
             <hr />
@@ -794,11 +847,16 @@
         });
 
         var counter = 1;
+        var price = 19900
+
+        $("#total-price").html(counter * price);
+
         $(".btnUp").click(function(e) {
             counter++;
-            $(document).ready(function() {
-                $("#count").val(counter);
-            });
+
+            $("#count").val(counter);
+            $("#total-price").html(counter * price);
+            $("#price-count").html(counter);
         });
         $(".btnDown").click(function(e) {
             if (counter < 2) {
@@ -806,11 +864,22 @@
                 return;
             }
             counter--;
-            $(document).ready(function() {
-                $("#count").val(counter);
-            });
+
+            $("#count").val(counter);
+            $("#total-price").html(counter * price);
+            $("#price-count").html(counter);
         });
     });
+
+    jQuery(document).ready(function() {
+        jQuery('.share-btn').click(function() {
+            var url = document.getElementById('my-url');
+
+            url.select();
+            document.execCommand('Copy');
+            alert('URL이 복사되었습니다. \n원하는 곳에 붙여넣기(Ctrl+V)해주세요.');
+        });
+    })
     </script>
 </body>
 

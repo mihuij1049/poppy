@@ -422,12 +422,17 @@
  }
 
  .modal {
-     padding-top: 150px;
+     padding-top: 70%;
+ }
+
+ .modal-footer button {
+     color: #fff;
+     background-color: #FF8F83;
  }
 
  .modal-footer .btn {
-     color: #fff;
-     background-color: #FF8F83;
+     width: 65px;
+     height: 34px;
  }
 
  .prd-box .prd-li {

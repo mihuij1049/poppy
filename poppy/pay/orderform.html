@@ -196,14 +196,14 @@
                         <div class="prd-info">
                             <div class="prd-box">
                                 <div class="thumbnail">
-                                    <a href="#">
+                                    <a href="../gallery/goods.html">
                                         <img src="../share/img/slide.jpg" width="70" height="70">
                                     </a>
                                 </div>
                                 <div class="prd">
                                     <div id="prd-title">
                                         <strong class="prd-name" title="상품명">
-                                            <a href="#">펫클럽 벨버드 토일렛/애견토일렛/강아지화장실/패드</a>
+                                            <a href="../gallery/goods.html">펫클럽 벨버드 토일렛/애견토일렛/강아지화장실/패드</a>
                                         </strong>
                                     </div>
                                     <ul class="prd-li">
@@ -233,13 +233,13 @@
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
-                                                <h4 class="modal-title">상품 삭제</h4>
+                                                <h4 class="modal-title">상품 취소</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <p>선택하신 상품을 정말 삭제하시겠습니까?</p>
+                                                <p>선택하신 상품을 삭제하시겠습니까?</p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn" data-dismiss="modal">예</button>
+                                                <button type="button" class="btn btn-delete" data-dismiss="modal">예</button>
                                                 <button type="button" class="btn" data-dismiss="modal">아니오</button>
                                             </div>
                                         </div>
@@ -550,6 +550,13 @@
             $("#myModal").modal("show");
             // 아내는 창을 강제로 닫기 처리
             // $("#myModal").modal("hide");
+        });
+
+        $(document).on("click", ".btn-delete", function() {
+            // 클릭된 버튼 상위요소인 ".item" 찾아서 제거한다.
+            $(this).parents(".prd-info").remove();
+
+            window.history.back();
         });
     });
     </script>
