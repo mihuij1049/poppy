@@ -45,11 +45,3 @@
             </ul>
             <hr>
         </div>
-        <div class="content">
-            <!-- 여기에 작성 -->
-            <div class="container">
-                <div class="page-title clearfix">
-                    <h4><b>
-                            <a href="#" onclick="history.back(); return false;"><i class="glyphicon glyphicon-chevron-left"></i></a>게시판이름
-                        </b></h4>
-                </div>

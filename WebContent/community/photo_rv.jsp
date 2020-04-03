@@ -159,6 +159,15 @@
 
 <body>
 	<%@ include file="/share/top_tp.jsp" %>
+	
+        <div class="content">
+            <!-- 여기에 작성 -->
+            <div class="container">
+                <div class="page-title clearfix">
+                    <h4><b>
+                            <a href="#" onclick="history.back(); return false;"><i class="glyphicon glyphicon-chevron-left"></i></a>포토리뷰
+                        </b></h4>
+                </div>
 	<div class="container_1">
                     <div>
                         <form>
@@ -192,7 +201,7 @@
                         <div width="50%">
                             <div class="pr_box">
                                 <div class="pr_in_box">
-                                    <a href="photo.html">
+                                    <a href="photo.jsp">
                                         <img alt="사진" src="../share/img/img1.jpg" class="img_size" />
                                         <div>
                                             <h5><b>글제목입니다. 말줄임 처리도 합니다.</b></h5>
@@ -212,7 +221,7 @@
                         <div>
                             <div class="pr_box">
                                 <div class="pr_in_box">
-                                    <a href="photo.html">
+                                    <a href="photo.jsp">
                                         <img alt="사진" src="../share/img/img2.jpg" class="img_size" />
                                         <div>
                                             <h5><b>글제목입니다. 말줄임 처리도 합니다.</b></h5>
@@ -232,7 +241,7 @@
                         <div>
                             <div class="pr_box">
                                 <div class="pr_in_box">
-                                    <a href="photo.html">
+                                    <a href="photo.jsp">
                                         <img alt="사진" src="../share/img/img3.jpg" class="img_size" />
                                         <div>
                                             <h5><b>글제목입니다. 말줄임 처리도 합니다.</b></h5>
@@ -252,7 +261,7 @@
                         <div>
                             <div class="pr_box">
                                 <div class="pr_in_box">
-                                    <a href="photo.html">
+                                    <a href="photo.jsp">
                                         <img alt="사진" src="../share/img/img4.jpg" class="img_size" />
                                         <div>
                                             <h5><b>글제목입니다. 말줄임 처리도 합니다.</b></h5>
