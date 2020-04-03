@@ -5,7 +5,7 @@
 <html lang="ko">
 
 <head>
-<%@ include file="/share/head_tp.jsp" %>
+<%@ include file="/share/head_tp.jsp"%>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -243,136 +243,135 @@ hr {
 </head>
 
 <body>
-<%@ include file="/share/top_tp.jsp" %>
-	<div class="container">
-		<div class="content">
-			<!-- 취소/교환/반품내역 -->
-			<div class="page-title clearfix">
-				<h4>
-					<b> <a href="#" onclick="history.back(); return false;"><i
-							class="glyphicon glyphicon-chevron-left"></i></a>취소/교환/반품내역
-					</b>
-				</h4>
+	<%@ include file="/share/top_tp.jsp"%>
+	<div class="content">
+		<!-- 취소/교환/반품내역 -->
+		<div class="page-title clearfix">
+			<h4>
+				<b> <a href="#" onclick="history.back(); return false;"><i
+						class="glyphicon glyphicon-chevron-left"></i></a>취소/교환/반품내역
+				</b>
+			</h4>
+		</div>
+		<div class="container">
+			<ul class="nav nav-tabs">
+				<li class="col-xs-6 etc"><a href="order_list.jsp">주문조회</a></li>
+				<li class="active col-xs-6 etc"><a href="cancel_list.jsp">취소/교환/반품내역</a></li>
+			</ul>
+			<div class="backg fade in">
+				<div class="container">
+					<div class="period">
+						<p class="col-xs-1">기간</p>
+						<button class="btn btn-default col-xs-2" onclick="set_term(0)">오늘</button>
+						<button class="btn btn-default col-xs-2" onclick="set_term(30)">1개월</button>
+						<button class="btn btn-default col-xs-2" onclick="set_term(90)">3개월</button>
+						<button class="btn btn-default col-xs-2" onclick="set_term(180)">6개월</button>
+						<button class="btn btn-default col-xs-3" id="period_set">기간설정</button>
+					</div>
+				</div>
 			</div>
-			<div class="container">
-				<ul class="nav nav-tabs">
-					<li class="col-xs-6 etc"><a href="order_list.jsp">주문조회</a></li>
-					<li class="active col-xs-6 etc"><a href="cancel_list.jsp">취소/교환/반품내역</a></li>
+			<div class="dateSearch">
+				<div class="col-xs-1"></div>
+				<input type="text" id="datepicker_before" />&nbsp;~ <input
+					type="text" id="datepicker_after" />
+				<button type="button" class="btn">조회</button>
+			</div>
+			<div class="view">
+				<span class="date" title="주문일자"> 2020-03-18 </span> <span
+					class="number" title="주문번호"> <a href="order_desc.html">
+						(20200318-0000195) </a>
+				</span> <a href="order_desc.html" class="btn-detail"><span id="GGuc">&#62;</span>상세보기</a>
+			</div>
+			<div class="prd-info">
+				<div class="prd-box">
+					<div class="thumbnail">
+						<a href="../gallery/goods.html"> <img
+							src="../share/img/slide.jpg" width="70" height="70">
+						</a>
+					</div>
+					<div class="prd-content">
+						<strong class="prd-name" title="상품명"> <a
+							href="../gallery/goods.html">펫클럽 세나개 고부해 사은품 증정</a>
+						</strong>
+						<ul class="prd-li">
+							<li><span class="price" title="판매가"> <strong>14,000</strong>원
+							</span> <span class="prd-count" title="수량"> <strong>1</strong>개
+							</span></li>
+						</ul>
+						<p class="option">[옵션: 세나개 고부해]</p>
+					</div>
+				</div>
+				<hr>
+				<div class="prd-foot" title="주문처리상태">
+					<div class="ready">취소완료</div>
+				</div>
+			</div>
+			<div class=" paging">
+				<ul class="pagination pagination-sm">
+					<li class="disabled"><a href="#">&laquo;</a></li>
+					<!-- 활성화 버튼은 아래의 구조로 구성하시면 됩니다. sr-only는 스크린리더 전용입니다. -->
+					<li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
+					<li class="paging-right"><a href="#">&raquo;</a></li>
 				</ul>
-				<div class="backg fade in">
-					<div class="container">
-						<div class="period">
-							<p class="col-xs-1">기간</p>
-							<button class="btn btn-default col-xs-2" onclick="set_term(0)">오늘</button>
-							<button class="btn btn-default col-xs-2" onclick="set_term(30)">1개월</button>
-							<button class="btn btn-default col-xs-2" onclick="set_term(90)">3개월</button>
-							<button class="btn btn-default col-xs-2" onclick="set_term(180)">6개월</button>
-							<button class="btn btn-default col-xs-3" id="period_set">기간설정</button>
-						</div>
-					</div>
-				</div>
-				<div class="dateSearch">
-					<div class="col-xs-1"></div>
-					<input type="text" id="datepicker_before" />&nbsp;~ <input
-						type="text" id="datepicker_after" />
-					<button type="button" class="btn">조회</button>
-				</div>
-				<div class="view">
-					<span class="date" title="주문일자"> 2020-03-18 </span> <span
-						class="number" title="주문번호"> <a href="order_desc.html">
-							(20200318-0000195) </a>
-					</span> <a href="order_desc.html" class="btn-detail"><span id="GGuc">&#62;</span>상세보기</a>
-				</div>
-				<div class="prd-info">
-					<div class="prd-box">
-						<div class="thumbnail">
-							<a href="../gallery/goods.html"> <img
-								src="../share/img/slide.jpg" width="70" height="70">
-							</a>
-						</div>
-						<div class="prd-content">
-							<strong class="prd-name" title="상품명"> <a
-								href="../gallery/goods.html">펫클럽 세나개 고부해 사은품 증정</a>
-							</strong>
-							<ul class="prd-li">
-								<li><span class="price" title="판매가"> <strong>14,000</strong>원
-								</span> <span class="prd-count" title="수량"> <strong>1</strong>개
-								</span></li>
-							</ul>
-							<p class="option">[옵션: 세나개 고부해]</p>
-						</div>
-					</div>
-					<hr>
-					<div class="prd-foot" title="주문처리상태">
-						<div class="ready">취소완료</div>
-					</div>
-				</div>
-				<div class=" paging">
-					<ul class="pagination pagination-sm">
-						<li class="disabled"><a href="#">&laquo;</a></li>
-						<!-- 활성화 버튼은 아래의 구조로 구성하시면 됩니다. sr-only는 스크린리더 전용입니다. -->
-						<li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
-						<li class="paging-right"><a href="#">&raquo;</a></li>
-					</ul>
-				</div>
 			</div>
 		</div>
-		<%@ include file="/share/bottom_tp.jsp" %>
-		<!-- Javascript -->
-		<script src="../share/assets/js/jquery-3.2.1.min.js"></script>
-		<script src="../share/assets/js/bootstrap.min.js"></script>
-		<!-- 플러그인 JS 참조 -->
-		<script src="../share/plugins/datepicker/datepicker.min.js"></script>
-		<script src="../share/plugins/datepicker/datepicker.ko-KR.js"></script>
-		<!-- 사용자 정의 스크립트 -->
-		<script type="text/javascript">
-			function set_term(days) {
-				days = days * 24 * 60 * 60 * 1000;
+	</div>
+	<%@ include file="/share/bottom_tp.jsp"%>
+	<!-- Javascript -->
+	<script src="../share/assets/js/jquery-3.2.1.min.js"></script>
+	<script src="../share/assets/js/bootstrap.min.js"></script>
+	<!-- 플러그인 JS 참조 -->
+	<script src="../share/plugins/datepicker/datepicker.min.js"></script>
+	<script src="../share/plugins/datepicker/datepicker.ko-KR.js"></script>
+	<!-- 사용자 정의 스크립트 -->
+	<script type="text/javascript">
+		function set_term(days) {
+			days = days * 24 * 60 * 60 * 1000;
 
-				var date = new Date();
-				var yy = date.getFullYear();
-				var mm = date.getMonth() + 1;
-				var dd = date.getDate();
+			var date = new Date();
+			var yy = date.getFullYear();
+			var mm = date.getMonth() + 1;
+			var dd = date.getDate();
 
-				var setday = date.getTime() - days;
-				date.setTime(setday);
+			var setday = date.getTime() - days;
+			date.setTime(setday);
 
-				var s_yy = date.getFullYear();
-				var s_mm = date.getMonth() + 1;
-				var s_dd = date.getDate();
-				alert(s_yy + "년 " + s_mm + "월 " + s_dd + "일 " + "~" + yy + "년 "
-						+ mm + "월 " + dd + "일" + "의 주문조회 결과");
-			}
+			var s_yy = date.getFullYear();
+			var s_mm = date.getMonth() + 1;
+			var s_dd = date.getDate();
+			alert(s_yy + "년 " + s_mm + "월 " + s_dd + "일 " + "~" + yy + "년 "
+					+ mm + "월 " + dd + "일" + "의 주문조회 결과");
+		}
 
-			$(function() {
-				$(".dateSearch").hide();
-				$("#period_set").click(function() {
-					$(".dateSearch").toggle();
-				});
-
-				$("#datepicker_before").datepicker({
-					// 날짜 선택후 사동 숨김 (true/false)
-					autoHide : true,
-					// 날짜 형식
-					format : "yyyy-mm-dd",
-					// 언어
-					language : "ko-KR",
-					// 시작요일 (0=일요일~6=토요일)
-					weekStart : 0
-				});
-
-				$("#datepicker_after").datepicker({
-					// 날짜 선택후 사동 숨김 (true/false)
-					autoHide : true,
-					// 날짜 형식
-					format : "yyyy-mm-dd",
-					// 언어
-					language : "ko-KR",
-					// 시작요일 (0=일요일~6=토요일)
-					weekStart : 0
-				});
+		$(function() {
+			$(".dateSearch").hide();
+			$("#period_set").click(function() {
+				$(".dateSearch").toggle();
 			});
-		</script>
+
+			$("#datepicker_before").datepicker({
+				// 날짜 선택후 사동 숨김 (true/false)
+				autoHide : true,
+				// 날짜 형식
+				format : "yyyy-mm-dd",
+				// 언어
+				language : "ko-KR",
+				// 시작요일 (0=일요일~6=토요일)
+				weekStart : 0
+			});
+
+			$("#datepicker_after").datepicker({
+				// 날짜 선택후 사동 숨김 (true/false)
+				autoHide : true,
+				// 날짜 형식
+				format : "yyyy-mm-dd",
+				// 언어
+				language : "ko-KR",
+				// 시작요일 (0=일요일~6=토요일)
+				weekStart : 0
+			});
+		});
+	</script>
 </body>
 
 </html>
