@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <div class="container">
         <div class="header">
-            <a href="../index.jsp" id="logo">
+            <a href="../index/index.jsp" id="logo">
                 <img src="../share/img/logojpg.jpg">
             </a>
             <a href="../pay/cart.jsp">
@@ -10,12 +10,12 @@
                     <h1>장바구니</h1>
                 </span>
                 <span class="badge">
-                    <p>11</p>
+                    <p id="cart-qty">11</p>
                 </span>
             </a>
             <hr>
             <ul class="category">
-                <a href="#">
+                <a href="../gallery/gal_list.jsp">
                     <li>BEST</li>
                 </a>
                 <a href="#">
