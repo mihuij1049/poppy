@@ -122,7 +122,7 @@
                     <div class="swiper-pagination"></div>
                 </div>
                 <!-- 스와이퍼 플러그인 갤러리 끝!!! -->
-                <center><button type="button" class="btn btn-inverse index_btn" onclick="location.href='community/gal_list.html'">베스트 상품 더보기</button></center>
+                <center><button type="button" class="btn btn-inverse index_btn" onclick="location.href='community/gal_list.jsp'">베스트 상품 더보기</button></center>
                 <center>
                     <i class="glyphicon glyphicon-bullhorn icon_size1 t_btn" id="glyp_list"></i>
                     <h3 id="sale_h3">TIME SALE</h3>

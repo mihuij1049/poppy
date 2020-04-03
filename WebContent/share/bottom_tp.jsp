@@ -284,6 +284,7 @@
     <!-- Javascript -->
     <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
     <script src="../share/assets/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
     <script type="text/javascript">
     /** 검색탭 영역 시작! */
     $(".click-searchtab").click(function() {
@@ -363,4 +364,4 @@
         });
     });
     /** 카테고리탭 이미지회전 끝! */
-    </script>
+    
