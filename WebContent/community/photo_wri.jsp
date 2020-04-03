@@ -5,7 +5,7 @@
 <html lang="ko">
 
 <head>
-<%@ include file="/share/head_tp.jsp" %>
+<%@ include file="/share/head_tp.jsp"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
@@ -92,8 +92,8 @@ input {
 }
 
 .text {
-	width: 100%;
-	height: 100px;
+	height: 0;
+	display: hidden;
 }
 
 .UCC {
@@ -182,7 +182,7 @@ input {
 </head>
 
 <body>
-<%@ include file="/share/top_tp.jsp" %>
+	<%@ include file="/share/top_tp.jsp"%>
 	<div class="container">
 		<div class="content">
 			<!-- 여기에 작성 -->
@@ -197,8 +197,8 @@ input {
 				<form class="form-horizontal" name="wri_form" id="wri_form"
 					action="photo_rv.jsp">
 					<div class="select">
-						<img src="../share/img/photo-file.PNG">
-						<input type="button" class="btn" value="상품정보선택" />
+						<img src="../share/img/photo-file.PNG"> <input type="button"
+							class="btn" value="상품정보선택" />
 					</div>
 					<div class="title">
 						<div>
@@ -219,7 +219,7 @@ input {
 							type="radio" name="star"> <label>★</label>
 					</div>
 					<div class="write">
-						<textarea name="content" class="ckeditor"></textarea>
+						<textarea name="content" class="ckeditor" id="photo_content"></textarea>
 					</div>
 					<div class="UCC">
 						<div>
@@ -270,13 +270,14 @@ input {
 					</div>
 					<div class="sign">
 						<button type="submit" class="btn btn2">등록</button>
-						<button class="btn btn-inverse btn2">취소</button>
+						<button type="reset" class="btn btn-inverse btn2"
+							onclick="location.href='photo_rv.jsp'">취소</button>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-	<%@ include file="/share/bottom_tp.jsp" %>
+	<%@ include file="/share/bottom_tp.jsp"%>
 	<!-- Javascript -->
 	<!-- 플러그인 JS 참조 -->
 	<script src="../share/plugins/validate/jquery.validate.min.js"></script>
@@ -285,6 +286,8 @@ input {
 	<script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 	<script type="text/javascript">
 		$(function() {
+			$("#content_hide").hide();
+
 			/** 플러그인의 기본 설정 옵션 추가 */
 			jQuery.validator.setDefaults({
 				// 키보드입력시 검사 안함

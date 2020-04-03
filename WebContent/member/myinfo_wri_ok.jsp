@@ -6,15 +6,6 @@
 
 <head>
 <%@ include file="/share/head_tp.jsp"%>
-<meta charset="utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<title>Poppy-Poppy</title>
-<!-- 모바일 웹 페이지 설정 -->
-<link rel="shortcut icon" href="../share/assets/ico/favicon.png" />
-<link rel="apple-touch-icon-precomposed"
-	href="../share/assets/ico/apple-touch-icon-144-precomposed.png" />
 <style type="text/css">
 .content .container {
 	width: 96%;
@@ -69,13 +60,13 @@
 	margin-left: 10px;
 }
 
-.btn {
+.btn2 {
 	width: 100%;
 	margin-top: 15px;
 	margin-bottom: 50px;
 }
 
-.btn:hover {
+.btn2:hover {
 	background: #ff6261;
 	color: #fff;
 	text-decoration: none;
@@ -105,15 +96,13 @@
 			</div>
 			<div class="btns">
 				<a href="../index/index.jsp">
-					<button type="button" class="btn">완료</button>
+					<button type="button" class="btn btn2">완료</button>
 				</a>
 			</div>
 		</div>
 	</div>
 	<%@ include file="/share/bottom_tp.jsp"%>
 	<!-- Javascript -->
-	<script src="../share/assets/js/jquery-3.2.1.min.js"></script>
-	<script src="../share/assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		
 	</script>

@@ -11,20 +11,9 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>Poppy-Poppy</title>
-<!-- 모바일 웹 페이지 설정 -->
-<link rel="shortcut icon" href="../share/assets/ico/favicon.png" />
-<link rel="apple-touch-icon-precomposed"
-	href="../share/assets/ico/apple-touch-icon-144-precomposed.png" />
-<!-- bootstrap -->
-<link rel="stylesheet" type="text/css"
-	href="../share/assets/css/bootstrap.min.css" />
 <!-- 플러그인 CSS 참조 -->
 <link rel="stylesheet" type="text/css"
 	href="../share/plugins/datepicker/datepicker.min.css">
-<!-- 나눔고딕 웹 폰트 적용 -->
-<link rel="stylesheet" type="text/css"
-	href="../share/assets/css/nanumfont.css" />
-<link rel="stylesheet" type="text/css" href="../share/tmpl.css" />
 <style type="text/css">
 .header {
 	z-index: 1004;
@@ -83,14 +72,14 @@
 	padding: 0;
 }
 
-.period .btn {
+.period .btn2 {
 	border: 1px solid #ff8f83;
 	font-size: 12px;
 	width: 16%;
 	height: 30px
 }
 
-.btn:hover {
+.btn2:hover {
 	background-color: #FF6261;
 	color: #fff;
 }
@@ -262,11 +251,15 @@ hr {
 				<div class="container">
 					<div class="period">
 						<p class="col-xs-1">기간</p>
-						<button class="btn btn-default col-xs-2" onclick="set_term(0)">오늘</button>
-						<button class="btn btn-default col-xs-2" onclick="set_term(30)">1개월</button>
-						<button class="btn btn-default col-xs-2" onclick="set_term(90)">3개월</button>
-						<button class="btn btn-default col-xs-2" onclick="set_term(180)">6개월</button>
-						<button class="btn btn-default col-xs-3" id="period_set">기간설정</button>
+						<button class="btn btn2 btn-default col-xs-2"
+							onclick="set_term(0)">오늘</button>
+						<button class="btn btn2 btn-default col-xs-2"
+							onclick="set_term(30)">1개월</button>
+						<button class="btn btn2 btn-default col-xs-2"
+							onclick="set_term(90)">3개월</button>
+						<button class="btn btn2 btn-default col-xs-2"
+							onclick="set_term(180)">6개월</button>
+						<button class="btn btn2 btn-default col-xs-3" id="period_set">기간설정</button>
 					</div>
 				</div>
 			</div>
@@ -274,24 +267,24 @@ hr {
 				<div class="col-xs-1"></div>
 				<input type="text" id="datepicker_before" />&nbsp;~ <input
 					type="text" id="datepicker_after" />
-				<button type="button" class="btn">조회</button>
+				<button type="button" class="btn btn2">조회</button>
 			</div>
 			<div class="view">
 				<span class="date" title="주문일자"> 2020-03-18 </span> <span
-					class="number" title="주문번호"> <a href="order_desc.html">
+					class="number" title="주문번호"> <a href="order_desc.jsp">
 						(20200318-0000195) </a>
-				</span> <a href="order_desc.html" class="btn-detail"><span id="GGuc">&#62;</span>상세보기</a>
+				</span> <a href="order_desc.jsp" class="btn-detail"><span id="GGuc">&#62;</span>상세보기</a>
 			</div>
 			<div class="prd-info">
 				<div class="prd-box">
 					<div class="thumbnail">
-						<a href="../gallery/goods.html"> <img
+						<a href="../gallery/goods.jsp"> <img
 							src="../share/img/slide.jpg" width="70" height="70">
 						</a>
 					</div>
 					<div class="prd-content">
 						<strong class="prd-name" title="상품명"> <a
-							href="../gallery/goods.html">펫클럽 세나개 고부해 사은품 증정</a>
+							href="../gallery/goods.jsp">펫클럽 세나개 고부해 사은품 증정</a>
 						</strong>
 						<ul class="prd-li">
 							<li><span class="price" title="판매가"> <strong>14,000</strong>원
@@ -317,9 +310,6 @@ hr {
 		</div>
 	</div>
 	<%@ include file="/share/bottom_tp.jsp"%>
-	<!-- Javascript -->
-	<script src="../share/assets/js/jquery-3.2.1.min.js"></script>
-	<script src="../share/assets/js/bootstrap.min.js"></script>
 	<!-- 플러그인 JS 참조 -->
 	<script src="../share/plugins/datepicker/datepicker.min.js"></script>
 	<script src="../share/plugins/datepicker/datepicker.ko-KR.js"></script>

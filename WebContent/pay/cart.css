@@ -1,0 +1,232 @@
+.col-xs-6 {
+	padding: 0;
+	margin-top: 20px;
+}
+
+.content .container {
+	width: 96%;
+	margin: auto;
+}
+
+.panel-title6 {
+	padding: 10px 8px;
+	font-size: 16px;
+	background: #FF6261;
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.panel-title2 a {
+	color: #fff;
+}
+
+.panel-header2 {
+	padding: 10px 8px;
+	font-size: 16px;
+	background: #ffc7c1;
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.panel-body2 {
+	padding: 0;
+	border: 1px solid #ffc7c1;
+}
+
+.mygoods {
+	padding-top: 20px;
+}
+
+.mygoods:hover {
+	cursor: pointer;
+}
+
+.chkbox {
+	float: left;
+	padding-left: 10px;
+}
+
+.cart-size {
+	width: 17px;
+	height: 17px;
+}
+
+#all_check {
+	width: 66.64px;
+	height: 24px;
+}
+
+.mygoods a {
+	display: block;
+	float: left;
+	margin: 5px;
+	height: auto;
+	padding-left: 5px;
+}
+
+.word a {
+	padding: 0;
+	margin: 0;
+	color: #000;
+	float: left;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 62%;
+}
+
+.word>b {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.btn2 {
+	border-color: #ff8f83;
+}
+
+.word-btn {
+	padding-left: 120px;
+}
+
+.cart-img {
+	width: 80px;
+	border: 1px solid #ffc7c1;
+}
+
+.summ {
+	text-align: right;
+	padding-bottom: 10px;
+}
+
+.word span {
+	border: 1px solid #FFD9FA;
+	background-color: #FFD9FA;
+}
+
+.count {
+	padding: 0;
+	border: none;
+}
+
+.count-label {
+	width: 20%;
+	height: 28px;
+	vertical-align: -0.5px;
+}
+
+.word-btn #change {
+	vertical-align: -0.5px;
+	height: 28px;
+}
+
+.word-btn #change2 {
+	vertical-align: -0.5px;
+	height: 28px;
+}
+
+.summ {
+	text-align: left;
+	padding-bottom: 10px;
+}
+
+.right-btn {
+	float: right;
+	position: relative;
+	bottom: 8px;
+}
+
+.btn2:hover {
+	background-color: #FF6261;
+	color: #fff;
+}
+
+.selectbtn {
+	border-bottom: 1px solid #ffc7c1;
+	width: auto;
+	padding: 16px 30px;
+}
+
+.cart-move {
+	padding: 16px 30px;
+}
+
+.table {
+	margin: auto;
+	margin-bottom: 15px;
+}
+
+.table thead {
+	border-left: 1px solid #FF6261;
+	border-right: 1px solid #FF6261;
+	background-color: #FF6261;
+	color: #fff;
+	font-weight: bold;
+}
+
+.table-header {
+	border-left: 1px solid #ff6261;
+}
+
+.table-header2 {
+	border-right: 1px solid #ff6261;
+}
+
+tr {
+	border: 1px solid #ffc7c1;
+}
+
+td {
+	border-bottom: 1px solid #ffc7c1;
+}
+
+.td-mny {
+	text-align: right;
+}
+
+.pay {
+	margin: auto;
+}
+
+.pay .btn {
+	padding: 10px 15px;
+	width: 49%;
+	margin-bottom: 50px;
+}
+
+.pay a {
+	text-decoration: none;
+}
+
+button {
+	background: #fff;
+	border: 1px solid #777;
+}
+
+#myModal2 {
+	padding-top: 50%;
+}
+
+.cart-modal {
+	padding: 10px;
+}
+
+.modal-footer2 .btn2 {
+	width: 65px;
+	height: 34px;
+	float: right;
+	margin: 5px;
+}
+
+.modal-header2 {
+	height: 50px;
+}
+
+.modal-body2 {
+	height: 50px;
+}
+
+.modal-footer2 {
+	height: 40px;	
+}
