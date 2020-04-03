@@ -158,9 +158,8 @@
 </head>
 
 <body>
-	<%@ include file="/share/top_tp.jsp" %>
-	
-        <div class="content">
+<%@ include file="/share/top_tp.jsp" %>
+	<div class="content">
             <!-- 여기에 작성 -->
             <div class="container">
                 <div class="page-title clearfix">
@@ -168,7 +167,7 @@
                             <a href="#" onclick="history.back(); return false;"><i class="glyphicon glyphicon-chevron-left"></i></a>포토리뷰
                         </b></h4>
                 </div>
-	<div class="container_1">
+                <div class="container_1">
                     <div>
                         <form>
                             <div class="pr_search_tab_bg">
