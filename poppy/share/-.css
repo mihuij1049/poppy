@@ -1,37 +1,39 @@
-.footer-content {
+.modal-content {
     width: 90%;
     margin: auto;
     margin-top: 13px;
+
 }
 
-.modal.in .footer-dialog {
+.modal.in .modal-dialog {
     position: relative;
     top: 195px;
     transform: translateY(-170px);
 }
 
-.footer-header {
+.modal-header {
     min-height: 110px;
     padding: 10px;
     border-bottom: 1px solid #ffc7c1;
 }
 
-.footer-header img {
-    width: 200px;
+.modal-header img {
+    width: 180px;
     float: left;
 }
 
-.footer-header button {
+.modal-header button {
     float: right;
     margin: 5px;
 }
 
-.footer-buttons {
-    margin-top: 52px;
+.buttons {
+    margin-top: 50px;
+
 }
 
 /** 바디영역 */
-.footer-category {
+.kategorie {
     border: 1px solid #ff6261;
     background: #ff6261;
     padding: 10px;
@@ -42,48 +44,50 @@
     margin-bottom: 15px;
 }
 
-.footer-body {
-    max-height: calc(100vh-210px);
+.modal-body {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
     min-height: 200px;
     padding: 0px;
+
 }
 
-.fm-heading {
+.panel-heading {
     padding-left: 25px;
 }
 
-.fm-heading a {
+.panel-heading a {
     color: #333;
 }
 
-.fm-heading h4 {
+.panel-heading h4 {
     text-align: left;
     font-size: 16px;
     margin: 0px;
     color: #333;
 }
 
-.fm-body a {
+.panel-body a {
     display: block;
     color: #333;
 }
 
-.fm-default {
+.panel-default {
     margin: auto;
     width: 96%;
 }
 
-.fm-body {
+.panel-body {
     text-align: left;
     padding-left: 40px;
 }
 
-.fm-toggle a {
+.accordion-toggle a {
     display: block;
 
 }
 
-.fm-default>.fm-heading {
+.panel-default>.panel-heading {
     border: 1px solid #ffc7c1;
 
 }
@@ -94,15 +98,16 @@
 
 }
 
-.icon-rotate11 {
+.icon-rotate1 {
     -webkit-transition-duration: 0.5s;
 }
 
 .rotate2 {
     -webkit-transform: rotate(180deg);
+
 }
 
-.icon-rotate22 {
+.icon-rotate2 {
     -webkit-transition-duration: 0.5s;
 }
 
@@ -111,7 +116,7 @@
 
 }
 
-.icon-rotate33 {
+.icon-rotate3 {
     -webkit-transition-duration: 0.5s;
 }
 
@@ -120,7 +125,7 @@
 
 }
 
-.icon-rotate44 {
+.icon-rotate4 {
     -webkit-transition-duration: 0.5s;
 }
 
@@ -129,7 +134,7 @@
 
 }
 
-.icon-rotate55 {
+.icon-rotate5 {
     -webkit-transition-duration: 0.5s;
 }
 
@@ -142,7 +147,7 @@
 }
 
 /** 하단영역 */
-.fm-footer {
+.modal-footer {
     border-top: none;
     padding-bottom: 10px;
 }

@@ -85,28 +85,26 @@
                     <!-- .modal -->
                     <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <!-- .modal-dialog -->
-                        <div class="modal-dialog" id="modal-dialog">
+                        <div class="modal-dialog footer-dialog" id="modal-dialog">
                             <!-- .modal-content -->
-                            <div class="modal-content clearfix">
+                            <div class="modal-content footer-content clearfix">
                                 <!-- 제목 -->
-                                <div class="modal-header">
+                                <div class="modal-header footer-header">
                                     <div class="logo">
                                         <img alt="사진" src="../share/img/logojpg.jpg">
                                     </div>
                                     <!-- 닫기버튼 -->
                                     <div class="button-close">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                            &times;
-                                        </button>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
                                     </div>
-                                    <div class="buttons">
-                                        <button type="button" onclick="location.href='../member/agree_0.jsp'" class="btn btn1">회원가입</button>
-                                        <button type="button" onclick="location.href='../member/login.jsp'" class="btn btn1">로그인</button>
+                                    <div class="footer-buttons">
+                                        <button type="button" onclick="location.href='../member/agree_0.html'" class="btn btn1">회원가입</button>
+                                        <button type="button" onclick="location.href='../member/login.html'" class="btn btn1">로그인</button>
                                     </div>
                                 </div>
                                 <!-- 내용 -->
-                                <div class="modal-body">
-                                    <div class="kategorie">
+                                <div class="modal-body footer-body">
+                                    <div class="footer-category">
                                         <b>카테고리</b>
                                     </div>
                                     <div class="ka-list">
@@ -115,141 +113,141 @@
                                     <!-- 아코디언 영역 -->
                                     <div class="panel-group clearfix" id="accordion">
                                         <!-- 항목(1) -->
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading ">
-                                                <a href="#" class="accordion-toggle clearfix" data-toggle="collapse" data-parent="#accordion">
+                                        <div class="panel panel-default fm-default">
+                                            <div class="panel-heading fm-heading ">
+                                                <a href="#" class="accordion-toggle fm-toggle clearfix" data-toggle="collapse" data-parent="#accordion">
                                                     <h4 class="panel-title"> 신상품
                                                     </h4>
                                                 </a>
                                             </div>
                                         </div>
                                         <!-- 항목(2) -->
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <a href="#" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">
+                                        <div class="panel panel-default fm-default">
+                                            <div class="panel-heading fm-heading">
+                                                <a href="#" class="accordion-toggle fm-toggle" data-toggle="collapse" data-parent="#accordion">
                                                     <h4 class="panel-title"> 인기상품 </h4>
                                                 </a>
                                             </div>
                                         </div>
                                         <!-- 항목(3) -->
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <a class="accordion-toggle" id="accordion-toggle1" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                                    <h4 class="panel-title1 box1"> 푸드<img src="../share/img/arrow-down.png" align=right class="arrow-down1 icon-rotate1"></h4>
+                                        <div class="panel panel-default fm-default">
+                                            <div class="panel-heading fm-heading">
+                                                <a class="accordion-toggle fm-toggle" id="accordion-toggle1" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                                    <h4 class="panel-title1 box1"> 푸드<img src="../share/img/arrow-down.png" align=right class="arrow-down11 icon-rotate11"></h4>
                                                 </a>
                                             </div>
                                             <div id="collapseOne" class="panel-collapse collapse">
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 사료 </a>
                                                 </div>
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 간식 </a>
                                                 </div>
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 영양제 </a>
                                                 </div>
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 우유 </a>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- 항목(4) -->
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <a class="accordion-toggle" id="accordion-toggle2" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                                    <h4 class="panel-title2 box1"> 의류<img src="../share/img/arrow-down.png" align=right class="arrow-down2 icon-rotate2">
+                                        <div class="panel panel-default fm-default">
+                                            <div class="panel-heading fm-heading">
+                                                <a class="accordion-toggle fm-toggle" id="accordion-toggle2" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                                    <h4 class="panel-title2 box1"> 의류<img src="../share/img/arrow-down.png" align=right class="arrow-down22 icon-rotate22">
                                                     </h4>
                                                 </a>
                                             </div>
                                             <div id="collapseTwo" class="panel-collapse collapse">
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 아우터 </a>
                                                 </div>
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 티셔츠 </a>
                                                 </div>
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 신발 </a>
                                                 </div>
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 양말 </a>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- 항목(5) -->
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <a class="accordion-toggle" id="accordion-toggle3" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                                    <h4 class="panel-title3 box1"> 외출용품<img src="../share/img/arrow-down.png" align=right class="arrow-down3 icon-rotate3">
+                                        <div class="panel panel-default fm-default">
+                                            <div class="panel-heading fm-heading">
+                                                <a class="accordion-toggle fm-toggle" id="accordion-toggle3" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                                    <h4 class="panel-title3 box1"> 외출용품<img src="../share/img/arrow-down.png" align=right class="arrow-down33 icon-rotate33">
                                                     </h4>
                                                 </a>
                                             </div>
                                             <div id="collapseThree" class="panel-collapse collapse">
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 목줄/리드줄 </a>
                                                 </div>
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 자동줄 </a>
                                                 </div>
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 이동장 </a>
                                                 </div>
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 배변봉투 </a>
                                                 </div>
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 휴대용식기 </a>
                                                 </div>
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 입마개 </a>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- 항목(6) -->
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <a class="accordion-toggle" id="accordion-toggle4" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-                                                    <h4 class="panel-title4 box1"> 대형견코너<img src="../share/img/arrow-down.png" align=right class="arrow-down4 icon-rotate4">
+                                        <div class="panel panel-default fm-default">
+                                            <div class="panel-heading fm-heading">
+                                                <a class="accordion-toggle fm-toggle" id="accordion-toggle4" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                                    <h4 class="panel-title4 box1"> 대형견코너<img src="../share/img/arrow-down.png" align=right class="arrow-down44 icon-rotate44">
                                                     </h4>
                                                 </a>
                                             </div>
                                             <div id="collapseFour" class="panel-collapse collapse">
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 사료,간식 </a>
                                                 </div>
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 목줄/리드줄 </a>
                                                 </div>
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 의류 </a>
                                                 </div>
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 장난감 </a>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- 항목(7) -->
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <a class="accordion-toggle" id="accordion-toggle5" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
-                                                    <h4 class="panel-title5 box1"> 홈/리빙<img src="../share/img/arrow-down.png" align=right class="arrow-down5 icon-rotate5">
+                                        <div class="panel panel-default fm-default">
+                                            <div class="panel-heading fm-heading">
+                                                <a class="accordion-toggle fm-toggle" id="accordion-toggle5" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                                                    <h4 class="panel-title5 box1"> 홈/리빙<img src="../share/img/arrow-down.png" align=right class="arrow-down55 icon-rotate55">
                                                     </h4>
                                                 </a>
                                             </div>
                                             <div id="collapseFive" class="panel-collapse collapse">
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 방석 </a>
                                                 </div>
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 계단 </a>
                                                 </div>
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 식기 </a>
                                                 </div>
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 하우스/울타리 </a>
                                                 </div>
-                                                <div class="panel-body">
+                                                <div class="panel-body fm-body">
                                                     <a href="#">- 매트 </a>
                                                 </div>
                                             </div>
@@ -258,7 +256,7 @@
                                     <!--// 아코디언 영역 -->
                                 </div>
                                 <!-- 하단 -->
-                                <div class="modal-footer">
+                                <div class="modal-footer fm-footer">
                                 </div>
                             </div>
                             <!-- /.modal-content -->
@@ -293,75 +291,79 @@
     /** 검색탭 영역 끝! */
 
     /** 카테고리탭 초기화 */
-    $('#myModal').on('hidden.bs.modal', function() {
-        $(".panel-title1").removeClass("box2");
-        $(".panel-title1").addClass("box1");
-        $(".arrow-down1").removeClass("rotate1");
-        $('.panel-collapse').collapse('hide');
-    })
-    $('#myModal').on('hidden.bs.modal', function() {
-        $(".panel-title2").removeClass("box2");
-        $(".panel-title2").addClass("box1");
-        $(".arrow-down2").removeClass("rotate2");
-        $('.panel-collapse').collapse('hide');
-    })
-    $('#myModal').on('hidden.bs.modal', function() {
-        $(".panel-title3").removeClass("box2");
-        $(".panel-title3").addClass("box1");
-        $(".arrow-down3").removeClass("rotate3");
-        $('.panel-collapse').collapse('hide');
-    })
-    $('#myModal').on('hidden.bs.modal', function() {
-        $(".panel-title4").removeClass("box2");
-        $(".panel-title4").addClass("box1");
-        $(".arrow-down4").removeClass("rotate4");
-        $('.panel-collapse').collapse('hide');
-    })
-    $('#myModal').on('hidden.bs.modal', function() {
-        $(".panel-title5").removeClass("box2");
-        $(".panel-title5").addClass("box1");
-        $(".arrow-down5").removeClass("rotate5");
-        $('.panel-collapse').collapse('hide');
-    })
-    /** 카테고리탭 초기화 종료 */
+$('#myModal').on('hidden.bs.modal', function() {
+    $(".panel-title1").removeClass("box2");
+    $(".panel-title1").addClass("box1");
+    $(".arrow-down11").removeClass("rotate1");
+    $('.panel-collapse').collapse('hide');
+})
+$('#myModal').on('hidden.bs.modal', function() {
+    $(".panel-title2").removeClass("box2");
+    $(".panel-title2").addClass("box1");
+    $(".arrow-down22").removeClass("rotate2");
+    $('.panel-collapse').collapse('hide');
+})
+$('#myModal').on('hidden.bs.modal', function() {
+    $(".panel-title3").removeClass("box2");
+    $(".panel-title3").addClass("box1");
+    $(".arrow-down33").removeClass("rotate3");
+    $('.panel-collapse').collapse('hide');
+})
+$('#myModal').on('hidden.bs.modal', function() {
+    $(".panel-title4").removeClass("box2");
+    $(".panel-title4").addClass("box1");
+    $(".arrow-down44").removeClass("rotate4");
+    $('.panel-collapse').collapse('hide');
+})
+$('#myModal').on('hidden.bs.modal', function() {
+    $(".panel-title5").removeClass("box2");
+    $(".panel-title5").addClass("box1");
+    $(".arrow-down55").removeClass("rotate5");
+    $('.panel-collapse').collapse('hide');
+})
+/** 카테고리탭 초기화 종료 */
 
-    /** 카테고리탭 이미지 회전 */
-    $(function() {
-        $(".collapse").collapse({ toggle: false })
+/** 카테고리탭 이미지 회전 */
+$(function() {
+    $(".collapse").collapse({ toggle: false })
+});
+$(function() {
+    $("#accordion-toggle1").on('click', function() {
+        $(".arrow-down11").toggleClass("rotate1");
+        $(".panel-title1").toggleClass("box1, box2");
     });
-    $(function() {
-        $("#accordion-toggle1").on('click', function() {
-            $(".arrow-down1").toggleClass("rotate1");
-            $(".panel-title1").toggleClass("box1 box2");
-        });
+});
+$(function() {
+    $("#accordion-toggle2").on('click', function() {
+        $(".arrow-down22").toggleClass("rotate2");
+        $(".panel-title2").toggleClass("box1, box2");
     });
-    $(function() {
-        $("#accordion-toggle2").on('click', function() {
-            $(".arrow-down2").toggleClass("rotate2");
-            $(".panel-title2").toggleClass("box1, box2");
-        });
-    });
+});
 
-    $(function() {
-        $("#accordion-toggle3").on('click', function() {
-            $(".arrow-down3").toggleClass("rotate3");
-            $(".panel-title3").toggleClass("box1, box2");
-        });
+$(function() {
+    $("#accordion-toggle3").on('click', function() {
+        $(".arrow-down33").toggleClass("rotate3");
+        $(".panel-title3").toggleClass("box1, box2");
     });
+});
 
-    $(function() {
-        $("#accordion-toggle4").on('click', function() {
-            $(".arrow-down4").toggleClass("rotate4");
-            $(".panel-title4").toggleClass("box1, box2");
-        });
+$(function() {
+    $("#accordion-toggle4").on('click', function() {
+        $(".arrow-down44").toggleClass("rotate4");
+        $(".panel-title4").toggleClass("box1, box2");
     });
+});
 
-    $(function() {
-        $("#accordion-toggle5").on('click', function() {
-            $(".arrow-down5").toggleClass("rotate5");
-            $(".panel-title5").toggleClass("box1, box2");
+$(function() {
+    $("#accordion-toggle5").on('click', function() {
+        $(".arrow-down55").toggleClass("rotate5");
+        $(".panel-title5").toggleClass("box1, box2");
 
-        });
     });
-    /** 카테고리탭 이미지회전 끝! */
+});
+/** 카테고리탭 이미지회전 끝! */
+</script>
+</body>
+
+</html>
     

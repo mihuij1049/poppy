@@ -1,22 +1,23 @@
-.footer-content {
-    width: 90%;
+.footer_modal - content {
+    width: 90 %;
     margin: auto;
-    margin-top: 13px;
+    margin - top: 13 px;
+
 }
 
-.footer-dialog {
+.footer_modal.in.modal - dialog {
     position: relative;
-    top: 195px;
-    transform: translateY(-170px);
+    top: 195 px;
+    transform: translateY(-170 px);
 }
 
-.modal - header {
+.footer_modal - header {
     min - height: 110 px;
     padding: 10 px;
     border - bottom: 1 px solid# ffc7c1;
 }
 
-.modal - header img {
+.footer_modal - header img {
     width: 180 px;
     float: left;
 }
