@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <div class="container">
         <div class="header">
-            <a href="../index.html" id="logo">
+            <a href="../index.jsp" id="logo">
                 <img src="../share/img/logojpg.jpg">
             </a>
-            <a href="../pay/cart.html">
+            <a href="../pay/cart.jsp">
                 <span class="glyphicon glyphicon-shopping-cart" id="cart">
                     <h1>장바구니</h1>
                 </span>

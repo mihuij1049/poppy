@@ -4,10 +4,10 @@
             <!--- 소개 4인방 링크 -->
             <hr />
             <div class="etc">
-                <a href="../etc/page_info1.html">회사소개</a>
-                <a href="../etc/page_info2.html">이용약관</a>
-                <a href="../etc/page_info3.html">개인정보취급방침</a>
-                <a href="../etc/page_info4.html">이용안내</a>
+                <a href="../etc/page_info1.jsp">회사소개</a>
+                <a href="../etc/page_info2.jsp">이용약관</a>
+                <a href="../etc/page_info3.jsp">개인정보취급방침</a>
+                <a href="../etc/page_info4.jsp">이용안내</a>
             </div>
             <hr />
             <div class="row">
@@ -47,17 +47,17 @@
                         <div class="body">
                             <form>
                                 <div class="category_tab">
-                                    <a href="../community/notice.html">공지사항</a>
+                                    <a href="../community/notice.jsp">공지사항</a>
                                     <hr />
-                                    <a href="../community/photo_rv.html">포토리뷰</a>
+                                    <a href="../community/photo_rv.jsp">포토리뷰</a>
                                     <hr />
-                                    <a href="../community/qna.html">Q & A</a>
+                                    <a href="../community/qna.jsp">Q & A</a>
                                 </div>
                             </form>
                         </div>
                     </div>
                     <!-- 카테고리탭 영역 끝!-->
-                    <a href="../myInfo/order_list.html">
+                    <a href="../myInfo/order_list.jsp">
                         <span class="glyphicon glyphicon-list-alt">
                             <p>주문조회</p>
                         </span>
@@ -100,8 +100,8 @@
                                         </button>
                                     </div>
                                     <div class="buttons">
-                                        <button type="button" onclick="location.href='../member/agree_0.html'" class="btn btn1">회원가입</button>
-                                        <button type="button" onclick="location.href='../member/login.html'" class="btn btn1">로그인</button>
+                                        <button type="button" onclick="location.href='../member/agree_0.jsp'" class="btn btn1">회원가입</button>
+                                        <button type="button" onclick="location.href='../member/login.jsp'" class="btn btn1">로그인</button>
                                     </div>
                                 </div>
                                 <!-- 내용 -->
@@ -272,7 +272,7 @@
                         </span>
                     </a>
                     <!-- 화면 영역 끝 -->
-                    <a href="../myinfo/myinfo.html">
+                    <a href="../myInfo/myinfo.jsp">
                         <span class="glyphicon glyphicon-user">
                             <p>MY정보</p>
                         </span>
