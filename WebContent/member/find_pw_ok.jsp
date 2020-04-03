@@ -69,7 +69,7 @@
         margin-bottom: 50px;
     }
 
-    .btn1 {
+    .btn-login {
         width: 90%;
         height: 40px;
 
@@ -103,7 +103,7 @@
                 </div>
             </div>
             <div class="btns">
-                <button type="button" class="btn btn1" onclick="location.href='login.jsp'">지금 로그인 하러 가기</button>
+                <button type="button" class="btn btn-login" onclick="location.href='login.jsp'">지금 로그인 하러 가기</button>
             </div>
         </div>
         <%@ include file="/share/bottom_tp.jsp" %>

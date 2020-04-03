@@ -62,69 +62,44 @@
         width: 45%;
     }
 
-    .modal-wrapper {
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        visibility: hidden;
-        opacity: 0;
-        transition: all 0.25s ease-in-out;
-    }
+#search-modal {
+  display:none;
+  position:absolute;
+  left:5%;
+  z-index:1;
+  border:1px solid #ff8f83;
+  width:90%;
+  margin:auto;
+}
+.search-title {
+  width:100%;
+  margin: auto;
+  padding:10px 10px;
+  background:#fff5f4;
+}
+.search-body {
+  width:100%;
+  margin: auto;
+  padding:10px 10px;
+  background:#fff5f4;
+}
+.search-item-paging {
+  width:100%;
+  margin: auto;
+  padding:20px 10px;
+  background:#fff5f4;
+}
 
-    .modal-wrapper.open-select {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .modal-select {
-        width: 320px;
-        height: 300px;
-        display: block;
-        margin: 50% 0 0 -300px;
-        position: relative;
-        top: 40%;
-        left: 100%;
-        background: #fff;
-        opacity: 0;
-        transition: all 0.5s ease-in-out;
-    }
-
-    .modal-wrapper.open-select .modal-select {
-        margin-top: -200px;
-        opacity: 1;
-    }
-
-    .head {
-        width: 96%;
-        height: 32px;
-        padding: 12px 30px;
-        overflow: hidden;
-        background: #e2525c;
-    }
-
-    .btn-close {
-        font-size: 20px;
-        color: #333;
-        width: 50px;
-        height: 30px;
-        padding: 0px 0px
-    }
-
-    .good-job {
-        text-align: center;
-        font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-        color: #e2525c;
-    }
-
-    .good-job .fa-thumbs-o-up {
-        font-size: 60px;
-    }
-
-    .good-job h1 {
-        font-size: 45px;
-    }
+.search-modal-layer {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0, 0, 0, 0.5);
+  z-index:-1;
+}   
+</style>
     </style>
 </head>
 
@@ -139,12 +114,23 @@
                             <a href="#" onclick="history.back(); return false;"><i class="glyphicon glyphicon-chevron-left"></i></a>QnA 글쓰기
                         </b></h4>
                 </div>
+                <div id="search-modal">
+                            	<div class="search-title clearfix">
+                            		<div class="search-bar pull-left">셀렉트, 검생 인풋 텍스트, 검색버튼</div>
+                            		<div class="search-close pull-right">창 닫기 버튼</div>
+                            		<div>검색된 상품 갯수 </div>
+                            	</div>
+                            	<div class="search-body">검색된 상품 나열</div>
+                            	<div class="search-item-paging">페이징</div>
+                            	<div class="search-modal-layer"></div>
+                            </div>
                 <form method="post" action="">
                     <div class="container">
                         <div class="choice clearfix">
                             <div class="col-xs-4"><a href="#" class="item-img"><img src="../share/img/slide.jpg"></a></div>
-                            <div class="col-xs-8"><button type="button" class="item-select trigger-select">상품정보선택</button></div>
+                            <div class="col-xs-8"><button type="button" class="item-select">상품정보선택</button></div>
                         </div>
+                        
                         <div class="qna-title">
                             <div class="col-xs-4">
                                 <label>제목</label>
@@ -193,6 +179,14 @@
             </div>
         </div>
         <%@ include file="/share/bottom_tp.jsp" %>
+        $(function() {
+        	$(".item-select").click(function(e) {
+        		$("#search-modal").fadeIn();
+        	});
+        	$("#search-close").click(function(e) {
+        		$("#search-modal").fadeOut();
+        	});
+        });
         </script>
 </body>
 

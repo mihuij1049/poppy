@@ -157,7 +157,7 @@
         text-align: center;
     }
 
-    .panel-heading a {
+    .panel-desc a {
         display: block;
         text-decoration: none;
         width: 100%;
