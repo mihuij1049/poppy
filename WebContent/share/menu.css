@@ -12,7 +12,6 @@
 
 .footer-header {
     min-height: 110px;
-    padding: 10px;
     border-bottom: 1px solid #ffc7c1;
 }
 
@@ -21,7 +20,7 @@
     float: left;
 }
 
-.footer-header button {
+.btn-footer {
     float: right;
     margin: 5px;
 }

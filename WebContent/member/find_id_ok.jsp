@@ -117,6 +117,7 @@
             </div>
         </div>
     <%@ include file="/share/bottom_tp.jsp" %>
+    </script>
     
 </body>
 

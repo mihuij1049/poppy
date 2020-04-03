@@ -124,14 +124,9 @@
         </div>
         <%@ include file="/share/bottom_tp.jsp" %>
         <!-- Javascript -->
-   
-    <script src="../share/assets/js/regex.js"></script>
-    <script type="text/javascript">
     $(function() {
         $("#find").submit(function(e) {
             e.preventDefault();
-
-
 
             /** 이름 검사 */
             if (!regex.value('#name', '이름을 입력하세요.')) { return false; }

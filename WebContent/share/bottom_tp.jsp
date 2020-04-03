@@ -98,8 +98,8 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
                                     </div>
                                     <div class="footer-buttons">
-                                        <button type="button" onclick="location.href='../member/agree_0.html'" class="btn btn1">회원가입</button>
-                                        <button type="button" onclick="location.href='../member/login.html'" class="btn btn1">로그인</button>
+                                        <button type="button" onclick="location.href='../member/agree_0.html'" class="btn btn-footer">회원가입</button>
+                                        <button type="button" onclick="location.href='../member/login.html'" class="btn btn-footer">로그인</button>
                                     </div>
                                 </div>
                                 <!-- 내용 -->
@@ -107,15 +107,13 @@
                                     <div class="footer-category">
                                         <b>카테고리</b>
                                     </div>
-                                    <div class="ka-list">
-                                        <a href="#">
-                                    </div>
+                                    
                                     <!-- 아코디언 영역 -->
-                                    <div class="panel-group clearfix" id="accordion">
+                                    <div class="panel-group clearfix" id="accordion-tab">
                                         <!-- 항목(1) -->
                                         <div class="panel panel-default fm-default">
                                             <div class="panel-heading fm-heading ">
-                                                <a href="#" class="accordion-toggle fm-toggle clearfix" data-toggle="collapse" data-parent="#accordion">
+                                                <a href="#" class="accordion-toggle fm-toggle clearfix" data-toggle="collapse" data-parent="#accordion-tab">
                                                     <h4 class="panel-title"> 신상품
                                                     </h4>
                                                 </a>
@@ -124,7 +122,7 @@
                                         <!-- 항목(2) -->
                                         <div class="panel panel-default fm-default">
                                             <div class="panel-heading fm-heading">
-                                                <a href="#" class="accordion-toggle fm-toggle" data-toggle="collapse" data-parent="#accordion">
+                                                <a href="#" class="accordion-toggle fm-toggle" data-toggle="collapse" data-parent="#accordion-tab">
                                                     <h4 class="panel-title"> 인기상품 </h4>
                                                 </a>
                                             </div>
@@ -132,11 +130,11 @@
                                         <!-- 항목(3) -->
                                         <div class="panel panel-default fm-default">
                                             <div class="panel-heading fm-heading">
-                                                <a class="accordion-toggle fm-toggle" id="accordion-toggle1" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                                <a class="accordion-toggle fm-toggle" id="accordion-toggle1" data-toggle="collapse" data-parent="#accordion-tab" href="#collapse-One">
                                                     <h4 class="panel-title1 box1"> 푸드<img src="../share/img/arrow-down.png" align=right class="arrow-down11 icon-rotate11"></h4>
                                                 </a>
                                             </div>
-                                            <div id="collapseOne" class="panel-collapse collapse">
+                                            <div id="collapse-One" class="panel-collapse collapse">
                                                 <div class="panel-body fm-body">
                                                     <a href="#">- 사료 </a>
                                                 </div>
@@ -154,12 +152,12 @@
                                         <!-- 항목(4) -->
                                         <div class="panel panel-default fm-default">
                                             <div class="panel-heading fm-heading">
-                                                <a class="accordion-toggle fm-toggle" id="accordion-toggle2" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                                <a class="accordion-toggle fm-toggle" id="accordion-toggle2" data-toggle="collapse" data-parent="#accordion-tab" href="#collapse-Two">
                                                     <h4 class="panel-title2 box1"> 의류<img src="../share/img/arrow-down.png" align=right class="arrow-down22 icon-rotate22">
                                                     </h4>
                                                 </a>
                                             </div>
-                                            <div id="collapseTwo" class="panel-collapse collapse">
+                                            <div id="collapse-Two" class="panel-collapse collapse">
                                                 <div class="panel-body fm-body">
                                                     <a href="#">- 아우터 </a>
                                                 </div>
@@ -177,12 +175,12 @@
                                         <!-- 항목(5) -->
                                         <div class="panel panel-default fm-default">
                                             <div class="panel-heading fm-heading">
-                                                <a class="accordion-toggle fm-toggle" id="accordion-toggle3" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                                <a class="accordion-toggle fm-toggle" id="accordion-toggle3" data-toggle="collapse" data-parent="#accordion-tab" href="#collapse-Three">
                                                     <h4 class="panel-title3 box1"> 외출용품<img src="../share/img/arrow-down.png" align=right class="arrow-down33 icon-rotate33">
                                                     </h4>
                                                 </a>
                                             </div>
-                                            <div id="collapseThree" class="panel-collapse collapse">
+                                            <div id="collapse-Three" class="panel-collapse collapse">
                                                 <div class="panel-body fm-body">
                                                     <a href="#">- 목줄/리드줄 </a>
                                                 </div>
@@ -206,12 +204,12 @@
                                         <!-- 항목(6) -->
                                         <div class="panel panel-default fm-default">
                                             <div class="panel-heading fm-heading">
-                                                <a class="accordion-toggle fm-toggle" id="accordion-toggle4" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                                <a class="accordion-toggle fm-toggle" id="accordion-toggle4" data-toggle="collapse" data-parent="#accordion-tab" href="#collapse-Four">
                                                     <h4 class="panel-title4 box1"> 대형견코너<img src="../share/img/arrow-down.png" align=right class="arrow-down44 icon-rotate44">
                                                     </h4>
                                                 </a>
                                             </div>
-                                            <div id="collapseFour" class="panel-collapse collapse">
+                                            <div id="collapse-Four" class="panel-collapse collapse">
                                                 <div class="panel-body fm-body">
                                                     <a href="#">- 사료,간식 </a>
                                                 </div>
@@ -229,12 +227,12 @@
                                         <!-- 항목(7) -->
                                         <div class="panel panel-default fm-default">
                                             <div class="panel-heading fm-heading">
-                                                <a class="accordion-toggle fm-toggle" id="accordion-toggle5" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                                                <a class="accordion-toggle fm-toggle" id="accordion-toggle5" data-toggle="collapse" data-parent="#accordion-tab" href="#collapse-Five">
                                                     <h4 class="panel-title5 box1"> 홈/리빙<img src="../share/img/arrow-down.png" align=right class="arrow-down55 icon-rotate55">
                                                     </h4>
                                                 </a>
                                             </div>
-                                            <div id="collapseFive" class="panel-collapse collapse">
+                                            <div id="collapse-Five" class="panel-collapse collapse">
                                                 <div class="panel-body fm-body">
                                                     <a href="#">- 방석 </a>
                                                 </div>
@@ -283,6 +281,7 @@
     <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
     <script src="../share/assets/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+    <script src="../share/assets/js/regex.js"></script>
     <script type="text/javascript">
     /** 검색탭 영역 시작! */
     $(".click-searchtab").click(function() {
