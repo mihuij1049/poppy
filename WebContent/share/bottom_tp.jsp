@@ -1,124 +1,5 @@
-<!DOCTYPE html>
-<html lang="ko">
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Poppy-Poppy</title>
-    <!-- 모바일 웹 페이지 설정 -->
-    <link rel="shortcut icon" href="../share/assets/ico/favicon.png" />
-    <link rel="apple-touch-icon-precomposed" href="../share/assets/ico/apple-touch-icon-144-precomposed.png" />
-    <!-- bootstrap -->
-    <link rel="stylesheet" type="text/css" href="../share/assets/css/bootstrap.min.css" />
-    <!-- 나눔고딕 웹 폰트 적용 -->
-    <link rel="stylesheet" type="text/css" href="../share/assets/css/nanumfont.css" />
-    <link rel="stylesheet" type="text/css" href="../share/tmpl.css" />
-    <link rel="stylesheet" type="text/css" href="../share/searchtab.css" />
-    <link rel="stylesheet" type="text/css" href="../share/categorytab.css" />
-    <link rel="stylesheet" type="text/css" href="../share/menu.css" />
-</head>
-
-<body>
-    <div class="container">
-        <div class="header">
-            <a href="../index.html" id="logo">
-                <img src="../share/img/logojpg.jpg">
-            </a>
-            <a href="../pay/cart.html">
-                <span class="glyphicon glyphicon-shopping-cart" id="cart">
-                    <h1>장바구니</h1>
-                </span>
-                <span class="badge">
-                    <p>11</p>
-                </span>
-            </a>
-            <hr>
-            <ul class="category">
-                <a href="#">
-                    <li>BEST</li>
-                </a>
-                <a href="#">
-                    <li>NEW</li>
-                </a>
-                <a href="#">
-                    <li>푸드</li>
-                </a>
-                <a href="#">
-                    <li>의류</li>
-                </a>
-                <a href="#">
-                    <li>외출용품</li>
-                </a>
-                <a href="#">
-                    <li>홈리빙</li>
-                </a>
-                <a href="#">
-                    <li>대형견</li>
-                </a>
-                <a href="#">
-                    <li>타임세일</li>
-                </a>
-                <a href="#">
-                    <li>유통임박</li>
-                </a>
-            </ul>
-            <hr>
-        </div>
-        <div class="content">
-            <!-- 여기에 작성 -->
-            <div class="container">
-                <div class="page-title clearfix">
-                    <h4><b>
-                            <a href="#" onclick="history.back(); return false;"><i class="glyphicon glyphicon-chevron-left"></i></a>게시판이름
-                        </b></h4>
-                </div>
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <!-- 검색탭 영역 시작!-->
-                <div class="searchtab">
-                    <div class="body">
-                        <form>
-                            <div class="search_tab">
-                                <i class="glyphicon glyphicon-search icon_size"></i>
-                                <input type="text" name="search" class="h_input">
-                                <button class="btn" id="sc_bt">검색</button>
-                                <hr />
-                                최근검색어 최근검색어 최근검색어
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- 검색탭 영역 끝!-->
-                <!-- 카테고리탭 영역 시작!-->
-                <div class="categorytab">
-                    <div class="body">
-                        <form>
-                            <div class="category_tab">
-                                <a href="../community/notice.html">공지사항</a>
-                                <hr />
-                                <a href="../community/photo_rv.html">포토리뷰</a>
-                                <hr />
-                                <a href="../community/qna.html">Q & A</a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- 카테고리탭 영역 끝!-->
-            </div>
-        </div>
-        <div class=" footer">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<div class=" footer">
             <!-- 하단 네비게이션 고정-->
             <!--- 소개 4인방 링크 -->
             <hr />
@@ -161,6 +42,21 @@
                             <p>커뮤니티</p>
                         </span>
                     </a>
+                    <!-- 카테고리탭 영역 시작!-->
+                    <div class="categorytab">
+                        <div class="body">
+                            <form>
+                                <div class="category_tab">
+                                    <a href="../community/notice.html">공지사항</a>
+                                    <hr />
+                                    <a href="../community/photo_rv.html">포토리뷰</a>
+                                    <hr />
+                                    <a href="../community/qna.html">Q & A</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- 카테고리탭 영역 끝!-->
                     <a href="../myInfo/order_list.html">
                         <span class="glyphicon glyphicon-list-alt">
                             <p>주문조회</p>
@@ -171,6 +67,21 @@
                             <p>&nbsp;검색&nbsp;</p>
                         </span>
                     </a>
+                    <!-- 검색탭 영역 시작!-->
+                    <div class="searchtab">
+                        <div class="body">
+                            <form>
+                                <div class="search_tab">
+                                    <i class="glyphicon glyphicon-search icon_size"></i>
+                                    <input type="text" name="search" class="h_input">
+                                    <button class="btn" id="sc_bt">검색</button>
+                                    <hr />
+                                    최근검색어 최근검색어 최근검색어
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- 검색탭 영역 끝!-->
                     <!-- .modal -->
                     <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <!-- .modal-dialog -->
@@ -453,6 +364,3 @@
     });
     /** 카테고리탭 이미지회전 끝! */
     </script>
-</body>
-
-</html>

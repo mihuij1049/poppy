@@ -1,0 +1,55 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<div class="container">
+        <div class="header">
+            <a href="../index.html" id="logo">
+                <img src="../share/img/logojpg.jpg">
+            </a>
+            <a href="../pay/cart.html">
+                <span class="glyphicon glyphicon-shopping-cart" id="cart">
+                    <h1>장바구니</h1>
+                </span>
+                <span class="badge">
+                    <p>11</p>
+                </span>
+            </a>
+            <hr>
+            <ul class="category">
+                <a href="#">
+                    <li>BEST</li>
+                </a>
+                <a href="#">
+                    <li>NEW</li>
+                </a>
+                <a href="#">
+                    <li>푸드</li>
+                </a>
+                <a href="#">
+                    <li>의류</li>
+                </a>
+                <a href="#">
+                    <li>외출용품</li>
+                </a>
+                <a href="#">
+                    <li>홈리빙</li>
+                </a>
+                <a href="#">
+                    <li>대형견</li>
+                </a>
+                <a href="#">
+                    <li>타임세일</li>
+                </a>
+                <a href="#">
+                    <li>유통임박</li>
+                </a>
+            </ul>
+            <hr>
+        </div>
+        <div class="content">
+            <!-- 여기에 작성 -->
+            <div class="container">
+                <div class="page-title clearfix">
+                    <h4><b>
+                            <a href="#" onclick="history.back(); return false;"><i class="glyphicon glyphicon-chevron-left"></i></a>게시판이름
+                        </b></h4>
+                </div>
