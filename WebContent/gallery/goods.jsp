@@ -28,6 +28,7 @@
         <link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
         <script type="text/javascript" src="assets/js/ie10.js"></script>
         <![endif]-->
+    <%@ include file="/share/head_tp.jsp" %>
     <style type="text/css">
     .product {
         margin-bottom: 40px;
@@ -91,11 +92,6 @@
         color: #ff8f83;
     }
 
-    .change_color2 {
-        color: #ff8f83;
-    }
-
-
     .product .btn-group .glyphicon-link {
         position: relative;
         right: 3px;
@@ -150,7 +146,7 @@
     .prd-option .quantity th {
         font-size: 12px;
         font-weight: lighter;
-        width: 49%;
+        width: 48%;
     }
 
     .prd-option button {
@@ -504,51 +500,8 @@
 </head>
 
 <body>
+    <%@ include file="/share/top_tp.jsp" %>
     <div class="container">
-        <div class="header">
-            <a href="../index.jsp" id="logo">
-                <img src="../share/img/logojpg.jpg">
-            </a>
-            <a href="../pay/cart.jsp">
-                <span class="glyphicon glyphicon-shopping-cart" id="cart">
-                    <h1>장바구니</h1>
-                </span>
-                <span class="badge">
-                    <p>11</p>
-                </span>
-            </a>
-            <hr>
-            <ul class="category">
-                <a href="#">
-                    <li>BEST</li>
-                </a>
-                <a href="#">
-                    <li>NEW</li>
-                </a>
-                <a href="#">
-                    <li>푸드</li>
-                </a>
-                <a href="#">
-                    <li>의류</li>
-                </a>
-                <a href="#">
-                    <li>외출용품</li>
-                </a>
-                <a href="#">
-                    <li>홈리빙</li>
-                </a>
-                <a href="#">
-                    <li>대형견</li>
-                </a>
-                <a href="#">
-                    <li>타임세일</li>
-                </a>
-                <a href="#">
-                    <li>유통임박</li>
-                </a>
-            </ul>
-            <hr>
-        </div>
         <div class="content">
             <!-- 여기에 작성 -->
             <div class="page-title clearfix">
@@ -827,43 +780,8 @@
                 </div>
             </div>
         </div>
-        <div class="footer">
-            <!-- 하단 네비게이션 고정-->
-            <!--- 소개 4인방 링크 -->
-            <hr />
-            <div class="etc">
-                <a href="../etc/page_info1.jsp">회사소개</a>
-                <a href="../etc/page_info2.jsp">이용약관</a>
-                <a href="../etc/page_info3.jsp">개인정보취급방침</a>
-                <a href="../etc/page_info4.jsp">이용안내</a>
-            </div>
-            <hr />
-            <div class="row">
-                <div class="col-xs-6 etc">
-                    <h5><b>상담센터</b></h5>
-                    <p style="font-size: 18px; font-weight:bold;">070-123-4567</p>
-                    <p style="font-size: 12px"> 운영시간 : 오전 10:00 - 오후 6:00<br />주말, 공휴일은 후뮤입니다.</p>
-                </div>
-                <div class="col-xs-6 etc">
-                    <h5><b>입금계좌안내</b></h5>
-                    <br />
-                    <p>하나 355-342432-23445<br>예금주 : (주)뽀삐뽀삐</p>
-                </div>
-            </div>
-            <address class="clearfix">
-                <p>상점명: (주)뽀삐뽀삐 대표 : 아무개
-                    <br>주소 : 서울특별시 행복구 존버동 8282-5959 102호 - 물류팀<br>
-                    사업자등록번호 : 123-86-43567<br>
-                    통신판매업신고 : 제2020-서울서초-0082호<br>
-                    개인정보관리책임 : 아무개 <br>
-                    <br />
-                    COPYRIGHT&copy; (주)뽀삐뽀삐 ALL RIGHTS RESERVED
-                    <br />
-                    <i>DESIGN BY EZEN-team4</i>
-                </p>
-            </address>
-        </div>
     </div>
+    <%@ include file="/share/bottom_tp.jsp" %>
     <!-- Javascript -->
     <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
     <script src="../share/assets/js/bootstrap.min.js"></script>
@@ -915,13 +833,17 @@
             $(this).toggleClass("like-btn change_border");
             $('.like').toggleClass("glyphicon-heart-empty glyphicon-heart");
             $('.like-txt').toggleClass("change_color");
-            $('#like-count').toggleClass("change_color2");
+            $('#like-count').toggleClass("change_color");
         });
 
-        var count = $("#like-count").text();
         $(".like-btn").click(function(e) {
-            count++;
-            $("#like-count").html(count);
+        	var count = $("#like-count").text();
+        	var heart_empty = $(.glyphicon-heart-empty);
+        	if ($("#like-count").val() == "") {
+        		count++;
+        	} else {
+        		count--;
+        	}          
         });
     });
 
