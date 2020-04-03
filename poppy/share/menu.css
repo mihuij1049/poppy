@@ -9,7 +9,6 @@
     position: relative;
     top: 195px;
     transform: translateY(-170px);
-
 }
 
 .modal-header {
@@ -65,6 +64,7 @@
     text-align: left;
     font-size: 16px;
     margin: 0px;
+    color: #333;
 }
 
 .panel-body a {
