@@ -530,22 +530,22 @@ dl {
 }
 
 .action-btn2 #action-cart2 {
-    color: #ff8f83;
-    background: #fff;
-    border: 1px solid #ff8f83;    
+	color: #ff8f83;
+	background: #fff;
+	border: 1px solid #ff8f83;
 }
 
 .action-btn2 #action-like2 {
 	margin-right: 5px;
 	margin-left: 5px;
 	background: #fff;
-	color:#ff8f83;
+	color: #ff8f83;
 	border: 1px solid #ff8f83;
 }
 
 .action-btn2 #action-orderform2 {
-    color: #fff;
-    background: #ff8f83;
+	color: #fff;
+	background: #ff8f83;
 }
 
 .collapse {
@@ -563,7 +563,7 @@ dl {
 	display: block;
 	width: auto;
 	padding: 10px;
-	color: #222;
+	color: #777;
 	font-size: 12px;
 	text-decoration: none;
 	background: #fff;
@@ -583,52 +583,116 @@ dl {
 }
 
 .rotate {
-     -webkit-transform: rotate(180deg);
- }
+	-webkit-transform: rotate(180deg);
+}
 
- .icon-rotate {
-     -webkit-transition-duration: 1s;
- }
- 
- .collapse .product {
-     margin: 0;
- }
+.icon-rotate {
+	-webkit-transition-duration: 1s;
+}
 
- .information {
-    display: flex;
- }
+.collapse .product {
+	margin: 0;
+}
 
- .information .thumbnail {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
+.information {
+	display: flex;
+}
 
- }
+.information .thumbnail {
+	width: 50px;
+	height: 50px;
+	margin-right: 10px;
+}
 
- .information .name {
-    width: auto;
-    margin-bottom: 0px;
- }
- 
- .product .option {
-     padding-bottom: 8px;
- }
- 
- .product .option .title {
- 	width: 30%;
- 	display: inline;
- }
+.information .name {
+	width: auto;
+	margin-bottom: 0px;
+}
 
- .product .option .pre-select {
- 	width: 70%;
- 	height: 30px;
- 	float: right;
- 	border: 1px solid #ddd;
- 	position: relative;
- 	bottom: 5px;
- }
+.product .option {
+	padding-bottom: 8px;
+}
 
+.product .option .title {
+	width: 30%;
+	display: inline;
+}
 
+.product .option .prd-select {
+	width: 70%;
+	height: 30px;
+	float: right;
+	padding: 5px;
+	border: 1px solid #ddd;
+	position: relative;
+	bottom: 5px;
+}
+
+.product .option .prd-select option {
+	width: 70%;
+}
+
+.select-prd {
+	display: none; background : #FFF8F4;
+	border-bottom: 1px solid #ddd;
+	background: #FFF8F4;
+}
+
+.select-prd .prd {
+	font-size: 12px;
+	margin-bottom: 0;
+}
+
+.select-prd td p {
+	width: 210px;
+	padding-top: 10px;
+	padding-left: 20px;
+}
+
+.select-prd button {
+	width: 30px;
+	height: 28px;
+	color: #000;
+	padding: 0;
+	font-size: 15px;
+	text-decoration: none;
+	background-color: #fff;
+	border: none;
+}
+
+.select-prd button img {
+	width: auto;
+	height: 28px;
+}
+
+.select-prd input {
+	width: 30px;
+	height: 26.5px;
+	text-align: center;
+	font-size: 12px;
+	display: inline-block;
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	vertical-align: -0.5px;
+}
+
+.select-prd .add-price {
+	width: 80px;
+	font-size: 12px;
+	text-align: right;
+}
+
+.select-prd .cencel {
+	padding: 0 10px;
+}
+
+.select-prd .cencel #prd-del {
+	border: 1px solid #ff8f83;
+}
+
+.select-prd .cencel span {
+	color: #ff8f83;
+}
 </style>
 </head>
 
@@ -698,43 +762,74 @@ dl {
 					<div class='collapse-item'>
 						<!-- 게시글 제목영역 -->
 						<h2 class='collapse-title'>
-							<a href="#content1">
-                                <span>추가구성상품</span>
-                                <img src="../share/img/arrow-down.png" align=right class="arrow-down icon-rotate">
-                            </a>
+							<a href="#content1"> <span>추가구성상품</span> <img
+								src="../share/img/arrow-down.png" align=right
+								class="arrow-down icon-rotate">
+							</a>
 						</h2>
 						<!-- 게시글 내용영역 -->
 						<div id="content1" class="content">
-                            <ul class="product">
-                                <li style="list-style: none;">
-                                    <div class="information">
-                                        <div class="thumbnail">
-                                            <a href="../gallery/goods.jsp">
-                                                <img src="../share/img/goods_header.jpg">
-                                            </a>
-                                        </div>
-                                        <div calss="con">
-                                            <p class="name">펫클럽 벨버드비쉬케어포덴탈 바르는치약 70g/위생</p>
-                                            <p class="price">6,000원</p>
-                                        </div>
-                                    </div>
-                                    <div class="option">
-                                        <div class="title">상품선택</div>
-                                        <select class="pre-select">
-                                            <option>- [필수] 상품 선택 -</option>
-                                            <option>펫클럽 벨버드비쉬케어포덴탈 바르는치약 70g/위생</option>
-                                        </select>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+							<ul class="product">
+								<li style="list-style: none;">
+									<div class="information">
+										<div class="thumbnail">
+											<a href="../gallery/goods.jsp"> <img
+												src="../share/img/goods_header.jpg">
+											</a>
+										</div>
+										<div calss="con">
+											<p class="name">펫클럽 벨버드비쉬케어포덴탈 바르는치약 70g/위생</p>
+											<p class="price">6,000원</p>
+										</div>
+									</div>
+									<div class="option">
+										<div class="title">상품선택</div>
+										<select class="prd-select">
+											<option class="active">- [필수] 상품 선택 -</option>
+											<option >펫클럽 벨버드비쉬케어포덴탈 바르는치약 70g/위생</option>
+										</select>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="select-prd">
+						<table>
+							<tbody class="add-prds">
+								<tr class="add-prd">
+									<td>
+										<p class="prd">
+											<strong>펫클럽 벨버드비쉬케어포덴탈 바르는치약 70g/위생</strong> <br> <span>펫클럽
+												벨버드비쉬케어포덴탈 바르는치약 70g/위생</span>
+										</p>
+										<p>
+											<button type="button" class="btn btnDown2">
+												<img src="../share/img/마이너스.png">
+											</button>
+											<input type="number" value="1" min="1" max="99" name="count2"
+												id="count2" />
+											<button type="button" class="btn btnUp2">
+												<img src="../share/img/플러스.png">
+											</button>
+										</p>
+									</td>
+									<td class="add-price"><span>6000</span> <span>원</span></td>
+									<td class="cencel">
+										<div class="cencel-btn">
+											<button type="button" class="btn" id="prd-del">
+												<span class="glyphicon glyphicon-remove"></span>
+											</button>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 				<div class="prd-total">
 					<strong>총 상품금액(수량)</strong>
 					<div class="total-price">
-						<b id="total-price">19900</b> <b>원</b> <b>(</b><b
-							id="price-count">1</b><b>개)</b>
+						<b id="total-price">19900</b> <b>원</b> <b>(</b><b id="price-count">1</b><b>개)</b>
 					</div>
 				</div>
 				<div class="prd-action">
@@ -1029,6 +1124,25 @@ dl {
 				$("#total-price").html(counter * price);
 				$("#price-count").html(counter);
 			});
+			
+			$(".btnUp2").click(function(e) {
+				counter++;
+
+				$("#count").val(counter);
+				$("#total-price").html(counter * price);
+				$("#price-count").html(counter);
+			});
+			$(".btnDown2").click(function(e) {
+				if (counter < 2) {
+					alert("최소 주문수량은 1개 입니다.");
+					return;
+				}
+				counter--;
+
+				$("#count").val(counter);
+				$("#total-price").html(counter * price);
+				$("#price-count").html(counter);
+			});
 		});
 
 		jQuery(document).ready(function() {
@@ -1042,14 +1156,12 @@ dl {
 		});
 
 		$(function() {
-			$('.like-btn').click(
-					function() {
-						$(this).toggleClass("like-btn change_border");
-						$('.like').toggleClass(
-								"glyphicon-heart-empty glyphicon-heart");
-						$('.like-txt').toggleClass("change_color");
-						$('.ct').toggleClass("like-count change_color2");
-					});
+			$('.like-btn').click(function() {
+				$(this).toggleClass("like-btn change_border");
+				$('.like').toggleClass("glyphicon-heart-empty glyphicon-heart");
+				$('.like-txt').toggleClass("change_color");
+				$('.ct').toggleClass("like-count change_color2");
+			});
 
 			var count = $(".change_color2").text();
 			$(".like-btn").click(function(e) {
@@ -1072,10 +1184,39 @@ dl {
 
 			});
 
-			 $(".collapse-title a").on('click', function() {
-		            $(".arrow-down").toggleClass("rotate");
-		        });
+			$(".collapse-title a").on('click', function() {
+				$(".arrow-down").toggleClass("rotate");
+			});
+
+			jQuery('.prd-select').change(function() {
+				var state = jQuery('.prd-select option:selected').val();
+				if (state) {
+					jQuery('.select-prd').show();
+				}
+			});
+			
+			$(document).on("click", "#prd-del", function() {
+				$(this).parents(".select-prd").hide();
+			});
 		});
+
+		function comma(num) {
+			var len, point, str;
+
+			num = num + "";
+			point = num.length % 3;
+			len = num.length;
+
+			str = num.substring(0, point);
+			while (point < len) {
+				if (str != "")
+					str += ",";
+				str += num.substring(point, point + 3);
+				point += 3;
+			}
+
+			return str;
+		}
 	</script>
 </body>
 
