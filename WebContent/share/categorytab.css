@@ -1,57 +1,53 @@
-.category_tab a {
-	text-decoration: none;
-	color: #fff;
+/** 서치탭 검색 인풋 부분 */
+
+.community_md_content {
+
+	padding: 35px 0px 0px 0px;
+	text-aligin: left;
 }
 
-.category_tab {
-	width: 100%;
-	height: 120px;
-	padding: 10px;
-	padding-left: 15px;
-	margin: auto;
-	float: left;
-	font-color: #fff;
+.community_md_content input {
+	width: 60%;
+	margin-left: 5px;
+	height: 32px;
 }
 
-.category_tab input {
-	height: 30px;
-	width: 70%;
-	margin: 5px;
-}
 
-.category_tab .icon_size {
-	font-size: 18px;
+.community_md_content button {
 	position: relative;
-	color: #fff;
-	top: 3px;
-	margin-right: 5px;
+	bottom: 2px;
 }
 
-.category_tab hr {
-	margin: 6px 0 8px 0;
-	height: 1px;
-	background-color: #fff;
-	border: none;
+/** 서치탭 옵션입니다. */
+
+#comModal #searchicon {
+	color: #FF8F83;
+	font-size: 24px;
+	position:relative;
+	top: 4px;
 }
 
-/** 모달창 작업 시작 */
-.categorytab {
-	background: #ffc7c1;
-	width: 96%;
-	padding: 0;
-	transition: all 700ms cubic-bezier(0.86, 0, 0.07, 1);
-	position: fixed;
-	top: 100%;
-	left: 2%;
-	right: 2%;
-	border-radius: 5px;
-	z-index: 1000;
+.cmubutton-close {
+	margin: 10px 10px 0px 0px;
 }
 
-.categorytab .body {
-	padding: 0px;
+
+#cmuModal {
+	padding-top: 50%;
 }
 
-.container.categorytab-open .categorytab {
-	top: 60%;
+.community_md_footer {
+	margin-bottom: 30px;
+}
+
+.community_md_content hr {
+	margin: 10px 0px 10px 0px;
+}
+
+.community_md_content a {
+	color: #777;
+}
+
+.community_md_content a:hover {
+	color: #ff8f83;
 }

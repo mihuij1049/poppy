@@ -39,57 +39,73 @@
 				EZEN-team4</i>
 		</p>
 	</address>
-	<!-- 맨 위로 이동하는 버튼!!! -->
-	<div id="topbt">상단바</div>
-	<!-- 위로 이동하는 버튼 끝!!! -->
 	<!-- 하단 네비바 시작!!! -->
 	<div class="navbar" id="navbarback">
 		<ul class="btmbar-nav clearfix navbar-fixed-bottom">
 			<hr />
-			<a class="click-categorytab"> <span
+			<a data-toggle="modal" href="#cmuModal"><span
 				class="glyphicon glyphicon-comment">
-					<p>커뮤니티</p>
+				<p>커뮤니티</p>
 			</span>
 			</a>
-			<!-- 카테고리탭 영역 시작!-->
-			<div class="categorytab">
-				<div class="body">
-					<form>
-						<div class="category_tab">
-							<a href="../community/notice.jsp">공지사항</a>
-							<hr />
-							<a href="../community/photo_rv.jsp">포토리뷰</a>
-							<hr />
-							<a href="../community/qna.jsp">Q & A</a>
-						</div>
-					</form>
-				</div>
-			</div>
-			<!-- 카테고리탭 영역 끝!-->
+			<!-- 커뮤니티탭 영역 시작!-->
+			<div id="cmuModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        			<!-- .modal-dialog -->
+        			<div class="modal-dialog footer-dialog" id="modal-dialog">
+            			<!-- .modal-content -->
+            			<div class="modal-content footer-content clearfix">
+                    			<div class="cmubutton-close">
+                        			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    			</div>
+                			<div class="community_md_content">
+                				<a href="../community/notice.jsp"><div class="cmu_menu">공지사항</div></a>
+                				<hr />
+                				<a href="../community/photo_rv.jsp"><div class="cmu_menu">포토리뷰</div></a>
+                				<hr />
+                				<a href="../community/qna.jsp"><div class="cmu_menu">Q & A</div></a>
+                    		</div>
+                			<div class="community_md_footer">
+                			</div>
+            			</div>
+            			<!-- /.modal-content -->
+        			</div>
+        			<!-- /.modal-dialog -->
+    			</div>
+    			<!-- /.modal -->
+			<!-- 커뮤니티탭 영역 끝!-->
 			<a href="../myInfo/order_list.jsp"> <span
 				class="glyphicon glyphicon-list-alt">
 					<p>주문조회</p>
 			</span>
 			</a>
-			<a class="click-searchtab"> <span
+			<a data-toggle="modal" href="#scModal"><span
 				class="glyphicon glyphicon-search">
-					<p>&nbsp;검색&nbsp;</p>
-			</span>
-			</a>
+				<p>검색</p>
+			</span> </a>
 			<!-- 검색탭 영역 시작!-->
-			<div class="searchtab">
-				<div class="body">
-					<form>
-						<div class="search_tab">
-							<i class="glyphicon glyphicon-search icon_size"></i> <input
-								type="text" name="search" class="h_input">
-							<button class="btn" id="sc_bt">검색</button>
-							<hr />
-							최근검색어 최근검색어 최근검색어
-						</div>
-					</form>
-				</div>
-			</div>
+			<div id="scModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        			<!-- .modal-dialog -->
+        			<div class="modal-dialog footer-dialog" id="modal-dialog">
+            			<!-- .modal-content -->
+            			<div class="modal-content footer-content clearfix">
+                    			<div class="scbutton-close">
+                        			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    			</div>
+                			<div class="search_md_content">
+                    			<i class="glyphicon glyphicon-search" id="searchicon"></i>
+                    			<input type="text"></input>
+                    			<button type=submit class="btn btn">검색</button>
+                    			</div>
+                			<div class="search_md_footer">
+                			<hr />
+                			최근검색어 최근검색어 최근검색어 최근검색어
+                			</div>
+            			</div>
+            			<!-- /.modal-content -->
+        			</div>
+        			<!-- /.modal-dialog -->
+    			</div>
+    			<!-- /.modal -->
 			<!-- 검색탭 영역 끝!-->
 			<!-- .modal -->
 			<div id="myModal" class="modal fade" tabindex="-1" role="dialog"
@@ -315,7 +331,6 @@
 	</div>
 </div>
 </div>
-<!-- Javascript -->
 <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
 <script src="../share/assets/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>

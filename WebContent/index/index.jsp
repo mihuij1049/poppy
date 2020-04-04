@@ -223,7 +223,7 @@
 						class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
 				</div>
 				<button type="button" class="btn btn-inverse index_btn"
-					onclick="location.href='community/gal_list.jsp'">뽀삐뽀삐 단독
+					onclick="location.href='../community/gal_list.jsp'">뽀삐뽀삐 단독
 					최저가 보장</button>
 			</div>
 			<div class="img_banner">
@@ -240,7 +240,7 @@
 					<div width="50%">
 						<div class="pr_box">
 							<div class="pr_in_box">
-								<a href="photo.jsp"> <img alt="사진"
+								<a href="../community/photo.jsp"> <img alt="사진"
 									src="../share/img/img1.jpg" class="img_size" />
 									<div>
 										<h5>
@@ -264,7 +264,7 @@
 					<div>
 						<div class="pr_box">
 							<div class="pr_in_box">
-								<a href="photo.jsp"> <img alt="사진"
+								<a href="../community/photo.jsp"> <img alt="사진"
 									src="../share/img/img2.jpg" class="img_size" />
 									<div>
 										<h5>
@@ -288,7 +288,7 @@
 					<div>
 						<div class="pr_box">
 							<div class="pr_in_box">
-								<a href="photo.jsp"> <img alt="사진"
+								<a href="../community/photo.jsp"> <img alt="사진"
 									src="../share/img/img3.jpg" class="img_size" />
 									<div>
 										<h5>
@@ -312,7 +312,7 @@
 					<div>
 						<div class="pr_box">
 							<div class="pr_in_box">
-								<a href="photo.jsp"> <img alt="사진"
+								<a href="../community/photo.jsp"> <img alt="사진"
 									src="../share/img/img4.jpg" class="img_size" />
 									<div>
 										<h5>
@@ -341,8 +341,6 @@
 			</div>
 			<%@ include file="/share/bottom_tp.jsp"%>
 			<!-- Javascript -->
-			<script src="../share/assets/js/jquery-3.2.1.min.js"></script>
-			<script src="../share/assets/js/bootstrap.min.js"></script>
 			<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
 			<script type="text/javascript">
         var mySwiper = new Swiper('.swiper-container', {

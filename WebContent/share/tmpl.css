@@ -72,7 +72,7 @@ html, body {
 	right: 3px;
 }
 
-/** 상단 카테고리 탭 시작!!! */
+/** �긽�떒 移댄뀒怨좊━ �꺆 �떆�옉!!! */
 .category {
 	margin-bottom: 0;
 	height: 36px;
@@ -114,9 +114,9 @@ html, body {
 	padding-left: 0;
 }
 
-/** 상단 카테고리 탭 끝!!!!! */
+/** �긽�떒 移댄뀒怨좊━ �꺆 �걹!!!!! */
 
-/** 여긴 상단탭 아래! 페이지별 이름<h3>이랑 뒤로가기 버튼 탭 시작!!! */
+/** �뿬湲� �긽�떒�꺆 �븘�옒! �럹�씠吏�蹂� �씠由�<h3>�씠�옉 �뮘濡쒓�湲� 踰꾪듉 �꺆 �떆�옉!!! */
 .page-title {
 	vertical-align: middle;
 	width: auto;
@@ -145,12 +145,13 @@ html, body {
 	color: #FF8F83;
 }
 
-/** 여긴 상단탭 아래! 페이지별 이름<h3>이랑 뒤로가기 버튼 탭 끝!!! */
+/** �뿬湲� �긽�떒�꺆 �븘�옒! �럹�씠吏�蹂� �씠由�<h3>�씠�옉 �뮘濡쒓�湲� 踰꾪듉 �꺆 �걹!!! */
 
-/** etc 탭 시작! */
+/** etc �꺆 �떆�옉! */
 .footer {
 	width: auto;
 	padding-top: 10px;
+	margin-bootom:0px;
 }
 
 .footer hr {
@@ -178,9 +179,9 @@ html, body {
 	text-decoration: none;
 }
 
-/** etc 탭 끝! */
+/** etc �꺆 �걹! */
 
-/** 어드레스 박스 시작! */
+/** �뼱�뱶�젅�뒪 諛뺤뒪 �떆�옉! */
 address {
 	margin: 0;
 	padding: 6px 0 6px 0;
@@ -196,18 +197,18 @@ address>p {
 	font-size: 10px;
 }
 
-/* 어드레스 박스 끝! */
+/* �뼱�뱶�젅�뒪 諛뺤뒪 �걹! */
 
-/** 하단 row탭 시작! */
+/** �븯�떒 row�꺆 �떆�옉! */
 .row {
 	margin-left: 0px;
 	margin-right: 0px;
 	padding: 10px 0 10px 0;
 }
 
-/** 하단 row탭 끝! */
+/** �븯�떒 row�꺆 �걹! */
 
-/** 하단 네비 바 시작! */
+/** �븯�떒 �꽕鍮� 諛� �떆�옉! */
 .navbar {
 	z-index: 10000;
 }
@@ -242,9 +243,9 @@ address>p {
 	text-decoration: none;
 }
 
-/** 하단 네비 바 끝! */
+/** �븯�떒 �꽕鍮� 諛� �걹! */
 
-/** 버튼 기본 색상 적용 */
+/** 踰꾪듉 湲곕낯 �깋�긽 �쟻�슜 */
 .btn {
 	background-color: #ff8f83;
 	color: #fff;
@@ -265,17 +266,3 @@ address>p {
 	color: #ff8f83;
 	font-weight: bold;
 }
-
-/** 버튼 기본 색상 끝 */
-
-/** 맨 위로 이동하눈 버튼 시작! */
-.footer #topbt {
-	width: 200px;
-	height: 300px;
-	background-color: #000;
-}
-
-.footer #topbt glyphicon {
-	font-size: 30px;
-}
-/** 맨 위로 이동하는 버튼 끝! */
