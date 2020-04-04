@@ -107,7 +107,7 @@
                                     <div class="footer-category">
                                         <b>카테고리</b>
                                     </div>
-                                    
+
                                     <!-- 아코디언 영역 -->
                                     <div class="panel-group clearfix" id="accordion-tab">
                                         <!-- 항목(1) -->
@@ -361,5 +361,5 @@ $(function() {
     });
 });
 /** 카테고리탭 이미지회전 끝! */
+</script>
 
-    
