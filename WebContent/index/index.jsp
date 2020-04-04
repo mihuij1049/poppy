@@ -6,10 +6,12 @@
 
 <head>
 <%@ include file="/share/head_tp.jsp"%>
-<link rel="stylesheet"
-	href="https://unpkg.com/swiper/css/swiper.min.css">
+<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 <link rel="stylesheet" type="text/css" href="index.css" />
 <style type="text/css">
+.swiper-pagination {
+    --swiper-theme-color: #ff8f83;
+}
 </style>
 </head>
 
