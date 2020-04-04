@@ -525,42 +525,51 @@ dl {
 #navbarback .action-btn2 button {
 	width: 30%;
 	height: 44px;
-	color: #fff;
 	font-weight: bold;
-	background: #ff8f83;
-	border: 1px solid #ff8f83;
 	border-radius: 3px;
 }
 
-.action-btn2 #action-like2 {
-	margin-right: 8px;
-	margin-left: 8px;
+.action-btn2 #action-cart2 {
+    color: #ff8f83;
+    background: #fff;
+    border: 1px solid #ff8f83;    
 }
 
-/* 전체 박스 크기 및 정렬 */
+.action-btn2 #action-like2 {
+	margin-right: 5px;
+	margin-left: 5px;
+	background: #fff;
+	color:#ff8f83;
+	border: 1px solid #ff8f83;
+}
+
+.action-btn2 #action-orderform2 {
+    color: #fff;
+    background: #ff8f83;
+}
+
 .collapse {
 	width: 100%;
 	margin-bottom: 20px;
 	display: block;
 }
 
-/* 제목 영역의 배경색상과 태두리 */
 .collapse-title {
 	background: #eeeeee;
 	border: 1px solid #d5d5d5;
 }
 
-/* 제목영역의 링크에 대한 크기, 글자모양 */
 .collapse-title a {
 	display: block;
 	width: auto;
 	padding: 10px;
 	color: #222;
-	font-size: 14px;
-	text-decoration: none
+	font-size: 12px;
+	text-decoration: none;
+	background: #fff;
+	border: 1px solid #ff8f83;
 }
 
-/* 내용영역의 여백, 글자크기, 태두리, 숨김 */
 .collapse .content {
 	padding: 10px 15px;
 	font-size: 12px;
@@ -569,7 +578,6 @@ dl {
 	display: none;
 }
 
-/* 마지막 내용 박스의 테두리 보정 */
 .collapse .content:last-child {
 	border-bottom: 1px solid #d5d5d5;
 }
@@ -581,28 +589,44 @@ dl {
  .icon-rotate {
      -webkit-transition-duration: 1s;
  }
+ 
+ .collapse .product {
+     margin: 0;
+ }
 
  .information {
     display: flex;
  }
 
-.information .con {
-    margin-left: 10px;
-}
-
  .information .thumbnail {
     width: 50px;
     height: 50px;
+    margin-right: 10px;
 
  }
 
  .information .name {
     width: auto;
-    padding-top: 10px;
     margin-bottom: 0px;
  }
+ 
+ .product .option {
+     padding-bottom: 8px;
+ }
+ 
+ .product .option .title {
+ 	width: 30%;
+ 	display: inline;
+ }
 
-
+ .product .option .pre-select {
+ 	width: 70%;
+ 	height: 30px;
+ 	float: right;
+ 	border: 1px solid #ddd;
+ 	position: relative;
+ 	bottom: 5px;
+ }
 
 
 </style>
@@ -709,7 +733,7 @@ dl {
 				<div class="prd-total">
 					<strong>총 상품금액(수량)</strong>
 					<div class="total-price">
-						<b id="total-price">19,900</b> <b>원</b> <b>(</b><b
+						<b id="total-price">19900</b> <b>원</b> <b>(</b><b
 							id="price-count">1</b><b>개)</b>
 					</div>
 				</div>
