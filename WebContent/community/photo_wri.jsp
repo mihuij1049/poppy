@@ -32,13 +32,13 @@
 	padding: 16px 14px;
 }
 
-.select .btn {
+.select .btn2 {
 	text-align: center;
 	width: 120px;
 	margin-left: 10px;
 }
 
-.btn:hover {
+.btn2:hover {
 	background-color: #FF6261;
 	color: #fff;
 }
@@ -124,12 +124,12 @@ input {
 
 .file div {
 	display: inline-block;
-	width: 24%;
+	width: 26%;
 }
 
 .file input {
 	display: inline;
-	width: 70%;
+	width: 72%;
 }
 
 .password {
@@ -144,13 +144,13 @@ input {
 
 .password div {
 	display: inline-block;
-	width: 22%;
+	width: 24%;
 }
 
 .pass {
 	position: relative;
 	bottom: 2px;
-	width: 75%;
+	width: 74%;
 }
 
 .sign {
@@ -159,7 +159,7 @@ input {
 	margin-bottom: 50px;
 }
 
-.btn {
+.btn2 {
 	padding: 10px 15px;
 	width: 49%;
 	margin: auto;
@@ -197,8 +197,8 @@ input {
 				<form class="form-horizontal" name="wri_form" id="wri_form"
 					action="photo_rv.html">
 					<div class="select">
-						<img src="../share/img/image-select.jpg">
-						<button class="btn">상품정보선택</button>
+						<img src="../share/img/photo-file.PNG">
+						<button type="button" class="btn btn2">상품정보선택</button>
 					</div>
 					<div class="title">
 						<div>
@@ -212,15 +212,14 @@ input {
 						<div>
 							<p>평점</p>
 						</div>
-						<input type="radio" name="star" checked=""> <label>★★★★★</label>
+						<input type="radio" name="star" checked> <label>★★★★★</label>
 						<input type="radio" name="star"> <label>★★★★</label> <input
 							type="radio" name="star"> <label>★★★</label> <input
 							type="radio" name="star"> <label>★★</label> <input
 							type="radio" name="star"> <label>★</label>
 					</div>
 					<div class="write">
-						<input type="textarea" name="photo_content" class="text"
-							id="photo_content">
+						<textarea name="content" class="ckeditor"></textarea>
 					</div>
 					<div class="UCC">
 						<div>
@@ -270,16 +269,16 @@ input {
 						<input type="password" name="password" class="pass" id="password">
 					</div>
 					<div class="sign">
-						<button type="submit" class="btn">등록</button>
-						<button class="btn btn-inverse">취소</button>
+						<button type="submit" class="btn btn2">등록</button>
+						<button type="reset" class="btn btn2 btn-inverse">취소</button>
 					</div>
 				</form>
 			</div>
 		</div>
 	<!-- Javascript -->
 	<%@ include file="/share/bottom_tp.jsp"%>
-	</script>
 	<!-- 플러그인 JS 참조 -->
+	<script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 	<script src="../share/plugins/validate/jquery.validate.min.js"></script>
 	<script src="../share/plugins/validate/additional-methods.min.js"></script>
 	<script src="../share/plugins/sweetalert/sweetalert2.min.js"></script>
