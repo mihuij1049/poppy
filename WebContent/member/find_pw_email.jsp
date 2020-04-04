@@ -89,19 +89,19 @@
         font-size: 18px;
     }
 
-    .btns {
+    .btn-goimail-div {
         text-align: center;
         margin-bottom: 50px;
     }
 
-    .btn {
+    .btn-goimail {
         background-color: #ff8f83;
         color: #fff;
         width: 90%;
         height: 40px;
     }
 
-    .btn:hover {
+    .btn-goimail:hover {
         color: white;
     }
     </style>
@@ -125,13 +125,14 @@
                     <input type="radio" value="id"><span class="id-info"><b>abc123</b></span>
                     &nbsp;(개인회원, 2020-02-12 가입) </div>
             </div>
-            <div class="btns">
+            <div class="btn-goimail-div">
                 <a href="../member/find_pw_ok.jsp">
-                    <button type="button" class="btn btn1">임시 비밀번호 이메일로 전송</button>
+                    <button type="button" class="btn btn-goimail">임시 비밀번호 이메일로 전송</button>
                 </a>
             </div>
         </div>
-    <%@ include file="/share/bottom_tp.jsp" %>
+   <%@ include file="/share/bottom_tp.jsp"%>
+	<script type="text/javascript">
 </body>
 
 </html>

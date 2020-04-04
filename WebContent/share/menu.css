@@ -11,23 +11,25 @@
 }
 
 .footer-header {
-    min-height: 110px;
-    border-bottom: 1px solid #ffc7c1;
+    min-height: 70px;
+    padding-top: 15px;
+    border-bottom: none;
 }
 
 .footer-header img {
     width: 200px;
     float: left;
 }
-
-.btn-footer {
-    float: right;
-    margin: 5px;
+/** 로그인/회원가입 버튼 */
+.footer-body>.footer-buttons {
+	float:right;
+	margin-right:10px;
+}
+.footer-buttons>.btn-footer {
+	float:left;
+	margin: 3px;
 }
 
-.footer-buttons.btn {
-    margin-top: 52px;
-}
 
 /** 바디영역 */
 .footer-category {
@@ -38,6 +40,7 @@
     color: white;
     text-align: left;
     width: 100%;
+    margin-top:41px;
     margin-bottom: 15px;
 }
 

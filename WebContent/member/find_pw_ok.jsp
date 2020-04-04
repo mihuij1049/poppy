@@ -53,18 +53,8 @@
 
     }
 
-    .id {
-        border: 1px solid #ffc1c7;
-        width: 96%;
-        height: 50px;
-        margin: auto;
-        margin-bottom: 15px;
-        padding-left: 25px;
-        padding-top: 10px;
-        border-top: none;
-    }
 
-    .btns {
+    .btn-login-div {
         text-align: center;
         margin-bottom: 50px;
     }
@@ -75,7 +65,7 @@
 
     }
 
-    .btn1:hover {
+    .btn-login:hover {
         font-weight: bold;
         font-size: 15px;
         color: #fff;
@@ -102,7 +92,7 @@
                     <b>이메일</b><span class="info-email">abc123@naver.com</span>
                 </div>
             </div>
-            <div class="btns">
+            <div class="btn-login-div">
                 <button type="button" class="btn btn-login" onclick="location.href='login.jsp'">지금 로그인 하러 가기</button>
             </div>
         </div>

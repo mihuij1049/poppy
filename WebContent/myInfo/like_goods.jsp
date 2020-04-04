@@ -184,7 +184,7 @@
                         <button type="button" class="border-botton" id="select-choice">선택삭제</button>
                     </div>
                     <div class="lastbtn">
-                        <a href="../pay/orderform.html">
+                        <a href="../pay/orderform.jsp">
                             <button type="button" class="btn btn2" id="all-bye">전체상품주문</button> </a>
                     </div>
                 </div>
@@ -209,6 +209,22 @@
             alert("선택된 항목이 없습니다.");
             return false;
         }
+    });
+    
+    /** 장바구니 담기 */
+    $(function() {
+        var count = $("#cart-qty").text();
+        var put_cart = count;
+        $("#cart-qty").text(put_cart);
+        $("#gotocart").click(function(e) {
+            put_cart++;
+            if (put_cart == Number(count) + 1) {
+                $("#cart-qty").text(put_cart);
+                alert("해당 상품을 장바구니에 담았습니다.");
+            } else {
+                alert("이미 해당 상품을 장바구니에 담았습니다.");
+            }
+        });
     });
     </script>
 

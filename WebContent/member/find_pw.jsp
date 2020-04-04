@@ -34,7 +34,7 @@
 	margin-left: 30px;
 }
 
-.id {
+.user-id {
 	border: 1px solid #ffc7c1;
 	border-bottom: none;
 	width: 96%;
@@ -43,11 +43,11 @@
 	padding-top: 19px;
 }
 
-.id input {
+.user-id input {
 	margin-left: 40px;
 }
 
-.name {
+.user-name {
 	border: 1px solid #ffc7c1;
 	border-bottom: none;
 	width: 96%;
@@ -56,7 +56,7 @@
 	padding-top: 19px;
 }
 
-.email {
+.user-email {
 	border: 1px solid #ffc7c1;
 	height: 60px;
 	width: 96%;
@@ -64,7 +64,7 @@
 	padding-top: 19px;
 }
 
-.find b {
+.find-pw b {
 	padding-left: 50px;
 }
 
@@ -72,27 +72,27 @@
 	margin-left: 30px;
 }
 
-.name input {
+.user-name input {
 	margin-left: 55px;
 }
 
-.email input {
+.user-email input {
 	margin-left: 40px;
 }
 
-.btn-ok {
-	width: 100%;
+/** 확인버튼 전체영역 */
+.btn-confirm-div {
 	text-align: center;
 }
+	
+/** 확인버튼 */
+.btn-confirm {
+     width: 90%;
+     height: 40px;
+     margin-top: 15px;
+     margin-bottom: 50px;}
 
-.btn {
-	width: 95%;
-	height: 40px;
-	margin-top: 15px;
-	margin-bottom: 50px;
-}
-
-.btn:hover {
+.btn-confirm:hover {
 	color: white;
 }
 </style>
@@ -108,7 +108,8 @@
                             <a href="#" onclick="history.back(); return false;"><i class="glyphicon glyphicon-chevron-left"></i></a>비밀번호 찾기
                         </b></h4>
                 </div>
-                <form method="post" class="find" id="find" action="../member/find_pw_ok.html">
+                <form method="post" class="find-pw" id="find-pw"
+			action="../member/find_pw_email.jsp">
                     <div class="member">
                         <b>회원구분</b>
                         <select name="m_type" class="m_type">
@@ -122,42 +123,43 @@
                         <b>인증방법</b>
                         <input type="radio" name="auth" value="email" checked>이메일
                     </div>
-                    <div class="id">
+                    <div class="user-id">
                         <b>아이디</b>
-                        <input type="text" name="id" id="user_id" maxlength="20" placeholder="아이디를 입력해주세요.">
+                        <input type="text" name="id" id="user-id" maxlength="20" placeholder="아이디를 입력해주세요.">
                     </div>
-                    <div class="name">
+                    <div class="user-name">
                         <b>이름</b>
-                        <input type="text" name="name" id="user_name" maxlength="20" placeholder="이름을 입력해주세요.">
+                        <input type="text" name="name" id="user-name" maxlength="20" placeholder="이름을 입력해주세요.">
                     </div>
-                    <div class="email">
+                    <div class="user-email">
                         <b>이메일</b>
-                        <input type="email" name="email" id="user_email" maxlength="20" placeholder="이메일을 입력해주세요.">
+                        <input type="email" name="email" id="user-email" maxlength="20" placeholder="이메일을 입력해주세요.">
                     </div>
-                    <div class="btn-ok">
-                        <button type="submit" class="btn btn1">확인</button>
+                    <div class="btn-confirm-div">
+                        <button type="submit" class="btn btn-confirm">확인</button>
                     </div>
                 </form>
             </div>
         </div>
 	<%@ include file="/share/bottom_tp.jsp"%>
+<script type="text/javascript">
 	
 		 $(function() {
-        $("#find").submit(function(e) {
-            e.preventDefault();
+        $("#find-pw").submit(function(e) {
+            
             /**아이디 검사 */
-            if (!regex.value('#user_id', '아이디를 입력하세요.')) { return false; }
-            if (!regex.eng_num('#user_id', '아이디는 영어와 숫자 조합만 입력 가능합니다.')) { return false; }
-            if (!regex.min_length('#user_id', 4, '아이디는 최소 4자 이상 입력 가능합니다.')) { return false; }
-            if (!regex.max_length('#user_id', 20, '아이디는 최대 20자 까지만 입력 가능합니다.')) { return false; }
+            if (!regex.value('#user-id', '아이디를 입력하세요.')) { return false; }
+            if (!regex.eng_num('#user-id', '아이디는 영어와 숫자 조합만 입력 가능합니다.')) { return false; }
+            if (!regex.min_length('#user-id', 4, '아이디는 최소 4자 이상 입력 가능합니다.')) { return false; }
+            if (!regex.max_length('#user-id', 20, '아이디는 최대 20자 까지만 입력 가능합니다.')) { return false; }
             /** 이름 검사 */
-            if (!regex.value('#user_name', '이름을 입력하세요.')) { return false; }
-            if (!regex.kor('#user_name', '이름은 한글만 입력 가능합니다.')) { return false; }
-            if (!regex.min_length('#user_name', 2, '이름은 최소 2자 이상 입력 가능합니다.')) { return false; }
-            if (!regex.max_length('#user_name', 20, '이름은 최대 20자 까지만 입력 가능합니다.')) { return false; }
+            if (!regex.value('#user-name', '이름을 입력하세요.')) { return false; }
+            if (!regex.kor('#user-name', '이름은 한글만 입력 가능합니다.')) { return false; }
+            if (!regex.min_length('#user-name', 2, '이름은 최소 2자 이상 입력 가능합니다.')) { return false; }
+            if (!regex.max_length('#user-name', 20, '이름은 최대 20자 까지만 입력 가능합니다.')) { return false; }
             /** 이메일 검사 */
-            if (!regex.value('#user_email', '이메일을 입력하세요.')) { return false; }
-            if (!regex.email('#user_email', '이메일 주소가 잘못되었습니다.')) { return false; }
+            if (!regex.value('#user-email', '이메일을 입력하세요.')) { return false; }
+            if (!regex.email('#user-email', '이메일 주소가 잘못되었습니다.')) { return false; }
         });
     });
 	</script>
