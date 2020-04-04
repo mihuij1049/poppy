@@ -127,14 +127,13 @@
 		</div>
 	</div>
 	<div class="btn-goimail-div">
-		<a href="../member/find_pw_ok.jsp">
-			<button type="button" class="btn btn-goimail">임시 비밀번호 이메일로
+	
+			<button type="button" class="btn btn-goimail" onclick="location.href='pw_email.jsp'">임시 비밀번호 이메일로
 				전송</button>
-		</a>
 	</div>
-	</div>
+
 	<%@ include file="/share/bottom_tp.jsp"%>
-	<script type="text/javascript">
+
 </body>
 
 </html>

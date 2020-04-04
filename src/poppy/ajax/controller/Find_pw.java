@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/api/find_pw.do")
+@WebServlet("/api/post.do")
 public class Find_pw extends HttpServlet {
-	
-	private static final long serialVersionUID = -2942443909020135171L;
+	private static final long serialVersionUID = -2094840400029094989L;
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
@@ -32,11 +31,11 @@ public class Find_pw extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		if (userId.equals("ezen") && userName.equals("기은혜") && userEmail.equals("abc@naver.com")) {
 			
-			out.write("<script>window.location.href = '../member/find_pw_email.jsp';</script>");
+			out.write("<script>window.location.href = '/member/find_pw_email.jsp';</script>");
 		} else {
-			out.write("<script>alert('입력정보를 다시 확인해주세요..')</script>");
+			out.write("<script>alert('입력정보를 다시 확인해주세요.')</script>");
 		}
 	}
-
-
 }
+
+

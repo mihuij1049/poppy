@@ -111,8 +111,7 @@
 					</b>
 				</h4>
 			</div>
-			<form class="find-pw" id="find-pw"
-				action="../member/find_pw_email.jsp">
+			<form id="find-pw" name="find-pw" method="post" action="../api/find_pw.do">
 				<div class="member">
 					<b>회원구분</b> <select name="m_type" class="m_type">
 						<option value="개인회원">개인회원</option>
@@ -140,8 +139,9 @@
 					<button type="submit" class="btn btn-confirm">확인</button>
 				</div>
 			</form>
+			<div id="result"></div>
 		</div>
-		<div id="result"></div>
+		
 	</div>
 	<%@ include file="/share/bottom_tp.jsp"%>
 	<script type="text/javascript">

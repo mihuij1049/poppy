@@ -111,10 +111,10 @@
 			</div>
 		</div>
 		<div class="btns">
-			<a href="../member/login.jsp">
-				<button type="button" class="btn btn1">로그인</button>
-			</a> <a href="../member/find_pw.jsp">
-				<button type="button" class="btn btn-inverse btn2">비밀번호 찾기</button>
+			
+				<button type="button" class="btn btn1" onclick="location.href='login.jsp'">로그인</button>
+		
+				<button type="button" class="btn btn-inverse btn2" onclick="location.href='find_pw.jsp'">비밀번호 찾기</button>
 			</a>
 		</div>
 	</div>
