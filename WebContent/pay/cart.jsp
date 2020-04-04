@@ -273,7 +273,8 @@
 					</div>
 					<div class="modal-footer2">
 						<button type="button" class="btn btn2" data-dismiss="modal">아니오</button>
-						<button type="button" class="btn btn2 delete_cart" data-dismiss="modal">예</button>
+						<button type="button" class="btn btn2 delete_cart"
+							data-dismiss="modal">예</button>
 					</div>
 				</div>
 			</div>

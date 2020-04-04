@@ -1,152 +1,151 @@
 .footer-content {
-    width: 90%;
-    margin: auto;
-    margin-top: 13px;
+	width: 90%;
+	margin: auto;
+	margin-top: 13px;
 }
 
 .footer-dialog {
-    position: relative;
-    top: 195px;
-    transform: translateY(-170px);
+	position: relative;
+	top: 195px;
+	transform: translateY(-170px);
 }
 
-.modal - header {
-    min - height: 110 px;
-    padding: 10 px;
-    border - bottom: 1 px solid# ffc7c1;
+.modal - header {min - height:110px;
+	padding: 10 px;
+	border
+	-
+	bottom
+	:
+	1
+	px
+	solid
+	#
+	 
+	ffc7c1;
 }
 
 .modal - header img {
-    width: 180 px;
-    float: left;
+	width: 180 px;
+	float: left;
 }
 
 .modal - header button {
-    float: right;
-    margin: 5 px;
+	float: right;
+	margin: 5 px;
 }
 
-.buttons {
-    margin - top: 50 px;
-
+.buttons {margin - top:50px;
+	
 }
 
 /** 바디영역 */
 .kategorie {
-    border: 1 px solid# ff6261;
-    background: #ff6261;
-    padding: 10 px;
-    padding - left: 25 px;
-    color: white;
-    text - align: left;
-    width: 100 %;
-    margin - bottom: 15 px;
+	border: 1 px solid# ff6261;
+	background: #ff6261;
+	padding: 10 px; padding - left : 25 px;
+	color: white; text - align : left;
+	width: 100%;
+	margin
+	-
+	bottom
+	:
+	15
+	px;
 }
 
-.modal - body {
-    max - height: calc(100 vh - 210 px);
-    overflow - y: auto;
-    min - height: 200 px;
-    padding: 0 px;
-
+.modal - body {max - height:calc(100vh - 210px);overflow - y:auto;min -
+	height:200px;
+	padding: 0 px;
 }
 
-.panel - heading {
-    padding - left: 25 px;
+.panel - heading {padding - left:25px;
+	
 }
 
 .panel - heading a {
-    color: #333;
+	color: #333;
 }
 
 .panel-heading h4 {
-    text-align: left;
-    font-size: 16px;
-    margin: 0px;
-    color: # 333;
+	text-align: left;
+	font-size: 16px;
+	margin: 0px;
+	color: # 333;
 }
 
 .panel - body a {
-    display: block;
-    color: #333;
+	display: block;
+	color: #333;
 }
 
 .panel-default {
-    margin: auto;
-    width: 96%;
+	margin: auto;
+	width: 96%;
 }
 
 .panel-body {
-    text-align: left;
-    padding-left: 40px;
+	text-align: left;
+	padding-left: 40px;
 }
 
 .accordion-toggle a {
-    display: block;
-
+	display: block;
 }
 
 .panel-default>.panel-heading {
-    border: 1px solid # ffc7c1;
-
+	border: 1px solid# ffc7c1;
 }
 
 /** 아코디언 클릭이벤트시 화살표 transform 회전 */
-.rotate1 {
-    -webkit - transform: rotate(180 deg);
-
+.rotate1 {-webkit - transform:rotate(180deg);
+	
 }
 
-.icon - rotate1 {
-    -webkit - transition - duration: 0.5 s;
+.icon - rotate1 {-webkit - transition - duration:0.5s;
+	
 }
 
-.rotate2 {
-    -webkit - transform: rotate(180 deg);
-
+.rotate2 {-webkit - transform:rotate(180deg);
+	
 }
 
-.icon - rotate2 {
-    -webkit - transition - duration: 0.5 s;
+.icon - rotate2 {-webkit - transition - duration:0.5s;
+	
 }
 
-.rotate3 {
-    -webkit - transform: rotate(180 deg);
-
+.rotate3 {-webkit - transform:rotate(180deg);
+	
 }
 
-.icon - rotate3 {
-    -webkit - transition - duration: 0.5 s;
+.icon - rotate3 {-webkit - transition - duration:0.5s;
+	
 }
 
-.rotate4 {
-    -webkit - transform: rotate(180 deg);
-
+.rotate4 {-webkit - transform:rotate(180deg);
+	
 }
 
-.icon - rotate4 {
-    -webkit - transition - duration: 0.5 s;
+.icon - rotate4 {-webkit - transition - duration:0.5s;
+	
 }
 
-.rotate5 {
-    -webkit - transform: rotate(180 deg);
-
+.rotate5 {-webkit - transform:rotate(180deg);
+	
 }
 
-.icon - rotate5 {
-    -webkit - transition - duration: 0.5 s;
+.icon - rotate5 {-webkit - transition - duration:0.5s;
+	
 }
 
 .box1 {
-    color: black;
+	color: black;
 }
 
 .box2 {
-    color: red;
+	color: red;
 }
 
 /** 하단영역 */
-.modal - footer {
-    border - top: none;
-    padding - bottom: 10 px;
+.modal - footer {border - top:none;padding - bottom:10px;
+	
 }

@@ -265,10 +265,14 @@ hr {
 					</select>
 					<div class="period">
 						<p class="col-xs-1">기간</p>
-						<button class="btn btn2 btn-default col-xs-2" onclick="set_term(0)">오늘</button>
-						<button class="btn btn2 btn-default col-xs-2" onclick="set_term(30)">1개월</button>
-						<button class="btn btn2 btn-default col-xs-2" onclick="set_term(90)">3개월</button>
-						<button class="btn btn2 btn-default col-xs-2" onclick="set_term(180)">6개월</button>
+						<button class="btn btn2 btn-default col-xs-2"
+							onclick="set_term(0)">오늘</button>
+						<button class="btn btn2 btn-default col-xs-2"
+							onclick="set_term(30)">1개월</button>
+						<button class="btn btn2 btn-default col-xs-2"
+							onclick="set_term(90)">3개월</button>
+						<button class="btn btn2 btn-default col-xs-2"
+							onclick="set_term(180)">6개월</button>
 						<button class="btn btn2 btn-default col-xs-3" id="period_set">기간설정</button>
 					</div>
 				</div>

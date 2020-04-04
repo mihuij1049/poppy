@@ -98,7 +98,7 @@ input[type=text], input[type=password] {
 	margin: auto;
 	padding: 20px 10px;
 	background: #fff5f4;
-	text-align:center;
+	text-align: center;
 }
 
 .search-modal-layer {
@@ -113,7 +113,7 @@ input[type=text], input[type=password] {
 
 .search-close {
 	width: 15%;
-	cursor:pointer;
+	cursor: pointer;
 	height: 30px;
 }
 
@@ -136,9 +136,11 @@ input[type=text], input[type=password] {
 	font-size: 14px;
 	padding: 3px 3px;
 }
+
 .search-list-item {
-	width:100%;
+	width: 100%;
 }
+
 .search-item-img {
 	float: left;
 	width: 22%;
@@ -152,11 +154,12 @@ input[type=text], input[type=password] {
 .search-item-content {
 	float: left;
 	width: 63%;
-	font-size:12px;
+	font-size: 12px;
 }
+
 .search-item-content>p {
 	margin: 0px;
-	padding-right:5px;
+	padding-right: 5px;
 }
 
 .search-item-btn {
@@ -164,23 +167,29 @@ input[type=text], input[type=password] {
 	width: 15%;
 	margin-top: 15px;
 }
+
 ul.pagination-xs {
 	margin: 20px 0px;
 	margin-top: 40px;
 }
+
 .search-item-paging>.pagination-xs>li {
-	font-size:12px;
+	font-size: 12px;
 }
-.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
-    z-index: 2;
-    color: #fff;
-    cursor: default;
-    background-color: #ff8f83;
-    border-color: #ff8f83;
+
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover,
+	.pagination>.active>span:hover, .pagination>.active>a:focus,
+	.pagination>.active>span:focus {
+	z-index: 2;
+	color: #fff;
+	cursor: default;
+	background-color: #ff8f83;
+	border-color: #ff8f83;
 }
+
 a {
-   	color: #333;
-    text-decoration: none;
+	color: #333;
+	text-decoration: none;
 }
 /** 모달창 CSS 끝 */
 </style>
@@ -226,7 +235,7 @@ a {
 							<div class="search-item-content">
 								<p>
 									펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식<br /> <b class="search-item-price">2,300원</b>
-									
+
 								</p>
 							</div>
 							<div class="search-item-btn">
@@ -236,15 +245,15 @@ a {
 					</ul>
 				</div>
 				<div class="search-item-paging">
-                    <ul class="pagination pagination-xs">
-                        <li class="disabled"><a href="#">«</a></li>
-                        <!-- 활성화 버튼은 아래의 구조로 구성하시면 됩니다. sr-only는 스크린리더 전용입니다. -->
-                        <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
-                        <li><span>2</span> </li>
-                        <li><span>3</span> </li>
-                        <li class="paging-right"><a href="#">»</a></li>
-                    </ul>
-                </div>
+					<ul class="pagination pagination-xs">
+						<li class="disabled"><a href="#">«</a></li>
+						<!-- 활성화 버튼은 아래의 구조로 구성하시면 됩니다. sr-only는 스크린리더 전용입니다. -->
+						<li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
+						<li><span>2</span></li>
+						<li><span>3</span></li>
+						<li class="paging-right"><a href="#">»</a></li>
+					</ul>
+				</div>
 				<div class="search-modal-layer"></div>
 			</div>
 			<!-- 모달창 끝 -->

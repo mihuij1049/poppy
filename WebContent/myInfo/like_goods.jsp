@@ -132,65 +132,68 @@
 <body>
 	<%@ include file="/share/top_tp.jsp"%>
 	<div class="content">
-            <!-- 여기에 작성 -->
-            
-                <div class="page-title clearfix">
-                    <h4><b>
-                            <a href="#" onclick="history.back(); return false;"><i class="glyphicon glyphicon-chevron-left"></i></a>관심상품
-                        </b></h4>
-                </div>
-                <div class="favorite">
-                    <p class="align">My상품(<span>2</span>)</p>
-                    <!-- 물건 1 -->
-                    <ul class="mycart-list">
-                        <li class="mycart" id="mycart1">
-                            <div class="mygoods clearfix">
-                                <span class="chkbox">
-                                    <input type="checkbox" class="cart" name="check-select" value="check" id="check-select1"></span>
-                                <a href="#"><img src="../share/img/4_M.jpg" class="cart-img"></a>
-                                <div class="word">
-                                    <b>1펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식</b><br>
-                                    <small>배송:2500원[조건]/기본배송</small><br>
-                                    <small><span>적</span>40원</small><br>
-                                    <b>3,500원</b>
-                                </div>
-                            </div>
-                            <div class="btns">
-                                <button type="button" class="btn btn-inverse delete-one" id="delete-one">삭제</button>
-                                <button type="button" class="btn gocart" id="gotocart">장바구니담기</button>
-                            </div>
-                        </li>
-                        <!-- 물건 2 -->
-                        <li class="mycart" id="mycart1">
-                            <div class="mygoods clearfix">
-                                <span class="chkbox">
-                                    <input type="checkbox" class="cart" name="check-select" value="check" id="check-select2"></span>
-                                <a href="#"><img src="../share/img/4_M.jpg" class="cart-img"></a>
-                                <div class="word">
-                                    <b>1펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식</b><br>
-                                    <small>배송:2500원[조건]/기본배송</small><br>
-                                    <small><span>적</span>40원</small><br>
-                                    <b>3,500원</b>
-                                </div>
-                            </div>
-                            <div class="btns">
-                                <button type="button" class="btn btn-inverse delete-one" id="delete-one">삭제</button>
-                                <button type="button" class="btn gocart" id="gotocart">장바구니담기</button>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="selectbtn">
-                        <button type="button" class="select-all" id="select-all">전체선택</button>
-                        <button type="button" class="border-botton" id="select-choice">선택삭제</button>
-                    </div>
-                    <div class="lastbtn">
-                        <a href="../pay/orderform.jsp">
-                            <button type="button" class="btn btn2" id="all-bye">전체상품주문</button> </a>
-                    </div>
-                </div>
-            
-        </div>
-        <%@ include file="/share/bottom_tp.jsp"%>
+		<!-- 여기에 작성 -->
+
+		<div class="page-title clearfix">
+			<h4>
+				<b> <a href="#" onclick="history.back(); return false;"><i
+						class="glyphicon glyphicon-chevron-left"></i></a>관심상품
+				</b>
+			</h4>
+		</div>
+		<div class="favorite">
+			<p class="align">
+				My상품(<span>2</span>)
+			</p>
+			<!-- 물건 1 -->
+			<ul class="mycart-list">
+				<li class="mycart" id="mycart1">
+					<div class="mygoods clearfix">
+						<span class="chkbox"> <input type="checkbox" class="cart"
+							name="check-select" value="check" id="check-select1"></span> <a
+							href="#"><img src="../share/img/4_M.jpg" class="cart-img"></a>
+						<div class="word">
+							<b>1펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식</b><br> <small>배송:2500원[조건]/기본배송</small><br>
+							<small><span>적</span>40원</small><br> <b>3,500원</b>
+						</div>
+					</div>
+					<div class="btns">
+						<button type="button" class="btn btn-inverse delete-one"
+							id="delete-one">삭제</button>
+						<button type="button" class="btn gocart" id="gotocart">장바구니담기</button>
+					</div>
+				</li>
+				<!-- 물건 2 -->
+				<li class="mycart" id="mycart1">
+					<div class="mygoods clearfix">
+						<span class="chkbox"> <input type="checkbox" class="cart"
+							name="check-select" value="check" id="check-select2"></span> <a
+							href="#"><img src="../share/img/4_M.jpg" class="cart-img"></a>
+						<div class="word">
+							<b>1펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식</b><br> <small>배송:2500원[조건]/기본배송</small><br>
+							<small><span>적</span>40원</small><br> <b>3,500원</b>
+						</div>
+					</div>
+					<div class="btns">
+						<button type="button" class="btn btn-inverse delete-one"
+							id="delete-one">삭제</button>
+						<button type="button" class="btn gocart" id="gotocart">장바구니담기</button>
+					</div>
+				</li>
+			</ul>
+			<div class="selectbtn">
+				<button type="button" class="select-all" id="select-all">전체선택</button>
+				<button type="button" class="border-botton" id="select-choice">선택삭제</button>
+			</div>
+			<div class="lastbtn">
+				<a href="../pay/orderform.jsp">
+					<button type="button" class="btn btn2" id="all-bye">전체상품주문</button>
+				</a>
+			</div>
+		</div>
+
+	</div>
+	<%@ include file="/share/bottom_tp.jsp"%>
 	<script type="text/javascript">
     $(function() {
         $("#select-all").click(function() {
@@ -228,7 +231,7 @@
     });
     </script>
 
-	
+
 </body>
 
 </html>

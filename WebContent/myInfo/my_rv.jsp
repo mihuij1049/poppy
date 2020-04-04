@@ -103,7 +103,7 @@
 	border-bottom: 1px solid #eee;
 }
 
-.solid-bottom a{
+.solid-bottom a {
 	color: #333;
 	text-decoration: none;
 }

@@ -1,207 +1,200 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
-    <%@ include file="/share/head_tp.jsp" %>
-    <style type="text/css">
-    .content .container {
-        margin-top: 20px;
-        width: 96%;
-    }
+<%@ include file="/share/head_tp.jsp"%>
+<style type="text/css">
+.content .container {
+	margin-top: 20px;
+	width: 96%;
+}
 
-    form div {
-        border-bottom: 1px solid #ffc7c1;
-        border-left: 1px solid #ffc7c1;
-        border-right: 1px solid #ffc7c1;
-    }
+form div {
+	border-bottom: 1px solid #ffc7c1;
+	border-left: 1px solid #ffc7c1;
+	border-right: 1px solid #ffc7c1;
+}
 
-    form div:last-child {
-        border: none;
-    }
+form div:last-child {
+	border: none;
+}
 
-    .content .container .join-form {
-        padding: 16px 12px;
-        border-top: 1px solid #ffc7c1;
-    }
+.content .container .join-form {
+	padding: 16px 12px;
+	border-top: 1px solid #ffc7c1;
+}
 
-    .content .container label {
-        width: 22%;
-    }
+.content .container label {
+	width: 22%;
+}
 
-    span {
-        color: red;
-    }
+span {
+	color: red;
+}
 
-    #user_id {
-        margin-right: 10px;
-        width: 40%;
-    }
+#user_id {
+	margin-right: 10px;
+	width: 40%;
+}
 
-    input {
-        vertical-align: -1px;
-        border: 1px solid #d5d5d5;
-    }
+input {
+	vertical-align: -1px;
+	border: 1px solid #d5d5d5;
+}
 
-    button {
-        width: 70px;
-        height: 26px;
-        text-align: center;
-    }
+button {
+	width: 70px;
+	height: 26px;
+	text-align: center;
+}
 
-    button p {
-        font-size: 12px;
-        line-height: 10px;
-    }
+button p {
+	font-size: 12px;
+	line-height: 10px;
+}
 
-    .btn:hover {
-        background-color: #FF6261;
-        color: #fff;
-    }
+.btn:hover {
+	background-color: #FF6261;
+	color: #fff;
+}
 
-    #user_pw {
-        width: 50%;
-    }
+#user_pw {
+	width: 50%;
+}
 
-    #user_pw_re {
-        width: 50%;
-        vertical-align: 8.5px;
-    }
+#user_pw_re {
+	width: 50%;
+	vertical-align: 8.5px;
+}
 
-    #user_name {
-        width: 40%;
-    }
+#user_name {
+	width: 40%;
+}
 
-    .container select {
-        width: 23%;
-        height: 26px;
-        font-size: 11px;
-        display: inline;
-        border-radius: 0;
-        vertical-align: -2px;
-        border: 1px solid #d5d5d5;
-    }
+.container select {
+	width: 23%;
+	height: 26px;
+	font-size: 11px;
+	display: inline;
+	border-radius: 0;
+	vertical-align: -2px;
+	border: 1px solid #d5d5d5;
+}
 
-    .dash {
-        display: inline;
-        margin: 2px;
-    }
+.dash {
+	display: inline;
+	margin: 2px;
+}
 
-    #tel {
-        width: 15%;
-        display: inline;
-        vertical-align: -2px;
-    }
+#tel {
+	width: 15%;
+	display: inline;
+	vertical-align: -2px;
+}
 
-    #tel2 {
-        width: 15%;
-        display: inline;
-        vertical-align: -2px;
-    }
+#tel2 {
+	width: 15%;
+	display: inline;
+	vertical-align: -2px;
+}
 
-    #email {
-        margin-right: 10px;
-        width: 50%;
-    }
+#email {
+	margin-right: 10px;
+	width: 50%;
+}
 
-    .join {
-        padding-top: 15px;
-        margin: auto;
-        margin-bottom: 50px;
-        border-bottom: none;
-    }
+.join {
+	padding-top: 15px;
+	margin: auto;
+	margin-bottom: 50px;
+	border-bottom: none;
+}
 
-    .join button {
-        width: 100%;
-        height: 36px;
-        color: #fff;
-    }
+.join button {
+	width: 100%;
+	height: 36px;
+	color: #fff;
+}
 
-    .swal2-icon {
-        margin-top: 0;
-        margin-bottom: 20px;
-    }
+.swal2-icon {
+	margin-top: 0;
+	margin-bottom: 20px;
+}
 
-    .swal2-popup .swal2-content {
-        font-size: 15px;
-    }
+.swal2-popup .swal2-content {
+	font-size: 15px;
+}
 
-    .swal2-confirm {
-        width: 88.56px;
-        height: 40px;
-        background-color: #ff8f83 !important;
-    }
-    </style>
+.swal2-confirm {
+	width: 88.56px;
+	height: 40px;
+	background-color: #ff8f83 !important;
+}
+</style>
 </head>
 
 <body>
-    <%@ include file="/share/top_tp.jsp" %>
-        <div class="content">
-            <!-- 여기에 작성 -->
-            <div class="page-title clearfix">
-                <h4><b>
-                        <a href="#" onclick="history.back(); return false;"><i class="glyphicon glyphicon-chevron-left"></i></a>개인정보수정
-                    </b></h4>
-            </div>
-            <div class="container">
-                <form class="form-horizontal" name="join_form" id="join_form">
-                    <div class="join-form">
-                        <label for="user_pw">
-                            비밀번호<span>＊</span>
-                        </label>
-                        <input type="password" name="user_pw" id="user_pw" maxlength="20">
-                    </div>
-                    <div class="join-form">
-                        <label for="user_pw">
-                            비밀번호<br>확인<span>＊</span>
-                        </label>
-                        <input type="password" name="user_pw_re" id="user_pw_re" maxlength="20">
-                    </div>
-                    <div class="join-form">
-                        <label for="user_name">
-                            이름<span>*</span>
-                        </label>
-                        <input type="text" name="user_name" id="user_name" maxlength="20">
-                    </div>
-                    <div class="join-form">
-                        <label for="tel">
-                            휴대전화
-                        </label>
-                        <select class="form-control status">
-                            <option>010</option>
-                            <option>011</option>
-                            <option>016</option>
-                            <option>017</option>
-                            <option>018</option>
-                            <option>019</option>
-                        </select>
-                        <p class="dash">-</p>
-                        <input type="tel" name="tel" id="tel" maxlength="4">
-                        <p class="dash">-</p>
-                        <input type="tel" name="tel2" id="tel2" maxlength="4">
-                    </div>
-                    <div class="join-form">
-                        <label for="email">
-                            이메일<span>*</span>
-                        </label>
-                        <input type="email" name="email" id="email" maxlength="50">
-                        <button type="button" class="btn id-btn">
-                            <p>중복확인</p>
-                        </button>
-                    </div>
-                    <div class="join">
-                        <button type="submit" class="btn" id="join">개인정보수정</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    <%@ include file="/share/bottom_tp.jsp" %>
-    <!-- 플러그인 JS 참조 -->
-    <script src="../share/plugins/validate/jquery.validate.min.js"></script>
-    <script src="../share/plugins/validate/additional-methods.min.js"></script>
-    <script src="../share/plugins/sweetalert/sweetalert2.min.js"></script>
-    <script type="text/javascript">
+	<%@ include file="/share/top_tp.jsp"%>
+	<div class="content">
+		<!-- 여기에 작성 -->
+		<div class="page-title clearfix">
+			<h4>
+				<b> <a href="#" onclick="history.back(); return false;"><i
+						class="glyphicon glyphicon-chevron-left"></i></a>개인정보수정
+				</b>
+			</h4>
+		</div>
+		<div class="container">
+			<form class="form-horizontal" name="join_form" id="join_form">
+				<div class="join-form">
+					<label for="user_pw"> 비밀번호<span>＊</span>
+					</label> <input type="password" name="user_pw" id="user_pw" maxlength="20">
+				</div>
+				<div class="join-form">
+					<label for="user_pw"> 비밀번호<br>확인<span>＊</span>
+					</label> <input type="password" name="user_pw_re" id="user_pw_re"
+						maxlength="20">
+				</div>
+				<div class="join-form">
+					<label for="user_name"> 이름<span>*</span>
+					</label> <input type="text" name="user_name" id="user_name" maxlength="20">
+				</div>
+				<div class="join-form">
+					<label for="tel"> 휴대전화 </label> <select class="form-control status">
+						<option>010</option>
+						<option>011</option>
+						<option>016</option>
+						<option>017</option>
+						<option>018</option>
+						<option>019</option>
+					</select>
+					<p class="dash">-</p>
+					<input type="tel" name="tel" id="tel" maxlength="4">
+					<p class="dash">-</p>
+					<input type="tel" name="tel2" id="tel2" maxlength="4">
+				</div>
+				<div class="join-form">
+					<label for="email"> 이메일<span>*</span>
+					</label> <input type="email" name="email" id="email" maxlength="50">
+					<button type="button" class="btn id-btn">
+						<p>중복확인</p>
+					</button>
+				</div>
+				<div class="join">
+					<button type="submit" class="btn" id="join">개인정보수정</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<%@ include file="/share/bottom_tp.jsp"%>
+	<!-- 플러그인 JS 참조 -->
+	<script src="../share/plugins/validate/jquery.validate.min.js"></script>
+	<script src="../share/plugins/validate/additional-methods.min.js"></script>
+	<script src="../share/plugins/sweetalert/sweetalert2.min.js"></script>
+	<script type="text/javascript">
     $(function() {
         /** 플러그인의 기본 설정 옵션 추가 */
         jQuery.validator.setDefaults({
