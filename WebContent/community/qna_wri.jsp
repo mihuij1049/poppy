@@ -309,6 +309,7 @@ a {
 	</div>
 	<%@ include file="/share/bottom_tp.jsp"%>
 	<script type="text/javascript">
+		/** 모달창 켜고 끄기 */
 		$(function() {
 			$(".item-select").click(function(e) {
 				$("#search-modal").fadeIn();
@@ -316,7 +317,8 @@ a {
 			$(".search-close").click(function(e) {
 				$("#search-modal").fadeOut();
 			});
-		});
+		});  // end 모달창 켜고 끄기
+		
 	</script>
 </body>
 
