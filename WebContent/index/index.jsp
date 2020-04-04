@@ -5,7 +5,13 @@
 
 <head>
 	<%@ include file="/share/head_tp.jsp" %>
+	<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
     <link rel="stylesheet" type="text/css" href="index.css" />
+	<style type="text/css">
+    
+
+    
+    </style>
 </head>
 
 <body>
@@ -170,7 +176,7 @@
                         5,400원
                         <a href="#"><i class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
                     </div>
-                    <button type="button" class="btn btn-inverse index_btn">뽀삐뽀삐 단독 최저가 보장</button>
+                    <button type="button" class="btn btn-inverse index_btn" onclick="location.href='community/gal_list.jsp'">뽀삐뽀삐 단독 최저가 보장</button>
                 </div>
                 <div class="img_banner">
                     <img src="../share/img/index_banner1.jpg">
@@ -179,82 +185,91 @@
                 </div>
                 <div class="review">
                     <center>
-                        <h3>실시간 리뷰</h3>
+                        <h3 id="sale_h3">실시간 리뷰</h3>
                     </center>
-                    <!-- 게시물 하나 시작 -->
-                    <div width="50%">
-                        <div class="pr_box">
-                            <div class="pr_in_box">
-                                <a href="#"><img alt="사진" src="../share/img/img1.jpg" class="img_size"></a>
-                                <div>
-                                    <h5><b>글제목</b></h5>
-                                    아이디<br>
-                                    <hr />
-                                    글내용<br>
-                                    글내용<br>
-                                    <br>
-                                    <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 게시물 하나 끝 -->
-                    <!-- 게시물 하나 시작 -->
                     <div>
-                        <div class="pr_box">
-                            <div class="pr_in_box">
-                                <img alt="사진" src="../share/img/img2.jpg" class="img_size">
-                                <div>
-                                    <h5><b>글제목</b></h5>
-                                    아이디<br>
-                                    <hr />
-                                    글내용<br>
-                                    글내용<br>
-                                    <br>
-                                    <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</a>
+                        <!-- 게시물 하나 시작 -->
+                        <div width="50%">
+                            <div class="pr_box">
+                                <div class="pr_in_box">
+                                    <a href="photo.jsp">
+                                        <img alt="사진" src="../share/img/img1.jpg" class="img_size" />
+                                        <div>
+                                            <h5><b>글제목입니다. 말줄임 처리도 합니다.</b></h5>
+                                            아이디<br>
+                                            <hr />
+                                            <div class="pr_content">
+                                                글내용입니다. 여기도 말줄임 처리가 되나요? 일단 해보겠습니다. 박스로 영역 크기를 잡은 후 말줄임 처리를 합니다. 긴 내용을 적어도 괜찮습니다. 지금은 4월 2일 오전 11시 6분. 점심시간까지 두 시간 좀 안 되게 남았어요.
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <button class="btn btn-inverse" id="heart_bt"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--// 게시물 하나 끝 -->
-                    <!-- 게시물 하나 시작 -->
-                    <div>
-                        <div class="pr_box">
-                            <div class="pr_in_box">
-                                <img alt="사진" src="../share/img/img3.jpg" class="img_size">
-                                <div>
-                                    <h5><b>글제목</b></h5>
-                                    아이디<br>
-                                    <hr />
-                                    글내용<br>
-                                    글내용<br>
-                                    <br>
-                                    <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</a>
+                        <!-- 게시물 하나 끝 -->
+                        <!-- 게시물 하나 시작 -->
+                        <div>
+                            <div class="pr_box">
+                                <div class="pr_in_box">
+                                    <a href="photo.jsp">
+                                        <img alt="사진" src="../share/img/img2.jpg" class="img_size" />
+                                        <div>
+                                            <h5><b>글제목입니다. 말줄임 처리도 합니다.</b></h5>
+                                            아이디<br>
+                                            <hr />
+                                            <div class="pr_content">
+                                                글내용입니다. 여기도 말줄임 처리가 되나요? 일단 해보겠습니다. 박스로 영역 크기를 잡은 후 말줄임 처리를 합니다. 긴 내용을 적어도 괜찮습니다. 지금은 4월 2일 오전 11시 6분. 점심시간까지 두 시간 좀 안 되게 남았어요.
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <button class="btn btn-inverse" id="heart_bt"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--// 게시물 하나 끝 -->
-                    <!-- 게시물 하나 시작 -->
-                    <div>
-                        <div class="pr_box">
-                            <div class="pr_in_box">
-                                <img alt="사진" src="../share/img/img4.jpg" class="img_size">
-                                <div>
-                                    <h5><b>글제목</b></h5>
-                                    아이디<br>
-                                    <hr />
-                                    글내용<br>
-                                    글내용<br>
-                                    <br>
-                                    <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</a>
+                        <!--// 게시물 하나 끝 -->
+                        <!-- 게시물 하나 시작 -->
+                        <div>
+                            <div class="pr_box">
+                                <div class="pr_in_box">
+                                    <a href="photo.jsp">
+                                        <img alt="사진" src="../share/img/img3.jpg" class="img_size" />
+                                        <div>
+                                            <h5><b>글제목입니다. 말줄임 처리도 합니다.</b></h5>
+                                            아이디<br>
+                                            <hr />
+                                            <div class="pr_content">
+                                                글내용입니다. 여기도 말줄임 처리가 되나요? 일단 해보겠습니다. 박스로 영역 크기를 잡은 후 말줄임 처리를 합니다. 긴 내용을 적어도 괜찮습니다. 지금은 4월 2일 오전 11시 6분. 점심시간까지 두 시간 좀 안 되게 남았어요.
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <button class="btn btn-inverse" id="heart_bt"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</button>
                                 </div>
                             </div>
                         </div>
+                        <!--// 게시물 하나 끝 -->
+                        <!-- 게시물 하나 시작 -->
+                        <div>
+                            <div class="pr_box">
+                                <div class="pr_in_box">
+                                    <a href="photo.jsp">
+                                        <img alt="사진" src="../share/img/img4.jpg" class="img_size" />
+                                        <div>
+                                            <h5><b>글제목입니다. 말줄임 처리도 합니다.</b></h5>
+                                            아이디<br>
+                                            <hr />
+                                            <div class="pr_content">
+                                                글내용입니다. 여기도 말줄임 처리가 되나요? 일단 해보겠습니다. 박스로 영역 크기를 잡은 후 말줄임 처리를 합니다. 긴 내용을 적어도 괜찮습니다. 지금은 4월 2일 오전 11시 6분. 점심시간까지 두 시간 좀 안 되게 남았어요.
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <button class="btn btn-inverse" id="heart_bt"><i class="glyphicon glyphicon-heart icon_size"></i> 추천</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!--// 게시물 하나 끝 -->
                     </div>
-                    <!--// 게시물 하나 끝 -->
-                </div>
-                <center><button type="button" class="btn btn-inverse index_btn" onclick="location.href='community/photo_rv..jsp'">실시간 리뷰 더보기</button></center>
+                <center><button type="button" class="btn btn-inverse index_btn" onclick="location.href='../community/photo_rv.jsp'">실시간 리뷰 더보기</button></center>
             </div>
         <%@ include file="/share/bottom_tp.jsp" %>
         <!-- Javascript -->
@@ -275,6 +290,12 @@
 
         $(".glyphicon-heart").click(function() {
             $(".glyphicon-heart").toggleClass(".glyphicon-heart-click");
+        });
+        
+        $(function() {
+            $('.pr_box button').click(function() {
+                $(this).toggleClass("btn, btn-inverse");
+            });
         });
         </script>
 </body>

@@ -292,6 +292,13 @@
             </div>
         </div>
 	<%@ include file="/share/bottom_tp.jsp" %>
+	<script type="text/javascript">
+    $(function() {
+        $('.pr_box button').click(function() {
+            $(this).toggleClass("btn, btn-inverse");
+        });
+    });
+    </script>
 </body>
 
 </html>

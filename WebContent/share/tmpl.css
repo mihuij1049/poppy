@@ -73,7 +73,7 @@ body {
     right: 3px;
 }
 
-/** 상단 카테고리 탭 시작!!!!!!!!!!!! */
+/** 상단 카테고리 탭 시작!!! */
 
 .category {
     margin-bottom: 0;
@@ -118,10 +118,10 @@ body {
 }
 
 
-/** 상단 카테고리 탭 끝!!!!!!!!!!!!!!!!!! */
+/** 상단 카테고리 탭 끝!!!!! */
 
 
-/** 여기는 상단탭 아래 페이지 이름이랑 뒤로가기 이미지 탭 시작부분! */
+/** 여긴 상단탭 아래! 페이지별 이름<h3>이랑 뒤로가기 버튼 탭 시작!!! */
 
 .page-title {
     vertical-align: middle;
@@ -152,10 +152,10 @@ body {
     color: #FF8F83;
 }
 
-/** 여기는 상단탭 아래 페이지 이름이랑 뒤로가기 이미지 탭 끝!!!1! */
+/** 여긴 상단탭 아래! 페이지별 이름<h3>이랑 뒤로가기 버튼 탭 끝!!! */
 
 
-/** 푸터 포함 etc 탭 시작 */
+/** etc 탭 시작! */
 
 .footer {
     width: auto;
@@ -188,10 +188,10 @@ body {
     text-decoration: none;
 }
 
-/** etc 탭 끝 */
+/** etc 탭 끝! */
 
 
-/** 어드레스 박스 시작*/
+/** 어드레스 박스 시작! */
 
 address {
     margin: 0;
@@ -208,10 +208,10 @@ address>p {
     font-size: 10px;
 }
 
-/* 어드레스 박스 끝 */
+/* 어드레스 박스 끝! */
 
 
-/** 하단 row 탭 시작 */
+/** 하단 row탭 시작! */
 
 .row {
     margin-left: 0px;
@@ -219,10 +219,9 @@ address>p {
     padding: 10px 0 10px 0;
 }
 
-/** 하단 row 탭 끝 */
+/** 하단 row탭 끝! */
 
-
-/** 하단 네비 바 시작 */
+/** 하단 네비 바 시작! */
 
 .navbar {
     z-index: 10000;
@@ -258,7 +257,8 @@ address>p {
     text-decoration: none;
 }
 
-/** 하단 네비 바 끝 */
+/** 하단 네비 바 끝! */
+
 /** 버튼 기본 색상 적용 */
 .btn {
     background-color: #ff8f83;
@@ -280,3 +280,19 @@ address>p {
     color: #ff8f83;
     font-weight: bold;
 }
+
+/** 버튼 기본 색상 끝 */
+
+/** 맨 위로 이동하눈 버튼 시작! */
+
+.footer #topbt {
+	width : 200px;
+	height: 300px;
+	background-color: #000;
+}
+
+.footer #topbt glyphicon {
+	font-size: 30px;
+	
+}
+/** 맨 위로 이동하는 버튼 끝! */

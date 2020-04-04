@@ -89,10 +89,6 @@
     margin: 2px 0 2px 0;
 }
 
-.gal_best_main button {
-    margin: 40px 0 20px 0;
-}
-
 /* 타임세일 끝 */
 
 /* 글리피콘, 버튼, 기타옵션 시작 */
@@ -117,6 +113,13 @@
     margin-top: 0;
 }
 
+.container_in button {
+	width: 80%;
+	height: 50px;
+	font-size: 16px;
+    margin: 20px 0 20px 0;
+}
+
 /* 글리피콘, 버튼, 기타옵션 끝 */
 
 /* 광고 배너 시작 */
@@ -133,84 +136,88 @@
 
 /* 광고 배너 끝 */
 
-/* 포토리뷰 시작 */
 
-.pr_box {
-    float: left;
-    width: 50%;
-    padding: 5px;
-}
+/** 포토리뷰 시작 */
 
-.pr_box hr {
-    margin: 5px;
-}
+    .pr_box {
+        float: left;
+        width: 50%;
+        padding: 5px;
+    }
 
-.review h3 {
-    text-align: center;
-    color: #ff8f83;
-}
+    .pr_box a {
+        display: block;
+        text-decoration: none;
+    }
 
-.pr_box {
-    float: left;
-    width: 50%;
-    padding: 5px;
-}
+    .pr_in_box {
+        border: 1px solid #FF8F83;
+        padding: 5px;
+    }
 
-.pr_in_box {
-    border: 1px solid #FF8F83;
-    padding: 5px;
-}
+    .pr_box .img_size {
+        width: 100%;
+    }
 
-.container .img_size {
-    width: 100%;
-}
+    .pr_box .icon_size {
+        height: 8px;
+        font-size: 10px;
+    }
 
-.container .icon_size {
-    height: 8px;
-    font-size: 10px;
-}
+    .pr_box .btn {
+        margin: 10px 0px 0px 0px;
+        padding: 5px 50px 22px 10px;
+        width: 50px;
+        height: 25px;
+        font-size: 12px;
+        font-color: #fff;
+    }
 
-.pr_box .btn {
-    padding-right: 50px;
-    padding-bottom: 20px;
-    width: 50px;
-    height: 25px;
-    font-size: 12px;
-    background-color: #ffc7c1;
-    border-color: #ffc7c1;
-    color: #fff;
-}
+    .pr_box .btn:active {
+        font-color: #fff;
+    }
 
-.container_1 hr {
-    margin: 2px;
-    padding: 0;
-}
+    .pr_box .btn-inverse {
+        margin: 10px 0px 0px 0px;
+        padding: 5px 50px 22px 10px;
+        width: 50px;
+        height: 25px;
+        font-size: 12px;
+        font-color: #ff8f83;
+    }
 
-.container_1 h5 {
-    color: #FF8F83;
-}
+    .pr_box .btn-inverse:active {
+        font-color: #ff8f83;
+    }
 
-.pagination>.active>span {
-    background-color: #FF8F83;
-    border-color: #FF8F83;
-}
+    .pr_box hr {
+        margin: 5px 0px 5px 0;
+        padding: 0;
+    }
 
-.container_in a {
-    color: #777;
-}
+    .pr_box h5 {
+        color: #FF8F83;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
 
-.index_btn {
-    width: 70%;
-    height: 50px;
-    text-align: center;
-    font-size: 15px;
-    padding: 0;
-    margin-top: 20px;
-}
+    .pr_content {
+        height: 60px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        /* 라인수 */
+        -webkit-box-orient: vertical;
+        word-wrap: break-word;
+    }
 
-/** */
-.glyphicon-heart-click {
-    color: #000;
-}
+    .pr_box .pagination>.active>span {
+        background-color: #FF8F83;
+        border-color: #FF8F83;
+    }
 
-/** */
+    .pr_box a {
+        color: #777;
+    }

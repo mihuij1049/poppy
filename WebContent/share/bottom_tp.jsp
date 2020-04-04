@@ -34,6 +34,10 @@
                     <i>DESIGN BY EZEN-team4</i>
                 </p>
             </address>
+            <!-- 맨 위로 이동하는 버튼!!! -->
+            <div id="topbt">상단바</div>
+            <!-- 위로 이동하는 버튼 끝!!! -->
+            <!-- 하단 네비바 시작!!! -->
             <div class="navbar" id="navbarback">
                 <ul class="btmbar-nav clearfix navbar-fixed-bottom">
                     <hr />
@@ -361,5 +365,4 @@ $(function() {
     });
 });
 /** 카테고리탭 이미지회전 끝! */
-</script>
 
