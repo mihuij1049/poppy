@@ -85,7 +85,7 @@
 			<div class="message">
 				<p class="send-msg">
 					임시 비밀번호가<br />
-					<br /> <b>고객님이 메일로 전송되었습니다.</b>
+					<br /> <b>고객님의 메일로 전송되었습니다.</b>
 				</p>
 			</div>
 			<div class="info">

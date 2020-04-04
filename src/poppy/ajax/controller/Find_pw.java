@@ -31,7 +31,7 @@ public class Find_pw extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		if (userId.equals("ezen") && userName.equals("기은혜") && userEmail.equals("abc@naver.com")) {
 			
-			out.write("<script>window.location.href = '/member/find_pw_email.jsp';</script>");
+			out.write("<script>window.location.href = '../member/find_pw_email.jsp';</script>");
 		} else {
 			out.write("<script>alert('입력정보를 다시 확인해주세요.')</script>");
 		}
