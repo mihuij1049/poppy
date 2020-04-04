@@ -138,7 +138,9 @@ input[type=text], input[type=password] {
 }
 
 .search-list-item {
+	list-style:none;
 	width: 100%;
+	height: 80px;
 }
 
 .search-item-img {
@@ -193,6 +195,7 @@ a {
 }
 /** 모달창 CSS 끝 */
 </style>
+<script src="../share/plugins/handlebars/handlebars-v4.0.5.js"></script>
 </head>
 
 <body>
@@ -219,7 +222,7 @@ a {
 						<div class="search-textbar">
 							<input type="text" name="search-goods" placeholder="상품명을 입력하세요." />
 						</div>
-						<button class="btn btn-sm btn-searching">검 색</button>
+						<button class="btn btn-sm btn-searching" id="search_goods_btn">검 색</button>
 					</div>
 
 					<div class="search-result">
@@ -227,21 +230,8 @@ a {
 					</div>
 				</div>
 				<div class="search-body">
-					<ul class="search-list">
-						<li class="search-list-item">
-							<div class="search-item-img">
-								<img src="../share/img/noimage.jpg" />
-							</div>
-							<div class="search-item-content">
-								<p>
-									펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식<br /> <b class="search-item-price">2,300원</b>
-
-								</p>
-							</div>
-							<div class="search-item-btn">
-								<button type="button" class="btn btn-sm search-item-select">선택</button>
-							</div>
-						</li>
+					<ul class="search-list" id="search_goods_list">
+						
 					</ul>
 				</div>
 				<div class="search-item-paging">
@@ -262,7 +252,7 @@ a {
 					<div class="choice clearfix">
 						<div class="col-xs-4">
 							<a href="#" class="item-img"><img
-								src="../share/img/slide.jpg"></a>
+								src="../share/img/noimage.JPG"></a>
 						</div>
 						<div class="col-xs-8">
 							<button type="button" class="item-select">상품정보선택</button>
@@ -317,6 +307,25 @@ a {
 		</div>
 	</div>
 	<%@ include file="/share/bottom_tp.jsp"%>
+	
+	<script id="goods_item_tmpl" type="text/x-handlebars-template">
+		{{#each goods}}
+			<li class="search-list-item">
+				<div class="search-item-img">
+					<img src="{{url}}" />
+				</div>
+				<div class="search-item-content">
+					<p>
+						{{name}}<br /> 
+						<b class="search-item-price">{{price}}원</b>
+					</p>
+				</div>
+				<div class="search-item-btn">
+					<button type="button" class="btn btn-sm search-item-select">선택</button>
+				</div>
+			</li>
+		{{/each}}
+	</script>
 	<script type="text/javascript">
 		/** 모달창 켜고 끄기 */
 		$(function() {
@@ -325,9 +334,25 @@ a {
 			});
 			$(".search-close").click(function(e) {
 				$("#search-modal").fadeOut();
+				$("li").remove(".search-list-item");
 			});
-		});  // end 모달창 켜고 끄기
+		}); // end 모달창 켜고 끄기
+		function get_list() {
+			$.get("../share/plugins/goods_list.json", function(req) {
+				// 미리 준비한 HTML틀을 읽어온다.
+				var template = Handlebars.compile($("#goods_item_tmpl").html());
+				// Ajax 를 통해서 읽어온 JSON 을 템플릿에 병합한다.
+				var html = template(req);
+				// #search_goods_list 에 읽어온 내용을 추가한다.
+				$("#search_goods_list").append(html);
+			});
+		}
 		
+		$(function() {
+			$("#search_goods_btn").click(function(e) {
+				get_list(); 	// 버튼이 클릭되면 호출된다.
+			});
+		});
 	</script>
 </body>
 
