@@ -22,480 +22,508 @@
     <!--[if lt IE 9]>
         <script type="text/javascript" src="assets/js/html5shiv.js"></script>
         <script type="text/javascript" src="assets/js/respond.min.js"></script>
-        <![endif]-->
+    <![endif]-->
     <!-- IE10 반응형 웹 버그 보완 -->
     <!--[if gt IE 9]>
         <link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
         <script type="text/javascript" src="assets/js/ie10.js"></script>
-        <![endif]-->
+    <![endif]-->
     <%@ include file="/share/head_tp.jsp" %>
     <style type="text/css">
-    .product {
-        margin-bottom: 40px;
-    }
-
-    .prd-img {
-        border-top: 1px solid #ddd;
-        border-bottom: 1px solid #ddd;
-    }
-
-    .prd-img img {
-        width: 100%;
-    }
-
-    button {
-        border: 0;
-        outline: 0;
-    }
-
-    .product .btn-group {
-        width: 96%;
-        margin-left: 2%;
-        margin-top: 10px;
-    }
-
-    .product .btn-group button {
-        width: 100px;
-        height: 28px;
-        font-size: 12px;
-        padding: 3px;
-        border-radius: 3px;
-        background-color: #fff;
-    }
-
-    .product .btn-group .like-btn {
-        border: 1px solid #ddd;
-    }
-
-    .product .btn-group .share-btn {
-        border: 1px solid #ddd;
-    }
-
-    .product .btn-group .glyphicon-heart-empty {
-        position: relative;
-        right: 3px;
-        top: 3px;
-    }
-
-    .product .btn-group .glyphicon-heart {
-        color: #ff8f83;
-        position: relative;
-        right: 3px;
-        top: 3px;
-    }
-
-    .change_border {
-        border: 1px solid #ff8f83;
-    }
-
-    .change_color {
-        color: #ff8f83;
-    }
-
-    .product .btn-group .glyphicon-link {
-        position: relative;
-        right: 3px;
-        top: 2px;
-    }
-
-    .prd-title {
-        width: 96%;
-        margin-left: 2%;
-    }
-
-    .prd-name {
-        font-size: 15px;
-        font-weight: bold;
-        padding-top: 20px;
-        margin-bottom: 15px;
-    }
-
-    .prd-price {
-        margin-bottom: 15px;
-    }
-
-    .prd-price div {
-        display: inline;
-    }
-
-    .prd-delivery {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        border-top: 1px solid #ddd;
-        border-bottom: 1px solid #ddd;
-    }
-
-    .prd-delivery ul li:nth-child(odd) {
-        width: 25%;
-    }
-
-    .prd-delivery ul li {
-        display: inline-block;
-        font-size: 12px;
-    }
-
-    .prd-option {
-        margin-top: 15px;
-        margin-bottom: 15px;
-    }
-
-    table .quantity {
-        width: 100%;
-    }
-
-    .prd-option .quantity th {
-        font-size: 12px;
-        font-weight: lighter;
-        width: 48%;
-    }
-
-    .prd-option button {
-        width: 30px;
-        height: 28px;
-        color: #000;
-        padding: 0;
-        font-size: 15px;
-        text-decoration: none;
-        background-color: #fff;
-        border: none;
-    }
-
-    .prd-option button img {
-        width: auto;
-        height: 28px;
-    }
-
-    .prd-option input {
-        width: 30px;
-        height: 26.5px;
-        text-align: center;
-        font-size: 12px;
-        display: inline-block;
-        border: 1px solid #ddd;
-        border-radius: 2px;
-        vertical-align: -0.5px;
-    }
-
-    .prd-total {
-        padding-left: 15px;
-        padding-right: 15px;
-        padding-top: 10px;
-        margin-bottom: 30px;
-        border-top: 1px solid #000;
-    }
-
-    .prd-total .total-price {
-        float: right;
-    }
-
-    .prd-action .action-btn {
-        text-align: center;
-        width: 100%;
-    }
-
-    .prd-action button {
-        width: 32%;
-        height: 40px;
-        font-size: 12px;
-        border: 1px solid #ddd;
-        background-color: #fff;
-    }
-
-    .prd-action #action-cart {
-        display: inline;
-        font-size: 12px;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        margin-right: 3px;
-    }
-
-    .prd-action #action-like {
-        margin-right: 3px;
-    }
-
-    .prd-action #action-orderform {
-        color: #fff;
-        border: 1px #ff8f83;
-        background-color: #ff8f83;
-    }
-
-    .prd-tab {
-        margin-left: 2%;
-        margin-right: 2%;
-    }
-
-    .prd-tab li {
-        width: 25%;
-    }
-
-    .prd-tab li a {
-        margin: 0;
-        padding: 8px;
-        height: 36px;
-        text-align: center;
-        font-size: 12px;
-        margin-bottom: 20px;
-        color: #000;
-        border: 1px solid #ddd;
-    }
-
-    .tab-content .prd-detail img {
-        width: 100%;
-    }
-
-    .tab-content .prd-detail #prd-foot {
-        padding-bottom: 50px;
-    }
-
-    .tab-content .prd-Info {
-        border-bottom: 1px solid #ddd;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        margin-bottom: 10px
-    }
-
-    .tab-content .prd-Info tbody {
-        font-size: 12px;
-    }
-
-    .prd-Info tr {
-        height: 26px;
-    }
-
-    .prd-Info th {
-        width: 25%;
-    }
-
-    .prd-photo .photo {
-        padding-top: 10px;
-    }
-
-    .prd-photo h5 {
-        width: 25%;
-        font-size: 12px;
-        padding-left: 15px;
-        display: inline-block;
-    }
-
-    .prd-photo .star {
-        float: right;
-        display: inline-block;
-        width: 75%;
-    }
-
-    .starR {
-        background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
-        background-size: auto 100%;
-        width: 30px;
-        height: 30px;
-        display: inline-block;
-        text-indent: -9999px;
-        cursor: pointer;
-    }
-
-    .starR.on {
-        background-position: 0 0;
-    }
-
-    .prd-photo .photo-add {
-        margin-top: 10px;
-        height: 53px;
-    }
-
-    .photo-add li {
-        width: 20%;
-        height: 100%;
-        list-style: none;
-        float: right;
-    }
-
-    .photo-add h5 {
-        font-size: 12px;
-        width: 25%;
-        padding-left: 15px;
-        display: inline-block;
-    }
-
-    .photo-add .photo-files {
-        float: right;
-        width: 75%;
-    }
-
-    .clearfix:before {
-        content: "";
-        display: block;
-        float: none;
-        clear: both;
-    }
-
-    .photo-add img {
-        width: 100%;
-        image-rendering: pixelated;
-    }
-
-    .photo {
-        margin-bottom: 10px;
-    }
-
-    .write {
-        padding-top: 10px;
-        border-top: 1px solid #ddd;
-    }
-
-    .write textarea {
-        resize: none;
-        width: 100%;
-        height: 100px;
-        padding: 10px;
-        font-size: 14px;
-        background-color: #f5f5f5;
-        border: 1px solid #ffc7c1;
-    }
-
-    .photo-button {
-        text-align: right;
-        padding-top: 20px;
-        margin-bottom: 20px;
-    }
-
-    .photo-button #review-submit {
-        width: 70px;
-        height: 34px;
-        font-size: 12px;
-        color: #fff;
-        border: 1px solid #ff8f83;
-        background-color: #ff8f83;
-    }
-
-    .photo-button #review-all {
-        width: 90px;
-        height: 34px;
-        font-size: 12px;
-        border: 1px solid #ddd;
-        background-color: #fff;
-    }
-
-    .prd-review {
-        border-top: 1px solid #000;
-        padding-top: 10px;
-    }
-
-    .prd-review .list1 {
-        width: 100%;
-    }
-
-    .prd-review .writer {
-        color: #777;
-        font-size: 11px;
-        display: inline-block;
-    }
-
-    .prd-review .writeDate {
-        color: #777;
-        font-size: 11px;
-        display: inline-block;
-    }
-
-    .prd-review .review-content {
-        font-size: 12px;
-        margin-top: 12px;
-        margin-bottom: 12px;
-    }
-
-    dl {
-        margin-bottom: 15px;
-    }
-
-    .box-left .editt {
-        font-size: 11px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-
-    .box-left .txt {
-        color: #777;
-        font-size: 11px;
-        margin-top: 12px;
-    }
-
-    .txt span a {
-        font-size: 11px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-
-    .prd-review .list2 {
-        width: 100%;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        border-top: 1px solid #ddd;
-        border-bottom: 1px solid #ddd;
-    }
-
-    .paging {
-        text-align: center;
-    }
-
-    .paging .disabled {
-        position: relative;
-        right: 10px;
-    }
-
-    .paging .paging-right {
-        position: relative;
-        left: 10px;
-    }
-
-    .pagination>.active>span {
-        background-color: #ffc7c1;
-        border-color: #ffc7c1;
-    }
-
-    .pagination>.disabled>a {
-        height: 30px;
-        color: #ffc7c1;
-        padding-top: 6px;
-    }
-
-    .pagination>li>a {
-        height: 30px;
-        color: #ffc7c1;
-        padding-top: 6px;
-    }
-
-    .qna-btn {
-        text-align: center;
-        padding-top: 15px;
-    }
-
-
-    .qna-btn #qna-write {
-        display: inline;
-        width: 47%;
-        height: 36px;
-        font-size: 12px;
-        color: #fff;
-        background: #ff8f83;
-        border: 1px #ff8f83;
-        text-align: center;
-        padding: 8px;
-    }
-
-    .qna-btn #qna-all {
-        width: 47%;
-        height: 36px;
-        font-size: 12px;
-        color: #000;
-        background: #fff;
-        border: 1px solid #ddd;
-        margin-left: 2%;
-    }
-
-    .prd-qna .nodata {
-        height: 50px;
-        text-align: center;
-        padding-top: 20px;
-    }
+        .product {
+            margin-bottom: 40px;
+        }
+
+        .prd-img {
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .prd-img img {
+            width: 100%;
+        }
+
+        button {
+            border: 0;
+            outline: 0;
+        }
+
+        .product .btn-group {
+            width: 96%;
+            margin-left: 2%;
+            margin-top: 10px;
+        }
+
+        .product .btn-group button {
+            width: 100px;
+            height: 28px;
+            font-size: 12px;
+            padding: 3px;
+            border-radius: 3px;
+            background-color: #fff;
+        }
+
+        .product .btn-group .like-btn {
+            border: 1px solid #ddd;
+        }
+
+        .product .btn-group .share-btn {
+            border: 1px solid #ddd;
+        }
+
+        .product .btn-group .glyphicon-heart-empty {
+            position: relative;
+            right: 3px;
+            top: 3px;
+        }
+
+        .product .btn-group .glyphicon-heart {
+            color: #ff8f83;
+            position: relative;
+            right: 3px;
+            top: 3px;
+        }
+
+        .change_border {
+            border: 1px solid #ff8f83;
+        }
+
+        .change_color {
+            color: #ff8f83;
+        }
+
+        .change_color2 {
+            color: #ff8f83;
+        }
+
+        .product .btn-group .glyphicon-link {
+            position: relative;
+            right: 3px;
+            top: 2px;
+        }
+
+        .prd-title {
+            width: 96%;
+            margin-left: 2%;
+        }
+
+        .prd-name {
+            font-size: 15px;
+            font-weight: bold;
+            padding-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        .prd-price {
+            margin-bottom: 15px;
+        }
+
+        .prd-price div {
+            display: inline;
+        }
+
+        .prd-delivery {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .prd-delivery ul li:nth-child(odd) {
+            width: 25%;
+        }
+
+        .prd-delivery ul li {
+            display: inline-block;
+            font-size: 12px;
+        }
+
+        .prd-option {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        table .quantity {
+            width: 100%;
+        }
+
+        .prd-option .quantity th {
+            font-size: 12px;
+            font-weight: lighter;
+            width: 48%;
+        }
+
+        .prd-option button {
+            width: 30px;
+            height: 28px;
+            color: #000;
+            padding: 0;
+            font-size: 15px;
+            text-decoration: none;
+            background-color: #fff;
+            border: none;
+        }
+
+        .prd-option button img {
+            width: auto;
+            height: 28px;
+        }
+
+        .prd-option input {
+            width: 30px;
+            height: 26.5px;
+            text-align: center;
+            font-size: 12px;
+            display: inline-block;
+            border: 1px solid #ddd;
+            border-radius: 2px;
+            vertical-align: -0.5px;
+        }
+
+        .prd-total {
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 10px;
+            margin-bottom: 30px;
+            border-top: 1px solid #000;
+        }
+
+        .prd-total .total-price {
+            float: right;
+        }
+
+        .prd-action .action-btn {
+            text-align: center;
+            width: 100%;
+        }
+
+        .prd-action button {
+            width: 32%;
+            height: 40px;
+            font-size: 12px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+        }
+
+        .prd-action #action-cart {
+            display: inline;
+            font-size: 12px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin-right: 3px;
+        }
+
+        .prd-action #action-like {
+            margin-right: 3px;
+        }
+
+        .prd-action #action-orderform {
+            color: #fff;
+            border: 1px #ff8f83;
+            background-color: #ff8f83;
+        }
+
+        .prd-tab {
+            margin-left: 2%;
+            margin-right: 2%;
+        }
+
+        .prd-tab li {
+            width: 25%;
+        }
+
+        .prd-tab li a {
+            margin: 0;
+            padding: 8px;
+            height: 36px;
+            text-align: center;
+            font-size: 12px;
+            margin-bottom: 20px;
+            color: #000;
+            border: 1px solid #ddd;
+        }
+
+        .tab-content .prd-detail img {
+            width: 100%;
+        }
+
+        .tab-content .prd-detail #prd-foot {
+            padding-bottom: 50px;
+        }
+
+        .tab-content .prd-Info {
+            border-bottom: 1px solid #ddd;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: 10px
+        }
+
+        .tab-content .prd-Info tbody {
+            font-size: 12px;
+        }
+
+        .prd-Info tr {
+            height: 26px;
+        }
+
+        .prd-Info th {
+            width: 25%;
+        }
+
+        .prd-photo .photo {
+            padding-top: 10px;
+        }
+
+        .prd-photo h5 {
+            width: 25%;
+            font-size: 12px;
+            padding-left: 15px;
+            display: inline-block;
+        }
+
+        .prd-photo .star {
+            float: right;
+            display: inline-block;
+            width: 75%;
+        }
+
+        .starR {
+            background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+            background-size: auto 100%;
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            text-indent: -9999px;
+            cursor: pointer;
+        }
+
+        .starR.on {
+            background-position: 0 0;
+        }
+
+        .prd-photo .photo-add {
+            margin-top: 10px;
+            height: 53px;
+        }
+
+        .photo-add li {
+            width: 20%;
+            height: 100%;
+            list-style: none;
+            float: right;
+        }
+
+        .photo-add h5 {
+            font-size: 12px;
+            width: 25%;
+            padding-left: 15px;
+            display: inline-block;
+        }
+
+        .photo-add .photo-files {
+            float: right;
+            width: 75%;
+        }
+
+        .clearfix:before {
+            content: "";
+            display: block;
+            float: none;
+            clear: both;
+        }
+
+        .photo-add img {
+            width: 100%;
+            image-rendering: pixelated;
+        }
+
+        .photo {
+            margin-bottom: 10px;
+        }
+
+        .write {
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        .write textarea {
+            resize: none;
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            font-size: 14px;
+            background-color: #f5f5f5;
+            border: 1px solid #ffc7c1;
+        }
+
+        .photo-button {
+            text-align: right;
+            padding-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .photo-button #review-submit {
+            width: 70px;
+            height: 34px;
+            font-size: 12px;
+            color: #fff;
+            border: 1px solid #ff8f83;
+            background-color: #ff8f83;
+        }
+
+        .photo-button #review-all {
+            width: 90px;
+            height: 34px;
+            font-size: 12px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+        }
+
+        .prd-review {
+            border-top: 1px solid #000;
+            padding-top: 10px;
+        }
+
+        .prd-review .list1 {
+            width: 100%;
+        }
+
+        .prd-review .writer {
+            color: #777;
+            font-size: 11px;
+            display: inline-block;
+        }
+
+        .prd-review .writeDate {
+            color: #777;
+            font-size: 11px;
+            display: inline-block;
+        }
+
+        .prd-review .review-content {
+            font-size: 12px;
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+
+        dl {
+            margin-bottom: 15px;
+        }
+
+        .box-left .editt {
+            font-size: 11px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .box-left .txt {
+            color: #777;
+            font-size: 11px;
+            margin-top: 12px;
+        }
+
+        .txt span a {
+            font-size: 11px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .prd-review .list2 {
+            width: 100%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .paging {
+            text-align: center;
+        }
+
+        .paging .disabled {
+            position: relative;
+            right: 10px;
+        }
+
+        .paging .paging-right {
+            position: relative;
+            left: 10px;
+        }
+
+        .pagination>.active>span {
+            background-color: #ffc7c1;
+            border-color: #ffc7c1;
+        }
+
+        .pagination>.disabled>a {
+            height: 30px;
+            color: #ffc7c1;
+            padding-top: 6px;
+        }
+
+        .pagination>li>a {
+            height: 30px;
+            color: #ffc7c1;
+            padding-top: 6px;
+        }
+
+        .qna-btn {
+            text-align: center;
+            padding-top: 15px;
+        }
+
+
+        .qna-btn #qna-write {
+            display: inline;
+            width: 47%;
+            height: 36px;
+            font-size: 12px;
+            color: #fff;
+            background: #ff8f83;
+            border: 1px #ff8f83;
+            text-align: center;
+            padding: 8px;
+        }
+
+        .qna-btn #qna-all {
+            width: 47%;
+            height: 36px;
+            font-size: 12px;
+            color: #000;
+            background: #fff;
+            border: 1px solid #ddd;
+            margin-left: 2%;
+        }
+
+        .prd-qna .nodata {
+            height: 50px;
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        #navbarback  {
+            height: 70px;
+        }
+
+
+        #navbarback .action-btn2 {
+            height: 70px;
+            padding: 15px;
+        }
+
+        #navbarback .action-btn2 button {
+            width: 30%;
+            height: 40px;
+            color: #777;
+            background-color: #fff;
+            border-radius: 3px;
+        }
+
+        .action-btn2 #action-like2 {
+            margin-right: 8px;
+            margin-left: 8px;
+        }
+
     </style>
 </head>
 
@@ -518,7 +546,7 @@
                     <button type="button" class="like-btn" aria-label="좋아요">
                         <span class="glyphicon glyphicon-heart-empty like"></span>
                         <span class="like-txt">좋아요</span>
-                        <span id="like-count">11</span>
+                        <span class="like-count ct">11</span>
                     </button>
                     <button type="button" class="share-btn" aria-label="공유하기">
                         <span class="glyphicon glyphicon-link"></span>
@@ -780,73 +808,121 @@
                 </div>
             </div>
         </div>
+        <div class="footer">
+            <!-- 하단 네비게이션 고정-->
+            <!--- 소개 4인방 링크 -->
+            <hr />
+            <div class="etc">
+                <a href="etc/page_info1.html">회사소개</a>
+                <a href="etc/page_info2.html">이용약관</a>
+                <a href="etc/page_info3.html">개인정보취급방침</a>
+                <a href="etc/page_info4.html">이용안내</a>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-xs-6 etc">
+                    <h5><b>상담센터</b></h5>
+                    <p style="font-size: 15px; font-weight:bold;">070-123-4567</p>
+                    <p style="font-size: 12px"> 운영시간 : 10:00 - 18:00<br />주말, 공휴일은 후뮤입니다.</p>
+                </div>
+                <div class="col-xs-6 etc">
+                    <h5><b>입금계좌안내</b></h5>
+                    <br />
+                    <p>하나 355-342432-23445<br>예금주 : (주)뽀삐뽀삐</p>
+                </div>
+            </div>
+            <address class="clearfix">
+                <p>상점명: (주)뽀삐뽀삐 대표 : 아무개
+                    <br>주소 : 서울특별시 행복구 존버동 8282-5959 102호 - 물류팀<br>
+                    사업자등록번호 : 123-86-43567<br>
+                    통신판매업신고 : 제2020-서울서초-0082호<br>
+                    개인정보관리책임 : 아무개 <br>
+                    <br />
+                    COPYRIGHT&copy; (주)뽀삐뽀삐 ALL RIGHTS RESERVED
+                    <br />
+                    <i>DESIGN BY EZEN-team4</i>
+                </p>
+            </address>
+            <div class="navbar" id="navbarback">
+                <ul class="btmbar-nav clearfix navbar-fixed-bottom">
+                    <hr />
+                    <div class="prd-action2">
+                        <div class="action-btn2">
+                            <button type="button" onclick="location.href='../pay/cart.jsp'" id="action-cart2">장바구니</button>
+                            <button type="button" onclick="location.href='../myInfo/like_goods.jsp'" id="action-like2">관심상품</button>
+                            <button type="button" onclick="location.href='../pay/orderform.jsp'" id="action-orderform2">구매하기</button>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
     </div>
-    <%@ include file="/share/bottom_tp.jsp" %>
     <!-- Javascript -->
     <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
     <script src="../share/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-    $(function() {
-        $('.star span').click(function() {
-            $(this).parent().children('span').removeClass('on');
-            $(this).addClass('on').prevAll('span').addClass('on');
-            return false;
-        });
+        $(function() {
+            $('.star span').click(function() {
+                $(this).parent().children('span').removeClass('on');
+                $(this).addClass('on').prevAll('span').addClass('on');
+                return false;
+            });
 
-        var counter = 1;
-        var price = $(".price").text();
+            var counter = 1;
+            var price = $(".price").text();
 
-        $("#total-price").html(counter * price);
-
-        $(".btnUp").click(function(e) {
-            counter++;
-
-            $("#count").val(counter);
             $("#total-price").html(counter * price);
-            $("#price-count").html(counter);
-        });
-        $(".btnDown").click(function(e) {
-            if (counter < 2) {
-                alert("최소 주문수량은 1개 입니다.");
-                return;
-            }
-            counter--;
 
-            $("#count").val(counter);
-            $("#total-price").html(counter * price);
-            $("#price-count").html(counter);
-        });
-    });
+            $(".btnUp").click(function(e) {
+                counter++;
 
-    jQuery(document).ready(function() {
-        jQuery('.share-btn').click(function() {
-            var url = document.getElementById('my-url');
+                $("#count").val(counter);
+                $("#total-price").html(counter * price);
+                $("#price-count").html(counter);
+            });
+            $(".btnDown").click(function(e) {
+                if (counter < 2) {
+                    alert("최소 주문수량은 1개 입니다.");
+                    return;
+                }
+                counter--;
 
-            url.select();
-            document.execCommand('Copy');
-            alert('URL이 복사되었습니다. \n원하는 곳에 붙여넣기(Ctrl+V)해주세요.');
-        });
-    });
-
-    $(function() {
-        $('.like-btn').click(function() {
-            $(this).toggleClass("like-btn change_border");
-            $('.like').toggleClass("glyphicon-heart-empty glyphicon-heart");
-            $('.like-txt').toggleClass("change_color");
-            $('#like-count').toggleClass("change_color");
+                $("#count").val(counter);
+                $("#total-price").html(counter * price);
+                $("#price-count").html(counter);
+            });
         });
 
-        $(".like-btn").click(function(e) {
-        	var count = $("#like-count").text();
-        	var heart_empty = $(.glyphicon-heart-empty);
-        	if ($("#like-count").val() == "") {
-        		count++;
-        	} else {
-        		count--;
-        	}          
-        });
-    });
+        jQuery(document).ready(function() {
+            jQuery('.share-btn').click(function() {
+                var url = document.getElementById('my-url');
 
+                url.select();
+                document.execCommand('Copy');
+                alert('URL이 복사되었습니다. \n원하는 곳에 붙여넣기(Ctrl+V)해주세요.');
+            });
+        });
+
+        $(function() {
+            $('.like-btn').click(function() {
+                $(this).toggleClass("like-btn change_border");
+                $('.like').toggleClass("glyphicon-heart-empty glyphicon-heart");
+                $('.like-txt').toggleClass("change_color");
+                $('.ct').toggleClass("like-count change_color2");
+            });
+
+            var count = $(".change_color2").text();
+            $(".like-btn").click(function(e) {
+                count++;
+                $(".change_color2").html(count);
+            });
+
+            var count = $(".like-count").text();
+            $(".like-btn").click(function(e) {
+                count--;
+                $(".like-count").html(count);
+            });
+        });
     </script>
 </body>
 

@@ -276,7 +276,7 @@
         <script src="../share/assets/js/jquery-3.2.1.min.js"></script>
         <script src="../share/assets/js/bootstrap.min.js"></script>
         <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
-        <script>
+        <script type="text/javascript">
         var mySwiper = new Swiper('.swiper-container', {
 
 
