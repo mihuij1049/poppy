@@ -101,7 +101,7 @@
 			</h4>
 		</div>
 		<form method="post" class="find-id" id="find-id"
-			action="../member/find_id_ok.jsp">
+			action="../api/find_id.do">
 			<div class="member">
 				<b>회원구분</b> <select name="m_type" class="m_type">
 					<option value="개인회원">개인회원</option>
@@ -126,15 +126,15 @@
 				<button type="submit" class="btn btn-confirm">확인</button>
 			</div>
 		</form>
+		<div id="result"></div>
 	</div>
 	<%@ include file="/share/bottom_tp.jsp"%>
 
 	<script type="text/javascript">
 	<!-- Javascript -->
 			
-	<!-- 정규식검사 -->
 		$(function() {
-        $("#find-id").submit(function(e) {
+        	$("#find-id").submit(function(e) {
            
             /** 이름 검사 */
             if (!regex.value('#name', '이름을 입력하세요.')) { return false; }
@@ -146,6 +146,33 @@
             if (!regex.email('#email', '이메일 주소가 잘못되었습니다.')) { return false; }
         });
         
+		});
+		
+		$(function() {
+			$("#login").submit(function(e) {
+				// <form> 태그가 submit 되어 페이지가 이동되는 것을 방지한다.
+				e.preventDefault();
+				
+				// 사용자의 입력값을 가져온다.
+				var uname = $("#name").val();
+				console.log(uname);
+				var umail = $("#email").val();
+				console.log(umail);
+				$.ajax( {
+					// 결과를 읽어올 URL --> <form>태그의 action속성
+					url : "../api/find_id.do",
+					// 웹 프로그램에게 데이터를 전송하는 방식 --> <form> 태그의 method 속성
+					method: "post",
+					// 전달할 조건값은 사용자의 입력값을 활용하여 JSON형식으로 구성
+					data: { name : uname, email : umail },
+					// 읽어올 내용의 형식 (생략할 경우 json)
+					dataType: "html",
+					// 읽어온 내용을 처리하기 위한 함수
+					success: function(req) {
+						$("#result").html(req);
+					}
+				}); // end $.ajax
+			}); // end submit
 		});
         
         

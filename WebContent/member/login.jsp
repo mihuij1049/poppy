@@ -5,6 +5,7 @@
 <html lang="ko">
 
 <head>
+<link rel="icon" type="image/png" href="http://example.com/myicon.png">
 <%@ include file="/share/head_tp.jsp"%>
 <style type="text/css">
 .login {
