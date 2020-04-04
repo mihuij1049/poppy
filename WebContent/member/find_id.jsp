@@ -128,10 +128,11 @@
 		</form>
 	</div>
 	<%@ include file="/share/bottom_tp.jsp"%>
-	
+
 	<script type="text/javascript">
 	<!-- Javascript -->
-			<!-- 정규식검사 -->
+			
+	<!-- 정규식검사 -->
 		$(function() {
         $("#find-id").submit(function(e) {
            
@@ -145,33 +146,10 @@
             if (!regex.email('#email', '이메일 주소가 잘못되었습니다.')) { return false; }
         });
         
-        
-        <!-- Ajax에 의해서 로드되는 form에 대한  submit이베트 -->
-        $(document).on('submit',"#find-id") {
-           var uname = $(this).find("#name");
-           var uemail = $(this).find("#email");
-           
-           $(post)('../share/plugins/ajax/login_ok.do', {
-              name: uname.val(),
-              email: uemail.val()
-           }, function(json) {
-              // 없는 아이디인 경우
-              if(json.result=="FAIL") {
-                 aler("이름이나 이메일을 확인해주세요");
-                 uname.val("");
-                 uemail.val("");
-                 uname.focus();
-                 return false;
-              }
-           }
-        }
-    
-   
-        });
-    
+		});
         
         
-	
+
 	
 	</script>
 

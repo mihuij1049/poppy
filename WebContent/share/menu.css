@@ -62,7 +62,6 @@
     text-align: left;
     font-size: 16px;
     margin: 0px;
-    color: #333;
 }
 
 .fm-body a {
@@ -135,16 +134,17 @@
     -webkit-transition-duration: 0.5s;
 }
 
+
+/** 하단영역 */
+.fm-footer {
+    border-top: none;
+    padding-bottom: 10px;
+}
+
 .box1 {
     color: black;
 }
 
 .box2 {
     color: red;
-}
-
-/** 하단영역 */
-.fm-footer {
-    border-top: none;
-    padding-bottom: 10px;
 }

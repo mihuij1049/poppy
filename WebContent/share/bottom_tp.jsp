@@ -118,8 +118,8 @@
                                         <!-- 항목(1) -->
                                         <div class="panel panel-default fm-default">
                                             <div class="panel-heading fm-heading ">
-                                                <a href="#" class="accordion-toggle fm-toggle clearfix" data-toggle="collapse" data-parent="#accordion-tab">
-                                                    <h4 class="panel-title"> 신상품
+                                                <a href="#" class="accordion-toggle fm-toggle clearfix" id="new-good" data-toggle="collapse" data-parent="#accordion-tab">
+                                                    <h4 class="panel-title-new"> 신상품
                                                     </h4>
                                                 </a>
                                             </div>
@@ -127,8 +127,8 @@
                                         <!-- 항목(2) -->
                                         <div class="panel panel-default fm-default">
                                             <div class="panel-heading fm-heading">
-                                                <a href="#" class="accordion-toggle fm-toggle" data-toggle="collapse" data-parent="#accordion-tab">
-                                                    <h4 class="panel-title"> 인기상품 </h4>
+                                                <a href="#" class="accordion-toggle fm-toggle" id="best-good" data-toggle="collapse" data-parent="#accordion-tab">
+                                                    <h4 class="panel-title-best"> 인기상품 </h4>
                                                 </a>
                                             </div>
                                         </div>
