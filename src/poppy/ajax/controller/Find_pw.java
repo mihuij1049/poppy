@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/api/find_id.do")
-public class Find_id extends HttpServlet {
+@WebServlet("/api/find_pw.do")
+public class Find_pw extends HttpServlet {
 	
 	private static final long serialVersionUID = -2942443909020135171L;
 
@@ -21,22 +21,22 @@ public class Find_id extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html"); 
 		
+		String userId = request.getParameter("user_id");
 		String userName = request.getParameter("user_name");
 		String userEmail = request.getParameter("user_email");
 		
+		if (userId == null) { userId = ""; }
 		if (userName == null) { userName = ""; }
 		if (userEmail == null) { userEmail = ""; }
 
 		PrintWriter out = response.getWriter();
-		if (userName.equals("기은혜") && userEmail.equals("abc@naver.com")) {
+		if (userId.equals("ezen") && userName.equals("기은혜") && userEmail.equals("abc@naver.com")) {
 			
-			out.write("<script>window.location.href = '../member/find_id_ok.jsp';</script>");
+			out.write("<script>window.location.href = '../member/find_pw_email.jsp';</script>");
 		} else {
-			out.write("<script>alert('이름과 이메일을 확인해주세요.')</script>");
+			out.write("<script>alert('입력정보를 다시 확인해주세요..')</script>");
 		}
 	}
 
 
 }
-
-

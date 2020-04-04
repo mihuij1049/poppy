@@ -100,8 +100,7 @@
 				</b>
 			</h4>
 		</div>
-		<form class="find-id" id="find-id"
-			action="../api/find_id.do">
+		<form class="find-id" id="find-id" method="post" action="../api/find_id.do">
 			<div class="member">
 				<b>회원구분</b> <select name="m_type" class="m_type">
 					<option value="개인회원">개인회원</option>
