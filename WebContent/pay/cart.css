@@ -216,7 +216,7 @@ button {
 	width: 65px;
 	height: 34px;
 	float: right;
-	margin: 5px;
+	margin-left: 5px;
 }
 
 .modal-header2 {

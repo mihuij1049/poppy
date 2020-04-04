@@ -43,9 +43,9 @@
 						<div class="mycart">
 							<div class="mygoods clearfix">
 								<span class="chkbox"><input type="checkbox"
-									class="cart cart-size"></span> <a
-									href=" ../gallery/goods.jsp"> <img
-									src="../share/img/4_M.jpg" class="cart-img"></a>
+									class="cart cart-size"></span> <a href=" ../gallery/goods.jsp">
+									<img src="../share/img/4_M.jpg" class="cart-img">
+								</a>
 								<div class="word">
 									<b><a href="../gallery/goods.jsp">펫클럽 데이스포 케어츄르
 											15kg*4개입/츄르간식</a></b><br> <small>배송:2500원[조건]/기본배송</small><br>
@@ -188,32 +188,32 @@
 			</div>
 		</div>
 	</div>
-	 <!-- Modal -->
-        <div class="modal fade" id="myModal2">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                <div class="cart-modal">
-                    <div class="modal-header2">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title">상품 삭제</h4>
-                    </div>
-                    <div class="modal-body2">
-                        <p>선택하신 상품을 정말 삭제하시겠습니까?</p>
-                    </div>
-                    <div class="modal-footer2">
-                        <button type="button" class="btn btn2" data-dismiss="modal">아니오</button>
-                        <button type="button" class="btn btn2" data-dismiss="modal">예</button>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
+	<!-- Modal -->
+	<div class="modal fade" id="myModal2">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="cart-modal">
+					<div class="modal-header2">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">상품 삭제</h4>
+					</div>
+					<div class="modal-body2">
+						<p>선택하신 상품을 정말 삭제하시겠습니까?</p>
+					</div>
+					<div class="modal-footer2">
+						<button type="button" class="btn btn2" data-dismiss="modal">아니오</button>
+						<button type="button" class="btn btn2" data-dismiss="modal">예</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-	<%@ include file="/share/bottom_tp.jsp"%>
 	<!-- Javascript -->
-	<script type="text/javascript">
+	<%@ include file="/share/bottom_tp.jsp"%>
 		$(function() {
 			$("#all-check").click(function() {
 				var choice = $(".cart").prop("checked");

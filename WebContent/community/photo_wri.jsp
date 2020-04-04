@@ -277,14 +277,14 @@ input {
 			</div>
 		</div>
 	</div>
-	<%@ include file="/share/bottom_tp.jsp"%>
+
 	<!-- Javascript -->
 	<!-- 플러그인 JS 참조 -->
 	<script src="../share/plugins/validate/jquery.validate.min.js"></script>
 	<script src="../share/plugins/validate/additional-methods.min.js"></script>
 	<script src="../share/plugins/sweetalert/sweetalert2.min.js"></script>
 	<script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
-	<script type="text/javascript">
+	<%@ include file="/share/bottom_tp.jsp"%>
 		$(function() {
 			$("#content_hide").hide();
 
