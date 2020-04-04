@@ -102,8 +102,8 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
                                     </div>
                                     <div class="footer-buttons">
-                                        <button type="button" onclick="location.href='../member/agree_0.html'" class="btn btn-footer">회원가입</button>
-                                        <button type="button" onclick="location.href='../member/login.html'" class="btn btn-footer">로그인</button>
+                                        <button type="button" onclick="location.href='../member/agree_0.jsp'" class="btn btn-footer">회원가입</button>
+                                        <button type="button" onclick="location.href='../member/login.jsp'" class="btn btn-footer">로그인</button>
                                     </div>
                                 </div>
                                 <!-- 내용 -->

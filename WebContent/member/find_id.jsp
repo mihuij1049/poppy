@@ -71,7 +71,7 @@
         text-align: center;
     }
 
-    .btn {
+    .btn-confirm {
         width: 90%;
         height: 40px;
         margin-top: 15px;
@@ -117,8 +117,8 @@
                         <input type="email" name="email" id="email" maxlength="20" placeholder="이메일을 입력해주세요." />
                     </div>
             
-            <div class="btn-ok">
-                <button type="submit" class="btn btn1">확인</button>
+            <div class="btn-confirm-div">
+                <button type="submit" class="btn btn-confirm">확인</button>
             </div>
             </form>
         </div>
