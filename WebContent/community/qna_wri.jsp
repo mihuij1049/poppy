@@ -335,8 +335,11 @@ a {
 			$(".search-close").click(function(e) {
 				$("#search-modal").fadeOut();
 				$("li").remove(".search-list-item");
+				$(".search-qty").text("0");
 			});
 		}); // end 모달창 켜고 끄기
+		
+		/** 검색 버튼 클릭시 검색 결과 화면에 나타내기 */
 		function get_list() {
 			$.get("../share/plugins/goods_list.json", function(req) {
 				// 미리 준비한 HTML틀을 읽어온다.
@@ -351,6 +354,9 @@ a {
 		$(function() {
 			$("#search_goods_btn").click(function(e) {
 				get_list(); 	// 버튼이 클릭되면 호출된다.
+				var length = $("ul").length;
+				// console.log(length);
+				$(".search-qty").text(length);
 			});
 		});
 	</script>
