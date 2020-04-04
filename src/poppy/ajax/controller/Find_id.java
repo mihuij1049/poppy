@@ -20,8 +20,8 @@ public class Find_id extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html"); 
 		
-		String userName = request.getParameter("name");
-		String userEmail = request.getParameter("email");
+		String userName = request.getParameter("user_name");
+		String userEmail = request.getParameter("user_email");
 		
 		if (userName == null) { userName = ""; }
 		if (userEmail == null) { userEmail = ""; }
@@ -29,11 +29,11 @@ public class Find_id extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		if (userName.equals("기은혜") && userEmail.equals("abc@naver.com")) {
 			
-			out.write("<script>window.location.href = '../mdmber/find_id_ok.jsp';</script>");
+			out.write("<script>window.location.href = '../member/find_id_ok.jsp';</script>");
 		} else {
 			out.write("<script>alert('이름과 이메일을 확인해주세요.')</script>");
 		}
 	}
-}{ 
+
 
 }

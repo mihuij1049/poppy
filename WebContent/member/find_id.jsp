@@ -100,7 +100,7 @@
 				</b>
 			</h4>
 		</div>
-		<form method="post" class="find-id" id="find-id"
+		<form class="find-id" id="find-id"
 			action="../api/find_id.do">
 			<div class="member">
 				<b>회원구분</b> <select name="m_type" class="m_type">
@@ -111,15 +111,15 @@
 				</select>
 			</div>
 			<div class="auth">
-				<b>인증방법</b> <input type="radio" name="auth" value="email" checked="">이메일
+				<b>인증방법</b> <input type="radio" name="auth" value="email" checked>이메일
 			</div>
 			<div class="name">
-				<label for="name"><b>이름</b></label> <input type="text" name="name"
-					id="name" maxlength="20" placeholder="이름을 입력해주세요." />
+				<label for="name"><b>이름</b></label> 
+				<input type="text" name="user_name" id="user_name" maxlength="20" placeholder="이름을 입력해주세요." />
 			</div>
 			<div class="email">
 				<label for="email"><b>이메일</b></label> <input type="email"
-					name="email" id="email" maxlength="20" placeholder="이메일을 입력해주세요." />
+					name="user_email" id="user_email" maxlength="20" placeholder="이메일을 입력해주세요." />
 			</div>
 
 			<div class="btn-confirm-div">
@@ -135,28 +135,28 @@
 			
 		$(function() {
         	$("#find-id").submit(function(e) {
-           
+        		e.preventDefault();
             /** 이름 검사 */
-            if (!regex.value('#name', '이름을 입력하세요.')) { return false; }
-            if (!regex.kor('#name', '이름은 한글만 입력 가능합니다.')) { return false; }
-            if (!regex.min_length('#name', 2, '이름은 최소 2자 이상 입력 가능합니다.')) { return false; }
-            if (!regex.max_length('#name', 20, '이름은 최대 20자 까지만 입력 가능합니다.')) { return false; }
+            if (!regex.value('#user_name', '이름을 입력하세요.')) { return false; }
+            if (!regex.kor('#user_name', '이름은 한글만 입력 가능합니다.')) { return false; }
+            if (!regex.min_length('#user_name', 2, '이름은 최소 2자 이상 입력 가능합니다.')) { return false; }
+            if (!regex.max_length('#user_name', 20, '이름은 최대 20자 까지만 입력 가능합니다.')) { return false; }
             /** 이메일 검사 */
-            if (!regex.value('#email', '이메일을 입력하세요.')) { return false; }
-            if (!regex.email('#email', '이메일 주소가 잘못되었습니다.')) { return false; }
+            if (!regex.value('#user_email', '이메일을 입력하세요.')) { return false; }
+            if (!regex.email('#user_email', '이메일 주소가 잘못되었습니다.')) { return false; }
         });
         
 		});
 		
 		$(function() {
-			$("#login").submit(function(e) {
+			$("#find-id").submit(function(e) {
 				// <form> 태그가 submit 되어 페이지가 이동되는 것을 방지한다.
 				e.preventDefault();
 				
 				// 사용자의 입력값을 가져온다.
-				var uname = $("#name").val();
+				var uname = $("#user_name").val();
 				console.log(uname);
-				var umail = $("#email").val();
+				var umail = $("#user_email").val();
 				console.log(umail);
 				$.ajax( {
 					// 결과를 읽어올 URL --> <form>태그의 action속성
@@ -164,15 +164,15 @@
 					// 웹 프로그램에게 데이터를 전송하는 방식 --> <form> 태그의 method 속성
 					method: "post",
 					// 전달할 조건값은 사용자의 입력값을 활용하여 JSON형식으로 구성
-					data: { name : uname, email : umail },
+					data: { user_name : uname, user_email : umail },
 					// 읽어올 내용의 형식 (생략할 경우 json)
 					dataType: "html",
 					// 읽어온 내용을 처리하기 위한 함수
 					success: function(req) {
 						$("#result").html(req);
 					}
-				}); // end $.ajax
-			}); // end submit
+				}); 
+			}); 
 		});
         
         
