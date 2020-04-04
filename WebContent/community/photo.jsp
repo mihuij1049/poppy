@@ -148,8 +148,8 @@ p {
 				<p>리뷰내용~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~</p>
 			</div>
 			<div class="recommend">
-				<p>이 리뷰가 도움이 되셨다면 눌러주세요</p>
-				<button class="btn">추천</button>
+				<p>이 리뷰가 도움이 되셨다면 눌러주세요.</p>
+				<button class="btn" id="recommend">추천</button>
 			</div>
 			<div class="rv-footer">
 				<p>관리자에게만 댓글작성 권한이 있습니다.</p>
@@ -159,7 +159,17 @@ p {
 	<%@ include file="/share/bottom_tp.jsp"%>
 	<!-- Javascript -->
 	<script type="text/javascript">
-		
+		$(function() {
+			var count = 0;
+			$("#recommend").click(function() {
+				if (count == 0) {
+					alert("추천되었습니다.");
+					count++;
+				} else {
+					alert("이 게시물에는 더이상 추천하실 수 없습니다.")
+				}
+			});
+		});
 	</script>
 </body>
 
