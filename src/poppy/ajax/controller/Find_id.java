@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@SuppressWarnings("serial")
 @WebServlet("/api/find_id.do")
 public class Find_id extends HttpServlet {
 	
-	
+
+	private static final long serialVersionUID = 7983998693717966775L;
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 

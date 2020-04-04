@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/api/post.do")
+@WebServlet("/api/find_pw.do")
 public class Find_pw extends HttpServlet {
 	private static final long serialVersionUID = -2094840400029094989L;
 
