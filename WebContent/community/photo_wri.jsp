@@ -195,7 +195,7 @@ input {
 			</div>
 			<div class="container">
 				<form class="form-horizontal" name="wri_form" id="wri_form"
-					action="photo_rv.html">
+					action="photo_rv.jsp">
 					<div class="select">
 						<img src="../share/img/photo-file.PNG">
 						<button type="button" class="btn btn2">상품정보선택</button>
@@ -269,8 +269,8 @@ input {
 						<input type="password" name="password" class="pass" id="password">
 					</div>
 					<div class="sign">
-						<button type="submit" class="btn btn2">등록</button>
-						<button type="reset" class="btn btn2 btn-inverse">취소</button>
+						<button type="submit" class="btn btn2" onclick="location.href='photo_rv.jsp'">등록</button>
+						<button type="reset" class="btn btn2 btn-inverse" onclick="location.href='photo_rv.jsp'">취소</button>
 					</div>
 				</form>
 			</div>

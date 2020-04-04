@@ -309,11 +309,13 @@ hr {
 			</div>
 		</div>
 	</div>
+	<!-- Javascript -->
+	<%@ include file="/share/bottom_tp.jsp"%>
 	<!-- 플러그인 JS 참조 -->
 	<script src="../share/plugins/datepicker/datepicker.min.js"></script>
 	<script src="../share/plugins/datepicker/datepicker.ko-KR.js"></script>
-	<%@ include file="/share/bottom_tp.jsp"%>
 	<!-- 사용자 정의 스크립트 -->
+	<script type="text/javascript">
 		function set_term(days) {
 			days = days * 24 * 60 * 60 * 1000;
 

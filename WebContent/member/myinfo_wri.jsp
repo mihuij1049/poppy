@@ -160,7 +160,7 @@ button p {
 		</div>
 		<div class="container">
 			<form class="form-horizontal" name="join_form" id="join_form"
-				action="myinfo_wri_ok.html">
+				action="myinfo_wri_ok.jsp">
 				<div class="id-box join-form">
 					<label for="user_id"> 아이디<span>＊</span>
 					</label> <input type="text" name="user_id" id="user_id" maxlength="20">

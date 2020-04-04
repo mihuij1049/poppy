@@ -70,7 +70,6 @@
 }
 </style>
 </head>
-
 <body>
 	<%@ include file="/share/top_tp.jsp"%>
 	<div class="content">
@@ -117,10 +116,10 @@
 		// Date 객체의 생성 --> 이 객체 안에는 기본적으로 현재 시각이 저장되어 있다.
 		var mydate = new Date(); // 년, 월, 일, 시간, 분, 초를 리턴받기
 		var yy = mydate.getFullYear();
+
 		// 월은 0이 11월 11이 12월을 의미한다. 그러므로 1을 증가시켜준다.
 		var mm = mydate.getMonth() + 1;
 		var dd = mydate.getDate();
-
 		var hh = mydate.getHours();
 		var mi = mydate.getMinutes();
 		var ss = mydate.getSeconds();

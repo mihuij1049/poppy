@@ -12,8 +12,6 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>Poppy-Poppy</title>
-<style type="text/css">
-</style>
 </head>
 
 <body>
@@ -214,6 +212,8 @@
 
 	<!-- Javascript -->
 	<%@ include file="/share/bottom_tp.jsp"%>
+	<!-- 사용자 정의 스크립트 -->
+	<script type="text/javascript">
 		$(function() {
 			$("#all-check").click(function() {
 				var choice = $(".cart").prop("checked");
