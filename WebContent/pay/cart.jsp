@@ -73,6 +73,41 @@
 									onclick="location.href='orderform.jsp'">주문하기</button>
 							</div>
 						</div>
+						<div class="mycart remove">
+							<div class="mygoods clearfix">
+								<span class="chkbox"><input type="checkbox"
+									class="cart cart-size"></span> <a href=" ../gallery/goods.jsp">
+									<img src="../share/img/4_M.jpg" class="cart-img">
+								</a>
+								<div class="word">
+									<b><a href="../gallery/goods.jsp">펫클럽 데이스포 케어츄르
+											15kg*4개입/츄르간식</a></b><br> <small>배송:2500원[조건]/기본배송</small><br>
+									<small><span>적</span>40원</small><br> <b>3,500원</b> <br>
+									<br>
+									<div class="word-btn">
+										<button class="count" id="minus">
+											<img src="../share/img/마이너스.png">
+										</button>
+										<input type="number" class="count-label" value="1"
+											id="count-label">
+										<button class="count" id="plus">
+											<img src="../share/img/플러스.png">
+										</button>
+										<button type="button" id="change">변경</button>
+									</div>
+								</div>
+							</div>
+							<div class="selectbtn">
+								<div class=summ>
+									<b class="summ">합계:</b> <b class="summ" id="price"></b> <b
+										class="summ">원</b>
+								</div>
+								<button type="button" id="delete">삭제</button>
+								<button type="button" id="like">관심상품</button>
+								<button type="button" class="btn btn2 right-btn"
+									onclick="location.href='orderform.jsp'">주문하기</button>
+							</div>
+						</div>
 						<div class="panel-header2 clearfix">[기본배송]</div>
 						<div class="selectbtn">
 							<button type="button" id="all-check">전체선택</button>
@@ -147,6 +182,41 @@
 									onclick="location.href='orderform.jsp'">주문하기</button>
 							</div>
 						</div>
+						<div class="mycart remove">
+							<div class="mygoods clearfix">
+								<span class="chkbox"><input type="checkbox"
+									class="cart cart-size"></span> <a href=" ../gallery/goods.jsp">
+									<img src="../share/img/4_M.jpg" class="cart-img">
+								</a>
+								<div class="word">
+									<b><a href="../gallery/goods.jsp">펫클럽 데이스포 케어츄르
+											15kg*4개입/츄르간식</a></b><br> <small>배송:2500원[조건]/기본배송</small><br>
+									<small><span>적</span>40원</small><br> <b>3,500원</b> <br>
+									<br>
+									<div class="word-btn">
+										<button class="count" id="minus">
+											<img src="../share/img/마이너스.png">
+										</button>
+										<input type="number" class="count-label" value="1"
+											id="count-label">
+										<button class="count" id="plus">
+											<img src="../share/img/플러스.png">
+										</button>
+										<button type="button" id="change">변경</button>
+									</div>
+								</div>
+							</div>
+							<div class="selectbtn">
+								<div class=summ>
+									<b class="summ">합계:</b> <b class="summ" id="price"></b> <b
+										class="summ">원</b>
+								</div>
+								<button type="button" id="delete">삭제</button>
+								<button type="button" id="like">관심상품</button>
+								<button type="button" class="btn btn2 right-btn"
+									onclick="location.href='orderform.jsp'">주문하기</button>
+							</div>
+						</div>
 						<div class="panel-header2 clearfix">[기본배송]</div>
 						<div class="selectbtn">
 							<button type="button" id="all-check2">전체선택</button>
@@ -203,7 +273,7 @@
 					</div>
 					<div class="modal-footer2">
 						<button type="button" class="btn btn2" data-dismiss="modal">아니오</button>
-						<button type="button" class="btn btn2" data-dismiss="modal">예</button>
+						<button type="button" class="btn btn2 delete_cart" data-dismiss="modal">예</button>
 					</div>
 				</div>
 			</div>
@@ -367,6 +437,11 @@
 			$("#cart-move2").click(function(e) {
 				alert("국내장바구니로 해당 상품이 이동 되었습니다.");
 			});
+
+			$(".delete_cart").click(function(e) {
+				$("div").remove(".remove");
+			});
+
 		});
 	</script>
 </body>
