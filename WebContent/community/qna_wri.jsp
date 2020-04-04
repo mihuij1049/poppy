@@ -230,7 +230,7 @@ a {
 					<ul class="search-list">
 						<li class="search-list-item">
 							<div class="search-item-img">
-								<img src="../share/img/4_M.jpg" />
+								<img src="../share/img/noimage.jpg" />
 							</div>
 							<div class="search-item-content">
 								<p>
