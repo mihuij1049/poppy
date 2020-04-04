@@ -5,12 +5,12 @@
 <html lang="ko">
 
 <head>
-<%@ include file="/share/head_tp.jsp"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>Poppy-Poppy</title>
+<%@ include file="/share/head_tp.jsp" %>
 <!-- 플러그인 CSS 참조 -->
 <link rel="stylesheet"
 	href="../share/plugins/sweetalert/sweetalert2.min.css" />
@@ -18,6 +18,7 @@
 .content .container {
 	margin-top: 20px;
 	width: 96%;
+	/*border: 1px solid #ffc7c1;*/
 }
 
 .content p {
@@ -92,8 +93,8 @@ input {
 }
 
 .text {
-	height: 0;
-	display: hidden;
+	width: 100%;
+	height: 100px;
 }
 
 .UCC {
@@ -143,13 +144,13 @@ input {
 
 .password div {
 	display: inline-block;
-	width: 24%;
+	width: 22%;
 }
 
 .pass {
 	position: relative;
 	bottom: 2px;
-	width: 74%;
+	width: 75%;
 }
 
 .sign {
@@ -158,7 +159,7 @@ input {
 	margin-bottom: 50px;
 }
 
-.btn2 {
+.btn {
 	padding: 10px 15px;
 	width: 49%;
 	margin: auto;
@@ -182,8 +183,7 @@ input {
 </head>
 
 <body>
-	<%@ include file="/share/top_tp.jsp"%>
-	<div class="container">
+<%@ include file="/share/top_tp.jsp" %>
 		<div class="content">
 			<!-- 여기에 작성 -->
 			<div class="page-title clearfix">
@@ -195,10 +195,10 @@ input {
 			</div>
 			<div class="container">
 				<form class="form-horizontal" name="wri_form" id="wri_form"
-					action="photo_rv.jsp">
+					action="photo_rv.html">
 					<div class="select">
-						<img src="../share/img/photo-file.PNG"> <input type="button"
-							class="btn" value="상품정보선택" />
+						<img src="../share/img/image-select.jpg">
+						<button class="btn">상품정보선택</button>
 					</div>
 					<div class="title">
 						<div>
@@ -212,14 +212,15 @@ input {
 						<div>
 							<p>평점</p>
 						</div>
-						<input type="radio" name="star" checked> <label>★★★★★</label>
+						<input type="radio" name="star" checked=""> <label>★★★★★</label>
 						<input type="radio" name="star"> <label>★★★★</label> <input
 							type="radio" name="star"> <label>★★★</label> <input
 							type="radio" name="star"> <label>★★</label> <input
 							type="radio" name="star"> <label>★</label>
 					</div>
 					<div class="write">
-						<textarea name="content" class="ckeditor" id="photo_content"></textarea>
+						<input type="textarea" name="photo_content" class="text"
+							id="photo_content">
 					</div>
 					<div class="UCC">
 						<div>
@@ -269,25 +270,22 @@ input {
 						<input type="password" name="password" class="pass" id="password">
 					</div>
 					<div class="sign">
-						<button type="submit" class="btn btn2">등록</button>
-						<button type="reset" class="btn btn-inverse btn2"
-							onclick="location.href='photo_rv.jsp'">취소</button>
+						<button type="submit" class="btn">등록</button>
+						<button class="btn btn-inverse">취소</button>
 					</div>
 				</form>
 			</div>
 		</div>
-	</div>
-
 	<!-- Javascript -->
+	<%@ include file="/share/bottom_tp.jsp"%>
+	</script>
 	<!-- 플러그인 JS 참조 -->
 	<script src="../share/plugins/validate/jquery.validate.min.js"></script>
 	<script src="../share/plugins/validate/additional-methods.min.js"></script>
 	<script src="../share/plugins/sweetalert/sweetalert2.min.js"></script>
-	<script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
-	<%@ include file="/share/bottom_tp.jsp"%>
+	<!-- Javascript -->
+	<script type="text/javascript">
 		$(function() {
-			$("#content_hide").hide();
-
 			/** 플러그인의 기본 설정 옵션 추가 */
 			jQuery.validator.setDefaults({
 				// 키보드입력시 검사 안함
