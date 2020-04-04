@@ -116,7 +116,8 @@
                 </div>
                 <div id="search-modal">
                             	<div class="search-title clearfix">
-                            		<div class="search-bar pull-left">셀렉트, 검생 인풋 텍스트, 검색버튼</div>
+                            		<div class="search-bar pull-left">
+                            			< 검생 인풋 텍스트, 검색버튼</div>
                             		<div class="search-close pull-right">창 닫기 버튼</div>
                             		<div>검색된 상품 갯수 </div>
                             	</div>
