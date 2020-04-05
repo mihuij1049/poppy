@@ -633,7 +633,8 @@ dl {
 }
 
 .select-prd {
-	display: none; background : #FFF8F4;
+	display: none;
+	background: #FFF8F4;
 	border-bottom: 1px solid #ddd;
 	background: #FFF8F4;
 }
@@ -786,7 +787,7 @@ dl {
 										<div class="title">상품선택</div>
 										<select class="prd-select">
 											<option class="active">- [필수] 상품 선택 -</option>
-											<option >펫클럽 벨버드비쉬케어포덴탈 바르는치약 70g/위생</option>
+											<option>펫클럽 벨버드비쉬케어포덴탈 바르는치약 70g/위생</option>
 										</select>
 									</div>
 								</li>
@@ -813,7 +814,7 @@ dl {
 											</button>
 										</p>
 									</td>
-									<td class="add-price"><span>6000</span> <span>원</span></td>
+									<td class="add-price"><span id=add-price>6000</span> <span>원</span></td>
 									<td class="cencel">
 										<div class="cencel-btn">
 											<button type="button" class="btn" id="prd-del">
@@ -959,7 +960,7 @@ dl {
 							<button type="button" id="review-all"
 								onclick="location.href='../community/photo_rv.jsp'">리뷰
 								전체보기</button>
-						</div>
+						</div>					
 						<div class="prd-review">
 							<ul class="review-list">
 								<li class="list1">
@@ -1093,6 +1094,9 @@ dl {
 	<!-- Javascript -->
 	<script src="../share/assets/js/jquery-3.2.1.min.js"></script>
 	<script src="../share/assets/js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+	<script src="../share/plugins/ajax/ajax_helper.js"></script>
+	<script src="../share/assets/js/regex.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			$('.star span').click(function() {
@@ -1102,47 +1106,62 @@ dl {
 			});
 
 			var counter = 1;
+			var counted = $("#count2").val();
+			var acount = parseInt(counted);
 			var price = $(".price").text();
+			var add_price = $("#add-price").text();
 
 			$("#total-price").html(counter * price);
 
-			$(".btnUp").click(function(e) {
-				counter++;
+			$(".btnUp").click(
+					function(e) {
+						counter++;
 
-				$("#count").val(counter);
-				$("#total-price").html(counter * price);
-				$("#price-count").html(counter);
-			});
-			$(".btnDown").click(function(e) {
-				if (counter < 2) {
-					alert("최소 주문수량은 1개 입니다.");
-					return;
-				}
-				counter--;
+						$("#count").val(counter);
+						$("#price-count").html(counter + acount);
+						$("#total-price").html(
+								(counter * price) + (acount * add_price));
+					});
 
-				$("#count").val(counter);
-				$("#total-price").html(counter * price);
-				$("#price-count").html(counter);
-			});
-			
-			$(".btnUp2").click(function(e) {
-				counter++;
+			$(".btnUp2").click(
+					function(e) {
+						acount++;
 
-				$("#count").val(counter);
-				$("#total-price").html(counter * price);
-				$("#price-count").html(counter);
-			});
-			$(".btnDown2").click(function(e) {
-				if (counter < 2) {
-					alert("최소 주문수량은 1개 입니다.");
-					return;
-				}
-				counter--;
+						$("#count2").val(acount);
+						$("#price-count").html(counter + acount);
+						$("#add-price").html(acount * add_price);
+						$("#total-price").html(
+								(counter * price) + (acount * add_price));
+					});
 
-				$("#count").val(counter);
-				$("#total-price").html(counter * price);
-				$("#price-count").html(counter);
-			});
+			$(".btnDown").click(
+					function(e) {
+						if (counter < 2) {
+							alert("최소 주문수량은 1개 입니다.");
+							return;
+						}
+						counter--;
+
+						$("#count").val(counter);
+						$("#price-count").html(counter + acount);
+						$("#total-price").html(
+								(counter * price) + (acount * add_price));
+					});
+
+			$(".btnDown2").click(
+					function(e) {
+						if (acount < 2) {
+							alert("최소 주문수량은 1개 입니다.");
+							return;
+						}
+						acount--;
+
+						$("#count2").val(acount);
+						$("#add-price").html(acount * add_price);
+						$("#price-count").html(counter + acount);
+						$("#total-price").html(
+								(counter * price) + (acount * add_price));
+					});
 		});
 
 		jQuery(document).ready(function() {
@@ -1156,12 +1175,14 @@ dl {
 		});
 
 		$(function() {
-			$('.like-btn').click(function() {
-				$(this).toggleClass("like-btn change_border");
-				$('.like').toggleClass("glyphicon-heart-empty glyphicon-heart");
-				$('.like-txt').toggleClass("change_color");
-				$('.ct').toggleClass("like-count change_color2");
-			});
+			$('.like-btn').click(
+					function() {
+						$(this).toggleClass("like-btn change_border");
+						$('.like').toggleClass(
+								"glyphicon-heart-empty glyphicon-heart");
+						$('.like-txt').toggleClass("change_color");
+						$('.ct').toggleClass("like-count change_color2");
+					});
 
 			var count = $(".change_color2").text();
 			$(".like-btn").click(function(e) {
@@ -1194,29 +1215,11 @@ dl {
 					jQuery('.select-prd').show();
 				}
 			});
-			
+
 			$(document).on("click", "#prd-del", function() {
 				$(this).parents(".select-prd").hide();
 			});
 		});
-
-		function comma(num) {
-			var len, point, str;
-
-			num = num + "";
-			point = num.length % 3;
-			len = num.length;
-
-			str = num.substring(0, point);
-			while (point < len) {
-				if (str != "")
-					str += ",";
-				str += num.substring(point, point + 3);
-				point += 3;
-			}
-
-			return str;
-		}
 	</script>
 </body>
 
