@@ -807,7 +807,7 @@ dl {
 											<button type="button" class="btn btnDown2">
 												<img src="../share/img/마이너스.png">
 											</button>
-											<input type="number" value="1" min="1" max="99" name="count2"
+											<input type="number" value="0" min="1" max="99" name="count2"
 												id="count2" />
 											<button type="button" class="btn btnUp2">
 												<img src="../share/img/플러스.png">

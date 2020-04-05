@@ -134,14 +134,17 @@
      padding: 20px 15px;
      font-size: 18px;
  }
+ 
+ .recents {
+     height: 80%;
+     padding: 15px 15px;
+ }
 
  .recent .address {
-     padding: 0 15px;
      font-size: 16px;
  }
 
  .recent .phone {
-     padding: 0 15px;
      font-size: 16px;
      margin-bottom: 20px;
  }
