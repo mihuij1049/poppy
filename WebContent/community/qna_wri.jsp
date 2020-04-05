@@ -307,7 +307,7 @@ a {
 		</div>
 	</div>
 	<%@ include file="/share/bottom_tp.jsp"%>
-	
+	<!-- Handlebars 를 이용한 HTML 템플릿 구성 -->
 	<script id="goods_item_tmpl" type="text/x-handlebars-template">
 		{{#each goods}}
 			<li class="search-list-item">
@@ -348,8 +348,8 @@ a {
 				var html = template(req);
 				// #search_goods_list 에 읽어온 내용을 추가한다.
 				$("#search_goods_list").append(html);
-			});
-		}
+			}); 
+		} // 검색 결과를 템플릿을 이용해서 화면에 나타낼 함수 정의
 		
 		$(function() {
 			$("#search_goods_btn").click(function(e) {
@@ -358,7 +358,7 @@ a {
 				// console.log(length);
 				$(".search-qty").text(length);
 			});
-		});
+		}); // 함수 호출하며 검색 결과 n개 나타내기 
 	</script>
 </body>
 

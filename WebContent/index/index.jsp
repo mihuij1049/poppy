@@ -161,7 +161,7 @@
 			<!-- 스와이퍼 플러그인 갤러리 끝!!! -->
 			<center>
 				<button type="button" class="btn btn-inverse index_btn"
-					onclick="location.href='community/gal_list.jsp'">베스트 상품
+					onclick="location.href='../gallery/gal_list.jsp'">베스트 상품
 					더보기</button>
 			</center>
 			<center>
