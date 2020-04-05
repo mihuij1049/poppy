@@ -25,8 +25,10 @@
 			}
 		}
 	}
-%>	
+%>
 <div class=" footer">
+<div class="topbtn">
+	<div><i class="glyphicon glyphicon-triangle-top"></i></div>
 	<!-- 하단 네비게이션 고정-->
 	<!--- 소개 4인방 링크 -->
 	<hr />
