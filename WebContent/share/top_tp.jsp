@@ -17,28 +17,28 @@
 			<a href="../gallery/gal_list.jsp">
 				<li>BEST</li>
 			</a>
-			<a href="#">
+			<a href="../gallery/gal_list.jsp">
 				<li>NEW</li>
 			</a>
-			<a href="#">
+			<a href="../gallery/gal_list.jsp">
 				<li>푸드</li>
 			</a>
-			<a href="#">
+			<a href="../gallery/gal_list.jsp">
 				<li>의류</li>
 			</a>
-			<a href="#">
+			<a href="../gallery/gal_list.jsp">
 				<li>외출용품</li>
 			</a>
-			<a href="#">
+			<a href="../gallery/gal_list.jsp">
 				<li>홈리빙</li>
 			</a>
-			<a href="#">
+			<a href="../gallery/gal_list.jsp">
 				<li>대형견</li>
 			</a>
-			<a href="#">
+			<a href="../gallery/gal_list.jsp">
 				<li>타임세일</li>
 			</a>
-			<a href="#">
+			<a href="../gallery/gal_list.jsp">
 				<li>유통임박</li>
 			</a>
 		</ul>

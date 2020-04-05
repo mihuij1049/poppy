@@ -40,7 +40,6 @@
 	padding-right: 35px;
 }
 
-/** 포토리뷰 시작 */
 .pr_box {
 	float: left;
 	width: 50%;
@@ -91,9 +90,21 @@
 	border-color: #FF8F83;
 }
 
+/** 이건 그겁니다. 하트 버튼이요! 누르면 숫자가 올라가는 그거. */
+
 .pr_in_box #pay {
 	display: inline-block;
 	float: right;
+}
+
+.pr_in_box #pay i {
+	margin: 0px 2px 0px 0px;
+}
+
+.pr_in_box #pay p {
+	display: inline-block;
+	float: right;
+	margin: 1px 0px 0px 2px;
 }
 
 .container .glyphicon-heart {
@@ -111,6 +122,8 @@
 	margin-right: 10px;
 }
 
+/** 하트버튼 끝입니다! */
+
 .container a {
 	color: #777;
 	text-decoration: none;
@@ -122,14 +135,13 @@
 	<%@ include file="/share/top_tp.jsp"%>
 	<div class="content">
 		<!-- 여기에 작성 -->
-		<div class="container">
-			<div class="page-title clearfix">
-				<a href="#" onclick="history.back(); return false;"><img
-					src="../share/img/img_back.jpg"></a>
-				<h4>
-					<b>인기상품</b>
-				</h4>
-			</div>
+		<div class="page-title clearfix">
+			<h4>
+				<b> <a href="#" onclick="history.back(); return false;"><i
+						class="glyphicon glyphicon-chevron-left"></i></a>BEST
+				</b>
+			</h4>
+		</div>
 			<div class="container_1">
 				<div>
 					<form>
@@ -152,7 +164,7 @@
 							<div class="pr_in_box">
 								<a href="goods.jsp"> <img alt="사진"
 									src="../share/img/gal_list_img1.jpg" class="img_size">
-									<div>
+									<div >
 										<h5>
 											<b>벨버드 고흡수 30g 오리지날패드 300매 대용량애견패드</b>
 										</h5>
@@ -172,7 +184,7 @@
 						<div class="pr_in_box">
 							<img alt="사진" src="../share/img/gal_list_img2.jpg"
 								class="img_size">
-							<div>
+							<div class="gal_text">
 								<h5>
 									<b>펫클럽 시간순삭노즈워크매트 옐로 원형/애견노즈워크</b>
 								</h5>

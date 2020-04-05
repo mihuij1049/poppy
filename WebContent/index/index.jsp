@@ -9,9 +9,7 @@
 <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 <link rel="stylesheet" type="text/css" href="index.css" />
 <style type="text/css">
-.swiper-pagination {
-    --swiper-theme-color: #ff8f83;
-}
+
 </style>
 </head>
 
@@ -63,95 +61,103 @@
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
 						<div class="gal_sug_main">
+							<a href="../gallery/goods.jsp">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
 									<img src="../share/img/index_gal_img1.jpg" id="img_sug">
 								</div>
-								강아지간식
+								<span class="sal_name">강아지간식</span>
 								<hr />
-								5,400원<i class="glyphicon glyphicon-heart icon_size1"
-									id="glyp_gal"></i>
+								5,400원
 							</div>
+							</a>
+							<a href="../gallery/goods.jsp">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
 									<img src="../share/img/index_gal_img2.jpg" id="img_sug">
 								</div>
-								강아지간식
+								<span class="sal_name">강아지간식</span>
 								<hr />
-								5,400원<i class="glyphicon glyphicon-heart icon_size1"
-									id="glyp_gal"></i>
+								5,400원
 							</div>
+							</a>
+							<a href="../gallery/goods.jsp">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
 									<img src="../share/img/index_gal_img3.jpg" id="img_sug">
 								</div>
-								강아지간식
+								<span class="sal_name">강아지간식</span>
 								<hr />
-								5,400원 <i class="glyphicon glyphicon-heart icon_size1"
-									id="glyp_gal"></i>
+								5,400원
 							</div>
+							</a>
 						</div>
 					</div>
 					<div class="swiper-slide">
 						<div class="gal_sug_main">
+							<a href="../gallery/goods.jsp">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
 									<img src="../share/img/index_gal_img1.jpg" id="img_sug">
 								</div>
-								강아지간식
+								<span class="sal_name">강아지간식</span>
 								<hr />
-								5,400원<i class="glyphicon glyphicon-heart icon_size1"
-									id="glyp_gal"></i>
+								5,400원
 							</div>
+							</a>
+							<a href="../gallery/goods.jsp">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
 									<img src="../share/img/index_gal_img2.jpg" id="img_sug">
 								</div>
-								강아지간식
+								<span class="sal_name">강아지간식</span>
 								<hr />
-								5,400원<i class="glyphicon glyphicon-heart icon_size1"
-									id="glyp_gal"></i>
+								5,400원
 							</div>
+							</a>
+							<a href="../gallery/goods.jsp">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
 									<img src="../share/img/index_gal_img3.jpg" id="img_sug">
 								</div>
-								강아지간식
+								<span class="sal_name">강아지간식</span>
 								<hr />
-								5,400원 <i class="glyphicon glyphicon-heart icon_size1"
-									id="glyp_gal"></i>
+								5,400원
 							</div>
+							</a>
 						</div>
 					</div>
 					<div class="swiper-slide">
 						<div class="gal_sug_main">
+							<a href="../gallery/goods.jsp">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
 									<img src="../share/img/index_gal_img1.jpg" id="img_sug">
 								</div>
-								강아지간식
+								<span class="sal_name">강아지간식</span>
 								<hr />
-								5,400원<i class="glyphicon glyphicon-heart icon_size1"
-									id="glyp_gal"></i>
+								5,400원
 							</div>
+							<a href="../gallery/goods.jsp">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
 									<img src="../share/img/index_gal_img2.jpg" id="img_sug">
 								</div>
-								강아지간식
+								<span class="sal_name">강아지간식</span>
 								<hr />
-								5,400원<i class="glyphicon glyphicon-heart icon_size1"
-									id="glyp_gal"></i>
+								5,400원
 							</div>
+							</a>
+							<a href="../gallery/goods.jsp">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
 									<img src="../share/img/index_gal_img3.jpg" id="img_sug">
 								</div>
-								강아지간식
+								<span class="sal_name">강아지간식</span>
 								<hr />
-								5,400원 <i class="glyphicon glyphicon-heart icon_size1"
-									id="glyp_gal"></i>
+								5,400원
 							</div>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -169,63 +175,69 @@
 					id="glyp_list"></i>
 				<h3 id="sale_h3">TIME SALE</h3>
 			</center>
-			<div class="gal_best_main">
+			<div class="gal_best_main">		
+				<a href="../gallery/goods.jsp">
 				<div class="gal_best">
 					<div class="gal_sug_img">
 						<img src="../share/img/index_gal_img1.jpg" id="img_sug">
 					</div>
-					타임세일
+				</a>
+					<span class="sal_name">강아지간식</span>
 					<hr />
-					5,400원 <a href="#"><i
-						class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
+				<a href="../gallery/goods.jsp">
 				<div class="gal_best">
 					<div class="gal_sug_img">
 						<img src="../share/img/index_gal_img2.jpg" id="img_sug">
 					</div>
-					타임세일
+				</a>
+					<span class="sal_name">강아지간식</span>
 					<hr />
-					5,400원 <a href="#"><i
-						class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
+				<a href="../gallery/goods.jsp">
 				<div class="gal_best">
 					<div class="gal_sug_img">
 						<img src="../share/img/index_gal_img3.jpg" id="img_sug">
 					</div>
-					타임세일
+				</a>
+					<span class="sal_name">강아지간식</span>
 					<hr />
-					5,400원 <a href="#"><i
-						class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
+				<a href="../gallery/goods.jsp">
 				<div class="gal_best">
 					<div class="gal_sug_img">
 						<img src="../share/img/index_gal_img1.jpg" id="img_sug">
 					</div>
-					타임세일ㅎㅎ
+				</a>
+					<span class="sal_name">강아지간식</span>
 					<hr />
-					5,400원 <a href="#"><i
-						class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
+				<a href="../gallery/goods.jsp">
 				<div class="gal_best">
 					<div class="gal_sug_img">
 						<img src="../share/img/index_gal_img2.jpg" id="img_sug">
 					</div>
-					타임세일
+				</a>
+					<span class="sal_name">강아지간식</span>
 					<hr />
-					5,400원 <a href="#"><i
-						class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
+				<a href="../gallery/goods.jsp">
 				<div class="gal_best">
 					<div class="gal_sug_img">
 						<img src="../share/img/index_gal_img3.jpg" id="img_sug">
 					</div>
-					타임세일
+				</a>
+					<span class="sal_name">강아지간식</span>
 					<hr />
-					5,400원 <a href="#"><i
-						class="glyphicon glyphicon-heart icon_size1" id="glyp_gal"></i></a>
+					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
 				<button type="button" class="btn btn-inverse index_btn"
-					onclick="location.href='../community/gal_list.jsp'">뽀삐뽀삐 단독
+					onclick="location.href='../gallery/gal_list.jsp'">뽀삐뽀삐 단독
 					최저가 보장</button>
 			</div>
 			<div class="img_banner">
@@ -347,7 +359,6 @@
 			<script type="text/javascript">
         var mySwiper = new Swiper('.swiper-container', {
 
-
             // 현재 페이지를 나타내는 점이 생깁니다. 클릭하면 이동합니다.
             pagination: {
                 el: '.swiper-pagination',
@@ -363,6 +374,12 @@
         $(function() {
             $('.pr_box button').click(function() {
                 $(this).toggleClass("btn, btn-inverse");
+            });
+        });
+        
+        $(function() {
+            $('i').click(function() {
+                $(this).toggleClass("glyphicon-heart glyphicon-heart-empty");
             });
         });
         </script>
