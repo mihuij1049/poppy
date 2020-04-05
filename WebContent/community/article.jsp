@@ -59,7 +59,7 @@
 	margin-top: 60px;
 }
 
-.comment-nai {
+.comment_nai {
 	border-bottom: 1px solid #eee;
 }
 
@@ -234,19 +234,21 @@
 			<div class="comment-ana" id="comment-ana">
 				<small>회원에게만 댓글권한이 있습니다.</small>
 			</div>
+			<form id="article-comment" class="article-comment" name="article-comment" method="post" action="../api/a_comment.do">
 			<div class="comment-write">
 				<div class="info-name">
-					<label for="name-write">이름</label> <input type="text"
-						name="name-write" class="information1" id="name-write">
+					<label for="name_write">이름</label> <input type="text"
+						name="name_write" class="information1" id="name_write">
 				</div>
 				<div class=info-pass>
-					<label for="pass-write">비밀번호</label> <input type="text"
-						name="pass-write" class="information2" id="pass-write">
+					<label for="pass_write">비밀번호</label> <input type="password"
+						name="pass_write" class="information2" id="pass_write">
 				</div>
 			</div>
-			<textarea class="comment_area" placeholder="내용을 입력하세요."
+			<textarea class="comment_area" id = "comment_area" placeholder="내용을 입력하세요."
 				maxlength="1800"></textarea>
-			<button type="submit" class="enter btn btn-sm">등록</button>
+			<button type="submit" class="enter btn btn-sm" id="enter">등록</button>
+			</form>
 		</div>
 		<div class="next">
 			<p>
@@ -255,9 +257,40 @@
 			</p>
 			</a>
 		</div>
-		<div class="solid"></div>
+		<div id="result">
+		
+		</div>
 	</div>
 	<%@ include file="/share/bottom_tp.jsp"%>
+	
+	
+	<script type="text/javascript">
+	 $(function() {
+		$("#enter").click(function(e){
+			e.preventDefault();
+		
+			// 사용자의 입력값을 가져온다.
+			var uname = $("#name_write").val();
+			console.log(uname);
+			var upw = $("#pass_write").val();
+			console.log(upw);
+			var comment = $("#comment_area").val();
+			console.log(comment);
+			
+	    	
+	    		$.ajax({
+	    			url : "../api/a_comment.do",
+	                type: "POST",
+	                data: { name_write : uname, pass_write : upw, comment_area : comment },
+					// 읽어올 내용의 형식 (생략할 경우 json)
+					dataType: "html",
+					// 읽어온 내용을 처리하기 위한 함수
+					success: function(req) {
+						$("#result").html(req);
+					}
+				}); 
+			}); 
+		});
 	</script>
 </body>
 

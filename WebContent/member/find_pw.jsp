@@ -34,7 +34,7 @@
 	margin-left: 30px;
 }
 
-.user-id {
+.user_id {
 	border: 1px solid #ffc7c1;
 	border-bottom: none;
 	width: 96%;
@@ -43,11 +43,11 @@
 	padding-top: 19px;
 }
 
-.user-id input {
+.user_id input {
 	margin-left: 40px;
 }
 
-.user-name {
+.user_name {
 	border: 1px solid #ffc7c1;
 	border-bottom: none;
 	width: 96%;
@@ -56,7 +56,7 @@
 	padding-top: 19px;
 }
 
-.user-email {
+.user_email {
 	border: 1px solid #ffc7c1;
 	height: 60px;
 	width: 96%;
@@ -65,18 +65,18 @@
 }
 
 .find-pw b {
-	padding-left: 50px;
+	padding-left: 40px;
 }
 
 .m_type {
 	margin-left: 30px;
 }
 
-.user-name input {
+.user_name input {
 	margin-left: 55px;
 }
 
-.user-email input {
+.user_email input {
 	margin-left: 40px;
 }
 
@@ -111,7 +111,7 @@
 					</b>
 				</h4>
 			</div>
-			<form id="find-pw" name="find-pw" method="post" action="../api/find_pw.do">
+			<form id="find-pw" class="find-pw" name="find-pw" method="post" action="../api/find_pw.do">
 				<div class="member">
 					<b>회원구분</b> <select name="m_type" class="m_type">
 						<option value="개인회원">개인회원</option>
@@ -123,15 +123,15 @@
 				<div class="auth">
 					<b>인증방법</b> <input type="radio" name="auth" value="email" checked>이메일
 				</div>
-				<div class="user-id">
+				<div class="user_id">
 					<b>아이디</b> <input type="text" name="user_id" id="user_id" maxlength="20"
 						placeholder="아이디를 입력해주세요.">
 				</div>
-				<div class="user-name">
+				<div class="user_name">
 					<b>이름</b> <input type="text" name="user_name" id="user_name"
 						maxlength="20" placeholder="이름을 입력해주세요.">
 				</div>
-				<div class="user-email">
+				<div class="user_email">
 					<b>이메일</b> <input type="email" name="user_email" id="user_email"
 						maxlength="20" placeholder="이메일을 입력해주세요.">
 				</div>

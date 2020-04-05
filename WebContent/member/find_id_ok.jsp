@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+ <%
+  // 파라미터의 문자열 셋을 설정한다. (페이지 상단에서 최초 1회)
+   /**  request.setCharacterEncoding("UTF-8");
+
+    // <input>태그의 name속성값을 사용하여 사용자의 입력값을 받는다.
+    String userName = request.getParameter("user_name");
+    String userEmail = request.getParameter("user_email"); */
+ %> 
 <!doctype html>
 <html>
 
@@ -102,8 +110,8 @@
 				<b>아이디 찾기가 완료되었습니다.</b>
 			</div>
 			<div class="info">
-				<b>이 &nbsp;름</b><span class="info-name">김뽀삐</span><br> <b>이메일</b><span
-					class="info-email">abc123@naver.com</span>
+				<b>이 &nbsp;름</b><span class="info-name"></span><br> <b>이메일</b><span
+					class="info-email"></span>
 			</div>
 			<div class=id>
 				<input type="radio" value="id"><span class="id-info">abc123&nbsp;(개인회원,
@@ -111,15 +119,24 @@
 			</div>
 		</div>
 		<div class="btns">
-			
-				<button type="button" class="btn btn1" onclick="location.href='login.jsp'">로그인</button>
-		
-				<button type="button" class="btn btn-inverse btn2" onclick="location.href='find_pw.jsp'">비밀번호 찾기</button>
-			</a>
+
+			<button type="button" class="btn btn1"
+				onclick="location.href='login.jsp'">로그인</button>
+
+			<button type="button" class="btn btn-inverse btn2"
+				onclick="location.href='find_pw.jsp'">비밀번호 찾기</button>
+
 		</div>
 	</div>
 	<%@ include file="/share/bottom_tp.jsp"%>
-	</script>
+
+	<script type="text/javascript">
+	$(function() {
+		$(document).on(function() {
+			$(".info-name").text(uname);
+		});
+	});
+	</script> 
 
 </body>
 
