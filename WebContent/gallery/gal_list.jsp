@@ -122,14 +122,13 @@
 	<%@ include file="/share/top_tp.jsp"%>
 	<div class="content">
 		<!-- 여기에 작성 -->
-		<div class="container">
-			<div class="page-title clearfix">
-				<a href="#" onclick="history.back(); return false;"><img
-					src="../share/img/img_back.jpg"></a>
-				<h4>
-					<b>인기상품</b>
-				</h4>
-			</div>
+		<div class="page-title clearfix">
+			<h4>
+				<b> <a href="#" onclick="history.back(); return false;"><i
+						class="glyphicon glyphicon-chevron-left"></i></a>BEST
+				</b>
+			</h4>
+		</div>
 			<div class="container_1">
 				<div>
 					<form>

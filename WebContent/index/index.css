@@ -32,6 +32,7 @@
 .swiper-pagination {
     padding-top: 30px;
     /** 아래 점 컬러! */
+    --swiper-theme-color: #ff8f83;
 }
 
 .swiper-pagination:root {
