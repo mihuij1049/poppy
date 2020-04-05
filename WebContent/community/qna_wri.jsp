@@ -194,6 +194,36 @@ a {
 	text-decoration: none;
 }
 /** 모달창 CSS 끝 */
+
+/** 글 등록 확인 모달창 */
+#myModal2 {
+	padding-top: 50%;
+}
+
+.cart-modal {
+	padding: 10px;
+}
+
+.modal-footer2 .btn2 {
+	width: 65px;
+	height: 34px;
+	float: right;
+	margin-left: 5px;
+}
+
+.modal-header2 {
+	height: 50px;
+}
+
+.modal-body2 {
+	padding-left:50px;
+	height: 50px;
+}
+
+.modal-footer2 {
+	height: 40px;
+}
+/** 글등록 확인 모달창 CSS 끝 */
 </style>
 <script src="../share/plugins/handlebars/handlebars-v4.0.5.js"></script>
 </head>
@@ -248,7 +278,7 @@ a {
 				<div class="search-modal-layer"></div>
 			</div>
 			<!-- 모달창 끝 -->
-			<form method="post" action="">
+			<form name="qna_wri" id="qna_wri" method="post" action="../community/qna.jsp">
 				<div class="container">
 					<div class="choice clearfix">
 						<div class="col-xs-4">
@@ -307,9 +337,33 @@ a {
 				</div>
 				<div class="qna_btn">
 					<button type="submit" id="qna_ok" class="btn">등록</button>
-					<button type="reset" id="qna_re" class="btn btn-inverse">취소</button>
+					<button type="button" id="qna_re" class="btn btn-inverse"
+						onclick="history.back(); return false;">취소</button>
 				</div>
 			</form>
+		</div>
+	</div>
+	<div class="modal fade" id="myModal2">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="cart-modal">
+					<div class="modal-header2">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">QnA 게시판 글 등록</h4>
+					</div>
+					<div class="modal-body2">
+						<p>작성하신 글을 등록 하시겠습니까??</p>
+					</div>
+					<div class="modal-footer2">
+						<button type="button" class="btn btn2" data-dismiss="modal">아니오</button>
+						<button type="button" class="btn btn2 qna-submit"
+							data-dismiss="modal">예</button>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<%@ include file="/share/bottom_tp.jsp"%>
@@ -375,20 +429,21 @@ a {
 					'click',
 					'button',
 					function(e) {
-						alert("선택버튼 테스트 중");
+						
 						// 클릭된 상품의 href 속성 가져오기
 						var src = $(event.target).parent().prev().prev()
 								.children().attr('src');
 						// console.log(src);
-						
+
 						// 클릭된 상품의 이름 및 가격 가져오기
-						var name = $(event.target).parent().prev().children().html();
+						var name = $(event.target).parent().prev().children()
+								.html();
 						// console.log(name);
 						// 1) 본문의 '#item_img'를 찾아 상품이미지 설정
 						$("#item_img").attr('src', src);
 						// 2) 제목 및 가격 설정
 						$("#item_name").html(name);
-						
+
 						// 모달창 닫기
 						$("#search-modal").fadeOut();
 						$("li").remove(".search-list-item");
@@ -396,6 +451,16 @@ a {
 
 					});
 		});
+		$("#qna_ok").click(function(e) {
+			e.preventDefault();
+			
+			$("#myModal2").modal("show");
+		});
+		
+		$(".qna-submit").click(function(e) {
+			$("#qna_wri").submit();
+		});
+		
 	</script>
 </body>
 
