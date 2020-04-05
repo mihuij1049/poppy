@@ -138,7 +138,7 @@ input[type=text], input[type=password] {
 }
 
 .search-list-item {
-	list-style:none;
+	list-style: none;
 	width: 100%;
 	height: 80px;
 }
@@ -222,7 +222,8 @@ a {
 						<div class="search-textbar">
 							<input type="text" name="search-goods" placeholder="상품명을 입력하세요." />
 						</div>
-						<button class="btn btn-sm btn-searching" id="search_goods_btn">검 색</button>
+						<button class="btn btn-sm btn-searching" id="search_goods_btn">검
+							색</button>
 					</div>
 
 					<div class="search-result">
@@ -231,7 +232,7 @@ a {
 				</div>
 				<div class="search-body">
 					<ul class="search-list" id="search_goods_list">
-						
+
 					</ul>
 				</div>
 				<div class="search-item-paging">
@@ -252,9 +253,14 @@ a {
 					<div class="choice clearfix">
 						<div class="col-xs-4">
 							<a href="#" class="item-img"><img
-								src="../share/img/noimage.JPG"></a>
+								src="../share/img/noimage.JPG" id="item_img"></a>
 						</div>
 						<div class="col-xs-8">
+							<div class="select-item-content">
+								<p id="item_name">
+									<br /> <b class="select-item-price" id="item_price"></b>
+								</p>
+							</div>
 							<button type="button" class="item-select">상품정보선택</button>
 						</div>
 					</div>
@@ -321,7 +327,7 @@ a {
 					</p>
 				</div>
 				<div class="search-item-btn">
-					<button type="button" class="btn btn-sm search-item-select">선택</button>
+					<button type="button" class="btn btn-sm search-item-select" id="select_btn">선택</button>
 				</div>
 			</li>
 		{{/each}}
@@ -338,27 +344,58 @@ a {
 				$(".search-qty").text("0");
 			});
 		}); // end 모달창 켜고 끄기
-		
+
 		/** 검색 버튼 클릭시 검색 결과 화면에 나타내기 */
 		function get_list() {
-			$.get("../share/plugins/goods_list.json", function(req) {
-				// 미리 준비한 HTML틀을 읽어온다.
-				var template = Handlebars.compile($("#goods_item_tmpl").html());
-				// Ajax 를 통해서 읽어온 JSON 을 템플릿에 병합한다.
-				var html = template(req);
-				// #search_goods_list 에 읽어온 내용을 추가한다.
-				$("#search_goods_list").append(html);
-			}); 
+			$.get("../share/plugins/goods_list.json",
+					function(req) {
+						// 미리 준비한 HTML틀을 읽어온다.
+						var template = Handlebars.compile($("#goods_item_tmpl")
+								.html());
+						// Ajax 를 통해서 읽어온 JSON 을 템플릿에 병합한다.
+						var html = template(req);
+						// #search_goods_list 에 읽어온 내용을 추가한다.
+						$("#search_goods_list").append(html);
+					});
 		} // 검색 결과를 템플릿을 이용해서 화면에 나타낼 함수 정의
-		
+
 		$(function() {
 			$("#search_goods_btn").click(function(e) {
-				get_list(); 	// 버튼이 클릭되면 호출된다.
+				get_list(); // 버튼이 클릭되면 호출된다.
 				var length = $("ul").length;
 				// console.log(length);
 				$(".search-qty").text(length);
 			});
 		}); // 함수 호출하며 검색 결과 n개 나타내기 
+
+		/** 선택 버튼을 누르면 item의 정보를 본문으로 넣기 */
+		$(function() {
+			// 링크가 클릭된 경우
+			$("#search_goods_list").on(
+					'click',
+					'button',
+					function(e) {
+						alert("선택버튼 테스트 중");
+						// 클릭된 상품의 href 속성 가져오기
+						var src = $(event.target).parent().prev().prev()
+								.children().attr('src');
+						// console.log(src);
+						
+						// 클릭된 상품의 이름 및 가격 가져오기
+						var name = $(event.target).parent().prev().children().html();
+						// console.log(name);
+						// 1) 본문의 '#item_img'를 찾아 상품이미지 설정
+						$("#item_img").attr('src', src);
+						// 2) 제목 및 가격 설정
+						$("#item_name").html(name);
+						
+						// 모달창 닫기
+						$("#search-modal").fadeOut();
+						$("li").remove(".search-list-item");
+						$(".search-qty").text("0");
+
+					});
+		});
 	</script>
 </body>
 

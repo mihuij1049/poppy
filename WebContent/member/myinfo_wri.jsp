@@ -164,7 +164,7 @@ button p {
 				<div class="id-box join-form">
 					<label for="user_id"> 아이디<span>＊</span>
 					</label> <input type="text" name="user_id" id="user_id" maxlength="20">
-					<button type="button" class="btn btn2 id-btn">
+					<button type="button" class="btn btn2 id-btn" id="id_check">
 						<p>중복확인</p>
 					</button>
 				</div>
@@ -198,7 +198,7 @@ button p {
 				<div class="join-form">
 					<label for="email"> 이메일<span>*</span>
 					</label> <input type="email" name="email" id="email" maxlength="50">
-					<button type="button" class="btn btn2 id-btn">
+					<button type="button" class="btn btn2 id-btn" id="email_check">
 						<p>중복확인</p>
 					</button>
 				</div>
@@ -327,6 +327,49 @@ button p {
 						required : "이메일을 입력하세요.",
 						email : "이메일 형식이 잘못되었습니다"
 					}
+				}
+			});
+			var id_check = 0;
+			var email_check = 0;
+			$("#id_check").click(function() {
+				var user_id = $("#user_id").val();
+				id_check = 0;
+				if (user_id.length != 0) {
+					if (user_id == "test") {
+						alert("사용 불가능한 아이디 입니다.");
+					} else {
+						alert("사용 가능한 아이디 입니다.");
+						id_check++;
+					}
+				} else {
+					alert("아이디를 입력해주세요.");
+				}
+			});
+			$("#email_check").click(function() {
+				var email = $("#email").val();
+				email_check = 0;
+				if (email.length != 0) {
+					if (email == "test@naver.com") {
+						alert("사용 불가능한 이메일 입니다.");
+					} else {
+						alert("사용 가능한 이메일 입니다.");
+						email_check++;
+					}
+				} else {
+					alert("이메일을 입력해주세요.");
+				}
+			});
+
+			$("#join").click(function() {
+				user_id = $("#user_id").val();
+				if (user_id.length != 0 && id_check == 0) {
+					alert("아이디 중복확인 바랍니다.");
+					return false;
+				}
+				email = $("#email").val();
+				if (email.length != 0 && email_check == 0) {
+					alert("이메일 중복확인 바랍니다.");
+					return false;
 				}
 			});
 		});

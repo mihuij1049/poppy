@@ -261,7 +261,9 @@ input {
 }
 
 .search-list-item {
+	list-style: none;
 	width: 100%;
+	height: 80px;
 }
 
 .search-item-img {
@@ -316,6 +318,7 @@ a {
 }
 /** 모달창 CSS 끝 */
 </style>
+<script src="../share/plugins/handlebars/handlebars-v4.0.5.js"></script>
 </head>
 
 <body>
@@ -463,6 +466,24 @@ a {
 	</div>
 	<!-- Javascript -->
 	<%@ include file="/share/bottom_tp.jsp"%>
+	<script id="goods_item_tmpl" type="text/x-handlebars-template">
+		{{#each goods}}
+			<li class="search-list-item">
+				<div class="search-item-img">
+					<img src="{{url}}" />
+				</div>
+				<div class="search-item-content">
+					<p>
+						{{name}}<br /> 
+						<b class="search-item-price">{{price}}원</b>
+					</p>
+				</div>
+				<div class="search-item-btn">
+					<button type="button" class="btn btn-sm search-item-select">선택</button>
+				</div>
+			</li>
+		{{/each}}
+	</script>
 	<!-- 플러그인 JS 참조 -->
 	<script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 	<script src="../share/plugins/validate/jquery.validate.min.js"></script>
@@ -541,8 +562,32 @@ a {
 				});
 				$(".search-close").click(function(e) {
 					$("#search-modal").fadeOut();
+					$("li").remove(".search-list-item");
+					$(".search-qty").text("0");
 				});
 			}); // end 모달창 켜고 끄기
+
+			/** 검색 버튼 클릭시 검색 결과 화면에 나타내기 */
+			function get_list() {
+				$.get("../share/plugins/goods_list.json", function(req) {
+					// 미리 준비한 HTML틀을 읽어온다.
+					var template = Handlebars.compile($("#goods_item_tmpl")
+							.html());
+					// Ajax 를 통해서 읽어온 JSON 을 템플릿에 병합한다.
+					var html = template(req);
+					// #search_goods_list 에 읽어온 내용을 추가한다.
+					$("#search_goods_list").append(html);
+				});
+			} // 검색 결과를 템플릿을 이용해서 화면에 나타낼 함수 정의
+
+			$(function() {
+				$("#search_goods_btn").click(function(e) {
+					get_list(); // 버튼이 클릭되면 호출된다.
+					var length = $("ul").length;
+					// console.log(length);
+					$(".search-qty").text(length);
+				});
+			}); // 함수 호출하며 검색 결과 n개 나타내기 
 		});
 	</script>
 </body>
