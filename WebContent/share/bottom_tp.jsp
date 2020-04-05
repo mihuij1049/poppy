@@ -1,34 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.net.URLDecoder" %>
+<%@ page import="java.net.URLDecoder"%>
 <%
 	/** 쿠키값 추출!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 	// 쿠키값을 저장할 문자열
-	String myCookie = null;
-
+	// String myCookie = null;
+	/**
 	Cookie[] cookies = request.getCookies();
 	
 	// 목록있으면?
 	if (cookies != null) {
 		// 가져온 배열의 길이만큼 반복
-		for (int i = 0; i<cookies.length; i++) {
+		for (int i = 0; i < cookies.length; i++) {
 			// i번째 쿠키의 이름을 취득한다.
-			String cookieName=cookies[i].getName();
-			
+			String cookieName = cookies[i].getName();
+	
 			if (cookieName.equals("mycookie")) {
 				String value = cookies[i].getValue();
-				
+	
 				// 저장된 값의 문자열 길이가 0보다 크다면?
 				if (value.length() > 0) {
-					myCookie = URLDecoder.decode(value,"UTF-8");
+					myCookie = URLDecoder.decode(value, "UTF-8");
 				}
 			}
 		}
-	}
+	} 
+	*/
 %>
-<div class=" footer">
-<div class="topbtn">
-	<div><i class="glyphicon glyphicon-triangle-top"></i></div>
+<div class="footer">
+	<div class="topbtn">
+		<div id="gotohell">
+		<a style="display:scroll;position:fixed;bottom:100px; right:30px;" href="#">
+			<i class="glyphicon glyphicon-chevron-up"></i></a>
+		</div>
+	</div>
 	<!-- 하단 네비게이션 고정-->
 	<!--- 소개 4인방 링크 -->
 	<hr />
@@ -73,33 +78,34 @@
 			<hr />
 			<a data-toggle="modal" href="#cmuModal"><span
 				class="glyphicon glyphicon-comment">
-				<p>커뮤니티</p>
-			</span>
-			</a>
+					<p>커뮤니티</p>
+			</span> </a>
 			<!-- 커뮤니티탭 영역 시작!-->
-			<div id="cmuModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        			<!-- .modal-dialog -->
-        			<div class="modal-dialog footer-dialog" id="modal-dialog">
-            			<!-- .modal-content -->
-            			<div class="modal-content footer-content clearfix">
-                    			<div class="cmubutton-close">
-                        			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    			</div>
-                			<div class="community_md_content">
-                				<a href="../community/notice.jsp"><div class="cmu_menu">공지사항</div></a>
-                				<hr />
-                				<a href="../community/photo_rv.jsp"><div class="cmu_menu">포토리뷰</div></a>
-                				<hr />
-                				<a href="../community/qna.jsp"><div class="cmu_menu">Q & A</div></a>
-                    		</div>
-                			<div class="community_md_footer">
-                			</div>
-            			</div>
-            			<!-- /.modal-content -->
-        			</div>
-        			<!-- /.modal-dialog -->
-    			</div>
-    			<!-- /.modal -->
+			<div id="cmuModal" class="modal fade" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<!-- .modal-dialog -->
+				<div class="modal-dialog footer-dialog" id="modal-dialog">
+					<!-- .modal-content -->
+					<div class="modal-content footer-content clearfix">
+						<div class="cmubutton-close">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+						</div>
+						<div class="community_md_content">
+							<a href="../community/notice.jsp"><div class="cmu_menu">공지사항</div></a>
+							<hr />
+							<a href="../community/photo_rv.jsp"><div class="cmu_menu">포토리뷰</div></a>
+							<hr />
+							<a href="../community/qna.jsp"><div class="cmu_menu">Q
+									& A</div></a>
+						</div>
+						<div class="community_md_footer"></div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
 			<!-- 커뮤니티탭 영역 끝!-->
 			<a href="../myInfo/order_list.jsp"> <span
 				class="glyphicon glyphicon-list-alt">
@@ -108,43 +114,47 @@
 			</a>
 			<a data-toggle="modal" href="#scModal"><span
 				class="glyphicon glyphicon-search">
-				<p>검색</p>
+					<p>검색</p>
 			</span> </a>
 			<!-- 검색탭 영역 시작!-->
-			<div id="scModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        			<!-- .modal-dialog -->
-        			<div class="modal-dialog footer-dialog" id="modal-dialog">
-            			<!-- .modal-content -->
-            			<div class="modal-content footer-content clearfix">
-                    			<div class="scbutton-close">
-                        			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    			</div>
-                			<div class="search_md_content">
-                			<!-- 쿠키값 출력합니다! -->
-                			<form method="post" action="../share/search_cookie.jsp">
-                    			<label><i class="glyphicon glyphicon-search" id="searchicon"></i></label>
-                    			<input type="text" name="search_input" />
-                    			<button type="submit" class="btn btn">검색</button>
-                    		</form>
-                    		<!-- 쿠키값~! 출력~! 끝~! -->
-                    		</div>
-                			<div class="search_md_footer">
-                			<hr />
-                			<p>최근검색어</p>
-                			<%
-                				if(myCookie == null) {
-                					out.println("최근검색어가 없습니다.");
-                				} else {
-                					out.println(myCookie);
-                				}
-                			%>
-                			</div>
-            			</div>
-            			<!-- /.modal-content -->
-        			</div>
-        			<!-- /.modal-dialog -->
-    			</div>
-    			<!-- /.modal -->
+			<div id="scModal" class="modal fade" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<!-- .modal-dialog -->
+				<div class="modal-dialog footer-dialog" id="modal-dialog">
+					<!-- .modal-content -->
+					<div class="modal-content footer-content clearfix">
+						<div class="scbutton-close">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+						</div>
+						<div class="search_md_content">
+							<!-- 쿠키값 출력합니다! -->
+							<form method="post" action="../share/search_cookie.jsp">
+								<label><i class="glyphicon glyphicon-search"
+									id="searchicon"></i></label> <input type="text" name="search_input" />
+								<button type="submit" class="btn btn">검색</button>
+							</form>
+							<!-- 쿠키값~! 출력~! 끝~! -->
+						</div>
+						<div class="search_md_footer">
+							<hr />
+							<p>최근검색어</p>
+							<%
+								/**
+															if (myCookie == null) {
+																out.println("최근검색어가 없습니다.");
+															} else {
+																out.println(myCookie);
+															}
+														*/
+							%>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
 			<!-- 검색탭 영역 끝!-->
 			<!-- .modal -->
 			<div id="myModal" class="modal fade" tabindex="-1" role="dialog"

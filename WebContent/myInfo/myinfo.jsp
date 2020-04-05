@@ -139,7 +139,7 @@
 				</div>
 				<div id="user" class="myinfo-list-item">
 					<a href="myinfo_edit.jsp"><span
-						class="glyphicon glyphicon-user"></span><br>회원정보</a>
+						class="glyphicon glyphicon-user"></span><br>내정보수정</a>
 				</div>
 				<div id="thumb" class="myinfo-list-item">
 					<a href="like_goods.jsp"><span

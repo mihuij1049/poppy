@@ -151,7 +151,7 @@ html, body {
 .footer {
 	width: auto;
 	padding-top: 10px;
-	margin-bootom:0px;
+	margin-bootom: 0px;
 }
 
 .footer hr {
@@ -197,7 +197,7 @@ address>p {
 	font-size: 10px;
 }
 
-/* �뼱�뱶�젅�뒪 諛뺤뒪 �걹! */
+/** �뼱�뱶�젅�뒪 諛뺤뒪 �걹! */
 
 /** �븯�떒 row�꺆 �떆�옉! */
 .row {
@@ -245,7 +245,7 @@ address>p {
 
 /** �븯�떒 �꽕鍮� 諛� �걹! */
 
-/** 踰꾪듉 湲곕낯 �깋�긽 �쟻�슜 */
+/** 기본 버튼 스타일 (부트스트랩->뽀삐프젝전용버튼) */
 .btn {
 	background-color: #ff8f83;
 	color: #fff;
@@ -267,11 +267,21 @@ address>p {
 	font-weight: bold;
 }
 
+/** 꽤 쓸모있는 탑 바로가기 버튼 */
 .topbtn {
+	position: relative;	
 }
 
+#gotohell {
+	z-index: 10050;
+}
+.topbtn>a {
+	z-index: 10050;
+	width:25px;
+	height:25px;
+}
 .topbtn glyphicon {
-	color: #000;
-	font-size: 20px;
-	font-weight : bold;
+	color: #fff;
+	font-size: 30px;
+	font-weight: bold;
 }
