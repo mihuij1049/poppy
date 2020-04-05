@@ -164,7 +164,7 @@
 					</div>
 				</li>
 				<!-- 물건 2 -->
-				<li class="mycart" id="mycart1">
+				<li class="mycart" id="mycart2">
 					<div class="mygoods clearfix">
 						<span class="chkbox"> <input type="checkbox" class="cart"
 							name="check-select" value="check" id="check-select2"></span> <a
@@ -176,7 +176,7 @@
 					</div>
 					<div class="btns">
 						<button type="button" class="btn btn-inverse delete-one"
-							id="delete-one">삭제</button>
+							id="delete-two">삭제</button>
 						<button type="button" class="btn gocart" id="gotocart">장바구니담기</button>
 					</div>
 				</li>
@@ -195,41 +195,60 @@
 	</div>
 	<%@ include file="/share/bottom_tp.jsp"%>
 	<script type="text/javascript">
-    $(function() {
-        $("#select-all").click(function() {
-            var choice = $(".cart").prop('checked')
-            if (!choice) {
-                $(".cart").prop('checked', true);
-            } else {
-                $(".cart").prop('checked', false);
-            }
-        });
-    });
+		/** 전체선택 */
+		$(function() {
+			$("#select-all").click(function() {
+				var choice = $(".cart").prop('checked')
+				if (!choice) {
+					$(".cart").prop('checked', true);
+				} else {
+					$(".cart").prop('checked', false);
+				}
+			});
+		});
 
-    $("#all-bye").click(function() {
-        var check_list = $(".cart:checked");
-        if (check_list.length == 0) {
-            alert("선택된 항목이 없습니다.");
-            return false;
-        }
-    });
-    
-    /** 장바구니 담기 */
-    $(function() {
-        var count = $("#cart-qty").text();
-        var put_cart = count;
-        $("#cart-qty").text(put_cart);
-        $("#gotocart").click(function(e) {
-            put_cart++;
-            if (put_cart == Number(count) + 1) {
-                $("#cart-qty").text(put_cart);
-                alert("해당 상품을 장바구니에 담았습니다.");
-            } else {
-                alert("이미 해당 상품을 장바구니에 담았습니다.");
-            }
-        });
-    });
-    </script>
+		/** 선택삭제 버튼 */
+		$(function() {
+			$("#select-choice").click(function() {
+				var choice = $(".cart").prop('checked')
+				if(choice) {
+					$("li").remove("#mycart1");
+				} else {
+					return false;
+				}
+			});
+			});
+		
+		/** 전체상품 주문 버튼 예외상황 */
+		$("#all-bye").click(function() {
+			var check_list = $(".cart:checked");
+			if (check_list.length == 0) {
+				alert("선택된 항목이 없습니다.");
+				return false;
+			}
+		});
+
+		/** 장바구니 담기 */
+		$(function() {
+			var count = $("#cart-qty").text();
+			var put_cart = count;
+			$("#cart-qty").text(put_cart);
+			$("#gotocart").click(function(e) {
+				put_cart++;
+				if (put_cart == Number(count) + 1) {
+					$("#cart-qty").text(put_cart);
+					alert("해당 상품을 장바구니에 담았습니다.");
+				} else {
+					alert("이미 해당 상품을 장바구니에 담았습니다.");
+				}
+			});
+		});
+
+		/** 상품삭제 */
+		$("#delete-one").click(function(e) {
+			$("li").remove("#mycart1");
+		});
+	</script>
 
 
 </body>

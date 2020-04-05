@@ -146,37 +146,33 @@
         });
         
 		});
-		
 		$(function() {
-			$("#find-id").submit(function(e) {
-				// <form> 태그가 submit 되어 페이지가 이동되는 것을 방지한다.
-				e.preventDefault();
-				
-				// 사용자의 입력값을 가져온다.
-				var uname = $("#user_name").val();
-				console.log(uname);
-				var umail = $("#user_email").val();
-				console.log(umail);
-				$.ajax( {
-					// 결과를 읽어올 URL --> <form>태그의 action속성
-					url : "../api/find_id.do",
-					// 웹 프로그램에게 데이터를 전송하는 방식 --> <form> 태그의 method 속성
-					method: "post",
-					// 전달할 조건값은 사용자의 입력값을 활용하여 JSON형식으로 구성
-					data: { user_name : uname, user_email : umail },
-					// 읽어올 내용의 형식 (생략할 경우 json)
-					dataType: "html",
-					// 읽어온 내용을 처리하기 위한 함수
-					success: function(req) {
-						$("#result").html(req);
-					}
-				}); 
-			}); 
-		});
-        
-        
+	         $("#find-id").submit(function(e) {
+	            // <form> 태그가 submit 되어 페이지가 이동되는 것을 방지한다.
+	            e.preventDefault();
+	            
+	            // 사용자의 입력값을 가져온다.
+	            var uname = $("#user_name").val();
+	            console.log(uname);
+	            var umail = $("#user_email").val();
+	            console.log(umail);
+	            $.ajax( {
+	               // 결과를 읽어올 URL --> <form>태그의 action속성
+	               url : "../api/find_id.do",
+	               // 웹 프로그램에게 데이터를 전송하는 방식 --> <form> 태그의 method 속성
+	               method: "post",
+	               // 전달할 조건값은 사용자의 입력값을 활용하여 JSON형식으로 구성
+	               data: { user_name : uname, user_email : umail },
+	               // 읽어올 내용의 형식 (생략할 경우 json)
+	               dataType: "html",
+	               // 읽어온 내용을 처리하기 위한 함수
+	               success: function(req) {
+	                  $("#result").html(req);
+	               }
+	            }); 
+	         }); 
+	      });
 
-	
 	</script>
 
 </body>
