@@ -36,6 +36,7 @@
 	text-align: center;
 	width: 120px;
 	margin-left: 10px;
+	float: right;
 }
 
 .btn2:hover {
@@ -316,6 +317,10 @@ a {
 	color: #333;
 	text-decoration: none;
 }
+
+#item_img {
+	width: 75px;
+}
 /** 모달창 CSS 끝 */
 </style>
 <script src="../share/plugins/handlebars/handlebars-v4.0.5.js"></script>
@@ -343,7 +348,8 @@ a {
 					<div class="search-textbar">
 						<input type="text" name="search-goods" placeholder="상품명을 입력하세요." />
 					</div>
-					<button class="btn btn-sm btn-searching">검 색</button>
+					<button class="btn btn-sm btn-searching" id="search_goods_btn">검
+						색</button>
 				</div>
 
 				<div class="search-result">
@@ -351,21 +357,8 @@ a {
 				</div>
 			</div>
 			<div class="search-body">
-				<ul class="search-list">
-					<li class="search-list-item">
-						<div class="search-item-img">
-							<img src="../share/img/4_M.jpg" />
-						</div>
-						<div class="search-item-content">
-							<p>
-								펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식<br /> <b class="search-item-price">2,300원</b>
+				<ul class="search-list" id="search_goods_list">
 
-							</p>
-						</div>
-						<div class="search-item-btn">
-							<button type="button" class="btn btn-sm search-item-select">선택</button>
-						</div>
-					</li>
 				</ul>
 			</div>
 			<div class="search-item-paging">
@@ -385,8 +378,20 @@ a {
 			<form class="form-horizontal" name="wri_form" id="wri_form"
 				action="photo_rv.jsp">
 				<div class="select">
-					<img src="../share/img/photo-file.PNG">
-					<button type="button" class="btn btn2 item-select">상품정보선택</button>
+					<div class="choice clearfix">
+						<div class="col-xs-4">
+							<a href="#" class="item-img"><img
+								src="../share/img/noimage.JPG" id="item_img"></a>
+						</div>
+						<div class="col-xs-8">
+							<div class="select-item-content">
+								<p id="item_name">
+									<br /> <b class="select-item-price" id="item_price"></b>
+								</p>
+							</div>
+							<button type="button" class="btn item-select">상품정보선택</button>
+						</div>
+					</div>
 				</div>
 				<div class="title">
 					<div>
@@ -588,6 +593,35 @@ a {
 					$(".search-qty").text(length);
 				});
 			}); // 함수 호출하며 검색 결과 n개 나타내기 
+			/** 선택 버튼을 누르면 item의 정보를 본문으로 넣기 */
+			$(function() {
+				// 링크가 클릭된 경우
+				$("#search_goods_list").on(
+						'click',
+						'button',
+						function(e) {
+							alert("선택버튼 테스트 중");
+							// 클릭된 상품의 href 속성 가져오기
+							var src = $(event.target).parent().prev().prev()
+									.children().attr('src');
+							// console.log(src);
+
+							// 클릭된 상품의 이름 및 가격 가져오기
+							var name = $(event.target).parent().prev()
+									.children().html();
+							// console.log(name);
+							// 1) 본문의 '#item_img'를 찾아 상품이미지 설정
+							$("#item_img").attr('src', src);
+							// 2) 제목 및 가격 설정
+							$("#item_name").html(name);
+
+							// 모달창 닫기
+							$("#search-modal").fadeOut();
+							$("li").remove(".search-list-item");
+							$(".search-qty").text("0");
+
+						});
+			});
 		});
 	</script>
 </body>
