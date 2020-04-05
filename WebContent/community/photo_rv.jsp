@@ -49,7 +49,7 @@
 
 .pr_search_tab input {
 	height: 23px;
-	width: 40%;
+	width: 33%;
 }
 
 .container .cate_select {
@@ -105,6 +105,22 @@
 	font-color: #fff;
 }
 
+/** 연필 글리피콘 ^^ */
+
+.pencil {
+	display: inline-block;
+	border-radius: 2px;
+	bacground-color: #ff8f83;
+	font-size: 5px;
+}
+.glyphicon-pencil {
+	font-size: 15px;
+	color: #fff;
+	margin: 3px;
+}
+
+/** 끝 */
+
 .pr_box .btn:active {
 	font-color: #fff;
 }
@@ -153,6 +169,7 @@
 .container a {
 	color: #777;
 }
+
 </style>
 </head>
 
@@ -191,6 +208,7 @@
 									</div>
 									<input type="text" name="search" class="h_input">
 									<button class="btn" id="sc_bt">검색</button>
+									<a href="photo_wri.jsp"><div class="pencil"><i class="glyphicon glyphicon-pencil"></i>글쓰기</div></a>
 								</div>
 							</div>
 						</div>
