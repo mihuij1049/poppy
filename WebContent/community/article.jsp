@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+
 <!doctype html>
 <html>
 
@@ -162,12 +163,12 @@
 				</h4>
 			</div>
 			<div class="subject">
-				<b>☆뽀삐뽀삐 사이트 오픈 공지☆</b><br> <small>(주)뽀삐뽀삐 | <span>2020.01.29</span>
-					| 조회<span>215</span></small>
+				<b id="title">☆뽀삐뽀삐 사이트 오픈 공지☆</b><br> <small id="user_name">(주)뽀삐뽀삐 | <span id="wri_date">2020.01.29</span>
+					| 조회<span id="hit">215</span></small>
 			</div>
 			<hr>
 			<div class="nai">
-				<p>
+				<p id="main_text">
 					안녕하세요! 뽀삐뽀삐 입니다:)<br> premium dog food and itet<br> 댕댕이들을
 					위한 쇼핑몰 뽀삐뽀삐<br> 사이트를 오픈하였습니다.<br>
 				</p>

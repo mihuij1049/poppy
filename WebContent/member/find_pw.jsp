@@ -145,31 +145,27 @@
 	</div>
 	<%@ include file="/share/bottom_tp.jsp"%>
 	<script type="text/javascript">
-	
-		 $(function() {
-        $("#find-pw").submit(function(e) {
-        	e.preventDefault();
-            /**아이디 검사 */
-            if (!regex.value('#user_id', '아이디를 입력하세요.')) { return false; }
-            if (!regex.eng_num('#user_id', '아이디는 영어와 숫자 조합만 입력 가능합니다.')) { return false; }
-            if (!regex.min_length('#user_id', 4, '아이디는 최소 4자 이상 입력 가능합니다.')) { return false; }
-            if (!regex.max_length('#user_id', 20, '아이디는 최대 20자 까지만 입력 가능합니다.')) { return false; }
-            /** 이름 검사 */
-            if (!regex.value('#user_name', '이름을 입력하세요.')) { return false; }
-            if (!regex.kor('#user_name', '이름은 한글만 입력 가능합니다.')) { return false; }
-            if (!regex.min_length('#user_name', 2, '이름은 최소 2자 이상 입력 가능합니다.')) { return false; }
-            if (!regex.max_length('#user_name', 20, '이름은 최대 20자 까지만 입력 가능합니다.')) { return false; }
-            /** 이메일 검사 */
-            if (!regex.value('#user_email', '이메일을 입력하세요.')) { return false; }
-            if (!regex.email('#user_email', '이메일 주소가 잘못되었습니다.')) { return false; }
-        });
-    });
-		 
 		 $(function() {
 				$("#find-pw").submit(function(e) {
 					// <form> 태그가 submit 되어 페이지가 이동되는 것을 방지한다.
 					e.preventDefault();
 					
+					
+					/**아이디 검사 */
+		            if (!regex.value('#user_id', '아이디를 입력하세요.')) { return false; }
+		            if (!regex.eng_num('#user_id', '아이디는 영어와 숫자 조합만 입력 가능합니다.')) { return false; }
+		            if (!regex.min_length('#user_id', 4, '아이디는 최소 4자 이상 입력 가능합니다.')) { return false; }
+		            if (!regex.max_length('#user_id', 20, '아이디는 최대 20자 까지만 입력 가능합니다.')) { return false; }
+		            /** 이름 검사 */
+		            if (!regex.value('#user_name', '이름을 입력하세요.')) { return false; }
+		            if (!regex.kor('#user_name', '이름은 한글만 입력 가능합니다.')) { return false; }
+		            if (!regex.min_length('#user_name', 2, '이름은 최소 2자 이상 입력 가능합니다.')) { return false; }
+		            if (!regex.max_length('#user_name', 20, '이름은 최대 20자 까지만 입력 가능합니다.')) { return false; }
+		            /** 이메일 검사 */
+		            if (!regex.value('#user_email', '이메일을 입력하세요.')) { return false; }
+		            if (!regex.email('#user_email', '이메일 주소가 잘못되었습니다.')) { return false; }
+		            
+		            
 					// 사용자의 입력값을 가져온다.
 					var uid = $("#user_id").val();
 					console.log(uid);

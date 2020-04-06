@@ -133,23 +133,18 @@
 	<!-- Javascript -->
 			
 		$(function() {
-        	$("#find-id").submit(function(e) {
-        		e.preventDefault();
-            /** 이름 검사 */
-            if (!regex.value('#user_name', '이름을 입력하세요.')) { return false; }
-            if (!regex.kor('#user_name', '이름은 한글만 입력 가능합니다.')) { return false; }
-            if (!regex.min_length('#user_name', 2, '이름은 최소 2자 이상 입력 가능합니다.')) { return false; }
-            if (!regex.max_length('#user_name', 20, '이름은 최대 20자 까지만 입력 가능합니다.')) { return false; }
-            /** 이메일 검사 */
-            if (!regex.value('#user_email', '이메일을 입력하세요.')) { return false; }
-            if (!regex.email('#user_email', '이메일 주소가 잘못되었습니다.')) { return false; }
-        });
-        
-		});
-		$(function() {
 	         $("#find-id").submit(function(e) {
 	            // <form> 태그가 submit 되어 페이지가 이동되는 것을 방지한다.
 	            e.preventDefault();
+	            
+	            /** 이름 검사 */
+	            if (!regex.value('#user_name', '이름을 입력하세요.')) { return false; }
+	            if (!regex.kor('#user_name', '이름은 한글만 입력 가능합니다.')) { return false; }
+	            if (!regex.min_length('#user_name', 2, '이름은 최소 2자 이상 입력 가능합니다.')) { return false; }
+	            if (!regex.max_length('#user_name', 20, '이름은 최대 20자 까지만 입력 가능합니다.')) { return false; }
+	            /** 이메일 검사 */
+	            if (!regex.value('#user_email', '이메일을 입력하세요.')) { return false; }
+	            if (!regex.email('#user_email', '이메일 주소가 잘못되었습니다.')) { return false; }
 	            
 	            // 사용자의 입력값을 가져온다.
 	            var uname = $("#user_name").val();
