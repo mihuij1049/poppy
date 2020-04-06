@@ -780,14 +780,14 @@ dl {
 										</div>
 										<div calss="con">
 											<p class="name">펫클럽 벨버드비쉬케어포덴탈 바르는치약 70g/위생</p>
-											<p class="price">6,000원</p>
+											<p class="sel-price">6,000원</p>
 										</div>
 									</div>
 									<div class="option">
 										<div class="title">상품선택</div>
 										<select class="prd-select">
 											<option class="active">- [필수] 상품 선택 -</option>
-											<option>펫클럽 벨버드비쉬케어포덴탈 바르는치약 70g/위생</option>
+											<option class="prd-select-1">펫클럽 벨버드비쉬케어포덴탈 바르는치약 70g/위생</option>
 										</select>
 									</div>
 								</li>
@@ -960,7 +960,7 @@ dl {
 							<button type="button" id="review-all"
 								onclick="location.href='../community/photo_rv.jsp'">리뷰
 								전체보기</button>
-						</div>					
+						</div>
 						<div class="prd-review">
 							<ul class="review-list">
 								<li class="list1">
@@ -1111,57 +1111,63 @@ dl {
 			var price = $(".price").text();
 			var add_price = $("#add-price").text();
 
-			$("#total-price").html(counter * price);
+			$(".btnUp").click(function(e) {
+				counter++;
 
-			$(".btnUp").click(
-					function(e) {
-						counter++;
+				$("#count").val(counter);
+				$("#price-count").html(counter + acount);
+				$("#total-price").html((counter * price) + (acount * add_price));
+			});
 
-						$("#count").val(counter);
-						$("#price-count").html(counter + acount);
-						$("#total-price").html(
-								(counter * price) + (acount * add_price));
-					});
-
-			$(".btnUp2").click(
-					function(e) {
+			$(".btnUp2").click(function(e) {
 						acount++;
 
 						$("#count2").val(acount);
 						$("#price-count").html(counter + acount);
 						$("#add-price").html(acount * add_price);
-						$("#total-price").html(
-								(counter * price) + (acount * add_price));
-					});
+						$("#total-price").html((counter * price) + (acount * add_price));
+			});
 
-			$(".btnDown").click(
-					function(e) {
-						if (counter < 2) {
-							alert("최소 주문수량은 1개 입니다.");
-							return;
-						}
-						counter--;
+			$(".btnDown").click(function(e) {
+					if (counter < 2) {
+						alert("최소 주문수량은 1개 입니다.");
+						return;
+					}
+					counter--;
 
-						$("#count").val(counter);
-						$("#price-count").html(counter + acount);
-						$("#total-price").html(
-								(counter * price) + (acount * add_price));
-					});
+					$("#count").val(counter);
+					$("#price-count").html(counter + acount);
+			    	$("#total-price").html((counter * price) + (acount * add_price));
+			});
 
-			$(".btnDown2").click(
-					function(e) {
-						if (acount < 2) {
-							alert("최소 주문수량은 1개 입니다.");
-							return;
-						}
-						acount--;
+			$(".btnDown2").click(function(e) {
+					if (acount < 2) {
+						alert("최소 주문수량은 1개 입니다.");
+						return;
+					}
+					acount--;
 
-						$("#count2").val(acount);
-						$("#add-price").html(acount * add_price);
-						$("#price-count").html(counter + acount);
-						$("#total-price").html(
-								(counter * price) + (acount * add_price));
-					});
+					$("#count2").val(acount);
+					$("#add-price").html(acount * add_price);
+					$("#price-count").html(counter + acount);
+					$("#total-price").html((counter * price) + (acount * add_price));
+			});
+			
+			jQuery('.prd-select').change(function() {
+				var index = $(".prd-select option").index($(".prd-select option:selected"));
+				if (index) {
+					jQuery('.select-prd').show();
+				}
+			});
+			
+			$(document).on("click", "#prd-del", function() {
+				$(this).parents(".select-prd").hide();
+				acount = 0;
+				add_price = 0;
+				
+				$("#count2").val(acount);
+				$("#add-price").html(acount * add_price);
+			});
 		});
 
 		jQuery(document).ready(function() {
@@ -1208,17 +1214,7 @@ dl {
 			$(".collapse-title a").on('click', function() {
 				$(".arrow-down").toggleClass("rotate");
 			});
-
-			jQuery('.prd-select').change(function() {
-				var state = jQuery('.prd-select option:selected').val();
-				if (state) {
-					jQuery('.select-prd').show();
-				}
-			});
-
-			$(document).on("click", "#prd-del", function() {
-				$(this).parents(".select-prd").hide();
-			});
+	
 		});
 	</script>
 </body>
