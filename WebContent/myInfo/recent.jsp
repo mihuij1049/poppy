@@ -111,11 +111,11 @@
 							</div>
 						</div>
 						<div class="btns">
-							<button type="button" class="btn btn-inverse"
+							<button type="button" class="btn btn-inverse btn-delete-item"
 								id="delete-list-item">삭제</button>
 							<button type="button" class="btn btn-inverse in-cart"
 								id="put-cart">장바구니담기</button>
-							<button type="button" class="btn btn1" id="order">주문하기</button>
+							<button type="button" class="btn btn1 btn-order-item" id="order">주문하기</button>
 						</div>
 					</div>
 				</li>
@@ -130,11 +130,11 @@
 							</div>
 						</div>
 						<div class="btns">
-							<button type="button" class="btn btn-inverse"
+							<button type="button" class="btn btn-inverse btn-delete-item"
 								id="delete-list-item">삭제</button>
 							<button type="button" class="btn btn-inverse in-cart"
 								id="put-cart">장바구니담기</button>
-							<button type="button" class="btn btn1" id="order">주문하기</button>
+							<button type="button" class="btn btn1 btn-order-item" id="order">주문하기</button>
 						</div>
 					</div>
 				</li>
@@ -145,18 +145,18 @@
 	<script type="text/javascript">
 		$(function() {
 			/** 주문하기 */
-			$("#order").click(function(e) {
+			$(".btn-order-item").on("click", function(e) {
 				location.href = "../pay/orderform.jsp";
 			});
 			/** 최근 본 상품에서 삭제 */
-			$("#delete-list-item").click(function(e) {
-				$("li").remove("#item-list-1");
+			$(".btn-delete-item").on("click", function(e) {
+				$(this).parent().parent().parent().remove();
 			});
 			/** 장바구니 담기 */
 			var count = $("#cart-qty").text();
 			var put_cart = count;
 			$("#cart-qty").text(put_cart);
-			$("#put-cart").click(function(e) {
+			$("#put-cart").on("click", function(e) {
 				put_cart++;
 				if (put_cart == Number(count) + 1) {
 					$("#cart-qty").text(put_cart);
