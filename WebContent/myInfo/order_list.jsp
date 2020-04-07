@@ -161,6 +161,7 @@
 
 .prd-box .prd-content {
 	margin-left: 10px;
+	width: 100%;
 }
 
 .prd-content .prd-name a {
@@ -176,6 +177,7 @@
 }
 
 .prd-content .option {
+	display: inline;
 	padding: 0;
 }
 
@@ -194,8 +196,10 @@
 	border-bottom: 1px solid #ffc7c1;
 }
 
-hr {
-	margin: 5px 0;
+#cancel {
+	float: right;
+	position: relative;
+	bottom: 10px;
 }
 
 .ready {
@@ -306,9 +310,9 @@ hr {
 							</span></li>
 						</ul>
 						<p class="option">[옵션: 세나개 고부해]</p>
+						<button type="button" class="btn btn2" id="cancel">주문취소</button>
 					</div>
 				</div>
-				<hr>
 				<div class="prd-foot" title="주문처리상태">
 					<div class="ready">상품준비중</div>
 				</div>

@@ -12,6 +12,70 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>Poppy-Poppy</title>
+<style>
+#list {
+	list-style: none;
+	padding: 10px;
+}
+
+#list2 {
+	list-style: none;
+	padding: 10px;
+}
+
+.cart-box {
+	border-bottom: 1px solid #ddd;
+}
+
+.cart-box:last-child {
+	border: none;
+}
+
+.cart-size {
+		float: left;
+}
+
+.cart-img {
+	float: left;
+	display: block;
+	margin: 5px;
+}
+
+.word p {
+	line-height: 30px;
+	height: 90px;
+}
+
+.word-btn {
+	padding-left: 110px;
+}
+
+#count-label {
+	vertical-align: -1px;
+}
+
+.change {
+	height: 29px;
+	vertical-align: -1.5px;
+} 
+
+.clear {
+	display: block;
+	content: '';
+	float: none;
+	clear: both;
+}
+
+.word-botm {
+	padding: 15px;
+}
+
+.word-botm .btn2 {
+	float: right;
+	position: relative;
+	bottom: 10px;
+}
+</style>
 </head>
 
 <body>
@@ -38,76 +102,7 @@
 					<div class="panel-title6">장바구니 상품</div>
 					<div class="panel-header2">일반상품 (n)</div>
 					<div class="panel-body2">
-						<div class="mycart">
-							<div class="mygoods clearfix">
-								<span class="chkbox"><input type="checkbox"
-									class="cart cart-size"></span> <a href=" ../gallery/goods.jsp">
-									<img src="../share/img/4_M.jpg" class="cart-img">
-								</a>
-								<div class="word">
-									<b><a href="../gallery/goods.jsp">펫클럽 데이스포 케어츄르
-											15kg*4개입/츄르간식</a></b><br> <small>배송:2500원[조건]/기본배송</small><br>
-									<small><span>적</span>40원</small><br> <b>3,500원</b> <br>
-									<br>
-									<div class="word-btn">
-										<button class="count" id="minus">
-											<img src="../share/img/마이너스.png">
-										</button>
-										<input type="number" class="count-label" value="1"
-											id="count-label">
-										<button class="count" id="plus">
-											<img src="../share/img/플러스.png">
-										</button>
-										<button type="button" id="change">변경</button>
-									</div>
-								</div>
-							</div>
-							<div class="selectbtn">
-								<div class=summ>
-									<b class="summ">합계:</b> <b class="summ" id="price"></b> <b
-										class="summ">원</b>
-								</div>
-								<button type="button" id="delete">삭제</button>
-								<button type="button" id="like">관심상품</button>
-								<button type="button" class="btn btn2 right-btn"
-									onclick="location.href='orderform.jsp'">주문하기</button>
-							</div>
-						</div>
-						<div class="mycart remove">
-							<div class="mygoods clearfix">
-								<span class="chkbox"><input type="checkbox"
-									class="cart cart-size"></span> <a href=" ../gallery/goods.jsp">
-									<img src="../share/img/4_M.jpg" class="cart-img">
-								</a>
-								<div class="word">
-									<b><a href="../gallery/goods.jsp">펫클럽 데이스포 케어츄르
-											15kg*4개입/츄르간식</a></b><br> <small>배송:2500원[조건]/기본배송</small><br>
-									<small><span>적</span>40원</small><br> <b>3,500원</b> <br>
-									<br>
-									<div class="word-btn">
-										<button class="count" id="minus">
-											<img src="../share/img/마이너스.png">
-										</button>
-										<input type="number" class="count-label" value="1"
-											id="count-label">
-										<button class="count" id="plus">
-											<img src="../share/img/플러스.png">
-										</button>
-										<button type="button" id="change">변경</button>
-									</div>
-								</div>
-							</div>
-							<div class="selectbtn">
-								<div class=summ>
-									<b class="summ">합계:</b> <b class="summ" id="price"></b> <b
-										class="summ">원</b>
-								</div>
-								<button type="button" id="delete">삭제</button>
-								<button type="button" id="like">관심상품</button>
-								<button type="button" class="btn btn2 right-btn"
-									onclick="location.href='orderform.jsp'">주문하기</button>
-							</div>
-						</div>
+						<div class="list-group" id="list"></div>
 						<div class="panel-header2 clearfix">[기본배송]</div>
 						<div class="selectbtn">
 							<button type="button" id="all-check">전체선택</button>
@@ -148,75 +143,7 @@
 					<div class="panel-title6">장바구니 상품</div>
 					<div class="panel-header2">일반상품 (n)</div>
 					<div class="panel-body2">
-						<div class="mycart">
-							<div class="mygoods clearfix">
-								<span class="chkbox"><input type="checkbox"
-									class="cart2 cart-size"></span> <a href="#"><img
-									src="../share/img/4_M.jpg" class="cart-img"></a>
-								<div class="word">
-									<b><a href="../gallery/goods.jsp">펫클럽 데이스포 케어츄르
-											15kg*4개입/츄르간식</a></b><br> <small>배송:2500원[조건]/기본배송</small><br>
-									<small><span>적</span>40원</small><br> <b>3,500원</b> <br>
-									<br>
-									<div class="word-btn">
-										<button class="count" id="minus2">
-											<img src="../share/img/마이너스.png">
-										</button>
-										<input type="number" class="count-label" value="1"
-											id="count-label2">
-										<button class="count" id="plus2">
-											<img src="../share/img/플러스.png">
-										</button>
-										<button type="button" id="change2">변경</button>
-									</div>
-								</div>
-							</div>
-							<div class="selectbtn">
-								<div class=summ>
-									<b class="summ">합계:</b> <b class="summ" id="price2"></b> <b
-										class="summ">원</b>
-								</div>
-								<button type="button" id="delete2">삭제</button>
-								<button type="button" id="like2">관심상품</button>
-								<button type="button" class="btn btn2 right-btn"
-									onclick="location.href='orderform.jsp'">주문하기</button>
-							</div>
-						</div>
-						<div class="mycart remove">
-							<div class="mygoods clearfix">
-								<span class="chkbox"><input type="checkbox"
-									class="cart cart-size"></span> <a href=" ../gallery/goods.jsp">
-									<img src="../share/img/4_M.jpg" class="cart-img">
-								</a>
-								<div class="word">
-									<b><a href="../gallery/goods.jsp">펫클럽 데이스포 케어츄르
-											15kg*4개입/츄르간식</a></b><br> <small>배송:2500원[조건]/기본배송</small><br>
-									<small><span>적</span>40원</small><br> <b>3,500원</b> <br>
-									<br>
-									<div class="word-btn">
-										<button class="count" id="minus">
-											<img src="../share/img/마이너스.png">
-										</button>
-										<input type="number" class="count-label" value="1"
-											id="count-label">
-										<button class="count" id="plus">
-											<img src="../share/img/플러스.png">
-										</button>
-										<button type="button" id="change">변경</button>
-									</div>
-								</div>
-							</div>
-							<div class="selectbtn">
-								<div class=summ>
-									<b class="summ">합계:</b> <b class="summ" id="price"></b> <b
-										class="summ">원</b>
-								</div>
-								<button type="button" id="delete">삭제</button>
-								<button type="button" id="like">관심상품</button>
-								<button type="button" class="btn btn2 right-btn"
-									onclick="location.href='orderform.jsp'">주문하기</button>
-							</div>
-						</div>
+						<div class="list-group" id="list2"></div>
 						<div class="panel-header2 clearfix">[기본배송]</div>
 						<div class="selectbtn">
 							<button type="button" id="all-check2">전체선택</button>
@@ -283,128 +210,115 @@
 
 	<!-- Javascript -->
 	<%@ include file="/share/bottom_tp.jsp"%>
+	<script src="../share/plugins/handlebars/handlebars-v4.0.5.js"></script>
+	<script type="text/x-handlebars-template" id="list-item-tmpl">
+	{{#each goods}}
+	<div class="cart-box clear">
+		<li class="list-item">
+			<div class="word">
+				<input type="checkbox" class="cart cart-size">
+				<img src="{{url}}" class="cart-img" />
+				<p>
+					{{name}}<br />
+					<b class="search-item-price">
+					{{price}}</b><b> 원</b><br><br>
+				</p>
+			</div>
+			<div class="word-btn">
+				<button class="count minus">
+					<img src="../share/img/마이너스.png">
+				</button>
+				<input type="number" class="count-label" value="1" id="count-label">
+				<button class="count plus">
+					<img src="../share/img/플러스.png">
+				</button>
+				<button class="change">변경</button>
+			</div>
+			<div class="word-botm">
+				<p><b>합계: <span class="price">{{price}}</span> 원</b></p>
+				<button type="button">삭제</button>
+				<button type="button">관심상품</button>
+				<button type="button" class="btn btn2">주문하기</button>
+			</div>
+		</li>
+	</div>
+		{{/each}}
+	</script>
 	<!-- 사용자 정의 스크립트 -->
 	<script type="text/javascript">
 		$(function() {
+			$.get("../share/plugins/goods_list.json", function(req) {
+				$(function() {
+					var template = Handlebars.compile($("#list-item-tmpl")
+							.html());
+					var html = template(req);
+					$("#list").append(html);
+				});
+			});
+
+			$.get("../share/plugins/goods_list.json", function(req) {
+				$(function() {
+					var template = Handlebars.compile($("#list-item-tmpl")
+							.html());
+					var html = template(req);
+					$("#list2").append(html);
+				});
+			});
+
 			$("#all-check").click(function() {
-				var choice = $(".cart").prop("checked");
+				var choice = $("#list").prop("checked");
 				if (!choice) {
-					$(".cart").prop("checked", true);
+					$("#list").prop("checked", true);
 				} else {
-					$(".cart").prop("checked", false);
+					$("#list").prop("checked", false);
 				}
 			});
 
-			$("#all-check2").click(function() {
-				var choice2 = $(".cart2").prop("checked");
-				if (!choice2) {
-					$(".cart2").prop("checked", true);
-				} else {
-					$(".cart2").prop("checked", false);
-				}
+			$("#list").on("click", ".plus", function(e) {
+				var result =0;
+				value = $(this).prev().val();
+				value++;
+				$(this).prev().val(value);
+				one_price=$(this).parent().next().children().children().children();
+				price = $(this).parent().prev().children("p").children(".search-item-price").html();
+				result = price * value;
+				$(one_price).text(result);
 			});
 
-			var counter = 1;
-			var counter2 = 1;
-			var price = 3500;
-			var delivery = 2500;
-
-			$("#price").html(counter * price);
-			$("#table-price").html(counter * price);
-			$("#table-sum").html((counter * price) + delivery);
-			$("#table-delivery").html(delivery);
-			$("#price2").html(counter2 * price);
-			$("#table-price2").html(counter2 * price);
-			$("#table-sum2").html((counter2 * price) + delivery);
-			$("#table-delivery2").html(delivery);
-
-			$("#plus").click(function(e) {
-				counter++;
-				if (counter * price >= 30000) {
-					delivery = 0;
-				}
-				$("#count-label").val(counter);
-				$("#price").html(counter * price);
-				$("#table-price").html(counter * price);
-				$("#table-sum").html((counter * price) + delivery);
-				$("#table-delivery").html(delivery);
-			});
-			$("#plus2").click(function(e) {
-				counter2++;
-				if (counter2 * price >= 30000) {
-					delivery = 0;
-				}
-				$("#count-label2").val(counter2);
-				$("#price2").html(counter2 * price);
-				$("#table-price2").html(counter2 * price);
-				$("#table-sum2").html((counter2 * price) + delivery);
-				$("#table-delivery2").html(delivery);
-			});
-
-			$("#minus").click(function(e) {
-				if (counter < 2) {
-					alert("구매수량은 1미만으로 불가합니다.");
+			$("#list").on("click", ".minus", function(e) {
+				value = $(this).next().val();
+				if (value == 1) {
+					alert("구매수량은 1미만으로 불가능합니다.");
 					return;
 				}
-				counter--;
-				if (counter * price >= 30000) {
-					delivery = 0;
-				}
-				if (counter * price < 30000) {
-					delivery = 2500;
-				}
-				$("#count-label").val(counter);
-				$("#price").html(counter * price);
-				$("#table-price").html(counter * price);
-				$("#table-sum").html((counter * price) + delivery);
-				$("#table-delivery").html(delivery);
-			});
-			$("#minus2").click(function(e) {
-				if (counter2 < 2) {
-					alert("구매수량은 1미만으로 불가합니다.");
-					return;
-				}
-				counter2--;
-				if (counter2 * price >= 30000) {
-					delivery = 0;
-				}
-				if (counter2 * price < 30000) {
-					delivery = 2500;
-				}
-				$("#count-label2").val(counter2);
-				$("#price2").html(counter2 * price);
-				$("#table-price2").html(counter2 * price);
-				$("#table-sum2").html((counter2 * price) + delivery);
-				$("#table-delivery2").html(delivery);
+				value--;
+				$(this).next().val(value);
 			});
 
-			$("#change").click(function(e) {
-				counter = $("#count-label").val();
-				$("#count-label").val(counter);
-				if (counter * price >= 30000) {
-					delivery = 0;
-				}
-				if (counter * price < 30000) {
-					delivery = 2500;
-				}
-				$("#price").html(counter * price);
-				$("#table-price").html(counter * price);
-				$("#table-sum").html((counter * price) + delivery);
-				$("#table-delivery").html(delivery);
+			$("#list2").on("click", ".change", function(e) {
+				value = $(this).prev().prev().val();
+				$(this).prev().prev().val(value);
 			});
-			$("#change2").click(function(e) {
-				counter2 = $("#count-label2").val();
-				$("#count-label2").val(counter2);
-				if (counter2 * price >= 30000) {
-					delivery = 0;
+
+			$("#list2").on("click", ".plus", function(e) {
+				value = $(this).prev().val();
+				value++;
+				$(this).prev().val(value);
+			});
+
+			$("#list2").on("click", ".minus", function(e) {
+				value = $(this).next().val();
+				if (value == 1) {
+					alert("구매수량은 1미만으로 불가능합니다.");
+					return;
 				}
-				if (counter2 * price < 30000) {
-					delivery = 2500;
-				}
-				$("#price2").html(counter2 * price);
-				$("#table-price2").html(counter2 * price);
-				$("#table-sum2").html((counter2 * price) + delivery);
-				$("#table-delivery2").html(delivery);
+				value--;
+				$(this).next().val(value);
+			});
+
+			$("#list2").on("click", ".change", function(e) {
+				value = $(this).prev().prev().val();
+				$(this).prev().prev().val(value);
 			});
 
 			$("#delete").click(function(e) {

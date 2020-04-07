@@ -357,9 +357,7 @@ a {
 				</div>
 			</div>
 			<div class="search-body">
-				<ul class="search-list" id="search_goods_list">
-
-				</ul>
+				<ul class="search-list" id="search_goods_list"></ul>
 			</div>
 			<div class="search-item-paging">
 				<ul class="pagination pagination-xs">
