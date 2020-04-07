@@ -15,7 +15,7 @@
 <style>
 #list {
 	list-style: none;
-	padding: 10px;
+	margin-bottom: 0;
 }
 
 #list2 {
@@ -24,6 +24,7 @@
 }
 
 .cart-box {
+	padding: 10px;
 	border-bottom: 1px solid #ddd;
 }
 
@@ -32,13 +33,15 @@
 }
 
 .cart-size {
-		float: left;
+	float: left;
 }
 
 .cart-img {
 	float: left;
 	display: block;
 	margin: 5px;
+	width: 80px;
+	border: 1px solid #ffc7c1;
 }
 
 .word p {
@@ -47,17 +50,23 @@
 }
 
 .word-btn {
-	padding-left: 110px;
+	padding-left: 100px;
 }
 
-#count-label {
+.word-btn .count {
+	padding: 0;
+	border: none;
+}
+
+.count-label {
 	vertical-align: -1px;
+	width: 40px;
 }
 
 .change {
 	height: 29px;
 	vertical-align: -1.5px;
-} 
+}
 
 .clear {
 	display: block;
@@ -219,7 +228,7 @@
 				<input type="checkbox" class="cart cart-size">
 				<img src="{{url}}" class="cart-img" />
 				<p>
-					{{name}}<br />
+					<b>{{name}}<br /></b>
 					<b class="search-item-price">
 					{{price}}</b><b> 원</b><br><br>
 				</p>
@@ -274,31 +283,54 @@
 				}
 			});
 
-			$("#list").on("click", ".plus", function(e) {
-				var result =0;
-				value = $(this).prev().val();
-				value++;
-				$(this).prev().val(value);
-				one_price=$(this).parent().next().children().children().children();
-				price = $(this).parent().prev().children("p").children(".search-item-price").html();
-				result = price * value;
-				$(one_price).text(result);
-			});
+			var result = 0;
+			$("#list").on(
+					"click",
+					".plus",
+					function(e) {
+						var value = $(this).prev().val();
+						value++;
+						$(this).prev().val(value);
+						var one_price = $(this).parent().next().children()
+								.children().children();
+						var price = $(this).parent().prev().children("p")
+								.children(".search-item-price").html();
+						result = price * value;
+						$(one_price).text(result);
+					});
 
-			$("#list").on("click", ".minus", function(e) {
-				value = $(this).next().val();
-				if (value == 1) {
-					alert("구매수량은 1미만으로 불가능합니다.");
-					return;
-				}
-				value--;
-				$(this).next().val(value);
-			});
+			$("#list").on(
+					"click",
+					".minus",
+					function(e) {
+						var value = $(this).next().val();
+						if (value == 1) {
+							alert("구매수량은 1미만으로 불가능합니다.");
+							return;
+						}
+						value--;
+						$(this).next().val(value);
+						var one_price = $(this).parent().next().children()
+								.children().children();
+						var price = $(this).parent().prev().children("p")
+								.children(".search-item-price").html();
+						result = price * value;
+						$(one_price).text(result);
+					});
 
-			$("#list2").on("click", ".change", function(e) {
-				value = $(this).prev().prev().val();
-				$(this).prev().prev().val(value);
-			});
+			$("#list").on(
+					"click",
+					".change",
+					function(e) {
+						value = $(this).prev().prev().val();
+						$(this).prev().prev().val(value);
+						var one_price = $(this).parent().next().children()
+								.children().children();
+						var price = $(this).parent().prev().children("p")
+								.children(".search-item-price").html();
+						result = price * value;
+						$(one_price).text(result);
+					});
 
 			$("#list2").on("click", ".plus", function(e) {
 				value = $(this).prev().val();

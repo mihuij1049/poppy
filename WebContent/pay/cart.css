@@ -35,6 +35,16 @@
 	border: 1px solid #ffc7c1;
 }
 
+.selectbtn {
+	border-bottom: 1px solid #ffc7c1;
+	width: auto;
+	padding: 16px 30px;
+}
+
+.cart-move {
+	padding: 16px 30px;
+}
+
 .table {
 	margin: auto;
 	margin-bottom: 15px;
