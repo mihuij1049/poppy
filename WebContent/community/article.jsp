@@ -59,9 +59,9 @@
 	margin-right: 15px;
 	margin-top: 60px;
 }
-
+/** 하나의 댓글 전체 */
 .comment_nai {
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #red;
 }
 
 .comment-ana {
@@ -70,8 +70,10 @@
 	background: #ffc7c1;
 }
 
+/** 댓글창div 전체 */
 .memory {
 	display: inline-block;
+	width: 68%;
 }
 
 .comment_area {
@@ -147,9 +149,16 @@
 	border: solid 1px #eee;
 	margin-bottom: 50px;
 }
+/** 원래있던 댓글 */
+
+/** 동적 생성된 textaread */
 .comment-edit {
-	width:85%;
-	height:100px;
+	min-width: 210px;
+	min-height: 50px;
+}
+
+.insert {
+	
 }
 </style>
 </head>
@@ -167,8 +176,9 @@
 				</h4>
 			</div>
 			<div class="subject">
-				<b id="title">☆뽀삐뽀삐 사이트 오픈 공지☆</b><br> <small id="user_name">(주)뽀삐뽀삐 | <span id="wri_date">2020.01.29</span>
-					| 조회<span id="hit">215</span></small>
+				<b id="title">☆뽀삐뽀삐 사이트 오픈 공지☆</b><br> <small id="user_name">(주)뽀삐뽀삐
+					| <span id="wri_date">2020.01.29</span> | 조회<span id="hit">215</span>
+				</small>
 			</div>
 			<hr>
 			<div class="nai">
@@ -239,20 +249,21 @@
 			<div class="comment-ana" id="comment-ana">
 				<small>회원에게만 댓글권한이 있습니다.</small>
 			</div>
-			<form id="article-comment" class="article-comment" name="article-comment" method="post" action="../api/a_comment.do">
-			<div class="comment-write">
-				<div class="info-name">
-					<label for="name_write">이름</label> <input type="text"
-						name="name_write" class="information1" id="name_write">
+			<form id="article-comment" class="article-comment"
+				name="article-comment" method="post" action="../api/a_comment.do">
+				<div class="comment-write">
+					<div class="info-name">
+						<label for="name_write">이름</label> <input type="text"
+							name="name_write" class="information1" id="name_write">
+					</div>
+					<div class=info-pass>
+						<label for="pass_write">비밀번호</label> <input type="password"
+							name="pass_write" class="information2" id="pass_write">
+					</div>
 				</div>
-				<div class=info-pass>
-					<label for="pass_write">비밀번호</label> <input type="password"
-						name="pass_write" class="information2" id="pass_write">
-				</div>
-			</div>
-			<textarea class="comment_area" id = "comment_area" placeholder="내용을 입력하세요."
-				maxlength="1800"></textarea>
-			<button type="submit" class="enter btn btn-sm" id="enter">등록</button>
+				<textarea class="comment_area" id="comment_area"
+					placeholder="내용을 입력하세요." maxlength="1800"></textarea>
+				<button type="submit" class="enter btn btn-sm" id="enter">등록</button>
 			</form>
 		</div>
 		<div class="next">
@@ -262,51 +273,75 @@
 			</p>
 			</a>
 		</div>
-		<div id="result">
-		
-		</div>
+		<div id="result"></div>
 	</div>
 	<%@ include file="/share/bottom_tp.jsp"%>
-	
-	
+
+
 	<script type="text/javascript">
-	 $(function() {
-		$(".btn-del").on('click', function(e) {
-			$(this).parent().parent().remove();
-		});
-		$(".btn-edit").on("click", function(e) {
-			var text = $(this).parent().prev().children().eq(2).text();
-			// console.log(text);
-			$(this).parent().prev().children().eq(2).text("");
-			var html = $("<textarea>");
-			html.addClass('comment-edit');
-			html.text(text);
-			$(this).parent().prev().children().eq(2).append(html);
-		});
-		$("#enter").click(function(e){
-			e.preventDefault();
-		
-			// 사용자의 입력값을 가져온다.
-			var uname = $("#name_write").val();
-			console.log(uname);
-			var upw = $("#pass_write").val();
-			console.log(upw);
-			var comment = $("#comment_area").val();
-			console.log(comment);
-			
-	    	
-	    		$.ajax({
-	    			url : "../api/a_comment.do",
-	                type: "POST",
-	                data: { name_write : uname, pass_write : upw, comment_area : comment },
+		$(function() {
+			$(".btn-del").on('click', function(e) {
+				$(this).parent().parent().remove();
+			});
+			$(".btn-edit").on("click", function(e) {
+				// 댓글 내용을 text에 담기
+				var original = $(this).parent().prev().children().eq(2).text();
+				// 댓글 내용을 지워버리기
+				$(this).parent().prev().children().eq(2).text("");
+
+				// 수정-->등록 버튼
+				var insert = $(this).text("등록");
+				insert.addClass('insert');
+
+				// 삭제--> 취소 버튼
+				var cancel = $(this).next().text("취소");
+				cancel.addClass('cancel');
+
+				// 텍스트 태그를 html에 담기
+				var comment_edit = $("<textarea>");
+				// <textarea class="comment-edit"></textarea> --> 아랫줄 실행시 완성된 HTML 태그
+				comment_edit.addClass('comment-edit');
+				// 생성된 태그에 원래의 댓글 내용 original 추가하기
+				comment_edit.text(original);
+				// "" 로 지운 댓글 내용에 textarea 추가하기
+				$(this).parent().prev().children().eq(2).append(comment_edit);
+
+				$('.insert').on('click', function(e) {
+					alert("댓글을 수정하시겠습니까?")
+
+				$('.cancel').on('click', function(e) {
+					alert("댓글 수정을 취소하시겠습니까?")
+					});
+				});
+			});
+
+			$("#enter").click(function(e) {
+				e.preventDefault();
+
+				// 사용자의 입력값을 가져온다.
+				var uname = $("#name_write").val();
+				console.log(uname);
+				var upw = $("#pass_write").val();
+				console.log(upw);
+				var comment = $("#comment_area").val();
+				console.log(comment);
+
+				$.ajax({
+					url : "../api/a_comment.do",
+					type : "POST",
+					data : {
+						name_write : uname,
+						pass_write : upw,
+						comment_area : comment
+					},
 					// 읽어올 내용의 형식 (생략할 경우 json)
-					dataType: "html",
+					dataType : "html",
 					// 읽어온 내용을 처리하기 위한 함수
-					success: function(req) {
+					success : function(req) {
 						$("#result").html(req);
 					}
-				}); 
-			}); 
+				});
+			});
 		});
 	</script>
 </body>
