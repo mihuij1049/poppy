@@ -147,6 +147,10 @@
 	border: solid 1px #eee;
 	margin-bottom: 50px;
 }
+.comment-edit {
+	width:85%;
+	height:100px;
+}
 </style>
 </head>
 
@@ -188,7 +192,7 @@
 					</div>
 					<div class="button2">
 						<button type="submit" class="btn btn-sm btn-edit">수정</button>
-						<button type="submit" class="btn btn-inverse btn-sm">삭제</button>
+						<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
 					</div>
 				</div>
 				<div class="comment-nai">
@@ -198,7 +202,7 @@
 					</div>
 					<div class="button2">
 						<button type="submit" class="btn btn-sm btn-edit">수정</button>
-						<button type="submit" class="btn btn-inverse btn-sm">삭제</button>
+						<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
 					</div>
 				</div>
 				<div class="comment-nai">
@@ -208,7 +212,7 @@
 					</div>
 					<div class="button2">
 						<button type="submit" class="btn btn-sm btn-edit">수정</button>
-						<button type="submit" class="btn btn-inverse btn-sm">삭제</button>
+						<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
 					</div>
 				</div>
 				<div class="comment-nai">
@@ -218,7 +222,7 @@
 					</div>
 					<div class="button2">
 						<button type="submit" class="btn btn-sm btn-edit">수정</button>
-						<button type="submit" class="btn btn-inverse btn-sm">삭제</button>
+						<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
 					</div>
 				</div>
 				<div class="comment-nai">
@@ -228,7 +232,7 @@
 					</div>
 					<div class="button2">
 						<button type="submit" class="btn btn-sm btn-edit">수정</button>
-						<button type="submit" class="btn btn-inverse btn-sm">삭제</button>
+						<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
 					</div>
 				</div>
 			</div>
@@ -267,6 +271,18 @@
 	
 	<script type="text/javascript">
 	 $(function() {
+		$(".btn-del").on('click', function(e) {
+			$(this).parent().parent().remove();
+		});
+		$(".btn-edit").on("click", function(e) {
+			var text = $(this).parent().prev().children().eq(2).text();
+			// console.log(text);
+			$(this).parent().prev().children().eq(2).text("");
+			var html = $("<textarea>");
+			html.addClass('comment-edit');
+			html.text(text);
+			$(this).parent().prev().children().eq(2).append(html);
+		});
 		$("#enter").click(function(e){
 			e.preventDefault();
 		
