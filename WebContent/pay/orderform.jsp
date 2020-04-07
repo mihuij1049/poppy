@@ -87,7 +87,7 @@
 												목록</button>
 										</span>
 									</div>
-									<div class="recent-address" style="display: none;">
+									<div class="recent-addr" style="display: none;">
 										<h4 class="heading">배송지를 선택해주세요.</h4>
 										<ul class="recent-address">
 											<li delivery-list><strong class="name"> <span
@@ -104,7 +104,7 @@
 													<dl class="tel">
 														<dt>휴대전화</dt>
 														<dd>010-8222-9650</dd>
-														<dd>일반전화</dd>
+														<dt>일반전화</dt>
 													</dl>
 												</div> <span class="button">
 													<button type="button" id="choice-modify">수정</button>
@@ -600,6 +600,13 @@
 				$(this).parents(".prd-info").remove();
 
 				window.history.back();
+			});
+		});
+		
+		$(function() {
+			$("#recent-address-list").click(function() {
+				$(".recents").hide();
+				$(".recent-addr").show();
 			});
 		});
 	</script>
