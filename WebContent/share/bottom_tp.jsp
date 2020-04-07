@@ -1,32 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.net.URLDecoder"%>
-<%
-	/** 쿠키값 추출!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
-	// 쿠키값을 저장할 문자열
-	// String myCookie = null;
-	/**
-	Cookie[] cookies = request.getCookies();
-	
-	// 목록있으면?
-	if (cookies != null) {
-		// 가져온 배열의 길이만큼 반복
-		for (int i = 0; i < cookies.length; i++) {
-			// i번째 쿠키의 이름을 취득한다.
-			String cookieName = cookies[i].getName();
-	
-			if (cookieName.equals("mycookie")) {
-				String value = cookies[i].getValue();
-	
-				// 저장된 값의 문자열 길이가 0보다 크다면?
-				if (value.length() > 0) {
-					myCookie = URLDecoder.decode(value, "UTF-8");
-				}
-			}
-		}
-	} 
-	*/
-%>
 <div class="footer">
 	<div class="topbtn">
 		<div id="gotohell">
@@ -139,15 +113,6 @@
 						<div class="search_md_footer">
 							<hr />
 							<p>최근검색어</p>
-							<%
-								/**
-															if (myCookie == null) {
-																out.println("최근검색어가 없습니다.");
-															} else {
-																out.println(myCookie);
-															}
-														*/
-							%>
 						</div>
 					</div>
 					<!-- /.modal-content -->
