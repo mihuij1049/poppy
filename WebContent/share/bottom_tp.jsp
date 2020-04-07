@@ -197,16 +197,16 @@
 										<a href="#" class="accordion-toggle fm-toggle clearfix"
 											id="new-good" data-toggle="collapse"
 											data-parent="#accordion-tab">
-											<h4 class="panel-title-new">신상품</h4>
+											<h4 class="panel-title-new box1">신상품</h4>
 										</a>
 									</div>
 								</div>
 								<!-- 항목(2) -->
 								<div class="panel panel-default fm-default">
 									<div class="panel-heading fm-heading">
-										<a href="#" class="accordion-toggle fm-toggle" id="best-good"
+										<a onclick="location.href='../gallery/gal_list.jsp;'" class="accordion-toggle fm-toggle" id="best-good"
 											data-toggle="collapse" data-parent="#accordion-tab">
-											<h4 class="panel-title-best">인기상품</h4>
+											<h4 class="panel-title-best box1">인기상품</h4>
 										</a>
 									</div>
 								</div>
