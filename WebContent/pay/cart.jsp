@@ -40,17 +40,38 @@
 	float: left;
 	display: block;
 	margin: 5px;
-	width: 80px;
+	width: 100px;
 	border: 1px solid #ffc7c1;
 }
 
+.word {
+	height: 110px;
+}
+
 .word p {
-	line-height: 30px;
-	height: 90px;
+	font-size: 13px;
+}
+
+.word span {
+	font-size: 12px;
+}
+
+.point-icon {
+	font-size: 11px;
+	color: #fff;
+	width: 17px;
+	text-align: center;
+	display: inline-block;
+	margin-bottom: 10px;
+	background: #b88cc5;
+	display: inline-block;
+	border-radius: 2px;
+	display: inline-block;
 }
 
 .word-btn {
-	padding-left: 100px;
+	margin-top: 10px;
+	padding-left: 120px;
 }
 
 .word-btn .count {
@@ -227,11 +248,12 @@
 			<div class="word">
 				<input type="checkbox" class="cart cart-size">
 				<img src="{{url}}" class="cart-img" />
-				<p>
-					<b>{{name}}<br /></b>
+				
+					<p><b class="name">{{name}}</b></p>
+					<span>배송:2500원[조건]/기본배송</span><br>
+					<small><span class="point-icon">적</span>&nbsp;<span class="point">{{point}}</span>원</small>
 					<b class="search-item-price">
-					{{price}}</b><b> 원</b><br><br>
-				</p>
+					<p>{{price}}</b><b> 원</b></p></br>
 			</div>
 			<div class="word-btn">
 				<button class="count minus">
@@ -297,6 +319,10 @@
 								.children(".search-item-price").html();
 						result = price * value;
 						$(one_price).text(result);
+
+						var point = $(this).parent().prev().children("small")
+								.children().next();
+						$(point).text(result / 100);
 					});
 
 			$("#list").on(
@@ -316,6 +342,10 @@
 								.children(".search-item-price").html();
 						result = price * value;
 						$(one_price).text(result);
+
+						var point = $(this).parent().prev().children("small")
+								.children().next();
+						$(point).text(result / 100);
 					});
 
 			$("#list").on(
@@ -330,28 +360,71 @@
 								.children(".search-item-price").html();
 						result = price * value;
 						$(one_price).text(result);
+
+						var point = $(this).parent().prev().children("small")
+								.children().next();
+						$(point).text(result / 100);
 					});
 
-			$("#list2").on("click", ".plus", function(e) {
-				value = $(this).prev().val();
-				value++;
-				$(this).prev().val(value);
-			});
+			$("#list2").on(
+					"click",
+					".plus",
+					function(e) {
+						var value = $(this).prev().val();
+						value++;
+						$(this).prev().val(value);
+						var one_price = $(this).parent().next().children()
+								.children().children();
+						var price = $(this).parent().prev().children("p")
+								.children(".search-item-price").html();
+						result = price * value;
+						$(one_price).text(result);
 
-			$("#list2").on("click", ".minus", function(e) {
-				value = $(this).next().val();
-				if (value == 1) {
-					alert("구매수량은 1미만으로 불가능합니다.");
-					return;
-				}
-				value--;
-				$(this).next().val(value);
-			});
+						var point = $(this).parent().prev().children("small")
+								.children().next();
+						$(point).text(result / 100);
+					});
 
-			$("#list2").on("click", ".change", function(e) {
-				value = $(this).prev().prev().val();
-				$(this).prev().prev().val(value);
-			});
+			$("#list2").on(
+					"click",
+					".minus",
+					function(e) {
+						var value = $(this).next().val();
+						if (value == 1) {
+							alert("구매수량은 1미만으로 불가능합니다.");
+							return;
+						}
+						value--;
+						$(this).next().val(value);
+						var one_price = $(this).parent().next().children()
+								.children().children();
+						var price = $(this).parent().prev().children("p")
+								.children(".search-item-price").html();
+						result = price * value;
+						$(one_price).text(result);
+
+						var point = $(this).parent().prev().children("small")
+								.children().next();
+						$(point).text(result / 100);
+					});
+
+			$("#list2").on(
+					"click",
+					".change",
+					function(e) {
+						value = $(this).prev().prev().val();
+						$(this).prev().prev().val(value);
+						var one_price = $(this).parent().next().children()
+								.children().children();
+						var price = $(this).parent().prev().children("p")
+								.children(".search-item-price").html();
+						result = price * value;
+						$(one_price).text(result);
+
+						var point = $(this).parent().prev().children("small")
+								.children().next();
+						$(point).text(result / 100);
+					});
 
 			$("#delete").click(function(e) {
 				$("#myModal2").modal("show");
