@@ -2,12 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.net.URLDecoder"%>
 <div class="footer">
-	<div class="topbtn">
-		<div id="gotohell">
+		<div id="topbt">
 		<a style="display:scroll;position:fixed;bottom:100px; right:30px;" href="#">
-			<i class="glyphicon glyphicon-chevron-up"></i></a>
+			<img src="../share/img/arrow-down.png">
 		</div>
-	</div>
 	<!-- 하단 네비게이션 고정-->
 	<!--- 소개 4인방 링크 -->
 	<hr />
