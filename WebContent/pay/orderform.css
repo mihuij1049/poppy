@@ -11,6 +11,7 @@
  }
 
  hr {
+     margin-top: 0;
      width: 100%;
  }
 
@@ -79,6 +80,11 @@
      color: #eee;
  }
 
+ button {
+     border: 0;
+     outline: 0;
+ }
+
  #title h4 {
      margin: 0 0;
      padding-top: 17px;
@@ -131,32 +137,43 @@
 
  .name #delivery-info-name {
      display: block;
-     padding: 20px 15px;
+     padding: 15px 10px;
+     padding-bottom: 20px;
      font-size: 18px;
  }
- 
+
  .recents {
-     height: 90%;
+     height: 180px;
      padding: 15px 15px;
+     position: relative;
+ }
+
+ .recent {
+     height: 180px;
+     display: inline;
  }
 
  .recent .address {
      font-size: 16px;
+     margin-bottom: 20px;
+     padding: 0 10px;
  }
 
  .recent .phone {
      font-size: 16px;
      margin-bottom: 20px;
+     padding: 0 10px;
+ }
+
+ .side-right {
+     position: absolute;
+     right: 20px;
+     top: 20px;
  }
 
  .side-right #recent-address-list {
-     display: inline;
      width: 90px;
      height: 36px;
-     float: right;
-     position: relative;
-     bottom: 124px;
-     right: 15px;
      color: #FF8F83;
      background-color: #ffffff;
      border: 1px solid #FF8F83;
@@ -165,6 +182,85 @@
  .side-right #recent-address-list:hover {
      color: #fff;
      background-color: #ff6261;
+ }
+
+ .tab-content .recent-addr {
+     position: relative;
+     height: 210px;
+     padding: 15px;
+ }
+
+ .recent-addr .heading {
+     color: #999999;
+     height: 30px;
+     font-size: 17px;
+     font-weight: 250;
+     padding-top: 7px;
+     padding-left: 15px;
+ }
+
+ .recent-addr .addr-content {
+     padding: 0;
+     padding-top: 15px;
+     border-top: 1px solid #ddd;
+ }
+
+ .recent-addr li {
+     width: 100%;
+ }
+
+ .recent-addr .name {
+     display: block;
+     font-size: 18px;
+     margin-bottom: 10px;
+     padding: 0 10px;
+ }
+
+ .recent-addr .description {
+     padding: 0 10px;
+ }
+ 
+ .recent-addr .description .addr2 {
+     margin-top: 5px;
+     display: block;
+ }
+
+ .recent-addr #choice-modify {
+     border: 0px;
+     color: #ff8f83;
+     background: #fff;
+     font-weight: bold;
+     position: absolute;
+     right: 20px;
+     top: 80px;
+ }
+
+ .recent-addr #choice-modify:hover {
+     font-size: 15px;
+     color: #ff6261;
+ }
+
+ .recent-addr #choice-select {
+     width: 30px;
+     height: 30px;
+     position: absolute;
+     bottom: 50px;
+     right: 20px;
+ }
+
+ .recent-addr .sideRight {
+     position: absolute;
+     right: 20px;
+     top: 20px;
+ }
+
+ .recent-addr .sideRight button {
+     width: 54px;
+     height: 32px;
+     color: #ff8f83;
+     background: #fff;
+     font-weight: bold;
+     border: 1px solid #ff8f83;
  }
 
  .form-group {
@@ -234,6 +330,7 @@
      padding-left: 15px;
      padding-right: 15px;
      margin-top: 15px;
+     margin-bottom: 20px;
  }
 
  .na-name .receiver {

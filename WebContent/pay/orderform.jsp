@@ -89,7 +89,7 @@
 									</div>
 									<div class="recent-addr" style="display: none;">
 										<h4 class="heading">배송지를 선택해주세요.</h4>
-										<ul class="recent-address">
+										<ul class="addr-content" style="list-style: none">
 											<li delivery-list><strong class="name"> <span
 													id="name">조대철</span>
 											</strong>
@@ -102,9 +102,9 @@
 															강동구</span> <br> <span class="addr2">1단지아파트</span>
 													</p>
 													<dl class="tel">
-														<dt>휴대전화</dt>
+														<dt></dt>
 														<dd>010-8222-9650</dd>
-														<dt>일반전화</dt>
+														<dt></dt>
 													</dl>
 												</div> <span class="button">
 													<button type="button" id="choice-modify">수정</button>
@@ -608,6 +608,11 @@
 				$(".recents").hide();
 				$(".recent-addr").show();
 			});
+			
+			$("#recent-close").click(function() {
+				$(".recent-addr").hide();
+				$(".recents").show();
+			})
 		});
 	</script>
 </body>
