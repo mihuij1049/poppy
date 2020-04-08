@@ -1230,10 +1230,7 @@ dl {
 			$(".collapse-title a").on('click', function() {
 				$(".arrow-down").toggleClass("rotate");
 			});
-
-		});
-
-		
+		});	
 	</script>
 </body>
 
