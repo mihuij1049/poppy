@@ -87,33 +87,8 @@
 												목록</button>
 										</span>
 									</div>
-									<div class="recent-addr" style="display: none;">
-										<h4 class="heading">배송지를 선택해주세요.</h4>
-										<ul class="addr-content" style="list-style: none">
-											<li delivery-list><strong class="name"> <span
-													id="name">조대철</span>
-											</strong>
-												<div class="description">
-													<span class="choice"> <input type="radio"
-														id="choice-select">
-													</span>
-													<p class="recent-content">
-														[ <span class="zipcode">05218</span> ] <span class="addr1">서울특별시
-															강동구</span> <br> <span class="addr2">1단지아파트</span>
-													</p>
-													<dl class="tel">
-														<dt></dt>
-														<dd>010-8222-9650</dd>
-														<dt></dt>
-													</dl>
-												</div> <span class="button">
-													<button type="button" id="choice-modify">수정</button>
-											</span></li>
-										</ul>
-										<span class="sideRight">
-											<button type="button" id="recent-close">닫기</button>
-										</span>
-									</div>
+									<div class="recent-addr" id="recent-addr"
+										style="display: none;"></div>
 									<hr>
 									<div class="form-group">
 										<select id="selbox">
@@ -478,11 +453,45 @@
 			</div>
 		</div>
 	</form>
+	<script id="recent_addr_tmpl" type="text/x-handlebars-template">
+        {{#each addr}}
+        <h4 class="heading">배송지를 선택해주세요.</h4>
+		   	<ul class="addr-content" style="list-style: none">
+	            <li delivery-list>
+                    <strong class="name">
+                        <span id="name">{{name}}</span>
+					</strong>
+			        <div class="description">
+					    <span class="choice"> 
+                            <input type="radio" id="choice-select">
+					    </span>
+					    <p class="recent-content">
+					        [ <span class="zipcode">{{zipcode}}</span> ] 
+                            <span class="addr1">{{addr1}}</span>
+                            <br> 
+                            <span class="addr2">{{addr2}}</span>
+				    	</p>
+				        <dl class="phone">
+				            <dt></dt>
+				    	    <dd>{{phone}}</dd>
+				         </dl>
+					 </div> 
+                     <span class="button">
+					     <button type="button" id="choice-modify">수정</button>
+					  </span>
+                 </li>
+			</ul>
+			<span class="sideRight">
+			    <button type="button" id="recent-close">닫기</button>
+			</span>
+        {{/each}}
+    </script>
 	<!-- Javascript -->
 	<script src="../share/assets/js/jquery-3.2.1.min.js"></script>
 	<script src="../share/assets/js/bootstrap.min.js"></script>
 	<script
 		src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="../share/plugins/handlebars/handlebars-v4.0.5.js"></script>
 	<script type="text/javascript">
 		var element_wrap = document.getElementById('wrap');
 
@@ -533,7 +542,7 @@
 		$(function() {
 			$("#selboxDirect").hide();
 
-			$("#selbox").change(function() {
+			$("#selbox").change(function(e) {
 				// 직접입력을 누를 때 나타남
 				if ($("#selbox").val() == "direct") {
 					$("#selboxDirect").show();
@@ -555,33 +564,33 @@
 		});
 
 		$(function() {
-			$("#headingOne").on('click', function() {
+			$("#headingOne").on('click', function(e) {
 				$(".arrow-down1").toggleClass("rotate1");
 			});
 
-			$("#headingTwo").on('click', function() {
+			$("#headingTwo").on('click', function(e) {
 				$(".arrow-down2").toggleClass("rotate2");
 			});
 
-			$("#headingThree").on('click', function() {
+			$("#headingThree").on('click', function(e) {
 				$(".arrow-down3").toggleClass("rotate3");
 			});
 
-			$("#headingFour").on('click', function() {
+			$("#headingFour").on('click', function(e) {
 				$(".arrow-down4").toggleClass("rotate4");
 			});
 
-			$("#headingFive").on('click', function() {
+			$("#headingFive").on('click', function(e) {
 				$(".arrow-down5").toggleClass("rotate5");
 			});
 
-			$("#headingSix").on('click', function() {
+			$("#headingSix").on('click', function(e) {
 				$(".arrow-down6").toggleClass("rotate6");
 			});
 		});
 
 		$(function() {
-			$("#selbox2").change(function() {
+			$("#selbox2").change(function(e) {
 				// 직접입력을 누를 때 나타남
 				if ($("#selbox2").val() == "direct2") {
 					$("#selboxDirect2").show();
@@ -596,24 +605,35 @@
 				$("#myModal").modal("show");
 			});
 
-			$(document).on("click", ".btn-delete", function() {
+			$(document).on("click", ".btn-delete", function(e) {
 				$(this).parents(".prd-info").remove();
-
 				window.history.back();
 			});
 		});
+
+		function get_list() {
+			$.get("../share/plugins/recent_addr.json", function(req) {
+			    var template = Handlebars.compile($("#recent_addr_tmpl").html());
+			    var html = template(req);					
+		    	$("#recent-addr").append(html);
+		    });	
+	    }
 		
 		$(function() {
-			$("#recent-address-list").click(function() {
-				$(".recents").hide();
-				$(".recent-addr").show();
-			});
-			
-			$("#recent-close").click(function() {
-				$(".recent-addr").hide();
-				$(".recents").show();
-			})
+			get_list();
+		    $("#recent-address-list").click(function(e) {
+			    $(".recents").hide();
+			    $(".recent-addr").show();
+			    get_list();
+		    });
+		    
+		    $("#recent-close").click(function(e) {			 
+			    $(".recent-addr").hide();
+		    	$(".recents").show();
+	        });
 		});
+		
+				
 	</script>
 </body>
 

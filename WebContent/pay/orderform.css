@@ -185,6 +185,7 @@
  }
 
  .tab-content .recent-addr {
+     display: block;
      position: relative;
      height: 210px;
      padding: 15px;
