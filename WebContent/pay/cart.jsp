@@ -13,6 +13,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>Poppy-Poppy</title>
 <style>
+.btn2:hover {
+	background: #ff6261;
+	color: #fff;
+}
+
 #list {
 	list-style: none;
 	margin-bottom: 0;
@@ -20,7 +25,7 @@
 
 #list2 {
 	list-style: none;
-	padding: 10px;
+	margin-bottom: 0;
 }
 
 .cart-box {
@@ -32,6 +37,15 @@
 	border: none;
 }
 
+.cart-box2 {
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
+}
+
+.cart-box2:last-child {
+	border: none;
+}
+
 .cart-size {
 	float: left;
 }
@@ -39,9 +53,10 @@
 .cart-img {
 	float: left;
 	display: block;
-	margin: 5px;
+	margin: 0px 5px 5px 5px;
 	width: 100px;
 	border: 1px solid #ffc7c1;
+	width: 100px;
 }
 
 .word {
@@ -82,6 +97,7 @@
 .count-label {
 	vertical-align: -1px;
 	width: 40px;
+	text-align: right;
 }
 
 .change {
@@ -97,7 +113,7 @@
 }
 
 .word-botm {
-	padding: 15px;
+	padding: 10px 15px;
 }
 
 .word-botm .btn2 {
@@ -130,12 +146,14 @@
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane active fade in" id="page1">
 					<div class="panel-title6">장바구니 상품</div>
-					<div class="panel-header2">일반상품 (n)</div>
+					<div class="panel-header2">
+						일반상품 (<span class="cart-count"></span>)
+					</div>
 					<div class="panel-body2">
 						<div class="list-group" id="list"></div>
 						<div class="panel-header2 clearfix">[기본배송]</div>
 						<div class="selectbtn">
-							<button type="button" id="all-check">전체선택</button>
+							<button type="button" class="all-check">전체선택</button>
 							<button type="button" id="select-delete">선택삭제</button>
 						</div>
 						<div class="cart-move">
@@ -147,18 +165,18 @@
 						<thead>
 							<tr>
 								<td class="table-header">결제예정금액</td>
-								<td class="table-header2 td-mny"><span id="table-sum">
+								<td class="table-header2 td-mny"><span id="table_sum">
 								</span>원</td>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td class="td-title">총 상품금액</td>
-								<td class="td-mny"><span id="table-price"> </span>원</td>
+								<td class="td-mny"><span id="table_price"> </span>원</td>
 							</tr>
 							<tr>
 								<td class="td-title">총 배송비</td>
-								<td class="td-mny"><span id="table-delivery"> </span>원</td>
+								<td class="td-mny"><span id="table_delivery"> </span>원</td>
 							</tr>
 						</tbody>
 					</table>
@@ -171,12 +189,14 @@
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="page2">
 					<div class="panel-title6">장바구니 상품</div>
-					<div class="panel-header2">일반상품 (n)</div>
+					<div class="panel-header2">
+						일반상품 (<span class="cart-count2"></span>)
+					</div>
 					<div class="panel-body2">
 						<div class="list-group" id="list2"></div>
 						<div class="panel-header2 clearfix">[기본배송]</div>
 						<div class="selectbtn">
-							<button type="button" id="all-check2">전체선택</button>
+							<button type="button" class="all-check2">전체선택</button>
 							<button type="button" id="select-delete2">선택삭제</button>
 						</div>
 						<div class="cart-move">
@@ -188,18 +208,18 @@
 						<thead>
 							<tr>
 								<td class="table-header">결제예정금액</td>
-								<td class="table-header2 td-mny"><span id="table-sum2">
+								<td class="table-header2 td-mny"><span id="table_sum2">
 								</span>원</td>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td class="td-title">총 상품금액</td>
-								<td class="td-mny"><span id="table-price2"> </span>원</td>
+								<td class="td-mny"><span id="table_price2"> </span>원</td>
 							</tr>
 							<tr>
 								<td class="td-title">총 배송비</td>
-								<td class="td-mny"><span id="table-delivery2"> </span>원</td>
+								<td class="td-mny"><span id="table_delivery2"> </span>원</td>
 							</tr>
 						</tbody>
 					</table>
@@ -249,11 +269,11 @@
 				<input type="checkbox" class="cart cart-size">
 				<img src="{{url}}" class="cart-img" />
 				
-					<p><b class="name">{{name}}</b></p>
-					<span>배송:2500원[조건]/기본배송</span><br>
-					<small><span class="point-icon">적</span>&nbsp;<span class="point">{{point}}</span>원</small>
-					<b class="search-item-price">
-					<p>{{price}}</b><b> 원</b></p></br>
+				<p><b class="name">{{name}}</b></p>
+				<span>배송:2500원[조건]/기본배송</span><br>
+				<small><span class="point-icon">적</span>&nbsp;<span class="point">{{point}}</span>원</small>
+				<b class="search-item-price">
+				<p>{{price}}</b><b>원</b></p></br>
 			</div>
 			<div class="word-btn">
 				<button class="count minus">
@@ -266,165 +286,200 @@
 				<button class="change">변경</button>
 			</div>
 			<div class="word-botm">
-				<p><b>합계: <span class="price">{{price}}</span> 원</b></p>
+				<p><b>합계: <span class="price">{{price}}</span>원</b></p>
 				<button type="button">삭제</button>
 				<button type="button">관심상품</button>
 				<button type="button" class="btn btn2">주문하기</button>
 			</div>
 		</li>
 	</div>
-		{{/each}}
+	{{/each}}
+	</script>
+	<script type="text/x-handlebars-template" id="list-item-tmpl2">
+	{{#each goods}}
+	<div class="cart-box2 clear">
+		<li class="list-item">
+			<div class="word">
+				<input type="checkbox" class="cart2 cart-size">
+				<img src="{{url}}" class="cart-img" />
+				<p><b class="name">{{name}}</b></p>
+				<span>배송:2500원[조건]/기본배송</span><br>
+				<small><span class="point-icon">적</span>&nbsp;<span class="point">{{point}}</span>원</small>
+				<b class="search-item-price">
+				<p>{{price}}</b><b>원</b></p></br>
+			</div>
+			<div class="word-btn">
+				<button class="count minus">
+					<img src="../share/img/마이너스.png">
+				</button>
+				<input type="number" class="count-label" value="1" id="count-label">
+				<button class="count plus">
+					<img src="../share/img/플러스.png">
+				</button>
+				<button class="change">변경</button>
+			</div>
+			<div class="word-botm">
+				<p><b>합계: <span class="price">{{price}}</span>원</b></p>
+				<button type="button">삭제</button>
+				<button type="button">관심상품</button>
+				<button type="button" class="btn btn2">주문하기</button>
+			</div>
+		</li>
+	</div>
+	{{/each}}
 	</script>
 	<!-- 사용자 정의 스크립트 -->
 	<script type="text/javascript">
 		$(function() {
+			var table_sum = 0;
+			var table_price = 0;
+			var table_delivery = 2500;
+			var sum_price = 0;
+
+			var table_sum2 = 0;
+			var table_price2 = 0;
+			var table_delivery2 = 2500;
+
 			$.get("../share/plugins/goods_list.json", function(req) {
 				$(function() {
 					var template = Handlebars.compile($("#list-item-tmpl")
 							.html());
 					var html = template(req);
 					$("#list").append(html);
+
+					var length = $(".cart-box").length;
+					$(".cart-count").html(length);
+
+					for (var i = 0; i < length; i++) {
+						table_price += parseInt($(".price").eq(i).html());
+						if (i == length - 1) {
+							$("#table_sum").html(table_price + table_delivery);
+							$("#table_price").html(table_price);
+							$("#table_delivery").html(table_delivery);
+						}
+					}
 				});
 			});
 
 			$.get("../share/plugins/goods_list.json", function(req) {
 				$(function() {
-					var template = Handlebars.compile($("#list-item-tmpl")
+					var template = Handlebars.compile($("#list-item-tmpl2")
 							.html());
 					var html = template(req);
 					$("#list2").append(html);
+					var length = $(".cart-box2").length;
+					$(".cart-count2").html(length);
+
+					for (var i = 0; i < length; i++) {
+						table_price2 += parseInt($(".price").eq(i).html());
+						if (i == length - 1) {
+							$("#table_sum2").html(
+									table_price2 + table_delivery2);
+							$("#table_price2").html(table_price2);
+							$("#table_delivery2").html(table_delivery2);
+						}
+					}
 				});
 			});
 
-			$("#all-check").click(function() {
-				var choice = $("#list").prop("checked");
+			$(document).on(
+					"click",
+					".plus",
+					function(e) {
+						var value = $(this).prev().val();
+						value++;
+						$(this).prev().val(value);
+						var one_price = $(this).parent().next().children()
+								.children().children();
+						var price = $(this).parent().prev().children("p")
+								.children(".search-item-price").html();
+						var result = price * value;
+						$(one_price).html(result);
+
+						var point = $(this).parent().prev().children("small")
+								.children().next();
+						$(point).html(result / 100);
+
+						var length = $(".cart-box").length;
+						for (var i = 0; i < length; i++) {
+							sum_price += parseInt($(".price").eq(i).html());
+						}
+						$("#table_price").html(sum_price);
+						sum_price = 0;
+					});
+
+			$(document).on(
+					"click",
+					".minus",
+					function(e) {
+						var value = $(this).next().val();
+						if (value == 1) {
+							alert("구매수량은 1미만으로 불가능합니다.");
+							return;
+						}
+						value--;
+						$(this).next().val(value);
+						var one_price = $(this).parent().next().children()
+								.children().children();
+						var price = $(this).parent().prev().children("p")
+								.children(".search-item-price").html();
+						var result = price * value;
+						$(one_price).html(result);
+
+						var point = $(this).parent().prev().children("small")
+								.children().next();
+						$(point).html(result / 100);
+
+						var length = $(".cart-box").length;
+						for (var i = 0; i < length; i++) {
+							sum_price += parseInt($(".price").eq(i).html());
+						}
+						$("#table_price").html(sum_price);
+						sum_price = 0;
+					});
+
+			$(document).on(
+					"click",
+					".change",
+					function(e) {
+						value = $(this).prev().prev().val();
+						$(this).prev().prev().val(value);
+						var one_price = $(this).parent().next().children()
+								.children().children();
+						var price = $(this).parent().prev().children("p")
+								.children(".search-item-price").html();
+						var result = price * value;
+						$(one_price).html(result);
+
+						var point = $(this).parent().prev().children("small")
+								.children().next();
+						$(point).html(result / 100);
+
+						var length = $(".cart-box").length;
+						for (var i = 0; i < length; i++) {
+							sum_price += parseInt($(".price").eq(i).html());
+						}
+						$("#table_price").html(sum_price);
+						sum_price = 0;
+					});
+
+			$(document).on("click", ".all-check", function(e) {
+				var choice = $(".cart").prop("checked");
 				if (!choice) {
-					$("#list").prop("checked", true);
+					$(".cart").prop("checked", true);
 				} else {
-					$("#list").prop("checked", false);
+					$(".cart").prop("checked", false);
 				}
 			});
 
-			var result = 0;
-			$("#list").on(
-					"click",
-					".plus",
-					function(e) {
-						var value = $(this).prev().val();
-						value++;
-						$(this).prev().val(value);
-						var one_price = $(this).parent().next().children()
-								.children().children();
-						var price = $(this).parent().prev().children("p")
-								.children(".search-item-price").html();
-						result = price * value;
-						$(one_price).text(result);
-
-						var point = $(this).parent().prev().children("small")
-								.children().next();
-						$(point).text(result / 100);
-					});
-
-			$("#list").on(
-					"click",
-					".minus",
-					function(e) {
-						var value = $(this).next().val();
-						if (value == 1) {
-							alert("구매수량은 1미만으로 불가능합니다.");
-							return;
-						}
-						value--;
-						$(this).next().val(value);
-						var one_price = $(this).parent().next().children()
-								.children().children();
-						var price = $(this).parent().prev().children("p")
-								.children(".search-item-price").html();
-						result = price * value;
-						$(one_price).text(result);
-
-						var point = $(this).parent().prev().children("small")
-								.children().next();
-						$(point).text(result / 100);
-					});
-
-			$("#list").on(
-					"click",
-					".change",
-					function(e) {
-						value = $(this).prev().prev().val();
-						$(this).prev().prev().val(value);
-						var one_price = $(this).parent().next().children()
-								.children().children();
-						var price = $(this).parent().prev().children("p")
-								.children(".search-item-price").html();
-						result = price * value;
-						$(one_price).text(result);
-
-						var point = $(this).parent().prev().children("small")
-								.children().next();
-						$(point).text(result / 100);
-					});
-
-			$("#list2").on(
-					"click",
-					".plus",
-					function(e) {
-						var value = $(this).prev().val();
-						value++;
-						$(this).prev().val(value);
-						var one_price = $(this).parent().next().children()
-								.children().children();
-						var price = $(this).parent().prev().children("p")
-								.children(".search-item-price").html();
-						result = price * value;
-						$(one_price).text(result);
-
-						var point = $(this).parent().prev().children("small")
-								.children().next();
-						$(point).text(result / 100);
-					});
-
-			$("#list2").on(
-					"click",
-					".minus",
-					function(e) {
-						var value = $(this).next().val();
-						if (value == 1) {
-							alert("구매수량은 1미만으로 불가능합니다.");
-							return;
-						}
-						value--;
-						$(this).next().val(value);
-						var one_price = $(this).parent().next().children()
-								.children().children();
-						var price = $(this).parent().prev().children("p")
-								.children(".search-item-price").html();
-						result = price * value;
-						$(one_price).text(result);
-
-						var point = $(this).parent().prev().children("small")
-								.children().next();
-						$(point).text(result / 100);
-					});
-
-			$("#list2").on(
-					"click",
-					".change",
-					function(e) {
-						value = $(this).prev().prev().val();
-						$(this).prev().prev().val(value);
-						var one_price = $(this).parent().next().children()
-								.children().children();
-						var price = $(this).parent().prev().children("p")
-								.children(".search-item-price").html();
-						result = price * value;
-						$(one_price).text(result);
-
-						var point = $(this).parent().prev().children("small")
-								.children().next();
-						$(point).text(result / 100);
-					});
+			$(document).on("click", ".all-check2", function(e) {
+				var choice = $(".cart").prop("checked");
+				if (!choice) {
+					$(".cart2").prop("checked", true);
+				} else {
+					$(".cart2").prop("checked", false);
+				}
+			});
 
 			$("#delete").click(function(e) {
 				$("#myModal2").modal("show");
