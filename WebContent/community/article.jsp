@@ -279,70 +279,60 @@
 
 
 	<script type="text/javascript">
+		/** 댓글 수정 삭제 --- 등록 취소 버튼 기능 구현 */
 		$(function() {
-			$(".btn-del").on('click', function(e) {
-				$(this).parent().parent().remove();
-			});
+			// 댓글 내용을 text에 담기
+			var original = $(this).parent().prev().children().eq(2).text();
+			// 수정 버튼 클릭시
 			$(".btn-edit").on("click", function(e) {
-				// 댓글 내용을 text에 담기
+				var edit_commit = $(this).text();
+				if (edit_commit=="수정") {
+					var original = $(this).parent().prev().children().eq(2).text();
+					// 댓글 내용을 지워버리기
+					$(this).parent().prev().children().eq(2).text("");
+					
+					// 텍스트 태그를 html에 담기
+					var comment_edit = $("<textarea>");
+					// <textarea class="comment-edit"></textarea> --> 아랫줄 실행시 완성된 HTML 태그
+					comment_edit.addClass('comment_edit');
+					// 생성된 태그에 원래의 댓글 내용 original 추가하기
+					comment_edit.text(original);
+					// "" 로 지운 댓글 내용에 textarea 추가하기
+					$(this).parent().prev().children().eq(2).append(comment_edit);
+					$(this).text("등록");
+					$(this).next().text("취소");
+					
+				} else {
+					// 사용자가  글 내용을 담는다.
+					var recommit = $(".comment_edit").val();
+					$(this).parent().prev().children().eq(3).remove();
+					$(this).parent().prev().children().eq(2).text(recommit);
+					$(this).text("수정");
+					$(this).next().text("삭제");
+					
+				}
+				
+			});
+				
+			// 댓글 삭제 버튼 
+			$(".btn-del").on('click', function(e) {
+				var del_cancel=$(this).text();
 				var original = $(this).parent().prev().children().eq(2).text();
-				// 댓글 내용을 지워버리기
-				$(this).parent().prev().children().eq(2).text("");
-
-				// 수정-->등록 버튼
-				var insert = $(this).text("등록");
-				insert.addClass('insert');
-
-				// 삭제--> 취소 버튼
-				var cancel = $(this).next().text("취소");
-				cancel.addClass('cancel');
-
-				// 텍스트 태그를 html에 담기
-				var comment_edit = $("<textarea>");
-				// <textarea class="comment-edit"></textarea> --> 아랫줄 실행시 완성된 HTML 태그
-				comment_edit.addClass('comment-edit');
-				// 생성된 태그에 원래의 댓글 내용 original 추가하기
-				comment_edit.text(original);
-				// "" 로 지운 댓글 내용에 textarea 추가하기
-				$(this).parent().prev().children().eq(2).append(comment_edit);
-
-				$('.insert').on('click', function(e) {
-					alert("댓글을 수정하시겠습니까?")
-
-				$('.cancel').on('click', function(e) {
-					alert("댓글 수정을 취소하시겠습니까?")
-					});
-				});
+				
+				if (del_cancel=="삭제") {
+				$(this).parent().parent().remove();
+				} else {
+					$(this).parent().prev().children().eq(3).remove();
+					$(this).parent().prev().children().eq(2).text(original);
+					$(this).text("삭제");
+					$(this).prev().text("수정");
+				}
 			});
-
-			$("#enter").click(function(e) {
-				e.preventDefault();
-
-				// 사용자의 입력값을 가져온다.
-				var uname = $("#name_write").val();
-				console.log(uname);
-				var upw = $("#pass_write").val();
-				console.log(upw);
-				var comment = $("#comment_area").val();
-				console.log(comment);
-
-				$.ajax({
-					url : "../api/a_comment.do",
-					type : "POST",
-					data : {
-						name_write : uname,
-						pass_write : upw,
-						comment_area : comment
-					},
-					// 읽어올 내용의 형식 (생략할 경우 json)
-					dataType : "html",
-					// 읽어온 내용을 처리하기 위한 함수
-					success : function(req) {
-						$("#result").html(req);
-					}
-				});
-			});
+			
 		});
+
+		
+		
 	</script>
 </body>
 
