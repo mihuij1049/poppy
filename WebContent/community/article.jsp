@@ -152,8 +152,8 @@
 /** 원래있던 댓글 */
 
 /** 동적 생성된 textaread */
-.comment-edit {
-	min-width: 210px;
+.comment_edit {
+	width: 100%;
 	min-height: 50px;
 }
 
@@ -246,6 +246,7 @@
 					</div>
 				</div>
 			</div>
+			
 			<div class="comment-ana" id="comment-ana">
 				<small>회원에게만 댓글권한이 있습니다.</small>
 			</div>
@@ -304,15 +305,23 @@
 					
 				} else {
 					// 사용자가  글 내용을 담는다.
-					var recommit = $(".comment_edit").val();
-					$(this).parent().prev().children().eq(3).remove();
-					$(this).parent().prev().children().eq(2).text(recommit);
-					$(this).text("수정");
-					$(this).next().text("삭제");
+					var result = confirm("수정하시겠습니까?");
+					if(result) {
+						var recommit = $(".comment_edit").val();
+						$(this).parent().prev().children().eq(3).remove();
+						$(this).parent().prev().children().eq(2).text(recommit);
+						$(this).text("수정");
+						$(this).next().text("삭제");
+					} else {
+						return false;
+					}
+					
 					
 				}
 				
 			});
+			
+			
 				
 			// 댓글 삭제 버튼 
 			$(".btn-del").on('click', function(e) {
