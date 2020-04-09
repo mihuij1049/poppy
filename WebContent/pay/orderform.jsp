@@ -75,8 +75,10 @@
 										<div class="recent">
 											<strong class="name"><span id="delivery-info-name">조대철</span></strong>
 											<p class="address">
-												[ <span id="zipcode">05218</span> ] <span
-													id="delivery-info-address"> 서울특별시 강동구 라랄라라 </span>
+												[ <span id="zipcode">05218</span> ] 
+												<span id="addr1"> 서울특별시 강동구 라랄라라 </span>
+												<br>
+												<span id="addr2"></span>
 											</p>
 											<div class="phone">
 												<div id="delivery-info-phone">010-8222-9650</div>
@@ -88,8 +90,13 @@
 										</span>
 									</div>
 									<div class="recent-addr" id="recent-addr"
-										style="display: none;"></div>
-									<hr>
+										style="display: none;">
+										<h4 class="heading">배송지를 선택해주세요.</h4>
+										<span class="sideRight">
+											<button type="button" id="recent-close">닫기</button>
+										</span>
+									</div>
+
 									<div class="form-group">
 										<select id="selbox">
 											<option value="">-- 메시지 선택(선택사항) --</option>
@@ -133,13 +140,13 @@
 												<div class="required">＊</div>
 											</div>
 											<div class="na-address-body">
-												<input type="text" id="zonecode" placeholder="우편번호">
+												<input type="text" id="zonecode" placeholder="우편번호" readonly />
 												<input type="button" id="address-btn"
-													onclick="DaumPostcode()" value="주소 찾기"><br> <input
-													type="text" id="address" placeholder="주소"><br>
+													onclick="DaumPostcode()" value="주소 찾기" readonly /><br> <input
+													type="text" id="address" placeholder="주소" readonly /><br>
 												<input type="text" id="detail-address" placeholder="상세주소">
 												<div id="wrap"
-													style="display: none; border: 1px solid; width: 343px; height: 390px; margin: 5px 0; position: relative; border: 1px solid #ddd;">
+													style="display: none; border: 1px solid; width: 100%; height: 390px; margin: 5px 0; position: relative; border: 1px solid #ddd;">
 													<img
 														src="https://t1.daumcdn.net/postcode/resource/images/close.png"
 														id="btnFoldWrap"
@@ -174,7 +181,7 @@
 											</div>
 										</div>
 									</div>
-									<hr>
+
 									<div class="form-group2">
 										<select id="selbox2">
 											<option value="">-- 메시지 선택(선택사항) --</option>
@@ -453,9 +460,9 @@
 			</div>
 		</div>
 	</form>
+	<!-- 배송지 목록 조회 -->
 	<script id="recent_addr_tmpl" type="text/x-handlebars-template">
         {{#each addr}}
-        <h4 class="heading">배송지를 선택해주세요.</h4>
 		   	<ul class="addr-content" style="list-style: none">
 	            <li delivery-list>
                     <strong class="name">
@@ -466,10 +473,10 @@
                             <input type="radio" id="choice-select">
 					    </span>
 					    <p class="recent-content">
-					        [ <span class="zipcode">{{zipcode}}</span> ] 
-                            <span class="addr1">{{addr1}}</span>
+					        [ <span id="zipcode">{{zipcode}}</span> ] 
+                            <span id="addr1">{{addr1}}</span>
                             <br> 
-                            <span class="addr2">{{addr2}}</span>
+                            <span id="addr2">{{addr2}}</span>
 				    	</p>
 				        <dl class="phone">
 				            <dt></dt>
@@ -481,9 +488,6 @@
 					  </span>
                  </li>
 			</ul>
-			<span class="sideRight">
-			    <button type="button" id="recent-close">닫기</button>
-			</span>
         {{/each}}
     </script>
 	<!-- Javascript -->
@@ -590,17 +594,6 @@
 		});
 
 		$(function() {
-			$("#selbox2").change(function(e) {
-				// 직접입력을 누를 때 나타남
-				if ($("#selbox2").val() == "direct2") {
-					$("#selboxDirect2").show();
-				} else {
-					$("#selboxDirect2").hide();
-				}
-			})
-		})
-
-		$(function() {
 			$("#prd-del").click(function(e) {
 				$("#myModal").modal("show");
 			});
@@ -610,30 +603,59 @@
 				window.history.back();
 			});
 		});
-
-		function get_list() {
-			$.get("../share/plugins/recent_addr.json", function(req) {
-			    var template = Handlebars.compile($("#recent_addr_tmpl").html());
-			    var html = template(req);					
-		    	$("#recent-addr").append(html);
-		    });	
-	    }
 		
 		$(function() {
-			get_list();
-		    $("#recent-address-list").click(function(e) {
-			    $(".recents").hide();
-			    $(".recent-addr").show();
-			    get_list();
-		    });
-		    
-		    $("#recent-close").click(function(e) {			 
-			    $(".recent-addr").hide();
-		    	$(".recents").show();
-	        });
+			$("#recent-address-list").click(function(e) {
+				$(".recents").hide();
+				$(".recent-addr").show();
+				$.get("../share/plugins/recent_addr.json",
+					function(req) {
+						var template = Handlebars.compile($("#recent_addr_tmpl").html());
+						var html = template(req);
+						$("#recent-addr").append(html);	
+				    });
+			 });
 		});
 		
-				
+		$(function() {
+			// 라디오박스가 클릭된 경우
+			$(".recent-addr").on(
+					'change',
+					'input',
+					function(e) {
+						// 클릭된 라디오의  이름 가져오기
+						var name = $(this).parent().parent().prev().children().html();
+						console.log(name);
+
+						// 클릭된 라디오의 주소 가져오기
+						var address = $(this).parent().next().html();
+						 console.log(address);
+						
+						var phone = $(this).parent().next().next().children().next().html();
+						console.log(phone);
+						
+						// 1) 배송지목록에 주소를 찾아 최근 배송지에 설정
+						$("#delivery-info-name").html(name);
+						// 2) 주소 가져오기
+						$(".address").html(address);
+		                // 3) 핸드폰번호 가져오기
+		                $(".phone").html(phone);
+		                
+		                $(".recent-addr").hide();
+						$(".recents").show();
+						$(".addr-content").remove();
+					});
+		});
+
+		$(function() {
+			$(document).on("click", "#recent-close", function(e) {
+				$(".recent-addr").hide();
+				$(".recents").show();
+				$(".addr-content").remove();
+			});
+		});
+		
+		
 	</script>
 </body>
 

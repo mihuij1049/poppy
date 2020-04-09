@@ -14,7 +14,7 @@
      margin-top: 0;
      width: 100%;
  }
-
+ 
  /** 아코디언 클릭이벤트시 화살표 transform 회전 */
  .rotate1 {
      -webkit-transform: rotate(180deg);
@@ -139,28 +139,33 @@
      display: block;
      padding: 15px 10px;
      padding-bottom: 20px;
-     font-size: 18px;
+     font-size: 17px;
+ }
+ 
+ .recent-address {
+     width: 100%;
  }
 
  .recents {
-     height: 180px;
      padding: 15px 15px;
      position: relative;
  }
 
  .recent {
-     height: 180px;
      display: inline;
  }
 
  .recent .address {
-     font-size: 16px;
-     margin-bottom: 20px;
+     font-size: 15px;
      padding: 0 10px;
+ }
+ 
+ .recent .addr2 {
+     margin-top: 10px;
  }
 
  .recent .phone {
-     font-size: 16px;
+     font-size: 15px;
      margin-bottom: 20px;
      padding: 0 10px;
  }
@@ -185,16 +190,15 @@
  }
 
  .tab-content .recent-addr {
-     display: block;
+     width: auto;
+     padding: 0 15px;
      position: relative;
-     height: 210px;
-     padding: 15px;
  }
 
  .recent-addr .heading {
      color: #999999;
      height: 30px;
-     font-size: 17px;
+     font-size: 16px;
      font-weight: 250;
      padding-top: 7px;
      padding-left: 15px;
@@ -202,7 +206,9 @@
 
  .recent-addr .addr-content {
      padding: 0;
-     padding-top: 15px;
+     padding-top: 10px;
+     margin-bottom: 0;
+     position: relative;
      border-top: 1px solid #ddd;
  }
 
@@ -212,7 +218,7 @@
 
  .recent-addr .name {
      display: block;
-     font-size: 18px;
+     font-size: 16px;
      margin-bottom: 10px;
      padding: 0 10px;
  }
@@ -221,8 +227,8 @@
      padding: 0 10px;
  }
  
- .recent-addr .description .addr2 {
-     margin-top: 5px;
+ .recent-addr .description #addr2 {
+     margin-top: 10px;
      display: block;
  }
 
@@ -232,8 +238,8 @@
      background: #fff;
      font-weight: bold;
      position: absolute;
-     right: 20px;
-     top: 80px;
+     top: 10px;
+     right: 10px;
  }
 
  .recent-addr #choice-modify:hover {
@@ -245,38 +251,39 @@
      width: 30px;
      height: 30px;
      position: absolute;
-     bottom: 50px;
-     right: 20px;
+     top: 60px;
+     right: 10px;
  }
 
  .recent-addr .sideRight {
      position: absolute;
+     top: 0px;
      right: 20px;
-     top: 20px;
  }
 
- .recent-addr .sideRight button {
+.recent-addr .sideRight button {
      width: 54px;
-     height: 32px;
+     height: 30px;
      color: #ff8f83;
      background: #fff;
      font-weight: bold;
      border: 1px solid #ff8f83;
  }
 
- .form-group {
-     text-align: center;
+.form-group {
      margin: auto;
+     display: block;
+     text-align: center;
+     border-top: 1px solid #ddd;
  }
 
  .form-group #selbox {
      width: 90%;
      height: 40px;
-     position: relative;
-     bottom: 10px;
      border: 1px solid #ddd;
      background-color: #fff;
-     padding-left: 5px;
+     padding: 5px;
+     margin: 10px;
  }
 
  .form-group #selboxDirect {
@@ -435,18 +442,19 @@
  }
 
  .form-group2 {
-     text-align: center;
      margin: auto;
+     display: block;
+     text-align: center;
+     border-top: 1px solid #ddd;
  }
 
  .form-group2 #selbox2 {
      width: 90%;
      height: 40px;
-     position: relative;
-     bottom: 10px;
      border: 1px solid #ddd;
      background-color: #fff;
      padding-left: 5px;
+     margin: 10px;
  }
 
  .form-group2 #selboxDirect2 {
