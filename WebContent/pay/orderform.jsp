@@ -646,6 +646,44 @@
 						$(".addr-content").remove();
 					});
 		});
+		
+		$(function() {
+			// 수정 버튼이 클릭된 경우
+			$(".recent-addr").on(
+					'click',
+					'button',
+					function(e) {
+						// 클릭된 버튼의  이름 가져오기
+						var name = $(this).parent().parent().children().children().html();
+						console.log(name);
+
+						// 클릭된 버튼의 주소 가져오기
+						var zipcode = $(this).parent().prev().children().next().children().html();
+						var addr1 = $(this).parent().prev().children().next().children().next().html()
+						var addr2 = $(this).parent().prev().children().next().children().next().next().next().html()
+						console.log(zipcode);
+						console.log(addr1);
+						console.log(addr2);
+						
+						var phone = $(this).parent().prev().children().next().next().children().next().html();
+						console.log(phone);
+						
+						// 1) 배송지목록에 주소를 찾아 새로운 배송지에 설정
+						$("#delivery-name").val(name);
+						// 2) 주소 가져오기
+						$("#zonecode").val(zipcode);
+						$("#address").val(addr1);
+						$("#detail-address").val(addr2);
+		                // 3) 핸드폰번호 가져오기
+		                $("#delivery-phone").val(phone);
+		                
+		                $(".recent-addr").hide();
+		                $(".recents").show();
+		                $("#mytab a:last").tab("show");
+		                $("input:radio[id='same-addr2']").prop("checked", true);
+						$(".addr-content").remove();
+					});
+		});
 
 		$(function() {
 			$(document).on("click", "#recent-close", function(e) {
