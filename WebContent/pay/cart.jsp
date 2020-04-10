@@ -154,7 +154,7 @@
 						<div class="panel-header2 clearfix">[기본배송]</div>
 						<div class="selectbtn">
 							<button type="button" class="all-check">전체선택</button>
-							<button type="button" id="select-delete">선택삭제</button>
+							<button type="button" class="select_delete">선택삭제</button>
 						</div>
 						<div class="cart-move">
 							<button type="button" class="btn btn2" id="cart-move">해외장바구니로
@@ -197,7 +197,7 @@
 						<div class="panel-header2 clearfix">[기본배송]</div>
 						<div class="selectbtn">
 							<button type="button" class="all-check2">전체선택</button>
-							<button type="button" id="select-delete2">선택삭제</button>
+							<button type="button" class="select_delete2">선택삭제</button>
 						</div>
 						<div class="cart-move">
 							<button type="button" class="btn btn2" id="cart-move2">국내장바구니로
@@ -246,11 +246,12 @@
 						<h4 class="modal-title">상품 삭제</h4>
 					</div>
 					<div class="modal-body2">
-						<p>선택하신 상품을 정말 삭제하시겠습니까?</p>
+						<p><span class="delete_message"></span> 상품을 정말 삭제하시겠습니까?</p>
 					</div>
 					<div class="modal-footer2">
-						<button type="button" class="btn btn2" data-dismiss="modal">아니오</button>
-						<button type="button" class="btn btn2 delete_cart"
+						<button type="button" class="btn btn2 delete_cancel"
+							data-dismiss="modal">아니오</button>
+						<button type="button" class="btn btn2 delete_ok"
 							data-dismiss="modal">예</button>
 					</div>
 				</div>
@@ -287,7 +288,7 @@
 			</div>
 			<div class="word-botm">
 				<p><b>합계: <span class="price">{{price}}</span>원</b></p>
-				<button type="button">삭제</button>
+				<button type="button" class="delete">삭제</button>
 				<button type="button">관심상품</button>
 				<button type="button" class="btn btn2">주문하기</button>
 			</div>
@@ -405,6 +406,11 @@
 							sum_price += parseInt($(".price").eq(i).html());
 						}
 						$("#table_price").html(sum_price);
+						if (sum_price >= 30000) {
+							table_delivery = 0;
+							$("#table_delivery").html(table_delivery);
+						}
+						$("#table_sum").html(sum_price + table_delivery);
 						sum_price = 0;
 					});
 
@@ -435,6 +441,11 @@
 							sum_price += parseInt($(".price").eq(i).html());
 						}
 						$("#table_price").html(sum_price);
+						if (sum_price < 30000) {
+							table_delivery = 2500;
+							$("#table_delivery").html(table_delivery);
+						}
+						$("#table_sum").html(sum_price + table_delivery);
 						sum_price = 0;
 					});
 
@@ -460,6 +471,14 @@
 							sum_price += parseInt($(".price").eq(i).html());
 						}
 						$("#table_price").html(sum_price);
+						if (sum_price >= 30000) {
+							table_delivery = 0;
+							$("#table_delivery").html(table_delivery);
+						} else {
+							table_delivery = 2500;
+							$("#table_delivery").html(table_delivery);
+						}
+						$("#table_sum").html(sum_price + table_delivery);
 						sum_price = 0;
 					});
 
@@ -481,21 +500,20 @@
 				}
 			});
 
-			$("#delete").click(function(e) {
+			$(document).on("click", ".delete", function(e) {
 				$("#myModal2").modal("show");
+				$(".delete_message").html("해당");
+				var delete_item = $(this).parent().parent().parent();
+				$(document).on("click", ".delete_ok", function(e) {
+					delete_item.remove();
+				});
+			});
+			
+			$(docuemnt).on("click",".select_delete",function(e) {
+				$("#myModal2").modal("show");
+				$(".delete_message").html("선택하신");
 			});
 
-			$("#select-delete").click(function(e) {
-				$("#myModal2").modal("show");
-			});
-
-			$("#delete2").click(function(e) {
-				$("#myModal2").modal("show");
-			});
-
-			$("#select-delete2").click(function(e) {
-				$("#myModal2").modal("show");
-			});
 
 			$("#like").click(function(e) {
 				alert("해당상품이 관심상품으로 등록되었습니다.")
@@ -512,11 +530,6 @@
 			$("#cart-move2").click(function(e) {
 				alert("국내장바구니로 해당 상품이 이동 되었습니다.");
 			});
-
-			$(".delete_cart").click(function(e) {
-				$("div").remove(".remove");
-			});
-
 		});
 	</script>
 </body>
