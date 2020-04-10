@@ -158,10 +158,12 @@
  .recent .address {
      font-size: 15px;
      padding: 0 10px;
+     margin-bottom: 5px;
  }
  
- .recent .addr2 {
-     margin-top: 10px;
+ .recent #addr2 {
+     display: block;
+     margin-top: 5px;
  }
 
  .recent .phone {
@@ -206,8 +208,8 @@
 
  .recent-addr .addr-content {
      padding: 0;
-     padding-top: 10px;
-     margin-bottom: 0;
+     padding-top: 15px;
+     margin-bottom: 5px;
      position: relative;
      border-top: 1px solid #ddd;
  }
@@ -217,6 +219,7 @@
  }
 
  .recent-addr .name {
+     width: 85%;
      display: block;
      font-size: 16px;
      margin-bottom: 10px;
@@ -224,11 +227,16 @@
  }
 
  .recent-addr .description {
+     width: 85%;
      padding: 0 10px;
  }
  
+ .recent-addr .recent-content {
+     margin: 5px 0;
+ }
+ 
  .recent-addr .description #addr2 {
-     margin-top: 10px;
+     margin-top: 5px;
      display: block;
  }
 
@@ -340,7 +348,11 @@
      margin-top: 15px;
      margin-bottom: 20px;
  }
-
+ 
+ .new-addr input {
+     padding:0 5px;
+ }
+ 
  .na-name .receiver {
      display: inline;
      font-weight: lighter;
@@ -529,7 +541,7 @@
  }
 
  .modal {
-     padding-top: 70%;
+     padding-top: 50%;
  }
 
  .modal-footer button {
