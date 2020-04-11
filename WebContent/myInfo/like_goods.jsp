@@ -125,7 +125,7 @@
 	color: white;
 }
 </style>
-
+<script src="../share/plugins/handlebars/handlebars-v4.0.5.js"></script>
 
 </head>
 
@@ -146,7 +146,7 @@
 				My상품(<span>2</span>)
 			</p>
 			<!-- 물건 1 -->
-			<ul class="mycart-list">
+			<ul class="mycart-list" id="interest-item-group">
 				<li class="mycart" id="mycart1">
 					<div class="mygoods clearfix">
 						<span class="chkbox"> <input type="checkbox" class="cart"
@@ -160,23 +160,6 @@
 					<div class="btns">
 						<button type="button" class="btn btn-inverse delete-one"
 							id="delete-one">삭제</button>
-						<button type="button" class="btn gocart" id="gotocart">장바구니담기</button>
-					</div>
-				</li>
-				<!-- 물건 2 -->
-				<li class="mycart" id="mycart2">
-					<div class="mygoods clearfix">
-						<span class="chkbox"> <input type="checkbox" class="cart"
-							name="check-select" value="check" id="check-select2"></span> <a
-							href="#"><img src="../share/img/4_M.jpg" class="cart-img"></a>
-						<div class="word">
-							<b>1펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식</b><br> <small>배송:2500원[조건]/기본배송</small><br>
-							<small><span>적</span>40원</small><br> <b>3,500원</b>
-						</div>
-					</div>
-					<div class="btns">
-						<button type="button" class="btn btn-inverse delete-one"
-							id="delete-two">삭제</button>
 						<button type="button" class="btn gocart" id="gotocart">장바구니담기</button>
 					</div>
 				</li>
@@ -194,7 +177,46 @@
 
 	</div>
 	<%@ include file="/share/bottom_tp.jsp"%>
+	<!-- 여기서부터 핸들바 템플릿 구조 만들기 -->
+	<script id="goods_item_tmpl" type="text/x-handlebars-template">
+	{{#each goods}}
+	<li class="mycart" id="mycart1">
+		<div class="mygoods clearfix">
+			<span class="chkbox"> <input type="checkbox" class="cart"
+				name="check-select" ></span> <a
+				href="#"><img src="{{url}}" class="cart-img"></a>
+			<div class="word">
+				<b>{{name}}</b><br> <small>배송:2500원[조건]/기본배송</small><br>
+				<small><span>적</span>{{point}}원</small><br> <b>{{price}}원</b>
+			</div>
+		</div>
+		<div class="btns">
+			<button type="button" class="btn btn-inverse delete-one"
+				id="delete-one">삭제</button>
+			<button type="button" class="btn gocart" id="gotocart">장바구니담기</button>
+		</div>
+	</li>
+	{{/each}}
+	</script>
+	<!-- 핸들바 템플릿 구조 끝 -->
 	<script type="text/javascript">
+		/** Ajax 통신을 통해 json 파일을 읽어들여 핸들바 템플릿에 적용 */
+		$(function() {
+			// get요청을 통한 핸들바 템플릿 태그 조립하기
+			function get_list() {
+				$.get("../share/plugins/goods_list.json", function(req) {
+					// 미리 준비한 HTML틀을 읽어온다.
+					var template = Handlebars.compile($("#goods_item_tmpl")
+							.html());
+					// Ajax 를 통해서 읽어온 JSON 을 템플릿에 병합한다.
+					var html = template(req);
+					// #interest-item-group 에 읽어온 내용을 추가한다.
+					$("#interest-item-group").append(html);
+				});
+			} // 검색 결과를 템플릿을 이용해서 화면에 나타낼 함수 정의 끝
+			/** 함수 호출 -> 이 부분에서 상품 리스트가 화면에 뿌려짐 */
+			get_list();
+		});
 		/** 전체선택 */
 		$(function() {
 			$("#select-all").click(function() {
@@ -210,15 +232,14 @@
 		/** 선택삭제 버튼 */
 		$(function() {
 			$("#select-choice").click(function() {
-				var choice = $(".cart").prop('checked')
-				if(choice) {
-					$("li").remove("#mycart1");
-				} else {
-					return false;
-				}
+				// 전체 체크박스를 탐색한다 (반복문 개념)
+				$("input:checkbox[name=check-select]").each(function() {
+					// 체크가 되었다면 부모(span)의 부모(div)의 부모(li)를 제거한다! byebye!
+					$("input:checkbox[name=check-select]:checked").parent().parent().parent().remove();
+				});
 			});
-			});
-		
+		});
+
 		/** 전체상품 주문 버튼 예외상황 */
 		$("#all-bye").click(function() {
 			var check_list = $(".cart:checked");
@@ -233,7 +254,9 @@
 			var count = $("#cart-qty").text();
 			var put_cart = count;
 			$("#cart-qty").text(put_cart);
-			$("#gotocart").click(function(e) {
+			$("#interest-item-group").on("click",
+					"#gotocart",
+					function(e) {
 				put_cart++;
 				if (put_cart == Number(count) + 1) {
 					$("#cart-qty").text(put_cart);
@@ -245,8 +268,10 @@
 		});
 
 		/** 상품삭제 */
-		$("#delete-one").click(function(e) {
-			$("li").remove("#mycart1");
+		$("#interest-item-group").on("click",
+				"#delete-one",
+				function(e) {
+			$(this).parent().parent().remove();
 		});
 	</script>
 

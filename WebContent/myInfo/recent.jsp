@@ -146,18 +146,18 @@
 		});
 
 		/** 주문하기 */
-		$(".btn-order-item").on("click", function(e) {
+		$("#recent-item-group").on("click", ".btn-order-item", function(e) {
 			location.href = "../pay/orderform.jsp";
 		});
 		/** 최근 본 상품에서 삭제 */
-		$(".btn-delete-item").on("click", function(e) {
+		$("#recent-item-group").on("click",".btn-delete-item", function(e) {
 			$(this).parent().parent().parent().remove();
 		});
 		/** 장바구니 담기 */
 		var count = $("#cart-qty").text();
 		var put_cart = count;
 		$("#cart-qty").text(put_cart);
-		$("#put-cart").on("click", function(e) {
+		$("#recent-item-group").on("click","#put-cart", function(e) {
 			put_cart++;
 			if (put_cart == Number(count) + 1) {
 				$("#cart-qty").text(put_cart);
