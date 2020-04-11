@@ -3,8 +3,8 @@
 <%@ page import="java.net.URLDecoder"%>
 <div class="footer">
 		<div id="topbt">
-		<a style="display:scroll;position:fixed;bottom:100px; right:30px;" href="#">
-			<img src="../share/img/arrow-down.png">
+		<a style="display:scroll;position:fixed;bottom:80px; right:10px;" href="#">
+			<img src="../share/img/top_btn.png">
 		</div>
 	<!-- 하단 네비게이션 고정-->
 	<!--- 소개 4인방 링크 -->

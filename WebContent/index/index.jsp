@@ -176,63 +176,64 @@
 				<h3 id="sale_h3">TIME SALE</h3>
 			</center>
 			<div class="gal_best_main">		
-				<a href="../gallery/goods.jsp">
+				
 				<div class="gal_best">
+				<a href="../gallery/goods.jsp">
 					<div class="gal_sug_img">
 						<img src="../share/img/index_gal_img1.jpg" id="img_sug">
 					</div>
-				</a>
 					<span class="sal_name">강아지간식</span>
+					</a>
 					<hr />
 					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
-				<a href="../gallery/goods.jsp">
 				<div class="gal_best">
+				<a href="../gallery/goods.jsp">
 					<div class="gal_sug_img">
 						<img src="../share/img/index_gal_img2.jpg" id="img_sug">
 					</div>
-				</a>
 					<span class="sal_name">강아지간식</span>
+					</a>
 					<hr />
 					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
-				<a href="../gallery/goods.jsp">
 				<div class="gal_best">
+				<a href="../gallery/goods.jsp">
 					<div class="gal_sug_img">
 						<img src="../share/img/index_gal_img3.jpg" id="img_sug">
 					</div>
-				</a>
 					<span class="sal_name">강아지간식</span>
+					</a>
 					<hr />
 					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
-				<a href="../gallery/goods.jsp">
 				<div class="gal_best">
+				<a href="../gallery/goods.jsp">
 					<div class="gal_sug_img">
 						<img src="../share/img/index_gal_img1.jpg" id="img_sug">
 					</div>
-				</a>
 					<span class="sal_name">강아지간식</span>
+					</a>
 					<hr />
 					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
-				<a href="../gallery/goods.jsp">
 				<div class="gal_best">
+				<a href="../gallery/goods.jsp">
 					<div class="gal_sug_img">
 						<img src="../share/img/index_gal_img2.jpg" id="img_sug">
 					</div>
-				</a>
 					<span class="sal_name">강아지간식</span>
+					</a>
 					<hr />
 					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
-				<a href="../gallery/goods.jsp">
 				<div class="gal_best">
+				<a href="../gallery/goods.jsp">
 					<div class="gal_sug_img">
 						<img src="../share/img/index_gal_img3.jpg" id="img_sug">
 					</div>
-				</a>
 					<span class="sal_name">강아지간식</span>
+					</a>
 					<hr />
 					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
