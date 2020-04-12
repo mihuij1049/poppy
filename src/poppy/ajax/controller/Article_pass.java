@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/api/a_comment.do")
-public class A_comment extends HttpServlet {
+@WebServlet("/api/a_pass")
+public class Article_pass extends HttpServlet {
 
 	
 	private static final long serialVersionUID = 3789034934419212965L;
@@ -22,20 +22,17 @@ public class A_comment extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html"); 
 		
-		String userName = request.getParameter("name_write");
-		String userPass = request.getParameter("pass_write");
-		String comment = request.getParameter("comment_area");
+		String upass = request.getParameter("cs_pass");
 		
-		if (userName == null) { userName = ""; }
-		if (userPass == null) { userPass = ""; }
-		if (comment == null) { comment = ""; }
+		if (upass == null) { upass = ""; }
+
 
 		PrintWriter out = response.getWriter();
-		if (userName.equals("기은혜") && userPass.equals("123456") && comment.equals("안녕")) {
+		if (upass.equals("a123456")) {
 			
 			out.write("<script>window.location.href = '../community/article.jsp';</script>");
 		} else {
-			out.write("<script>alert('입력값을 확인하세요.')</script>");
+			out.write("<script>alert('비밀번호를 확인해주세요..')</script>");
 		}
 	}
 

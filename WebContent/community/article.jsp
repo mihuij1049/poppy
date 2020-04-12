@@ -160,6 +160,27 @@
 .insert {
 	
 }
+
+/** 비밀번호 입력 모달 */
+.content {
+	position: relative;
+}
+.customer_pass {
+margin: auto;
+	display: none;
+	width: 90%;
+	position: absolute;
+	z-index: 1;
+	border: 1px solid #ffc7c1;
+	background: #ffc7c1;
+	text-align: center;
+	margin: auto;
+}
+
+.pass_label {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
 </style>
 </head>
 
@@ -246,7 +267,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="comment-ana" id="comment-ana">
 				<small>회원에게만 댓글권한이 있습니다.</small>
 			</div>
@@ -274,8 +295,20 @@
 			</p>
 			</a>
 		</div>
-		<div id="result"></div>
+		<!--   비밀번호 입력 모달 ------------------------->
+	<div class="customer_pass" id="customer_pass">
+		<b class="plz_pass">비밀번호를 입력해 주세요.</b><br> <label for="cs_pass"
+			class="pass_label">비밀번호</label> <input type="password" name="cs_pass"
+			class="cs_pass" id="cs_pass"><br>
+
+		<div class="cs_pass_2btns">
+			<button type="submit" class="btn btn-sm btn-ok">확인</button>
+			<button type="submit" class="btn btn-inverse btn-sm btn-cancel">취소</button>
+		</div>
 	</div>
+	</div>
+
+	
 	<%@ include file="/share/bottom_tp.jsp"%>
 
 
@@ -285,51 +318,76 @@
 			// 댓글 내용을 text에 담기
 			var original = $(this).parent().prev().children().eq(2).text();
 			// 수정 버튼 클릭시
-			$(".btn-edit").on("click", function(e) {
-				var edit_commit = $(this).text();
-				if (edit_commit=="수정") {
-					var original = $(this).parent().prev().children().eq(2).text();
-					// 댓글 내용을 지워버리기
-					$(this).parent().prev().children().eq(2).text("");
-					
-					// 텍스트 태그를 html에 담기
-					var comment_edit = $("<textarea>");
-					// <textarea class="comment-edit"></textarea> --> 아랫줄 실행시 완성된 HTML 태그
-					comment_edit.addClass('comment_edit');
-					// 생성된 태그에 원래의 댓글 내용 original 추가하기
-					comment_edit.text(original);
-					// "" 로 지운 댓글 내용에 textarea 추가하기
-					$(this).parent().prev().children().eq(2).append(comment_edit);
-					$(this).text("등록");
-					$(this).next().text("취소");
-					
-				} else {
-					// 사용자가  글 내용을 담는다.
-					var result = confirm("수정하시겠습니까?");
-					if(result) {
-						var recommit = $(".comment_edit").val();
-						$(this).parent().prev().children().eq(3).remove();
-						$(this).parent().prev().children().eq(2).text(recommit);
-						$(this).text("수정");
-						$(this).next().text("삭제");
-					} else {
-						return false;
-					}
-					
-					
-				}
-				
-			});
-			
-			
-				
+			$(".btn-edit").on(
+					"click",
+					function(e) {
+						$("#customer_pass").show();
+						var edit_commit = $(this).text();
+						<!-- 비밀번호 확인 -->
+						// 사용자의 입력값을 가져온다.
+			            var upass = $("cs_pass").val();
+			            
+			            $.ajax( {
+			               // 결과를 읽어올 URL --> <form>태그의 action속성
+			               url : "../api/a_pass.do",
+			               // 웹 프로그램에게 데이터를 전송하는 방식 --> <form> 태그의 method 속성
+			               method: "post",
+			               // 전달할 조건값은 사용자의 입력값을 활용하여 JSON형식으로 구성
+			               data: { cs_pass: upass },
+			               // 읽어올 내용의 형식 (생략할 경우 json)
+			               dataType: "html",
+			               // 읽어온 내용을 처리하기 위한 함수
+			               success: function(req) {
+			                  $("#result").html(req);
+			               }
+			            });
+						
+						
+
+						if (edit_commit == "수정") {
+							var original = $(this).parent().prev().children()
+									.eq(2).text();
+							// 댓글 내용을 지워버리기
+							$(this).parent().prev().children().eq(2).text("");
+
+							// 텍스트 태그를 html에 담기
+							var comment_edit = $("<textarea>");
+							// <textarea class="comment-edit"></textarea> --> 아랫줄 실행시 완성된 HTML 태그
+							comment_edit.addClass('comment_edit');
+							// 생성된 태그에 원래의 댓글 내용 original 추가하기
+							comment_edit.text(original);
+							// "" 로 지운 댓글 내용에 textarea 추가하기
+							$(this).parent().prev().children().eq(2).append(
+									comment_edit);
+							$(this).text("등록");
+							$(this).next().text("취소");
+
+						} else {
+							// 사용자가  글 내용을 담는다.
+							var result = confirm("수정하시겠습니까?");
+							if (result) {
+								var recommit = $(".comment_edit").val();
+								$(this).parent().prev().children().eq(3)
+										.remove();
+								$(this).parent().prev().children().eq(2).text(
+										recommit);
+								$(this).text("수정");
+								$(this).next().text("삭제");
+							} else {
+								return false;
+							}
+
+						}
+
+					});
+
 			// 댓글 삭제 버튼 
 			$(".btn-del").on('click', function(e) {
-				var del_cancel=$(this).text();
+				var del_cancel = $(this).text();
 				var original = $(this).parent().prev().children().eq(2).text();
-				
-				if (del_cancel=="삭제") {
-				$(this).parent().parent().remove();
+
+				if (del_cancel == "삭제") {
+					$(this).parent().parent().remove();
 				} else {
 					$(this).parent().prev().children().eq(3).remove();
 					$(this).parent().prev().children().eq(2).text(original);
@@ -337,11 +395,8 @@
 					$(this).prev().text("수정");
 				}
 			});
-			
-		});
 
-		
-		
+		});
 	</script>
 </body>
 
