@@ -246,7 +246,9 @@
 						<h4 class="modal-title">상품 삭제</h4>
 					</div>
 					<div class="modal-body2">
-						<p><span class="delete_message"></span> 상품을 정말 삭제하시겠습니까?</p>
+						<p>
+							<span class="delete_message"></span> 상품을 정말 삭제하시겠습니까?
+						</p>
 					</div>
 					<div class="modal-footer2">
 						<button type="button" class="btn btn2 delete_cancel"
@@ -267,7 +269,7 @@
 	<div class="cart-box clear">
 		<li class="list-item">
 			<div class="word">
-				<input type="checkbox" class="cart cart-size">
+				<input type="checkbox" name="cart_check" class="cart cart-size">
 				<img src="{{url}}" class="cart-img" />
 				
 				<p><b class="name">{{name}}</b></p>
@@ -301,7 +303,7 @@
 	<div class="cart-box2 clear">
 		<li class="list-item">
 			<div class="word">
-				<input type="checkbox" class="cart2 cart-size">
+				<input type="checkbox" name="cart_check" class="cart2 cart-size">
 				<img src="{{url}}" class="cart-img" />
 				<p><b class="name">{{name}}</b></p>
 				<span>배송:2500원[조건]/기본배송</span><br>
@@ -506,14 +508,29 @@
 				var delete_item = $(this).parent().parent().parent();
 				$(document).on("click", ".delete_ok", function(e) {
 					delete_item.remove();
+
+					var length = $(".cart-box").length;
+					for (var i = 0; i < length; i++) {
+						sum_price += parseInt($(".price").eq(i).html());
+					}
+					$("#table_price").html(sum_price);
+					if (sum_price < 30000) {
+						table_delivery = 2500;
+						$("#table_delivery").html(table_delivery);
+					}
+					$("#table_sum").html(sum_price + table_delivery);
+					sum_price = 0;
 				});
 			});
-			
-			$(docuemnt).on("click",".select_delete",function(e) {
+
+			$(document).on("click", ".select_delete", function(e) {
 				$("#myModal2").modal("show");
 				$(".delete_message").html("선택하신");
+				console.log($(".cart-size").eq(0).prop("checked"));
+				$document.on("click", ".delete_ok", function(e) {
+					$(".cart-size").eq(0).prent().prent().prent().remove();
+				});
 			});
-
 
 			$("#like").click(function(e) {
 				alert("해당상품이 관심상품으로 등록되었습니다.")
