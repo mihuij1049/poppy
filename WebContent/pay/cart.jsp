@@ -351,6 +351,7 @@
 					$("#list").append(html);
 
 					var length = $(".cart-box").length;
+					length = $(".cart-box").length;
 					$(".cart-count").html(length);
 
 					for (var i = 0; i < length; i++) {
@@ -523,14 +524,57 @@
 				});
 			});
 
-			$(document).on("click", ".select_delete", function(e) {
-				$("#myModal2").modal("show");
-				$(".delete_message").html("선택하신");
-				console.log($(".cart-size").eq(0).prop("checked"));
-				$document.on("click", ".delete_ok", function(e) {
-					$(".cart-size").eq(0).prent().prent().prent().remove();
-				});
-			});
+			$(document)
+					.on(
+							"click",
+							".select_delete",
+							function(e) {
+								$("#myModal2").modal("show");
+								$(".delete_message").html("선택하신");
+								var ss = "실행";
+								console.log(ss);
+								$(document)
+										.on(
+												"click",
+												".delete_ok",
+												function(e) {
+													var length = $(".cart-box").length;
+													for (var i = 0; i < length; i++) {
+														if ($(".cart-size").eq(
+																i).prop(
+																"checked") == true) {
+															$(".cart-size").eq(
+																	i).parent()
+																	.parent()
+																	.parent()
+																	.remove();
+															i--;
+															length--;
+															$(".cart-count")
+																	.html(
+																			length);
+														}
+													}
+													for (var i = 0; i < length; i++) {
+														sum_price += parseInt($(
+																".price").eq(i)
+																.html());
+													}
+													$("#table_price").html(
+															sum_price);
+													if (sum_price < 30000) {
+														table_delivery = 2500;
+														$("#table_delivery")
+																.html(
+																		table_delivery);
+													}
+													$("#table_sum")
+															.html(
+																	sum_price
+																			+ table_delivery);
+													sum_price = 0;
+												});
+							});
 
 			$("#like").click(function(e) {
 				alert("해당상품이 관심상품으로 등록되었습니다.")
