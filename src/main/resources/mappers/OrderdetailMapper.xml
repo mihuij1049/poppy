@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="OderdetailMapper">
+
+    <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+    <resultMap id="oderdetailMap"
+        type="kr.co.poppy.model.orders">
+        <result property="orderdetailno"    column="orderdetailno" />
+        <result property="odgcode"          column="odgcode" />
+        <result property="odgname"          column="odgname" />
+        <result property="odgprice"         column="odgprice" />
+        <result property="odgsale"          column="odgsale" />
+        <result property="odgdate"          column="odgdate" />
+        <result property="odcate1"          column="odcate1" />
+        <result property="odcate2"          column="odcate2" />
+        <result property="odgdoption"       column="odgdoption" />
+        <result property="odgqty"           column="odgqty" />
+        <result property="regdate"          column="regdate" />
+        <result property="editdate"         column="editdate" />
+        <result property="orderno"          column="orderno" />
+    </resultMap>
+    
+    <!-- 단일행 조회를 위한 기능 정의  -->
+    
+    <!-- 다중행 조회를 위한 기능 정의 -->
+    
+    <!-- 데이터 수 조회를 위한 기능 정의  -->
+    
+    <!-- 데이터 저장을 위한 기능 정의 -->
+    <insert id="insertItem"
+	    parameterType="kr.co.poppy.model.Orderdetail"
+	    useGeneratedKeys="true"
+	    keyProperty="orderdetailno">
+	    INSERT INTO department (odgcode, odgname, odgprice, odgsale, odcate1, odcate2,
+	    odgdoption, odgqty, regdate, editdate, orderno) VALUES (#{odgcode}, #{odgname}, #{odgprice},
+	    #{odgsale}, odcate1, odcate2, #{odgdoption}, #{odgqty}, now(), now(), #{orderno});
+	</insert>
+	
+    <!-- 데이터 삭제를 위한 기능 정의 -->
+    
+    <!-- 데이터 갱신을 위한 기능 정의 -->
+</mapper>

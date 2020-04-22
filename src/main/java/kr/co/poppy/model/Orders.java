@@ -3,7 +3,7 @@ package kr.co.poppy.model;
 import lombok.Data;
 
 @Data
-public class orders {
+public class Orders {
 	// 기본 컬럼
     /** 주문번호(PK) */
     private int orderno;

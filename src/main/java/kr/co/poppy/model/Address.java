@@ -3,7 +3,7 @@ package kr.co.poppy.model;
 import lombok.Data;
 
 @Data
-public class address {
+public class Address {
 	// 기본 컬럼
     /** 주소번호(PK) */
     private int addrno;

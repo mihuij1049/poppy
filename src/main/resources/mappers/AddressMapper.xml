@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="AddressMapper">
+
+    <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+    <resultMap id="addressMap"
+        type="kr.co.poppy.model.orders">
+        <result property="addrno"        column="addrno" />
+        <result property="odname"        column="odname" />
+        <result property="odphone"       column="odphone" />
+        <result property="odemail"       column="odemail" />
+        <result property="zcode"         column="zcode" />
+        <result property="addr1"         column="addr1" />
+        <result property="addr2"         column="addr2" />
+        <result property="regdate"       column="regdate" />
+        <result property="editdate"      column="editdate" />
+        <result property="memno"         column="memno" />
+    </resultMap>
+    
+    <!-- 단일행 조회를 위한 기능 정의  -->
+    
+    <!-- 다중행 조회를 위한 기능 정의 -->
+    <select id="selectList"
+        parameterType="kr.co.poppy.model.Address"
+        resultMap="addressMap">
+        SELECT odname, odphone, odemail, zcode, addr1, addr2 FROM address
+        
+        <where>
+            <if test="memno != 0 and name != ''">
+                memno = #{memno}
+            </if>
+        </where>      
+    </select>
+    
+    <!-- 데이터 수 조회를 위한 기능 정의  -->
+    
+    <!-- 데이터 저장을 위한 기능 정의 -->
+    <insert id="insertItem"
+	    parameterType="kr.co.poppy.model.Address"
+	    useGeneratedKeys="true"
+	    keyProperty="addrno">
+	    INSERT INTO orderdetail (odname, odphone, odemail, zcode, addr1, addr2,
+	    regdate, editdate, memno) VALUES (#{odname}, #{odphone}, #{odemail},
+	    #{zcode}, #{addr1}, #{addr2}, #{regdate}, #{editdate}, #{memno},);
+	</insert>
+	
+    <!-- 데이터 삭제를 위한 기능 정의 -->
+    
+    <!-- 데이터 갱신을 위한 기능 정의 -->
+    <update id="updateItem"
+	    parameterType="kr.co.poppy.model.Address">
+	    UPDATE address SET odname=#{odname}, zcode=#{zcode}, addr1=#{addr1},
+	    addr2=#{addr2}, odphone=#{odphone}, odemail=#{odemail}, editdate=now() 
+	    WHERE memno=#{memno};
+	</update>
+</mapper>
