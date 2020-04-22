@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CartMapper">
+
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+	<resultMap type="kr.co.poppy.model.Cart" id="cartMap">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="cartno" column="cartno" />
+		<result property="cartqty" column="cartqty" />
+		<result property="regdate" column="regdate" />
+		<result property="editdate" column="editdate" />
+		<result property="gddetailno" column="gddetailno" />
+		<result property="memno" column="memno" />
+		<result property="imgname" column="imgname" />
+		<result property="imgext" column="imgext" />
+		<result property="imgpath" column="imgpath" />
+		<result property="imgtype" column="imgtype" />
+		<result property="gname" column="gname" />
+		<result property="deliprice" column="deliprice" />
+		<result property="gprice" column="gprice" />
+		<result property="goodsno" column="goodsno" />
+		<result property="orderno" column="orderno" />
+	</resultMap>
+
+	<!-- 다중행 조회를 위한 기능 정의 -->
+	<select id="selectList" parameterType="kr.co.poppy.model.Cart"
+		resultMap="cartMap">
+		SELECT i.imgname, i.imgext, i.imgpath, i.imgtype, g.gname, o.deliprice,
+		g.gprice, c.cartqty FROM goods g INNER JOIN imgs i ON
+		g.goodsno=i.goodsno INNER JOIN goodsdetail gd ON g.goodsno =
+		gd.goodsno INNER JOIN cart c ON gd.gddetailno = c.gddetailno INNER
+		JOIN orders o ON o.memno = c.memno
+		<where>
+			<if test="cartqty !=null and cartqty!=''">
+				c.memno=#{memno}
+			</if>
+		</where>
+	</select>
+</mapper>
