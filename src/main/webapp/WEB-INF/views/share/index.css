@@ -1,0 +1,268 @@
+@charset "UTF-8";
+.container_in {
+    margin-bottom: 50px;
+}
+
+.container_in a {
+	text-decoration: none;
+	color: #777;
+}
+
+/* 캐러셀 시작 */
+.container_in {
+    margin-top: 5px;
+    padding: 0;
+}
+
+#carousel-example-generic {
+    margin-bottom: 50px;
+}
+
+.carousel-inner>.item>img {
+    min-width: 100%;
+}
+
+.carousel-control {
+    background: none !important;
+}
+
+.item {
+    width: 100%;
+    height: 100%;
+}
+
+/* 캐러샐 끝 */
+
+/* 추천상품 시작 */
+.swiper-pagination {
+    padding-top: 30px;
+    /** 아래 점 컬러! */
+    --swiper-theme-color: #ff8f83;
+}
+
+.swiper-pagination:root {
+	
+    --swiper-theme-color: #ff8f83;
+}
+
+.gal_sug_main {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.gal_sug {
+    display: inline-block;
+    width: 30%;
+    margin: 3px;
+    margin: 3px 3px 20px 3px;
+}
+
+.gal_sug_img {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#img_sug {
+    max-width: 100%;
+    height: auto;
+}
+
+#sale_h3 {
+    color: #ff8f83;
+}
+
+.gal_sug_main hr {
+    margin: 2px 0 2px 0;
+}
+
+/* 추천상품 끝 */
+
+/* 상품갤러리 제목 */
+.sal_name {
+	font-weight: bold;
+	color: #ff8f83;
+}
+/* 상품갤러리 제목 끝 */
+
+/* 타임세일 시작 */
+.gal_best_main {
+    text-align: center;
+}
+
+.gal_best {
+    display: inline-block;
+    width: 30%;
+    margin: 3px;
+    color: #777;
+}
+
+.gal_best_main img {
+    margin-top: 10px;
+}
+
+.gal_best_main hr {
+    margin: 2px 0 2px 0;
+}
+
+/* 타임세일 끝 */
+
+/* 글리피콘, 버튼, 기타옵션 시작 */
+#glyp_gal {
+    float: left;
+    color: #ff8f83;
+    font-size: 15px;
+    margin: 3px;
+}
+
+#glyp_list {
+    font-size: 30px;
+    color: #ff8f83;
+}
+
+.t_btn {
+    margin-top: 30px;
+}
+
+#sale_h3 {
+    margin-top: 0;
+}
+
+.index_btn {
+    width: 80%;
+    height: 50px;
+    font-size: 16px;
+    margin: 20px 0 20px 0;
+}
+
+/* 글리피콘, 버튼, 기타옵션 끝 */
+
+/** 이건 그겁니다. 하트 버튼이요! 누르면 숫자가 올라가는 그거. */
+
+#pay {
+	display: inline-block;
+	float: right;
+}
+
+#pay i {
+	margin: 0px 2px 0px 0px;
+}
+
+#pay p {
+	display: inline-block;
+	float: right;
+	margin: 1px 0px 0px 2px;
+}
+
+#pay .glyphicon-heart {
+	height: 8px;
+	font-size: 20px;
+	color: #ff8f83;
+	margin-right: 10px;
+	z-index: 10000;
+}
+
+#pay .glyphicon-heart-empty {
+	height: 8px;
+	font-size: 20px;
+	color: #ff8f83;
+	margin-right: 10px;
+	z-index: 10000;
+}
+
+/** 하트버튼 끝입니다! */
+
+/* 광고 배너 시작 */
+.img_banner {
+    display: inline-block;
+    text-align: center;
+    margin: 20px 0 30px 0;
+}
+
+.img_banner img {
+    width: 30%;
+}
+
+/* 광고 배너 끝 */
+
+/* 포토리뷰 시작 */
+.pr_box {
+    float: left;
+    width: 50%;
+    padding: 5px;
+}
+
+.pr_box a {
+    display: block;
+    text-decoration: none;
+}
+
+.pr_in_box {
+    border: 1px solid #FF8F83;
+    padding: 5px;
+}
+
+.pr_box .img_size {
+    width: 100%;
+}
+
+.pr_box .icon_size {
+    height: 8px;
+    font-size: 10px;
+}
+
+.pr_box .btn {
+    margin: 10px 0px 0px 0px;
+    padding: 5px 50px 22px 10px;
+    width: 50px;
+    height: 25px;
+    font-size: 12px;
+    font-color: #fff;
+}
+
+.pr_box .btn:active {
+    font-color: #fff;
+}
+
+.pr_box .btn-inverse {
+    margin: 10px 0px 0px 0px;
+    padding: 5px 50px 22px 10px;
+    width: 50px;
+    height: 25px;
+    font-size: 12px;
+    font-color: #ff8f83;
+}
+
+.pr_box .btn-inverse:active {
+    font-color: #ff8f83;
+}
+
+.pr_box hr {
+    margin: 5px 0px 5px 0;
+    padding: 0;
+}
+
+.pr_box h5 {
+    color: #FF8F83;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.pr_content {
+    height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+}
+
+.pr_box .pagination>.active>span {
+    background-color: #FF8F83;
+    border-color: #FF8F83;
+}
+
+.pr_box a {
+    color: #777;
+}
