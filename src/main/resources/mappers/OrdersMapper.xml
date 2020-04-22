@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="OdersMapper">
+
+    <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+    <resultMap id="odersMap"
+        type="kr.co.poppy.model.orders">
+        <result property="orderno"    column="orderno" />
+        <result property="odmsg"      column="odmsg" />
+        <result property="paytype"    column="paytype" />
+        <result property="odstatus"   column="odstatus" />
+        <result property="deliprice"  column="deliprice" />
+        <result property="regdate"    column="regdate" />
+        <result property="editdate"   column="editdate" />
+        <result property="memno"      column="memno" />
+        <result property="addrno"      column="addrno" />
+    </resultMap>
+    
+    
+</mapper>
