@@ -6,7 +6,7 @@
 
     <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
     <resultMap id="odersMap"
-        type="kr.co.poppy.model.orders">
+        type="kr.co.poppy.model.Orders">
         <result property="orderno"     column="orderno" />
         <result property="odmsg"       column="odmsg" />
         <result property="paytype"     column="paytype" />
