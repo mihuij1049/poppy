@@ -5,7 +5,7 @@
 <html lang="ko">
 
 <head>
-<%@ include file="/share/head_tp.jsp"%>
+<%@ include file="../share/head_tp.jsp"%>
 <style type="text/css">
 .message {
 	border-top: 1px solid #ff6261;
@@ -71,7 +71,7 @@
 </head>
 
 <body>
-	<%@ include file="/share/top_tp.jsp"%>
+	<%@ include file="../share/top_tp.jsp"%>
 	<div class="content">
 		<!-- 여기에 작성 -->
 		<div class="container">
@@ -98,7 +98,7 @@
 				onclick="location.href='login.jsp'">지금 로그인 하러 가기</button>
 		</div>
 	</div>
-	<%@ include file="/share/bottom_tp.jsp"%>
+	<%@ include file="../share/bottom_tp.jsp"%>
 	</script>
 </body>
 

@@ -6,7 +6,7 @@
 <html>
 
 <head>
-<%@ include file="/share/head_tp.jsp"%>
+<%@ include file="../share/head_tp.jsp"%>
 <style type="text/css">
 .subject {
 	margin: 20px 15px;
@@ -185,7 +185,7 @@ margin: auto;
 </head>
 
 <body>
-	<%@ include file="/share/top_tp.jsp"%>
+	<%@ include file="../share/top_tp.jsp"%>
 	<div class="content">
 		<!-- 여기에 작성 -->
 		<div class="container">
@@ -309,7 +309,7 @@ margin: auto;
 	</div>
 
 	
-	<%@ include file="/share/bottom_tp.jsp"%>
+	<%@ include file="../share/bottom_tp.jsp"%>
 
 
 	<script type="text/javascript">
@@ -323,7 +323,7 @@ margin: auto;
 					function(e) {
 						$("#customer_pass").show();
 						var edit_commit = $(this).text();
-						<!-- 비밀번호 확인 -->
+						
 						// 사용자의 입력값을 가져온다.
 			            var upass = $("cs_pass").val();
 			            
