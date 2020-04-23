@@ -3,7 +3,7 @@ package kr.co.poppy.model;
 import lombok.Data;
 
 @Data
-public class rvheart {
+public class Rvheart {
 	// 1) 기본 컬럼
 	/** 포토리뷰 추천 일련번호 */
 	private int rvhearno;

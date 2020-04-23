@@ -3,7 +3,7 @@ package kr.co.poppy.model;
 import lombok.Data;
 
 @Data
-public class agree {
+public class Agree {
 	// 1) 기본 컬럼
 	/** 약관동의 일련번호 */
 	private int agreeno;
