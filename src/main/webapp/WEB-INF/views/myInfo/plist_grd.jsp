@@ -5,7 +5,7 @@
 <html lang="ko">
 
 <head>
-<%@ include file="/share/head_tp.jsp"%>
+<%@ include file="../share/head_tp.jsp"%>
 <style type="text/css">
 .plist_nota {
 	margin-top: 20px;
@@ -67,7 +67,7 @@
 </head>
 
 <body>
-	<%@ include file="/share/top_tp.jsp"%>
+	<%@ include file="../share/top_tp.jsp"%>
 	<div class="content">
 		<!-- 여기에 작성 -->
 		<div class="page-title clearfix">
@@ -106,7 +106,7 @@
 				</ul>
 			</div>
 		</div>
-		<%@ include file="/share/bottom_tp.jsp"%>
+		<%@ include file="../share/bottom_tp.jsp"%>
 
 		<script src="../share/assets/js/jquery-3.2.1.min.js"></script>
 		<script src="../share/assets/js/bootstrap.min.js"></script>

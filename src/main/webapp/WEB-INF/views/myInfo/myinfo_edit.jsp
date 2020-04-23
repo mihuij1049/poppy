@@ -5,7 +5,7 @@
 <html lang="ko">
 
 <head>
-<%@ include file="/share/head_tp.jsp"%>
+<%@ include file="../share/head_tp.jsp"%>
 <!-- 플러그인 CSS 참조 -->
 <link rel="stylesheet"
 	href="../share/plugins/sweetalert/sweetalert2.min.css" />
@@ -144,7 +144,7 @@ button p {
 </head>
 
 <body>
-	<%@ include file="/share/top_tp.jsp"%>
+	<%@ include file="../share/top_tp.jsp"%>
 	<div class="content">
 		<!-- 여기에 작성 -->
 		<div class="page-title clearfix">
@@ -198,7 +198,7 @@ button p {
 			</form>
 		</div>
 	</div>
-	<%@ include file="/share/bottom_tp.jsp"%>
+	<%@ include file="../share/bottom_tp.jsp"%>
 	<!-- 플러그인 JS 참조 -->
 	<script src="../share/plugins/validate/jquery.validate.min.js"></script>
 	<script src="../share/plugins/validate/additional-methods.min.js"></script>

@@ -5,7 +5,7 @@
 <html lang="ko">
 
 <head>
-<%@ include file="/share/head_tp.jsp"%>
+<%@ include file="../share/head_tp.jsp"%>
 <style type="text/css">
 /** 상단 네비 탭 시ㅣ작 */
 .agree_nav {
@@ -103,7 +103,7 @@
 </head>
 
 <body>
-	<%@ include file="/share/top_tp.jsp"%>
+	<%@ include file="../share/top_tp.jsp"%>
 	<div class="content">
 		<!-- 여기에 작성 -->
 		<div class="container">
@@ -526,7 +526,7 @@
 		</div>
 	</div>
 	</div>
-	<%@ include file="/share/bottom_tp.jsp"%>
+	<%@ include file="../share/bottom_tp.jsp"%>
 	<!-- Javascript -->
 	<script src="../share/assets/js/jquery-3.2.1.min.js"></script>
 	<script src="../share/assets/js/bootstrap.min.js"></script>
