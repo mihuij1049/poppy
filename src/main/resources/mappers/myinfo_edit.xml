@@ -5,7 +5,27 @@
 <mapper namespace="myinfo_edit">
 	<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
 	<resultMap id="myinfo_edit"
-		type="kr.co.poppy.model.members">
+		type="kr.co.poppy.model.Members">
+		<result property="memno" 		column="memno" />
+		<result property="userid" 		column="userid" />
+		<result property="userpw" 		column="userpw" />
+		<result property="username" 	column="username" />
+		<result property="userphone" 	column="userphone" />
+		<result property="useremail" 	column="useremail" />
+		<result property="redgdate" 	column="regdate" />
+		<result property="editdate"		column="editdate" />
 	</resultMap>
-
+	
+	<!-- 회원 정보 조회(수정 불가능 부분) -->
+	<select id="selectinfo"
+		parameterType="kr.co.poppy.model.Members"
+		resultMap="myinfo_edit">
+		SELECT userid, username FROM members WHERE memno=#{memno}
+	</select>
+	
+	<!-- 회원 정보 수정 -->
+	<update id="updateinfo"
+		parameterType="kr.co.poppy.model.Members">
+		UPDATE member SET userpw=#{userpw}, userphone=#{userphone}, useremail=#{useremail}, editdate=#{editdate} WHERE memno=#{memno}
+	</update>
 </mapper>
