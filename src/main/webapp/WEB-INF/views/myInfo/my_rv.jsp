@@ -5,7 +5,7 @@
 <html>
 
 <head>
-<%@ include file="/share/head_tp.jsp"%>
+<%@ include file="../share/head_tp.jsp"%>
 <style type="text/css">
 .tabtab {
 	margin-top: 10px;
@@ -120,7 +120,7 @@
 </head>
 
 <body>
-	<%@ include file="/share/top_tp.jsp"%>
+	<%@ include file="../share/top_tp.jsp"%>
 	<div class="content">
 		<!-- 여기에 작성 -->
 
@@ -183,7 +183,7 @@
 	</div>
 	</div>
 
-	<%@ include file="/share/bottom_tp.jsp"%>
+	<%@ include file="../share/bottom_tp.jsp"%>
 	<!-- Javascript -->
 	<script type="text/javascript">
 		$(function() {
