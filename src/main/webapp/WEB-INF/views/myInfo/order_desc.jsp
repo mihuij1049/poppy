@@ -5,7 +5,7 @@
 <html lang="ko">
 
 <head>
-<%@ include file="/share/head_tp.jsp"%>
+<%@ include file="../share/head_tp.jsp"%>
 <style type="text/css">
 /** 아코디언 클릭이벤트시 화살표 transform 회전 */
 .rotate1 {
@@ -173,7 +173,7 @@ p.prd-name {
 </head>
 
 <body>
-	<%@ include file="/share/top_tp.jsp"%>
+	<%@ include file="../share/top_tp.jsp"%>
 	<div class="content">
 		<!-- 여기에 작성 -->
 		<div class="container">
@@ -395,7 +395,7 @@ p.prd-name {
 		<!-- end container -->
 	</div>
 	<!-- end content -->
-	<%@ include file="/share/bottom_tp.jsp"%>
+	<%@ include file="../share/bottom_tp.jsp"%>
 	<script type="text/javascript">
 		$(function() {
 			$("#headingOne").on('click', function() {

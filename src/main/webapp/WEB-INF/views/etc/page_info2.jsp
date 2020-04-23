@@ -5,7 +5,7 @@
 <html lang="ko">
 
 <head>
-<%@ include file="/share/head_tp.jsp"%>
+<%@ include file="../share/head_tp.jsp"%>
 <style type="text/css">
 .terms {
 	border: 1px solid #ffc7c1;
@@ -20,7 +20,7 @@
 </head>
 
 <body>
-	<%@ include file="/share/top_tp.jsp"%>
+	<%@ include file="../share/top_tp.jsp"%>
 	<div class="content">
 		<!-- 여기에 작성 -->
 		<div class="container">
@@ -268,7 +268,7 @@
 				부 칙(시행일) 이 약관은 년 월 일부터 시행합니다. 부 칙(시행일) 이 약관은 년 월 일부터 시행합니다. <br>
 			</div>
 		</div>
-		<%@ include file="/share/bottom_tp.jsp"%>
+		<%@ include file="../share/bottom_tp.jsp"%>
 		</script>
 </body>
 

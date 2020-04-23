@@ -6,7 +6,7 @@
 
 <head>
 
-<%@ include file="/share/head_tp.jsp"%>
+<%@ include file="../share/head_tp.jsp"%>
 <style type="text/css">
 .login {
 	margin: 80px 30px;
@@ -59,7 +59,7 @@ input[type="text"], input[type="password"] {
 </head>
 
 <body>
-	<%@ include file="/share/top_tp.jsp"%>
+	<%@ include file="../share/top_tp.jsp"%>
 	<div class="content">
 		<!-- 여기에 작성 -->
 		<div class="container">
@@ -94,7 +94,7 @@ input[type="text"], input[type="password"] {
 			<div id="result"></div>
 		</div>
 	</div>
-	<%@ include file="/share/bottom_tp.jsp"%>
+	<%@ include file="../share/bottom_tp.jsp"%>
 	<script type="text/javascript">
 	$(function() {
 		$("#login").submit(function(e) {

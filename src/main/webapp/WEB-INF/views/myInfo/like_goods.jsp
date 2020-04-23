@@ -5,7 +5,7 @@
 <html>
 
 <head>
-<%@ include file="/share/head_tp.jsp"%>
+<%@ include file="../share/head_tp.jsp"%>
 <style type="text/css">
 .align {
 	width: 96%;
@@ -130,7 +130,7 @@
 </head>
 
 <body>
-	<%@ include file="/share/top_tp.jsp"%>
+	<%@ include file="../share/top_tp.jsp"%>
 	<div class="content">
 		<!-- 여기에 작성 -->
 
@@ -161,7 +161,7 @@
 		</div>
 
 	</div>
-	<%@ include file="/share/bottom_tp.jsp"%>
+	<%@ include file="../share/bottom_tp.jsp"%>
 	<!-- 여기서부터 핸들바 템플릿 구조 만들기 -->
 	<script id="goods_item_tmpl" type="text/x-handlebars-template">
 	{{#each goods}}

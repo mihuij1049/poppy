@@ -10,9 +10,9 @@
 	<!--- 소개 4인방 링크 -->
 	<hr />
 	<div class="etc">
-		<a href="${pageContext.request.contextPath }/etc/page_info1.jsp">회사소개</a> <a
-			href="${pageContext.request.contextPath }/etc/page_info2.jsp">이용약관</a> <a href="${pageContext.request.contextPath }/etc/page_info3.jsp">개인정보취급방침</a>
-		<a href="${pageContext.request.contextPath }/etc/page_info4.jsp">이용안내</a>
+		<a href="${pageContext.request.contextPath }/etc/page_info1.do">회사소개</a> <a
+			href="${pageContext.request.contextPath }/etc/page_info2.do">이용약관</a> <a href="${pageContext.request.contextPath }/etc/page_info3.jsp">개인정보취급방침</a>
+		<a href="${pageContext.request.contextPath }/etc/page_info4.do">이용안내</a>
 	</div>
 	<hr />
 	<div class="row">
@@ -64,11 +64,11 @@
 								aria-hidden="true">&times;</button>
 						</div>
 						<div class="community_md_content">
-							<a href="${pageContext.request.contextPath }/community/notice.jsp"><div class="cmu_menu">공지사항</div></a>
+							<a href="${pageContext.request.contextPath }/community/notice.do"><div class="cmu_menu">공지사항</div></a>
 							<hr />
-							<a href="${pageContext.request.contextPath }/community/photo_rv.jsp"><div class="cmu_menu">포토리뷰</div></a>
+							<a href="${pageContext.request.contextPath }/community/photo_rv.do"><div class="cmu_menu">포토리뷰</div></a>
 							<hr />
-							<a href="${pageContext.request.contextPath }/community/qna.jsp"><div class="cmu_menu">Q
+							<a href="${pageContext.request.contextPath }/community/qna.do"><div class="cmu_menu">Q
 									& A</div></a>
 						</div>
 						<div class="community_md_footer"></div>
@@ -79,7 +79,7 @@
 			</div>
 			<!-- /.modal -->
 			<!-- 커뮤니티탭 영역 끝!-->
-			<a href="${pageContext.request.contextPath }/myInfo/order_list.jsp"> <span
+			<a href="${pageContext.request.contextPath }/myInfo/order_list.do"> <span
 				class="glyphicon glyphicon-list-alt">
 					<p>주문조회</p>
 			</span>
@@ -142,10 +142,10 @@
 						<div class="modal-body footer-body clearfix">
 							<div class="footer-buttons ">
 								<button type="button"
-									onclick="location.href='${pageContext.request.contextPath }/member/login.jsp'"
+									onclick="location.href='${pageContext.request.contextPath }/member/login.do'"
 									class="btn btn-footer btn-sm">로그인</button>
 								<button type="button"
-									onclick="location.href='${pageContext.request.contextPath }/member/agree_0.jsp'"
+									onclick="location.href='${pageContext.request.contextPath }/member/agree_0.do'"
 									class="btn btn-footer btn-sm">회원가입</button>
 							</div>
 							<div class="footer-category">
@@ -334,7 +334,7 @@
 					<p>카테고리</p>
 			</span> </a>
 			<!-- 화면 영역 끝 -->
-			<a href="${pageContext.request.contextPath }/myInfo/myinfo.jsp"> <span
+			<a href="${pageContext.request.contextPath }/myInfo/myinfo.do"> <span
 				class="glyphicon glyphicon-user">
 					<p>MY정보</p>
 			</span>

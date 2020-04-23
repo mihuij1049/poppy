@@ -5,7 +5,7 @@
 <html lang="ko">
 
 <head>
-<%@ include file="/share/head_tp.jsp"%>
+<%@ include file="../share/head_tp.jsp"%>
 <style type="text/css">
 .choice {
 	margin-top: 20px;
@@ -229,7 +229,7 @@ a {
 </head>
 
 <body>
-	<%@ include file="/share/top_tp.jsp"%>
+	<%@ include file="../share/top_tp.jsp"%>
 
 	<div class="content">
 		<!-- 여기에 작성 -->
@@ -366,7 +366,7 @@ a {
 			</div>
 		</div>
 	</div>
-	<%@ include file="/share/bottom_tp.jsp"%>
+	<%@ include file="../share/bottom_tp.jsp"%>
 	<!-- Handlebars 를 이용한 HTML 템플릿 구성 -->
 	<script id="goods_item_tmpl" type="text/x-handlebars-template">
 		{{#each goods}}
