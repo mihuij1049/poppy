@@ -5,7 +5,7 @@
 <html lang="ko">
 
 <head>
-<%@ include file="/share/head_tp.jsp"%>
+<%@ include file="../share/head_tp.jsp"%>
 <style type="text/css">
 .content .container {
 	width: 96%;
@@ -75,7 +75,7 @@
 </head>
 
 <body>
-	<%@ include file="/share/top_tp.jsp"%>
+	<%@ include file="../share/top_tp.jsp"%>
 	<div class="content">
 		<!-- 여기에 작성 -->
 		<div class="container">
@@ -95,13 +95,13 @@
 					class="info-email">abc123@naver.com</span>
 			</div>
 			<div class="btns">
-				<a href="../index/index.jsp">
+				<a href="${pageContext.request.contextPath}../index/index.do">
 					<button type="button" class="btn btn2">완료</button>
 				</a>
 			</div>
 		</div>
 	</div>
-	<%@ include file="/share/bottom_tp.jsp"%>
+	<%@ include file="../share/bottom_tp.jsp"%>
 	<!-- Javascript -->
 	<script type="text/javascript">
 		

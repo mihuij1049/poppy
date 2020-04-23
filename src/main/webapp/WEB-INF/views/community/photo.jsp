@@ -5,7 +5,7 @@
 <html lang="ko">
 
 <head>
-<%@ include file="/share/head_tp.jsp"%>
+<%@ include file="../share/head_tp.jsp"%>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -112,7 +112,7 @@ p {
 </head>
 
 <body>
-	<%@ include file="/share/top_tp.jsp"%>
+	<%@ include file="../share/top_tp.jsp"%>
 
 	<div class="content">
 		<!-- 여기에 작성 -->
@@ -126,10 +126,11 @@ p {
 		<div class="container">
 			<img src="../share/img/img1.jpg" alt="리뷰사진" class="big-image">
 			<div class="info-box">
-				<a href="../gallery/goods.jsp"><img src="../share/img/4_M.jpg"
-					class="small-image"></a>
+				<a href="${pageContext.request.contextPath}../gallery/goods.do"><img
+					src="../share/img/4_M.jpg" class="small-image"></a>
 				<div class="info-content clear">
-					<a href="../gallery/goods.jsp">펫클럽 데이스포 케어츄르 15gX4개입/고양이츄르간식</a><br>
+					<a href="${pageContext.request.contextPath}../gallery/goods.do">펫클럽
+						데이스포 케어츄르 15gX4개입/고양이츄르간식</a><br>
 					<div class="star">
 						<p>★★★★★</p>
 						<p>(5.0)</p>
@@ -156,7 +157,7 @@ p {
 			</div>
 		</div>
 	</div>
-	<%@ include file="/share/bottom_tp.jsp"%>
+	<%@ include file="../share/bottom_tp.jsp"%>
 	<!-- Javascript -->
 	<script type="text/javascript">
 		$(function() {

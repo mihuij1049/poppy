@@ -5,7 +5,7 @@
 <html lang="ko">
 
 <head>
-<%@ include file="/share/head_tp.jsp"%>
+<%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css" href="cart.css" />
 <meta charset="utf-8" />
 <meta name="viewport"
@@ -125,7 +125,7 @@
 </head>
 
 <body>
-	<%@ include file="/share/top_tp.jsp"%>
+	<%@ include file="../share/top_tp.jsp"%>
 	<div class="content">
 		<!-- 여기에 작성 -->
 		<div class="page-title clearfix">
@@ -182,8 +182,9 @@
 					</table>
 					<div class="pay">
 						<button class="btn btn2 btn-inverse"
-							onclick="location.href='orderform.jsp'">선택상품주문</button>
-						<button class="btn btn2" onclick="location.href='orderform.jsp'">
+							onclick="location.href='${pageContext.request.contextPath}/orderform.do'">선택상품주문</button>
+						<button class="btn btn2"
+							onclick="location.href='${pageContext.request.contextPath}/orderform.do'">
 							전체상품주문</button>
 					</div>
 				</div>
@@ -225,8 +226,9 @@
 					</table>
 					<div class="pay">
 						<button class="btn btn2 btn-inverse"
-							onclick="location.href='orderform.jsp'">선택상품주문</button>
-						<button class="btn btn2" onclick="location.href='orderform.jsp'">
+							onclick="location.href='${pageContext.request.contextPath}/orderform.do'">선택상품주문</button>
+						<button class="btn btn2"
+							onclick="location.href='${pageContext.request.contextPath}/orderform.do'">
 							전체상품주문</button>
 					</div>
 				</div>
@@ -262,7 +264,7 @@
 	</div>
 
 	<!-- Javascript -->
-	<%@ include file="/share/bottom_tp.jsp"%>
+	<%@ include file="../share/bottom_tp.jsp"%>
 	<script src="../share/plugins/handlebars/handlebars-v4.0.5.js"></script>
 	<script type="text/x-handlebars-template" id="list-item-tmpl">
 	{{#each goods}}

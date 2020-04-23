@@ -10,7 +10,7 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>Poppy-Poppy</title>
-<%@ include file="/share/head_tp.jsp"%>
+<%@ include file="../share/head_tp.jsp"%>
 <!-- 플러그인 CSS 참조 -->
 <link rel="stylesheet"
 	href="../share/plugins/sweetalert/sweetalert2.min.css" />
@@ -327,7 +327,7 @@ a {
 </head>
 
 <body>
-	<%@ include file="/share/top_tp.jsp"%>
+	<%@ include file="../share/top_tp.jsp"%>
 	<div class="content">
 		<!-- 여기에 작성 -->
 		<div class="page-title clearfix">
@@ -374,7 +374,7 @@ a {
 		<!-- 모달창 끝 -->
 		<div class="container">
 			<form class="form-horizontal" name="wri_form" id="wri_form"
-				action="photo_rv.jsp">
+				action="${pageContext.request.contextPath}/photo_rv.do">
 				<div class="select">
 					<div class="choice clearfix">
 						<div class="col-xs-4">
@@ -462,13 +462,13 @@ a {
 				<div class="sign">
 					<button type="submit" class="btn btn2">등록</button>
 					<button type="reset" class="btn btn2 btn-inverse"
-						onclick="location.href='photo_rv.jsp'">취소</button>
+						onclick="location.href='${pageContext.request.contextPath}/photo_rv.do'">취소</button>
 				</div>
 			</form>
 		</div>
 	</div>
 	<!-- Javascript -->
-	<%@ include file="/share/bottom_tp.jsp"%>
+	<%@ include file="../share/bottom_tp.jsp"%>
 	<script id="goods_item_tmpl" type="text/x-handlebars-template">
 		{{#each goods}}
 			<li class="search-list-item">

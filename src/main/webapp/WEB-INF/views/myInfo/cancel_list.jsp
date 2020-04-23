@@ -5,7 +5,7 @@
 <html lang="ko">
 
 <head>
-<%@ include file="/share/head_tp.jsp"%>
+<%@ include file="../share/head_tp.jsp"%>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -236,7 +236,7 @@
 </head>
 
 <body>
-	<%@ include file="/share/top_tp.jsp"%>
+	<%@ include file="../share/top_tp.jsp"%>
 	<div class="content">
 		<!-- 취소/교환/반품내역 -->
 		<div class="page-title clearfix">
@@ -248,8 +248,10 @@
 		</div>
 		<div class="container">
 			<ul class="nav nav-tabs">
-				<li class="col-xs-6 etc"><a href="order_list.jsp">주문조회</a></li>
-				<li class="active col-xs-6 etc"><a href="cancel_list.jsp">취소/교환/반품내역</a></li>
+				<li class="col-xs-6 etc"><a
+					href="${pageContext.request.contextPath}/order_list.do">주문조회</a></li>
+				<li class="active col-xs-6 etc"><a
+					href="${pageContext.request.contextPath}/cancel_list.do">취소/교환/반품내역</a></li>
 			</ul>
 			<div class="backg fade in">
 				<div class="container">
@@ -275,20 +277,23 @@
 			</div>
 			<div class="view">
 				<span class="date" title="주문일자"> 2020-03-18 </span> <span
-					class="number" title="주문번호"> <a href="order_desc.jsp">
+					class="number" title="주문번호"> <a
+					href="${pageContext.request.contextPath}/order_desc.do">
 						(20200318-0000195) </a>
-				</span> <a href="order_desc.jsp" class="btn-detail"><span id="GGuc">&#62;</span>상세보기</a>
+				</span> <a href="${pageContext.request.contextPath}/order_desc.do"
+					class="btn-detail"><span id="GGuc">&#62;</span>상세보기</a>
 			</div>
 			<div class="prd-info">
 				<div class="prd-box">
 					<div class="thumbnail">
-						<a href="../gallery/goods.jsp"> <img
-							src="../share/img/slide.jpg" width="70" height="70">
+						<a href="..${pageContext.request.contextPath}/gallery/goods.do">
+							<img src="../share/img/slide.jpg" width="70" height="70">
 						</a>
 					</div>
 					<div class="prd-content">
 						<strong class="prd-name" title="상품명"> <a
-							href="../gallery/goods.jsp">펫클럽 세나개 고부해 사은품 증정</a>
+							href="${pageContext.request.contextPath}../gallery/goods.do">펫클럽
+								세나개 고부해 사은품 증정</a>
 						</strong>
 						<ul class="prd-li">
 							<li><span class="price" title="판매가"> <strong>14,000</strong>원
@@ -314,7 +319,7 @@
 		</div>
 	</div>
 	<!-- Javascript -->
-	<%@ include file="/share/bottom_tp.jsp"%>
+	<%@ include file="../share/bottom_tp.jsp"%>
 	<!-- 플러그인 JS 참조 -->
 	<script src="../share/plugins/datepicker/datepicker.min.js"></script>
 	<script src="../share/plugins/datepicker/datepicker.ko-KR.js"></script>
