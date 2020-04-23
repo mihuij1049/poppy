@@ -4,7 +4,7 @@
 <html lang="ko">
 
 <head>
-    <%@ include file="/share/head_tp.jsp"%>
+    <%@ include file="../share/head_tp.jsp"%>
     <style type="text/css">
         .info {
             margin-top: 20px;
@@ -93,7 +93,7 @@
 </head>
 
 <body>
-    <%@ include file="/share/top_tp.jsp"%>
+    <%@ include file="../share/top_tp.jsp"%>
     <div class="content">
         <div class="container">
             <div class="page-title clearfix">
@@ -352,7 +352,7 @@
         </div>
     </div>
 </div>
-<%@ include file="/share/bottom_tp.jsp" %>
+<%@ include file="../share/bottom_tp.jsp" %>
 <!-- Javascript -->
 <script type="text/javascript">
     $(function() {

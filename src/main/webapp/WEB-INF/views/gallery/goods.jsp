@@ -33,7 +33,7 @@
         <link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
         <script type="text/javascript" src="assets/js/ie10.js"></script>
     <![endif]-->
-<%@ include file="/share/head_tp.jsp"%>
+<%@ include file="../share/head_tp.jsp"%>
 <style type="text/css">
 .product {
 	margin-top: 10px;
@@ -698,7 +698,7 @@ dl {
 </head>
 
 <body>
-	<%@ include file="/share/top_tp.jsp"%>
+	<%@ include file="../share/top_tp.jsp"%>
 	<div class="content">
 		<!-- 여기에 작성 -->
 		<div class="page-title clearfix">

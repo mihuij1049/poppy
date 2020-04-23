@@ -4,7 +4,7 @@
 <html lang="ko">
 
 <head>
-    <%@ include file="/share/head_tp.jsp"%>
+    <%@ include file="../share/head_tp.jsp"%>
     <style type="text/css">
 
         .notice {
@@ -103,7 +103,7 @@
 </head>
 
 <body>
-    <%@ include file="/share/top_tp.jsp"%>
+    <%@ include file="../share/top_tp.jsp"%>
     <div class="content">
         <div class="page-title clearfix">
          <h4><b>
@@ -169,7 +169,7 @@
     </div>
 </div>
 </div>
-<%@ include file="/share/bottom_tp.jsp"%>
+<%@ include file="../share/bottom_tp.jsp"%>
 </body>
 
 </html>
