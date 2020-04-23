@@ -20,4 +20,9 @@
 		<result property="regdate" column="regdate" />
 		<result property="editdate" column="editdate" />
 	</resultMap>
+	
+	<!-- 단일행 조회를 위한 기능 정의 -->
+	<select id="selectItem">
+		
+	</select>
 </mapper>
