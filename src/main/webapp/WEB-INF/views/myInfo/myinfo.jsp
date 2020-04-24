@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -134,26 +135,26 @@
 			</div>
 			<div class="myinfo-list clearfix">
 				<div id="list-alt" class="myinfo-list-item">
-					<a href="order_list.jsp"><span
+					<a href="${pageContext.request.contextPath}/myInfo/order_list.do"><span
 						class="glyphicon glyphicon-list-alt"></span></span><br>주문조회 </a>
 				</div>
 				<div id="user" class="myinfo-list-item">
-					<a href="myinfo_edit.jsp"><span
+					<a href="${pageContext.request.contextPath}/myInfo/myinfo_edit.do"><span
 						class="glyphicon glyphicon-user"></span><br>내정보수정</a>
 				</div>
 				<div id="thumb" class="myinfo-list-item">
-					<a href="like_goods.jsp"><span
+					<a href="${pageContext.request.contextPath}/myInfo/like_goods.do"><span
 						class="glyphicon glyphicon-thumbs-up"></span><br>좋아요</a>
 				</div>
 				<div id="point" class="myinfo-list-item">
-					<a href="point.jsp"><span class="glyphicon glyphicon-usd"></span><br>적립금</a>
+					<a href="${pageContext.request.contextPath}/myInfo/point.do"><span class="glyphicon glyphicon-usd"></span><br>적립금</a>
 				</div>
 				<div id="commu" class="myinfo-list-item">
-					<a href="my_rv.jsp"><span
+					<a href="${pageContext.request.contextPath}/myInfo/my_rv.do"><span
 						class="glyphicon glyphicon-folder-open"></span><br>후기관리</a>
 				</div>
 				<div id="recent" class="myinfo-list-item">
-					<a href="recent.jsp"><span class="glyphicon glyphicon-eye-open"></span><br>최근본상품</a>
+					<a href="${pageContext.request.contextPath}/myInfo/recent.do"><span class="glyphicon glyphicon-eye-open"></span><br>최근본상품</a>
 				</div>
 			</div>
 		</div>
