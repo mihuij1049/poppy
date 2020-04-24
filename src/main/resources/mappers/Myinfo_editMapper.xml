@@ -12,7 +12,7 @@
 		<result property="username" 	column="username" />
 		<result property="userphone" 	column="userphone" />
 		<result property="useremail" 	column="useremail" />
-		<result property="redgdate" 	column="regdate" />
+		<result property="regdate" 		column="regdate" />
 		<result property="editdate"		column="editdate" />
 	</resultMap>
 	
