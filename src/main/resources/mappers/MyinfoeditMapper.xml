@@ -19,7 +19,7 @@
 	<!-- 회원 정보 조회(수정 불가능 부분) -->
 	<select id="selectinfo"
 		parameterType="kr.co.poppy.model.Members"
-		resultMap="myinfo_edit">
+		resultMap="myinfoedit">
 		SELECT userid, username FROM members WHERE memno=#{memno}
 	</select>
 	
