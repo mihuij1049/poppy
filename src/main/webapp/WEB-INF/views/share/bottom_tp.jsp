@@ -11,7 +11,7 @@
 	<hr />
 	<div class="etc">
 		<a href="${pageContext.request.contextPath }/etc/page_info1.do">회사소개</a> <a
-			href="${pageContext.request.contextPath }/etc/page_info2.do">이용약관</a> <a href="${pageContext.request.contextPath }/etc/page_info3.jsp">개인정보취급방침</a>
+			href="${pageContext.request.contextPath }/etc/page_info2.do">이용약관</a> <a href="${pageContext.request.contextPath }/etc/page_info3.do">개인정보취급방침</a>
 		<a href="${pageContext.request.contextPath }/etc/page_info4.do">이용안내</a>
 	</div>
 	<hr />

@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
 <%@ include file="../share/head_tp.jsp"%>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/share/cart.css" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/share/cart.css" />
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -183,9 +184,9 @@
 					</table>
 					<div class="pay">
 						<button class="btn btn2 btn-inverse"
-							onclick="location.href='${pageContext.request.contextPath}/orderform.do'">선택상품주문</button>
+							onclick="location.href='${pageContext.request.contextPath}/pay/orderform.do'">선택상품주문</button>
 						<button class="btn btn2"
-							onclick="location.href='${pageContext.request.contextPath}/orderform.do'">
+							onclick="location.href='${pageContext.request.contextPath}/pay/orderform.do'">
 							전체상품주문</button>
 					</div>
 				</div>
@@ -227,9 +228,9 @@
 					</table>
 					<div class="pay">
 						<button class="btn btn2 btn-inverse"
-							onclick="location.href='${pageContext.request.contextPath}/orderform.do'">선택상품주문</button>
+							onclick="location.href='${pageContext.request.contextPath}/pay/orderform.do'">선택상품주문</button>
 						<button class="btn btn2"
-							onclick="location.href='${pageContext.request.contextPath}/orderform.do'">
+							onclick="location.href='${pageContext.request.contextPath}/pay/orderform.do'">
 							전체상품주문</button>
 					</div>
 				</div>
@@ -295,7 +296,7 @@
 				<p><b>합계: <span class="price">{{price}}</span>원</b></p>
 				<button type="button" class="delete">삭제</button>
 				<button type="button">관심상품</button>
-				<button type="button" class="btn btn2">주문하기</button>
+				<button type="button" class="btn btn2" onclick="location.href='${pageContext.request.contextPath}/pay/orderform.do'">주문하기</button>
 			</div>
 		</li>
 	</div>
@@ -328,7 +329,7 @@
 				<p><b>합계: <span class="price">{{price}}</span>원</b></p>
 				<button type="button">삭제</button>
 				<button type="button">관심상품</button>
-				<button type="button" class="btn btn2">주문하기</button>
+				<button type="button" class="btn btn2" onclick="location.href='${pageContext.request.contextPath}/pay/orderform.do'">주문하기</button>
 			</div>
 		</li>
 	</div>
