@@ -28,7 +28,7 @@
         SELECT odname, odphone, odemail, zcode, addr1, addr2 FROM address
         
         <where>
-            <if test="memno != 0 and name != ''">
+            <if test="memno != 0 and memno != ''">
                 memno = #{memno}
             </if>
         </where>      

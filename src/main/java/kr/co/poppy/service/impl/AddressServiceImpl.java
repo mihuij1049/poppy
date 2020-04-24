@@ -1,4 +1,4 @@
-package kr.co.poppy.serviceImpl;
+package kr.co.poppy.service.impl;
 
 import java.util.List;
 
@@ -19,10 +19,31 @@ public class AddressServiceImpl implements AddressService {
 	@Autowired
 	SqlSession sqlSession;
 
+	/**
+	 * 주소 데이터 상세 조회
+	 * @param Address 조회할 주소의 일련번호를 담고 있는 Beans
+	 * @return 조회된 데이터가 저장된 Beans
+	 * @throws Exception
+	 */
 	@Override
 	public Address getAddressItem(Address input) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Address result = null;
+		
+		try {
+			result = sqlSession.selectOne("AddressMapper.selectItem", input);
+			
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		
+		return result;
 	}
 
 	@Override

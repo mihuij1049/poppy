@@ -1,4 +1,4 @@
-package kr.co.poppy.serviceImpl;
+package kr.co.poppy.service.impl;
 
 import java.util.List;
 

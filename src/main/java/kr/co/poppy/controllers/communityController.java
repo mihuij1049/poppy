@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class community {
+public class communityController {
 	
 	/** article */
 	@RequestMapping(value="/community/article.do", method=RequestMethod.GET)
