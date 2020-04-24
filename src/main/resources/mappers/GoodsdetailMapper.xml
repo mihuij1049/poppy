@@ -6,7 +6,8 @@
 <mapper namespace="GoodsdetailMapper">
 
 	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
-	<resultMap type="kr.co.poppy.model.Goodsdetail" id="goodsdetailMap">
+	<resultMap type="kr.co.poppy.model.Goodsdetail"
+		id="goodsdetailMap">
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
 		<result property="gddetailno" column="gddetailno" />
 		<result property="gdoption" column="gdoption" />
@@ -14,5 +15,23 @@
 		<result property="regdate" column="regdate" />
 		<result property="editdate" column="editdate" />
 		<result property="goodsno" column="goodsno" />
+		<result property="username" column="username" />
+		<result property="bbstitle" column="bbscontent" />
+		<result property="rvlike" column="rvlike" />
+		<result property="imgname" column="imgname" />
+		<result property="imgtype" column="imgpath" />
 	</resultMap>
+
+	<!-- 단일행 조회를 위한 기능 정의 -->
+	<select id="selectItem"
+		parameterType="kr.co.poppy.model.Goodsdetail"
+		resultMap="goodsdetailMap">
+		SELECT m.username, b.bbstitle, b.bbscontent, b.regdate,
+		b.rvlike, i.imgname,
+		i.imgtype, i.imgpath FROM bbs b INNER JOIN members
+		m ON b.memno =
+		m.memno INNER JOIN imgs i ON b.goodsno = i.goodsno WHERE
+		b.bbstype =
+		#{bbstype};
+	</select>
 </mapper>

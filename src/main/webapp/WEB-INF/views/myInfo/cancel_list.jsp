@@ -249,9 +249,9 @@
 		<div class="container">
 			<ul class="nav nav-tabs">
 				<li class="col-xs-6 etc"><a
-					href="${pageContext.request.contextPath}/order_list.do">주문조회</a></li>
+					href="${pageContext.request.contextPath}/myInfo/order_list.do">주문조회</a></li>
 				<li class="active col-xs-6 etc"><a
-					href="${pageContext.request.contextPath}/cancel_list.do">취소/교환/반품내역</a></li>
+					href="${pageContext.request.contextPath}/myInfo/cancel_list.do">취소/교환/반품내역</a></li>
 			</ul>
 			<div class="backg fade in">
 				<div class="container">
@@ -278,9 +278,9 @@
 			<div class="view">
 				<span class="date" title="주문일자"> 2020-03-18 </span> <span
 					class="number" title="주문번호"> <a
-					href="${pageContext.request.contextPath}/order_desc.do">
+					href="${pageContext.request.contextPath}/myInfo/order_desc.do">
 						(20200318-0000195) </a>
-				</span> <a href="${pageContext.request.contextPath}/order_desc.do"
+				</span> <a href="${pageContext.request.contextPath}/myInfo/order_desc.do"
 					class="btn-detail"><span id="GGuc">&#62;</span>상세보기</a>
 			</div>
 			<div class="prd-info">
@@ -292,7 +292,7 @@
 					</div>
 					<div class="prd-content">
 						<strong class="prd-name" title="상품명"> <a
-							href="${pageContext.request.contextPath}../gallery/goods.do">펫클럽
+							href="${pageContext.request.contextPath}/gallery/goods.do">펫클럽
 								세나개 고부해 사은품 증정</a>
 						</strong>
 						<ul class="prd-li">

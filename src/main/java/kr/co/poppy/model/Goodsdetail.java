@@ -19,6 +19,11 @@ public class Goodsdetail {
 	private int goodsno;
 
 	// JOIN절에 따른 추가 컬럼 미정
-
+	private String username;
+	private String bbstitle;
+	private String rvlike;
+	private String imgname;
+	private String imgtype;
+	
 	// 페이지 관련 static 변수 미정
 }
