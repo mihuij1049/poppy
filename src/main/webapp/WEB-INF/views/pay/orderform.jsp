@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -43,7 +46,7 @@
 			<b>주문/결제</b>
 		</h4>
 	</div>
-	<form id="orderform" class="orderform" action="" method="post"
+	<form id="orderform" class="orderform" action="${pageContext.request.contextPath}/pay/orderform.do" method="post"
 		target="_self" enctype="multipart/form-data">
 		<div class="panel-group" id="accordion" role="tablist"
 			aria-multiselectable="true">
@@ -73,15 +76,15 @@
 								<div class="recent-address">
 									<div class="recents">
 										<div class="recent">
-											<strong class="name"><span id="delivery-info-name">조대철</span></strong>
+											<strong class="name"><span id="delivery-info-name">${output.odname}</span></strong>
 											<p class="address">
-												[ <span id="zipcode">05218</span> ] 
-												<span id="addr1"> 서울특별시 강동구 라랄라라 </span>
+												[ <span id="zipcode">${output.zcode}</span> ] 
+												<span id="addr1">${output.addr1}</span>
 												<br>
-												<span id="addr2"></span>
+												<span id="addr2">${output.addr2}</span>
 											</p>
 											<div class="phone">
-												<div id="delivery-info-phone">010-8222-9650</div>
+												<div id="delivery-info-phone">${output.phone}</div>
 											</div>
 										</div>
 										<span class="side-right">

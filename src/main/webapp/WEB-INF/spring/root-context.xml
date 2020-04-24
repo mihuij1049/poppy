@@ -40,7 +40,7 @@
 	</util:properties>
 	
 	<!-- WebHelper 주입 설정 -->
-	<bean id="webHelper" class="study.spring.springhelper.WebHelper">
+	<bean id="webHelper" class="kr.co.poppy.helper.WebHelper">
 	    <property name="encType" value="#{config['encType']}" />
 	    <property name="uploadDir" value="#{config['uploadDir']}" />
 	    <property name="uploadPath" value="#{config['uploadPath']}" />
@@ -53,7 +53,7 @@
 	</bean>
 	
 	<!-- RegexHelper 주입 설정 -->
-	<bean id="regexHelper" class="study.spring.springhelper.RegexHelper" />
+	<bean id="regexHelper" class="kr.co.poppy.helper.RegexHelper" />
 	
 	<!-- ====== DB 연동 설정 ====== -->
 	<!-- JDBC 객체 생성 -->

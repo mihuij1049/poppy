@@ -20,7 +20,12 @@
     </resultMap>
     
     <!-- 단일행 조회를 위한 기능 정의  -->
-    
+    <select id="selectItem"
+		parameterType="kr.co.poppy.model.Address"
+		resultMap="departmentMap">
+		SELECT odname, odphone, odemail, zcode, addr1, addr2 FROM address WHERE memno=#{memno};
+	</select>
+	
     <!-- 다중행 조회를 위한 기능 정의 -->
     <select id="selectList"
         parameterType="kr.co.poppy.model.Address"
