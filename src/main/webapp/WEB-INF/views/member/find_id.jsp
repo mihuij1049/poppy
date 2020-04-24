@@ -100,7 +100,7 @@
 				</b>
 			</h4>
 		</div>
-		<form class="find-id" id="find-id" method="post" action="../api/find_id.do">
+		<form class="find-id" id="find-id" method="post" action="${pageContext.request.contextPath}/member/find_id_ok.do">
 			<div class="member">
 				<b>회원구분</b> <select name="m_type" class="m_type">
 					<option value="개인회원">개인회원</option>
@@ -135,7 +135,7 @@
 		$(function() {
 	         $("#find-id").submit(function(e) {
 	            // <form> 태그가 submit 되어 페이지가 이동되는 것을 방지한다.
-	            e.preventDefault();
+	          /*   e.preventDefault(); */
 	            
 	            /** 이름 검사 */
 	            if (!regex.value('#user_name', '이름을 입력하세요.')) { return false; }
@@ -151,7 +151,7 @@
 	            console.log(uname);
 	            var umail = $("#user_email").val();
 	            console.log(umail);
-	            $.ajax( {
+	           /*  $.ajax( {
 	               // 결과를 읽어올 URL --> <form>태그의 action속성
 	               url : "../api/find_id.do",
 	               // 웹 프로그램에게 데이터를 전송하는 방식 --> <form> 태그의 method 속성
@@ -164,7 +164,7 @@
 	               success: function(req) {
 	                  $("#result").html(req);
 	               }
-	            }); 
+	            });  */
 	         }); 
 	      });
 

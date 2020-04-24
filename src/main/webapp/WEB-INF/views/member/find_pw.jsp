@@ -111,7 +111,7 @@
 					</b>
 				</h4>
 			</div>
-			<form id="find-pw" class="find-pw" name="find-pw" method="post" action="../api/find_pw.do">
+			<form id="find-pw" class="find-pw" name="find-pw" method="post" action="${pageContext.request.contextPath}/member/find_pw_email.do">
 				<div class="member">
 					<b>회원구분</b> <select name="m_type" class="m_type">
 						<option value="개인회원">개인회원</option>
@@ -148,7 +148,7 @@
 		 $(function() {
 				$("#find-pw").submit(function(e) {
 					// <form> 태그가 submit 되어 페이지가 이동되는 것을 방지한다.
-					e.preventDefault();
+					/* e.preventDefault(); */
 					
 					
 					/**아이디 검사 */
@@ -173,7 +173,7 @@
 					console.log(uname);
 					var umail = $("#user_email").val();
 					console.log(umail);
-					$.ajax( {
+					/* $.ajax( {
 						// 결과를 읽어올 URL --> <form>태그의 action속성
 						url : "../api/find_pw.do",
 						// 웹 프로그램에게 데이터를 전송하는 방식 --> <form> 태그의 method 속성
@@ -186,7 +186,7 @@
 						success: function(req) {
 							$("#result").html(req);
 						}
-					}); 
+					});  */
 				}); 
 			});
 	</script>

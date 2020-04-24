@@ -95,7 +95,7 @@
 		</div>
 		<div class="btn-login-div">
 			<button type="button" class="btn btn-login"
-				onclick="location.href='login.jsp'">지금 로그인 하러 가기</button>
+				onclick="location.href='${pageContext.request.contextPath}/member/login.do'">지금 로그인 하러 가기</button>
 		</div>
 	</div>
 	<%@ include file="../share/bottom_tp.jsp"%>

@@ -128,7 +128,7 @@
 	</div>
 	<div class="btn-goimail-div">
 	
-			<button type="button" class="btn btn-goimail" onclick="location.href='find_pw_ok.jsp'">임시 비밀번호 이메일로
+			<button type="button" class="btn btn-goimail" onclick="location.href='${pageContext.request.contextPath}/member/find_pw_ok.do'">임시 비밀번호 이메일로
 				전송</button>
 	</div>
 

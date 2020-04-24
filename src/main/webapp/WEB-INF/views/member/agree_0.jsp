@@ -515,7 +515,7 @@
 					<div class="agree_2">할인쿠폰 및 혜택, 이벤트, 신상품 소식 등 쇼핑몰에서 제공하는 유익한
 						쇼핑정보를 이메일로 받아보실 수 있습니다.</div>
 					<div class="btns">
-						<a href="myinfo_wri.jsp">
+						<a href="${pageContext.request.contextPath}/member/myinfo_wri.do">
 							<button type="submit" class="btn">다음</button>
 						</a> <a href="#" onclick="history.back();">
 							<button type=" button" class="btn btn-inverse">취소</button>
@@ -554,7 +554,7 @@
                 alert("필수 항목을 체크해주세요.");
                 return false;
             } else if (check_list.length == 2) {
-                location.href = "myinfo_wri.jsp";
+                location.href = "${pageContext.request.contextPath}/member/myinfo_wri.do";
             }
         })
     })

@@ -121,10 +121,10 @@
 		<div class="btns">
 
 			<button type="button" class="btn btn1"
-				onclick="location.href='login.jsp'">로그인</button>
+				onclick="location.href='${pageContext.request.contextPath}/member/login.do'">로그인</button>
 
 			<button type="button" class="btn btn-inverse btn2"
-				onclick="location.href='find_pw.jsp'">비밀번호 찾기</button>
+				onclick="location.href='${pageContext.request.contextPath}/member/find_pw.do'">비밀번호 찾기</button>
 
 		</div>
 	</div>

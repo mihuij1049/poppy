@@ -47,8 +47,8 @@
         INNER JOIN goods g ON b.goodsno=g.goodsno;
         
         <where>
-            <if test="name != null and name != ''">
-                name LIKE concat('%', #{name}, '%')
+            <if test="bbscontent != null and bbscontent != ''">
+                bbscontent LIKE concat('%', #{bbsno}, '%')
             </if>
         </where>
         

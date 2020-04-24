@@ -95,7 +95,7 @@
 					class="info-email">abc123@naver.com</span>
 			</div>
 			<div class="btns">
-				<a href="${pageContext.request.contextPath}../index/index.do">
+				<a href="${pageContext.request.contextPath}/index/index.do">
 					<button type="button" class="btn btn2">완료</button>
 				</a>
 			</div>
