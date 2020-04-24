@@ -162,7 +162,7 @@
 					<div width="50%">
 						<div class="pr_box">
 							<div class="pr_in_box">
-								<a href="goods.jsp"> <img alt="사진"
+								<a href="${pageContext.request.contextPath }/gallery/goods.do"> <img alt="사진"
 									src="../share/img/gal_list_img1.jpg" class="img_size">
 									<div >
 										<h5>

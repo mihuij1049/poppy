@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="myinfo_edit">
+<mapper namespace="myinfoedit">
 	<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
-	<resultMap id="myinfo_edit"
+	<resultMap id="myinfoedit"
 		type="kr.co.poppy.model.Members">
 		<result property="memno" 		column="memno" />
 		<result property="userid" 		column="userid" />
