@@ -208,7 +208,7 @@
 									</div>
 									<input type="text" name="search" class="h_input">
 									<button class="btn" id="sc_bt">검색</button>
-									<a href="photo_wri.jsp"><div class="pencil"><i class="glyphicon glyphicon-pencil"></i>글쓰기</div></a>
+									<a href="${pageContext.request.contextPath}/community/photo_wri.do"><div class="pencil"><i class="glyphicon glyphicon-pencil"></i>글쓰기</div></a>
 								</div>
 							</div>
 						</div>

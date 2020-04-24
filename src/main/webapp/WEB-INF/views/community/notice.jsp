@@ -114,7 +114,7 @@
         <table class="table">
             <tbody>
                 <tr>
-                    <td class="subject" onclick="#" style="cursor:pointer;">
+                    <td class="subject" onclick="${pageContext.request.contextPath}/community/article.do" style="cursor:pointer;">
                         <strong>※아이디 연동 및 적립금 관련 공지※
                             <span class="comment">[36]</span><br />
                         </strong>
@@ -124,7 +124,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="subject" onclick="#" style="cursor:pointer;">
+                    <td class="subject" onclick="${pageContext.request.contextPath}/community/article.do" style="cursor:pointer;">
                         <strong>신규 회원가입 고객 혜택안내
                             <span class="comment">[50]</span>
                         </strong><br />

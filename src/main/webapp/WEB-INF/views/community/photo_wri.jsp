@@ -373,8 +373,8 @@ a {
 		</div>
 		<!-- 모달창 끝 -->
 		<div class="container">
-			<form class="form-horizontal" name="wri_form" id="wri_form"
-				action="${pageContext.request.contextPath}/photo_rv.do">
+			<form class="form-horizontal" name="wri_form" id="wri_form" method="POST"
+				action="${pageContext.request.contextPath}/community/photo_rv.do">
 				<div class="select">
 					<div class="choice clearfix">
 						<div class="col-xs-4">
@@ -462,7 +462,7 @@ a {
 				<div class="sign">
 					<button type="submit" class="btn btn2">등록</button>
 					<button type="reset" class="btn btn2 btn-inverse"
-						onclick="location.href='${pageContext.request.contextPath}/photo_rv.do'">취소</button>
+						onclick="location.href='${pageContext.request.contextPath}/community/photo_rv.do'">취소</button>
 				</div>
 			</form>
 		</div>

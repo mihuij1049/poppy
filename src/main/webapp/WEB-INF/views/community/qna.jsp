@@ -45,7 +45,7 @@
 						class="glyphicon glyphicon-chevron-left"></i></a>상품Q&A
 				</b>
 			</h4>
-			<button type="button" onclick="location.href='qna_wri.jsp'"
+			<button type="button" onclick="location.href='${pageContext.request.contextPath}/community/qna_wri.do'"
 				class="btn btn_write btn-sm">글쓰기</button>
 		</div>
 		<ul class="cus_qna_list" id="cus_qna_list">

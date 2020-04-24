@@ -126,10 +126,10 @@ p {
 		<div class="container">
 			<img src="../share/img/img1.jpg" alt="리뷰사진" class="big-image">
 			<div class="info-box">
-				<a href="${pageContext.request.contextPath}../gallery/goods.do"><img
+				<a href="${pageContext.request.contextPath}/gallery/goods.do"><img
 					src="../share/img/4_M.jpg" class="small-image"></a>
 				<div class="info-content clear">
-					<a href="${pageContext.request.contextPath}../gallery/goods.do">펫클럽
+					<a href="${pageContext.request.contextPath}/gallery/goods.do">펫클럽
 						데이스포 케어츄르 15gX4개입/고양이츄르간식</a><br>
 					<div class="star">
 						<p>★★★★★</p>

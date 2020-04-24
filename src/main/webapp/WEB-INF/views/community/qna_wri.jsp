@@ -278,7 +278,7 @@ a {
 				<div class="search-modal-layer"></div>
 			</div>
 			<!-- 모달창 끝 -->
-			<form name="qna_wri" id="qna_wri" method="post" action="../community/qna.jsp">
+			<form name="qna_wri" id="qna_wri" method="POST" action="${pageContext.request.contextPath}/community/qna.do">
 				<div class="container">
 					<div class="choice clearfix">
 						<div class="col-xs-4">
