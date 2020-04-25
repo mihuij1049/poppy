@@ -5,7 +5,7 @@
 <mapper namespace="OdersMapper">
 
     <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
-    <resultMap id="odersMap"
+    <resultMap id="ordersMap"
         type="kr.co.poppy.model.Orders">
         <result property="orderno"     column="orderno" />
         <result property="odmsg"       column="odmsg" />
@@ -19,10 +19,38 @@
     </resultMap>
     
     <!-- 단일행 조회를 위한 기능 정의  -->
+    <select id="selectItem"
+		parameterType="kr.co.poppy.model.Orders"
+		resultMap="ordersMap">
+		SELECT * FROM orders WHERE memno=#{memno};
+	</select>
     
     <!-- 다중행 조회를 위한 기능 정의 -->
+     <select id="selectList"
+        parameterType="kr.co.poppy.model.Address"
+        resultMap="ordersMap">
+        SELECT * FROM orders
+        
+        <where>
+            <if test="memno != 0 and memno != ''">
+                memno = #{memno}
+            </if>
+        </where>      
+    </select>
     
     <!-- 데이터 수 조회를 위한 기능 정의  -->
+    <select id="selectCountAll"
+        parameterType="kr.co.poppy.model.Orders"
+        resultType="int">
+        SELECT COUNT(*)
+        FROM orders 
+                       
+        <where>
+            <if test="memno != 0 and memno != ''">
+                memno = #{memno}
+            </if>
+        </where>
+    </select>
     
     <!-- 데이터 저장을 위한 기능 정의 -->
     <insert id="insertItem" 
@@ -35,7 +63,18 @@
         #{odmsg}, #{paytype}, #{odstatus}, deliprice, now(), now(), #{memno}, #{addrno}
         )
     </insert>
+    
     <!-- 데이터 삭제를 위한 기능 정의 -->
+    <delete id="deleteItem"
+        parameterType="kr.co.poppy.model.Orders">
+        DELETE FROM orders WHERE memno=#{memno}    
+    </delete>
     
     <!-- 데이터 갱신을 위한 기능 정의 -->
+    <update id="updateItem"
+	    parameterType="kr.co.poppy.model.Orders">
+	    UPDATE orders SET odmsg=#{odmsg}, paytype=#{paytype}, odstatus=#{odstatus},
+	    deliprice=#{deliprice}, regdate=now(), editdate=now(), memno=#{memno}, addrno=#{addrno}   
+	    WHERE memno=#{memno};
+	</update>
 </mapper>
