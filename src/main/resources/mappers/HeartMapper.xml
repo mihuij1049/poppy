@@ -5,7 +5,7 @@
 <mapper namespace="HeartMapper">
 
     <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
-    <resultMap id="HeartMap"
+    <resultMap id="heartMap"
         type="kr.co.poppy.model.Heart">
         <result property="heartno"  	column="heartno" />
         <result property="regdate"      column="regdate" />
@@ -16,7 +16,7 @@
    
 <!-- 단일행 조회를 위한 기능 정의 -->
     <select id="selectItem"
-        parameterType="study.spring.springhelper.model.Heart"
+        parameterType="kr.co.poppy.model.Heart"
         resultMap="HeartMap">
         SELECT heartno, regdate, editdate, memno, bbsno FROM heart
         WHERE heartno=#{heartno};
@@ -24,14 +24,14 @@
 
     <!-- 다중행 조회를 위한 기능 정의 -->
     <select id="selectList"
-        parameterType="study.spring.springhelper.model.Heart"
+        parameterType="kr.co.poppy.model.Heart"
         resultMap="HeartMap">
         SELECT heartno, regdate, editdate, memno, bbsno FROM heart
     </select>
 
     <!-- 데이터 저장을 위한 기능 정의 -->
     <insert id="insertItem"
-        parameterType="study.spring.springhelper.model.Heart"
+        parameterType="kr.co.poppy.model.Heart"
         useGeneratedKeys="true"
         keyProperty="heartno">
         INSERT INTO heart (regdate, editdate, memno, bbsno) VALUES (
@@ -40,13 +40,13 @@
 
     <!-- 데이터 삭제를 위한 기능 정의 -->
     <delete id="deleteItem"
-        parameterType="study.spring.springhelper.model.Heart">
+        parameterType="kr.co.poppy.model.Heart">
         DELETE FROM rvheart WHERE heartno=#{heartno};
     </delete>
 
     <!-- 데이터 갱신을 위한 기능 정의 -->
     <update id="updateItem"
-        parameterType="study.spring.springhelper.model.Heart">
+        parameterType="kr.co.poppy.model.Heart">
         UPDATE heart SET regdate=#{regdate}, editdate=#{editdate}, memno=#{memno}, bbsno=#{bbsno}
         WHERE heartno=#{heartno};
     </update>
