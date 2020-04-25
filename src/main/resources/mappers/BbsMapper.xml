@@ -21,20 +21,22 @@
     </resultMap>
     
    <!-- 단일행 조회를 위한 기능 정의 -->
+   <!-- 글 보기 페이지 -->
     <select id="selectItem"
         parameterType="kr.co.poppy.model.Bbs"
         resultMap="bbsMap">
         SELECT bbsno, bbstype, bbstitle, bbscontent, qnasec, qnapw, rvlike,
                DATE_FORMAT(regdate, '%Y-%m-%d') AS regdate,
                DATE_FORMAT(editdate, '%Y-%m-%d') AS editdate,
-   			   b.memno, username, userid, g.goodsno, gname, 
+   			   b.memno, username, userid, g.goodsno, gname
         FROM bbs b
         INNER JOIN members m ON b.memno=m.memno
         INNER JOIN goods g ON b.goodsno=g.goodsno;
-        WHERE bbsno=#{bbsno}
+        WHERE bbstype=#{bbstype} and bbsno=#{bbsno}
     </select>
 
     <!-- 다중행 조회를 위한 기능 정의 -->
+    <!-- 글 목록 페이지 -->
     <select id="selectList"
         parameterType="kr.co.poppy.model.Bbs"
         resultMap="bbsMap">
@@ -45,10 +47,20 @@
         FROM bbs b
         INNER JOIN members m ON b.memno=m.memno
         INNER JOIN goods g ON b.goodsno=g.goodsno;
+        WHERE bbstype=#{bbstype}
         
         <where>
             <if test="bbscontent != null and bbscontent != ''">
-                bbscontent LIKE concat('%', #{bbsno}, '%')
+                bbscontent LIKE concat('%', #{bbscontent}, '%')
+            </if>
+            <if test="bbstitle != null and bbstitle != ''">
+                bbstitle LIKE concat('%', #{bbstitle}, '%')
+            </if>
+            <if test="username != null and username != ''">
+                username LIKE concat('%', #{username}, '%')
+            </if>
+            <if test="userid != null and userid != ''">
+                userid LIKE concat('%', #{userid}, '%')
             </if>
         </where>
         
@@ -66,10 +78,20 @@
         FROM bbs b
         INNER JOIN members m ON b.memno=m.memno
         INNER JOIN goods g ON b.goodsno=g.goodsno;
+        WHERE bbstype=#{bbstype}
         
         <where>
-            <if test="name != null and name != ''">
-                name LIKE concat('%', #{name}, '%')
+            <if test="bbscontent != null and bbscontent != ''">
+                bbscontent LIKE concat('%', #{bbscontent}, '%')
+            </if>
+            <if test="bbstitle != null and bbstitle != ''">
+                bbstitle LIKE concat('%', #{bbstitle}, '%')
+            </if>
+            <if test="username != null and username != ''">
+                username LIKE concat('%', #{username}, '%')
+            </if>
+            <if test="userid != null and userid != ''">
+                userid LIKE concat('%', #{userid}, '%')
             </if>
         </where>
     </select>
@@ -95,7 +117,8 @@
     <update id="updateItem"
         parameterType="kr.co.poppy.model.Bbs">
         UPDATE bbs SET
-            #{bbstype}, #{bbstitle}, #{bbscontent}, #{qnasec}, #{qnapw}, #{rvlike}, #{regdate}, #{editdate}, #{memno}, #{goodsno}
+            bbstype=#{bbstype}, bbstitle=#{bbstitle}, bbscontent=#{bbscontent}, qnasec=#{qnasec}, qnapw=#{qnapw}, rvlike=#{rvlike}, 
+            regdate=#{regdate}, editdate=#{editdate}, memo=#{memno}, goodsno=#{goodsno}
         WHERE bbsno=#{bbsno}
    </update>
 </mapper>

@@ -20,15 +20,45 @@
     </resultMap>
     
     <!-- 단일행 조회를 위한 기능 정의  -->
+    <select id="selectItem"
+        parameterType="kr.co.poppy.model.Imgs"
+        resultMap="imgsMap">
+        SELECT imgname, imgext, imgpath, imgsize imgtype
+               DATE_FORMAT(regdate, '%Y-%m-%d') AS regdate,
+               DATE_FORMAT(editdate, '%Y-%m-%d') AS editdate,
+   			   g.goodsno, b.bbsno
+        FROM imgs i
+        INNER JOIN bbsno b ON b.bbsno=i.bbsno
+        INNER JOIN goods g ON g.goodsno=i.goodsno
+        WHERE imgsno=#{imgsno} and imgtype=#{imgtype}
+    </select>
     
-    <!-- 다중행 조회를 위한 기능 정의 -->
+    <!-- 다중행 조회를 위한 기능 정의  >> 필요성을 느끼지 못하므로 회의를 거쳐 정하는 것이 좋을 것 같다. -->
     
-    <!-- 데이터 수 조회를 위한 기능 정의  -->
     
     <!-- 데이터 저장을 위한 기능 정의 -->
+    <insert id="insertItem"
+        parameterType="kr.co.poppy.model.Imgs"
+        useGeneratedKeys="true" keyProperty="imgno">
+        INSERT INTO imgs (
+            imgsno, imgname, imgext, imgpath, imgsize, imgtype, regdate, editdate, goodsno, bbsno
+        ) VALUES (
+            #{imgsno}, #{imgname}, #{imgext}, #{imgpath}, #{imgsize}, #{imgtype}, #{regdate}, #{editdate}, #{goodsno}, #{bbsno}
+        )
+    </insert>
     
     <!-- 데이터 삭제를 위한 기능 정의 -->
+    <delete id="deleteItem"
+        parameterType="kr.co.poppy.model.Imgs">
+        DELETE FROM imgs WHERE imgsno=#{imgsno}
+    </delete>
     
     <!-- 데이터 갱신을 위한 기능 정의 -->
-   
+   <update id="updateItem"
+        parameterType="kr.co.poppy.model.Imgs">
+        UPDATE imgs SET
+            imgname=#{imgname}, imgext=#{imgext}, imgpath=#{imgpath}, imgsize=#{imgsize}, imgtype=#{imgtype}, regdate=#{regdate}, 
+            editdate=#{editdate}, goodsno=#{goodsno}
+        WHERE bbsno=#{bbsno}
+   </update>
 </mapper>
