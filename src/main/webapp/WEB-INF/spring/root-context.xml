@@ -12,9 +12,9 @@
 	    <!-- 기본 인코딩 타입 -->
 	    <prop key="encType">UTF-8</prop>
 	    <!-- 업로드 디렉토리 -->
-	    <prop key="uploadDir">D:/CDC/JSP/workspace/upload</prop>
+	    <prop key="uploadDir">C:\project\JAVA20_4\src\main\webapp\WEB-INF\views\share\img</prop>
 	    <!-- 업로드 디렉토리에 대한 WebPath -->
-	    <prop key="uploadPath">/upload</prop>
+	    <prop key="uploadPath">/img</prop>
 	    <!-- 최대 업로드 가능 용량(-1인 경우 무제한) -->
 	    <prop key="uploadMaxFileSize">-1</prop>
 	    <!-- 기본 도메인(쿠키설정용) -->
@@ -40,17 +40,17 @@
 	</util:properties>
 	
 	<!-- WebHelper 주입 설정 -->
-	<bean id="webHelper" class="kr.co.poppy.helper.WebHelper">
+    <!-- <bean id="webHelper" class="kr.co.poppy.helper.WebHelper">
 	    <property name="encType" value="#{config['encType']}" />
 	    <property name="uploadDir" value="#{config['uploadDir']}" />
 	    <property name="uploadPath" value="#{config['uploadPath']}" />
 	    <property name="uploadMaxFileSize">
 	        <value type="java.lang.Long">
 	            #{config['uploadMaxFileSize']}
-	        </value>
+	      </value>
 	    </property>
 	    <property name="domain" value="#{config['domain']}" />
-	</bean>
+	</bean> -->
 	
 	<!-- RegexHelper 주입 설정 -->
 	<bean id="regexHelper" class="kr.co.poppy.helper.RegexHelper" />
