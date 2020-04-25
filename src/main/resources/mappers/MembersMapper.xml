@@ -27,8 +27,8 @@
 <!-- 특정 멤버의 정보를 수정 -->
 <update id="edit_members"
 	parameterType="kr.co.poppy.model.Members">
-	UPDATE members SET userid=#{}, userpw=#{}, username=#{}, userphone=#{}, useremail=#{}, regdate=#{},
-		editdate=now(), agreeno=#{} WHERE memno=#{memno};
+	UPDATE members SET userid=#{userid}, userpw=#{userpw}, username=#{username}, userphone=#{userphone}, useremail=#{useremail}, regdate=#{regdate},
+		editdate=now(), agreeno=#{agreeno} WHERE memno=#{memno};
 </update>
 <!-- 회원탈퇴  -->
 <delete id="remove_members"
@@ -36,5 +36,9 @@
 	DELETE FROM members WHERE memno=#{memno};
 </delete>
 <!-- 특정 회원의 정보 조회 -->
-<select id="get_members_item"></select>
+<select id="get_members_item"
+	parameterType="kr.co.poppy.model.Members"
+	resultMap="members">
+	SELECT * from members WHERE memno=#{memno};
+</select>
 </mapper>
