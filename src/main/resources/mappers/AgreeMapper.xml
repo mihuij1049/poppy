@@ -17,11 +17,40 @@
         <result property="memno"       		column="memno" />
    </resultMap>
     
-   <!-- 가입 정보 동의를 위한 기능 정의 -->
+   <!-- 단일행 조회를 위한 기능 정의 -->
+    <select id="selectItem"
+        parameterType="study.spring.springhelper.model.Agree"
+        resultMap="AgreeMap">
+        SELECT agreeno, useragree, privateagree, emailagree, shoppingagree, regdate, editdate, memno FROM agree
+        WHERE agreeno=#{agreeno};
+    </select>
+
+    <!-- 다중행 조회를 위한 기능 정의 -->
+    <select id="selectList"
+        parameterType="study.spring.springhelper.model.Agree"
+        resultMap="AgreeMap">
+        SELECT agreeno, useragree, privateagree, emailagree, shoppingagree, regdate, editdate, memno FROM agree
+    </select>
+
+    <!-- 데이터 저장을 위한 기능 정의 -->
     <insert id="insertItem"
-        parameterType="kr.co.poppy.model.Agree"
-        useGeneratedKeys="true" keyProperty="agreeno">
-        INSERT INTO agree (useagree, privateagree, emailagree, shoppingagree, regdate, editdate, memno) VALUES (
-        	#{useagree}, #{privateagree}, #{emailagree}, #{shoppingagree}, #{regdate}, #{editdate}, #{memno} )
+        parameterType="study.spring.springhelper.model.Agree"
+        useGeneratedKeys="true"
+        keyProperty="agreeno">
+        INSERT INTO agree (useragree, privateagree, emailagree, shoppingagree, regdate, editdate, memno) VALUES (
+        #{useragree}, #{privateagree}, #{emailagree}, #{shoppingagree}, #{regdate}, #{editdate}, #{memno});
     </insert>
+
+    <!-- 데이터 삭제를 위한 기능 정의 -->
+    <delete id="deleteItem"
+        parameterType="study.spring.springhelper.model.Agree">
+        DELETE FROM agree WHERE agreeno=#{agreeno};
+    </delete>
+
+    <!-- 데이터 갱신을 위한 기능 정의 -->
+    <update id="updateItem"
+        parameterType="study.spring.springhelper.model.Agree">
+        UPDATE agree SET useragree=#{useragree}, privateagree=#{privateagree}, emailagree=#{emailagree}, shoppingagree=#{shoppingagree}, regdate=#{regdate}, editdate=#{editdate}, memno=#{memno}
+        WHERE agreeno=#{agreeno};
+    </update>
 </mapper>
