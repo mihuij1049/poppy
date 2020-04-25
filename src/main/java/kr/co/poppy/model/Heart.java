@@ -17,5 +17,8 @@ public class Heart {
 	/** 회원 테이블 참조 */
 	private int memno;
 	
+	/** 상품 테이블 참조 */
+	private int goodsno;
+	
 	// JOIN 절에 따른 추가 컬럼
 }

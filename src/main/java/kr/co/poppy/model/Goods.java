@@ -29,6 +29,11 @@ public class Goods {
 	private String editdate;
 
 	// JOIN절에 따른 추가 컬럼 미정
+	
+	/** 관심상품 일련번호 */
+	private int heartno;
+	/** 회원 일련번호 */
+	private int memno;
 
 	// 페이지 관련 static 변수 미정
 }

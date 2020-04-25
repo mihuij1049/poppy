@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="AgreeMapper">
+
+    <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+    <resultMap id="AgreeMap"
+        type="kr.co.poppy.model.Agree">
+        <result property="agreeno"        	column="agreeno" />
+        <result property="useragree"        column="useragree" />
+        <result property="privateagree"     column="privateagree" />
+        <result property="emailagree"       column="emailagree" />
+        <result property="shoppingagree"    column="shoppingagree" />
+        <result property="regdate"         	column="regdate" />
+        <result property="editdate"         column="editdate" />
+        <result property="memno"       		column="memno" />
+   </resultMap>
+    
+   <!-- 가입 정보 동의를 위한 기능 정의 -->
+    <insert id="insertItem"
+        parameterType="kr.co.poppy.model.Agree"
+        useGeneratedKeys="true" keyProperty="agreeno">
+        INSERT INTO agree (useagree, privateagree, emailagree, shoppingagree, regdate, editdate, memno) VALUES (
+        	#{useagree}, #{privateagree}, #{emailagree}, #{shoppingagree}, #{regdate}, #{editdate}, #{memno} )
+    </insert>
+</mapper>
