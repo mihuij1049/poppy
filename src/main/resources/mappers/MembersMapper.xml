@@ -31,14 +31,15 @@
 		editdate=now(), agreeno=#{agreeno} WHERE memno=#{memno};
 </update>
 <!-- 회원탈퇴  -->
-<delete id="remove_members"
+<delete id="delete_members"
 	parameterType="kr.co.poppy.model.Members">
 	DELETE FROM members WHERE memno=#{memno};
 </delete>
 <!-- 특정 회원의 정보 조회 -->
-<select id="get_members_item"
+<select id="select_item"
 	parameterType="kr.co.poppy.model.Members"
-	resultMap="members">
+	resultMap="membersMap">
 	SELECT * from members WHERE memno=#{memno};
 </select>
+<!-- 모든 회원의 정보조회 (관리자페이지용 같아서 일단 보류) -->
 </mapper>

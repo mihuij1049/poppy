@@ -18,5 +18,29 @@
 <result property="memno" column="memno" />
 <result property="orderno" column="orderno" />
 </resultMap>
-
+	<!-- 구매가 일어났을 때 적립금 발생 -->
+	<insert id="add_points"
+			parameterType="kr.co.poppy.model.Points"
+			useGeneratedKeys="true" keyProperty="pointno">
+			INSER INTO points(avpoint, napoint, pointtype, regdate, editdate, memno, orderno)
+				VALUES (#{avpoint}, #{napoint}, "#{pointtype}", now(), now(), #{memno}, #{orderno} );
+	</insert>
+	<!-- 시간이 지나고 미가용 -> 가용으로 갱신 ** 추후 수정 필요 ** -->
+	<update id="edit_points"
+			parameterType="kr.co.poppy.model.Points">
+		UPDATE points SET avpoint=#{avpoint}, napoint=#{napoint}, editdate=now() WHERE pointno=#{pointno}
+	</update>
+	<!-- 구매 상품의 적립금 표시를 위한 단일행 조회 -->
+	<select id="select_order_item"
+	parameterType="kr.co.poppy.model.Points"
+	resultMap="pointsMap">
+	SELECT * from points WHERE orderno=#{orderno};
+	</select>
+	<!-- 회원의 적립금 정보를 표시하기 위한 단일행 조회 -->
+	<select id="select_members_item"
+	parameterType="kr.co.poppy.model.Points"
+	resultMap="pointsMap">
+	SELECT * from points WHERE memno=#{memno};
+	</select>
+	<!-- 전체 회사가 보유중인 회원들의 적립금 (관리자 페이지 관련이므로 일단 보류) -->
 </mapper>
