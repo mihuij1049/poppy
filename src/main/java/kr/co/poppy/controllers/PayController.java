@@ -20,9 +20,9 @@ import kr.co.poppy.service.AddressService;
 public class PayController {
 
 	/** WebHelper 주입 */
-	/*
-	 * @Autowired WebHelper webHelper;
-	 */
+
+	@Autowired
+	WebHelper webHelper;
 
 	/** RegexHelper 주입 */
 	@Autowired
@@ -42,30 +42,38 @@ public class PayController {
 	}
 
 	/** 상세페이지 */
-	/*  에러 로 인해 봉인해 둠
-	 * @RequestMapping(value = "/pay/orderform.do", method = RequestMethod.POST)
-	 * public ModelAndView addrView(Model model,
-	 * 
-	 * @RequestParam(value="memno", defaultValue="") int memno) {
-	 * 
-	 *//** 유효성 검사 */
-	/*
-	 * // 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다. if (memno == 0) { return
-	 * webHelper.redirect(null, "회원번호가 없습니다."); }
-	 * 
-	 *//** 데이터 조회하기 */
-	/*
-	 * // 데이터 조회에 필요한 조건값을 Beans에 저장하기 Address input = new Address();
-	 * input.setMemno(memno);
-	 * 
-	 * // 조회결과를 저장할 객체 선언 Address output = null;
-	 * 
-	 * try { // 데이터 조회 output = addressService.getAddressItem(input); } catch
-	 * (Exception e) { return webHelper.redirect(null, e.getLocalizedMessage()); }
-	 * 
-	 *//** View 처리 *//*
-						 * model.addAttribute("output", output); return new
-						 * ModelAndView("pay/orderform"); }
-						 */
+	/** 에러 로 인해 봉인해 둠 */
+	@RequestMapping(value = "/pay/orderform.do", method = RequestMethod.POST)
+	public ModelAndView addrView(Model model,
+
+			@RequestParam(value = "memno", defaultValue = "") int memno) {
+
+		/** 유효성 검사 */
+
+		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
+		if (memno == 0) {
+			return webHelper.redirect(null, "회원번호가 없습니다.");
+		}
+
+		/** 데이터 조회하기 */
+
+		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
+		Address input = new Address();
+		input.setMemno(memno);
+
+		// 조회결과를 저장할 객체 선언
+		Address output = null;
+
+		try { // 데이터 조회
+			output = addressService.getAddressItem(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+
+		/** View 처리 */
+		model.addAttribute("output", output);
+		return new ModelAndView("pay/orderform");
+
+	}
 
 }

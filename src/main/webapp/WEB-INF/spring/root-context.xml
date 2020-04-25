@@ -40,17 +40,9 @@
 	</util:properties>
 	
 	<!-- WebHelper 주입 설정 -->
-    <!-- <bean id="webHelper" class="kr.co.poppy.helper.WebHelper">
-	    <property name="encType" value="#{config['encType']}" />
-	    <property name="uploadDir" value="#{config['uploadDir']}" />
-	    <property name="uploadPath" value="#{config['uploadPath']}" />
-	    <property name="uploadMaxFileSize">
-	        <value type="java.lang.Long">
-	            #{config['uploadMaxFileSize']}
-	      </value>
-	    </property>
+    <bean id="webHelper" class="kr.co.poppy.helper.WebHelper">	  
 	    <property name="domain" value="#{config['domain']}" />
-	</bean> -->
+	</bean>
 	
 	<!-- RegexHelper 주입 설정 -->
 	<bean id="regexHelper" class="kr.co.poppy.helper.RegexHelper" />
