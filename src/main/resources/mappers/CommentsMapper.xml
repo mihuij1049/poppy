@@ -20,7 +20,8 @@
     <select id="selectItem"
         parameterType="kr.co.poppy.model.Comments"
         resultMap="CommentMap">
-        SELECT cmtno, cmtcontent, regdate, editdate, memno, bbsno FROM comments
+        SELECT cmtno, cmtcontent, DATE_FORMAT(regdate, '%Y-%m-%d') AS regdate,
+        DATE_FORMAT(editdate, '%Y-%m-%d') AS editdate, memno, bbsno FROM comments
         WHERE cmtno=#{cmtno};
     </select>
 
@@ -28,7 +29,8 @@
     <select id="selectList"
         parameterType="kr.co.poppy.model.Comments"
         resultMap="CommentMap">
-        SELECT cmtno, cmtcontent, regdate, editdate, memno, bbsno FROM comments
+        SELECT cmtno, cmtcontent, DATE_FORMAT(regdate, '%Y-%m-%d') AS regdate,
+        DATE_FORMAT(editdate, '%Y-%m-%d') AS editdate, memno, bbsno FROM comments
     </select>
 
     <!-- 데이터 저장을 위한 기능 정의 -->
