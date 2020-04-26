@@ -4,24 +4,44 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.poppy.model.Agree;
-import kr.co.poppy.service.AgreeService;
+import kr.co.poppy.model.Comments;
+import kr.co.poppy.service.CommentsService;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class AgreeServiceImpl implements AgreeService {
-	
+public class CommentsServiceImpl implements CommentsService {
+
 	/** MyBatis */
 	@Autowired
 	SqlSession sqlSession;
 	
 	@Override
-	public int addAgree(Agree input) throws Exception {
+	public Comments getCommentsItem(Comments input) throws Exception {
+		Comments result = null;
+
+        try {
+            result = sqlSession.selectOne("CommentsMapper.selectItem", input);
+
+            if (result == null) {
+                throw new NullPointerException("result=null");
+            }
+        } catch (NullPointerException e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("조회된 데이터가 없습니다.");
+        } catch (Exception e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("데이터 조회에 실패했습니다.");
+        }
+        return result;
+	}
+
+	@Override
+	public int addComments(Comments input) throws Exception {
 		int result = 0;
 
         try {
-            result = sqlSession.insert("AgreeMapper.insertItem", input);
+            result = sqlSession.insert("CommentsMapper.insertItem", input);
 
             if (result == 0) {
                 throw new NullPointerException("result=0");
@@ -38,29 +58,11 @@ public class AgreeServiceImpl implements AgreeService {
 	}
 
 	@Override
-	public int editAgree(Agree input) throws Exception {
-		int result=0;
-		try {
-			result = sqlSession.update("AgreeMapper.updateItem", input);
-				if (result == 0) {
-					throw new NullPointerException("result=0");
-				}
-			} catch (NullPointerException e) {
-				log.error(e.getLocalizedMessage());
-				throw new Exception("수정된 데이터가 없습니다.");
-			} catch (Exception e) {
-				log.error(e.getLocalizedMessage());
-				throw new Exception("데이터 수정에 실패했습니다.");
-			}
-		return result;
-	}
-
-	@Override
-	public int deleteAgree(Agree input) throws Exception {
+	public int deleteComments(Comments input) throws Exception {
 		int result = 0;
 
         try {
-        	result = sqlSession.delete("AgreeMapper.deleteItem", input);
+        	result = sqlSession.delete("CommentsMapper.deleteItem", input);
         	
             if (result == 0) {
                 throw new NullPointerException("result=0");
