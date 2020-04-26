@@ -14,7 +14,7 @@
         <result property="bbsno"    	column="bbsno" />
    </resultMap>
    
-<!-- 단일행 조회를 위한 기능 정의 -->
+	<!-- 단일행 조회를 위한 기능 정의 -->
     <select id="selectItem"
         parameterType="kr.co.poppy.model.Rvheart"
         resultMap="RvheartMap">

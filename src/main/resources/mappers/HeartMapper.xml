@@ -14,11 +14,12 @@
         <result property="goodsno"    	column="goodsno" />
    </resultMap>
    
-<!-- 단일행 조회를 위한 기능 정의 -->
+	<!-- 단일행 조회를 위한 기능 정의 -->
     <select id="selectItem"
         parameterType="kr.co.poppy.model.Heart"
         resultMap="HeartMap">
-        SELECT heartno, regdate, editdate, memno, bbsno FROM heart
+        SELECT heartno, DATE_FORMAT(regdate, '%Y-%m-%d') AS regdate,
+        DATE_FORMAT(editdate, '%Y-%m-%d') AS editdate, memno, bbsno FROM heart
         WHERE heartno=#{heartno};
     </select>
 
@@ -26,7 +27,19 @@
     <select id="selectList"
         parameterType="kr.co.poppy.model.Heart"
         resultMap="HeartMap">
-        SELECT heartno, regdate, editdate, memno, bbsno FROM heart
+        SELECT heartno, DATE_FORMAT(regdate, '%Y-%m-%d') AS regdate,
+        DATE_FORMAT(editdate, '%Y-%m-%d') AS editdate, memno, bbsno FROM heart
+    </select>
+    
+    <!-- 데이터 수 조회를 위한 기능 정의 -->
+    <select id="selectCountAll"
+    	parameterType="kr.co.poppy.model.Heart"
+    	resultType="int">
+        
+        SELECT COUNT(*)
+        FROM Heart h
+        INNER JOIN goods g ON h.goodsno=g.goodsno
+        where g.goodsno=#{goodsno}
     </select>
 
     <!-- 데이터 저장을 위한 기능 정의 -->
