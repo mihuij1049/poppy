@@ -89,7 +89,7 @@ input[type="text"], input[type="password"] {
 			</div>
 			<div class="help-user clearfix" id="help-user">
 				<a href="${pageContext.request.contextPath}/member/find_id.do">아이디찾기</a> <a href="${pageContext.request.contextPath}/member/find_pw.do">비밀번호찾기</a> <a
-					href="myinfo_wri.jsp">회원가입</a>
+					href="${pageContext.request.contextPath}/member/agree_0.do">회원가입</a>
 			</div>
 			<div id="result"></div>
 		</div>

@@ -108,8 +108,8 @@
 		<!-- 여기에 작성 -->
 		<div class="container">
 			<div class="page-title clearfix">
-				<a href="#" onclick="history.back(); return false;"><img
-					src="../share/img/img_back.jpg"></a>
+				<a href="#" onclick="history.back(); return false;"><i
+							class="glyphicon glyphicon-chevron-left"></i></a>
 				<h4>
 					<b>회원가입</b>
 				</h4>
@@ -119,7 +119,7 @@
 				<div class="agree_nav_tab">정보입력</div>
 				<div class="agree_nav_tab">가입완료</div>
 			</div>
-			<form id="agree_form">
+			<form id="agree_form" method="post" action="${pageContext.request.contextPath}/member/myinfo_wri.do">
 				<div class="all_select">
 					<div>
 						<div class="cb_mg">
@@ -515,9 +515,9 @@
 					<div class="agree_2">할인쿠폰 및 혜택, 이벤트, 신상품 소식 등 쇼핑몰에서 제공하는 유익한
 						쇼핑정보를 이메일로 받아보실 수 있습니다.</div>
 					<div class="btns">
-						<a href="${pageContext.request.contextPath}/member/myinfo_wri.do">
+						
 							<button type="submit" class="btn">다음</button>
-						</a> <a href="#" onclick="history.back();">
+						 <a href="#" onclick="history.back();">
 							<button type=" button" class="btn btn-inverse">취소</button>
 						</a>
 					</div>

@@ -1,8 +1,10 @@
 package kr.co.poppy.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 
 @Controller
 public class MemberController {
@@ -57,7 +59,8 @@ public class MemberController {
 	
 	/** myinfo_wri.jsp */
 	@RequestMapping(value="/member/myinfo_wri.do", method=RequestMethod.GET)
-		public String myinfo_wri() {
+		public String myinfo_wri(Model model) {
+		// 체크박스의 동의 여부를 view에게 전달
 		return "member/myinfo_wri";
 	}
 }
