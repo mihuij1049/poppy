@@ -26,5 +26,18 @@ public interface PointsService {
 	 * @throws Exception  
 	 */
 	public Points getPointsMbItem(Points input) throws Exception;
-
+	
+	/** 미가용 -> 가용으로 적립금 전환
+	 * @Param 적립금 일련번호(pointno)를 담고 있는 Beans
+	 * @return int
+	 * @throws Exception 
+	 */
+	public int editPoints(Points input) throws Exception;
+	
+	/** 적립금 사용으로 인한 적립금 소멸
+	 * @Param 적립금 일련번호(pointno)를 담고 있는 Beans
+	 * @return int
+	 * @throws Exception 
+	 */
+	public int editUsePoints(Points input) throws Exception;
 }
