@@ -41,7 +41,7 @@
 		INSERT INTO goods(gcode, gname,
 		ginfo, gprice, gsale, gdate, cate1, cate2, regdate, editdate) VALUES
 		(#{gcode}, #{gname}, #{ginfo}, #{gprice}, #{gsale}, #{gdate},
-		"#{cate1}", "#{cate2}", #{now()}, #{now()});
+		"#{cate1}", "#{cate2}", now()}, now());
 	</insert>
 
 	<!-- 데이터 갱신을 위한 기능 정의 -->

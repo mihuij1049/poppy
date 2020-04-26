@@ -20,6 +20,12 @@
 		<result property="rvlike" column="rvlike" />
 		<result property="imgname" column="imgname" />
 		<result property="imgtype" column="imgpath" />
+		<result property="imgext" column="imgext" />
+		<result property="imgsize" column="imgsize" />
+		<result property="bbstype" column="bbstype" />
+		<result property="bbscontent" column="bbscontent" />
+		<result property="memno" column="memno" />
+		<result property="bbsno" column="bbsno" />
 	</resultMap>
 
 	<!-- 단일행 조회를 위한 기능 정의 -->
@@ -34,4 +40,38 @@
 		b.bbstype =
 		#{bbstype};
 	</select>
+
+	<!-- 데이터 저장을 위한 기능 정의 -->
+	<insert id="insertItem"
+		parameterType="kr.co.poppy.model.Goodsdetail" useGeneratedKeys="true"
+		keyProperty="gddetailno">
+		INSERT INTO bbs(bbstype, bbstitle, bbscontent, rvlike,
+		regdate, editdate, memno, goodsno)
+		VALUES (#{bbstype}, #{bbstitle},
+		#{bbscontent}, #{rvlike}, now(), now(),
+		#{memno}, #{goodsno});
+
+		INSERT
+		INTO imgs(imgname, imgext, imgpath,
+		imgsize, imgtype, regdate,
+		editdate,
+		goodsno, bbsno)
+		VALUES (#{imgname},
+		#{imgext}, #{imgpath},
+		#{imgsize} ,
+		#{imgtype}, now(), now(),
+		#{goodsno}, #{bbsno});
+	</insert>
+
+	<!-- 데이터 갱신을 위한 기능 정의 -->
+	<update id="updateItem"
+		parameterType="kr.co.poppy.model.Goodsdetail">
+		UPDATE bbs SET bbscontent = #{bbscontent} WHERE
+		memno=#{memno};
+	</update>
+
+	<!-- 데이터 삭제를 위한 기능 정의 -->
+	<delete id="deleteItem"
+		parameterType="kr.co.poppy.model.Goodsdetail">
+	</delete>
 </mapper>

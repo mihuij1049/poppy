@@ -31,6 +31,13 @@ public interface GoodsdetailService {
 	 * @throws Exception
 	 */
 	public int getGoodsdetailCount(Goodsdetail input) throws Exception;
+	
+	/**
+	 * 상품상세 데이터 등록하기
+	 * @param Goodsdetail 저장할 정보를 담고 있는 Beans
+	 * @throws Exception
+	 */
+	public int addGoodsdetail(Goodsdetail input) throws Exception;
 
 	/**
 	 * 상품상세 데이터 수정하기

@@ -24,6 +24,12 @@ public class Goodsdetail {
 	private String rvlike;
 	private String imgname;
 	private String imgtype;
+	private String imgext;
+	private String imgsize;
+	private String bbstype;
+	private String bbscontent;
+	private int memno;	
+	private int bbsno;
 	
 	// 페이지 관련 static 변수 미정
 }

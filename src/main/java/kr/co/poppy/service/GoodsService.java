@@ -31,6 +31,13 @@ public interface GoodsService {
 	 * @throws Exception
 	 */
 	public int getGoodsCount(Goods input) throws Exception;
+	
+	/**
+	 * 상품 데이터 등록하기
+	 * @param Goods 저장할 정보를 담고 있는 Beans
+	 * @throws Exception
+	 */
+	public int addGoods(Goods input) throws Exception;
 
 	/**
 	 * 상품 데이터 수정하기
