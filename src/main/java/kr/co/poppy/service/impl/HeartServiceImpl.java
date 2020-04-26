@@ -4,11 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
-import kr.co.poppy.helper.RegexHelper;
-import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Heart;
 import kr.co.poppy.service.HeartService;
 import lombok.extern.slf4j.Slf4j;
@@ -21,18 +17,6 @@ public class HeartServiceImpl implements HeartService {
 	@Autowired
 	SqlSession sqlSession;
 	
-	/** WebHelper 주입 */
-	@Autowired
-	WebHelper webHelper;
-	
-	/** Service 패턴 구현체 주입 */
-	@Autowired
-	HeartService heartService;
-	
-	/** ContextPath 변수 주입 */
-	@Value("#{serviceContext.contextPath}")
-	String contextPath;
-
 	@Override
 	public Heart getHeartItem(Heart input) throws Exception {
 		Heart result = null;
