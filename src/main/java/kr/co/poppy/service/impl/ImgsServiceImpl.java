@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.poppy.model.Bbs;
 import kr.co.poppy.model.Imgs;
 import kr.co.poppy.service.ImgsService;
 import lombok.extern.slf4j.Slf4j;
@@ -62,13 +63,26 @@ public class ImgsServiceImpl implements ImgsService {
 		return result;
 	}
 
-	/** 
-	 * 
+	/** 이미지 수정하기 
+	 * @param	이미지 수정할 정보를 담고 있는 Beans 
+	 * @throw	Exception
 	 */
 	@Override
 	public int editImgs(Imgs input) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		try {
+			result = sqlSession.update("ImgsMapper.updateItem", input);
+			if(result==0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+		return result;
 	}
 
 	/** 

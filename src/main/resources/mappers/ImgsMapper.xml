@@ -61,4 +61,15 @@
             editdate=#{editdate}, goodsno=#{goodsno}
         WHERE bbsno=#{bbsno}
    </update>
+   
+   <!-- 특정 멤버를 참조하는 Bbs데이터를 모두 참조 해제한다. -->
+   <update id="unsetGoods"
+   		parameterType="kr.co.poppy.model.Goods">
+   		UPDATE imgs SET goddsno=null WHERE goodsno=#{goodsno}
+   </update>
+   
+   <update id="unsetBbs"
+   		parameterType="kr.co.poppy.model.Bbs">
+   		UPDATE imgs SET bbsno=null WHERE bbsno=#{bbsno}
+   </update>
 </mapper>

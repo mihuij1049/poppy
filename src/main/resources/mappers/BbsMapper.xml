@@ -61,7 +61,7 @@
    			   b.memno, m.username, m.userid, g.goodsno, g.gname
         FROM bbs b
         INNER JOIN members m ON b.memno=m.memno
-        INNER JOIN goods g ON b.goodsno=g.goodsno;
+        INNER JOIN goods g ON b.goodsno=g.goodsno
         WHERE bbstype=#{bbstype}
         
         <where>
@@ -178,8 +178,11 @@
    		parameterType="kr.co.poppy.model.Members">
    		UPDATE bbs SET memno=null WHERE memno=#{memno}
    </update>
+   
    <update id="unsetGoods"
-   		parameterType="kr.co.poppy.model.Goods>
+   		parameterType="kr.co.poppy.model.Goods">
    		UPDATE bbs SET goodsno=null WHERE goodsno=#{goodsno}
    </update>
+  
+   
 </mapper>
