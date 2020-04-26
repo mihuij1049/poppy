@@ -28,20 +28,18 @@
 	<!-- 다중행 조회를 위한 기능 정의 -->
 	<select id="selectList" parameterType="kr.co.poppy.model.Cart"
 		resultMap="cartMap">
-		SELECT i.imgname, i.imgext, i.imgpath, i.imgtype, g.gname, o.deliprice,
+		SELECT i.imgname, i.imgext, i.imgpath, i.imgtype, g.gname,
+		o.deliprice,
 		g.gprice, c.cartqty FROM goods g INNER JOIN imgs i ON
 		g.goodsno=i.goodsno INNER JOIN goodsdetail gd ON g.goodsno =
 		gd.goodsno INNER JOIN cart c ON gd.gddetailno = c.gddetailno INNER
 		JOIN orders o ON o.memno = c.memno
-		<where>
-			<if test="cartqty !=null and cartqty!=''">
-				c.memno=#{memno}
-			</if>
-		</where>
+		WHERE c.memno=1;
 	</select>
-	
+
 	<!-- 데이터 삭제를 위한 기능 정의 -->
 	<delete id="deleteItem" parameterType="kr.co.poppy.model.Cart">
-		DELETE FROM cart WHERE memno=#{memno} AND cartno=#{cartno};
+		DELETE FROM cart WHERE
+		memno=#{memno} AND cartno=#{cartno};
 	</delete>
 </mapper>

@@ -1,7 +1,5 @@
 package kr.co.poppy.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -36,8 +34,11 @@ public class PayController {
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 
+	/** 장바구니 */
+	/** 목록 페이지 */
 	@RequestMapping(value = "/pay/cart.do", method = RequestMethod.GET)
-	public String cart() {
+	public String list() {
+
 		return "pay/cart";
 	}
 
