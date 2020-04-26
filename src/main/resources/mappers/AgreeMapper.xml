@@ -8,7 +8,7 @@
     <resultMap id="agreeMap"
         type="kr.co.poppy.model.Agree">
         <result property="agreeno"        	column="agreeno" />
-        <result property="useragree"        column="useragree" />
+        <result property="useagree"        	column="useagree" />
         <result property="privateagree"     column="privateagree" />
         <result property="emailagree"       column="emailagree" />
         <result property="shoppingagree"    column="shoppingagree" />
@@ -16,29 +16,14 @@
         <result property="editdate"         column="editdate" />
         <result property="memno"       		column="memno" />
    </resultMap>
-    
-   <!-- 단일행 조회를 위한 기능 정의 -->
-    <select id="selectItem"
-        parameterType="kr.co.poppy.model.Agree"
-        resultMap="AgreeMap">
-        SELECT agreeno, useragree, privateagree, emailagree, shoppingagree, regdate, editdate, memno FROM agree
-        WHERE agreeno=#{agreeno};
-    </select>
-
-    <!-- 다중행 조회를 위한 기능 정의 -->
-    <select id="selectList"
-        parameterType="kr.co.poppy.model.Agree"
-        resultMap="agreeMap">
-        SELECT agreeno, useragree, privateagree, emailagree, shoppingagree, regdate, editdate, memno FROM agree
-    </select>
 
     <!-- 데이터 저장을 위한 기능 정의 -->
     <insert id="insertItem"
         parameterType="kr.co.poppy.model.Agree"
         useGeneratedKeys="true"
         keyProperty="agreeno">
-        INSERT INTO agree (useragree, privateagree, emailagree, shoppingagree, regdate, editdate, memno) VALUES (
-        #{useragree}, #{privateagree}, #{emailagree}, #{shoppingagree}, #{regdate}, #{editdate}, #{memno});
+        INSERT INTO agree (useagree, privateagree, emailagree, shoppingagree, regdate, editdate, memno) VALUES (
+        #{useagree}, #{privateagree}, #{emailagree}, #{shoppingagree}, #{regdate}, #{editdate}, #{memno});
     </insert>
 
     <!-- 데이터 삭제를 위한 기능 정의 -->
@@ -50,7 +35,7 @@
     <!-- 데이터 갱신을 위한 기능 정의 -->
     <update id="updateItem"
         parameterType="kr.co.poppy.model.Agree">
-        UPDATE agree SET useragree=#{useragree}, privateagree=#{privateagree}, emailagree=#{emailagree}, shoppingagree=#{shoppingagree}, regdate=#{regdate}, editdate=#{editdate}, memno=#{memno}
+        UPDATE agree SET useagree=#{useagree}, privateagree=#{privateagree}, emailagree=#{emailagree}, shoppingagree=#{shoppingagree}, regdate=#{regdate}, editdate=#{editdate}, memno=#{memno}
         WHERE agreeno=#{agreeno};
     </update>
 </mapper>
