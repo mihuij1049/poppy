@@ -20,33 +20,83 @@
         <result property="goodsno"         column="goodsno" />
     </resultMap>
     
-   <!-- 단일행 조회를 위한 기능 정의 -->
-   <!-- 글 보기 페이지 -->
-    <select id="selectItem"
+   <!-- 단일행 조회를 위한 기능 정의1 -->
+   <!-- QNA / 포토리뷰 글 보기 페이지 -->
+    <select id="selectItem1"
         parameterType="kr.co.poppy.model.Bbs"
         resultMap="bbsMap">
         SELECT bbsno, bbstype, bbstitle, bbscontent, qnasec, qnapw, rvlike,
                DATE_FORMAT(regdate, '%Y-%m-%d') AS regdate,
-               DATE_FORMAT(editdate, '%Y-%m-%d') AS editdate,
-   			   b.memno, username, userid, g.goodsno, gname
+               DATE_FORMAT(editdate, '%Y-%m-%d') AS editdate
+   			   b.memno, m.username, m.userid, g.goodsno, g.gname
         FROM bbs b
         INNER JOIN members m ON b.memno=m.memno
         INNER JOIN goods g ON b.goodsno=g.goodsno;
         WHERE bbstype=#{bbstype} and bbsno=#{bbsno}
     </select>
-
-    <!-- 다중행 조회를 위한 기능 정의 -->
-    <!-- 글 목록 페이지 -->
-    <select id="selectList"
+    
+    <!-- 단일행 조회를 위한 기능 정의2 -->
+     <!-- 공지사항 글 보기 페이지 -->
+    <select id="selectItem2"
+        parameterType="kr.co.poppy.model.Bbs"
+        resultMap="bbsMap">
+        SELECT bbsno, bbstype, bbstitle, bbscontent,
+               DATE_FORMAT(regdate, '%Y-%m-%d') AS regdate,
+               DATE_FORMAT(editdate, '%Y-%m-%d') AS editdate
+   			   b.memno, m.username, m.userid
+        FROM bbs b
+        INNER JOIN members m ON b.memno=m.memno
+        WHERE bbstype=#{bbstype} and bbsno=#{bbsno}
+    </select>
+    
+    
+    <!-- 다중행 조회를 위한 기능 정의1 -->
+    <!--  QNA / 포토리뷰 글 목록 페이지 -->
+    <select id="selectList1"
         parameterType="kr.co.poppy.model.Bbs"
         resultMap="bbsMap">
         SELECT bbsno, bbstype, bbstitle, bbscontent, qnasec, qnapw, rvlike,
                DATE_FORMAT(regdate, '%Y-%m-%d') AS regdate,
                DATE_FORMAT(editdate, '%Y-%m-%d') AS editdate,
-   			   b.memno, username, userid, g.goodsno, gname, 
+   			   b.memno, m.username, m.userid, g.goodsno, g.gname
         FROM bbs b
         INNER JOIN members m ON b.memno=m.memno
         INNER JOIN goods g ON b.goodsno=g.goodsno;
+        WHERE bbstype=#{bbstype}
+        
+        <where>
+            <if test="bbscontent != null and bbscontent != ''">
+                bbscontent LIKE concat('%', #{bbscontent}, '%')
+            </if>
+            <if test="bbstitle != null and bbstitle != ''">
+                bbstitle LIKE concat('%', #{bbstitle}, '%')
+            </if>
+            <if test="username != null and username != ''">
+                username LIKE concat('%', #{username}, '%')
+            </if>
+            <if test="userid != null and userid != ''">
+                userid LIKE concat('%', #{userid}, '%')
+            </if>
+        </where>
+        
+        ORDER BY bbsno DESC
+        
+        <if test="listCount > 0">
+            LIMIT #{offset}, #{listCount}
+        </if>
+    </select>
+    
+    <!-- 다중행 조회를 위한 기능 정의2 -->
+    <!-- 공지사항 글 목록 페이지 -->
+    <select id="selectList2"
+        parameterType="kr.co.poppy.model.Bbs"
+        resultMap="bbsMap">
+        SELECT bbsno, bbstype, bbstitle, bbscontent,
+               DATE_FORMAT(regdate, '%Y-%m-%d') AS regdate,
+               DATE_FORMAT(editdate, '%Y-%m-%d') AS editdate,
+   			   b.memno, m.username, m.userid
+        FROM bbs b
+        INNER JOIN members m ON b.memno=m.memno
         WHERE bbstype=#{bbstype}
         
         <where>
@@ -120,5 +170,11 @@
             bbstype=#{bbstype}, bbstitle=#{bbstitle}, bbscontent=#{bbscontent}, qnasec=#{qnasec}, qnapw=#{qnapw}, rvlike=#{rvlike}, 
             regdate=#{regdate}, editdate=#{editdate}, memo=#{memno}, goodsno=#{goodsno}
         WHERE bbsno=#{bbsno}
+   </update>
+   
+   <!-- 특정 멤버를 참조하는 Bbs데이터를 모두 참조 해제한다. -->
+   <update id="unsetMembers"
+   		parameterType="kr.co.poppy.model.Members">
+   		UPDATE bbs SET memno=null WHERE memno=#{memno}
    </update>
 </mapper>
