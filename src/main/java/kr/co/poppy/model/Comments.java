@@ -15,7 +15,7 @@ public class Comments {
 	private String regdate;
 	
 	/** 최종변경일시 */
-	private String eidtdate;
+	private String editdate;
 	
 	/** 회원 테이블 참조 */
 	private int memno;
