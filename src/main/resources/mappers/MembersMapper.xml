@@ -21,14 +21,14 @@
 <insert id="add_members"
 	parameterType="kr.co.poppy.model.Members"
 	useGeneratedKeys="true" keyProperty="memno">
-	INSERT INTO members(userid, userpw, username, userphone, useremail, regdate, editdate, agreeno) 
-	VALUES ("#{userid}", "#{userpw}", "#{username}", "#{userphone}", "#{useremail}", now(), now(), #{agreeno});
+	INSERT INTO members(userid, userpw, username, userphone, useremail, regdate, editdate) 
+	VALUES (#{userid}, #{userpw}, #{username}, #{userphone}, #{useremail}, #{regdate}, #{editdate});
 </insert>
 <!-- 특정 멤버의 정보를 수정 -->
 <update id="edit_members"
 	parameterType="kr.co.poppy.model.Members">
-	UPDATE members SET userid=#{userid}, userpw=#{userpw}, username=#{username}, userphone=#{userphone}, useremail=#{useremail}, regdate=#{regdate},
-		editdate=now(), agreeno=#{agreeno} WHERE memno=#{memno};
+	UPDATE members SET userphone=#{userphone}, useremail=#{useremail},
+		editdate=now() WHERE memno=#{memno};
 </update>
 <!-- 회원탈퇴  -->
 <delete id="delete_members"

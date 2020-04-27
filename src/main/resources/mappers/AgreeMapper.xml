@@ -29,7 +29,7 @@
     <!-- 데이터 삭제를 위한 기능 정의 -->
     <delete id="deleteItem"
         parameterType="kr.co.poppy.model.Agree">
-        DELETE FROM agree WHERE agreeno=#{agreeno};
+        DELETE FROM agree WHERE memno=#{memno};
     </delete>
 
     <!-- 데이터 갱신을 위한 기능 정의 -->
@@ -38,4 +38,9 @@
         UPDATE agree SET useagree=#{useagree}, privateagree=#{privateagree}, emailagree=#{emailagree}, shoppingagree=#{shoppingagree}, regdate=#{regdate}, editdate=#{editdate}, memno=#{memno}
         WHERE agreeno=#{agreeno};
     </update>
+    <!-- 특정 멤버를 참조하는 데이터를 참조 해제 -->
+    <update id="unsetMembers"
+   		parameterType="kr.co.poppy.model.Agree">
+   		UPDATE agree SET memno=null WHERE memno=#{memno}
+   </update>
 </mapper>

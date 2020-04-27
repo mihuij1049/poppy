@@ -24,13 +24,13 @@
 			parameterType="kr.co.poppy.model.Points"
 			useGeneratedKeys="true" keyProperty="pointno">
 			INSER INTO points(avpoint, napoint, pointtype, regdate, editdate, memno, orderno)
-				VALUES (#{avpoint}, #{napoint}, "#{pointtype}", now(), now(), #{memno}, #{orderno} );
+				VALUES (#{avpoint}, #{napoint}, #{pointtype}, #{regdate}, #{editdate}, #{memno}, #{orderno} );
 	</insert>
 	
 	<!-- 시간이 지나고 미가용 -> 가용으로 갱신 ** 추후 수정 필요 ** -->
-	<update id="edit_points"
+	<update id="edit_av_points"
 			parameterType="kr.co.poppy.model.Points">
-		UPDATE points SET avpoint=#{avpoint}, napoint=#{napoint}, editdate=now() WHERE pointno=#{pointno}
+		UPDATE points SET avpoint=#{avpoint}, napoint=#{napoint}, editdate=#{editdate} WHERE pointno=#{pointno}
 	</update>
 	
 	<!-- 회원이 적립금을 사용했을 때의 업데이트 (삭제 대용)  -->
