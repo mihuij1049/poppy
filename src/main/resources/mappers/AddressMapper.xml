@@ -52,15 +52,13 @@
 	    parameterType="kr.co.poppy.model.Address"
 	    useGeneratedKeys="true"
 	    keyProperty="addrno">
-	    INSERT INTO address (odname, odphone, odemail, zcode, addr1, addr2,
-	    regdate, editdate, memno) VALUES (#{odname}, #{odphone}, #{odemail},
-	    #{zcode}, #{addr1}, #{addr2}, #{regdate}, #{editdate}, #{memno});
+	    INSERT INTO address (odname, odphone, odemail, zcode, addr1, addr2, regdate, editdate, memno) VALUES (#{odname}, #{odphone}, #{odemail}, #{zcode}, #{addr1}, #{addr2}, now(), now(), #{memno});
 	</insert>
 	
     <!-- 데이터 삭제를 위한 기능 정의 -->
     <delete id="deleteItem"
         parameterType="kr.co.poppy.model.Address">
-        DELETE FROM address WHERE memno=#{memno}    
+        DELETE FROM address WHERE addrno=#{addrno}    
     </delete>
     
     <!-- 데이터 갱신을 위한 기능 정의 -->

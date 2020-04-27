@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import kr.co.poppy.model.Address;
+import kr.co.poppy.model.Orders;
 
 
 
@@ -27,7 +28,7 @@ import kr.co.poppy.model.Address;
 /** 메서드 이름순서로 실행하도록 설정 (설정하지 않을 경우 무작위 순서로 실행됨) */
 // import org.junit.FixMethodOrder;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class AddressTest {
+public class OrdersTest {
 
     /** MyBatis의 SQL세션 주입 설정 */
     // import org.springframework.beans.factory.annotation.Autowired;
@@ -38,24 +39,24 @@ public class AddressTest {
     // import org.junit.Test;
     @Test
     public void testA() {
-    	Address input = new Address();
+    	Orders input = new Orders();
     	input.setMemno(2);
-        sqlSession.selectList("AddressMapper.selectList", input);
+        sqlSession.selectList("OrdersMapper.selectList", input);
     }
     
     /** 상세 조회 테스트 */
     @Test
     public void testB() {    
-        // import study.spring.springhelper.model.Address;
-    	Address input = new Address();
+        // import study.spring.springhelper.model.Orders;
+    	Orders input = new Orders();
         input.setMemno(1);
-        sqlSession.selectOne("AddressMapper.selectItem", input);
+        sqlSession.selectOne("OrdersMapper.selectItem", input);
     }
     
     /** 데이터 저장 테스트 */
     @Test
     public void testC() {        
-    	Address input = new Address();
+    	Orders input = new Orders();
     	input.setOdname("조대철");
         input.setOdphone("010-8222-9650");
         input.setOdemail("yyaa9650@gmail.com");
@@ -65,13 +66,13 @@ public class AddressTest {
         input.setRegdate("now()");
         input.setEditdate("now()");
         input.setMemno(3);      
-        sqlSession.insert("AddressMapper.insertItem", input);
+        sqlSession.insert("OrdersMapper.insertItem", input);
     }
     
     /** 데이터 수정 테스트 */
     @Test
     public void testD() {        
-    	Address input = new Address();
+    	Orders input = new Orders();
         input.setOdname("하정우");
         input.setZcode(00000);
         input.setAddr1("서초구");
@@ -80,14 +81,14 @@ public class AddressTest {
         input.setOdemail("poppy@ezen.com");
         input.setEditdate("now()");
         input.setMemno(2);
-        sqlSession.update("AddressMapper.updateItem", input);
+        sqlSession.update("OrdersMapper.updateItem", input);
     }
     
     /** 데이터 삭제 테스트 */
     @Test
     public void testE() {        
-    	Address input = new Address();
+    	Orders input = new Orders();
         input.setAddrno(12);
-        sqlSession.delete("AddressMapper.deleteItem", input);
+        sqlSession.delete("OrdersMapper.deleteItem", input);
     }
 }
