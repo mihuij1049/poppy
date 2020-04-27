@@ -27,4 +27,32 @@ public class Bbs {
 	/** 상품 일련번호 */
 	private int goodsno;
 	
+	/** Join을 위한 변수 */
+	// 회원 이름
+	private String username;
+	// 회원 아이디
+	private String userid;
+	
+	 // 3) 페이지 구현을 위한 static 변수
+    /** LIMIT 절에서 사용할 조회 시작 위치 */
+    private static int offset;
+    
+    /** LIMIT 절에서 사용할 조회할 데이터 수 */
+    private static int listCount;
+    
+    public static int getOffset() {
+        return offset;
+    }
+    
+    public static void setOffset(int offset) {
+        Bbs.offset = offset;
+    }
+    
+    public static int getListCount() {
+        return listCount;
+    }
+    
+    public static void setListCount(int listCount) {
+        Bbs.listCount = listCount;
+    }
 }

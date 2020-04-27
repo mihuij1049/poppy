@@ -63,28 +63,33 @@ import kr.co.poppy.model.Bbs;
 	    // import org.junit.Test;
 	    @Test
 	    public void testC() {
-	        sqlSession.selectList("BbsMapper.selectList", null);
+	    	Bbs input = new Bbs();
+	        input.setBbstype("A");
+	        sqlSession.selectList("BbsMapper.selectList", input);
 	    }
 	    
 	    /** 데이터 저장 테스트 */
 	    @Test
 	    public void testD() {        
 	    	Bbs input = new Bbs();
-	        input.setBbstype("A");
+	        input.setBbstype("B");
 	        input.setBbstitle("안녕하세요");
 	        input.setBbscontent("내용");
-	        input.setMemno(1);
-	        input.setGoodsno(0);
 	        input.setRegdate(date);
 			input.setEditdate(date);
+			input.setMemno(1);
+			input.setGoodsno(1);
 	        sqlSession.insert("BbsMapper.insertItem", input);
 	    }
 	    /** 데이터 수정 테스트 */
 	    @Test
 	    public void testE() {        
 	    	Bbs input = new Bbs();
-	    	input.setBbsno(1);
-	        input.setBbstitle("제목");
+	    	input.setBbsno(3);
+	        input.setBbstitle("이 상품 좋은거 맞아요?");
+	        input.setBbscontent("잘쓰고있는데 좀 못미더워요.");
+	        input.setRvlike("****");
+	        input.setEditdate(date);
 	        sqlSession.update("BbsMapper.updateItem", input);
 	    }
 	    
@@ -93,6 +98,13 @@ import kr.co.poppy.model.Bbs;
 	    public void testF() {        
 	    	Bbs input = new Bbs();
 	        input.setBbsno(2);
+	        // bbs를 참조하는 댓글 삭제
+	        sqlSession.delete("BbsMapper.delete_cmt_item", input);
+	        // bbs를 참조하는 좋아요 삭제
+	        sqlSession.delete("BbsMapper.delete_rvheart_item", input);
+	        // bbs를 참조하는 img의 참조키 Null로 update
+	        sqlSession.update("BbsMapper.unsetImgs", input);
+	        // 게시글 삭제
 	        sqlSession.delete("BbsMapper.deleteItem", input);
 	    }
 	   
