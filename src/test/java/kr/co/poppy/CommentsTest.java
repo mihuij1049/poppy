@@ -37,6 +37,7 @@ public class CommentsTest {
     public void testA() {
         Comments input = new Comments();
         input.setCmtno(2);
+        
         sqlSession.selectOne("CommentsMapper.selectItem", input);
     }
 
