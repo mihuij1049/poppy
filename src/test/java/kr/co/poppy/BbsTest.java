@@ -1,5 +1,7 @@
 package kr.co.poppy;
 
+import java.util.Calendar;
+
 import org.apache.ibatis.session.SqlSession;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -34,13 +36,17 @@ import kr.co.poppy.model.Bbs;
 	    @Autowired
 	    private SqlSession sqlSession;
 
-	    
+	    Calendar c = Calendar.getInstance();
+		String date = String.format("%04d-%02d-%02d %02d:%02d:%02d", c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1,
+				c.get(Calendar.DAY_OF_MONTH), c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE), c.get(Calendar.SECOND));
+
+		
 	    /** 상세 조회 테스트1 */
 	    @Test
 	    public void testA() {    
 	    	Bbs input = new Bbs();
-	        input.setBbstype("A");
-	        input.setBbsno(1);
+	        input.setBbstype("B");
+	        input.setBbsno(2);
 	        sqlSession.selectOne("BbsMapper.selectItem1", input);
 	    }
 	    
@@ -48,8 +54,8 @@ import kr.co.poppy.model.Bbs;
 	    @Test
 	    public void testB() {    
 	    	Bbs input = new Bbs();
-	        input.setBbstype("B");
-	        input.setBbsno(2);
+	        input.setBbstype("A");
+	        input.setBbsno(1);
 	        sqlSession.selectOne("BbsMapper.selectItem2", input);
 	    }
 	    
@@ -67,6 +73,10 @@ import kr.co.poppy.model.Bbs;
 	        input.setBbstype("A");
 	        input.setBbstitle("안녕하세요");
 	        input.setBbscontent("내용");
+	        input.setMemno(1);
+	        input.setGoodsno(0);
+	        input.setRegdate(date);
+			input.setEditdate(date);
 	        sqlSession.insert("BbsMapper.insertItem", input);
 	    }
 	    /** 데이터 수정 테스트 */

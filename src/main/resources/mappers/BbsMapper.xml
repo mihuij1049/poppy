@@ -115,7 +115,7 @@
         INSERT INTO bbs (
             bbstype, bbstitle, bbscontent, qnasec, qnapw, rvlike, regdate, editdate, memno, goodsno
         ) VALUES (
-            #{bbstype}, #{bbstitle}, #{bbscontent}, #{qnasec}, #{qnapw}, #{rvlike}, now(), now(), #{memno}, #{goodsno}
+            #{bbstype}, #{bbstitle}, #{bbscontent}, #{qnasec}, #{qnapw}, #{rvlike}, #{regdate}, #{editdate}, #{memno}, #{goodsno}
         )
     </insert>
 
