@@ -37,7 +37,7 @@
         useGeneratedKeys="true"
         keyProperty="rvheartno">
         INSERT INTO rvheart (regdate, editdate, memno, bbsno) VALUES (
-        #{regdate}, #{editdate}, #{memno}, #{bbs});
+        #{regdate}, #{editdate}, #{memno}, #{bbsno});
     </insert>
 
     <!-- 데이터 삭제를 위한 기능 정의 -->
