@@ -27,7 +27,7 @@
                i.regdate, i.editdate,
    			   g.goodsno, b.bbsno
         FROM imgs i
-        INNER JOIN bbsno b ON b.bbsno=i.bbsno
+        INNER JOIN bbs b ON b.bbsno=i.bbsno
         INNER JOIN goods g ON g.goodsno=i.goodsno
         WHERE imgsno=#{imgsno} and imgtype=#{imgtype}
     </select>
@@ -64,7 +64,7 @@
    <!-- 특정 멤버를 참조하는 Bbs데이터를 모두 참조 해제한다. -->
    <update id="unsetGoods"
    		parameterType="kr.co.poppy.model.Goods">
-   		UPDATE imgs SET goddsno=null WHERE goodsno=#{goodsno}
+   		UPDATE imgs SET goodsno=null WHERE goodsno=#{goodsno}
    </update>
    
    <update id="unsetBbs"
