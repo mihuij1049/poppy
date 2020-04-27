@@ -15,11 +15,17 @@
 		<result property="regdate" column="regdate" />
 		<result property="editdate" column="editdate" />
 		<result property="goodsno" column="goodsno" />
+		<result property="gname" column="gname" />
+		<result property="gsale" column="gsale" />
+		<result property="gprice" column="gprice" />
+		<result property="ginfo" column="ginfo" />
 		<result property="username" column="username" />
 		<result property="bbstitle" column="bbscontent" />
 		<result property="rvlike" column="rvlike" />
+		<result property="heartno" column="heartno" />
 		<result property="imgname" column="imgname" />
-		<result property="imgtype" column="imgpath" />
+		<result property="imgpath" column="imgpath" />
+		<result property="imgtype" column="imgtype" />
 		<result property="imgext" column="imgext" />
 		<result property="imgsize" column="imgsize" />
 		<result property="bbstype" column="bbstype" />
@@ -32,46 +38,51 @@
 	<select id="selectItem"
 		parameterType="kr.co.poppy.model.Goodsdetail"
 		resultMap="goodsdetailMap">
-		SELECT m.username, b.bbstitle, b.bbscontent, b.regdate,
-		b.rvlike, i.imgname,
-		i.imgtype, i.imgpath FROM bbs b INNER JOIN members
-		m ON b.memno =
-		m.memno INNER JOIN imgs i ON b.goodsno = i.goodsno WHERE
-		b.bbstype =
-		#{bbstype};
+		SELECT
+		i.imgname, i.imgext, i.imgpath, h.heartno, g.gname, g.gsale, g.gprice,
+		g.ginfo
+		FROM goods g
+		INNER JOIN imgs i ON g.goodsno = i.goodsno
+		INNER JOIN heart h ON g.goodsno = h.goodsno
+		INNER JOIN goodsdetail gd ON g.goodsno = gd.goodsno
+		WHERE g.goodsno = #{goodsno};
+	</select>
+
+	<!-- 다중행 조회를 위한 기능 정의 -->
+	<select id="selectList"
+		parameterType="kr.co.poppy.model.Goodsdetail"
+		resultMap="goodsdetailMap">
+		SELECT gddetailno, gdoption, gdstock, regdate, editdate,
+		goodsno
+		FROM goodsdetail
 	</select>
 
 	<!-- 데이터 저장을 위한 기능 정의 -->
 	<insert id="insertItem"
 		parameterType="kr.co.poppy.model.Goodsdetail" useGeneratedKeys="true"
 		keyProperty="gddetailno">
-		INSERT INTO bbs(bbstype, bbstitle, bbscontent, rvlike,
-		regdate, editdate, memno, goodsno)
-		VALUES (#{bbstype}, #{bbstitle},
-		#{bbscontent}, #{rvlike}, now(), now(),
-		#{memno}, #{goodsno});
-
-		INSERT
-		INTO imgs(imgname, imgext, imgpath,
-		imgsize, imgtype, regdate,
+		INSERT INTO goodsdetail(gdoption, gdstock, regdate,
 		editdate,
-		goodsno, bbsno)
-		VALUES (#{imgname},
-		#{imgext}, #{imgpath},
-		#{imgsize} ,
-		#{imgtype}, now(), now(),
-		#{goodsno}, #{bbsno});
+		goodsno)
+		VALUES (#{gdoption}, #{gdstock}, #{regdate},
+		#{editdate}, #{goodsno})
 	</insert>
 
 	<!-- 데이터 갱신을 위한 기능 정의 -->
 	<update id="updateItem"
 		parameterType="kr.co.poppy.model.Goodsdetail">
-		UPDATE bbs SET bbscontent = #{bbscontent} WHERE
-		memno=#{memno};
+		UPDATE goodsdetail SET
+		gdoption = #{gdoption}, gdstock =
+		#{gdstock}, editdate = #{editdate},
+		goodsno = #{goodsno}, editdate =
+		#{editdate}
+		WHERE gddetailno = #{gddetailno}
 	</update>
 
 	<!-- 데이터 삭제를 위한 기능 정의 -->
 	<delete id="deleteItem"
 		parameterType="kr.co.poppy.model.Goodsdetail">
+		DELETE FROM goodsdetail
+		WHERE gddetailno = #{gddetailno}
 	</delete>
 </mapper>

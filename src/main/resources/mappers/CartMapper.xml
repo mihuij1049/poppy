@@ -28,18 +28,41 @@
 	<!-- 다중행 조회를 위한 기능 정의 -->
 	<select id="selectList" parameterType="kr.co.poppy.model.Cart"
 		resultMap="cartMap">
-		SELECT i.imgname, i.imgext, i.imgpath, i.imgtype, g.gname,
-		o.deliprice,
-		g.gprice, c.cartqty FROM goods g INNER JOIN imgs i ON
-		g.goodsno=i.goodsno INNER JOIN goodsdetail gd ON g.goodsno =
-		gd.goodsno INNER JOIN cart c ON gd.gddetailno = c.gddetailno INNER
-		JOIN orders o ON o.memno = c.memno
-		WHERE c.memno=1;
+		SELECT i.imgname, i.imgext, i.imgpath, i.imgtype,
+		g.gname,
+		o.deliprice, g.gprice, c.cartqty
+		FROM goods g
+		INNER JOIN imgs i ON
+		g.goodsno=i.goodsno
+		INNER JOIN goodsdetail gd ON g.goodsno = gd.goodsno
+		INNER JOIN cart c ON gd.gddetailno = c.gddetailno
+		INNER JOIN orders o
+		ON o.memno = c.memno
+		WHERE c.memno=#{memno}
 	</select>
+
+	<!-- 데이터 저장을 위한 기능 정의 -->
+	<insert id="insertItem" parameterType="kr.co.poppy.model.Cart"
+		useGeneratedKeys="true" keyProperty="cartno">
+		INSERT INTO cart(cartqty, regdate,
+		editdate, gddetailno, memno)
+		VALUES (#{cartqty}, #{regdate},
+		#{editdate}, #{gddetailno}, #{memno});
+	</insert>
+
+	<!-- 데이터 갱신을 위한 기능 정의 -->
+	<update id="updateItem" parameterType="kr.co.poppy.model.Cart">
+		UPDATE cart SET
+		cartqty =
+		#{cartqty}, editdate = #{editdate}, gddetailno = #{gddetailno}
+		WHERE
+		memno = #{memno}
+	</update>
 
 	<!-- 데이터 삭제를 위한 기능 정의 -->
 	<delete id="deleteItem" parameterType="kr.co.poppy.model.Cart">
-		DELETE FROM cart WHERE
+		DELETE FROM cart
+		WHERE
 		memno=#{memno} AND cartno=#{cartno};
 	</delete>
 </mapper>
