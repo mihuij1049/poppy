@@ -19,24 +19,24 @@
         <result property="memno"         column="memno" />
     </resultMap>
     
-    <!-- 단일행 조회를 위한 기능 정의  -->
+    <!-- 주문/결제 최근 배송지 단일행 조회를 위한 기능 정의  -->
     <select id="selectItem"
 		parameterType="kr.co.poppy.model.Address"
 		resultMap="addressMap">
-		SELECT odname, odphone, odemail, zcode, addr1, addr2 FROM address WHERE memno=#{memno};
+		SELECT odname, odphone, odemail, zcode, addr1, addr2 FROM address WHERE memno=#{memno}
+		
+		ORDER BY regdate DESC
+        
+        LIMIT 0, 1;
 	</select>
 	
-    <!-- 다중행 조회를 위한 기능 정의 -->
+    <!-- 주문/결제 배송지 목록 다중행 조회를 위한 기능 정의 -->
     <select id="selectList"
         parameterType="kr.co.poppy.model.Address"
         resultMap="addressMap">
-        SELECT odname, odphone, odemail, zcode, addr1, addr2 FROM address
+        SELECT odname, odphone, odemail, zcode, addr1, addr2 
         
-        <where>
-            <if test="memno != 0 and memno != ''">
-                memno = #{memno}
-            </if>
-        </where>      
+        FROM address WHERE memno=#{memno}; 
     </select>
     
     <!-- 데이터 수 조회를 위한 기능 정의  -->
@@ -44,16 +44,10 @@
         parameterType="kr.co.poppy.model.Address"
         resultType="int">
         SELECT COUNT(*)
-        FROM Address 
-                       
-        <where>
-            <if test="memno != 0 and memno != ''">
-                memno = #{memno}
-            </if>
-        </where>
+        FROM Address WHERE memno=#{memno};                    
     </select>
     
-    <!-- 데이터 저장을 위한 기능 정의 -->
+    <!-- 주문/결제 주문하기 버튼을 눌렀을때 주소데이터 저장을 위한 기능 정의 -->
     <insert id="insertItem"
 	    parameterType="kr.co.poppy.model.Address"
 	    useGeneratedKeys="true"

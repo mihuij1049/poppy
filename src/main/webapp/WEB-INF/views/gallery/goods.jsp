@@ -836,13 +836,13 @@ dl {
 				</div>
 				<div class="prd-action">
 					<div class="action-btn">
-						<button type="button" onclick="location.href='../pay/cart.jsp'"
+						<button type="button" onclick="location.href='${pageContext.request.contextPath }/pay/cart.jsp'"
 							id="action-cart">장바구니</button>
 						<button type="button"
-							onclick="location.href='../myInfo/like_goods.jsp'"
+							onclick="location.href='${pageContext.request.contextPath }/myInfo/like_goods.jsp'"
 							id="action-like">관심상품</button>
 						<button type="button"
-							onclick="location.href='../pay/orderform.jsp'"
+							onclick="location.href='${pageContext.request.contextPath }/pay/orderform.jsp'"
 							id="action-orderform">구매하기</button>
 					</div>
 				</div>
@@ -1079,13 +1079,13 @@ dl {
 				<hr />
 				<div class="prd-action2">
 					<div class="action-btn2">
-						<button type="button" onclick="location.href='../pay/cart.jsp'"
+						<button type="button" onclick="location.href='${pageContext.request.contextPath }/pay/cart.jsp'"
 							id="action-cart2">장바구니</button>
 						<button type="button"
-							onclick="location.href='../myInfo/like_goods.jsp'"
+							onclick="location.href='${pageContext.request.contextPath }/myInfo/like_goods.jsp'"
 							id="action-like2">관심상품</button>
 						<button type="button"
-							onclick="location.href='../pay/orderform.jsp'"
+							onclick="location.href='${pageContext.request.contextPath}/pay/orderform.jsp'"
 							id="action-orderform2">구매하기</button>
 					</div>
 				</div>
