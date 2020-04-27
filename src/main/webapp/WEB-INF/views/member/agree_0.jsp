@@ -108,10 +108,10 @@
 		<!-- 여기에 작성 -->
 		<div class="container">
 			<div class="page-title clearfix">
-				<a href="#" onclick="history.back(); return false;"><i
-							class="glyphicon glyphicon-chevron-left"></i></a>
 				<h4>
-					<b>회원가입</b>
+					<b> <a href="#" onclick="history.back(); return false;"><i
+							class="glyphicon glyphicon-chevron-left"></i></a>회원가입
+					</b>
 				</h4>
 			</div>
 			<div class="agree_nav">
