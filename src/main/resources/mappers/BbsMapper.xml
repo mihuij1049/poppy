@@ -26,11 +26,11 @@
         parameterType="kr.co.poppy.model.Bbs"
         resultMap="bbsMap">
         SELECT bbsno, bbstype, bbstitle, bbscontent, qnasec, qnapw, rvlike,
-			   b.regdate, b.ediedate,
+			   b.regdate, b.editdate,
    			   b.memno, m.username, m.userid, g.goodsno, g.gname
         FROM bbs b
         INNER JOIN members m ON b.memno=m.memno
-        INNER JOIN goods g ON b.goodsno=g.goodsno;
+        INNER JOIN goods g ON b.goodsno=g.goodsno
         WHERE bbstype=#{bbstype} and bbsno=#{bbsno}
     </select>
     

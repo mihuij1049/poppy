@@ -1,93 +1,191 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true"%>
-<!doctype html>
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
+<!DOCTYPE html>
+<html lang="ko">
 
 <head>
-<%@ include file="../share/head_tp.jsp"%>
-<style type="text/css">
-/** 하나의 글 덩어리 */
-.questions {
-	border-top: 1px dotted #eee;
-	border-bottom: 1px dotted #eee;
-	padding-bottom: 10px;
-	padding-left: 20px;
-}
+    <%@ include file="../share/head_tp.jsp"%>
+    <style type="text/css">
 
-#qna_link {
-	text-decoration: none;
-}
+        .notice {
+            margin-top: 20px;
+        }
 
-.btn_write {
-	float: right;
-	margin-right: 15px;
-}
+        hr {
+            margin: 0;
+        }
 
-.qna_subject {
-	padding-left:10px;
-}
+        .table span {
+            font-size: 11px;
+        }
 
-.uname {
-	padding-left:10px;
-}
-</style>
-<script src="../share/plugins/handlebars/handlebars-v4.0.5.js"></script>
+        .table td {
+            height: 70px;
+        }
+
+        .table .subject {
+            vertical-align: middle;
+        }
+
+        .pagination>.active>span {
+            background-color: #777;
+            border-color: #777;
+        }
+
+        a {
+            color: #777;
+        }
+
+        .paging {
+            text-align: center;
+        }
+
+        .paging .disabled {
+            position: relative;
+            right: 10px;
+        }
+
+        .paging .paging-right {
+            position: relative;
+            left: 10px;
+        }
+
+        .row {
+            margin-bottom: 50px;
+        }
+
+        .form-group {
+            max-width: 100%;
+            padding-top: 5px;
+            position: relative;
+            top: 5px;
+        }
+
+        .form-group #array1 {
+            font-size: 12px;
+            margin-left: 2%;
+            margin-right: 2%;
+            padding-left: 5px;
+            display: inline;
+            width: 47%;
+            height: 30px;
+        }
+
+        .form-group #array2 {
+            font-size: 12px;
+            margin-right: 2%;
+            padding-left: 5px;
+            width: 47%;
+            height: 30px;
+        }
+
+        .form-group #search {
+            display: inline;
+            margin-top: 8px;
+            margin-left: 2%;
+            margin-right: 2%;
+            width: 82%;
+            height: 30px;
+
+        }
+
+        .form-group .btn {
+            font-size: 12px;
+            color: #fff;
+            background: #ff8f83;
+            padding-left: 10px;
+            margin-top: 8px;
+            width: 12%;
+            height: 30px;
+
+        }
+        /** 글쓰기 버튼 */
+        .btn_write {
+        	float:right;
+        	margin-right:15px;
+        }
+        /** 글리피콘 */
+        .glyphicon-lock {
+        margin: 10px;
+        }
+        .name {
+        padding-left:10px;
+        }
+    </style>
 </head>
 
 <body>
-	<%@ include file="../share/top_tp.jsp"%>
-	<div class="content">
-		<!-- 여기에 작성 -->
-		<div class="page-title clearfix">
-			<h4>
-				<b> <a href="#" onclick="history.back(); return false;"><i
-						class="glyphicon glyphicon-chevron-left"></i></a>상품Q&A
-				</b>
-			</h4>
-			<button type="button" onclick="location.href='${pageContext.request.contextPath}/community/qna_wri.do'"
+    <%@ include file="../share/top_tp.jsp"%>
+    <div class="content">
+        <div class="page-title clearfix">
+         <h4><b>
+            <a href="#" onclick="history.back(); return false;"><i class="glyphicon glyphicon-chevron-left"></i></a>상품Q&A
+        </b></h4>
+        <button type="button" onclick="location.href='${pageContext.request.contextPath}/community/qna_wri.do'"
 				class="btn btn_write btn-sm">글쓰기</button>
-		</div>
-		<ul class="cus_qna_list" id="cus_qna_list">
-
-		</ul>
-	</div>
-
-	<%@ include file="../share/bottom_tp.jsp"%>
-	<!-- 여기서부터 핸들바 템플릿 구조 만들기 -->
-	<script id="customer_qna_tmpl" type="text/x-handlebars-template">
-	{{#each qnas}}
-	<li class="questions" id="question1">
-		<div class="qnas clearfix">
-			<a href="#" class="qna_link" id="qna_link" style="color:black;">
-				<span class="glyphicon glyphicon-lock"><span class="qna_subject">{{qna_subject}}</span></span><br></a>
-				<small class="uname">{{user_name}} 날짜</small>
-			
-		</div>
-		
-	</li>
-	{{/each}}
-	</script>
-	<script type="text/javascript">
-		/** Ajax 통신을 통해 json 파일을 읽어들여 핸들바 템플릿에 적용 */
-		$(function() {
-			// get요청을 통한 핸들바 템플릿 태그 조립하기
-			function get_list() {
-				$.get("../share/plugins/questions_list.json", function(req) {
-					// 미리 준비한 HTML틀을 읽어온다.
-					var template = Handlebars.compile($("#customer_qna_tmpl")
-							.html());
-					// Ajax 를 통해서 읽어온 JSON 을 템플릿에 병합한다.
-					var html = template(req);
-					// #interest-item-group 에 읽어온 내용을 추가한다.
-					$("#cus_qna_list").append(html);
-				});
-			} // 검색 결과를 템플릿을 이용해서 화면에 나타낼 함수 정의 끝
-			/** 함수 호출 -> 이 부분에서 상품 리스트가 화면에 뿌려짐 */
-			get_list();
-		});
-	</script>
-
+    </div>
+    <div class="notice">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td class="subject" onclick="location.href='${pageContext.request.contextPath}/community/article.do';" style="cursor:pointer;">
+                    <span class="glyphicon glyphicon-lock"></span>
+                        <strong>질문있어요!
+                            <span class="comment">[1]</span><br />
+                        </strong>
+                        <span class="name" title="작성자">김령태</span>
+                        <span class="date" title="작성일">20.03.17</span>
+                        <span>조회 3</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="subject" onclick="location.href='${pageContext.request.contextPath}/community/article.do';" style="cursor:pointer;">
+                       <span class="glyphicon glyphicon-lock"></span>
+                        <strong>배송 언제오나요?
+                            <span class="comment">[1]</span>
+                        </strong><br />
+                        <span class="name" title="작성자">정미희</span>
+                        <span class="date" title="작성일">20.03.17</span>
+                        <span>조회 5</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class=" paging">
+        <ul class="pagination pagination-sm">
+            <li class="disabled"><a href="#">&laquo;</a></li>
+            <!-- 활성화 버튼은 아래의 구조로 구성하시면 됩니다. sr-only는 스크린리더 전용입니다. -->
+            <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
+            <li class="paging-right"><a href="#">&raquo;</a></li>
+        </ul>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="form-group">
+            <select id="array1" class="col-xs-6 form-control">
+                <option value="">일주일</option>
+                <option value="1">한달</option>
+                <option value="2">세달</option>
+                <option value="3">전체</option>
+            </select>
+            <select id="array2" class="col-xs-6 form-control">
+                <option value="">내용</option>
+                <option value="1">제목</option>
+                <option value="2">글쓴이</option>
+                <option value="3">아이디</option>
+                <option value="3">별명</option>
+            </select>
+            <input type="text" id="search" class="col-xs-11 form-control">
+            <button type="button" class="col-xs-1 btn btn-dark">검색</button>
+        </div>
+    </div>
+</div>
+</div>
+<%@ include file="../share/bottom_tp.jsp"%>
 </body>
 
 </html>
