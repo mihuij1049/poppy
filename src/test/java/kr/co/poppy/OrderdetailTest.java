@@ -40,7 +40,7 @@ public class OrderdetailTest {
     @Test
     public void testA() {
     	Orderdetail input = new Orderdetail();
-    	input.setMemno(2);
+    	input.setOrderdetailno(1);
         sqlSession.selectList("OrderdetailMapper.selectList", input);
     }
     
@@ -49,7 +49,7 @@ public class OrderdetailTest {
     public void testB() {    
         // import study.spring.springhelper.model.Orderdetail;
     	Orderdetail input = new Orderdetail();
-        input.setMemno(1);
+        input.setOrderdetailno(2);
         sqlSession.selectOne("OrderdetailMapper.selectItem", input);
     }
     
@@ -57,15 +57,17 @@ public class OrderdetailTest {
     @Test
     public void testC() {        
     	Orderdetail input = new Orderdetail();
-    	input.setOdname("조대철");
-        input.setOdphone("010-8222-9650");
-        input.setOdemail("yyaa9650@gmail.com");
-        input.setZcode(05155);
-        input.setAddr1("서울시");
-        input.setAddr2("강동구");
-        input.setRegdate("now()");
+    	input.setOdgcode("av111111111");
+        input.setOdgname("뽀삐 데이스포 테라픽 사료/특별기획 5종세트");
+        input.setOdgprice(59900);
+        input.setOdgsale(39900);
+        input.setOdcate1("푸드");
+        input.setOdcate2("건식사료");
+        input.setOdgdoption("데이스포 테라픽 사료 1kg");
+        input.setOdgqty(1);
+        input.setRegdate("now()"); 
         input.setEditdate("now()");
-        input.setMemno(3);      
+        input.setOrderno(3);
         sqlSession.insert("OrderdetailMapper.insertItem", input);
     }
     
@@ -73,14 +75,15 @@ public class OrderdetailTest {
     @Test
     public void testD() {        
     	Orderdetail input = new Orderdetail();
-        input.setOdname("하정우");
-        input.setZcode(00000);
-        input.setAddr1("서초구");
-        input.setAddr2("이젠쓰");
-        input.setOdphone("010-8222-9650");
-        input.setOdemail("poppy@ezen.com");
+        input.setOdgcode("av111111115");
+        input.setOdgname("뽀삐 목우촌펫9단 덴티케어피부건강100g/강아지저키");
+        input.setOdgprice(59900);
+        input.setOdgsale(39900);
+        input.setOdgdate("2023-04-27");
+        input.setOdgdoption("데이스포 테라픽 사료 3kg");
+        input.setOdgqty(2);
         input.setEditdate("now()");
-        input.setMemno(2);
+        input.setOrderdetailno(5);
         sqlSession.update("OrderdetailMapper.updateItem", input);
     }
     
@@ -88,7 +91,7 @@ public class OrderdetailTest {
     @Test
     public void testE() {        
     	Orderdetail input = new Orderdetail();
-        input.setAddrno(12);
+        input.setOrderdetailno(2);
         sqlSession.delete("OrderdetailMapper.deleteItem", input);
     }
 }

@@ -49,7 +49,7 @@ public class OrdersTest {
     public void testB() {    
         // import study.spring.springhelper.model.Orders;
     	Orders input = new Orders();
-        input.setMemno(1);
+        input.setOrderno(2);
         sqlSession.selectOne("OrdersMapper.selectItem", input);
     }
     
@@ -57,15 +57,14 @@ public class OrdersTest {
     @Test
     public void testC() {        
     	Orders input = new Orders();
-    	input.setOdname("조대철");
-        input.setOdphone("010-8222-9650");
-        input.setOdemail("yyaa9650@gmail.com");
-        input.setZcode(05155);
-        input.setAddr1("서울시");
-        input.setAddr2("강동구");
+    	input.setOdmsg("반가워요");
+        input.setPaytype("A");
+        input.setOdstatus("1");
+        input.setDeliprice(2500);
         input.setRegdate("now()");
         input.setEditdate("now()");
-        input.setMemno(3);      
+        input.setMemno(2);
+        input.setAddrno(2);    
         sqlSession.insert("OrdersMapper.insertItem", input);
     }
     
@@ -73,14 +72,12 @@ public class OrdersTest {
     @Test
     public void testD() {        
     	Orders input = new Orders();
-        input.setOdname("하정우");
-        input.setZcode(00000);
-        input.setAddr1("서초구");
-        input.setAddr2("이젠쓰");
-        input.setOdphone("010-8222-9650");
-        input.setOdemail("poppy@ezen.com");
+        input.setOdmsg("잘부탁드려요.");
+        input.setPaytype("B");
+        input.setOdstatus("2");
+        input.setDeliprice(2500);
         input.setEditdate("now()");
-        input.setMemno(2);
+        input.setMemno(5);
         sqlSession.update("OrdersMapper.updateItem", input);
     }
     
@@ -88,7 +85,7 @@ public class OrdersTest {
     @Test
     public void testE() {        
     	Orders input = new Orders();
-        input.setAddrno(12);
+        input.setOrderno(10);
         sqlSession.delete("OrdersMapper.deleteItem", input);
     }
 }

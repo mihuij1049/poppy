@@ -32,27 +32,19 @@
      <select id="selectList"
         parameterType="kr.co.poppy.model.Orderdetail"
         resultMap="orderdetailMap">
-        SELECT * FROM orderdetail
-        
-        <where>
-            <if test="orderdetailno != 0 and orderdetailno != ''">
-                orderdetailno = #{orderdetailno}
-            </if>
-        </where>      
+        SELECT * FROM orderdetail   
+        WHERE orderdetailno = #{orderdetailno}
+              
     </select>
     
     <!-- 데이터 수 조회를 위한 기능 정의  -->
     <select id="selectCountAll"
         parameterType="kr.co.poppy.model.Orderdetail"
         resultType="int">
+        
         SELECT COUNT(*)
         FROM orderdetail 
-                       
-        <where>
-            <if test="orderdetailno != 0 and orderdetailno != ''">
-                orderdetailno = #{orderdetailno}
-            </if>
-        </where>
+        WHERE orderdetailno = #{orderdetailno}       
     </select>
     
     <!-- 데이터 저장을 위한 기능 정의 -->
@@ -72,5 +64,11 @@
     </delete>
     
     <!-- 데이터 갱신을 위한 기능 정의 -->
-    
+    <update id="updateItem" parameterType="kr.co.poppy.model.Orderdetail">
+		UPDATE orderdetail SET
+		odgcode=#{odgcode}, odgname=#{odgname}, odgprice=#{odgprice},
+		odgsale=#{odgsale}, odgdate=odgdate, odgdoption=#{odgdoption},
+		odgqty=#{odgqty}, editdate=now()
+		WHERE orderdetailno=#{orderdetailno};
+	</update>
 </mapper>
