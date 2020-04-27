@@ -53,6 +53,21 @@ public class WebHelper {
 	/** JSP의 session 내장 객체 */
 	// --> import javax.servlet.http.HttpSession;
 	private HttpSession session;
+	
+	/** 업로드 된 결과물이 저장될 폴더 */
+	private String uploadDir;
+	
+	/** 업로드 된 파일이 식별될 URL경로 */
+	private String uploadPath;
+
+	/** 업로드 가능한 최대 용량 */
+	private int uploadMaxFileSize;
+	
+	/** Multupart 전송시 File정보를 저장하기 위한 컬렉션 */
+	private List<UploadItem> fileList;
+	
+	/** Multipart 전송시 텍스트 데이터를 저장하기 위한 컬렉션 */
+	private Map<String, String> paramMap;
 
 	// ----------- 싱글톤 객체 생성 시작 ----------
 	private static WebHelper current;
@@ -119,7 +134,59 @@ public class WebHelper {
 		this.session = session;
 	}
 	
+	public String getUploadDir() {
+		return uploadDir;
+	}
+
+	public void setUploadDir(String uploadDir) {
+		this.uploadDir = uploadDir;
+	}
+
+	public String getUploadPath() {
+		return uploadPath;
+	}
+
+	public void setUploadPath(String uploadPath) {
+		this.uploadPath = uploadPath;
+	}
 	
+	/** 
+	 * 업로드 폴더 하위에 저장되어 있는 파일이름을 전달받아 Web에서 접근 가능한 경로로 리턴한다.
+	 */
+	public String getUploadPath(String filePath) {
+		// URL상의 업로드 폴더와 파일 이름을 결합하여 파일 객체 생성
+		File f = new File (this.uploadPath, filePath);
+		// 결합된 경로  추출
+		String path = f.getPath();
+		// window의 경우 경로 구문을 역슬래시로 하는데, 이는 웹에 노출할 수 있는 형태가 아니므로
+		// 역슬래스를 슬래시로 변환하여 반환한다.
+		return path.replace("\\", "/");
+	}
+
+	public int getUploadMaxFileSize() {
+		return uploadMaxFileSize;
+	}
+
+	public void setUploadMaxFileSize(int uploadMaxFileSize) {
+		this.uploadMaxFileSize = uploadMaxFileSize;
+	}
+
+	public List<UploadItem> getFileList() {
+		return fileList;
+	}
+
+	public void setFileList(List<UploadItem> fileList) {
+		this.fileList = fileList;
+	}
+
+	public Map<String, String> getParamMap() {
+		return paramMap;
+	}
+
+	public void setParamMap(Map<String, String> paramMap) {
+		this.paramMap = paramMap;
+	}
+
 	/**
 	 * JSP의 주요 내장객체를 멤버변수에 연결한다.
 	 *
@@ -475,6 +542,200 @@ public class WebHelper {
 		this.setCookie(key, null, 0);
 	}
 	
+	/**
+	 * Multipart로 전송된 데이터를 판별하여 파일리스트와 텍스트 파라미터를 분류한다.
+	 * 
+	 * @throws Exception
+	 */
+	@Deprecated
+	public void upload() throws Exception {
+		/** 1) 업로드 사전 준비하기 */
+		// items에 저장 데이터가 분류될 컬렉션들 할당하기
+		fileList = new ArrayList<UploadItem>();
+		paramMap = new HashMap<String, String>();
+		
+		// 업로드가 수행될 폴더의 존재 여부 체크해서 없다면 생성하기
+		// --> import java.io.File
+		File uploadDirFile = new File(this.uploadDir);
+		if (!uploadDirFile.exists()) {
+			uploadDirFile.mkdirs();
+		}
+		
+		// 업로드가 수행될 폴더 연걸
+		// -->import org.apache.commons.fileupload.disk.DiskFileItemFactory
+		DiskFileItemFactory factory = new DiskFileItemFactory();
+		factory.setRepository(uploadDirFile);
+		
+		/** 2) 업로드 처리하기 */
+		// 업로드 수행을 위한 객체 생성
+		// --> import org.apache.commons.fileupload.servlet.ServletFileUpload;
+		ServletFileUpload upload = new ServletFileUpload(factory);
+		// UTF-8 처리 지정
+		upload.setHeaderEncoding(this.encType);
+		// 최대 파일 크기
+		upload.setSizeMax(this.uploadMaxFileSize);
+		// 실제 업로드를 수행하여 전송된 데이터에 대한 컬렉션 객체 추출하기
+		// -> 이 안에 파일과 텍스트 정보가 함께 들어있기 때문에
+		// 반복문을 수행하면서 분류 작업을 진행해야 한다.
+		// --> import org.apache.commons.fileupload.FileItem
+		List<FileItem> items = upload.parseRequest(request);
+		
+		/** 3) 업로드 정보 분류하기 */
+		// 업로드 된 컬렉션의 데이터 수 만큼 반복하면서 처리한다.
+		for (FileItem f : items) {
+			if (f.isFormField()) {
+				/** 텍스트 형식의 데이터인 경우 --> paramMap에 정보 분류 */
+				// <input>태그의 name 속성
+				String key = f.getFieldName();
+				// 사용자의 입력값을 UTF-8 형식으로 취득한다.
+				String value = f.getString(this.encType);
+				
+				// 이미 동일한 키값이 map안에 존재한다면 ?
+				// --> checkbox의 경우 이름이 동일한 요소가 여러개 전송될 수 있음.
+				if (paramMap.containsKey(key)) {
+					// 기존의 값 뒤에 콤마를 추가해서 값을 병합한다.
+					value = paramMap.get(key) + "," + value;
+					paramMap.put(key, value);
+				} else {
+	                // 그렇지 않다면 키와 값을 신규로 추가한다.
+	                paramMap.put(key, value);
+	            }
+			} else {
+				/** 파일 형식의 데이터인 경우 --> fileList에 정보 분류 */
+				
+				/** 3-1) 파일의 정보를 추출한다. */
+				String fieldName = f.getFieldName();
+				String orginName = f.getName();
+				String contentType = f.getContentType();
+				long fileSize = f.getSize();
+				
+				// 파일 사이즈가 없다면 for문의 조건식으로 돌아간다.
+				if (fileSize < 1) {
+					continue;
+				}
+				
+				/** 3-2) 동일한 이름의 파일이 존재하는지 검사한다. */
+				 // 파일의 원본 이름에서 확장자만 추출
+                String ext = orginName.substring(orginName.lastIndexOf("."));
+
+                String fileName = null; // 웹 서버에 저장될 파일이름
+                File uploadFile = null; // 저장된 파일 정보를 담기 위한 File객체
+                String filePath = null; // 최종적으로 업로드 될 파일 경로
+                int count = 0;          // 중복된 파일 수
+                
+				// 일단 무한루프 
+				while (true) {
+					// 저장될 파일 이름 --> 현재시각 + 카운트값 + 확장자
+					fileName = String.format("%d%d%s", System.currentTimeMillis(), count, ext);
+					// 업로드 파일이 저장될 폴더 + 파일이름으로 파일객체를 생성한다.
+					uploadFile = new File(uploadDirFile, fileName);
+					
+					// 동일한 이름의 파일이 없다면 반복 중단.
+					if (!uploadFile.exists()) {
+						filePath = uploadFile.getAbsolutePath();
+						break;
+					}
+					
+					// if문을 빠져나올 경우 중복된 이름의 파일이 존재한다는 의미이므로 count를 1증가
+					count++;
+				} // end while
+				
+				/** 3-3) 업로드된 파일을 결정된 파일 경로로 저장 */
+				f.write(uploadFile);
+				f.delete();
+				
+				// 윈도우에서 처리할 경우 파일 경로상에 존재하는 역슬래시를 모두 슬래스로 변경한다.
+				filePath = filePath.replace("\\", "/");
+				
+				// 최종적으로 생성된 경로에서 업로드 폴더까지의 경로를 제거한다.
+				// ex)) D:/jsp/upload/2234234435.jpg --> /2234234435.jpg
+				filePath = filePath.replace(this.uploadDir.replace("\\", "/"), "");
+	
+				/** 3-4) 파일 정보 분류 처리 */
+				// 생성된 정보를 Beans의 객체로 설정해서 컬렉션에 저장한다.
+				// --> 이 정보는 추후 파일의 업로드 내역을 DB에 저장할 때 사용된다.
+				UploadItem info = new UploadItem();
+				info.setFieldName(fieldName);
+				info.setOrginName(orginName);
+				info.setFilePath(filePath);
+				info.setContentType(contentType);
+				info.setFileSize(fileSize);
+				
+				fileList.add(info);
+			
+			} // end if 
+		} // end for
+		
+		/** 4) 취득한 정보를 로그로 기록한다. */
+		for (UploadItem item : fileList) {
+			log.debug(String.format("(f) <-- %s", item.toString()));
+		}
+		
+		for (String key : paramMap.keySet()) {
+			log.debug(String.format("(p) <-- %s = %s", key, paramMap.get(key)));
+		}
+		
+	}
+	
+	/**
+	 * 리사이즈 된 썸네일 이미지를 생성하고 경로를 리턴한다.
+	 * 
+	 * @param loadFile - 원본 파일의 경로
+	 * @param width - 최대 이미지 가로 크기
+	 * @param height - 최대 이미지 세로 크기
+	 * @param crop  - 이미지 크롭 사용여부
+	 * @return 생성된 이미지의 절대 경로
+	 * @throws Exception
+	 */
+	public String createThumbnail(String path, int width, int height, boolean crop) throws Exception {
+		
+		/** 1) 썸네일 생성 정보를 로그로 기록하기 */
+		log.debug(String.format("[Thumbnail] path: %s, size: %dx%d, crop: %s", path, width, height, String.valueOf(crop)));
+		
+		/** 2) 저장될 썸네일 이미지의 경로 문자열 만들기 */
+		File loadFile = new File(this.uploadDir, path);  // 원본파일의 전체경로 --> 업로드 폴더(상수값) + 파일명
+		String dirPath = loadFile.getParent();   // 전체 경로에서 파일이 위치한 폴더 경로 분리
+		String fileName = loadFile.getName();   // 전체 경로에서 파일 이름만 분리
+		int p = fileName.lastIndexOf(".");   // 파일이름에서 마지막 점(.)의 위치
+		String name = fileName.substring(0, p);  // 파일명 분리 --> 파일이름에서 마지막 점의 위치 전까지
+		String ext = fileName.substring(p + 1);  // 확장자 분리 --> 파일이름에서 마지막 점의 위치 다음부터 끝까지
+		String prefix = crop ? "_crop_" : "_resize_";  // 크롭인지 리사이즈 인지에 대한 문자열
+		
+		// 최종 파일이름을 구성한다. --> 원본이름 + 크롭여부 + 요청된 사이즈
+		// --> ex) myphoto.jpg --> myphoto_resize_320x240.jpg
+		String thumbnail = name + prefix + width + "x" + height + "." + ext;
+		
+		File f = new File(dirPath, thumbnail);   // 생성될 썸네일 파일 객체 --> 업로드폴더 + 썸네일 이름
+		String saveFile = f.getAbsolutePath();   // 생성될 썸네일 파일 객체로부터 절대경로 추출 (리턴할 값)
+		
+		// 생성될 썸네일 이미지의 경로를 로그로 기록
+		log.debug(String.format("[Thumbnail] saveFile: %s", saveFile));
+		
+		/** 3) 썸네일 이미지 생성하고 최종 경로 리턴 */
+		// 해당 경로에 이미지가 없는 경우만 수행
+		if (!f.exists()) {
+			// 원본 이미지 가져오기
+			// --> import net.coobird.thumbnailator.Thumbnails;
+			// --> import net.coobird.thumbnailator.Thumbnails.Builder;
+			Builder<File> builder = Thumbnails.of(loadFile);
+			// 이미지 크롭 여부 파라미터에 따라 크롭 옵션을 지정한다.
+			if (crop == true) {
+				// import net.coobird.thumbnailator.geometry.Positions;
+				builder.crop(Positions.CENTER);
+			}
+			
+			builder.size(width, height);   // 축소할 사이즈 시정
+			builder.useExifOrientation(true);  // 세로로 촬영된 사진을 회전시킴
+			builder.outputFormat(ext);   // 파일의 확장명 지정
+			builder.toFile(saveFile);    // 저장할 파일경로 지정
+		}
+		
+		// 최종적으로 생성된 경로에서 업로드 폴더까지의 경로를 제거한다.
+		saveFile = saveFile.replace("\\", "/").replace(this.uploadDir, "");
+		
+		return saveFile;
+		
+	}
 	
 	/**
 	 * JSON 형식으로 결과 메시지를 리턴한다.
@@ -614,5 +875,69 @@ public class WebHelper {
 		return new ModelAndView(view);
 	}
 	
-	
+	/**
+	 * 컨트롤러로부터 업로드 된 파일의 정보를 전달받아 지정된 위치에 저장한다.
+	 * @param multipartFile   업로드된 파일 정보
+	 * @return                파일정보를 담고 있는 객체
+	 * @throws NullPointerException  업로드 된 파일이 없는 경우
+	 * @throws Exception      파일저장에 실패한 경우
+	 */
+	public UploadItem saveMultipartFile(MultipartFile multipartFile)
+	    throws NullPointerException, Exception {
+		UploadItem item = null;
+		
+		/** 업로드 파일 저장하기 */
+		// 파일의 원본 이름 추출
+		String orginName = multipartFile.getOriginalFilename();
+		
+		// 업로드 된 파일이 존재하는지 확인한다.
+		if (orginName.isEmpty()) {
+			throw new NullPointerException("업로드 된 파일이 없음.");
+		}
+		
+		/** 동일한 이름의 파일이 존재하는지 검사한다. */
+		// 파일의 원본 이름에서 확장자만 추출
+		String ext = orginName.substring(orginName.lastIndexOf("."));
+		String fileName = null;
+		File targetFile = null;
+		int count = 0;
+		
+		// 일단 무한루프
+		while (true) {
+			// 저장될 파일 이름 --> 현재시각 + 카운트값 + 확장자
+			fileName = String.format("%d%d%s", System.currentTimeMillis(), count, ext);
+			// 업로드 파일이 저장될 폴더 + 파일이름으로 파일객체를 생성한다.
+			targetFile = new File(this.uploadDir, fileName);
+			
+			// 동일한 이름의 파일이 없다면 반복 중단.
+			if (!targetFile.exists()) {
+				break;
+			}
+			
+			// if문을 빠져나올 경우 중복된 이름의 파일이 존재한다는 의미이므로 count를 1증가
+			count++;
+		} // end while
+		
+		/** 업로드 된 파일을 결정된 파일 경로로 저장 */
+		multipartFile.transferTo(targetFile);
+		
+		/** 업로드 경로 정보 처리하기 */
+		// 복사된 파일의 절대경로를 추출한다.
+		// -> 운영체제 호환을 위해 역슬래시를 슬래시로 변환한다.
+		String absPath = targetFile.getAbsolutePath().replace("\\", "/");
+		
+		
+		// 절대경로에서 이미 root-context에 지정되어 있는 업로드 폴더 경로를 삭제한다.
+		String filePath = absPath.replace(this.uploadDir, "");
+		
+		// 리턴할 정보를 구성한다.
+		item = new UploadItem();
+		item.setContentType(multipartFile.getContentType());
+		item.setFieldName(multipartFile.getName());
+		item.setFileSize(multipartFile.getSize());
+		item.setOrginName(orginName);
+		item.setFilePath(filePath);
+			
+		return item;
+	}
 }

@@ -219,7 +219,7 @@
 					<div width="50%">
 						<div class="pr_box">
 							<div class="pr_in_box">
-								<a href="photo.jsp"> <img alt="사진"
+								<a href="${pageContext.request.contextPath}/community/article"> <img alt="사진"
 									src="../share/img/img1.jpg" class="img_size" />
 									<div>
 										<h5>
@@ -243,7 +243,7 @@
 					<div>
 						<div class="pr_box">
 							<div class="pr_in_box">
-								<a href="photo.jsp"> <img alt="사진"
+								<a href="${pageContext.request.contextPath}/community/article"> <img alt="사진"
 									src="../share/img/img2.jpg" class="img_size" />
 									<div>
 										<h5>
@@ -267,7 +267,7 @@
 					<div>
 						<div class="pr_box">
 							<div class="pr_in_box">
-								<a href="photo.jsp"> <img alt="사진"
+								<a href="${pageContext.request.contextPath}/community/article"> <img alt="사진"
 									src="../share/img/img3.jpg" class="img_size" />
 									<div>
 										<h5>
@@ -291,7 +291,7 @@
 					<div>
 						<div class="pr_box">
 							<div class="pr_in_box">
-								<a href="photo.jsp"> <img alt="사진"
+								<a href="${pageContext.request.contextPath}/community/article"> <img alt="사진"
 									src="../share/img/img4.jpg" class="img_size" />
 									<div>
 										<h5>
