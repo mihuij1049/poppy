@@ -23,9 +23,8 @@
     <select id="selectItem"
         parameterType="kr.co.poppy.model.Imgs"
         resultMap="imgsMap">
-        SELECT imgname, imgext, imgpath, imgsize imgtype
-               DATE_FORMAT(regdate, '%Y-%m-%d') AS regdate,
-               DATE_FORMAT(editdate, '%Y-%m-%d') AS editdate,
+        SELECT imgname, imgext, imgpath, imgsize, imgtype,
+               i.regdate, i.editdate,
    			   g.goodsno, b.bbsno
         FROM imgs i
         INNER JOIN bbsno b ON b.bbsno=i.bbsno

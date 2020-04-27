@@ -14,7 +14,7 @@ public class Imgs {
 	private String imgpath;
 	/** 이미지 용량 */
 	private int imgsize;
-	/** 이미지 타입(A:상품이미지, B:광고이미지, C:포토리뷰게시판이미지 */
+	/** 이미지 타입(A:상품이미지--> bbstype=B, B:광고이미지, C:포토리뷰게시판이미지--> bbstype=C */
 	private String imgtype;
 	/** 등록일시 */
 	private String regdate;

@@ -4,7 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.poppy.model.Bbs;
+
 import kr.co.poppy.model.Imgs;
 import kr.co.poppy.service.ImgsService;
 import lombok.extern.slf4j.Slf4j;
