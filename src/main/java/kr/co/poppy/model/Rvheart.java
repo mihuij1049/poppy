@@ -6,7 +6,7 @@ import lombok.Data;
 public class Rvheart {
 	// 1) 기본 컬럼
 	/** 포토리뷰 추천 일련번호 */
-	private int rvhearno;
+	private int rvheartno;
 		
 	/** 등록일시 */
 	private String regdate;
