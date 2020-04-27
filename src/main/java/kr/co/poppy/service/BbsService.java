@@ -22,20 +22,12 @@ public interface BbsService {
 	public Bbs getBbsItem2(Bbs input) throws Exception;
 	
 	/**
-	 * QNA / 포토리뷰 글 목록
+	 * 공지사항 / QNA / 포토리뷰 글 목록
 	 * @param Imgs 검색조건과 페이지 구현 정보를 담고 있는 Beans
 	 * @return 조회 결과에 대한 컬렉션
 	 * @throws Exception
 	 */
-	public List<Bbs> getBbsList1(Bbs input) throws Exception;
-	
-	/**
-	 * 공지사항 글 목록 
-	 * @param Imgs 검색조건과 페이지 구현 정보를 담고 있는 Beans
-	 * @return 조회 결과에 대한 컬렉션
-	 * @throws Exception
-	 */
-	public List<Bbs> getBbsList2(Bbs input) throws Exception;
+	public List<Bbs> getBbsList(Bbs input) throws Exception;
 	
 	/**
 	 * 게시글 데이터가 저장되어 있는 갯수 조회
