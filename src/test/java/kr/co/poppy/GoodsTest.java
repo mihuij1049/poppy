@@ -38,10 +38,16 @@ public class GoodsTest {
 	
 	/** 목록 검색 테스트 */
 	@Test
-	public void testA_() {
+	public void testA_1() {
 		Goods input = new Goods();
 		input.setGname("신규");
 		sqlSession.selectList("GoodsMapper.selectList", input);
+	}
+	
+	/** 정렬방식에 따른 조회 테스트 */
+	@Test
+	public void testA_2() {
+		sqlSession.selectList("GoodsMapper.selectRange", null);
 	}
 
 	/** 상세 조회 테스트 */

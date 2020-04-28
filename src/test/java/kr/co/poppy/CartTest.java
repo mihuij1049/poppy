@@ -42,7 +42,6 @@ public class CartTest {
 	@Test
 	public void testB() {
 		Cart input = new Cart();
-
 		input.setCartqty(3);
 		input.setRegdate(date);
 		input.setEditdate(date);
@@ -67,8 +66,8 @@ public class CartTest {
 	@Test
 	public void testD() {
 		Cart input = new Cart();
-		input.setCartno(2);
-		input.setMemno(2);
+		input.setCartno(13);
+		input.setMemno(3);
 		sqlSession.delete("CartMapper.deleteItem", input);
 	}
 }

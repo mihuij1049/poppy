@@ -41,6 +41,15 @@
 		</where>
 	</select>
 
+	<!-- 정렬방식에 따른 조회 기능 정의 -->
+	<select id="selectRange" parameterType="kr.co.poppy.model.Goods"
+		resultMap="goodsMap">
+		SELECT gcode, gname, ginfo, gprice, gsale, gdate, cate1,
+		cate2,
+		regdate, editdate FROM goods
+		ORDER BY gname desc
+	</select>
+
 	<!-- 데이터 저장을 위한 기능 정의 -->
 	<insert id="insertItem" parameterType="kr.co.poppy.model.Goods"
 		useGeneratedKeys="true" keyProperty="goodsno">
