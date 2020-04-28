@@ -24,12 +24,10 @@
         parameterType="kr.co.poppy.model.Imgs"
         resultMap="imgsMap">
         SELECT imgname, imgext, imgpath, imgsize, imgtype,
-               i.regdate, i.editdate,
-   			   g.goodsno, b.bbsno
-        FROM imgs i
-        INNER JOIN bbs b ON b.bbsno=i.bbsno
-        INNER JOIN goods g ON g.goodsno=i.goodsno
-        WHERE imgsno=#{imgsno} and imgtype=#{imgtype}
+               regdate, editdate,
+   			   goodsno, bbsno
+        FROM imgs
+        WHERE imgtype=#{imgtype} and imgsno=#{imgsno}
     </select>
     
     <!-- 다중행 조회를 위한 기능 정의  >> 필요성을 느끼지 못하므로 회의를 거쳐 정하는 것이 좋을 것 같다. -->
@@ -38,11 +36,11 @@
     <!-- 데이터 저장을 위한 기능 정의 -->
     <insert id="insertItem"
         parameterType="kr.co.poppy.model.Imgs"
-        useGeneratedKeys="true" keyProperty="imgno">
+        useGeneratedKeys="true" keyProperty="imgsno">
         INSERT INTO imgs (
-            imgsno, imgname, imgext, imgpath, imgsize, imgtype, regdate, editdate, goodsno, bbsno
+            imgname, imgext, imgpath, imgsize, imgtype, regdate, editdate, goodsno, bbsno
         ) VALUES (
-            #{imgsno}, #{imgname}, #{imgext}, #{imgpath}, #{imgsize}, #{imgtype}, #{regdate}, #{editdate}, #{goodsno}, #{bbsno}
+            #{imgname}, #{imgext}, #{imgpath}, #{imgsize}, #{imgtype}, #{regdate}, #{editdate}, #{goodsno}, #{bbsno}
         )
     </insert>
     

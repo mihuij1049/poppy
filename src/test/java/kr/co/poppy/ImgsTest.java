@@ -43,8 +43,8 @@ public class ImgsTest {
     @Test
     public void testA() {    
     	Imgs input = new Imgs();
+    	input.setImgtype("A");
         input.setImgsno(2);
-        input.setImgtype("B");
         sqlSession.selectOne("ImgsMapper.selectItem", input);
     }
     
@@ -59,6 +59,8 @@ public class ImgsTest {
         input.setImgtype("A");
         input.setRegdate(date);
 		input.setEditdate(date);
+		input.setGoodsno(1);
+		input.setBbsno(1);
         sqlSession.insert("ImgsMapper.insertItem", input);
     }
     

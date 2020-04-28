@@ -46,7 +46,7 @@ import kr.co.poppy.model.Bbs;
 	    public void testA() {    
 	    	Bbs input = new Bbs();
 	        input.setBbstype("B");
-	        input.setBbsno(5);
+	        input.setBbsno(11);
 	        sqlSession.selectOne("BbsMapper.selectItem1", input);
 	    }
 	    
