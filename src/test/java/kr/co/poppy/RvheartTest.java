@@ -64,7 +64,7 @@ public class RvheartTest {
     @Test
     public void testD() {
         Rvheart input = new Rvheart();
-        input.setRvheartno(3);
+        input.setRvheartno(4);
         sqlSession.delete("RvheartMapper.deleteItem", input);
     }
 
@@ -72,7 +72,7 @@ public class RvheartTest {
     @Test
     public void testE() {
         Rvheart input = new Rvheart();
-        input.setRvheartno(6);
+        input.setRvheartno(1);
         input.setRegdate("2010-10-20");
         input.setEditdate("2010-10-10");
         input.setMemno(1);

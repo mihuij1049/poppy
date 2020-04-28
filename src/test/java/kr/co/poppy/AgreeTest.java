@@ -2,6 +2,7 @@ package kr.co.poppy;
 
 import org.apache.ibatis.session.SqlSession;
 import org.junit.FixMethodOrder;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,8 @@ public class AgreeTest {
     // import org.springframework.beans.factory.annotation.Autowired;
     @Autowired
     private SqlSession sqlSession;
-
+    
+    @Test
     public void testA() {
         /** 데이터 저장 테스트 */
         Agree input = new Agree();
@@ -45,6 +47,7 @@ public class AgreeTest {
         sqlSession.insert("AgreeMapper.insertItem", input);
     }
 
+    @Test
     public void testB() {
         /** 데이터 삭제 테스트 */
         Agree input = new Agree();
@@ -52,9 +55,11 @@ public class AgreeTest {
         sqlSession.delete("AgreeMapper.deleteItem", input);
     }
 
+    @Test
     public void testC() {
         /** 데이터 갱신 테스트 */
         Agree input = new Agree();
+        input.setAgreeno(1);
         input.setUseagree(1);
         input.setPrivateagree(1);
         input.setEmailagree(0);

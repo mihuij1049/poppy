@@ -36,8 +36,7 @@ public class CommentsTest {
     @Test
     public void testA() {
         Comments input = new Comments();
-        input.setCmtno(2);
-        
+        input.setCmtno(1);
         sqlSession.selectOne("CommentsMapper.selectItem", input);
     }
 
@@ -71,12 +70,12 @@ public class CommentsTest {
     @Test
     public void testE() {
         Comments input = new Comments();
+        input.setCmtno(1);
         input.setCmtcontent("데이터 수정 테스트입니다.");
         input.setRegdate("2010-05-05");
         input.setEditdate("2010-05-05");
         input.setMemno(1);
         input.setBbsno(1);
-        input.setCmtno(2);
         sqlSession.update("CommentsMapper.updateItem", input);
     }
 
