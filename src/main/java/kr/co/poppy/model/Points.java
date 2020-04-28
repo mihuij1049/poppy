@@ -11,7 +11,7 @@ public class Points {
 	// 미가용 적립금
 	private Integer napoint;
 	// 포인트 적립내용
-	private char pointtype;
+	private String pointtype;
 	// 등록일시
 	private String regdate;
 	// 최종변경일시

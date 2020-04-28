@@ -60,6 +60,11 @@
         parameterType="kr.co.poppy.model.Address">
         DELETE FROM address WHERE addrno=#{addrno}    
     </delete>
+    <!-- 회원 탈퇴 시 주소 삭제 기능 -->
+     <delete id="delete_members_item"
+        parameterType="kr.co.poppy.model.Address">
+        DELETE FROM address WHERE memno=#{memno}    
+    </delete>
     
     <!-- 데이터 갱신을 위한 기능 정의 -->
     <update id="updateItem"

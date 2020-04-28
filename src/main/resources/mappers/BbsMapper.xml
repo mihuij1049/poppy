@@ -132,6 +132,11 @@
         parameterType="kr.co.poppy.model.Bbs">
         DELETE FROM Bbs WHERE bbsno=#{bbsno}
     </delete>
+    <!-- 회원 탈퇴 시 게시글 삭제 기능 -->
+    <delete id="delete_members_item"
+        parameterType="kr.co.poppy.model.Bbs">
+        DELETE FROM Bbs WHERE memno=#{memno}
+    </delete>
    
     
 

@@ -50,12 +50,16 @@ public class MembersTest {
 		input.setEditdate(date);
 		sqlSession.insert("MembersMapper.add_members", input);
 	}
+	
+	/** 회원 정보 상세 조회 */
 	@Test
 	public void testB() {
 		Members input = new Members();
 		input.setMemno(1);
 		sqlSession.selectOne("MembersMapper.select_item", input);
 	}
+	
+	/** 회원 정보 수정 */
 	@Test
 	public void testC() {
 		Members input = new Members();
@@ -65,11 +69,21 @@ public class MembersTest {
 		input.setEditdate(date);
 		sqlSession.update("MembersMapper.edit_members", input);
 	}
+	
+	/** 회원 탈퇴 */
 	@Test
 	public void testD() {
 		Members input = new Members();
 		input.setMemno(6);
+		// 회원에 참조된 약관동의서 폐기 
 		sqlSession.delete("AgreeMapper.deleteItem", input);
+		// 회원에 참조된 주소록 폐기
+		sqlSession.delete("AddressMapper.delete_members_item", input);
+		// 회원이 작성한 게시글 폐기
+		sqlSession.delete("BbsMapper.delete_mebers_item", input);
+		// 회원이 보유한 적립금 참조 해제
+		sqlSession.update("PointsMapper.unsetPoints", input);
+		// 회원 탈퇴에 의한 회원정보 삭제
 		sqlSession.delete("MembersMapper.delete_members", input);
 	}
 	
