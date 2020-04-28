@@ -20,9 +20,13 @@ public class Imgs {
 	private String regdate;
 	/** 최종변경일시 */
 	private String editdate;
-	/** 상품 일련번호 */
+	
+	
+	/** Join을 위한 변수 */
+	// 상품 일련번호
 	private int goodsno;
-	/** 게시글 일련번호 */
+	// 게시글 일련번호
 	private int bbsno;
+	
 
 }

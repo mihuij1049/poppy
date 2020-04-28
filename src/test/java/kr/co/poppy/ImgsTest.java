@@ -12,7 +12,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import kr.co.poppy.model.Bbs;
 import kr.co.poppy.model.Imgs;
 
 /** JUnit에 의한 테스트 클래스로 정의 */
@@ -45,7 +44,7 @@ public class ImgsTest {
     public void testA() {    
     	Imgs input = new Imgs();
         input.setImgsno(2);
-        input.setImgtype("A");
+        input.setImgtype("B");
         sqlSession.selectOne("ImgsMapper.selectItem", input);
     }
     
