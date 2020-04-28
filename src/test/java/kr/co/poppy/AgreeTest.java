@@ -47,13 +47,6 @@ public class AgreeTest {
         sqlSession.insert("AgreeMapper.insertItem", input);
     }
 
-    @Test
-    public void testB() {
-        /** 데이터 삭제 테스트 */
-        Agree input = new Agree();
-        input.setAgreeno(6);
-        sqlSession.delete("AgreeMapper.deleteItem", input);
-    }
 
     @Test
     public void testC() {
