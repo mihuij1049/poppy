@@ -61,7 +61,7 @@ public class GoodsdetailTest {
 	@Test
 	public void testD() {
 		Goodsdetail input = new Goodsdetail();
-		input.setGddetailno(8);
+		input.setGddetailno(11);
 		input.setGdoption("변경된 옵션!!");
 		input.setGdstock(99);
 		input.setEditdate(date);

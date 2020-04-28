@@ -32,7 +32,13 @@
 	<select id="selectList" parameterType="kr.co.poppy.model.Goods"
 		resultMap="goodsMap">
 		SELECT gcode, gname, ginfo, gprice, gsale, gdate, cate1,
-		cate2, regdate, editdate FROM goods
+		cate2,
+		regdate, editdate FROM goods
+		<where>
+			<if test="gname != null and gname != ''">
+				gname LIKE concat('%',#{gname},'%')
+			</if>
+		</where>
 	</select>
 
 	<!-- 데이터 저장을 위한 기능 정의 -->

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -290,37 +290,39 @@
 					type="text" id="datepicker_after" />
 				<button type="button" class="btn btn2">조회</button>
 			</div>
-			<div class="view">
-				<span class="date" title="주문일자"> 2020-03-18 </span> <span
-					class="number" title="주문번호"> <a
-					href="${pageContext.request.contextPath}/myInfo/order_desc.do">
-						(20200318-0000195) </a>
-				</span> <a href="${pageContext.request.contextPath}/myInfo/order_desc.do"
-					class="btn-detail"><span id="GGuc">&#62;</span>상세보기</a>
-			</div>
-			<div class="prd-info">
-				<div class="prd-box">
-					<div class="thumbnail">
-						<a href="${pageContext.request.contextPath}/gallery/goods.do">
-							<img src="../share/img/slide.jpg" width="70" height="70">
-						</a>
-					</div>
-					<div class="prd-content">
-						<strong class="prd-name" title="상품명"> <a
-							href="${pageContext.request.contextPath}/gallery/goods.do">펫클럽
-								세나개 고부해 사은품 증정</a>
-						</strong>
-						<ul class="prd-li">
-							<li><span class="price" title="판매가"> <strong>14,000</strong>원
-							</span> <span class="prd-count" title="수량"> <strong>1</strong>개
-							</span></li>
-						</ul>
-						<p class="option">[옵션: 세나개 고부해]</p>
-						<button type="button" class="btn btn2" id="cancel">주문취소</button>
-					</div>
+			<div>
+				<div class="view">
+					<span class="date" title="주문일자"> 2020-03-18 </span> <span
+						class="number" title="주문번호"> <a
+						href="${pageContext.request.contextPath}/myInfo/order_desc.do">
+							(20200318-0000195) </a>
+					</span> <a href="${pageContext.request.contextPath}/myInfo/order_desc.do"
+						class="btn-detail"><span id="GGuc">&#62;</span>상세보기</a>
 				</div>
-				<div class="prd-foot" title="주문처리상태">
-					<div class="ready">상품준비중</div>
+				<div class="prd-info">
+					<div class="prd-box">
+						<div class="thumbnail">
+							<a href="${pageContext.request.contextPath}/gallery/goods.do">
+								<img src="../share/img/slide.jpg" width="70" height="70">
+							</a>
+						</div>
+						<div class="prd-content">
+							<strong class="prd-name" title="상품명"> <a
+								href="${pageContext.request.contextPath}/gallery/goods.do">펫클럽
+									세나개 고부해 사은품 증정</a>
+							</strong>
+							<ul class="prd-li">
+								<li><span class="price" title="판매가"> <strong>14,000</strong>원
+								</span> <span class="prd-count" title="수량"> <strong>1</strong>개
+								</span></li>
+							</ul>
+							<p class="option">[옵션: 세나개 고부해]</p>
+							<button type="button" class="btn btn2" id="cancel">주문취소</button>
+						</div>
+					</div>
+					<div class="prd-foot" title="주문처리상태">
+						<div class="ready">상품준비중</div>
+					</div>
 				</div>
 			</div>
 			<div class=" paging">
@@ -385,6 +387,11 @@
 				// 시작요일 (0=일요일~6=토요일)
 				weekStart : 0
 			});
+		});
+		$(function() {
+			$(document).on("click", "#cancel", function(e) {
+				$(this).parent().parent().parent().parent().remove();
+			})
 		});
 	</script>
 </body>

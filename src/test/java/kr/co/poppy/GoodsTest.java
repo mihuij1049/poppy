@@ -35,6 +35,14 @@ public class GoodsTest {
 	public void testA() {
 		sqlSession.selectList("GoodsMapper.selectList", null);
 	}
+	
+	/** 목록 검색 테스트 */
+	@Test
+	public void testA_() {
+		Goods input = new Goods();
+		input.setGname("신규");
+		sqlSession.selectList("GoodsMapper.selectList", input);
+	}
 
 	/** 상세 조회 테스트 */
 	@Test
