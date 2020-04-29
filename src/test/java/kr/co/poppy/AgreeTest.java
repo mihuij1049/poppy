@@ -41,8 +41,8 @@ public class AgreeTest {
         input.setPrivateagree(1);
         input.setEmailagree(1);
         input.setShoppingagree(1);
-        input.setRegdate("2010-10-10");
-        input.setEditdate("2010-10-10");
+        input.setRegdate("now()");
+        input.setEditdate("now()");
         input.setMemno(1);
         sqlSession.insert("AgreeMapper.insertItem", input);
     }
@@ -53,12 +53,8 @@ public class AgreeTest {
         /** 데이터 갱신 테스트 */
         Agree input = new Agree();
         input.setAgreeno(1);
-        input.setUseagree(1);
-        input.setPrivateagree(1);
-        input.setEmailagree(0);
-        input.setShoppingagree(0);
-        input.setRegdate("2000-10-10");
-        input.setEditdate("2000-10-10");
+        input.setMemno(1);
+        input.setEditdate("now()");
         sqlSession.update("AgreeMapper.updateItem", input);
     }
 }
