@@ -61,12 +61,12 @@
    
    <!-- 특정 상품을 참조하는 Imgs데이터를 모두 참조 해제한다. -->
    <update id="unsetGoods"
-   		parameterType="kr.co.poppy.model.Imgs">
+   		parameterType="kr.co.poppy.model.Goods">
    		UPDATE imgs SET goodsno=null WHERE goodsno=#{goodsno}
    </update>
    <!-- 특정 게시글을 참조하는 Imgs데이터를 모두 참조 해제한다. -->
    <update id="unsetBbs"
-   		parameterType="kr.co.poppy.model.Imgs">
+   		parameterType="kr.co.poppy.model.Bbs">
    		UPDATE imgs SET bbsno=null WHERE bbsno=#{bbsno}
    </update>
 </mapper>

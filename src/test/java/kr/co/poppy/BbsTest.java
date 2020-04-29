@@ -103,7 +103,7 @@ import kr.co.poppy.model.Bbs;
 	        // bbs를 참조하는 좋아요 삭제
 	        sqlSession.delete("BbsMapper.delete_rvheart_item", input);
 	        // bbs를 참조하는 img의 참조키 Null로 update
-	        sqlSession.update("BbsMapper.unsetImgs", input);
+	        sqlSession.update("ImgsMapper.unsetBbs", input);
 	        // 게시글 삭제
 	        sqlSession.delete("BbsMapper.deleteItem", input);
 	    }
