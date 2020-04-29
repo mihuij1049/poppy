@@ -153,7 +153,7 @@
 							</div>
 
 							<!-- 아코디언 영역 -->
-							<div class="panel-group clearfix" id="accordion-tab">
+							<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 								<!-- 항목(1) -->
 								<div class="panel panel-default fm-default">
 									<div class="panel-heading fm-heading ">
