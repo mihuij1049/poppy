@@ -1,5 +1,7 @@
 package kr.co.poppy.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -42,15 +44,13 @@ public class PayController {
 		return "pay/cart";
 	}
 
-	/** 상세페이지 */
-	/** 에러 로 인해 봉인해 둠 */
-	@RequestMapping(value = "/pay/orderform.do", method = RequestMethod.POST)
-	public ModelAndView addrView(Model model,
+	/** 주소 상세페이지 */
+	@RequestMapping(value = "/pay/orderform.do", method = RequestMethod.GET)
+	public ModelAndView view(Model model,
 
 			@RequestParam(value = "memno", defaultValue = "") int memno) {
 
-		/** 유효성 검사 */
-
+	    /** 유효성 검사 */
 		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
 		if (memno == 0) {
 			return webHelper.redirect(null, "회원번호가 없습니다.");
@@ -76,5 +76,40 @@ public class PayController {
 		return new ModelAndView("pay/orderform");
 
 	}
+	
+	/** 주소 목록페이지 */
+	@RequestMapping(value = "/pay/orderform.do", method = RequestMethod.GET)
+	public ModelAndView list(Model model,
+
+			@RequestParam(value = "memno", defaultValue = "") int memno) {
+
+		/** 유효성 검사 */
+		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
+		if (memno == 0) {
+			return webHelper.redirect(null, "회원번호가 없습니다.");
+		}
+
+		/** 데이터 조회하기 */
+
+		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
+		Address input = new Address();
+		input.setMemno(memno);
+
+		// 조회결과를 저장할 객체 선언
+		List<Address> output = null;
+
+		try { // 데이터 조회
+			output = addressService.getAddressList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+
+		/** View 처리 */
+		model.addAttribute("output", output);
+		return new ModelAndView("pay/orderform");
+
+	}
+	
+	
 
 }
