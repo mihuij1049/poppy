@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -147,7 +150,7 @@
 
 		/** 주문하기 */
 		$("#recent-item-group").on("click", ".btn-order-item", function(e) {
-			location.href = "../pay/orderform.jsp";
+			location.href = "${pageContext.request.contextPath}/pay/orderform.do";
 		});
 		/** 최근 본 상품에서 삭제 */
 		$("#recent-item-group").on("click",".btn-delete-item", function(e) {

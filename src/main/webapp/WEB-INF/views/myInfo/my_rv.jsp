@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html>
 
@@ -153,7 +156,7 @@
 						</div>
 					</div>
 					<button type="button"
-						onclick="location.href='../community/photo_wri.jsp'"
+						onclick="location.href='${pageContext.request.contextPath}/community/photo_wri.do'"
 						class="btn btn1">리뷰쓰기</button>
 				</div>
 			</div>

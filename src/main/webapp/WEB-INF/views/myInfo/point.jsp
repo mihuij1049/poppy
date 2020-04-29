@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -122,15 +125,15 @@
 				<div class="point-save">0원</div>
 			</div>
 			<div class="point-list clearfix">
-				<div class="point-link" onclick="location.href='plist.jsp'">
+				<div class="point-link" onclick="location.href='${pageContext.request.contextPath}/myInfo/plist.do'">
 					<div class="point-list-item">적립내역</div>
 					<div class="point-list-link">></div>
 				</div>
-				<div class="point-link" onclick="location.href='plist_nota.jsp'">
+				<div class="point-link" onclick="location.href='${pageContext.request.contextPath}/myInfoplist_nota.do'">
 					<div class="point-list-item">미가용 적립내역</div>
 					<div class="point-list-link">></div>
 				</div>
-				<div class="point-link" onclick="location.href='plist_grd.jsp'">
+				<div class="point-link" onclick="location.href='${pageContext.request.contextPath}/myInfoplist_grd.do'">
 					<div class="point-list-item">회원등급 적립내역</div>
 					<div class="point-list-link">></div>
 				</div>

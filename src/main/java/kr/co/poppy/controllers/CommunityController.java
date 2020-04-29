@@ -20,7 +20,7 @@ public class CommunityController {
 	}
 	
 	/** photo_rv */
-	@RequestMapping(value="/community/photo_rv.do", method=RequestMethod.GET)
+	@RequestMapping(value="/community/photo_rv.do", method= {RequestMethod.GET, RequestMethod.POST})
 	public String photo_rv() {
 		return "community/photo_rv";
 	}
@@ -44,7 +44,7 @@ public class CommunityController {
 	}
 	
 	/** qna */
-	@RequestMapping(value="/community/qna.do", method=RequestMethod.GET)
+	@RequestMapping(value="/community/qna.do", method= {RequestMethod.GET, RequestMethod.POST})
 	public String qna() {
 		return "community/qna";
 	}
