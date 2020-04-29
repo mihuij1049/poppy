@@ -74,7 +74,7 @@ input[type="text"], input[type="password"] {
 				</h4>
 			</div>
 			<div class="login">
-				<form id="login" name="login" method="post" action="../api/post.do">
+				<form id="login" name="login" method="post" action="${pageContext.request.contextPath }/member/login_ok.do">
 					<p>
 						<input type="text" name="user_id" id="user_id" placeholder="&nbsp;아이디">
 					</p>
@@ -99,7 +99,7 @@ input[type="text"], input[type="password"] {
 	</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
 	<script type="text/javascript">
-	$(function() {
+	/* $(function() {
 		$("#login").submit(function(e) {
 			// <form> 태그가 submit 되어 페이지가 이동되는 것을 방지한다.
 			e.preventDefault();
@@ -111,7 +111,7 @@ input[type="text"], input[type="password"] {
 			console.log(pwd);
 			$.ajax( {
 				// 결과를 읽어올 URL --> <form>태그의 action속성
-				url : "../api/post.do",
+				url : "/members/login_ok.do",
 				// 웹 프로그램에게 데이터를 전송하는 방식 --> <form> 태그의 method 속성
 				method: "post",
 				// 전달할 조건값은 사용자의 입력값을 활용하여 JSON형식으로 구성
@@ -124,7 +124,7 @@ input[type="text"], input[type="password"] {
 				}
 			}); // end $.ajax
 		}); // end submit
-	});
+	}); */
 	</script>
 </body>
 

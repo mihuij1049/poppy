@@ -37,7 +37,7 @@ public class MembersServiceImpl implements MembersService {
 		}
 		return result;
 	}
-
+	
 	/** 회원 정보 조회
 	 * @Param  회원의 일련번호(memno)를 담고 있는 Beans
 	 * @return  조회된 회원의 정보를 담고 있는 Beans
@@ -47,6 +47,28 @@ public class MembersServiceImpl implements MembersService {
 		Members output = null;
 		try {
 			output = sqlSession.selectOne("MembersMapper.select_item", input);
+			if (output == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return output;
+	}
+	
+	/** 회원 정보 조회 로그인 기능
+	 * @Param  회원의 아이디(userid)와 비밀번호(userpw) 를 담고 있는 Beans
+	 * @return  조회된 회원의 정보를 담고 있는 Beans
+	 */
+	@Override
+	public Members loginMembers(Members input) throws Exception {
+		Members output = null;
+		try {
+			output = sqlSession.selectOne("MembersMapper.login_members", input);
 			if (output == null) {
 				throw new NullPointerException("result=null");
 			}
@@ -81,7 +103,7 @@ public class MembersServiceImpl implements MembersService {
 		}
 		return result;
 	}
-	
+
 	/** 회원 탈퇴 기능
 	 * @Param  회원의 일련번호를 담고 있는 Beans
 	 * @return int
@@ -103,5 +125,5 @@ public class MembersServiceImpl implements MembersService {
 		}
 		return result;
 	}
-
+	
 }
