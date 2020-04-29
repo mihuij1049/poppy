@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import kr.co.poppy.model.Goods;
+import kr.co.poppy.model.Goodsdetail;
 
 /** JUnit에 의한 테스트 클래스로 정의 */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -35,15 +36,15 @@ public class GoodsTest {
 	public void testA() {
 		sqlSession.selectList("GoodsMapper.selectList", null);
 	}
-	
+
 	/** 목록 검색 테스트 */
 	@Test
 	public void testA_1() {
 		Goods input = new Goods();
-		input.setGname("신규");
+		input.setGname("댕댕");
 		sqlSession.selectList("GoodsMapper.selectList", input);
 	}
-	
+
 	/** 정렬방식에 따른 조회 테스트 */
 	@Test
 	public void testA_2() {
@@ -54,7 +55,7 @@ public class GoodsTest {
 	@Test
 	public void testB() {
 		Goods input = new Goods();
-		input.setGoodsno(1);
+		input.setGoodsno(5);
 		sqlSession.selectOne("GoodsMapper.selectItem", input);
 	}
 
@@ -79,7 +80,7 @@ public class GoodsTest {
 	@Test
 	public void testD() {
 		Goods input = new Goods();
-		input.setGoodsno(7);
+		input.setGoodsno(5);
 		input.setGcode("123qwe!@#");
 		input.setGname("수정된 상품");
 		input.setGinfo("수정된 상품 설명~");
@@ -96,7 +97,12 @@ public class GoodsTest {
 	@Test
 	public void testE() {
 		Goods input = new Goods();
-		input.setGoodsno(12);
+		input.setGoodsno(3);
+		sqlSession.update("GoodsMapper.updateItem_bbs", input);
+		sqlSession.update("GoodsMapper.updateItem_imgs", input);
+		sqlSession.delete("GoodsMapper.deleteItem_cart", input);
+		sqlSession.delete("GoodsMapper.deleteItem_gd", input);
+		sqlSession.delete("GoodsMapper.deleteItem_heart", input);
 		sqlSession.delete("GoodsMapper.deleteItem", input);
 	}
 }

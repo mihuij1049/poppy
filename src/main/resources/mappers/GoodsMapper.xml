@@ -19,21 +19,22 @@
 		<result property="cate2" column="cate2" />
 		<result property="regdate" column="regdate" />
 		<result property="editdate" column="editdate" />
+		<result property="gddetailno" column="gddetailno" />
 	</resultMap>
 
 	<!-- 단일행 조회를 위한 기능 정의 -->
 	<select id="selectItem" parameterType="kr.co.poppy.model.Goods"
 		resultMap="goodsMap">
-		SELECT gcode, gname, ginfo, gprice, gsale, gdate, cate1,
-		cate2, regdate, editdate FROM goods WHERE goodsno=#{goodsno}
+		SELECT goodsno, gcode, gname, ginfo, gprice, gsale, gdate,
+		cate1, cate2, regdate, editdate FROM goods WHERE
+		goodsno=#{goodsno}
 	</select>
 
 	<!-- 다중행 조회를 위한 기능 정의 -->
 	<select id="selectList" parameterType="kr.co.poppy.model.Goods"
 		resultMap="goodsMap">
-		SELECT gcode, gname, ginfo, gprice, gsale, gdate, cate1,
-		cate2,
-		regdate, editdate FROM goods
+		SELECT goodsno, gcode, gname, ginfo, gprice, gsale, gdate, cate1,
+		cate2, regdate, editdate FROM goods
 		<where>
 			<if test="gname != null and gname != ''">
 				gname LIKE concat('%',#{gname},'%')
@@ -44,9 +45,9 @@
 	<!-- 정렬방식에 따른 조회 기능 정의 -->
 	<select id="selectRange" parameterType="kr.co.poppy.model.Goods"
 		resultMap="goodsMap">
-		SELECT gcode, gname, ginfo, gprice, gsale, gdate, cate1,
-		cate2,
-		regdate, editdate FROM goods
+		SELECT goodsno, gcode, gname, ginfo, gprice, gsale, gdate,
+		cate1, cate2, regdate, editdate
+		FROM goods
 		ORDER BY gname desc
 	</select>
 
@@ -66,14 +67,40 @@
 		gcode =
 		#{gcode}, gname = #{gname}, ginfo = #{ginfo}, gprice = #{gprice},
 		gsale = #{gsale}, gdate = #{gdate}, cate1 = #{cate1}, cate2 =
-		#{cate2},
-		editdate = #{editdate}
+		#{cate2}, editdate = #{editdate}
 		WHERE goodsno = #{goodsno}
 	</update>
 
-	<!-- 데이터 삭제를 위한 기능 정의 -->
+	<!-- 상품 데이터 삭제를 위한 외부 테이블의 수정 및 삭제 -->
+	<update id="updateItem_bbs"
+		parameterType="kr.co.poppy.model.Bbs">
+		UPDATE bbs SET goodsno = null WHERE goodsno =
+		#{goodsno};
+	</update>
+	<update id="updateItem_imgs"
+		parameterType="kr.co.poppy.model.Imgs">
+		UPDATE imgs SET goodsno = null WHERE goodsno =
+		#{goodsno};
+	</update>
+	<delete id="deleteItem_cart"
+		parameterType="kr.co.poppy.model.Cart">
+		DELETE FROM cart WHERE gddetailno IN(SELECT gddetailno
+		FROM goodsdetail
+		WHERE goodsno = #{goodsno});
+	</delete>
+	<delete id="deleteItem_gd"
+		parameterType="kr.co.poppy.model.Goodsdetail">
+		DELETE FROM goodsdetail WHERE goodsno = #{goodsno};
+	</delete>
+	<delete id="deleteItem_heart"
+		parameterType="kr.co.poppy.model.Heart">
+		DELETE FROM heart WHERE goodsno = #{goodsno};
+	</delete>
+
+	<!-- 상품 데이터 삭제를 위한 기능 정의 -->
 	<delete id="deleteItem" parameterType="kr.co.poppy.model.Goods">
-		DELETE FROM goods WHERE
+		DELETE FROM goods
+		WHERE
 		goodsno=#{goodsno}
 	</delete>
 </mapper>

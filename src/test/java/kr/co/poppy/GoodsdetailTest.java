@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import kr.co.poppy.model.Bbs;
 import kr.co.poppy.model.Goodsdetail;
 
 /** JUnit에 의한 테스트 클래스로 정의 */
@@ -34,7 +35,7 @@ public class GoodsdetailTest {
 	@Test
 	public void testA() {
 		Goodsdetail input = new Goodsdetail();
-		sqlSession.selectList("GoodsdetailMapper.selectList", input);	
+		sqlSession.selectList("GoodsdetailMapper.selectList", input);
 	}
 
 	/** 상세 조회 테스트 */
@@ -45,6 +46,16 @@ public class GoodsdetailTest {
 		sqlSession.selectOne("GoodsdetailMapper.selectItem", input);
 	}
 
+	/** 상품 후기 및 Q&A 조회 테스트 */
+	@Test
+	public void testB_1() {
+		Bbs input = new Bbs();
+		input.setBbstype("B");
+		input.setBbsno(2);
+		sqlSession.selectOne("BbsMapper.selectItem1", input);
+	}
+
+
 	/** 데이터 저장 테스트 */
 	@Test
 	public void testC() {
@@ -53,7 +64,7 @@ public class GoodsdetailTest {
 		input.setGdstock(99);
 		input.setRegdate(date);
 		input.setEditdate(date);
-		input.setGoodsno(1);
+		input.setGoodsno(4);
 		sqlSession.insert("GoodsdetailMapper.insertItem", input);
 	}
 
@@ -73,7 +84,7 @@ public class GoodsdetailTest {
 	@Test
 	public void testE() {
 		Goodsdetail input = new Goodsdetail();
-		input.setGddetailno(9);
+		input.setGddetailno(3);
 		sqlSession.delete("GoodsdetailMapper.deleteItem", input);
 	}
 }

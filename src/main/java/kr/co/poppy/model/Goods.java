@@ -34,6 +34,7 @@ public class Goods {
 	private int heartno;
 	/** 회원 일련번호 */
 	private int memno;
+	private int gddetailno;
 
 	// 페이지 관련 static 변수 미정
 }

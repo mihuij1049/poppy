@@ -45,7 +45,7 @@ public class CartTest {
 		input.setCartqty(3);
 		input.setRegdate(date);
 		input.setEditdate(date);
-		input.setGddetailno(1);
+		input.setGddetailno(5);
 		input.setMemno(3);
 		sqlSession.insert("CartMapper.insertItem", input);
 	}
@@ -54,11 +54,11 @@ public class CartTest {
 	@Test
 	public void testC() {
 		Cart input = new Cart();
+		input.setCartno(7);
 		input.setMemno(3);
-		input.setCartno(10);
 		input.setCartqty(5);
 		input.setEditdate(date);
-		input.setGddetailno(1);
+		input.setGddetailno(5);
 		sqlSession.update("CartMapper.updateItem", input);
 	}
 
