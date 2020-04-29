@@ -20,7 +20,6 @@ import kr.co.poppy.service.AddressService;
 public class PayController {
 
 	/** WebHelper 주입 */
-
 	@Autowired
 	WebHelper webHelper;
 
@@ -43,9 +42,14 @@ public class PayController {
 
 		return "pay/cart";
 	}
+	
+	@RequestMapping(value="/pay/orderform.do", method=RequestMethod.GET)
+	public String orederform() {
+		return "pay/orderform";
+	}
 
 	/** 주소 상세페이지 */
-	@RequestMapping(value = "/pay/orderform.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/pay/orderform.do", method = RequestMethod.POST)
 	public ModelAndView view(Model model,
 
 			@RequestParam(value = "memno", defaultValue = "") int memno) {
@@ -78,9 +82,8 @@ public class PayController {
 	}
 	
 	/** 주소 목록페이지 */
-	@RequestMapping(value = "/pay/orderform.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/pay/orderformList.do", method = RequestMethod.GET)
 	public ModelAndView list(Model model,
-
 			@RequestParam(value = "memno", defaultValue = "") int memno) {
 
 		/** 유효성 검사 */
