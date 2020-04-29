@@ -23,7 +23,7 @@
         useGeneratedKeys="true"
         keyProperty="agreeno">
         INSERT INTO agree (useagree, privateagree, emailagree, shoppingagree, regdate, editdate, memno) VALUES (
-        #{useagree}, #{privateagree}, #{emailagree}, #{shoppingagree}, #{regdate}, #{editdate}, #{memno});
+        #{useagree}, #{privateagree}, #{emailagree}, #{shoppingagree}, now(), now(), #{memno});
     </insert>
 
     <!-- 데이터 삭제를 위한 기능 정의 -->
@@ -35,7 +35,7 @@
     <!-- 데이터 갱신을 위한 기능 정의 -->
     <update id="updateItem"
         parameterType="kr.co.poppy.model.Agree">
-        UPDATE agree SET editdate=#{editdate}, memno=#{memno}
+        UPDATE agree SET editdate=now(), memno=#{memno}
         WHERE agreeno=#{agreeno};
     </update>
     <!-- 특정 멤버를 참조하는 데이터를 참조 해제 -->
