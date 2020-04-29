@@ -54,7 +54,7 @@
 	</select>
 	
 	<!-- 회원 탈퇴 시 탈퇴한 회원을 참조하는 적립금의 memno (null) 업데이트 -->
-	<update id="unsetPoints"
+	<update id="unsetMembers"
 			parameterType="kr.co.poppy.model.Points">
 		UPDATE points SET memno=null WHERE memno=#{memno}
 	</update>

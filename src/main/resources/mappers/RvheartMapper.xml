@@ -52,4 +52,9 @@
         UPDATE rvheart SET regdate=#{regdate}, editdate=#{editdate}, memno=#{memno}, bbsno=#{bbsno}
         WHERE rvheartno=#{rvheartno};
     </update>
+    <!-- 회원탈퇴를 위한 참조 해제  정의 -->
+    <update id="unsetMembers"
+        parameterType="kr.co.poppy.model.Members">
+        UPDATE rvheart SET memno=null WHERE memno=#{memno}
+     </update>
 </mapper>

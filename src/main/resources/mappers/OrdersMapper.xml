@@ -76,4 +76,14 @@
 		deliprice=#{deliprice}, editdate=now()
 		WHERE memno=#{memno};
 	</update>
+	<!-- 특정 멤버를 참조하는 주문 데이터를 모두 참조 해제한다. -->
+   <update id="unsetMembers"
+   		parameterType="kr.co.poppy.model.Members">
+   		UPDATE orders SET memno=null  WHERE memno=#{memno}
+   </update>
+   <!-- 특정 주소를 참조하는 주문 데이터를 모두 참조 해제한다. -->
+   <update id="unsetAddress"
+   		parameterType="kr.co.poppy.model.Members">
+   		UPDATE orders SET addrno=null  WHERE memno=#{memno}
+   </update>
 </mapper>

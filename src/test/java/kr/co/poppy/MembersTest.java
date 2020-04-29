@@ -74,15 +74,27 @@ public class MembersTest {
 	@Test
 	public void testD() {
 		Members input = new Members();
-		input.setMemno(6);
+		input.setMemno(2);
 		// 회원에 참조된 약관동의서 폐기 
 		sqlSession.delete("AgreeMapper.deleteItem", input);
+		// 회원이 주문한 주문내역에 주소지 참조 해제
+		sqlSession.update("OrdersMapper.unsetAddress", input);
+		// 회원이 주문한 주문내역 참조 해제
+		sqlSession.update("OrdersMapper.unsetMembers", input);
 		// 회원에 참조된 주소록 폐기
 		sqlSession.delete("AddressMapper.delete_members_item", input);
-		// 회원이 작성한 게시글 폐기
-		sqlSession.delete("BbsMapper.delete_mebers_item", input);
+		// 회원이 작성한 게시글 참조해제
+		sqlSession.update("BbsMapper.unsetMembers", input);
+		// 회원이 작성한 댓글 삭제
+		sqlSession.delete("CommentsMapper.delete_members_item", input);
 		// 회원이 보유한 적립금 참조 해제
-		sqlSession.update("PointsMapper.unsetPoints", input);
+		sqlSession.update("PointsMapper.unsetMembers", input);
+		// 회원의 상품 좋아요 목록 참조 해제
+		sqlSession.update("HeartMapper.unsetMembers", input);
+		// 회원의 포토리뷰 좋아요 목록 참조 해제
+		sqlSession.update("RvheartMapper.unsetMembers", input);
+		// 회원이 보유한 장바구니 내역 삭제
+		sqlSession.delete("CartMapper.delete_members_item", input);
 		// 회원 탈퇴에 의한 회원정보 삭제
 		sqlSession.delete("MembersMapper.delete_members", input);
 	}

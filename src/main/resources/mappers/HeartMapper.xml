@@ -52,11 +52,17 @@
         parameterType="kr.co.poppy.model.Heart">
         DELETE FROM heart WHERE heartno=#{heartno};
     </delete>
+    
 
     <!-- 데이터 갱신을 위한 기능 정의 -->
     <update id="updateItem"
         parameterType="kr.co.poppy.model.Heart">
         UPDATE heart SET regdate=#{regdate}, editdate=#{editdate}, memno=#{memno}, goodsno=#{goodsno}
         WHERE heartno=#{heartno};
+    </update>
+    <!-- 회원탈퇴를 위한 참조 해제  정의 -->
+    <update id="unsetMembers"
+        parameterType="kr.co.poppy.model.Members">
+        UPDATE heart SET memno=null WHERE memno=#{memno}
     </update>
 </mapper>

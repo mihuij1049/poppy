@@ -135,7 +135,7 @@
     <!-- 회원 탈퇴 시 게시글 삭제 기능 -->
     <delete id="delete_members_item"
         parameterType="kr.co.poppy.model.Bbs">
-        DELETE FROM Bbs WHERE memno=#{memno}
+        DELETE FROM bbs WHERE memno=#{memno}
     </delete>
    
     
@@ -151,20 +151,13 @@
    
    <!-- 특정 멤버를 참조하는 Bbs데이터를 모두 참조 해제한다. -->
    <update id="unsetMembers"
-   		parameterType="kr.co.poppy.model.Members">
-   		UPDATE bbs SET memno=1 WHERE memno=#{memno}
+   		parameterType="kr.co.poppy.model.Bbs">
+   		UPDATE bbs SET memno=null  WHERE memno=#{memno}
    </update>
-   
+   <!-- 특정 상품을 참조하는 bbs데이터를 모두 참조 해제한다. -->
    <update id="unsetGoods"
-   		parameterType="kr.co.poppy.model.Goods">
+   		parameterType="kr.co.poppy.model.Bbs">
    		UPDATE bbs SET goodsno=null WHERE goodsno=#{goodsno}
    </update>
-   
-   <!-- 특정 bbs를 참조하는 imgs데이터를 모두 참조 해제한다. -->
-   <update id="unsetImgs"
-   		parameterType="kr.co.poppy.model.Imgs">
-   		UPDATE imgs SET bbsno=null WHERE bbsno=#{bbsno}
-   </update>
-  
    
 </mapper>
