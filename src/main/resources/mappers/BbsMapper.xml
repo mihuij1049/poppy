@@ -23,13 +23,17 @@
 	<!-- QNA / 포토리뷰 글 보기 페이지 -->
 	<select id="selectItem1" parameterType="kr.co.poppy.model.Bbs"
 		resultMap="bbsMap">
-		SELECT bbsno, bbstype, bbstitle, bbscontent, qnasec, qnapw, rvlike,
+		SELECT bbsno, bbstype, bbstitle, bbscontent, qnasec, qnapw,
+		rvlike,
 		b.regdate, b.editdate,
-		b.memno, m.username, m.userid, g.goodsno, g.gname
+		b.memno, m.username, m.userid, g.goodsno,
+		g.gname
 		FROM bbs b
 		INNER JOIN members m ON b.memno=m.memno
-		INNER JOIN goods g ON b.goodsno=g.goodsno
-		WHERE bbstype=#{bbstype} and bbsno=#{bbsno}
+		INNER JOIN
+		goods g ON b.goodsno=g.goodsno
+		WHERE bbstype=#{bbstype} and
+		bbsno=#{bbsno}
 	</select>
 
 	<!-- 단일행 조회를 위한 기능 정의2 -->
@@ -37,11 +41,13 @@
 	<select id="selectItem2" parameterType="kr.co.poppy.model.Bbs"
 		resultMap="bbsMap">
 		SELECT bbsno, bbstype, bbstitle, bbscontent,
-		b.regdate, b.editdate, b.memno,
+		b.regdate,
+		b.editdate, b.memno,
 		m.username, m.userid
 		FROM bbs b
-		INNER JOIN members m ON b.memno=m.memno
-		WHERE bbstype=#{bbstype} and bbsno=#{bbsno}
+		INNER JOIN members m
+		ON b.memno=m.memno
+		WHERE bbsno=#{bbsno}
 	</select>
 
 
@@ -53,8 +59,9 @@
 		b.regdate, b.editdate,
 		b.memno, m.username, m.userid
 		FROM bbs b
-		INNER JOIN members m ON b.memno=m.memno
-		
+		INNER
+		JOIN members m ON b.memno=m.memno
+
 		<where>
 			bbstype=#{bbstype}
 			<if test="bbscontent != null and bbscontent != ''">
@@ -71,9 +78,9 @@
 			</if>
 		</where>
 		ORDER BY bbsno DESC
-			<if test="listCount > 0">
+		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
-			</if>
+		</if>
 	</select>
 
 
@@ -83,9 +90,9 @@
 		SELECT COUNT(*)
 		FROM bbs b
 		INNER JOIN members m ON b.memno=m.memno
-		INNER JOIN goods g ON b.goodsno=g.goodsno;
 
 		<where>
+			bbstype=#{bbstype}
 			<if test="bbscontent != null and bbscontent != ''">
 				bbscontent LIKE concat('%', #{bbscontent}, '%')
 			</if>
@@ -105,10 +112,13 @@
 	<insert id="insertItem" parameterType="kr.co.poppy.model.Bbs"
 		useGeneratedKeys="true" keyProperty="bbsno">
 		INSERT INTO bbs (
-		bbstype, bbstitle, bbscontent, qnasec, qnapw, rvlike, regdate, editdate,
-		memno, goodsno
+		bbstype,
+		bbstitle, bbscontent, qnasec, qnapw, rvlike, regdate, editdate,
+		memno,
+		goodsno
 		) VALUES (
-		#{bbstype}, #{bbstitle}, #{bbscontent}, #{qnasec}, #{qnapw}, #{rvlike},
+		#{bbstype}, #{bbstitle}, #{bbscontent}, #{qnasec},
+		#{qnapw}, #{rvlike},
 		#{regdate}, #{editdate}, #{memno}, #{goodsno}
 		)
 	</insert>
@@ -123,7 +133,8 @@
 		DELETE FROM rvheart WHERE bbsno=#{bbsno}
 	</delete>
 	<delete id="deleteItem" parameterType="kr.co.poppy.model.Bbs">
-		DELETE FROM Bbs WHERE bbsno=#{bbsno}
+		DELETE FROM Bbs WHERE
+		bbsno=#{bbsno}
 	</delete>
 	<!-- 회원 탈퇴 시 게시글 삭제 기능 -->
 	<delete id="delete_members_item"
@@ -143,11 +154,13 @@
 
 	<!-- 특정 멤버를 참조하는 Bbs데이터를 모두 참조 해제한다. -->
 	<update id="unsetMembers" parameterType="kr.co.poppy.model.Bbs">
-		UPDATE bbs SET memno=null WHERE memno=#{memno}
+		UPDATE bbs SET
+		memno=null WHERE memno=#{memno}
 	</update>
 	<!-- 특정 상품을 참조하는 bbs데이터를 모두 참조 해제한다. -->
 	<update id="unsetGoods" parameterType="kr.co.poppy.model.Bbs">
-		UPDATE bbs SET goodsno=null WHERE goodsno=#{goodsno}
+		UPDATE bbs SET
+		goodsno=null WHERE goodsno=#{goodsno}
 	</update>
 
 </mapper>

@@ -125,7 +125,6 @@ a {
 						</c:when>
 						<%-- 조회결과가 있는  경우 --%>
 						<c:otherwise>
-
 							<%-- 조회 결과에 따른 반복 처리 --%>
 							<c:forEach var="item" items="${output}" varStatus="status">
 								<%-- 출력을 위해 준비한 bbstitle 변수 --%>
@@ -145,8 +144,7 @@ a {
 								</c:url>
 								<tr>
 									<td class="subject"
-										onclick="location.href='${pageContext.request.contextPath}/community/article.do';"
-										style="cursor: pointer;"><strong>${item.bbstitle}
+										style="cursor: pointer;"><strong><a href="${viewUrl}">${bbstitle}</a>
 											<span class="comment">[50]</span>
 									</strong><br /> <span class="name" title="작성자">${item.username}</span>
 										<span class="date" title="작성일">${item.regdate}</span> <span>조회

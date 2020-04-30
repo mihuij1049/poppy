@@ -142,7 +142,11 @@
 							<%-- 조회 결과에 따른 반복 처리 --%>
 							<c:forEach var="item" items="${output}" varStatus="status">
 								<%-- 출력을 위해 준비한 bbstitle 변수 --%>
-								<c:set var="bbstitle" value="${item.bbstitle}" />
+								
+								<c:set
+								
+								var="bbstitle" value="${item.bbstitle}">
+								</c:set> 
 
 								<%-- 검색어가 있다면? --%>
 								<c:if test="${keyword != ''}">
