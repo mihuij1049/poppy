@@ -130,32 +130,45 @@
     <div class="notice">
         <table class="table">
             <tbody>
-                <tr>
-                    <td class="subject" onclick="location.href='${pageContext.request.contextPath}/community/article.do';" style="cursor:pointer;">
-                    <span class="glyphicon glyphicon-lock"></span>
-                        <strong>질문있어요!
-                            <span class="comment">[1]</span><br />
-                        </strong>
-                        <span class="name" title="작성자">김령태</span>
-                        <span class="date" title="작성일">20.03.17</span>
-                        <span>조회 3</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="subject" onclick="location.href='${pageContext.request.contextPath}/community/article.do';" style="cursor:pointer;">
-                       <span class="glyphicon glyphicon-lock"></span>
-                        <strong>배송 언제오나요?
-                            <span class="comment">[1]</span>
-                        </strong><br />
-                        <span class="name" title="작성자">정미희</span>
-                        <span class="date" title="작성일">20.03.17</span>
-                        <span>조회 5</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-            </tbody>
+					<c:choose>
+						<%-- 조회결과가 없는 경우 --%>
+						<c:when test="${output == null || fn:length(output) == 0}">
+							<tr>
+								<td colspan="9" align="center">조회결과가 없습니다.</td>
+							</tr>
+						</c:when>
+						<%-- 조회결과가 있는  경우 --%>
+						<c:otherwise>
+							<%-- 조회 결과에 따른 반복 처리 --%>
+							<c:forEach var="item" items="${output}" varStatus="status">
+								<%-- 출력을 위해 준비한 bbstitle 변수 --%>
+								<c:set var="bbstitle" value="${item.bbstitle}" />
+
+								<%-- 검색어가 있다면? --%>
+								<c:if test="${keyword != ''}">
+									<%-- 검색어에 <mark> 태그를 적용하여 형광팬 효과 준비 --%>
+									<c:set var="mark" value="<mark>${keyword}</mark>" />
+									<%-- 출력을 위해 준비한 bbstitle에서 검색어와 일치하는 단어를 형광팬 효과로 변경 --%>
+									<c:set var="bbstitle"
+										value="${fn:replace(bbstitle, keyword, mark)}" />
+								</c:if>
+								<%-- 상세페이지로 이동하기 위한 URL --%>
+								<c:url value="/community/article.do" var="viewUrl">
+									<c:param name="bbsno" value="${item.bbsno}" />
+								</c:url>
+								<tr>
+									<td class="subject"
+										onclick="location.href='${pageContext.request.contextPath}/community/article.do';"
+										style="cursor: pointer;"><strong>${item.bbstitle}
+											<span class="comment">[50]</span>
+									</strong><br /> <span class="name" title="작성자">${item.username}</span> <span
+										class="date" title="작성일">${item.regdate}</span> <span>조회 235</span></td>
+								</tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+
+				</tbody>
         </table>
     </div>
     <div class=" paging">

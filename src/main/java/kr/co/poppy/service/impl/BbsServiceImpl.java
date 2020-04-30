@@ -72,7 +72,7 @@ public class BbsServiceImpl implements BbsService {
 	public List<Bbs> getBbsList(Bbs input) throws Exception {
 		List<Bbs> result = null;
 		try {
-			result = sqlSession.selectList("BbsMapper.selectList1", input);
+			result = sqlSession.selectList("BbsMapper.selectList", input);
 			if(result==null) {
 				throw new NullPointerException("result=null");
 			} 
