@@ -41,11 +41,17 @@
 	resultMap="membersMap">
 	SELECT * from members WHERE memno=#{memno};
 </select>
-<!-- 특정 회원의 정보 조회 -->
+<!-- 특정 회원의 정보 조회(로그인 확인) -->
 <select id="login_members"
 	parameterType="kr.co.poppy.model.Members"
 	resultMap="membersMap">
 	SELECT * from members WHERE userid=#{userid} and userpw=#{userpw}
+</select>
+<!-- 특정 회원의 정보 조회(아이디 찾기) -->
+<select id="findId_members"
+	parameterType="kr.co.poppy.model.Members"
+	resultMap="membersMap">
+	SELECT * from members WHERE username=#{username} and useremail=#{useremail}
 </select>
 
 <!-- 모든 회원의 정보조회 (관리자페이지용 같아서 일단 보류) -->

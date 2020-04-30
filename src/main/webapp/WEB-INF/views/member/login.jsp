@@ -76,7 +76,7 @@ input[type="text"], input[type="password"] {
 			<div class="login">
 				<form id="login" name="login" method="post" action="${pageContext.request.contextPath }/member/login_ok.do">
 					<p>
-						<input type="text" name="user_id" id="user_id" placeholder="&nbsp;아이디">
+						<input type="text" name="user_id" id="user_id" placeholder="&nbsp;아이디 ${user_id }">
 					</p>
 					<p>
 						<input type="password" name="user_pw" id="user_pw" placeholder="&nbsp;비밀번호">
@@ -99,32 +99,6 @@ input[type="text"], input[type="password"] {
 	</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
 	<script type="text/javascript">
-	/* $(function() {
-		$("#login").submit(function(e) {
-			// <form> 태그가 submit 되어 페이지가 이동되는 것을 방지한다.
-			e.preventDefault();
-			
-			// 사용자의 입력값을 가져온다.
-			var uid = $("#user_id").val();
-			console.log(uid);
-			var pwd = $("#user_pw").val();
-			console.log(pwd);
-			$.ajax( {
-				// 결과를 읽어올 URL --> <form>태그의 action속성
-				url : "/members/login_ok.do",
-				// 웹 프로그램에게 데이터를 전송하는 방식 --> <form> 태그의 method 속성
-				method: "post",
-				// 전달할 조건값은 사용자의 입력값을 활용하여 JSON형식으로 구성
-				data: { user_id : uid, user_pw : pwd },
-				// 읽어올 내용의 형식 (생략할 경우 json)
-				dataType: "html",
-				// 읽어온 내용을 처리하기 위한 함수
-				success: function(req) {
-					$("#result").html(req);
-				}
-			}); // end $.ajax
-		}); // end submit
-	}); */
 	</script>
 </body>
 

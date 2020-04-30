@@ -113,18 +113,17 @@
 				<b>아이디 찾기가 완료되었습니다.</b>
 			</div>
 			<div class="info">
-				<b>이 &nbsp;름</b><span class="info-name"></span><br> <b>이메일</b><span
-					class="info-email"></span>
+				<b>이 &nbsp;름</b><span class="info-name">${output.username }</span><br> <b>이메일</b><span
+					class="info-email">${output.useremail }</span>
 			</div>
 			<div class=id>
-				<input type="radio" value="id"><span class="id-info">abc123&nbsp;(개인회원,
+				<input type="radio" name="userid"><span class="id-info">${output.userid }&nbsp;(개인회원,
 					2020-02-12 가입)</span>
 			</div>
 		</div>
 		<div class="btns">
-
-			<button type="button" class="btn btn1"
-				onclick="location.href='${pageContext.request.contextPath}/member/login.do'">로그인</button>
+			<button type="submit" class="btn btn1"
+				onclick="location.href='${pageContext.request.contextPath}/member/login.do?user_id=${output.userid }'">로그인</button>
 
 			<button type="button" class="btn btn-inverse btn2"
 				onclick="location.href='${pageContext.request.contextPath}/member/find_pw.do'">비밀번호 찾기</button>
@@ -134,11 +133,6 @@
 	<%@ include file="../share/bottom_tp.jsp"%>
 
 	<script type="text/javascript">
-	$(function() {
-		$(document).on(function() {
-			$(".info-name").text(uname);
-		});
-	});
 	</script> 
 
 </body>

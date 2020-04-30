@@ -27,6 +27,13 @@ public interface MembersService {
 	 */
 	public Members loginMembers(Members input) throws Exception;
 	
+	/** 회원 정보 조회 아이디찾기 기능
+	 * @Param  회원의 이름(username)과 이메일(useremail)을 담고 있는 Beans
+	 * @return  조회된 회원의 정보를 담고 있는 Beans
+	 * @throws Exception
+	 */
+	public Members findIdMembers(Members input) throws Exception;
+	
 	/** 회원 정보 수정하기
 	 * 
 	 * @Param 회원의 수정된 정보가 담긴 Beans 객체

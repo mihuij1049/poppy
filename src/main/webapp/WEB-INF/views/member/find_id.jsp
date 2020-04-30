@@ -138,7 +138,7 @@
 		$(function() {
 	         $("#find-id").submit(function(e) {
 	            // <form> 태그가 submit 되어 페이지가 이동되는 것을 방지한다.
-	          /*   e.preventDefault(); */
+	            e.preventDefault();
 	            
 	            /** 이름 검사 */
 	            if (!regex.value('#user_name', '이름을 입력하세요.')) { return false; }
@@ -149,11 +149,13 @@
 	            if (!regex.value('#user_email', '이메일을 입력하세요.')) { return false; }
 	            if (!regex.email('#user_email', '이메일 주소가 잘못되었습니다.')) { return false; }
 	            
+	            location.href=${pageContext.request.contextPath}/members/find_id_ok.do;
+	            	
 	            // 사용자의 입력값을 가져온다.
-	            var uname = $("#user_name").val();
+	           /*  var uname = $("#user_name").val();
 	            console.log(uname);
 	            var umail = $("#user_email").val();
-	            console.log(umail);
+	            console.log(umail); */
 	           /*  $.ajax( {
 	               // 결과를 읽어올 URL --> <form>태그의 action속성
 	               url : "../api/find_id.do",

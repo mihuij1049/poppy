@@ -34,16 +34,43 @@ public class MemberController {
 		return "member/agree_0";
 	}
 	
-	/** find_id_ok.jsp */
-	@RequestMapping(value="/member/find_id_ok.do", method=RequestMethod.POST)
-		public String find_id_ok() {
-		return "member/find_id_ok";
-	}
-	
 	/** find_id.jsp */
 	@RequestMapping(value="/member/find_id.do", method=RequestMethod.GET)
 		public String findId() {
 		return "member/find_id";
+	}
+	
+	/** find_id_ok.jsp */
+	@RequestMapping(value="/member/find_id_ok.do", method=RequestMethod.POST)
+		public ModelAndView find_id_ok(Model model,
+				@RequestParam(value="user_name", required=true) String username,
+				@RequestParam(value="user_email", required=true) String useremail) {
+		
+		/** 1) 유효성 검사 */
+		if (username==null) {
+			return webHelper.redirect(null, "아이디를 입력하세요.");
+		}
+		if (useremail==null) {
+			return webHelper.redirect(null, "비밀번호를 입력하세요.");
+		}
+		/** 2) 데이터 조회하기 */
+		Members input = new Members();
+		input.setUsername(username);
+		input.setUseremail(useremail);
+		
+		// 조회한 데이터를 담을 Beans 선언
+		Members output = null;
+		
+		try {
+			// 데이터 조회
+			output = membersService.findIdMembers(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, "가입된 회원 정보가 없습니다.");
+		}
+		
+		model.addAttribute("output", output);
+
+        return new ModelAndView("member/find_id_ok");
 	}
 	
 	/** find_pw_email.jsp */
@@ -66,7 +93,9 @@ public class MemberController {
 	
 	/** login.jsp */
 	@RequestMapping(value="/member/login.do", method=RequestMethod.GET)
-		public String login() {
+		public String login(Model model,
+				@RequestParam(value="user_id", required=false) String userid ) {
+				model.addAttribute("user_id", userid);
 		return "member/login";
 	}
 	@RequestMapping(value="/member/login_ok.do", method=RequestMethod.POST)
@@ -94,7 +123,7 @@ public class MemberController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-			
+		model.addAttribute("myinfo", output);
 	return new ModelAndView("myInfo/myinfo");
 }
 	

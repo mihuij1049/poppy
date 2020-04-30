@@ -82,6 +82,29 @@ public class MembersServiceImpl implements MembersService {
 		return output;
 	}
 	
+	/** 회원 정보 조회 아이디찾기 기능
+	 * @Param  회원의 이름(username)과 이메일(useremail)을 담고 있는 Beans
+	 * @return  조회된 회원의 정보를 담고 있는 Beans
+	 */
+	
+	@Override
+	public Members findIdMembers(Members input) throws Exception {
+		Members output = null;
+		try {
+			output = sqlSession.selectOne("MembersMapper.findId_members", input);
+			if (output == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return output;
+	}
+
 	/** 회원 정보 수정
 	 * @Param  회원의 일련번호를 담고 있는 Beans
 	 * @return int 
