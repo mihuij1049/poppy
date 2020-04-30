@@ -90,12 +90,12 @@
 				</h4>
 			</div>
 			<div class="message">
-				<b>회원가입이 완료되었습니다.</b><br> <b>김뽀삐</b><b>님은 [일반회원] 회원이십니다.</b>
+				<b>회원가입이 완료되었습니다.</b><br> <b>${newmembers.username }</b><b>님은 [일반회원] 회원이십니다.</b>
 			</div>
 			<div class="info">
-				<b>아이디</b><span class="info-id">user_id</span><br> <b>이
-					&nbsp;름</b><span class="info-name">김뽀삐</span><br> <b>이메일</b><span
-					class="info-email">abc123@naver.com</span>
+				<b>아이디</b><span class="info-id">${newmembers.userid }</span><br> <b>이
+					&nbsp;름</b><span class="info-name">${newmembers.username }</span><br> <b>이메일</b><span
+					class="info-email">${newmembers.useremail }</span>
 			</div>
 			<div class="btns">
 				<a href="${pageContext.request.contextPath}/index/index.do">

@@ -126,16 +126,16 @@
 				<div class="all_select">
 					<div>
 						<div class="cb_mg">
-							<input type="checkbox" name="select-all" id="select-all"><b>이용약관
+							<input type="checkbox" name="select-all" id="select-all" /><b>이용약관
 								및 개인정보수집 및 이용, <br /> 쇼핑정보 수신(선택)에 모두 동의합니다.
-							</b></font></input>
+							</b></font>
 						</div>
 					</div>
 					<div class="agree_1">
 						<div class="agree_ck">
-							<input type="checkbox" name="checkbox"
-								class="checkbox checkbox_y">이용약관 동의(필수)</input> <span><a
-								href="../etc/page_info2.jsp">전체보기</a></span>
+							<input type="checkbox" name="useagree" value="1"
+								class="checkbox checkbox_y" />이용약관 동의(필수) <span><a
+								href="${pageContext.request.contextPath }/etc/page_info2.do">전체보기</a></span>
 						</div>
 						<div class="long_text">
 							<p>
@@ -381,9 +381,9 @@
 					</div>
 					<div class="agree_1">
 						<div class="agree_ck">
-							<input type="checkbox" name="checkbox"
-								class="checkbox checkbox_y">개인정보처리방침 동의(필수)</input> <span><a
-								href="../etc/page_info3.jsp">전체보기</a></span>
+							<input type="checkbox" name="privateagree" value="1"
+								class="checkbox checkbox_y" />개인정보처리방침 동의(필수) <span><a
+								href="${pageContext.request.contextPath }/etc/page_info3.jsp">전체보기</a></span>
 						</div>
 						<div class="endclass"></div>
 						<div class="long_text">
@@ -508,12 +508,12 @@
 						</div>
 					</div>
 					<div class="agree_2">
-						<input type="checkbox" name="checkbox" class="checkbox checkbox_n">
+						<input type="checkbox" name="emailagree" value="1" class="checkbox checkbox_n" />
 						쇼핑정보 수신 동의(선택)
 					</div>
 					<div class="agree_2">
-						<input type="checkbox" name="checkbox" class="checkbox checkbox_n">
-						이메일 수신동의
+						<input type="checkbox" name="shoppingagree" value="1" class="checkbox checkbox_n" />
+						이메일 수신동의(선택)
 					</div>
 					<div class="agree_2">할인쿠폰 및 혜택, 이벤트, 신상품 소식 등 쇼핑몰에서 제공하는 유익한
 						쇼핑정보를 이메일로 받아보실 수 있습니다.</div>
@@ -521,7 +521,7 @@
 						
 							<button type="submit" class="btn">다음</button>
 						 <a href="#" onclick="history.back();">
-							<button type=" button" class="btn btn-inverse">취소</button>
+							<button type="button" class="btn btn-inverse">취소</button>
 						</a>
 					</div>
 				</div>
@@ -549,18 +549,17 @@
     /** 체크박스 체크 여부 판단 */
     $(function() {
         $("#agree_form").submit(function(e) {
-            e.preventDefault();
-
+            
             var check_list = $(".checkbox_y:checked");
 
             if (check_list.length < 2) {
                 alert("필수 항목을 체크해주세요.");
                 return false;
             } else if (check_list.length == 2) {
-                location.href = "${pageContext.request.contextPath}/member/myinfo_wri.do";
+            	return true;
             }
-        })
-    })
+        });
+    });
     </script>
 </body>
 

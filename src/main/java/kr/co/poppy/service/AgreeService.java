@@ -26,4 +26,12 @@ public interface AgreeService {
 	 * @throws Exception
 	 */
 	public int deleteAgree(Agree input) throws Exception;
+	
+	/**
+	 * 약관동의 데이터 조회하기
+	 * @param 동의한 시간(regdate)을 담고 있는 Beans
+	 * @return Agree Beans
+	 * @throws Exception
+	 */
+	public Agree getAgreeItem(Agree input) throws Exception;
 }

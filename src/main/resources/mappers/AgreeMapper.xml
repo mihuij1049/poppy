@@ -22,10 +22,14 @@
         parameterType="kr.co.poppy.model.Agree"
         useGeneratedKeys="true"
         keyProperty="agreeno">
-        INSERT INTO agree (useagree, privateagree, emailagree, shoppingagree, regdate, editdate, memno) VALUES (
-        #{useagree}, #{privateagree}, #{emailagree}, #{shoppingagree}, now(), now(), #{memno});
+        INSERT INTO agree (useagree, privateagree, emailagree, shoppingagree, regdate, editdate) VALUES (
+        #{useagree}, #{privateagree}, #{emailagree}, #{shoppingagree}, now(), now());
     </insert>
-
+	<!-- 저장된 동의서 조회를 위한 기능 정의 * 동의한 시간 regdate로 agreeno를 가져온다. -->
+    <delete id="get_agree_item"
+        parameterType="kr.co.poppy.model.Agree">
+        SELECT * FROM agree WHERE agreeno=#{agreeno};
+    </delete>
     <!-- 데이터 삭제를 위한 기능 정의 -->
     <delete id="deleteItem"
         parameterType="kr.co.poppy.model.Agree">
