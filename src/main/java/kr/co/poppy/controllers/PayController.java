@@ -216,7 +216,7 @@ public class PayController {
     }  
     
     /** 주문내역 목록페이지 */
-	@RequestMapping(value = "/myInfo/order_list.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/myInfo/order_list_ok.do", method = RequestMethod.GET)
 	public ModelAndView orderList(Model model,
 			@RequestParam(value = "memno", defaultValue = "0") int memno,
 			@RequestParam(value = "odstatus", defaultValue = "") String odstatus) {

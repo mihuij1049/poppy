@@ -28,7 +28,7 @@
 		SELECT * FROM orders WHERE orderno=#{orderno};
 	</select>
 
-	<!-- 다중행 조회를 위한 기능 정의 -->
+	<!-- 주문내역 다중행 조회를 위한 기능 정의 -->
 	<select id="selectList"
 		parameterType="kr.co.poppy.model.Orders" resultMap="ordersMap">
 		SELECT o.odstatus,
