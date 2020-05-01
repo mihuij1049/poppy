@@ -47,7 +47,7 @@
 		FROM bbs b
 		INNER JOIN members m
 		ON b.memno=m.memno
-		WHERE bbsno=#{bbsno}
+		WHERE bbstype=#{bbstype} and bbsno=#{bbsno}
 	</select>
 
 

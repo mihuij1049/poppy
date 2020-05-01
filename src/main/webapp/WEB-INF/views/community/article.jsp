@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!doctype html>
 <html>
@@ -168,8 +168,9 @@
 .content {
 	position: relative;
 }
+
 .customer_pass {
-margin: auto;
+	margin: auto;
 	display: none;
 	width: 90%;
 	position: absolute;
@@ -184,6 +185,11 @@ margin: auto;
 	padding-top: 15px;
 	padding-bottom: 15px;
 }
+
+/** 글 수정삭제 버튼 */
+.editbuttons {
+	float: right;
+}
 </style>
 </head>
 
@@ -192,26 +198,42 @@ margin: auto;
 	<div class="content">
 		<!-- 여기에 작성 -->
 		<div class="container">
+		
 			<div class="page-title clearfix">
+
 				<h4>
-					<b> <a href="#" onclick="history.back(); return false;"><i
-							class="glyphicon glyphicon-chevron-left"></i></a>공지사항
+					<b> 
+					<a href="#" onclick="history.back(); return false;"><i
+							class="glyphicon glyphicon-chevron-left"></i></a> 
+							<c:choose>
+							<c:when test="${bbstype=='A'}">
+								공지사항
+								</c:when>
+							<c:when test="${bbstype=='B'}">
+								Q&A
+								</c:when>
+						</c:choose>
 					</b>
 				</h4>
+
 			</div>
 			<div class="subject">
 				<b id="title">${output.bbstitle}</b><br> <small id="user_name">${output.username}
 					| <span id="wri_date">${output.regdate}</span> | 조회<span id="hit">215</span>
 				</small>
+				<div class="editbuttons">
+					<button type="submit" class="btn btn-sm btn-edit">수정</button>
+					<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
+				</div>
 			</div>
+
 			<hr>
 			<div class="nai">
-				<p id="main_text">
-					${output.bbscontent}
-				</p>
+				<p id="main_text">${output.bbscontent}</p>
 			</div>
 			<div class="comment">
-				<button type="button" onclick="location.href='${pageContext.request.contextPath}/community/notice.do'"
+				<button type="button"
+					onclick="location.href='${pageContext.request.contextPath}/community/notice.do'"
 					class="btn btn-inverse btn-sm list">목록</button>
 			</div>
 			<div class="comment-list">
@@ -298,19 +320,19 @@ margin: auto;
 			</a>
 		</div>
 		<!--   비밀번호 입력 모달 ------------------------->
-	<div class="customer_pass" id="customer_pass">
-		<b class="plz_pass">비밀번호를 입력해 주세요.</b><br> <label for="cs_pass"
-			class="pass_label">비밀번호</label> <input type="password" name="cs_pass"
-			class="cs_pass" id="cs_pass"><br>
+		<div class="customer_pass" id="customer_pass">
+			<b class="plz_pass">비밀번호를 입력해 주세요.</b><br> <label for="cs_pass"
+				class="pass_label">비밀번호</label> <input type="password"
+				name="cs_pass" class="cs_pass" id="cs_pass"><br>
 
-		<div class="cs_pass_2btns">
-			<button type="submit" class="btn btn-sm btn-ok">확인</button>
-			<button type="submit" class="btn btn-inverse btn-sm btn-cancel">취소</button>
+			<div class="cs_pass_2btns">
+				<button type="submit" class="btn btn-sm btn-ok">확인</button>
+				<button type="submit" class="btn btn-inverse btn-sm btn-cancel">취소</button>
+			</div>
 		</div>
 	</div>
-	</div>
 
-	
+
 	<%@ include file="../share/bottom_tp.jsp"%>
 
 
@@ -325,26 +347,26 @@ margin: auto;
 					function(e) {
 						$("#customer_pass").show();
 						var edit_commit = $(this).text();
-						
+
 						// 사용자의 입력값을 가져온다.
-			            var upass = $("cs_pass").val();
-			            
-			            $.ajax( {
-			               // 결과를 읽어올 URL --> <form>태그의 action속성
-			               url : "../api/a_pass.do",
-			               // 웹 프로그램에게 데이터를 전송하는 방식 --> <form> 태그의 method 속성
-			               method: "post",
-			               // 전달할 조건값은 사용자의 입력값을 활용하여 JSON형식으로 구성
-			               data: { cs_pass: upass },
-			               // 읽어올 내용의 형식 (생략할 경우 json)
-			               dataType: "html",
-			               // 읽어온 내용을 처리하기 위한 함수
-			               success: function(req) {
-			                  $("#result").html(req);
-			               }
-			            });
-						
-						
+						var upass = $("cs_pass").val();
+
+						$.ajax({
+							// 결과를 읽어올 URL --> <form>태그의 action속성
+							url : "../api/a_pass.do",
+							// 웹 프로그램에게 데이터를 전송하는 방식 --> <form> 태그의 method 속성
+							method : "post",
+							// 전달할 조건값은 사용자의 입력값을 활용하여 JSON형식으로 구성
+							data : {
+								cs_pass : upass
+							},
+							// 읽어올 내용의 형식 (생략할 경우 json)
+							dataType : "html",
+							// 읽어온 내용을 처리하기 위한 함수
+							success : function(req) {
+								$("#result").html(req);
+							}
+						});
 
 						if (edit_commit == "수정") {
 							var original = $(this).parent().prev().children()

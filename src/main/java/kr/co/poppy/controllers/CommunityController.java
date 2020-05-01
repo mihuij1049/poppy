@@ -33,15 +33,20 @@ public class CommunityController {
 	/** article */
 	@RequestMapping(value = "/community/article.do", method = RequestMethod.GET)
 	public ModelAndView view(Model model, 
+			@RequestParam(value="bbstype", required=false) String bbstype,
 			@RequestParam(value="bbsno", defaultValue="0") int bbsno) {
 		/** 1) 유효성 검사 */
 		if (bbsno == 0) {
-			return webHelper.redirect(null, "게시글이 없습니다.");
+			return webHelper.redirect(null, "게시글 번호가 없습니다.");
+		}
+		if (bbstype == null) {
+			return webHelper.redirect(null, "게시글 타입이 없습니다.");
 		}
 
 		/** 2) 데이터 조회하기 */
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
 		Bbs input = new Bbs();
+		input.setBbstype(bbstype);
 		input.setBbsno(bbsno);
 
 		// 조회 결과를 저장할 객체 선언
@@ -68,9 +73,9 @@ public class CommunityController {
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
-		int totalCount = 0;
-		int listCount = 10;
-		int pageCount = 5;
+		int totalCount = 0; // 전체 게시글 수
+		int listCount = 3; // 한 페이지 당 표시한 목록 수
+		int pageCount = 5; // 한 그룹 당 표시할 페이지 번호 수
 
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(겁색어)를 Beans에 담는다.
@@ -107,30 +112,6 @@ public class CommunityController {
 		return new ModelAndView("community/notice");
 	}
 
-	/** photo_rv */
-	@RequestMapping(value = "/community/photo_rv.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String photo_rv() {
-		return "community/photo_rv";
-	}
-
-	/** photo_wri */
-	@RequestMapping(value = "/community/photo_wri.do", method = RequestMethod.GET)
-	public String photo_wri() {
-		return "community/photo_wri";
-	}
-
-	/** photo */
-	@RequestMapping(value = "/community/photo.do", method = RequestMethod.GET)
-	public String photo() {
-		return "community/photo";
-	}
-
-	/** qna_wri */
-	@RequestMapping(value = "/community/qna_wri.do", method = RequestMethod.GET)
-	public String qna_wri() {
-		return "community/qna_wri";
-	}
-
 	/** qna */
 	@RequestMapping(value = "/community/qna.do", method = RequestMethod.GET)
 	public ModelAndView listqna(Model model,
@@ -141,7 +122,7 @@ public class CommunityController {
 
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
 		int totalCount = 0;
-		int listCount = 10;
+		int listCount = 5;
 		int pageCount = 5;
 
 		/** 2) 데이터 조회하기 */
@@ -176,6 +157,30 @@ public class CommunityController {
 		model.addAttribute("output", output);
 		model.addAttribute("pageData", pageData);
 		return new ModelAndView("community/qna");
+	}
+
+	/** photo_rv */
+	@RequestMapping(value = "/community/photo_rv.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String photo_rv() {
+		return "community/photo_rv";
+	}
+
+	/** photo_wri */
+	@RequestMapping(value = "/community/photo_wri.do", method = RequestMethod.GET)
+	public String photo_wri() {
+		return "community/photo_wri";
+	}
+
+	/** photo */
+	@RequestMapping(value = "/community/photo.do", method = RequestMethod.GET)
+	public String photo() {
+		return "community/photo";
+	}
+
+	/** qna_wri */
+	@RequestMapping(value = "/community/qna_wri.do", method = RequestMethod.GET)
+	public String qna_wri() {
+		return "community/qna_wri";
 	}
 
 }
