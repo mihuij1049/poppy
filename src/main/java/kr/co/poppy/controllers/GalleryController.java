@@ -14,7 +14,6 @@ import kr.co.poppy.helper.PageData;
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Goods;
-import kr.co.poppy.model.Goodsdetail;
 import kr.co.poppy.model.Imgs;
 import kr.co.poppy.service.GoodsService;
 import kr.co.poppy.service.GoodsdetailService;

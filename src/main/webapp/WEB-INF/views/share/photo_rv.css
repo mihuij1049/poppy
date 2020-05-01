@@ -1,0 +1,163 @@
+@charset "UTF-8";
+/** 전체 마진 */
+.container_1 {
+	margin-bottom: 50px
+}
+
+/** 전체 마진 끝 */
+.pr_search_tab_bg {
+	width: 100%;
+	background-color: #ffc7c1;
+	padding-top: 10px;
+	margin-top: 20px;
+	margin-bottom: 15px;
+	color: #fff;
+}
+
+.pr_search_tab {
+	width: 95%;
+	padding: 10px;
+	padding-left: 15px;
+	margin: auto;
+}
+
+.pr_search_tab_bg .btn {
+	background-color: #ff8f83;
+	color: #fff;
+	font-size: 13px;
+	height: 25px;
+}
+
+.pr_search_tab .cate_ip {
+	float: left;
+	width: 35%;
+}
+
+.pr_search_tab .cate_ip .icon_size {
+	font-size: 15px;
+	position: relative;
+	top: 3px;
+}
+
+.pr_search_tab input {
+	height: 23px;
+	width: 33%;
+}
+
+.container .cate_select {
+	width: 65%;
+	height: 23px;
+	margin-bottom: 10px;
+}
+
+.h_input {
+	width: 70%;
+	height: 20px;
+}
+
+.container #sc_bt {
+	padding-top: 3px;
+	margin-bottom: 3px;
+	width: 40px;
+	padding-right: 35px;
+}
+
+/** 포토리뷰 시작 */
+.pr_box {
+	float: left;
+	width: 50%;
+	padding: 5px;
+}
+
+.pr_box a {
+	display: block;
+	text-decoration: none;
+}
+
+.pr_in_box {
+	border: 1px solid #FF8F83;
+	padding: 5px;
+}
+
+.container .img_size {
+	width: 100%;
+}
+
+.container .icon_size {
+	height: 8px;
+	font-size: 10px;
+}
+
+.pr_box .btn {
+	margin: 10px 0px 0px 0px;
+	padding: 5px 50px 22px 10px;
+	width: 50px;
+	height: 25px;
+	font-size: 12px;
+	font-color: #fff;
+}
+
+/** 연필 글리피콘 ^^ */
+
+.pencil {
+	display: inline-block;
+	border-radius: 2px;
+	bacground-color: #ff8f83;
+	font-size: 5px;
+}
+.glyphicon-pencil {
+	font-size: 15px;
+	color: #fff;
+	margin: 3px;
+}
+
+/** 끝 */
+
+.pr_box .btn:active {
+	font-color: #fff;
+}
+
+.pr_box .btn-inverse {
+	margin: 10px 0px 0px 0px;
+	padding: 5px 50px 22px 10px;
+	width: 50px;
+	height: 25px;
+	font-size: 12px;
+	font-color: #ff8f83;
+}
+
+.pr_box .btn-inverse:active {
+	font-color: #ff8f83;
+}
+
+.container_1 hr {
+	margin: 5px 0px 5px 0;
+	padding: 0;
+}
+
+.container_1 h5 {
+	color: #FF8F83;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.container_1 .pr_content {
+	height: 60px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	/* 라인수 */
+	-webkit-box-orient: vertical;
+	word-wrap: break-word;
+}
+
+.pagination>.active>span {
+	background-color: #FF8F83;
+	border-color: #FF8F83;
+}
+
+.container a {
+	color: #777;
+}
