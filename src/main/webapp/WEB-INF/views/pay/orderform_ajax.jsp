@@ -14,15 +14,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>Poppy-Poppy</title>
 <!-- 모바일 웹 페이지 설정 -->
-<link rel="shortcut icon" href="../share/assets/ico/favicon.png" />
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/share/assets/ico/favicon.png" />
 <link rel="apple-touch-icon-precomposed"
-	href="../share/assets/ico/apple-touch-icon-144-precomposed.png" />
+	href="${pageContext.request.contextPath}/share/assets/ico/apple-touch-icon-144-precomposed.png" />
 <!-- bootstrap -->
 <link rel="stylesheet" type="text/css"
-	href="../share/assets/css/bootstrap.min.css" />
+	href="${pageContext.request.contextPath}/share/assets/css/bootstrap.min.css" />
 <!-- 나눔고딕 웹 폰트 적용 -->
 <link rel="stylesheet" type="text/css"
-	href="../share/assets/css/nanumfont.css" />
+	href="${pageContext.request.contextPath}/share/assets/css/nanumfont.css" />
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/share/orderform.css" />
 <!-- 반응형 웹을 지원하지 않을 경우 -->
@@ -229,14 +229,14 @@
 					<div class="prd-info">
 						<div class="prd-box">
 							<div class="thumbnail">
-								<a href="../gallery/goods.jsp"> <img
-									src="../share/img/slide.jpg" width="70" height="70">
+								<a href="${pageContext.request.contextPath}/gallery/goods.jsp"> <img
+									src="C:/project/upload/img/slide.jpg" width="70" height="70">
 								</a>
 							</div>
 							<div class="prd">
 								<div id="prd-title">
 									<strong class="prd-name" title="상품명"> <a
-										href="../gallery/goods.jsp">펫클럽 벨버드 토일렛/애견토일렛/강아지화장실/패드</a>
+										href="${pageContext.request.contextPath}/gallery/goods.jsp">펫클럽 벨버드 토일렛/애견토일렛/강아지화장실/패드</a>
 									</strong>
 								</div>
 								<ul class="prd-li">
