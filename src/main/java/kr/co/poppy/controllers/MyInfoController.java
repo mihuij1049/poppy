@@ -3,14 +3,17 @@ package kr.co.poppy.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
+import kr.co.poppy.model.Goods;
 import kr.co.poppy.model.Orders;
 import kr.co.poppy.service.OrderdetailService;
 import kr.co.poppy.service.OrdersService;
@@ -31,14 +34,13 @@ public class MyInfoController {
 	@Autowired
 	OrderdetailService orderdetailService;
 
+	/** "/프로젝트이름"에 해당하는 ContextPath 변수 주입 */
+	@Value("#{servletContext.contextPath}")
+	String contextPath;
+
 	@RequestMapping(value = "/myInfo/myinfo.do", method = RequestMethod.GET)
 	public String myinfo() {
 		return "myInfo/myinfo";
-	}
-
-	@RequestMapping(value = "/myInfo/cancel_list.do", method = RequestMethod.GET)
-	public String cancel_list() {
-		return "myInfo/cancel_list";
 	}
 
 	/** order_list (주문조회) */
@@ -46,7 +48,9 @@ public class MyInfoController {
 	@RequestMapping(value = "/myInfo/order_list.do", method = RequestMethod.GET)
 	public ModelAndView order_list(Model model) {
 		Orders input = new Orders();
-
+		
+		input.setMemno(1);
+		
 		List<Orders> output = null;
 
 		try {
@@ -58,6 +62,26 @@ public class MyInfoController {
 		model.addAttribute("output", output);
 
 		String viewPath = "myInfo/order_list";
+		return new ModelAndView(viewPath);
+	}
+
+	/** cancel_list (주문취소내역) */
+	@RequestMapping(value = "/myInfo/cancel_list.do", method = RequestMethod.GET)
+	public ModelAndView cancel_list(Model model) {
+		Orders input = new Orders();
+		input.setMemno(5);
+
+		List<Orders> output = null;
+
+		try {
+			output = orderService.getOrdersList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+
+		model.addAttribute("output", output);
+
+		String viewPath = "myInfo/cancel_list";
 		return new ModelAndView(viewPath);
 	}
 
