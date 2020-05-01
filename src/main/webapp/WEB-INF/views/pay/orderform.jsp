@@ -46,7 +46,7 @@
 			<b>주문/결제</b>
 		</h4>
 	</div>
-	<form id="orderform" class="orderform" action="${pageContext.request.contextPath}/pay/orderform.do" method="post"
+	<form id="orderform" class="orderform" action="${pageContext.request.contextPath}/pay/orderform.do" method="GET"
 		target="_self" enctype="multipart/form-data">
 		<div class="panel-group" id="accordion" role="tablist"
 			aria-multiselectable="true">
@@ -84,7 +84,7 @@
 												<span id="addr2">${output.addr2}</span>
 											</p>
 											<div class="phone">
-												<div id="delivery-info-phone">${output.phone}</div>
+												<div id="delivery-info-phone">${output.odphone}</div>
 											</div>
 										</div>
 										<span class="side-right">
@@ -299,13 +299,13 @@
 					<div class="panel-body">
 						<div class="discount clear">
 							<div class="dis-title">
-								<span class="head">쿠폰 할인</span> <span class="coupon"> (
-									보유쿠폰 <span class="coupon-count">3개</span> )
+								<span class="head">적립금 할인</span> <span class="coupon"> (
+									적립금 : <span class="coupon-count">${output3.avpoint}</span> )
 								</span>
 							</div>
 							<div class="discount-re">
 								<button type="button" class="btn btn-default"
-									id="btn-coupon-sel">쿠폰 적용</button>
+									id="btn-coupon-sel">적립금 적용</button>
 								<span class="discount-count"> <span>0</span>원
 								</span>
 							</div>
@@ -469,21 +469,21 @@
 		   	<ul class="addr-content" style="list-style: none">
 	            <li delivery-list>
                     <strong class="name">
-                        <span id="name">{{name}}</span>
+                        <span id="name">{{output2.odname}}</span>
 					</strong>
 			        <div class="description">
 					    <span class="choice"> 
                             <input type="radio" id="choice-select">
 					    </span>
 					    <p class="recent-content">
-					        [ <span id="zipcode">{{zipcode}}</span> ] 
-                            <span id="addr1">{{addr1}}</span>
+					        [ <span id="zipcode">{{output2.zcode}}</span> ] 
+                            <span id="addr1">{{output2.addr1}}</span>
                             <br> 
-                            <span id="addr2">{{addr2}}</span>
+                            <span id="addr2">{{output2.addr2}}</span>
 				    	</p>
 				        <dl class="phone">
 				            <dt></dt>
-				    	    <dd>{{phone}}</dd>
+				    	    <dd>{{output2.odphone}}</dd>
 				         </dl>
 					 </div> 
                      <span class="button">
@@ -611,7 +611,7 @@
 			$("#recent-address-list").click(function(e) {
 				$(".recents").hide();
 				$(".recent-addr").show();
-				$.get("../share/plugins/recent_addr.json",
+				$.get("/mappers/**/*Mapper.xml",
 					function(req) {
 						var template = Handlebars.compile($("#recent_addr_tmpl").html());
 						var html = template(req);
