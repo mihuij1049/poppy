@@ -35,15 +35,15 @@
 				<div class="carousel-inner">
 					<!-- 항목 (1) -->
 					<div class="item active">
-						<img src="${pageContext.request.contextPath }/share/img/main_M.jpg" alt="슬라이더(1)">
+						<img src="/upload/img/main_M.jpg" alt="슬라이더(1)">
 					</div>
 					<!-- 항목 (2) -->
 					<div class="item">
-						<img src="${pageContext.request.contextPath }/share/img/2_M.jpg" alt="슬라이더(2)">
+						<img src="/upload/img/2_M.jpg" alt="슬라이더(2)">
 					</div>
 					<!-- 항목 (3) -->
 					<div class="item">
-						<img src="${pageContext.request.contextPath }/share/img/3_M.jpg" alt="슬라이더(3)">
+						<img src="/upload/img/3_M.jpg" alt="슬라이더(3)">
 					</div>
 				</div>
 				<!-- // 내용영역 구성 -->
@@ -64,64 +64,30 @@
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
 						<div class="gal_sug_main">
-							<a href="${pageContext.request.contextPath }/gallery/goods.jsp">
+							<a href="${pageContext.request.contextPath }/gallery/goods.do">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
-									<img src="${pageContext.request.contextPath }/share/img/index_gal_img1.jpg" id="img_sug">
+									<img src="/upload/img/index_gal_img1.jpg" id="img_sug">
 								</div>
 								<span class="sal_name">강아지간식</span>
 								<hr />
 								5,400원
 							</div>
 							</a>
-							<a href="${pageContext.request.contextPath }/gallery/goods.jsp">
+							<a href="${pageContext.request.contextPath }/gallery/goods.do">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
-									<img src="${pageContext.request.contextPath }/share/img/index_gal_img2.jpg" id="img_sug">
+									<img src="/upload/img/index_gal_img2.jpg" id="img_sug">
 								</div>
 								<span class="sal_name">강아지간식</span>
 								<hr />
 								5,400원
 							</div>
 							</a>
-							<a href="${pageContext.request.contextPath }/gallery/goods.jsp">
+							<a href="${pageContext.request.contextPath }/gallery/goods.do">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
-									<img src="${pageContext.request.contextPath }/share/img/index_gal_img3.jpg" id="img_sug">
-								</div>
-								<span class="sal_name">강아지간식</span>
-								<hr />
-								5,400원
-							</div>
-							</a>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="gal_sug_main">
-							<a href="${pageContext.request.contextPath }/gallery/goods.jsp">
-							<div class="gal_sug">
-								<div class="gal_sug_img">
-									<img src="${pageContext.request.contextPath }/share/img/index_gal_img1.jpg" id="img_sug">
-								</div>
-								<span class="sal_name">강아지간식</span>
-								<hr />
-								5,400원
-							</div>
-							</a>
-							<a href="${pageContext.request.contextPath }/gallery/goods.jsp">
-							<div class="gal_sug">
-								<div class="gal_sug_img">
-									<img src="${pageContext.request.contextPath }/share/img/index_gal_img2.jpg" id="img_sug">
-								</div>
-								<span class="sal_name">강아지간식</span>
-								<hr />
-								5,400원
-							</div>
-							</a>
-							<a href="${pageContext.request.contextPath }/gallery/goods.jsp">
-							<div class="gal_sug">
-								<div class="gal_sug_img">
-									<img src="${pageContext.request.contextPath }/share/img/index_gal_img3.jpg" id="img_sug">
+									<img src="/upload/img/index_gal_img3.jpg" id="img_sug">
 								</div>
 								<span class="sal_name">강아지간식</span>
 								<hr />
@@ -132,29 +98,63 @@
 					</div>
 					<div class="swiper-slide">
 						<div class="gal_sug_main">
-							<a href="${pageContext.request.contextPath }/gallery/goods.jsp">
+							<a href="${pageContext.request.contextPath }/gallery/goods.do">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
-									<img src="${pageContext.request.contextPath }/share/img/index_gal_img1.jpg" id="img_sug">
-								</div>
-								<span class="sal_name">강아지간식</span>
-								<hr />
-								5,400원
-							</div>
-							<a href="${pageContext.request.contextPath }/gallery/goods.jsp">
-							<div class="gal_sug">
-								<div class="gal_sug_img">
-									<img src="${pageContext.request.contextPath }/share/img/index_gal_img2.jpg" id="img_sug">
+									<img src="/upload/img/index_gal_img1.jpg" id="img_sug">
 								</div>
 								<span class="sal_name">강아지간식</span>
 								<hr />
 								5,400원
 							</div>
 							</a>
-							<a href="${pageContext.request.contextPath }/gallery/goods.jsp">
+							<a href="${pageContext.request.contextPath }/gallery/goods.do">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
-									<img src="${pageContext.request.contextPath }/share/img/index_gal_img3.jpg" id="img_sug">
+									<img src="/upload/img/index_gal_img2.jpg" id="img_sug">
+								</div>
+								<span class="sal_name">강아지간식</span>
+								<hr />
+								5,400원
+							</div>
+							</a>
+							<a href="${pageContext.request.contextPath }/gallery/goods.do">
+							<div class="gal_sug">
+								<div class="gal_sug_img">
+									<img src="/upload/img/index_gal_img3.jpg" id="img_sug">
+								</div>
+								<span class="sal_name">강아지간식</span>
+								<hr />
+								5,400원
+							</div>
+							</a>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="gal_sug_main">
+							<a href="${pageContext.request.contextPath }/gallery/goods.do">
+							<div class="gal_sug">
+								<div class="gal_sug_img">
+									<img src="/upload/img/index_gal_img1.jpg" id="img_sug">
+								</div>
+								<span class="sal_name">강아지간식</span>
+								<hr />
+								5,400원
+							</div>
+							<a href="${pageContext.request.contextPath }/gallery/goods.do">
+							<div class="gal_sug">
+								<div class="gal_sug_img">
+									<img src="/upload/img/index_gal_img2.jpg" id="img_sug">
+								</div>
+								<span class="sal_name">강아지간식</span>
+								<hr />
+								5,400원
+							</div>
+							</a>
+							<a href="${pageContext.request.contextPath }/gallery/goods.do">
+							<div class="gal_sug">
+								<div class="gal_sug_img">
+									<img src="/upload/img/index_gal_img3.jpg" id="img_sug">
 								</div>
 								<span class="sal_name">강아지간식</span>
 								<hr />
@@ -170,7 +170,7 @@
 			<!-- 스와이퍼 플러그인 갤러리 끝!!! -->
 			<center>
 				<button type="button" class="btn btn-inverse index_btn"
-					onclick="location.href='${pageContext.request.contextPath }/gallery/gal_list.jsp'">베스트 상품
+					onclick="location.href='${pageContext.request.contextPath }/gallery/gal_list.do'">베스트 상품
 					더보기</button>
 			</center>
 			<center>
@@ -181,9 +181,9 @@
 			<div class="gal_best_main">		
 				
 				<div class="gal_best">
-				<a href="${pageContext.request.contextPath }/gallery/goods.jsp">
+				<a href="${pageContext.request.contextPath }/gallery/goods.do">
 					<div class="gal_sug_img">
-						<img src="${pageContext.request.contextPath }/share/img/index_gal_img1.jpg" id="img_sug">
+						<img src="/upload/img/index_gal_img1.jpg" id="img_sug">
 					</div>
 					<span class="sal_name">강아지간식</span>
 					</a>
@@ -191,9 +191,9 @@
 					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
 				<div class="gal_best">
-				<a href="${pageContext.request.contextPath }/gallery/goods.jsp">
+				<a href="${pageContext.request.contextPath }/gallery/goods.do">
 					<div class="gal_sug_img">
-						<img src="${pageContext.request.contextPath }/share/img/index_gal_img2.jpg" id="img_sug">
+						<img src="/upload/img/index_gal_img2.jpg" id="img_sug">
 					</div>
 					<span class="sal_name">강아지간식</span>
 					</a>
@@ -201,9 +201,9 @@
 					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
 				<div class="gal_best">
-				<a href="${pageContext.request.contextPath }/gallery/goods.jsp">
+				<a href="${pageContext.request.contextPath }/gallery/goods.do">
 					<div class="gal_sug_img">
-						<img src="${pageContext.request.contextPath }/share/img/index_gal_img3.jpg" id="img_sug">
+						<img src="/upload/img/index_gal_img3.jpg" id="img_sug">
 					</div>
 					<span class="sal_name">강아지간식</span>
 					</a>
@@ -211,9 +211,9 @@
 					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
 				<div class="gal_best">
-				<a href="${pageContext.request.contextPath }/gallery/goods.jsp">
+				<a href="${pageContext.request.contextPath }/gallery/goods.do">
 					<div class="gal_sug_img">
-						<img src="${pageContext.request.contextPath }/share/img/index_gal_img1.jpg" id="img_sug">
+						<img src="/upload/img/index_gal_img1.jpg" id="img_sug">
 					</div>
 					<span class="sal_name">강아지간식</span>
 					</a>
@@ -221,9 +221,9 @@
 					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
 				<div class="gal_best">
-				<a href="${pageContext.request.contextPath }/gallery/goods.jsp">
+				<a href="${pageContext.request.contextPath }/gallery/goods.do">
 					<div class="gal_sug_img">
-						<img src="${pageContext.request.contextPath }/share/img/index_gal_img2.jpg" id="img_sug">
+						<img src="/upload/img/index_gal_img2.jpg" id="img_sug">
 					</div>
 					<span class="sal_name">강아지간식</span>
 					</a>
@@ -231,9 +231,9 @@
 					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
 				<div class="gal_best">
-				<a href="${pageContext.request.contextPath }/gallery/goods.jsp">
+				<a href="${pageContext.request.contextPath }/gallery/goods.do">
 					<div class="gal_sug_img">
-						<img src="${pageContext.request.contextPath }/share/img/index_gal_img3.jpg" id="img_sug">
+						<img src="/upload/img/index_gal_img3.jpg" id="img_sug">
 					</div>
 					<span class="sal_name">강아지간식</span>
 					</a>
@@ -241,13 +241,13 @@
 					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
 				<button type="button" class="btn btn-inverse index_btn"
-					onclick="location.href='${pageContext.request.contextPath }/gallery/gal_list.jsp'">뽀삐뽀삐 단독
+					onclick="location.href='${pageContext.request.contextPath }/gallery/gal_list.do'">뽀삐뽀삐 단독
 					최저가 보장</button>
 			</div>
 			<div class="img_banner">
-				<img src="${pageContext.request.contextPath }/share/img/index_banner1.jpg"> <img
-					src="${pageContext.request.contextPath }/share/img/index_banner2.jpg"> <img
-					src="${pageContext.request.contextPath }/share/img/index_banner3.jpg">
+				<img src="/upload/img/index_banner1.jpg"> <img
+					src="/upload/img/index_banner2.jpg"> <img
+					src="/upload/img/index_banner3.jpg">
 			</div>
 			<div class="review">
 				<center>
@@ -258,8 +258,8 @@
 					<div width="50%">
 						<div class="pr_box">
 							<div class="pr_in_box">
-								<a href="${pageContext.request.contextPath }/community/photo.jsp"> <img alt="사진"
-									src="${pageContext.request.contextPath }/share/img/img1.jpg" class="img_size" />
+								<a href="${pageContext.request.contextPath }/community/photo.do"> <img alt="사진"
+									src="/upload/img/img1.jpg" class="img_size" />
 									<div>
 										<h5>
 											<b>글제목입니다. 말줄임 처리도 합니다.</b>
@@ -282,8 +282,8 @@
 					<div>
 						<div class="pr_box">
 							<div class="pr_in_box">
-								<a href="${pageContext.request.contextPath }/community/photo.jsp"> <img alt="사진"
-									src="${pageContext.request.contextPath }/share/img/img2.jpg" class="img_size" />
+								<a href="${pageContext.request.contextPath }/community/photo.do"> <img alt="사진"
+									src="/upload/img/img2.jpg" class="img_size" />
 									<div>
 										<h5>
 											<b>글제목입니다. 말줄임 처리도 합니다.</b>
@@ -306,8 +306,8 @@
 					<div>
 						<div class="pr_box">
 							<div class="pr_in_box">
-								<a href="${pageContext.request.contextPath }/community/photo.jsp"> <img alt="사진"
-									src="${pageContext.request.contextPath }/share/img/img3.jpg" class="img_size" />
+								<a href="${pageContext.request.contextPath }/community/photo.do"> <img alt="사진"
+									src="/upload/img/img3.jpg" class="img_size" />
 									<div>
 										<h5>
 											<b>글제목입니다. 말줄임 처리도 합니다.</b>
@@ -330,8 +330,8 @@
 					<div>
 						<div class="pr_box">
 							<div class="pr_in_box">
-								<a href="${pageContext.request.contextPath }/community/photo.jsp"> <img alt="사진"
-									src="${pageContext.request.contextPath }/share/img/img4.jpg" class="img_size" />
+								<a href="${pageContext.request.contextPath }/community/photo.do"> <img alt="사진"
+									src="/upload/img/img4.jpg" class="img_size" />
 									<div>
 										<h5>
 											<b>글제목입니다. 말줄임 처리도 합니다.</b>
@@ -353,7 +353,7 @@
 				</div>
 				<center>
 					<button type="button" class="btn btn-inverse index_btn"
-						onclick="location.href='${pageContext.request.contextPath }/community/photo_rv.jsp'">실시간
+						onclick="location.href='${pageContext.request.contextPath }/community/photo_rv.do'">실시간
 						리뷰 더보기</button>
 				</center>
 			</div>
