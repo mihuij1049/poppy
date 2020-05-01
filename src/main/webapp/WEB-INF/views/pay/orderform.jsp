@@ -46,8 +46,7 @@
 			<b>주문/결제</b>
 		</h4>
 	</div>
-	<form id="orderform" class="orderform" action="${pageContext.request.contextPath}/pay/orderform.do" method="GET"
-		target="_self" enctype="multipart/form-data">
+	<form id="orderform" class="orderform" target="_self" enctype="multipart/form-data">
 		<div class="panel-group" id="accordion" role="tablist"
 			aria-multiselectable="true">
 			<div class="panel panel-default">
@@ -74,7 +73,7 @@
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane fade active in" id="page1">
 								<div class="recent-address">
-									<div class="recents">
+									<form class="recents"  action="${pageContext.request.contextPath}/pay/orderform_ajax.do" method="GET">
 										<div class="recent">
 											<strong class="name"><span id="delivery-info-name">${output.odname}</span></strong>
 											<p class="address">
@@ -91,15 +90,13 @@
 											<button type="button" id="recent-address-list">배송지
 												목록</button>
 										</span>
-									</div>
-									<div class="recent-addr" id="recent-addr"
-										style="display: none;">
+									</form>
+									<form class="recent-addr" id="recent-addr" style="display: none;"  action="${pageContext.request.contextPath}/pay/orderform_ajax.do" method="GET">
 										<h4 class="heading">배송지를 선택해주세요.</h4>
 										<span class="sideRight">
 											<button type="button" id="recent-close">닫기</button>
 										</span>
-									</div>
-
+									</form>
 									<div class="form-group">
 										<select id="selbox">
 											<option value="">-- 메시지 선택(선택사항) --</option>
@@ -296,7 +293,7 @@
 				</div>
 				<div id="collapseThree" class="panel-collapse collapse"
 					role="tabpanel" aria-labelledby="headingThree">
-					<div class="panel-body">
+					<form class="panel-body"  action="${pageContext.request.contextPath}/pay/orderform_ajax.do" method="GET">
 						<div class="discount clear">
 							<div class="dis-title">
 								<span class="head">적립금 할인</span> <span class="coupon"> (
@@ -315,7 +312,7 @@
 							<strong class="total-sum"> - <span id="totla-sale-price">0</span>원
 							</strong>
 						</div>
-					</div>
+					</form>
 				</div>
 			</div>
 			<div class="panel panel-default">
@@ -465,7 +462,7 @@
 	</form>
 	<!-- 배송지 목록 조회 -->
 	<script id="recent_addr_tmpl" type="text/x-handlebars-template">
-        {{#each addr}}
+        {{#each item}}
 		   	<ul class="addr-content" style="list-style: none">
 	            <li delivery-list>
                     <strong class="name">

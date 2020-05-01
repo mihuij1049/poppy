@@ -72,7 +72,6 @@ public class PayController {
 			Address input2 = new Address();
 			input.setMemno(memno);
 			input2.setMemno(memno);
-
 			
 			// 조회결과를 저장할 객체 선언
 			Address output = null;

@@ -845,7 +845,7 @@ dl {
 							onclick="location.href='${pageContext.request.contextPath }/myInfo/like_goods.do'"
 							id="action-like">관심상품</button>
 						<button type="button"
-							onclick="location.href='${pageContext.request.contextPath }/pay/orderform.do'"
+							onclick="location.href='${pageContext.request.contextPath }/pay/orderform_ajax.do'"
 							id="action-orderform">구매하기</button>
 					</div>
 				</div>
