@@ -45,14 +45,6 @@ public class PayController {
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
-
-	/** 장바구니 */
-	/** 목록 페이지 */
-	@RequestMapping(value = "/pay/cart.do", method = RequestMethod.GET)
-	public String list() {
-
-		return "pay/cart";
-	}
 	
 	/** orderform 페이지 단일행 조회 */
 	@RequestMapping(value="/pay/orderform.do", method=RequestMethod.GET)

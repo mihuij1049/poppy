@@ -165,18 +165,6 @@ public class CommunityController {
 		return "community/photo_rv";
 	}
 
-	/** photo_wri */
-	@RequestMapping(value = "/community/photo_wri.do", method = RequestMethod.GET)
-	public String photo_wri() {
-		return "community/photo_wri";
-	}
-
-	/** photo */
-	@RequestMapping(value = "/community/photo.do", method = RequestMethod.GET)
-	public String photo() {
-		return "community/photo";
-	}
-
 	/** qna_wri */
 	@RequestMapping(value = "/community/qna_wri.do", method = RequestMethod.GET)
 	public String qna_wri() {

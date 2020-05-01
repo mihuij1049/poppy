@@ -98,4 +98,29 @@ public class KRTController {
 		String viewPath = "myInfo/cancel_list";
 		return new ModelAndView(viewPath);
 	}
+	
+	@RequestMapping(value = "/myInfo/plist.do", method = RequestMethod.GET)
+	public String point() {
+		return "myInfo/plist";
+	}
+	
+	/** photo_wri */
+	@RequestMapping(value = "/community/photo_wri.do", method = RequestMethod.GET)
+	public String photo_wri() {
+		return "community/photo_wri";
+	}
+
+	/** photo */
+	@RequestMapping(value = "/community/photo.do", method = RequestMethod.GET)
+	public String photo() {
+		return "community/photo";
+	}
+	
+	/** 장바구니 */
+	/** 목록 페이지 */
+	@RequestMapping(value = "/pay/cart.do", method = RequestMethod.GET)
+	public String list() {
+
+		return "pay/cart";
+	}
 }
