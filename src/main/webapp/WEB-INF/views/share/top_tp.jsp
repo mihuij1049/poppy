@@ -20,7 +20,7 @@
 			<a href="${pageContext.request.contextPath }/gallery/gal_list.do">
 				<li>NEW</li>
 			</a>
-			<a href="${pageContext.request.contextPath }/gallery/gal_list.do">
+			<a href="${pageContext.request.contextPath }/gallery/gal_list_food.do">
 				<li>푸드</li>
 			</a>
 			<a href="${pageContext.request.contextPath }/gallery/gal_list.do">

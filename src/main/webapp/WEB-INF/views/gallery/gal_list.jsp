@@ -160,168 +160,31 @@
 						</div>
 					</form>
 				</div>
-				<div>
 					<!-- 게시물 하나 시작 -->
-					<div width="50%">
-						<div class="pr_box">
+				<c:forEach var="item" items="${output1}" varStatus="status">
+				<div>
+					<div class="pr_box">
+						
 							<div class="pr_in_box">
 								<a href="${pageContext.request.contextPath }/gallery/goods.do"> <img alt="사진"
 									src="../share/img/gal_list_img1.jpg" class="img_size">
-									<div >
+									<div>
 										<h5>
-											<b>벨버드 고흡수 30g 오리지날패드 300매 대용량애견패드</b>
+											<b>
+												${item.gname}
+											</b>
 										</h5>
 										<hr />
-										50,000원</a>
+										${item.gprice}원</a>
 								<div id="pay">
 									<i class="glyphicon glyphicon-heart-empty"></i>
 								</div>
 							</div>
-						</div>
 					</div>
 				</div>
-				<!-- 게시물 하나 끝 -->
-				<!-- 게시물 하나 시작 -->
-				<div>
-					<div class="pr_box">
-						<div class="pr_in_box">
-							<img alt="사진" src="../share/img/gal_list_img2.jpg"
-								class="img_size">
-							<div class="gal_text">
-								<h5>
-									<b>펫클럽 시간순삭노즈워크매트 옐로 원형/애견노즈워크</b>
-								</h5>
-								<hr />
-								50,000원
-								<div id="pay">
-									<i class="glyphicon glyphicon-heart-empty icon_size"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--// 게시물 하나 끝 -->
-				<!-- 게시물 하나 시작 -->
-				<div>
-					<div class="pr_box">
-						<div class="pr_in_box">
-							<img alt="사진" src="../share/img/gal_list_img3.jpg"
-								class="img_size">
-							<div>
-								<h5>
-									<b>펫클럽 벨버드 순삭져키 1kg 1+1/강아지간식/애견간식</b>
-								</h5>
-								<hr />
-								50,000원
-								<div id="pay">
-									<i class="glyphicon glyphicon-heart-empty icon_size"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--// 게시물 하나 끝 -->
-				<!-- 게시물 하나 시작 -->
-				<div>
-					<div class="pr_box">
-						<div class="pr_in_box">
-							<img alt="사진" src="../share/img/gal_list_img4.jpg"
-								class="img_size">
-							<div>
-								<h5>
-									<b>펫클럽 데이스포 케어츄르 오리 닭 관절 15g 32개입</b>
-								</h5>
-								<hr />
-								50,000원
-								<div id="pay">
-									<i class="glyphicon glyphicon-heart-empty icon_size"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--// 게시물 하나 끝 -->
-				<div>
-					<div class="pr_box">
-						<div class="pr_in_box">
-							<a href="goods.jsp"> <img alt="사진"
-								src="../share/img/gal_list_img1.jpg" class="img_size">
-							</a>
-							<div>
-								<h5>
-									<b>벨버드 고흡수 30g 오리지날패드 300매 대용량애견패드</b>
-								</h5>
-								<hr />
-								50,000원
-								<div id="pay">
-									<i class="glyphicon glyphicon-heart-empty icon_size"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- 게시물 하나 끝 -->
-				<!-- 게시물 하나 시작 -->
-				<div>
-					<div class="pr_box">
-						<div class="pr_in_box">
-							<img alt="사진" src="../share/img/gal_list_img2.jpg"
-								class="img_size">
-							<div>
-								<h5>
-									<b>펫클럽 시간순삭노즈워크매트 옐로 원형/애견노즈워크</b>
-								</h5>
-								<hr />
-								50,000원
-								<div id="pay">
-									<i class="glyphicon glyphicon-heart-empty icon_size"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--// 게시물 하나 끝 -->
-				<!-- 게시물 하나 시작 -->
-				<div>
-					<div class="pr_box">
-						<div class="pr_in_box">
-							<img alt="사진" src="../share/img/gal_list_img3.jpg"
-								class="img_size">
-							<div>
-								<h5>
-									<b>펫클럽 벨버드 순삭져키 1kg 1+1/강아지간식/애견간식</b>
-								</h5>
-								<hr />
-								50,000원
-								<div id="pay">
-									<i class="glyphicon glyphicon-heart-empty icon_size"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--// 게시물 하나 끝 -->
-				<!-- 게시물 하나 시작 -->
-				<div>
-					<div class="pr_box">
-						<div class="pr_in_box">
-							<img alt="사진" src="../share/img/gal_list_img4.jpg"
-								class="img_size">
-							<div>
-								<h5>
-									<b>펫클럽 데이스포 케어츄르 오리 닭 관절 15g 32개입</b>
-								</h5>
-								<hr />
-								50,000원
-								<div id="pay">
-									<i class="glyphicon glyphicon-heart-empty icon_size"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--// 게시물 하나 끝 -->
+				</c:forEach>
 			</div>
+			
 			<div class="text-center">
 				<ul class="pagination pagination-sm">
 					<li class="disabled"><a href="#">&laquo;</a></li>
@@ -334,8 +197,6 @@
 				</ul>
 			</div>
 		</div>
-	</div>
-	</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
 	<script type="text/javascript">
     $(function() {

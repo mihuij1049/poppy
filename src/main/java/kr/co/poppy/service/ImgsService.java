@@ -1,8 +1,11 @@
 package kr.co.poppy.service;
 
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import kr.co.poppy.model.Heart;
 import kr.co.poppy.model.Imgs;
 
 
@@ -18,6 +21,14 @@ public interface ImgsService {
 	 * @throws Exception
 	 */
 	public Imgs getImgsItem(Imgs input) throws Exception;
+	
+	/**
+	 * 이미지 데이터 목록 조회
+	 * @param Image 조회할 주소의 일련번호를 담고 있는 Beans
+	 * @return 조회된 데이터가 저장된 Beans
+	 * @throws Exception
+	 */
+	public List<Imgs> getImgsList(Imgs input) throws Exception;
 	
 	/**
 	 * 이미지 데이터 등록하기

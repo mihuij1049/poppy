@@ -27,6 +27,8 @@ public class Imgs {
 	private int goodsno;
 	// 게시글 일련번호
 	private int bbsno;
+	// 카테고리 타입
+	private String cate1;
 	
 
 }

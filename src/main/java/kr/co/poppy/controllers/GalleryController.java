@@ -7,16 +7,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.poppy.helper.PageData;
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Goods;
+import kr.co.poppy.model.Goodsdetail;
+import kr.co.poppy.model.Imgs;
 import kr.co.poppy.service.GoodsService;
-import lombok.extern.slf4j.Slf4j;
+import kr.co.poppy.service.GoodsdetailService;
+import kr.co.poppy.service.ImgsService;
 
 @Controller
-@Slf4j
 public class GalleryController {
 	/** webHelper */
 	@Autowired WebHelper webHelper;
@@ -26,25 +30,49 @@ public class GalleryController {
 	
 	/** Service 패턴 구현체 */
 	@Autowired GoodsService goodsService;
-	
+	@Autowired ImgsService imgsService;
+	@Autowired GoodsdetailService goodsdetailService;
 	
 	/** 갤러리 목록 페이지 */
-	@RequestMapping(value="/gallery/gal_list.do", method=RequestMethod.GET)
-	public ModelAndView gallist(Model model) {
+	@RequestMapping(value="/gallery/gal_list_food.do", method=RequestMethod.GET)
+	public ModelAndView gallist(Model model,
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+		// 1) 페이지 구현에 필요한 변수값 생성
+		int totalCount = 0;
+		int listCount = 8;
+		int pageCount = 5;
 		
-		// 1) 빈즈에 담기
-		Goods input = new Goods();
+		// 2) 데이터 조회
+		Goods input1 = new Goods();
+		input1.setCate1("푸드");
+		Imgs input2 = new Imgs();
+		input2.setCate1("푸드");
+		input2.setImgtype("A");
 		
-		// 2) 데이터 조회하기
-		List<Goods> output = null;
+		List<Goods> output1 = null;
+		List<Imgs> output2 = null;
+		PageData pageData = null;
+		
 		try {
-			output = goodsService.getGoodsList(input);
+			// 페이지만들기
+			totalCount = goodsService.getGoodsCount(input1);
+			
+			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+			
+			Goods.setOffset(pageData.getOffset());
+			Goods.setListCount(pageData.getListCount());
+			
+			// 데이터조회
+			output1 = goodsService.getGoodsList(input1);
+			output2 = imgsService.getImgsList(input2);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
 		// 3) 뷰처리
-		model.addAttribute("output", output);
+		model.addAttribute("output1", output1);
+		model.addAttribute("output2", output2);
+		model.addAttribute("pageData", pageData);
 	
 		return new ModelAndView("gallery/gal_list");
 	}
@@ -52,7 +80,23 @@ public class GalleryController {
 	
 	/** 갤러리 상세 페이지 */
 	@RequestMapping(value="/gallery/goods.do", method=RequestMethod.GET)
-	public String goods() {
-		return "gallery/goods";
+	public ModelAndView goods(Model model) {
+		
+		// 1) 빈즈에 담기
+		Goodsdetail input = new Goodsdetail();
+		
+		// 2) 데이터 조회하기
+		Goodsdetail output = null;
+		
+		try {
+			output = goodsdetailService.getGoodsdetailItem(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		// 3) 뷰처리
+		model.addAttribute("output", output);
+		
+		return new ModelAndView("gallery/goods");
 	}
 }

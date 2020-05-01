@@ -1,9 +1,10 @@
 package kr.co.poppy.service.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 import kr.co.poppy.model.Imgs;
 import kr.co.poppy.service.ImgsService;
@@ -39,6 +40,27 @@ public class ImgsServiceImpl implements ImgsService {
 			throw new Exception("데이터 조회에 실패했습니다.");
 		}
 		return result;
+	}
+	
+	@Override
+	public List<Imgs> getImgsList(Imgs input) throws Exception {
+		List<Imgs> result = null;
+
+        try {
+            result = sqlSession.selectList("HeartMapper.selectList", input);
+
+            if (result == null) {
+                throw new NullPointerException("result=null");
+            }
+        } catch (NullPointerException e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("조회된 데이터가 없습니다.");
+        } catch (Exception e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("데이터 조회에 실패했습니다.");
+        }
+
+        return result;
 	}
 
 	/** 이미지 데이터 등록하기

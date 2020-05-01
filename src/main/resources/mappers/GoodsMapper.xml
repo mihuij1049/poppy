@@ -35,11 +35,15 @@
 		resultMap="goodsMap">
 		SELECT goodsno, gcode, gname, ginfo, gprice, gsale, gdate, cate1,
 		cate2, regdate, editdate FROM goods
-		<where>
-			<if test="gname != null and gname != ''">
-				gname LIKE concat('%',#{gname},'%')
-			</if>
-		</where>
+		WHERE cate1=#{cate1}
+	</select>
+	
+	<!-- 데이터 수 조회를 위한 기능 정의 -->
+	<select id="selectCountAll" parameterType="kr.co.poppy.model.Goods"
+		resultType="int">
+		SELECT COUNT(*)
+		FROM goods
+		WHERE cate1=#{cate1}
 	</select>
 
 	<!-- 정렬방식에 따른 조회 기능 정의 -->
