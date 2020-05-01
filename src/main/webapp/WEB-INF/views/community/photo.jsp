@@ -9,109 +9,14 @@
 
 <head>
 <%@ include file="../share/head_tp.jsp"%>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/share/photo.css" />
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>Poppy-Poppy</title>
-<style type="text/css">
-p {
-	margin: 0;
-}
 
-.content .container {
-	margin-top: 20px;
-	margin-bottom: 50px;
-	width: 96%;
-	border: 1px solid #ffc7c1;
-	padding: 10px;
-}
-
-.big-image {
-	border: 1px solid #ffc7c1;
-	width: 100%;
-}
-
-.info-box {
-	padding: 10px 0;
-	font-size: 11px;
-	border-bottom: 1px solid #ddd;
-}
-
-.info-box a {
-	color: #333;
-}
-
-.info-content {
-	display: inline;
-	padding-left: 5px;
-}
-
-.small-image {
-	border: 1px solid #ffc7c1;
-	width: 20%;
-	float: left;
-}
-
-.info-content p {
-	display: inline;
-	padding-left: 5px;
-}
-
-.star {
-	padding-top: 5px;
-}
-
-.writer {
-	padding-top: 10px;
-}
-
-.rv-title {
-	padding: 10px 0;
-	border-bottom: 1px solid #ddd;
-}
-
-.rv-content {
-	padding: 10px 0;
-}
-
-.date {
-	color: #aaa;
-	font-size: 12px;
-	padding-bottom: 10px;
-}
-
-.recommend {
-	padding: 5px;
-	border: 1px dashed #ddd;
-	margin-bottom: 30px;
-}
-
-.recommend p {
-	display: inline;
-	padding-right: 10px;
-}
-
-.btn:hover {
-	background-color: #FF6261;
-	color: #fff;
-}
-
-.rv-footer {
-	padding: 15px 0;
-	height: 50px;
-	text-align: center;
-	color: #fff;
-	background: #ffc7c1;
-}
-
-.clear:after {
-	content: '';
-	display: block;
-	float: none;
-	clear: both;
-}
-</style>
 </head>
 
 <body>

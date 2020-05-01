@@ -43,48 +43,6 @@ public class MyInfoController {
 		return "myInfo/myinfo";
 	}
 
-	/** order_list (주문조회) */
-	/** 목록 페이지 */
-	@RequestMapping(value = "/myInfo/order_list.do", method = RequestMethod.GET)
-	public ModelAndView order_list(Model model) {
-		Orders input = new Orders();
-		
-		input.setMemno(1);
-		
-		List<Orders> output = null;
-
-		try {
-			output = orderService.getOrdersList(input);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-
-		model.addAttribute("output", output);
-
-		String viewPath = "myInfo/order_list";
-		return new ModelAndView(viewPath);
-	}
-
-	/** cancel_list (주문취소내역) */
-	@RequestMapping(value = "/myInfo/cancel_list.do", method = RequestMethod.GET)
-	public ModelAndView cancel_list(Model model) {
-		Orders input = new Orders();
-		input.setMemno(5);
-
-		List<Orders> output = null;
-
-		try {
-			output = orderService.getOrdersList(input);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-
-		model.addAttribute("output", output);
-
-		String viewPath = "myInfo/cancel_list";
-		return new ModelAndView(viewPath);
-	}
-
 	@RequestMapping(value = "/myInfo/order_desc.do", method = RequestMethod.GET)
 	public String order_desc() {
 		return "myInfo/order_desc";

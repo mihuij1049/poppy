@@ -1,0 +1,129 @@
+.content .container {
+	margin-top: 20px;
+	width: 96%;
+}
+
+form div {
+	border-bottom: 1px solid #ffc7c1;
+	border-left: 1px solid #ffc7c1;
+	border-right: 1px solid #ffc7c1;
+}
+
+.id-box {
+	border-top: 1px solid #ffc7c1;
+}
+
+form div:last-child {
+	border: none;
+}
+
+.content .container .join-form {
+	padding: 16px 12px;
+}
+
+.content .container label {
+	width: 22%;
+}
+
+span {
+	color: red;
+}
+
+#user_id {
+	margin-right: 10px;
+	width: 40%;
+}
+
+input {
+	vertical-align: -1px;
+	border: 1px solid #d5d5d5;
+}
+
+.content button {
+	width: 70px;
+	height: 26px;
+	text-align: center;
+}
+
+button p {
+	font-size: 12px;
+	line-height: 10px;
+}
+
+.btn2:hover {
+	background-color: #FF6261;
+	color: #fff;
+}
+
+#user_pw {
+	width: 50%;
+}
+
+#user_pw_re {
+	width: 50%;
+	vertical-align: 8.5px;
+}
+
+#user_name {
+	width: 40%;
+}
+
+.container select {
+	width: 23%;
+	height: 26px;
+	font-size: 11px;
+	display: inline;
+	border-radius: 0;
+	vertical-align: -2px;
+	border: 1px solid #d5d5d5;
+}
+
+.dash {
+	display: inline;
+	margin: 2px;
+}
+
+#tel {
+	width: 15%;
+	display: inline;
+	vertical-align: -2px;
+}
+
+#tel2 {
+	width: 15%;
+	display: inline;
+	vertical-align: -2px;
+}
+
+#email {
+	margin-right: 10px;
+	width: 50%;
+}
+
+.join {
+	padding-top: 15px;
+	margin: auto;
+	margin-bottom: 50px;
+	border-bottom: none;
+}
+
+.join button {
+	width: 100%;
+	height: 36px;
+	color: #fff;
+}
+
+.swal2-icon {
+	margin-top: 0;
+	margin-bottom: 20px;
+}
+
+.swal2-popup .swal2-content {
+	font-size: 15px;
+}
+
+.swal2-confirm {
+	width: 88.56px;
+	height: 40px;
+	background-color: #ff8f83 !important;
+}

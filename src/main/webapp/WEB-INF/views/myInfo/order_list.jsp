@@ -1,3 +1,4 @@
+<%@page import="kr.co.poppy.model.Orders"%>
 <%@page import="kr.co.poppy.helper.WebHelper"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -5,12 +6,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%
+	Orders orders = new Orders();
+	orders.setOrderno(2);
+ 	if(orders.getOdstatus()=="0") {
+ 		System.out.println("234");
+ 		orders.setOdstatus("3");
+ 	}
+%>
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
 <%@ include file="../share/head_tp.jsp"%>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/share/order_list.css" />
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -19,233 +29,6 @@
 <!-- 플러그인 CSS 참조 -->
 <link rel="stylesheet" type="text/css"
 	href="../share/plugins/datepicker/datepicker.min.css">
-<style type="text/css">
-.header {
-	z-index: 1004;
-}
-
-.content>.container {
-	width: 96%;
-	margin: auto;
-	z-index: 104;
-}
-
-.nav-tabs>li>a {
-	margin-top: 20px;
-	margin-right: 0;
-	font-weight: bold;
-}
-
-.backg {
-	margin-top: 1px;
-	height: 94px;
-	background-color: #ffc7c1;
-}
-
-.dateSearch {
-	padding-bottom: 10px;
-	background: #ffc7c1;
-}
-
-.backg .container {
-	padding-top: 10px;
-}
-
-.backg select {
-	padding-left: 5px;
-}
-
-.backg .status {
-	width: 86%;
-}
-
-.backg .period {
-	padding-top: 10px;
-}
-
-.form-control {
-	font-size: 12px;
-}
-
-.col-xs-1 {
-	padding: 0;
-	padding-top: 5px;
-	margin: 0 1.5%;
-	text-align: center;
-	color: #fff;
-	font-weight: bold;
-}
-
-.col-xs-2 {
-	padding: 0;
-	margin-right: 1.5%;
-}
-
-.col-xs-3 {
-	padding: 0;
-}
-
-.col-xs-6 {
-	padding: 0;
-}
-
-.period .btn2 {
-	border: 1px solid #ff8f83;
-	font-size: 12px;
-	width: 16%;
-	height: 30px
-}
-
-.btn2:hover {
-	background-color: #FF6261;
-	border: 1px solid #FF6261;
-	color: #fff;
-}
-
-.btn-default.active {
-	background-color: #FF6261;
-	color: #fff;
-}
-
-.dateSearch input {
-	width: 22%;
-	border: 1px solid #ff8f83;
-	font-size: 12px;
-}
-
-.dateSearch button {
-	margin-left: 5px;
-	height: 30px;
-	line-height: 3px;
-}
-
-/** 주문상세보기 시작 */
-.view {
-	font-size: 12px;
-	width: 100%;
-	height: 42px;
-	margin-top: 15px;
-	background-color: #FF6261;
-	border-left: 1px solid #FF6261;
-	border-right: 1px solid #FF6261;
-	text-align: left;
-	padding: 10px 15px;
-}
-
-.view span {
-	color: #fff;
-	vertical-align: -2px;
-}
-
-.view .date {
-	font-weight: bold;
-}
-
-.view .number a {
-	color: #fff;
-}
-
-.view .btn-detail {
-	color: #fff;
-	float: right;
-}
-
-.view #GGuc {
-	font-weight: bold;
-	float: right;
-}
-
-/** 주문상세보기 끝 */
-
-/** 주문상품내역 시작 */
-.prd-info .prd-box {
-	display: flex;
-	padding-top: 20px;
-	padding-left: 15px;
-}
-
-.prd-box .prd-content {
-	margin-left: 10px;
-	width: 100%;
-}
-
-.prd-content .prd-name a {
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	word-wrap: normal;
-	width: 100px;
-	overflow: hidden;
-	color: #000;
-}
-
-.prd-content .prd-li {
-	margin-top: 10px;
-}
-
-.prd-content li {
-	list-style: none;
-}
-
-.prd-content .option {
-	display: inline;
-	padding: 0;
-}
-
-.prd-info p {
-	padding-top: 10px;
-	padding-left: 15px;
-}
-
-.prd-info .prd-foot {
-	font-weight: bold;
-	background-color: #ffc7c1;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 15px;
-	border-top: 1px solid #ffc7c1;
-	border-bottom: 1px solid #ffc7c1;
-}
-
-#cancel {
-	float: right;
-	position: relative;
-	bottom: 10px;
-}
-
-.ready {
-	color: #fff;
-	font-weight: bold;
-}
-
-/** 주문상품내역 끝 */
-.paging {
-	text-align: center;
-	margin-bottom: 50px;
-}
-
-.paging .disabled {
-	position: relative;
-	right: 10px;
-}
-
-.paging .paging-right {
-	position: relative;
-	left: 10px;
-}
-
-.pagination>.active>span {
-	background-color: #ffc7c1;
-	border-color: #ffc7c1;
-}
-
-.pagination>.disabled>a {
-	color: #ffc7c1;
-}
-
-.pagination>li>a {
-	color: #ffc7c1;
-}
-</style>
 </head>
 
 <body>
@@ -308,12 +91,13 @@
 
 				<c:otherwise>
 					<c:forEach var="item" items="${output}" varStatus="status">
+						<c:set var="orderno" value="${item.orderno}" />
 						<div>
 							<div class="view">
-								<span class="date" title="주문일자">${item.regdate} </span> <span
-									class="number" title="주문번호"> <a
+								<span class="date" title="주문일자">${fn:substring(item.regdate,0,10)}
+								</span> <span class="number" title="주문번호"> <a
 									href="${pageContext.request.contextPath}/myInfo/order_desc.do">
-										(${item.orderno}) </a>
+										(${fn:substring(item.regdate,0,10).replace("-","")}-${item.orderno})</a>
 								</span> <a
 									href="${pageContext.request.contextPath}/myInfo/order_desc.do"
 									class="btn-detail"><span id="GGuc">&#62;</span>상세보기</a>
@@ -336,11 +120,13 @@
 											</span></li>
 										</ul>
 										<p class="option">[옵션: ${item.odgdoption}]</p>
-										<button type="button" class="btn btn2" id="cancel">주문취소</button>
+										<button type="button" class="btn btn2" id="cancel"
+											onclick="location.href'${pageContext.request.contextPath}/myInfo/order_delete.do?orderno=${item.orderno}'">
+											주문취소</button>
 									</div>
 								</div>
 								<div class="prd-foot" title="주문처리상태">
-									<div class="ready">상품준비중</div>
+									<div class="ready">${item.odstatus}</div>
 								</div>
 							</div>
 						</div>
@@ -412,7 +198,11 @@
 		});
 		$(function() {
 			$(document).on("click", "#cancel", function(e) {
-				$(this).parent().parent().parent().parent().remove();
+				var cancel = confirm("해당 상품을 주문취소 하시겠습니까?");
+				if (cancel == true) {
+					$(this).parent().parent().parent().parent().remove();
+					return "myInfo/order_delete";
+				}
 			})
 		});
 	</script>

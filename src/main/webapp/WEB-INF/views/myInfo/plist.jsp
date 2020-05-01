@@ -9,69 +9,14 @@
 
 <head>
 <%@ include file="../share/head_tp.jsp"%>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/share/plist.css" />
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>Poppy-Poppy</title>
-<style type="text/css">
-.content .container {
-	margin-top: 20px;
-}
 
-.table {
-	width: 96%;
-	border: 1px solid #ffc7c1;
-	margin: auto;
-}
-
-.table thead {
-	border-left: 1px solid #ffc7c1;
-	border-right: 1px solid #ffc7c1;
-	background-color: #ffc7c1;
-	color: #fff;
-}
-
-.table>thead>tr>th {
-	border: 0px;
-}
-
-.td-mny {
-	text-align: right;
-}
-
-#table-content {
-	padding-top: 15px;
-}
-
-.paging {
-	text-align: center;
-	margin-bottom: 50px;
-}
-
-.paging .disabled {
-	position: relative;
-	right: 10px;
-}
-
-.paging .paging-right {
-	position: relative;
-	left: 10px;
-}
-
-.pagination>.active>span {
-	background-color: #ffc7c1;
-	border-color: #ffc7c1;
-}
-
-.pagination>.disabled>a {
-	color: #ffc7c1;
-}
-
-.pagination>li>a {
-	color: #ffc7c1;
-}
-</style>
 </head>
 <body>
 	<%@ include file="../share/top_tp.jsp"%>

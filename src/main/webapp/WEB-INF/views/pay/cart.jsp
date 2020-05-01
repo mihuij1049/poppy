@@ -10,122 +10,12 @@
 <head>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/share/cart.css" />
+	href="${pageContext.request.contextPath}/share/cart.css?ver=1" />
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>Poppy-Poppy</title>
-<style>
-.btn2:hover {
-	background: #ff6261;
-	color: #fff;
-}
-
-#list {
-	list-style: none;
-	margin-bottom: 0;
-}
-
-#list2 {
-	list-style: none;
-	margin-bottom: 0;
-}
-
-.cart-box {
-	padding: 10px;
-	border-bottom: 1px solid #ddd;
-}
-
-.cart-box:last-child {
-	border: none;
-}
-
-.cart-box2 {
-	padding: 10px;
-	border-bottom: 1px solid #ddd;
-}
-
-.cart-box2:last-child {
-	border: none;
-}
-
-.cart-size {
-	float: left;
-}
-
-.cart-img {
-	float: left;
-	display: block;
-	margin: 0px 5px 5px 5px;
-	width: 100px;
-	border: 1px solid #ffc7c1;
-	width: 100px;
-}
-
-.word {
-	height: 110px;
-}
-
-.word p {
-	font-size: 13px;
-}
-
-.word span {
-	font-size: 12px;
-}
-
-.point-icon {
-	font-size: 11px;
-	color: #fff;
-	width: 17px;
-	text-align: center;
-	display: inline-block;
-	margin-bottom: 10px;
-	background: #b88cc5;
-	display: inline-block;
-	border-radius: 2px;
-	display: inline-block;
-}
-
-.word-btn {
-	margin-top: 10px;
-	padding-left: 120px;
-}
-
-.word-btn .count {
-	padding: 0;
-	border: none;
-}
-
-.count-label {
-	vertical-align: -1px;
-	width: 40px;
-	text-align: right;
-}
-
-.change {
-	height: 29px;
-	vertical-align: -1.5px;
-}
-
-.clear {
-	display: block;
-	content: '';
-	float: none;
-	clear: both;
-}
-
-.word-botm {
-	padding: 10px 15px;
-}
-
-.word-botm .btn2 {
-	float: right;
-	position: relative;
-	bottom: 10px;
-}
-</style>
 </head>
 
 <body>
