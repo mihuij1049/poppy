@@ -2,6 +2,7 @@ package kr.co.poppy.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,8 +14,8 @@ import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Goods;
 import kr.co.poppy.service.GoodsService;
 
-
-public class goodsController {
+@Controller
+public class GoodsController {
 	
 	/** WebHelper 주입 */
 	@Autowired
@@ -46,6 +47,7 @@ public class goodsController {
 		
 		// 1) 빈즈에 담기
 		Goods input = new Goods();
+		input.setGoodsno(goodsno);
 		
 		// 2) 데이터 조회하기
 		Goods output = null;
@@ -58,7 +60,6 @@ public class goodsController {
 		
 		// 3) 뷰처리
 		model.addAttribute("output", output);
-		
 		return new ModelAndView("gallery/goods");
 	}
 

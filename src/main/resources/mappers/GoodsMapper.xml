@@ -22,25 +22,30 @@
 		<result property="gddetailno" column="gddetailno" />
 	</resultMap>
 
-	<!-- 단일행 조회를 위한 기능 정의 -->
+	<!-- 상품상세 페이지 단일행 조회를 위한 기능 정의 -->
 	<select id="selectItem" parameterType="kr.co.poppy.model.Goods"
 		resultMap="goodsMap">
-		SELECT goodsno, gcode, gname, ginfo, gprice, gsale, gdate,
-		cate1, cate2, regdate, editdate FROM goods WHERE
-		goodsno=#{goodsno}
+		SELECT i.imgname, i.imgtype, i.imgpath, imgext, count(h.heartno),
+		gd.gdoption, g.gcode, g.gname, g.ginfo, g.gprice, g.gsale
+		FROM goods g
+		INNER JOIN imgs i ON g.goodsno = i.goodsno
+		INNER JOIN heart h ON g.goodsno = h.goodsno
+		INNER JOIN goodsdetail gd ON g.goodsno = gd.goodsno
+		WHERE g.goodsno = ${goodsno} AND i.imgtype = "A";
 	</select>
 
 	<!-- 다중행 조회를 위한 기능 정의 -->
 	<select id="selectList" parameterType="kr.co.poppy.model.Goods"
 		resultMap="goodsMap">
-		SELECT goodsno, gcode, gname, ginfo, gprice, gsale, gdate, cate1,
+		SELECT goodsno, gcode, gname, ginfo, gprice, gsale, gdate,
+		cate1,
 		cate2, regdate, editdate FROM goods
 		WHERE cate1=#{cate1}
 	</select>
-	
+
 	<!-- 데이터 수 조회를 위한 기능 정의 -->
-	<select id="selectCountAll" parameterType="kr.co.poppy.model.Goods"
-		resultType="int">
+	<select id="selectCountAll"
+		parameterType="kr.co.poppy.model.Goods" resultType="int">
 		SELECT COUNT(*)
 		FROM goods
 		WHERE cate1=#{cate1}

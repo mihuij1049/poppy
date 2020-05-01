@@ -38,14 +38,12 @@
 	<select id="selectItem"
 		parameterType="kr.co.poppy.model.Goodsdetail"
 		resultMap="goodsdetailMap">
-		SELECT
-		i.imgname, i.imgext, i.imgpath, h.heartno, g.gname, g.gsale, g.gprice,
-		g.ginfo
+		SELECT i.imgname, i.imgtype, i.imgpath, imgext, gd.gdoption,
+		g.gcode, g.gname, g.gprice, g.gsale
 		FROM goods g
 		INNER JOIN imgs i ON g.goodsno = i.goodsno
-		INNER JOIN heart h ON g.goodsno = h.goodsno
 		INNER JOIN goodsdetail gd ON g.goodsno = gd.goodsno
-		WHERE g.goodsno = #{goodsno};
+		WHERE g.goodsno = #{goodsno} AND i.imgtype = "A";
 	</select>
 
 	<!-- 다중행 조회를 위한 기능 정의 -->
