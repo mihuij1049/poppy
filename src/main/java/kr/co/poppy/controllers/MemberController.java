@@ -35,12 +35,17 @@ public class MemberController {
 	@Autowired
 	AgreeService agreeService;
 
-	/** agree_0.jsp */
+	/** agree_0.jsp 약관동의 페이지 */
 	@RequestMapping(value = "/member/agree_0.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String agree_0() {
+
 		return "member/agree_0";
 	}
 
+	/**
+	 * 동의 여부를 미리 DB에 저장하면 가입 절차 취소 시 의미없는 디비 저장, 삭제가 일어나므로 빈즈로 값을 상태유지 한 후, 가입완료 버튼
+	 * 클릭 시 회원 정보와 함께 저장하도록 하였다.
+	 */
 	// 동의 여부를 Beans 에 담아 회원가입 페이지로 이동
 	@RequestMapping(value = "/member/agree_ok.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView agree_0(Model model, @RequestParam(value = "useagree", defaultValue = "0") int useagree,
@@ -79,6 +84,7 @@ public class MemberController {
 	/** find_id.jsp */
 	@RequestMapping(value = "/member/find_id.do", method = RequestMethod.GET)
 	public String findId() {
+
 		return "member/find_id";
 	}
 
@@ -167,9 +173,12 @@ public class MemberController {
 		return new ModelAndView("myInfo/myinfo");
 	}
 
-	/** myinfo_wri_ok.jsp */
-	@RequestMapping(value = "/member/myinfo_wri_ok.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView myinfo_wri_ok(Model model, @RequestParam(value = "useagree", defaultValue = "0") int useagree,
+	/**
+	 * myinfo_wri_ok.jsp 회원가입 myinfo_wri_ok 에서 작업을 처리 하였더니, 새로고침 시 작성양식 다시 제출로 DB에
+	 * 같은 정보가 반복하여 저장되는것이 확인되어 join_members_ok 라는 Action 페이지로 처리를 이동 하였습니다.
+	 */
+	@RequestMapping(value = "/member/join_members_ok.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView join_members_ok(Model model, @RequestParam(value = "useagree", defaultValue = "0") int useagree,
 			@RequestParam(value = "privateagree", defaultValue = "0") int privateagree,
 			@RequestParam(value = "emailagree", defaultValue = "0") int emailagree,
 			@RequestParam(value = "shoppingagree", defaultValue = "0") int shoppingagree,
@@ -178,13 +187,12 @@ public class MemberController {
 			@RequestParam(value = "user_name", required = true) String username,
 			@RequestParam(value = "tel", required = true) String userphone,
 			@RequestParam(value = "email", required = true) String useremail) {
-		
 		// 가입한 시각을 담은 date 생성
 		Calendar c = Calendar.getInstance();
 		String date = String.format("%04d-%02d-%02d %02d:%02d:%02d", c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1,
 				c.get(Calendar.DAY_OF_MONTH), c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE),
 				c.get(Calendar.SECOND));
-		
+
 		/** agree Beans 선언 및 할당 */
 		Agree agree = new Agree();
 		agree.setUseagree(1);
@@ -231,10 +239,17 @@ public class MemberController {
 		/** 새로 가입한 회원의 memno로 동의서 참조하기 */
 		model.addAttribute("newmembers", newmem);
 
+		return webHelper.redirect("myinfo_wri_ok.do", "회원가입을 축하드립니다.");
+	}
+
+	/** 가입을 환영하는 가입완료 페이지 */
+	@RequestMapping(value = "/member/myinfo_wri_ok.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView myinfo_wri_ok(Model model) {
+
 		return new ModelAndView("member/myinfo_wri_ok");
 	}
 
-	/** myinfo_wri.jsp */
+	/** myinfo_wri.jsp 회원 가입 작성 양식 폼 */
 	@RequestMapping(value = "/member/myinfo_wri.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView myinfo_wri(Model model, @RequestParam(value = "useagree", defaultValue = "0") int useagree,
 			@RequestParam(value = "privateagree", defaultValue = "0") int privateagree,

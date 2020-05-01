@@ -163,7 +163,7 @@ button p {
 		</div>
 		<div class="container">
 			<form class="form-horizontal" name="join_form" id="join_form" method="post"
-				action="${pageContext.request.contextPath}/member/myinfo_wri_ok.do">
+				action="${pageContext.request.contextPath}/member/join_members_ok.do">
 				<input type="hidden" name="useagree" value="${agree_ok.useagree }" />
 				<input type="hidden" name="privateagree" value="${agree_ok.privateagree }" />
 				<input type="hidden" name="emailagree" value="${agree_ok.emailagree }" />
