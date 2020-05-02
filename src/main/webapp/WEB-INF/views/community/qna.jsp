@@ -14,10 +14,6 @@
 	margin-top: 20px;
 }
 
-hr {
-	margin: 0;
-}
-
 .table span {
 	font-size: 11px;
 }
@@ -29,70 +25,49 @@ hr {
 .table .subject {
 	vertical-align: middle;
 }
+.table .td .subject {
 
-.pagination>.active>span {
-	background-color: #777;
-	border-color: #777;
-}
-
-a {
-	color: #777;
-}
-
-.paging {
-	text-align: center;
-}
-
-.paging .disabled {
-	position: relative;
-	right: 10px;
-}
-
-.paging .paging-right {
-	position: relative;
-	left: 10px;
 }
 
 .row {
 	margin-bottom: 50px;
 }
 
-.form-group {
-	max-width: 100%;
-	padding-top: 5px;
-	position: relative;
-	top: 5px;
+.searchmenu {
+	padding-bottom: 15px;
+	margin:auto;
+	text-align: center;
 }
 
-.form-group #array1 {
-	font-size: 12px;
-	margin-left: 2%;
-	margin-right: 2%;
-	padding-left: 5px;
-	display: inline;
-	width: 47%;
-	height: 30px;
+
+
+/** 비밀번호 입력 모달 */
+.customer_pass {
+	margin: auto;
+	width: 90%;
+	padding: 20px 0px;
+	z-index: 1;
+	border: 1px solid #ffc7c1;
+	border-radius: 5px;
+	background: #ffc7c1;
+	text-align: center;
 }
 
-.form-group #search {
-	display: inline;
-	margin-top: 8px;
-	margin-left: 2%;
-	margin-right: 2%;
-	width: 82%;
-	height: 30px;
+.pass_label {
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
 /** 키워드 메뉴 */
 .selectmenu {
-width: 70px;
-height: 27px;
-margin-left: 15px;
+	width: 70px;
+	height: 27px;
+	margin-left: 15px;
 }
 
 /** 검색 input */
 .keyword {
-	width: 165px;
+	width: 170px;
 	border: 1px solid;
 	color: #777;
 	margin-left: 5px;
@@ -100,7 +75,70 @@ margin-left: 15px;
 
 /** 검색버튼 */
 .btn-search {
-margin-left: 15px;
+	margin-left: 13px;
+}
+
+.subject {
+	text-decoration: none;
+	color: #777;
+}
+
+.subject:hover {
+	text-decoration: none;
+	color: #777;
+}
+
+.nowpage {
+	border: 1px solid #ffc7c1;
+	background: #ffc7c1;
+	padding: 6px 10px;
+	color: #ff6261;
+}
+
+.otherpage {
+	border: 1px solid #ffc7c1;
+	background: #ffc7c1;
+	padding: 6px 10px;
+	color: white;
+}
+
+.otherpage:hover {
+	text-decoration: none;
+	color: #333;
+}
+
+.pagenumber {
+	text-align: center;
+	margin-bottom: 20px;
+	margin-top: 50px;
+}
+
+.prevok {
+	border: 1px solid #ffc7c1;
+	padding: 6px 10px;
+	color: #ff6261;
+	text-decoration: none;
+}
+
+.prevno {
+	border: 1px solid #ffc7c1;
+	padding: 6px 10px;
+	color: #ffc7c1;
+	text-decoration: none;
+}
+
+.nextok {
+	border: 1px solid #ffc7c1;
+	padding: 6px 10px;
+	color: #ff6261;
+	text-decoration: none;
+}
+
+.nextno {
+	border: 1px solid #ffc7c1;
+	padding: 6px 10px;
+	color: #ffc7c1;
+	text-decoration: none;
 }
 </style>
 </head>
@@ -111,12 +149,7 @@ margin-left: 15px;
 		<div class="page-title clearfix">
 			<h4>
 				<b> <a href="#" onclick="history.back(); return false;"><i
-						class="glyphicon glyphicon-chevron-left"></i></a>
-						<c:choose>
-							<c:when test="${bbstype eq 'A'}">
-							공지사항
-							</c:when>
-						</c:choose>
+						class="glyphicon glyphicon-chevron-left"></i></a> Q&A
 				</b>
 			</h4>
 		</div>
@@ -156,11 +189,14 @@ margin-left: 15px;
 								</c:if>
 								<%-- 상세페이지로 이동하기 위한 URL --%>
 								<c:url value="/community/article.do" var="viewUrl">
+									<c:param name="bbstype" value="${item.bbstype}" />
 									<c:param name="bbsno" value="${item.bbsno}" />
 								</c:url>
 								<tr>
-									<td class="subject" style="cursor: pointer;"><strong><a
-											href="${viewUrl}">${bbstitle}</a> <span class="comment">[50]</span>
+									<td class="subject" style="cursor: pointer;"><strong>
+											<span class="glyphicon glyphicon-lock"></span>
+											<a href="${viewUrl}" class="subject">${bbstitle}</a> <span
+											class="comment">[50]</span>
 									</strong><br /> <span class="name" title="작성자">${item.username}</span>
 										<span class="date" title="작성일">${item.regdate}</span> <span>조회
 											235</span></td>
@@ -171,89 +207,90 @@ margin-left: 15px;
 
 				</tbody>
 			</table>
+			<div class="pagenumber">
+				<!-- 페이지 번호 구현 -->
+				<%-- 이전 그룹에 대한 링크 --%>
+				<c:choose>
+					<%-- 이전 그룹으로 이동 가능하다면? --%>
+					<c:when test="${pageData.prevPage > 0}">
+						<%-- 이동할 URL 생성 --%>
+						<c:url value="/community/qna.do" var="prevPageUrl">
+							<c:param name="page" value="${pageData.prevPage}" />
+							<c:param name="keyword" value="${keyword}" />
+						</c:url>
+						<a href="${prevPageUrl}" class="prevok">≪</a>
+					</c:when>
+					<c:otherwise>
+						<span class="prevno">≪</span>
+					</c:otherwise>
+				</c:choose>
+
+				<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+				<c:forEach var="i" begin="${pageData.startPage}"
+					end="${pageData.endPage}" varStatus="status">
+					<%-- 이동할 URL 생성 --%>
+					<c:url value="/community/qna.do" var="pageUrl">
+						<c:param name="page" value="${i}" />
+						<c:param name="keyword" value="${keyword}" />
+					</c:url>
+
+					<%-- 페이지 번호 출력 --%>
+					<c:choose>
+						<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+						<c:when test="${pageData.nowPage == i}">
+							<strong class="nowpage">${i}</strong>
+						</c:when>
+						<%-- 나머지 페이지의 경우 링크 적용함 --%>
+						<c:otherwise>
+							<a href="${pageUrl}" class="otherpage">${i}</a>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+				<%-- 다음 그룹에 대한 링크 --%>
+				<c:choose>
+					<%-- 다음 그룹으로 이동 가능하다면? --%>
+					<c:when test="${pageData.nextPage > 0}">
+						<%-- 이동할 URL 생성 --%>
+						<c:url value="/community/qna.do" var="nextPageUrl">
+							<c:param name="page" value="${pageData.nextPage}" />
+							<c:param name="keyword" value="${keyword}" />
+						</c:url>
+						<a href="${nextPageUrl}" class="nextok">≫</a>
+					</c:when>
+					<c:otherwise>
+						<span class="nextno">≫</span>
+					</c:otherwise>
+				</c:choose>
+			</div>
 		</div>
-		<div class=" paging">
-			<ul class="pagination pagination-sm">
-				<li class="disabled"><a href="#">&laquo;</a></li>
-				<!-- 활성화 버튼은 아래의 구조로 구성하시면 됩니다. sr-only는 스크린리더 전용입니다. -->
-				<li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
-				<li class="paging-right"><a href="#">&raquo;</a></li>
-			</ul>
-		</div>
-		<hr>
 		<div class="row">
-			<div class="form-group">
+			<div class="searchmenu">
 				<form method="get"
-					action="${pageContext.request.contextPath}/community/notice.do">
+					action="${pageContext.request.contextPath}/community/qna.do">
 					<select id="array2" class="selectmenu">
 						<option value="bbstitle">제목</option>
 						<option value="bbscontent">내용</option>
 						<option value="username">이름</option>
 						<option value="userid">아이디</option>
-					</select> 
-					<label for="keyword"></label> 
-					<input type="search" name="keyword"
+					</select> <label for="keyword"></label> <input type="search" name="keyword"
 						id="keyword" class="keyword" value="${keyword}">
 					<button type="submit" class="btn btn-sm btn-search">검색</button>
 				</form>
 			</div>
+			<!--   비밀번호 입력 모달 ------------------------->
+			<div class="customer_pass" id="customer_pass">
+				<b class="plz_pass">비밀번호를 입력해 주세요.</b><br> <label for="cs_pass"
+					class="pass_label">비밀번호</label> <input type="password"
+					name="cs_pass" class="cs_pass" id="cs_pass"><br>
+
+				<div class="cs_pass_2btns">
+					<button type="submit" class="btn btn-sm btn-ok">확인</button>
+					<button type="submit" class="btn btn-inverse btn-sm btn-cancel">취소</button>
+				</div>
+			</div>
 		</div>
-		<!-- 페이지 번호 구현 -->
-		<%-- 이전 그룹에 대한 링크 --%>
-		<c:choose>
-			<%-- 이전 그룹으로 이동 가능하다면? --%>
-			<c:when test="${pageData.prevPage > 0}">
-				<%-- 이동할 URL 생성 --%>
-				<c:url value="/professor/list.do" var="prevPageUrl">
-					<c:param name="page" value="${pageData.prevPage}" />
-					<c:param name="keyword" value="${keyword}" />
-				</c:url>
-				<a href="${prevPageUrl}">[이전]</a>
-			</c:when>
-			<c:otherwise>
-            [이전]
-        </c:otherwise>
-		</c:choose>
-
-		<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
-		<c:forEach var="i" begin="${pageData.startPage}"
-			end="${pageData.endPage}" varStatus="status">
-			<%-- 이동할 URL 생성 --%>
-			<c:url value="/professor/list.do" var="pageUrl">
-				<c:param name="page" value="${i}" />
-				<c:param name="keyword" value="${keyword}" />
-			</c:url>
-
-			<%-- 페이지 번호 출력 --%>
-			<c:choose>
-				<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
-				<c:when test="${pageData.nowPage == i}">
-					<strong>[${i}]</strong>
-				</c:when>
-				<%-- 나머지 페이지의 경우 링크 적용함 --%>
-				<c:otherwise>
-					<a href="${pageUrl}">[${i}]</a>
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
-
-		<%-- 다음 그룹에 대한 링크 --%>
-		<c:choose>
-			<%-- 다음 그룹으로 이동 가능하다면? --%>
-			<c:when test="${pageData.nextPage > 0}">
-				<%-- 이동할 URL 생성 --%>
-				<c:url value="/professor/list.do" var="nextPageUrl">
-					<c:param name="page" value="${pageData.nextPage}" />
-					<c:param name="keyword" value="${keyword}" />
-				</c:url>
-				<a href="${nextPageUrl}">[다음]</a>
-			</c:when>
-			<c:otherwise>
-            [다음]
-        </c:otherwise>
-		</c:choose>
 	</div>
-	
 	<%@ include file="../share/bottom_tp.jsp"%>
 </body>
 

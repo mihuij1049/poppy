@@ -19,26 +19,10 @@
 		<result property="goodsno" column="goodsno" />
 	</resultMap>
 
-	<!-- 단일행 조회를 위한 기능 정의1 -->
-	<!-- QNA / 포토리뷰 글 보기 페이지 -->
-	<select id="selectItem1" parameterType="kr.co.poppy.model.Bbs"
-		resultMap="bbsMap">
-		SELECT bbsno, bbstype, bbstitle, bbscontent, qnasec, qnapw,
-		rvlike,
-		b.regdate, b.editdate,
-		b.memno, m.username, m.userid, g.goodsno,
-		g.gname
-		FROM bbs b
-		INNER JOIN members m ON b.memno=m.memno
-		INNER JOIN
-		goods g ON b.goodsno=g.goodsno
-		WHERE bbstype=#{bbstype} and
-		bbsno=#{bbsno}
-	</select>
 
-	<!-- 단일행 조회를 위한 기능 정의2 -->
+	<!-- 단일행 조회를 위한 기능 정의 -->
 	<!-- 공지사항 글 보기 페이지 -->
-	<select id="selectItem2" parameterType="kr.co.poppy.model.Bbs"
+	<select id="selectItem" parameterType="kr.co.poppy.model.Bbs"
 		resultMap="bbsMap">
 		SELECT bbsno, bbstype, bbstitle, bbscontent,
 		b.regdate,
@@ -59,8 +43,7 @@
 		b.regdate, b.editdate,
 		b.memno, m.username, m.userid
 		FROM bbs b
-		INNER
-		JOIN members m ON b.memno=m.memno
+		INNER JOIN members m ON b.memno=m.memno
 
 		<where>
 			bbstype=#{bbstype}

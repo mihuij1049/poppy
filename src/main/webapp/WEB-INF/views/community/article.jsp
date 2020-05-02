@@ -233,16 +233,7 @@
 				<div class="list-subject">
 					<b style="color: white;">댓글목록</b>
 				</div>
-				<div class="comment-nai">
-					<div class="memory">
-						<small class="small"><span>박** | </span><span>20.02.01</span></small><br />
-						<span class="span">자주 이용할게요~</span><br />
-					</div>
-					<div class="button2">
-						<button type="submit" class="btn btn-sm btn-edit">수정</button>
-						<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
-					</div>
-				</div>
+				
 				<div class="comment-nai">
 					<div class="memory">
 						<small class="small"><span>김** | </span><span>20.02.03</span></small><br />

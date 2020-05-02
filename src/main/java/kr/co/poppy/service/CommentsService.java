@@ -1,8 +1,20 @@
 package kr.co.poppy.service;
 
+import java.util.List;
+
+
 import kr.co.poppy.model.Comments;
 
 public interface CommentsService {
+	
+	/** 
+	 * 댓글 다중행 조회
+	 * @param	댓글 검색조건을 담고 있는 Beans
+	 * @return	조회결과에 대한 컬렉션
+	 * @throws 	Exception
+	 */
+	public List<Comments> getCommentsList(Comments input) throws Exception;
+	
 	/**
 	 * 댓글 데이터 상세 조회
 	 * @param Item 검색조건을 담고 있는 Beans

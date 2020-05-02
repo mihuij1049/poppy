@@ -5,21 +5,8 @@ import java.util.List;
 import kr.co.poppy.model.Bbs;
 
 public interface BbsService {
-	/**
-	 * QNA / 포토리뷰 글 보기
-	 * @param Bbs 조회할 주소의 일련번호를 담고 있는 Beans
-	 * @return 조회된 데이터가 저장된 Beans
-	 * @throws Exception
-	 */
-	public Bbs getBbsItem1(Bbs input) throws Exception;
-	
-	/**
-	 * 공지사항 글 보기
-	 * @param Bbs 조회할 주소의 일련번호를 담고 있는 Beans
-	 * @return 조회된 데이터가 저장된 Beans
-	 * @throws Exception
-	 */
-	public Bbs getBbsItem2(Bbs input) throws Exception;
+
+	public Bbs getBbsItem(Bbs input) throws Exception;
 	
 	/**
 	 * 공지사항 / QNA / 포토리뷰 글 목록

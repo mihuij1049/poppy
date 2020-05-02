@@ -14,10 +14,6 @@
 	margin-top: 20px;
 }
 
-hr {
-	margin: 0;
-}
-
 .table span {
 	font-size: 11px;
 }
@@ -29,35 +25,37 @@ hr {
 .table .subject {
 	vertical-align: middle;
 }
+.table .td .subject {
+
+}
 
 .row {
 	margin-bottom: 50px;
 }
 
-.form-group {
-	max-width: 100%;
-	padding-top: 5px;
-	position: relative;
-	top: 5px;
+.searchmenu {
+	padding-bottom: 15px;
+	margin:auto;
+	text-align: center;
 }
 
-.form-group #array1 {
-	font-size: 12px;
-	margin-left: 2%;
-	margin-right: 2%;
-	padding-left: 5px;
-	display: inline;
-	width: 47%;
-	height: 30px;
+
+
+/** 비밀번호 입력 모달 */
+.customer_pass {
+	margin: auto;
+	width: 90%;
+	padding: 20px 0px;
+	z-index: 1;
+	border: 1px solid #ffc7c1;
+	border-radius: 5px;
+	background: #ffc7c1;
+	text-align: center;
 }
 
-.form-group #search {
-	display: inline;
-	margin-top: 8px;
-	margin-left: 2%;
-	margin-right: 2%;
-	width: 82%;
-	height: 30px;
+.pass_label {
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
 /** 키워드 메뉴 */
@@ -69,7 +67,7 @@ hr {
 
 /** 검색 input */
 .keyword {
-	width: 165px;
+	width: 170px;
 	border: 1px solid;
 	color: #777;
 	margin-left: 5px;
@@ -77,7 +75,7 @@ hr {
 
 /** 검색버튼 */
 .btn-search {
-	margin-left: 15px;
+	margin-left: 13px;
 }
 
 .subject {
@@ -90,18 +88,57 @@ hr {
 	color: #777;
 }
 
-.nowpage, .otherpage {
+.nowpage {
 	border: 1px solid #ffc7c1;
 	background: #ffc7c1;
-	padding: 10px;
-	color:#333;
+	padding: 6px 10px;
+	color: #ff6261;
 }
+
+.otherpage {
+	border: 1px solid #ffc7c1;
+	background: #ffc7c1;
+	padding: 6px 10px;
+	color: white;
+}
+
 .otherpage:hover {
-text-decoration:none;
-color:#333;
+	text-decoration: none;
+	color: #333;
 }
+
 .pagenumber {
-text-align:center;
+	text-align: center;
+	margin-bottom: 20px;
+	margin-top: 50px;
+}
+
+.prevok {
+	border: 1px solid #ffc7c1;
+	padding: 6px 10px;
+	color: #ff6261;
+	text-decoration: none;
+}
+
+.prevno {
+	border: 1px solid #ffc7c1;
+	padding: 6px 10px;
+	color: #ffc7c1;
+	text-decoration: none;
+}
+
+.nextok {
+	border: 1px solid #ffc7c1;
+	padding: 6px 10px;
+	color: #ff6261;
+	text-decoration: none;
+}
+
+.nextno {
+	border: 1px solid #ffc7c1;
+	padding: 6px 10px;
+	color: #ffc7c1;
+	text-decoration: none;
 }
 </style>
 </head>
@@ -112,9 +149,7 @@ text-align:center;
 		<div class="page-title clearfix">
 			<h4>
 				<b> <a href="#" onclick="history.back(); return false;"><i
-						class="glyphicon glyphicon-chevron-left"></i></a> 
-						"${item.bbstype}"
-				
+						class="glyphicon glyphicon-chevron-left"></i></a> 공지사항
 				</b>
 			</h4>
 		</div>
@@ -152,6 +187,7 @@ text-align:center;
 									<c:set var="userid"
 										value="${fn:replace(userid, keyword, mark)}" />
 								</c:if>
+								
 								<%-- 상세페이지로 이동하기 위한 URL --%>
 								<c:url value="/community/article.do" var="viewUrl">
 									<c:param name="bbstype" value="${item.bbstype}" />
@@ -172,68 +208,66 @@ text-align:center;
 				</tbody>
 			</table>
 			<div class="pagenumber">
-			<!-- 페이지 번호 구현 -->
-			<%-- 이전 그룹에 대한 링크 --%>
-			<c:choose>
-				<%-- 이전 그룹으로 이동 가능하다면? --%>
-				<c:when test="${pageData.prevPage > 0}">
-					<%-- 이동할 URL 생성 --%>
-					<c:url value="/community/notice.do" var="prevPageUrl">
-						<c:param name="page" value="${pageData.prevPage}" />
-						<c:param name="keyword" value="${keyword}" />
-					</c:url>
-					<a href="${prevPageUrl}">[이전]</a>
-				</c:when>
-				<c:otherwise>
-            [이전]
-        </c:otherwise>
-			</c:choose>
-
-			<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
-			<c:forEach var="i" begin="${pageData.startPage}"
-				end="${pageData.endPage}" varStatus="status">
-				<%-- 이동할 URL 생성 --%>
-				<c:url value="/community/notice.do" var="pageUrl">
-					<c:param name="page" value="${i}" />
-					<c:param name="keyword" value="${keyword}" />
-				</c:url>
-
-				<%-- 페이지 번호 출력 --%>
+				<!-- 페이지 번호 구현 -->
+				<%-- 이전 그룹에 대한 링크 --%>
 				<c:choose>
-					<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
-					<c:when test="${pageData.nowPage == i}">
-						<strong class="nowpage">${i}</strong>
+					<%-- 이전 그룹으로 이동 가능하다면? --%>
+					<c:when test="${pageData.prevPage > 0}">
+						<%-- 이동할 URL 생성 --%>
+						<c:url value="/community/notice.do" var="prevPageUrl">
+							<c:param name="page" value="${pageData.prevPage}" />
+							<c:param name="keyword" value="${keyword}" />
+						</c:url>
+						<a href="${prevPageUrl}" class="prevok">≪</a>
 					</c:when>
-					<%-- 나머지 페이지의 경우 링크 적용함 --%>
 					<c:otherwise>
-						<a href="${pageUrl}" class="otherpage">${i}</a>
+						<span class="prevno">≪</span>
 					</c:otherwise>
 				</c:choose>
-			</c:forEach>
 
-			<%-- 다음 그룹에 대한 링크 --%>
-			<c:choose>
-				<%-- 다음 그룹으로 이동 가능하다면? --%>
-				<c:when test="${pageData.nextPage > 0}">
+				<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+				<c:forEach var="i" begin="${pageData.startPage}"
+					end="${pageData.endPage}" varStatus="status">
 					<%-- 이동할 URL 생성 --%>
-					<c:url value="/community/notice.do" var="nextPageUrl">
-						<c:param name="page" value="${pageData.nextPage}" />
+					<c:url value="/community/notice.do" var="pageUrl">
+						<c:param name="page" value="${i}" />
 						<c:param name="keyword" value="${keyword}" />
 					</c:url>
-					<a href="${nextPageUrl}">[다음]</a>
-				</c:when>
-				<c:otherwise>
-            [다음]
-        </c:otherwise>
-			</c:choose>
+
+					<%-- 페이지 번호 출력 --%>
+					<c:choose>
+						<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+						<c:when test="${pageData.nowPage == i}">
+							<strong class="nowpage">${i}</strong>
+						</c:when>
+						<%-- 나머지 페이지의 경우 링크 적용함 --%>
+						<c:otherwise>
+							<a href="${pageUrl}" class="otherpage">${i}</a>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+				<%-- 다음 그룹에 대한 링크 --%>
+				<c:choose>
+					<%-- 다음 그룹으로 이동 가능하다면? --%>
+					<c:when test="${pageData.nextPage > 0}">
+						<%-- 이동할 URL 생성 --%>
+						<c:url value="/community/notice.do" var="nextPageUrl">
+							<c:param name="page" value="${pageData.nextPage}" />
+							<c:param name="keyword" value="${keyword}" />
+						</c:url>
+						<a href="${nextPageUrl}" class="nextok">≫</a>
+					</c:when>
+					<c:otherwise>
+						<span class="nextno">≫</span>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
-
-		
 		<div class="row">
-			<div class="form-group">
+			<div class="searchmenu">
 				<form method="get"
-					action="${pageContext.request.contextPath}/community/notice.do">
+					action="${pageContext.request.contextPath}/community/qna.do">
 					<select id="array2" class="selectmenu">
 						<option value="bbstitle">제목</option>
 						<option value="bbscontent">내용</option>
@@ -244,10 +278,7 @@ text-align:center;
 					<button type="submit" class="btn btn-sm btn-search">검색</button>
 				</form>
 			</div>
-		</div>
-
 	</div>
-
 	<%@ include file="../share/bottom_tp.jsp"%>
 </body>
 

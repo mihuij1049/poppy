@@ -14,7 +14,9 @@ import kr.co.poppy.helper.PageData;
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Bbs;
+import kr.co.poppy.model.Comments;
 import kr.co.poppy.service.BbsService;
+import kr.co.poppy.service.CommentsService;
 
 @Controller
 public class CommunityController {
@@ -29,6 +31,8 @@ public class CommunityController {
 	/** Serivce 패턴 구현체 주입 */
 	@Autowired
 	BbsService bbsService;
+	@Autowired
+	CommentsService commentsService;
 
 	/** article */
 	@RequestMapping(value = "/community/article.do", method = RequestMethod.GET)
@@ -54,7 +58,7 @@ public class CommunityController {
 
 		try {
 			// 데이터 조회
-			output = bbsService.getBbsItem2(input);
+			output = bbsService.getBbsItem(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
@@ -63,7 +67,7 @@ public class CommunityController {
 		if (output.getBbstype().equals("A")) {
 			   output.setBbstype("공지사항");
 			} else {
-			   output.setBbstype("QnA");
+			   output.setBbstype("Q&A");
 			}
 		model.addAttribute("output", output);
 		return new ModelAndView("community/article");
@@ -72,7 +76,6 @@ public class CommunityController {
 	/** notice */
 	@RequestMapping(value = "/community/notice.do", method = RequestMethod.GET)
 	public ModelAndView list(Model model,
-			@RequestParam(value="bbstype", required=false) String bbstype,
 			// 검색어
 			@RequestParam(value = "keyword", required = false) String keyword,
 			// 페이지 구현에서 사용할 현재 페이지 번호
@@ -81,7 +84,7 @@ public class CommunityController {
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 3; // 한 페이지 당 표시한 목록 수
-		int pageCount = 5; // 한 그룹 당 표시할 페이지 번호 수
+		int pageCount = 3; // 한 그룹 당 표시할 페이지 번호 수
 
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(겁색어)를 Beans에 담는다.
@@ -130,7 +133,7 @@ public class CommunityController {
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
 		int totalCount = 0;
 		int listCount = 5;
-		int pageCount = 5;
+		int pageCount = 3;
 
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(겁색어)를 Beans에 담는다.
@@ -166,6 +169,37 @@ public class CommunityController {
 		return new ModelAndView("community/qna");
 	}
 
+	/** 코멘트 다중행 조회 */
+	@RequestMapping(value = "/community/comments.do", method = RequestMethod.GET)
+	public ModelAndView listcomments(Model model,
+			@RequestParam(value = "bbsno", defaultValue="0") int bbsno)
+			 {
+
+		/** 1) 유효성 검사 */
+		if (bbsno == 0) {
+			return webHelper.redirect(null, "게시글이 없습니다.");
+		}
+
+		/** 2) 데이터 조회하기 */
+		Comments input = new Comments();
+		input.setBbsno(bbsno);
+
+		// 조회 결과가 저장될 객체
+		List<Comments> output = null;
+
+		try {
+			// 데이터 조회하기 
+			output = commentsService.getCommentsList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+
+		/** 3) view 처리 */
+		model.addAttribute("output", output);
+		return new ModelAndView("community/article");
+	}
+	
+	
 	/** photo_rv */
 	@RequestMapping(value = "/community/photo_rv.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String photo_rv() {

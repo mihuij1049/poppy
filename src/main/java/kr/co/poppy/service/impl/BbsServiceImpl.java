@@ -17,28 +17,6 @@ public class BbsServiceImpl implements BbsService {
 	@Autowired
 	SqlSession sqlSession;
 
-	/**
-	 * QNA/포토리뷰 게시글 조회
-	 * @param Bbs 게시글의 일련번호를 담고 있는 Beans
-	 * @return 조회된 데이터가 저장된 Beans throws Exception
-	 */	
-	@Override
-	public Bbs getBbsItem1(Bbs input) throws Exception {
-		Bbs result = null;
-		try {
-			result = sqlSession.selectOne("BbsMapper.selectItem1", input);
-			if(result==null) {
-				throw new NullPointerException("result=null");
-			}
-		} catch (NullPointerException e) {
-			log.error(e.getLocalizedMessage());
-			throw new Exception("조회된 데이터가 없습니다.");
-		} catch (Exception e) {
-			log.error(e.getLocalizedMessage());
-			throw new Exception("데이터 조회에 실패했습니다.");
-		}
-		return result;
-	}
 
 	/**
 	 * 공지사항 게시글 조회
@@ -46,10 +24,10 @@ public class BbsServiceImpl implements BbsService {
 	 * @return 조회된 데이터가 저장된 Beans throws Exception
 	 */	
 	@Override
-	public Bbs getBbsItem2(Bbs input) throws Exception {
+	public Bbs getBbsItem(Bbs input) throws Exception {
 		Bbs result = null;
 		try {
-			result = sqlSession.selectOne("BbsMapper.selectItem2", input);
+			result = sqlSession.selectOne("BbsMapper.selectItem", input);
 			if(result==null) {
 				throw new NullPointerException("result=null");
 			}
