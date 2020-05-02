@@ -2,6 +2,9 @@ package kr.co.poppy.controllers;
 
 import java.util.Calendar;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -147,7 +150,8 @@ public class MemberController {
 
 	@RequestMapping(value = "/member/login_ok.do", method = RequestMethod.POST)
 	public ModelAndView login_ok(Model model, @RequestParam(value = "user_id", required = true) String userid,
-			@RequestParam(value = "user_pw", required = true) String userpw) {
+			@RequestParam(value = "user_pw", required = true
+			) String userpw) {
 		/** 1) 유효성 검사 */
 		if (userid == null) {
 			return webHelper.redirect(null, "아이디를 입력하세요.");
@@ -155,6 +159,11 @@ public class MemberController {
 		if (userpw == null) {
 			return webHelper.redirect(null, "비밀번호를 입력하세요.");
 		}
+		// 세션 저장하기 (WebHelper로 HttpServletRequest의 request객체 받기
+		HttpSession userSession = webHelper.getSession();
+		
+		
+		
 		/** 2) 데이터 조회하기 */
 		Members input = new Members();
 		input.setUserid(userid);
@@ -166,11 +175,19 @@ public class MemberController {
 		try {
 			// 데이터 조회
 			output = membersService.loginMembers(input);
+			// 조회 결과가 있다면 세션 저장 
+			if (output!=null) {
+				userSession.setAttribute("userInfo", output);
+			
+			}
 		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
+			return webHelper.redirect(null, "아이디와 비밀번호를 확인하세요!");
 		}
+		
+		/** 3) View 로 데이터 전달 */
 		model.addAttribute("myinfo", output);
-		return new ModelAndView("myInfo/myinfo");
+		
+		return webHelper.redirect("../myInfo/myinfo.do", "환영합니다! 회원님~");
 	}
 
 	/**
@@ -229,14 +246,14 @@ public class MemberController {
 			membersService.addMembers(newmem);
 			// memno 담기
 			agree.setMemno(newmem.getMemno());
-			// agree 테이블 갱신
+			// agree 새로 가입한 회원의 memno로 동의서 참조하기
 			agreeService.editAgree(agree);
 
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
-		/** 새로 가입한 회원의 memno로 동의서 참조하기 */
+		/** 회원가입 확인 페이지로 회원가입 정보 전달 */
 		model.addAttribute("newmembers", newmem);
 
 		return webHelper.redirect("myinfo_wri_ok.do", "회원가입을 축하드립니다.");

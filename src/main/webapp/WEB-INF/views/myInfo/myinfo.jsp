@@ -115,7 +115,7 @@
 				</h4>
 			</div>
 			<div class="mypoint">
-				&nbsp;적립금 :&nbsp; <b>3000</b>원 &nbsp; &nbsp; &nbsp; ${myinfo.username} 님의 회원번호는 ${myinfo.memno} 입니다.
+				&nbsp;적립금 :&nbsp; <b>${myPoint.avpoint + myPoint.napoint }</b>원 &nbsp; &nbsp; &nbsp; ${myinfo.username} 님의 세션은 ${userInfo} 입니다.
 			</div>
 			<div class="mydelivery clearfix">
 				<div class="mydelivery-current">

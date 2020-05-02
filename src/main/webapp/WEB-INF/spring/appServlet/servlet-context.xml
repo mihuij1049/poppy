@@ -36,4 +36,15 @@
 				class="kr.co.poppy.interceptor.AppInterceptor" />
 		</interceptor>
 	</interceptors>
+	<interceptors>
+		<interceptor>
+			<mapping path="/myInfo/**" />
+			<mapping path="/pay/**" />
+			<mapping path="/community/photo_wri" />
+			<mapping path="/community/qna_wri" />
+			<beans:bean id = "AuthInterceptor"
+				class="kr.co.poppy.interceptor.AuthInterceptor">
+			</beans:bean>
+		</interceptor>
+	</interceptors>
 </beans:beans>

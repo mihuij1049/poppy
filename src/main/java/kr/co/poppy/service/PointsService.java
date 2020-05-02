@@ -1,5 +1,7 @@
 package kr.co.poppy.service;
 
+import java.util.List;
+
 import kr.co.poppy.model.Orders;
 import kr.co.poppy.model.Points;
 
@@ -25,7 +27,7 @@ public interface PointsService {
 	 * @return 적립금 정보를 담은 Beans 객체
 	 * @throws Exception  
 	 */
-	public Points getPointsMbItem(Points input) throws Exception;
+	public List<Points> getPointsMbList(Points input) throws Exception;
 	
 	/** 미가용 -> 가용으로 적립금 전환
 	 * @Param 적립금 일련번호(pointno)를 담고 있는 Beans

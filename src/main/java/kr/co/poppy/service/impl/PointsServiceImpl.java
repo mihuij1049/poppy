@@ -1,5 +1,7 @@
 package kr.co.poppy.service.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,10 +67,10 @@ public class PointsServiceImpl implements PointsService {
 	 * @return 적립금 정보를 담고 있는 Beans 객체
 	 */
 	@Override
-	public Points getPointsMbItem(Points input) throws Exception {
-		Points output = null;
+	public List<Points> getPointsMbList(Points input) throws Exception {
+		List<Points> output = null;
 		try {
-			output = sqlSession.selectOne("PointsMapper.select_members_item", input);
+			output = sqlSession.selectList("PointsMapper.select_members_list", input);
 			if (output == null) {
 				throw new NullPointerException("output=null");
 			}

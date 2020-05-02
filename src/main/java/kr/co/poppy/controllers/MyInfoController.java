@@ -2,6 +2,8 @@ package kr.co.poppy.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -11,13 +13,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mysql.cj.log.Log;
+
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Goods;
+import kr.co.poppy.model.Members;
 import kr.co.poppy.model.Orders;
+import kr.co.poppy.model.Points;
 import kr.co.poppy.service.OrderdetailService;
 import kr.co.poppy.service.OrdersService;
+import kr.co.poppy.service.PointsService;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 public class MyInfoController {
 	/** WebHelper 주입 */
@@ -30,6 +39,8 @@ public class MyInfoController {
 
 	/** Service 패턴 구현제 주입 */
 	@Autowired
+	PointsService pointsService;
+	@Autowired
 	OrdersService orderService;
 	@Autowired
 	OrderdetailService orderdetailService;
@@ -38,9 +49,54 @@ public class MyInfoController {
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 
-	@RequestMapping(value = "/myInfo/myinfo.do", method = RequestMethod.GET)
-	public String myinfo() {
-		return "myInfo/myinfo";
+	@RequestMapping(value = "/myInfo/myinfo.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView myinfo(Model model) {
+		
+		// 세션 객체를 이용하여 저장된 세션값 얻기
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+		
+		
+		
+		/** 1) 각종 정보 조회를 위한 Beans 생성  */
+		// 적립금 조회를 위한 빈즈
+		Points myPoint = new Points();
+		myPoint.setMemno(myInfo.getMemno());
+		// 조회 결과를 담을 List 객체 선언
+		List<Points> pointList = null;
+		
+		// 배송 상태를 조회할 빈즈
+		Orders myOrder = new Orders();
+		myOrder.setMemno(myInfo.getMemno());
+		// 조회 결과를 담을 List 객체 선언
+		List<Orders> orderList = null;
+		
+		/** 2) 정보 조회하기  */ 
+		try {
+			// 적립금 조회
+			pointList = pointsService.getPointsMbList(myPoint); 
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 3) 조회된 List객체에서 적립금 총합 구하기 */
+		int sumAvpoint = 0;
+		int sumNapoint = 0;
+		
+		for (int i=0; i<pointList.size(); i++) {
+			Points temp = null;
+			temp = pointList.get(i);
+			sumAvpoint+=temp.getAvpoint();
+			sumNapoint+=temp.getNapoint();
+		}
+		myPoint.setAvpoint(sumAvpoint);
+		myPoint.setNapoint(sumNapoint);
+		
+		/** 뷰에 데이터 전달  */
+		// 적립금 정보를 담은 Beans
+		model.addAttribute("myPoint", myPoint);
+	
+		return new ModelAndView("myInfo/myinfo");
 	}
 
 	@RequestMapping(value = "/myInfo/order_desc.do", method = RequestMethod.GET)
