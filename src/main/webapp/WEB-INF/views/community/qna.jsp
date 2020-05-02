@@ -189,7 +189,7 @@ margin-left: 15px;
 						<option value="bbstitle">제목</option>
 						<option value="bbscontent">내용</option>
 						<option value="username">이름</option>
-						<option value="userid">아이디</optio>
+						<option value="userid">아이디</option>
 					</select> 
 					<label for="keyword"></label> 
 					<input type="search" name="keyword"
@@ -253,7 +253,7 @@ margin-left: 15px;
         </c:otherwise>
 		</c:choose>
 	</div>
-	</div>
+	
 	<%@ include file="../share/bottom_tp.jsp"%>
 </body>
 

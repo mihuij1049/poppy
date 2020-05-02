@@ -206,14 +206,14 @@
 					<a href="#" onclick="history.back(); return false;"><i
 							class="glyphicon glyphicon-chevron-left"></i></a> 
 							<c:choose>
-							<c:when test="${bbstype=='A'}">
-								공지사항
-								</c:when>
-							<c:when test="${bbstype=='B'}">
-								Q&A
-								</c:when>
-						</c:choose>
-					</b>
+   								<c:when test="${bbstype=='A'}">
+      								공지사항
+      							</c:when>
+								<c:when test="${bbstype=='B'}">
+      								Q&A
+   								</c:when>
+   							</c:choose>
+   							</b>
 				</h4>
 
 			</div>

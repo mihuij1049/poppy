@@ -60,6 +60,11 @@ public class CommunityController {
 		}
 
 		/** 3) view 처리 */
+		if (output.getBbstype()=="A") {
+			   output.setBbstype("공지사항");
+			} else {
+			   output.setBbstype("QnA");
+			}
 		model.addAttribute("output", output);
 		return new ModelAndView("community/article");
 	}
@@ -67,6 +72,7 @@ public class CommunityController {
 	/** notice */
 	@RequestMapping(value = "/community/notice.do", method = RequestMethod.GET)
 	public ModelAndView list(Model model,
+			@RequestParam(value="bbstype", required=false) String bbstype,
 			// 검색어
 			@RequestParam(value = "keyword", required = false) String keyword,
 			// 페이지 구현에서 사용할 현재 페이지 번호
@@ -85,12 +91,13 @@ public class CommunityController {
 		input.setBbstitle(keyword);
 		input.setUsername(keyword);
 		input.setUserid(keyword);
-
+		
 		// 조회 결과가 저장될 객체
 		List<Bbs> output = null;
 		PageData pageData = null;
 
 		try {
+			
 			// 전체 게시글 수 조회
 			totalCount = bbsService.getBbsCount(input);
 			// 페이지 번호 계산 --> 계산결과가 로그로 출력될 것이다.

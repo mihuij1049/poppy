@@ -90,10 +90,18 @@ hr {
 	color: #777;
 }
 
-.nowpage, .otherpage{
+.nowpage, .otherpage {
 	border: 1px solid #ffc7c1;
 	background: #ffc7c1;
 	padding: 10px;
+	color:#333;
+}
+.otherpage:hover {
+text-decoration:none;
+color:#333;
+}
+.pagenumber {
+text-align:center;
 }
 </style>
 </head>
@@ -104,11 +112,9 @@ hr {
 		<div class="page-title clearfix">
 			<h4>
 				<b> <a href="#" onclick="history.back(); return false;"><i
-						class="glyphicon glyphicon-chevron-left"></i></a> <c:choose>
-						<c:when test="${bbstype eq 'A'}">
-							공지사항
-							</c:when>
-					</c:choose>
+						class="glyphicon glyphicon-chevron-left"></i></a> 
+						"${item.bbstype}"
+				
 				</b>
 			</h4>
 		</div>
@@ -165,84 +171,83 @@ hr {
 
 				</tbody>
 			</table>
-			<div class=" paging">
-				<ul class="pagination pagination-sm">
-					<!-- 페이지 번호 구현 -->
-					<%-- 이전 그룹에 대한 링크 --%>
-					<c:choose>
-						<%-- 이전 그룹으로 이동 가능하다면? --%>
-						<c:when test="${pageData.prevPage > 0}">
-							<%-- 이동할 URL 생성 --%>
-							<c:url value="/community/notice.do" var="prevPageUrl">
-								<c:param name="page" value="${pageData.prevPage}" />
-								<c:param name="keyword" value="${keyword}" />
-							</c:url>
-							<li class="disabled"><a href="#">&laquo;</a></li>
-						</c:when>
-						<c:otherwise>
-            &laquo;
+			<div class="pagenumber">
+			<!-- 페이지 번호 구현 -->
+			<%-- 이전 그룹에 대한 링크 --%>
+			<c:choose>
+				<%-- 이전 그룹으로 이동 가능하다면? --%>
+				<c:when test="${pageData.prevPage > 0}">
+					<%-- 이동할 URL 생성 --%>
+					<c:url value="/community/notice.do" var="prevPageUrl">
+						<c:param name="page" value="${pageData.prevPage}" />
+						<c:param name="keyword" value="${keyword}" />
+					</c:url>
+					<a href="${prevPageUrl}">[이전]</a>
+				</c:when>
+				<c:otherwise>
+            [이전]
         </c:otherwise>
-					</c:choose>
+			</c:choose>
 
-					<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
-					<c:forEach var="i" begin="${pageData.startPage}"
-						end="${pageData.endPage}" varStatus="status">
-						<%-- 이동할 URL 생성 --%>
-						<c:url value="/community/notice.do" var="pageUrl">
-							<c:param name="page" value="${i}" />
-							<c:param name="keyword" value="${keyword}" />
-						</c:url>
+			<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+			<c:forEach var="i" begin="${pageData.startPage}"
+				end="${pageData.endPage}" varStatus="status">
+				<%-- 이동할 URL 생성 --%>
+				<c:url value="/community/notice.do" var="pageUrl">
+					<c:param name="page" value="${i}" />
+					<c:param name="keyword" value="${keyword}" />
+				</c:url>
 
-						<%-- 페이지 번호 출력 --%>
-						<c:choose>
-							<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
-							<c:when test="${pageData.nowPage == i}">
-								<strong class="nowpage">${i}</strong>
-							</c:when>
-							<%-- 나머지 페이지의 경우 링크 적용함 --%>
-							<c:otherwise>
-								<a href="${pageUrl}" class="otherpage">[${i}]</a>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
+				<%-- 페이지 번호 출력 --%>
+				<c:choose>
+					<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+					<c:when test="${pageData.nowPage == i}">
+						<strong class="nowpage">${i}</strong>
+					</c:when>
+					<%-- 나머지 페이지의 경우 링크 적용함 --%>
+					<c:otherwise>
+						<a href="${pageUrl}" class="otherpage">${i}</a>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
 
-					<%-- 다음 그룹에 대한 링크 --%>
-					<c:choose>
-						<%-- 다음 그룹으로 이동 가능하다면? --%>
-						<c:when test="${pageData.nextPage > 0}">
-							<%-- 이동할 URL 생성 --%>
-							<c:url value="/professor/list.do" var="nextPageUrl">
-								<c:param name="page" value="${pageData.nextPage}" />
-								<c:param name="keyword" value="${keyword}" />
-							</c:url>
-							<a href="${nextPageUrl}">[다음]</a>
-						</c:when>
-						<c:otherwise>
+			<%-- 다음 그룹에 대한 링크 --%>
+			<c:choose>
+				<%-- 다음 그룹으로 이동 가능하다면? --%>
+				<c:when test="${pageData.nextPage > 0}">
+					<%-- 이동할 URL 생성 --%>
+					<c:url value="/community/notice.do" var="nextPageUrl">
+						<c:param name="page" value="${pageData.nextPage}" />
+						<c:param name="keyword" value="${keyword}" />
+					</c:url>
+					<a href="${nextPageUrl}">[다음]</a>
+				</c:when>
+				<c:otherwise>
             [다음]
         </c:otherwise>
-					</c:choose>
-				</ul>
+			</c:choose>
 			</div>
-
-			<hr>
-			<div class="row">
-				<div class="form-group">
-					<form method="get"
-						action="${pageContext.request.contextPath}/community/notice.do">
-						<select id="array2" class="selectmenu">
-							<option value="bbstitle">제목</option>
-							<option value="bbscontent">내용</option>
-							<option value="username">이름</option>
-							<option value="userid">아이디</option>
-						</select> <label for="keyword"></label> <input type="search" name="keyword"
-							id="keyword" class="keyword" value="${keyword}">
-						<button type="submit" class="btn btn-sm btn-search">검색</button>
-					</form>
-				</div>
-			</div>
-
 		</div>
+
+		
+		<div class="row">
+			<div class="form-group">
+				<form method="get"
+					action="${pageContext.request.contextPath}/community/notice.do">
+					<select id="array2" class="selectmenu">
+						<option value="bbstitle">제목</option>
+						<option value="bbscontent">내용</option>
+						<option value="username">이름</option>
+						<option value="userid">아이디</option>
+					</select> <label for="keyword"></label> <input type="search" name="keyword"
+						id="keyword" class="keyword" value="${keyword}">
+					<button type="submit" class="btn btn-sm btn-search">검색</button>
+				</form>
+			</div>
+		</div>
+
 	</div>
+
 	<%@ include file="../share/bottom_tp.jsp"%>
 </body>
 
