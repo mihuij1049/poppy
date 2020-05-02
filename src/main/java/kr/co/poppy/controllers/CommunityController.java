@@ -60,7 +60,7 @@ public class CommunityController {
 		}
 
 		/** 3) view 처리 */
-		if (output.getBbstype()=="A") {
+		if (output.getBbstype().equals("A")) {
 			   output.setBbstype("공지사항");
 			} else {
 			   output.setBbstype("QnA");
