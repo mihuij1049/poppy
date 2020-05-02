@@ -38,7 +38,7 @@ public class GalleryController {
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 		// 1) 페이지 구현에 필요한 변수값 생성
 		int totalCount = 0;
-		int listCount = 8;
+		int listCount = 4;
 		int pageCount = 5;
 		
 		// 2) 데이터 조회
