@@ -35,6 +35,9 @@ public class Goods {
 	/** 회원 일련번호 */
 	private int memno;
 	private int gddetailno;
+	private String imgname;
+	private String imgpath;
+	private String imgext;
 
 	// 페이지 관련 static 변수 미정
 	/** LIMIT 절에서 사용할 조회 시작 위치 */

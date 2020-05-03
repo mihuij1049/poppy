@@ -47,7 +47,7 @@ public class ImgsServiceImpl implements ImgsService {
 		List<Imgs> result = null;
 
         try {
-            result = sqlSession.selectList("HeartMapper.selectList", input);
+            result = sqlSession.selectList("ImgsMapper.selectList", input);
 
             if (result == null) {
                 throw new NullPointerException("result=null");

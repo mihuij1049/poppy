@@ -14,31 +14,31 @@
 		</a>
 		<hr>
 		<ul class="category">
-			<a href="${pageContext.request.contextPath }/gallery/gal_list.do">
+			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1='BEST'">
 				<li>BEST</li>
 			</a>
-			<a href="${pageContext.request.contextPath }/gallery/gal_list.do">
+			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1='NEW'">
 				<li>NEW</li>
 			</a>
-			<a href="${pageContext.request.contextPath }/gallery/gal_list_food.do">
+			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1='푸드'">
 				<li>푸드</li>
 			</a>
-			<a href="${pageContext.request.contextPath }/gallery/gal_list.do">
+			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1='의류'">
 				<li>의류</li>
 			</a>
-			<a href="${pageContext.request.contextPath }/gallery/gal_list.do">
+			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1='외출용품'">
 				<li>외출용품</li>
 			</a>
-			<a href="${pageContext.request.contextPath }/gallery/gal_list.do">
+			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1='홈리빙'">
 				<li>홈리빙</li>
 			</a>
-			<a href="${pageContext.request.contextPath }/gallery/gal_list.do">
+			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1='대형견'">
 				<li>대형견</li>
 			</a>
-			<a href="${pageContext.request.contextPath }/gallery/gal_list.do">
+			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1='타임세일'">
 				<li>타임세일</li>
 			</a>
-			<a href="${pageContext.request.contextPath }/gallery/gal_list.do">
+			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1='유통임박'">
 				<li>유통임박</li>
 			</a>
 		</ul>
