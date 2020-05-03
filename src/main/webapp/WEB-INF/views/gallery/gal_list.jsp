@@ -48,9 +48,11 @@
 								<a href="${pageContext.request.contextPath }/gallery/goods.do">
 								<img alt="사진" src="${item.imgpath}${item.imgname}.jpg" class="img_size">
 									<h5>
-										<b>
-											${item.gname}
-										</b>
+										<div class="gnameblock"  style="height: 32px">
+											<b>
+												${item.gname}
+											</b>
+										</div>
 									</h5>
 									<hr />
 									${item.gprice}원
