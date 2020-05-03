@@ -89,7 +89,13 @@ public class MyInfoController {
 		for (int i=0; i<pointList.size(); i++) {
 			Points temp = null;
 			temp = pointList.get(i);
+			if(temp.getAvpoint()==null) {
+				temp.setAvpoint(0);
+			}
 			sumAvpoint+=temp.getAvpoint();
+			if(temp.getNapoint()==null) {
+				temp.setNapoint(0);
+			}
 			sumNapoint+=temp.getNapoint();
 		}
 		myPoint.setAvpoint(sumAvpoint);
