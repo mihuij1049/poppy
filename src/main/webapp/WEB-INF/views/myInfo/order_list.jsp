@@ -6,14 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%
-	Orders orders = new Orders();
-	orders.setOrderno(2);
- 	if(orders.getOdstatus()=="0") {
- 		System.out.println("234");
- 		orders.setOdstatus("3");
- 	}
-%>
+
 <!DOCTYPE html>
 <html lang="ko">
 

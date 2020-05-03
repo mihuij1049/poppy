@@ -36,7 +36,26 @@ public class Orders {
     /** 상품이름 (orderdetail 테이블 참조) */
     private String odgdoption;
     
-    // 페이지 관련 static 변수 미정
+    // 페이지 관련 static 변수
+	// LIMIT 절에서 사용할 검색 시작 위치
+	private static int offset;
+	// LIMIT 절에서 사용할 검색할 데이터 수
+	private static int listCount;
 
+	public static int getOffset() {
+		return offset;
+	}
+
+	public static void setOffset(int offset) {
+		Orders.offset = offset;
+	}
+
+	public static int getListCount() {
+		return listCount;
+	}
+
+	public static void setListCount(int listCount) {
+		Orders.listCount = listCount;
+	}
 }
 
