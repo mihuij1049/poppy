@@ -252,9 +252,11 @@ public class MemberController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-
-		/** 회원가입 확인 페이지로 회원가입 정보 전달 */
-		model.addAttribute("newmembers", newmem);
+		
+		/** 회원가입 확인 페이지로 세션 저장 후 이동 */
+		// 세션 저장하기 (WebHelper로 HttpServletRequest의 request객체 받기
+		HttpSession userSession = webHelper.getSession();
+		userSession.setAttribute("userInfo", newmem);
 
 		return webHelper.redirect("myinfo_wri_ok.do", "회원가입을 축하드립니다.");
 	}
@@ -262,7 +264,13 @@ public class MemberController {
 	/** 가입을 환영하는 가입완료 페이지 */
 	@RequestMapping(value = "/member/myinfo_wri_ok.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView myinfo_wri_ok(Model model) {
-
+		
+		// 세션 (WebHelper로 HttpServletRequest의 request객체 받기
+		HttpSession userSession = webHelper.getSession();
+		// 세션 불러오기
+		Members newmem = (Members) userSession.getAttribute("userInfo");
+		model.addAttribute("newmembers", newmem);
+		
 		return new ModelAndView("member/myinfo_wri_ok");
 	}
 

@@ -120,19 +120,19 @@
 			<div class="mydelivery clearfix">
 				<div class="mydelivery-current">
 					입금전<br>
-					<span>0</span>
+					<span>${status0 }</span>
 				</div>
 				<div class="mydelivery-current">
 					배송준비중<br>
-					<span>0</span>
+					<span>${status1 }</span>
 				</div>
 				<div class="mydelivery-current">
 					배송중<br>
-					<span>0</span>
+					<span>${status2 }</span>
 				</div>
 				<div class="mydelivery-current">
 					배송완료<br>
-					<span>0</span>
+					<span>${status3 }</span>
 				</div>
 			</div>
 			<div class="myinfo-list clearfix">

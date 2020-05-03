@@ -73,8 +73,11 @@ public class MyInfoController {
 		
 		/** 2) 정보 조회하기  */ 
 		try {
-			// 적립금 조회
+			// 적립금 조회 리스트
 			pointList = pointsService.getPointsMbList(myPoint); 
+			// 주문내역 조회 리스트
+			orderList = orderService.getOrdersList(myOrder);
+			
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
@@ -92,10 +95,40 @@ public class MyInfoController {
 		myPoint.setAvpoint(sumAvpoint);
 		myPoint.setNapoint(sumNapoint);
 		
+		/** 4) 조회된 List 객체에서 주문 상태별로 나누기 */
+		int status0 = 0;
+		int status1 = 0;
+		int status2 = 0;
+		int status3 = 0;
+		
+		for (int i=0; i<orderList.size(); i++) {
+			Orders temp = null;
+			temp = orderList.get(i);
+			if(temp.getOdstatus().equals("0")) {
+				status0++;
+			} else if(temp.getOdstatus().equals("1")) {
+				status1++;
+			} else if(temp.getOdstatus().equals("2")) {
+				status2++;
+			} else if(temp.getOdstatus().equals("3")) {
+				status3++;
+			}
+		}
+		// 스트링으로 변환하여 담기
+		String odstatus0 = "" + status0;
+		String odstatus1 = "" + status1;
+		String odstatus2 = "" + status2;
+		String odstatus3 = "" + status3;
+		
 		/** 뷰에 데이터 전달  */
 		// 적립금 정보를 담은 Beans
 		model.addAttribute("myPoint", myPoint);
-	
+		// 주문상태를 담은 String객체
+		model.addAttribute("status0", odstatus0);
+		model.addAttribute("status1", odstatus1);
+		model.addAttribute("status2", odstatus2);
+		model.addAttribute("status3", odstatus3);
+		
 		return new ModelAndView("myInfo/myinfo");
 	}
 
