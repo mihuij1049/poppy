@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.co.poppy.helper.PageData;
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Goods;
@@ -33,45 +32,27 @@ public class GalleryController {
 	@Autowired GoodsdetailService goodsdetailService;
 	
 	/** 갤러리 목록 페이지 */
-	@RequestMapping(value="/gallery/gal_list_food.do", method=RequestMethod.GET)
+	@RequestMapping(value="/gallery/gal_list.do", method=RequestMethod.GET)
 	public ModelAndView gallist(Model model,
-			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
-		// 1) 페이지 구현에 필요한 변수값 생성
-		int totalCount = 0;
-		int listCount = 4;
-		int pageCount = 5;
+			@RequestParam(value="cate1", required=false) String cate1) {
 		
 		// 2) 데이터 조회
-		Goods input1 = new Goods();
-		input1.setCate1("푸드");
-		Imgs input2 = new Imgs();
-		input2.setCate1("푸드");
-		input2.setImgtype("A");
+		// 굿즈데이터조회
+		Goods input = new Goods();
+		input.setCate1(cate1);
 		
-		List<Goods> output1 = null;
-		List<Imgs> output2 = null;
-		PageData pageData = null;
+		// 데이터저장할곳
+		List<Goods> output = null;
 		
 		try {
-			// 페이지만들기
-			totalCount = goodsService.getGoodsCount(input1);
-			
-			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
-			
-			Goods.setOffset(pageData.getOffset());
-			Goods.setListCount(pageData.getListCount());
-			
 			// 데이터조회
-			output1 = goodsService.getGoodsList(input1);
-			output2 = imgsService.getImgsList(input2);
+			output = goodsService.getGoodsList(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
 		// 3) 뷰처리
-		model.addAttribute("output1", output1);
-		model.addAttribute("output2", output2);
-		model.addAttribute("pageData", pageData);
+		model.addAttribute("output", output);
 	
 		return new ModelAndView("gallery/gal_list");
 	}

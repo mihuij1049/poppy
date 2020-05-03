@@ -19,7 +19,8 @@
 		<div class="page-title clearfix">
 			<h4>
 				<b> <a href="#" onclick="history.back(); return false;"><i
-						class="glyphicon glyphicon-chevron-left"></i></a>BEST
+						class="glyphicon glyphicon-chevron-left"></i></a>
+						${Cate1}
 				</b>
 			</h4>
 		</div>
@@ -39,21 +40,21 @@
 					</form>
 				</div>
 					<!-- 게시물 하나 시작 -->
-				<c:forEach var="item" items="${output1}" varStatus="status">
+				<c:forEach var="item" items="${output}" varStatus="status">
 				<div>
 					<div class="pr_box">
 						
 							<div class="pr_in_box">
-								<a href="${pageContext.request.contextPath }/gallery/goods.do"> <img alt="사진"
-									src="../share/img/gal_list_img1.jpg" class="img_size">
-									<div>
-										<h5>
-											<b>
-												${item.gname}
-											</b>
-										</h5>
-										<hr />
-										${item.gprice}원</a>
+								<a href="${pageContext.request.contextPath }/gallery/goods.do">
+								<img alt="사진" src="${item.imgpath}${item.imgname}.jpg" class="img_size">
+									<h5>
+										<b>
+											${item.gname}
+										</b>
+									</h5>
+									<hr />
+									${item.gprice}원
+								</a>
 								<div id="pay">
 									<i class="glyphicon glyphicon-heart-empty"></i>
 								</div>
@@ -62,55 +63,6 @@
 				</div>
 				</c:forEach>
 			</div>
-			<!-- 페이지 번호 구현 -->
-			<%-- 이전 그룹에 대한 링크 --%>
-			<c:choose>
-				<%-- 이전 그룹으로 이동 가능하다면? --%>
-				<c:when test="${pageData.prevPage > 0 }">
-					<%-- 이동할 URL 생성 --%>
-					<c:url value="/gallery/gal_list_food.do" var="prevPageUrl">
-						<c:param name="page" value="${pageData.prevPage}" />
-					</c:url>
-					<a href="${prevPageUrl}">[이전]</a>
-				</c:when>
-				<c:otherwise>
-					[이전]
-				</c:otherwise>
-			</c:choose>
-			
-			<%-- 페이지 번호(시작 페이지부터 끝 페이지까지 반복) --%>
-			<c:forEach var="i" begin="${pageData.startPage}" end="${pageData.endPage}" varStatus="status">
-				<%-- 이동할 URL 생성 --%>
-				<c:url value="/gallery/gal_list_food.do" var="pageUrl">
-					<c:param name="page" value="${i}" />
-				</c:url>
-				<%-- 페이지 번호 출력 --%>
-				<c:choose>
-					<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
-					<c:when test="${pageData.nowPage == i}">
-						<strong>[${i}]</strong>
-					</c:when>
-					<%-- 나머지 페이지의 경우 링크 적용함 --%>
-					<c:otherwise>
-						<a href="${pageUrl}">[${i}]</a>
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-			
-			<%-- 다음 그룹에 대한 링크 --%>
-			<c:choose>
-				<%-- 다음 그룹으로 이동 가능하다면? --%>
-				<c:when test="${pageData.nextPage > 0}">
-					<%-- 이동할 URL 생성 --%>
-					<c:url value="/gallery/gal_list_food.do" var="nextPageUrl">
-						<c:param name="page" value="${pageData.nextPage}" />
-					</c:url>
-					<a href="${nextPageUrl}">[다음]</a>
-				</c:when>
-				<c:otherwise>
-					[다음]
-				</c:otherwise>
-			</c:choose>
 			
 			<div class="text-center">
 				<ul class="pagination pagination-sm">
