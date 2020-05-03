@@ -64,7 +64,7 @@
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
 						<div class="gal_sug_main">
-							<a href="${pageContext.request.contextPath }/gallery/goods.do">
+							<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
 									<img src="/upload/img/index_gal_img1.jpg" id="img_sug">
@@ -74,7 +74,7 @@
 								5,400원
 							</div>
 							</a>
-							<a href="${pageContext.request.contextPath }/gallery/goods.do">
+							<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
 									<img src="/upload/img/index_gal_img2.jpg" id="img_sug">
@@ -84,7 +84,41 @@
 								5,400원
 							</div>
 							</a>
-							<a href="${pageContext.request.contextPath }/gallery/goods.do">
+							<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
+							<div class="gal_sug">
+								<div class="gal_sug_img">
+									<img src="/upload/img/index_gal_img3.jpg" id="img_sug">
+								</div>
+								<span class="sal_name">강아지간식</span>
+								<hr />
+								5,400원
+							</div>
+							</a>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="gal_sug_main">
+							<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
+							<div class="gal_sug">
+								<div class="gal_sug_img">
+									<img src="/upload/img/index_gal_img1.jpg" id="img_sug">
+								</div>
+								<span class="sal_name">강아지간식</span>
+								<hr />
+								5,400원
+							</div>
+							</a>
+							<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
+							<div class="gal_sug">
+								<div class="gal_sug_img">
+									<img src="/upload/img/index_gal_img2.jpg" id="img_sug">
+								</div>
+								<span class="sal_name">강아지간식</span>
+								<hr />
+								5,400원
+							</div>
+							</a>
+							<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
 									<img src="/upload/img/index_gal_img3.jpg" id="img_sug">
@@ -107,8 +141,7 @@
 								<hr />
 								5,400원
 							</div>
-							</a>
-							<a href="${pageContext.request.contextPath }/gallery/goods.do">
+							<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
 									<img src="/upload/img/index_gal_img2.jpg" id="img_sug">
@@ -118,40 +151,7 @@
 								5,400원
 							</div>
 							</a>
-							<a href="${pageContext.request.contextPath }/gallery/goods.do">
-							<div class="gal_sug">
-								<div class="gal_sug_img">
-									<img src="/upload/img/index_gal_img3.jpg" id="img_sug">
-								</div>
-								<span class="sal_name">강아지간식</span>
-								<hr />
-								5,400원
-							</div>
-							</a>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="gal_sug_main">
-							<a href="${pageContext.request.contextPath }/gallery/goods.do">
-							<div class="gal_sug">
-								<div class="gal_sug_img">
-									<img src="/upload/img/index_gal_img1.jpg" id="img_sug">
-								</div>
-								<span class="sal_name">강아지간식</span>
-								<hr />
-								5,400원
-							</div>
-							<a href="${pageContext.request.contextPath }/gallery/goods.do">
-							<div class="gal_sug">
-								<div class="gal_sug_img">
-									<img src="/upload/img/index_gal_img2.jpg" id="img_sug">
-								</div>
-								<span class="sal_name">강아지간식</span>
-								<hr />
-								5,400원
-							</div>
-							</a>
-							<a href="${pageContext.request.contextPath }/gallery/goods.do">
+							<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
 									<img src="/upload/img/index_gal_img3.jpg" id="img_sug">
@@ -181,7 +181,7 @@
 			<div class="gal_best_main">		
 				
 				<div class="gal_best">
-				<a href="${pageContext.request.contextPath }/gallery/goods.do">
+				<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
 					<div class="gal_sug_img">
 						<img src="/upload/img/index_gal_img1.jpg" id="img_sug">
 					</div>
@@ -191,7 +191,7 @@
 					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
 				<div class="gal_best">
-				<a href="${pageContext.request.contextPath }/gallery/goods.do">
+				<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
 					<div class="gal_sug_img">
 						<img src="/upload/img/index_gal_img2.jpg" id="img_sug">
 					</div>
@@ -201,7 +201,7 @@
 					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
 				<div class="gal_best">
-				<a href="${pageContext.request.contextPath }/gallery/goods.do">
+				<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
 					<div class="gal_sug_img">
 						<img src="/upload/img/index_gal_img3.jpg" id="img_sug">
 					</div>
@@ -211,7 +211,7 @@
 					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
 				<div class="gal_best">
-				<a href="${pageContext.request.contextPath }/gallery/goods.do">
+				<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
 					<div class="gal_sug_img">
 						<img src="/upload/img/index_gal_img1.jpg" id="img_sug">
 					</div>
@@ -221,7 +221,7 @@
 					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
 				<div class="gal_best">
-				<a href="${pageContext.request.contextPath }/gallery/goods.do">
+				<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
 					<div class="gal_sug_img">
 						<img src="/upload/img/index_gal_img2.jpg" id="img_sug">
 					</div>
@@ -231,7 +231,7 @@
 					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 				</div>
 				<div class="gal_best">
-				<a href="${pageContext.request.contextPath }/gallery/goods.do">
+				<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
 					<div class="gal_sug_img">
 						<img src="/upload/img/index_gal_img3.jpg" id="img_sug">
 					</div>

@@ -37,7 +37,7 @@ public class PayRestController {
 	/** 주소 목록페이지 */
 	@RequestMapping(value = "/pay", method = RequestMethod.GET)
 	public Map<String, Object> get_list(Model model,
-			@RequestParam(value = "memno", defaultValue = "0") int memno) {
+			@RequestParam(value = "memno", defaultValue = "1") int memno) {
 
 		/** 유효성 검사 */
 		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.

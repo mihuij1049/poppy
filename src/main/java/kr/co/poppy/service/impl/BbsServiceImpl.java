@@ -64,6 +64,29 @@ public class BbsServiceImpl implements BbsService {
 		return result;
 	}
 	
+	/**
+	 * 상품상세페이지 /포토리뷰 게시글 목록
+	 * @param Bbs 게시글의 일련번호를 담고 있는 Beans
+	 * @return 조회된 데이터가 저장된 Beans throws Exception
+	 */	
+	@Override
+	public List<Bbs> getBbsList_goods(Bbs input) throws Exception {
+		List<Bbs> result = null;
+		try {
+			result = sqlSession.selectList("BbsMapper.selectList_goods", input);
+			if(result==null) {
+				throw new NullPointerException("result=null");
+			} 
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+	
 	
 	/**
 	 * 게시글 갯수 조회

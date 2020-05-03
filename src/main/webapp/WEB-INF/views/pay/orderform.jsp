@@ -20,7 +20,7 @@
 			<b>주문/결제</b>
 		</h4>
 	</div>
-	<form id="orderform" class="orderform" target="_self" enctype="multipart/form-data">
+	<form id="orderform" class="orderform" action="${pageContext.request.contextPath}/pay/orderform_ajax.do" method="GET">
 		<div class="panel-group" id="accordion" role="tablist"
 			aria-multiselectable="true">
 			<div class="panel panel-default">
@@ -47,7 +47,7 @@
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane fade active in" id="page1">
 								<div class="recent-address">
-									<form class="recents"  action="${pageContext.request.contextPath}/pay/orderform_ajax.do" method="GET">
+									<div class="recents">
 										<div class="recent">
 											<strong class="name"><span id="delivery-info-name">${output.odname}</span></strong>
 											<p class="address">
@@ -64,13 +64,13 @@
 											<button type="button" id="recent-address-list">배송지
 												목록</button>
 										</span>
-									</form>
-									<form class="recent-addr" id="recent-addr" style="display: none;"  action="${pageContext.request.contextPath}/pay/orderform_ajax.do" method="GET">
+									</div>
+									<div class="recent-addr" id="recent-addr" style="display: none;">
 										<h4 class="heading">배송지를 선택해주세요.</h4>
 										<span class="sideRight">
 											<button type="button" id="recent-close">닫기</button>
 										</span>
-									</form>
+									</div>
 									<div class="form-group">
 										<select id="selbox">
 											<option value="">-- 메시지 선택(선택사항) --</option>
@@ -267,11 +267,11 @@
 				</div>
 				<div id="collapseThree" class="panel-collapse collapse"
 					role="tabpanel" aria-labelledby="headingThree">
-					<form class="panel-body"  action="${pageContext.request.contextPath}/pay/orderform_ajax.do" method="GET">
+					<div class="panel-body">
 						<div class="discount clear">
 							<div class="dis-title">
 								<span class="head">적립금 할인</span> <span class="coupon"> (
-									적립금 : <span class="coupon-count">${output3.avpoint}</span> )
+									적립금 : <span class="coupon-count">3000</span> )
 								</span>
 							</div>
 							<div class="discount-re">
@@ -286,7 +286,7 @@
 							<strong class="total-sum"> - <span id="totla-sale-price">0</span>원
 							</strong>
 						</div>
-					</form>
+					</div>
 				</div>
 			</div>
 			<div class="panel panel-default">
@@ -351,9 +351,11 @@
 					<div class="panel-body">
 						<div class="pay-box">
 							<ul class="pay-method">
-								<li class="pay-sel" style="list-style: none"><label
-									class="pay-method-sel"> <span>결제수단 선택</span>
-								</label></li>
+								<li class="pay-sel" style="list-style: none">
+								    <label class="pay-method-sel"> 
+							 	        <span>결제수단 선택</span>
+								    </label>
+								</li>
 								<div class="content">
 									<div class="button-list">
 										<div>신용카드</div>

@@ -17,6 +17,15 @@ public interface BbsService {
 	public List<Bbs> getBbsList(Bbs input) throws Exception;
 	
 	/**
+	 * 상품상세페이지 / 포토리뷰 글 목록
+	 * @param Bbs 검색조건과 페이지 구현 정보를 담고 있는 Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	public List<Bbs> getBbsList_goods(Bbs input) throws Exception;
+	
+	
+	/**
 	 * 게시글 데이터가 저장되어 있는 갯수 조회
 	 * @param Bbs 검색조건을 담고 있는 Beans
 	 * @return int

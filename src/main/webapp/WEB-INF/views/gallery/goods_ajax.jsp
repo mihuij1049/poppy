@@ -702,7 +702,7 @@ dl {
 <body>
 	<%@ include file="../share/top_tp.jsp"%>
 	<form method="get"
-		action="${pageContext.request.contextPath}/gallery/goods.do">
+		action="${pageContext.request.contextPath}/gallery/goods_ajax.do">
 		<div class="content">
 			<!-- 여기에 작성 -->
 			<div class="page-title clearfix">
@@ -999,6 +999,10 @@ dl {
 		</div>
 	</form>
 	<div class="footer">
+	    <div id="topbt">
+	    	<a style="display:scroll;position:fixed;bottom:80px; right:10px;" href="#">
+			    <img src="${pageContext.request.contextPath }/share/img/top_btn.png">
+		</div>
 		<!-- 하단 네비게이션 고정-->
 		<!--- 소개 4인방 링크 -->
 		<hr />
@@ -1063,12 +1067,11 @@ dl {
 	        	<li class="list1">
 			        <div class="box">
 			        	<dl class="box-left">
-					        <dd class="star"></dd>
-					        <dd class="writer">조**</dd>
-					        <dd class="writeDate">2020/03/31</dd>
+					        <dd class="star">{{rvlike}}</dd>
+					        <dd class="writer">{{username}}</dd>
+					        <dd class="writeDate">{{regdate}}</dd>
 					        <dd class="review-content">
-					    	대용량 간식 찾고있었는데 너무 좋아요<br> 크기도 적당해서잘먹네요 <br>많이 파세요많이 파세요많이
-						파세요많이 파세요많이 파세요<br>
+					    	{{bbscontent}}<br>
 					        </dd>
 					        <dd class="edit">
 						        <a href="#" class="editt">수정</a>
@@ -1094,6 +1097,8 @@ dl {
 		src="${pageContext.request.contextPath}/share/plugins/ajax/ajax_helper.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/share/assets/js/regex.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/share/plugins/handlebars/handlebars-v4.0.5.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			$('.star span').click(function() {
@@ -1227,10 +1232,10 @@ dl {
 		});
 		
 		$(function() {
-			$("#photo-rv").click(function(e) { 
+			$("#photo_rv").click(function(e) { 
 				$.get("${pageContext.request.contextPath}/gallery",
 					function(json) {
-						var template = Handlebars.compile($"#photo_rv_tmpl").html());
+						var template = Handlebars.compile($("#photo_rv_tmpl").html());
 						var html = template(json);
 						$(".prd-review").append(html);
 				});

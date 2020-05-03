@@ -8,35 +8,10 @@
 <html lang="ko">
 
 <head>
-<meta charset="utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<title>Poppy-Poppy</title>
-<!-- 모바일 웹 페이지 설정 -->
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/share/assets/ico/favicon.png" />
-<link rel="apple-touch-icon-precomposed"
-	href="${pageContext.request.contextPath}/share/assets/ico/apple-touch-icon-144-precomposed.png" />
-<!-- bootstrap -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/share/assets/css/bootstrap.min.css" />
-<!-- 나눔고딕 웹 폰트 적용 -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/share/assets/css/nanumfont.css" />
+<%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/share/orderform.css" />
-<!-- 반응형 웹을 지원하지 않을 경우 -->
-<!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
-<!-- IE8 이하 버전 지원 -->
-<!--[if lt IE 9]>
-        <script type="text/javascript" src="assets/js/html5shiv.js"></script>
-        <script type="text/javascript" src="assets/js/respond.min.js"></script>
-        <![endif]-->
-<!-- IE10 반응형 웹 버그 보완 -->
-<!--[if gt IE 9]>
-        <link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
-        <script type="text/javascript" src="assets/js/ie10.js"></script>
-        <![endif]-->
+
 <style type="text/css">
 </style>
 </head>
@@ -47,8 +22,7 @@
 			<b>주문/결제</b>
 		</h4>
 	</div>
-	<div id="orderform" class="orderform" target="_self"
-		enctype="multipart/form-data">
+	<div id="orderform" class="orderform">
 		<div class="panel-group" id="accordion" role="tablist"
 			aria-multiselectable="true">
 			<div class="panel panel-default">
@@ -57,7 +31,7 @@
 						<a data-toggle="collapse" data-parent="#accordion"
 							href="#collapseOne" aria-expanded="true"
 							aria-controls="collapseOne"> <b>배송지</b> <img
-							src="../share/img/arrow-down.png" align=right
+							src="/upload/img/arrow-down.png" align=right
 							class="arrow-down1 icon-rotate1">
 						</a>
 					</h4>
@@ -88,6 +62,7 @@
 											<div class="phone">
 												<div id="delivery-info-phone">${output.odphone}</div>
 											</div>
+										</div>
 									</form>
 									<span class="side-right">
 										<button type="button" id="recent-address-list">배송지 목록</button>
@@ -217,7 +192,7 @@
 					<a class="collapsed" data-toggle="collapse"
 						data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
 						aria-controls="collapseTwo"> <b>주문상품</b> <span id="arrow-down">
-							<img src="../share/img/arrow-down.png" align=right
+							<img src="/upload/img/arrow-down.png" align=right
 							class="arrow-down2 icon-rotate2">
 					</span>
 					</a>
@@ -229,14 +204,15 @@
 					<div class="prd-info">
 						<div class="prd-box">
 							<div class="thumbnail">
-								<a href="${pageContext.request.contextPath}/gallery/goods.jsp"> <img
-									src="C:/project/upload/img/slide.jpg" width="70" height="70">
+								<a href="${pageContext.request.contextPath}/gallery/goods.jsp">
+									<img src="/upload/img/slide.jpg" width="70" height="70">
 								</a>
 							</div>
 							<div class="prd">
 								<div id="prd-title">
 									<strong class="prd-name" title="상품명"> <a
-										href="${pageContext.request.contextPath}/gallery/goods.jsp">펫클럽 벨버드 토일렛/애견토일렛/강아지화장실/패드</a>
+										href="${pageContext.request.contextPath}/gallery/goods.jsp">펫클럽
+											벨버드 토일렛/애견토일렛/강아지화장실/패드</a>
 									</strong>
 								</div>
 								<ul class="prd-li">
@@ -290,7 +266,7 @@
 						data-parent="#accordion" href="#collapseThree"
 						aria-expanded="false" aria-controls="collapseThree"> <b>할인/부가결제</b>
 						<span id="arrow-down"> <img
-							src="../share/img/arrow-down.png" align=right
+							src="/upload/img/arrow-down.png" align=right
 							class="arrow-down3 icon-rotate3">
 					</span>
 					</a>
@@ -304,7 +280,7 @@
 					<div class="discount clear">
 						<div class="dis-title">
 							<span class="head">적립금 할인</span> <span class="coupon"> (
-								적립금 : <span class="coupon-count">${output3.avpoint}</span> )
+								적립금 : <span class="coupon-count">3000</span> )
 							</span>
 						</div>
 						<div class="discount-re">
@@ -329,7 +305,7 @@
 						data-parent="#accordion" href="#collapseFour"
 						aria-expanded="false" aria-controls="collapseFour"> <b>결제정보</b>
 						<span id="arrow-down"> <img
-							src="../share/img/arrow-down.png" align=right
+							src="/upload/img/arrow-down.png" align=right
 							class="arrow-down4 icon-rotate4">
 					</span>
 					</a>
@@ -372,7 +348,7 @@
 						data-parent="#accordion" href="#collapseFive"
 						aria-expanded="false" aria-controls="collapseFive"> <b>결제수단</b>
 						<span id="arrow-down"> <img
-							src="../share/img/arrow-down.png" align=right
+							src="/upload/img/arrow-down.png" align=right
 							class="arrow-down5 icon-rotate5">
 					</span>
 					</a>
@@ -412,7 +388,7 @@
 					<a class="collapsed" data-toggle="collapse"
 						data-parent="#accordion" href="#collapseSix" aria-expanded="false"
 						aria-controls="collapseSix"> <b>적립 혜택</b> <span
-						id="arrow-down"> <img src="../share/img/arrow-down.png"
+						id="arrow-down"> <img src="/upload/img/arrow-down.png"
 							align=right class="arrow-down6 icon-rotate6">
 					</span>
 					</a>
@@ -462,7 +438,7 @@
 			</ul>
 		</div>
 	</div>
-	</div>
+
 	<!-- 배송지 목록 조회 -->
 	<script id="recent_addr_tmpl" type="text/x-handlebars-template">
         {{#each item}}
@@ -494,11 +470,14 @@
         {{/each}}
     </script>
 	<!-- Javascript -->
-	<script src="../share/assets/js/jquery-3.2.1.min.js"></script>
-	<script src="../share/assets/js/bootstrap.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/share/assets/js/jquery-3.2.1.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/share/assets/js/bootstrap.min.js"></script>
 	<script
 		src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script src="../share/plugins/handlebars/handlebars-v4.0.5.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/share/plugins/handlebars/handlebars-v4.0.5.js"></script>
 	<script type="text/javascript">
 		var element_wrap = document.getElementById('wrap');
 
@@ -614,8 +593,7 @@
 						$(".recent-addr").show();
 						$.get("${pageContext.request.contextPath}/pay",
 								function(json) {
-									var template = Handlebars.compile($(
-											"#recent_addr_tmpl").html());
+									var template = Handlebars.compile($("#recent_addr_tmpl").html());
 									var html = template(json);
 									$("#recent-addr").append(html);
 								});

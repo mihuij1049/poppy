@@ -21,7 +21,7 @@ import kr.co.poppy.service.GoodsService;
 import kr.co.poppy.service.HeartService;
 
 @Controller
-public class GoodsController {
+public class GoodsAjaxController {
 	
 	/** WebHelper 주입 */
 	@Autowired
@@ -45,9 +45,8 @@ public class GoodsController {
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 	
-	
 	/** 갤러리 상세 페이지 */
-	@RequestMapping(value="/gallery/goods.do", method=RequestMethod.GET)
+	@RequestMapping(value="/gallery/goods_ajax.do", method=RequestMethod.GET)
 	public ModelAndView goods(Model model,
 			@RequestParam(value = "goodsno", defaultValue = "1") int goodsno,
 			@RequestParam(value = "memno", defaultValue = "1") int memno) {
@@ -90,8 +89,9 @@ public class GoodsController {
 		// 3) 뷰처리
 		model.addAttribute("output", output);
 		model.addAttribute("output2", output2);
-		model.addAttribute("output3", output3);
-		return new ModelAndView("gallery/goods");
+		model.addAttribute("item", output3);
+		return new ModelAndView("gallery/goods_ajax");
 	}
+
 
 }

@@ -65,8 +65,18 @@
 			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
-
-
+	
+	<!-- 다중행 조회를 위한 기능 정의 -->
+	<!-- 상품상세페이지 / 포토리뷰 글 목록 페이지 -->
+	<select id="selectList_goods" parameterType="kr.co.poppy.model.Bbs"
+		resultMap="bbsMap">
+		SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.qnasec, b.qnapw, b.rvlike,
+		b.regdate, b.editdate, b.memno, b.goodsno, m.username, m.userid
+		FROM bbs b
+		INNER JOIN members m ON b.memno=m.memno
+		WHERE b.bbstype = "C" AND b.memno = #{memno} AND b.goodsno = #{goodsno};
+	</select>
+	
 	<!-- 데이터 수 조회를 위한 기능 정의 -->
 	<select id="selectCountAll"
 		parameterType="kr.co.poppy.model.Bbs" resultType="int">
