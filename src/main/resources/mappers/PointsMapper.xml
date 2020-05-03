@@ -46,6 +46,13 @@
 	SELECT * from points WHERE orderno=#{orderno};
 	</select>
 	
+	<!-- 회원의 가용포인트 조회를 위한 다중행 조회 -->
+	<select id="select_members_avlist"
+	parameterType="kr.co.poppy.model.Points"
+	resultMap="pointsMap">
+	SELECT avpoint from points WHERE memno=#{memno};
+	</select>
+	
 	<!-- 회원의 적립금 정보를 표시하기 위한 다중행 조회 -->
 	<select id="select_members_list"
 	parameterType="kr.co.poppy.model.Points"

@@ -19,7 +19,13 @@
 		<result property="cate2" column="cate2" />
 		<result property="regdate" column="regdate" />
 		<result property="editdate" column="editdate" />
+		<result property="heartno" column="heartno" />
+		<result property="memno" column="memno" />
 		<result property="gddetailno" column="gddetailno" />
+		<result property="imgname" column="imgname" />
+		<result property="imgpath" column="imgpath" />
+		<result property="imgext" column="imgext" />
+		
 	</resultMap>
 
 	<!-- 상품상세 페이지 단일행 조회를 위한 기능 정의 -->

@@ -27,7 +27,7 @@ public class GoodsController {
 
 	/** Service 패턴 구현체 주입 */
 	@Autowired
-	GoodsService goodsService;
+	GoodsService goodsService;	
 	
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")

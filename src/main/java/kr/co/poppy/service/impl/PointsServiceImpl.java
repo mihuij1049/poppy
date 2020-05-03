@@ -62,12 +62,34 @@ public class PointsServiceImpl implements PointsService {
 		return output;
 	}
 	
-	/** 회원 정보에 대한 적립금조회
+	/** 회원의 가용포인트 정보에 대한 적립금조회
 	 * @Param 회원정보(memno)를 담고 있는 Beans 객체
 	 * @return 적립금 정보를 담고 있는 Beans 객체
 	 */
 	@Override
 	public List<Points> getPointsMbList(Points input) throws Exception {
+		List<Points> output = null;
+		try {
+			output = sqlSession.selectList("PointsMapper.select_members_avlist", input);
+			if (output == null) {
+				throw new NullPointerException("output=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return output;
+	}
+	
+	/** 회원 정보에 대한 적립금조회
+	 * @Param 회원정보(memno)를 담고 있는 Beans 객체
+	 * @return 적립금 정보를 담고 있는 Beans 객체
+	 */
+	@Override
+	public List<Points> getPointsMbAvList(Points input) throws Exception {
 		List<Points> output = null;
 		try {
 			output = sqlSession.selectList("PointsMapper.select_members_list", input);

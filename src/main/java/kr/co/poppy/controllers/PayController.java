@@ -72,13 +72,13 @@ public class PayController {
 			Points input3 = new Points();
 			input3.setMemno(memno);
 			
-			Points output3 = null;
+			List<Points> output3 = null;
 
 			try { 
 				// 데이터 조회
 				output = addressService.getAddressItem(input);
 				output2 = addressService.getAddressList(input2);
-				output3 = pointsService.getPointsMbItem(input3);
+				output3 = pointsService.getPointsMbAvList(input3);
 			} catch (Exception e) {
 				return webHelper.redirect(null, e.getLocalizedMessage());
 			}

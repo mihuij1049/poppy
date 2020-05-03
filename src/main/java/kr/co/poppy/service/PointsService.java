@@ -22,6 +22,13 @@ public interface PointsService {
 	 */
 	public Points getPointsOdItem(Points input) throws Exception;
 	
+	/** 회원의 가용적립금 정보 조회
+	 * @Param 회원정보(memno)를 담은 Beans 객체
+	 * @return 적립금 정보를 담은 Beans 객체
+	 * @throws Exception  
+	 */
+	public List<Points> getPointsMbAvList(Points input) throws Exception;
+	
 	/** 회원의 적립금 정보 조회
 	 * @Param 회원정보(memno)를 담은 Beans 객체
 	 * @return 적립금 정보를 담은 Beans 객체
