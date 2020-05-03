@@ -15,8 +15,10 @@ import kr.co.poppy.helper.PageData;
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Orders;
+import kr.co.poppy.model.Points;
 import kr.co.poppy.service.OrderdetailService;
 import kr.co.poppy.service.OrdersService;
+import kr.co.poppy.service.PointsService;
 
 @Controller
 public class KRTController {
@@ -33,6 +35,8 @@ public class KRTController {
 	OrdersService orderService;
 	@Autowired
 	OrderdetailService orderdetailService;
+	@Autowired
+	PointsService pointsService;
 
 	/** "/프로젝트이름"에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -51,20 +55,12 @@ public class KRTController {
 		// 한 그룹당 표시할 페이 번호 수
 		int pageCount = 5;
 
+		/** 2) 데이터 조회하기 */
 		Orders input = new Orders();
-
 		input.setMemno(2);
 
 		List<Orders> output = null;
 		PageData pageData = null;
-
-		System.out.println(input.getMemno());
-		System.out.println(input.getOdstatus());
-
-		if (input.getOdstatus() == "1") {
-			System.out.println("실행됨");
-			input.setOdstatus("배송준비중");
-		}
 
 		try {
 			// 전체 게시글 수 조회
@@ -75,13 +71,13 @@ public class KRTController {
 			// SQL의 LIMIT 절에서 사용될 값을 Beans의 static 변수에 저장
 			Orders.setOffset(pageData.getOffset());
 			Orders.setListCount(pageData.getListCount());
-			
+
 			// 데이터 조회하기
 			output = orderService.getOrdersList(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-
+		/** 3) view 처리 */
 		model.addAttribute("output", output);
 
 		String viewPath = "myInfo/order_list";
@@ -90,15 +86,24 @@ public class KRTController {
 
 	/** 삭제 처리 구현 */
 	@RequestMapping(value = "/myInfo/order_delete.do", method = RequestMethod.GET)
-	public ModelAndView order_delete(Model model) {
+	public ModelAndView order_delete(Model model, @RequestParam(value = "orderno", required = false) int orderno) {
+		/** 1) 파라미터 유효성 검사 */
+		// 이 값이 존재하지 않는다면 데이터 삭제가 불가능하므로 반드시 필수값으로 처리해야 한다.
+		if (orderno == 0) {
+			return webHelper.redirect(null, "주문번호가 없습니다.");
+		}
+
+		/** 2) 데이터 삭제하기 */
+		// 데이터 삭제에 필요한 조건값을 Beans에 저장하기
 		Orders input = new Orders();
+		input.setOrderno(orderno);
 
 		try {
 			orderService.deleteOrders(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-
+		/** 3) 페이지 이동 */
 		return webHelper.redirect(contextPath + "/myInfo/order_list.do", "삭제되었습니다.");
 	}
 
@@ -129,7 +134,7 @@ public class KRTController {
 			// SQL의 LIMIT 절에서 사용될 값을 Beans의 static 변수에 저장
 			Orders.setOffset(pageData.getOffset());
 			Orders.setListCount(pageData.getListCount());
-			
+
 			// 데이터 조회하기
 			output = orderService.getOrdersList(input);
 		} catch (Exception e) {
@@ -152,6 +157,32 @@ public class KRTController {
 		// 한 그룹당 표시할 페이 번호 수
 		int pageCount = 5;
 
+		/** 2) 데이터 조회하기 */
+		// 조회에 필요한 조건값을 Beans에 담는다.
+		Points input = new Points();
+		input.setMemno(2);
+
+		List<Points> output = null;
+		PageData pageData = null;
+
+		try {
+			totalCount = pointsService.getPointsCount(input);
+			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+
+			// SQL의 LIMIT 절에서 사용될 값을 Beans의 static 변수에 저장
+			Points.setOffset(pageData.getOffset());
+			Points.setListCount(pageData.getListCount());
+
+			// 데이터 조회하기
+			output = pointsService.getPointsMbList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 3) view 처리 */
+		model.addAttribute("output", output);
+		model.addAttribute("pageData", pageData);
+		
 		String viewPath = "myInfo/plist";
 		return new ModelAndView(viewPath);
 	}

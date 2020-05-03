@@ -29,6 +29,14 @@ public interface PointsService {
 	 */
 	public List<Points> getPointsMbList(Points input) throws Exception;
 	
+	/**
+	 * 적립금 데이터가 저장되어 있는 갯수 조회
+	 * @param Points 검색조건을 담고 있는 Beans
+	 * @return int
+	 * @throws Exception
+	 */
+	public int getPointsCount(Points input) throws Exception;
+	
 	/** 미가용 -> 가용으로 적립금 전환
 	 * @Param 적립금 일련번호(pointno)를 담고 있는 Beans
 	 * @return int

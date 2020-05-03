@@ -53,6 +53,18 @@
 	SELECT * from points WHERE memno=#{memno};
 	</select>
 	
+		<!-- 데이터 수 조회를 위한 기능 정의 -->
+	<select id="selectCountAll"
+		parameterType="kr.co.poppy.model.Points" resultType="int">
+		SELECT COUNT(*)
+		FROM points
+		<where>
+			<if test="memno != 0 and memno != ''">
+				memno = #{memno}
+			</if>
+		</where>
+	</select>
+	
 	<!-- 회원 탈퇴 시 탈퇴한 회원을 참조하는 적립금의 memno (null) 업데이트 -->
 	<update id="unsetMembers"
 			parameterType="kr.co.poppy.model.Points">

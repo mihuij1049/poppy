@@ -83,6 +83,27 @@ public class PointsServiceImpl implements PointsService {
 		}
 		return output;
 	}
+	
+	/**
+	 * 적립금 데이터가 저장되어 있는 갯수 조회
+	 * 
+	 * @return int
+	 * @throws Exception
+	 */
+	@Override
+	public int getPointsCount(Points input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("PointsMapper.selectCountAll", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
+	
 	/** 미가용 -> 가용 적립금 전환
 	 * @Param 적립금 일련번호 (pointno) 를 담고 있는 Beans 객체
 	 * @return 적립금 정보를 담고 있는 Beans 객체
