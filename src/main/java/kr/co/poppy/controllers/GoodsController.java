@@ -12,7 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Goods;
+import kr.co.poppy.model.Heart;
 import kr.co.poppy.service.GoodsService;
+import kr.co.poppy.service.HeartService;
 
 @Controller
 public class GoodsController {
@@ -28,6 +30,9 @@ public class GoodsController {
 	/** Service 패턴 구현체 주입 */
 	@Autowired
 	GoodsService goodsService;	
+	
+	@Autowired
+	HeartService heartService;
 	
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -49,17 +54,23 @@ public class GoodsController {
 		Goods input = new Goods();
 		input.setGoodsno(goodsno);
 		
+		Heart input2 = new Heart(); 
+		input2.setGoodsno(goodsno);
+		
 		// 2) 데이터 조회하기
 		Goods output = null;
+		int output2  = 0;
 		
 		try {
 			output = goodsService.getGoodsItem(input);
+			output2 = heartService.getHeartCount(input2);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
 		// 3) 뷰처리
 		model.addAttribute("output", output);
+		model.addAttribute("output2", output2);
 		return new ModelAndView("gallery/goods");
 	}
 

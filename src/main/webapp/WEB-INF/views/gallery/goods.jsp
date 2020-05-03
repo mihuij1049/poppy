@@ -698,7 +698,7 @@ dl {
 			</div>
 			<div class="product">
 				<div class="prd-img">
-					<img src="${output.imgpath}/gal_list_img3.jpg">
+					<img src="${output.imgpath}">
 				</div>
 				<fieldset class="btn-group">
 					<button type="button" class="like-btn" aria-label="좋아요">
@@ -897,7 +897,7 @@ dl {
 													<input type="file" name="file1" style="display: none;">
 													<input type="text" name="file2" id="file2"
 														style="display: none;"> <img
-														src="../share/img/photo-file.PNG" border="0"
+														src="/upload/img/photo-file.PNG" border="0"
 														onclick="document.all.file1.click(); document.all.file2.value=document.all.file1.value">
 												</div>
 											</li>
@@ -906,7 +906,7 @@ dl {
 													<input type="file" name="file2" style="display: none;">
 													<input type="text" name="file2" id="file2"
 														style="display: none;"> <img
-														src="../share/img/photo-file.PNG" border="0"
+														src="/upload/img/photo-file.PNG" border="0"
 														onclick="document.all.file1.click(); document.all.file2.value=document.all.file1.value">
 												</div>
 											</li>
@@ -915,7 +915,7 @@ dl {
 													<input type="file" name="file2" style="display: none;">
 													<input type="text" name="file2" id="file2"
 														style="display: none;"> <img
-														src="../share/img/photo-file.PNG" border="0"
+														src="/upload/img/photo-file.PNG" border="0"
 														onclick="document.all.file1.click(); document.all.file2.value=document.all.file1.value">
 												</div>
 											</li>
@@ -924,7 +924,7 @@ dl {
 													<input type="file" name="file2" style="display: none;">
 													<input type="text" name="file2" id="file2"
 														style="display: none;"> <img
-														src="../share/img/photo-file.PNG" border="0"
+														src="/upload/img/photo-file.PNG" border="0"
 														onclick="document.all.file1.click(); document.all.file2.value=document.all.file1.value">
 												</div>
 											</li>
@@ -933,7 +933,7 @@ dl {
 													<input type="file" name="file2" style="display: none;">
 													<input type="text" name="file2" id="file2"
 														style="display: none;"> <img
-														src="../share/img/photo-file.PNG" border="0"
+														src="/upload/img//photo-file.PNG" border="0"
 														onclick="document.all.file1.click(); document.all.file2.value=document.all.file1.value">
 												</div>
 											</li>
@@ -947,7 +947,7 @@ dl {
 							<div class="photo-button">
 								<button type="button" id="review-submit">리뷰 등록</button>
 								<button type="button" id="review-all"
-									onclick="location.href='../community/photo_rv.jsp'">리뷰
+									onclick="location.href='${pageContext.request.contextPath}/community/photo_rv.jsp'">리뷰
 									전체보기</button>
 							</div>
 							<div class="prd-review">
@@ -1011,10 +1011,10 @@ dl {
 							<div class="qna-head">
 								<p class="qna-btn">
 									<button type="button"
-										onclick="location.href='../community/qna_wri.jsp'"
+										onclick="location.href='${pageContext.request.contextPath}/community/qna_wri.do'"
 										id="qna-write">상품문의하기</button>
 									<button type="button"
-										onclick="location.href='../community/qna.jsp'" id="qna-all">모두보기</button>
+										onclick="location.href='${pageContext.request.contextPath}/community/qna.do'" id="qna-all">모두보기</button>
 								</p>
 								<p class="nodata">게시물이 없습니다</p>
 							</div>
@@ -1029,9 +1029,9 @@ dl {
 		<!--- 소개 4인방 링크 -->
 		<hr />
 		<div class="etc">
-			<a href="etc/page_info1.html">회사소개</a> <a href="etc/page_info2.html">이용약관</a>
-			<a href="etc/page_info3.html">개인정보취급방침</a> <a
-				href="etc/page_info4.html">이용안내</a>
+			<a href="${pageContext.request.contextPath}/etc/page_info1.html">회사소개</a> <a href="${pageContext.request.contextPath}/etc/page_info2.html">이용약관</a>
+			<a href="${pageContext.request.contextPath}/etc/page_info3.html">개인정보취급방침</a> <a
+				href="${pageContext.request.contextPath}/etc/page_info4.html">이용안내</a>
 		</div>
 		<hr />
 		<div class="row">

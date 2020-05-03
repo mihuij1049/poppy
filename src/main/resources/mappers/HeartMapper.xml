@@ -35,7 +35,7 @@
     <select id="selectCountAll"
     	parameterType="kr.co.poppy.model.Heart"
     	resultType="int">
-        SELECT COUNT(heartno) FROM heart WHERE memno=#{memno};
+        SELECT COUNT(heartno) FROM heart WHERE goodsno=#{goodsno};
     </select>
 
     <!-- 데이터 저장을 위한 기능 정의 -->
