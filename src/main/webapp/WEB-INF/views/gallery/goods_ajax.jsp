@@ -402,13 +402,14 @@ table .quantity {
 .prd-review .writer {
 	color: #777;
 	font-size: 11px;
-	display: inline-block;
+	
+
 }
 
 .prd-review .writeDate {
 	color: #777;
 	font-size: 11px;
-	display: inline-block;
+
 }
 
 .prd-review .review-content {
@@ -419,6 +420,12 @@ table .quantity {
 
 dl {
 	margin-bottom: 15px;
+}
+
+.prd-review .star {
+    color: red;
+    font-size: 20px;
+    display: inline-block;
 }
 
 .box-left .editt {

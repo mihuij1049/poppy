@@ -9,8 +9,7 @@
 
 <head>
 <%@ include file="../share/head_tp.jsp"%>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/share/orderform.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/share/orderform.css" />
 
 <style type="text/css">
 </style>
@@ -22,7 +21,7 @@
 			<b>주문/결제</b>
 		</h4>
 	</div>
-	<div id="orderform" class="orderform">
+	<form id="orderform" class="orderform" target="_self" enctype="multipart/form-data" action="${pageContext.request.contextPath}/pay/orderform_ajax.do" method="GET">
 		<div class="panel-group" id="accordion" role="tablist"
 			aria-multiselectable="true">
 			<div class="panel panel-default">
@@ -49,9 +48,7 @@
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane fade active in" id="page1">
 								<div class="recent-address">
-									<form class="recents"
-										action="${pageContext.request.contextPath}/pay/orderform_ajax.do"
-										method="GET">
+									<div class="recents">
 										<div class="recent">
 											<strong class="name"><span id="delivery-info-name">${output.odname}</span></strong>
 											<p class="address">
@@ -62,21 +59,19 @@
 											<div class="phone">
 												<div id="delivery-info-phone">${output.odphone}</div>
 											</div>
-										</div>
-									</form>
+									
+									</div>
 									<span class="side-right">
 										<button type="button" id="recent-address-list">배송지 목록</button>
 									</span>
 								</div>
-								<form class="recent-addr" id="recent-addr"
-									style="display: none;"
-									action="${pageContext.request.contextPath}/pay/orderform_ajax.do"
-									method="GET">
+								<div class="recent-addr" id="recent-addr"
+									style="display: none;">
 									<h4 class="heading">배송지를 선택해주세요.</h4>
 									<span class="sideRight">
 										<button type="button" id="recent-close">닫기</button>
 									</span>
-								</form>
+								</div>
 
 								<div class="form-group">
 									<select id="selbox">
@@ -274,13 +269,11 @@
 			</div>
 			<div id="collapseThree" class="panel-collapse collapse"
 				role="tabpanel" aria-labelledby="headingThree">
-				<form class="panel-body"
-					action="${pageContext.request.contextPath}/pay/orderform_ajax.do"
-					method="GET">
+				<div class="panel-body">
 					<div class="discount clear">
 						<div class="dis-title">
 							<span class="head">적립금 할인</span> <span class="coupon"> (
-								적립금 : <span class="coupon-count">3000</span> )
+								적립금 : <span class="coupon-count">${input3.avpoint}원</span> )
 							</span>
 						</div>
 						<div class="discount-re">
@@ -295,7 +288,7 @@
 						<strong class="total-sum"> - <span id="totla-sale-price">0</span>원
 						</strong>
 					</div>
-				</form>
+				</div>
 			</div>
 		</div>
 		<div class="panel panel-default">
@@ -437,8 +430,8 @@
 				<li>최소 결제 가능 금액은 결제금액에서 배송비를 제외한 금액입니다.</li>
 			</ul>
 		</div>
-	</div>
-
+		</div>
+	</form>
 	<!-- 배송지 목록 조회 -->
 	<script id="recent_addr_tmpl" type="text/x-handlebars-template">
         {{#each item}}
@@ -475,9 +468,9 @@
 	<script
 		src="${pageContext.request.contextPath}/share/assets/js/bootstrap.min.js"></script>
 	<script
-		src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script
 		src="${pageContext.request.contextPath}/share/plugins/handlebars/handlebars-v4.0.5.js"></script>
+	<script
+		src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript">
 		var element_wrap = document.getElementById('wrap');
 

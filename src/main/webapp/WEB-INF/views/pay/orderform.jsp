@@ -7,7 +7,20 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<%@ include file="../share/head_tp.jsp"%>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>Poppy-Poppy</title>
+<!-- 모바일 웹 페이지 설정 -->
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/share/assets/ico/favicon.png" />
+<link rel="apple-touch-icon-precomposed"
+	href="${pageContext.request.contextPath}/share/assets/ico/apple-touch-icon-144-precomposed.png" />
+<!-- bootstrap -->
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/share/assets/css/bootstrap.min.css" />
+<!-- 나눔고딕 웹 폰트 적용 -->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/share/assets/css/nanumfont.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/share/orderform.css" />
 
 <style type="text/css">
@@ -20,7 +33,7 @@
 			<b>주문/결제</b>
 		</h4>
 	</div>
-	<form id="orderform" class="orderform" action="${pageContext.request.contextPath}/pay/orderform_ajax.do" method="GET">
+	<form id="orderform" class="orderform" action="${pageContext.request.contextPath}/pay/orderform_ajax.do" method="GET" target="_self" enctype="multipart/form-data">
 		<div class="panel-group" id="accordion" role="tablist"
 			aria-multiselectable="true">
 			<div class="panel panel-default">
@@ -29,7 +42,7 @@
 						<a data-toggle="collapse" data-parent="#accordion"
 							href="#collapseOne" aria-expanded="true"
 							aria-controls="collapseOne"> <b>배송지</b> <img
-							src="../share/img/arrow-down.png" align=right
+							src="/upload/img/arrow-down.png" align=right
 							class="arrow-down1 icon-rotate1">
 						</a>
 					</h4>
@@ -186,7 +199,7 @@
 							data-parent="#accordion" href="#collapseTwo"
 							aria-expanded="false" aria-controls="collapseTwo"> <b>주문상품</b>
 							<span id="arrow-down"> <img
-								src="../share/img/arrow-down.png" align=right
+								src="/upload/img/arrow-down.png" align=right
 								class="arrow-down2 icon-rotate2">
 						</span>
 						</a>
@@ -259,7 +272,7 @@
 							data-parent="#accordion" href="#collapseThree"
 							aria-expanded="false" aria-controls="collapseThree"> <b>할인/부가결제</b>
 							<span id="arrow-down"> <img
-								src="../share/img/arrow-down.png" align=right
+								src="/upload/img/arrow-down.png" align=right
 								class="arrow-down3 icon-rotate3">
 						</span>
 						</a>
@@ -296,7 +309,7 @@
 							data-parent="#accordion" href="#collapseFour"
 							aria-expanded="false" aria-controls="collapseFour"> <b>결제정보</b>
 							<span id="arrow-down"> <img
-								src="../share/img/arrow-down.png" align=right
+								src="/upload/img/arrow-down.png" align=right
 								class="arrow-down4 icon-rotate4">
 						</span>
 						</a>
@@ -340,7 +353,7 @@
 							data-parent="#accordion" href="#collapseFive"
 							aria-expanded="false" aria-controls="collapseFive"> <b>결제수단</b>
 							<span id="arrow-down"> <img
-								src="../share/img/arrow-down.png" align=right
+								src="/upload/img/arrow-down.png" align=right
 								class="arrow-down5 icon-rotate5">
 						</span>
 						</a>
@@ -384,7 +397,7 @@
 							data-parent="#accordion" href="#collapseSix"
 							aria-expanded="false" aria-controls="collapseSix"> <b>적립
 								혜택</b> <span id="arrow-down"> <img
-								src="../share/img/arrow-down.png" align=right
+								src="/upload/img/arrow-down.png" align=right
 								class="arrow-down6 icon-rotate6">
 						</span>
 						</a>

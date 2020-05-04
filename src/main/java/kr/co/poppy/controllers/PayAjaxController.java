@@ -2,6 +2,8 @@ package kr.co.poppy.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -14,11 +16,14 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Address;
+import kr.co.poppy.model.Members;
 import kr.co.poppy.model.Points;
 import kr.co.poppy.service.AddressService;
 import kr.co.poppy.service.OrdersService;
 import kr.co.poppy.service.PointsService;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 public class PayAjaxController {
 
@@ -43,28 +48,25 @@ public class PayAjaxController {
 	
 	/** 주소 목록페이지 */
 	@RequestMapping(value = "/pay/orderform_ajax.do", method = RequestMethod.GET)
-	public ModelAndView addrList(Model model,
-			@RequestParam(value = "memno", defaultValue = "1") int memno) {
+	public ModelAndView addrList(Model model) {
 
-		/** 유효성 검사 */
-		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
-		if (memno == 0) {
-			return webHelper.redirect(null, "회원번호가 없습니다.");
-		}
-
+		// 세션 객체를 이용하여 저장된 세션값 얻기
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+	
 		/** 데이터 조회하기 */
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
 		Address input = new Address();
 		Address input2 = new Address();
-		input.setMemno(memno);
-		input2.setMemno(memno);
+		input.setMemno(myInfo.getMemno());
+		input2.setMemno(myInfo.getMemno());
 		
 		// 조회결과를 저장할 객체 선언
 		Address output = null;
 		List<Address> output2 = null;
 		
 		Points input3 = new Points();
-		input3.setMemno(memno);
+		input3.setMemno(myInfo.getMemno());
 		
 		List<Points> output3 = null;
 
@@ -76,11 +78,31 @@ public class PayAjaxController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
+		
+		/** 조회된 List객체에서 적립금 총합 구하기 */
+		int sumAvpoint = 0;
+		
+		for (int i = 0; i < output3.size(); i++) {
+			Points temp = null;
+			temp = output3.get(i);
+			if (temp.getAvpoint() == null) {
+				temp.setAvpoint(0);
+			}
+			sumAvpoint += temp.getAvpoint();
+			
+		}
+		
+		input3.setAvpoint(sumAvpoint);
+
+		// 세션에도 정보 담기
+		myInfo.setSumAvpoint(sumAvpoint);
+
+		mySession.setAttribute("userInfo", myInfo);
 
 		/** View 처리 */
 		model.addAttribute("output", output);
 		model.addAttribute("item", output2);
-		model.addAttribute("output3", output3);
+		model.addAttribute("input3", input3);
 		return new ModelAndView("pay/orderform_ajax");
 	}
 

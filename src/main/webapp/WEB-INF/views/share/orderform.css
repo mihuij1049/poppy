@@ -1,3 +1,4 @@
+@charset "UTF-8";
  html,
  body {
      padding: 0;
@@ -608,8 +609,9 @@
  }
 
  .discount-re .btn {
+     outline: 0;
      float: right;
-     color: #FF8F83;
+     color: #ffffff;
      border: 1px solid #FF8F83;
  }
 
