@@ -20,7 +20,9 @@
 			<h4>
 				<b> <a href="#" onclick="history.back(); return false;"><i
 						class="glyphicon glyphicon-chevron-left"></i></a>
-						${Cate1}
+						<c:forEach var="item" items="${output}" varStatus="status" end="0">
+							${item.cate1}
+						</c:forEach>
 				</b>
 			</h4>
 		</div>
@@ -65,7 +67,6 @@
 				</div>
 				</c:forEach>
 			</div>
-			
 			<div class="text-center">
 				<ul class="pagination pagination-sm">
 					<li class="disabled"><a href="#">&laquo;</a></li>

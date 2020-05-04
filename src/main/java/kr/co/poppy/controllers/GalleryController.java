@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.poppy.helper.PageData;
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
+import kr.co.poppy.model.Bbs;
 import kr.co.poppy.model.Goods;
 import kr.co.poppy.model.Imgs;
 import kr.co.poppy.service.GoodsService;
@@ -35,7 +37,6 @@ public class GalleryController {
 	@RequestMapping(value="/gallery/gal_list.do", method=RequestMethod.GET)
 	public ModelAndView gallist(Model model,
 			@RequestParam(value="cate1", required=false) String cate1) {
-		
 		// 2) 데이터 조회
 		// 굿즈데이터조회
 		Goods input = new Goods();
@@ -47,6 +48,7 @@ public class GalleryController {
 		try {
 			// 데이터조회
 			output = goodsService.getGoodsList(input);
+			
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}

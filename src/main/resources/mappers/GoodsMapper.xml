@@ -57,8 +57,9 @@
 	<select id="selectCountAll"
 		parameterType="kr.co.poppy.model.Goods" resultType="int">
 		SELECT COUNT(*)
-		FROM goods
-		WHERE cate1=#{cate1}
+		from goods g
+		INNER JOIN imgs i on g.goodsno = i.goodsno
+		WHERE i.imgtype="A" AND g.cate1=${cate1};
 	</select>
 
 	<!-- 정렬방식에 따른 조회 기능 정의 -->

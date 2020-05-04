@@ -178,68 +178,21 @@
 					id="glyp_list"></i>
 				<h3 id="sale_h3">TIME SALE</h3>
 			</center>
-			<div class="gal_best_main">		
-				
-				<div class="gal_best">
-				<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
-					<div class="gal_sug_img">
-						<img src="/upload/img/index_gal_img1.jpg" id="img_sug">
+			<div class="gal_best_main">
+			<!-- jstl 반복문 시작 -->
+				<c:forEach var="item" items="${output}" varStatus="status">
+					<div class="gal_best">
+					<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
+						<div class="gal_sug_img">
+							<img src="${item.imgpath}${item.imgname}.jpg" id="img_sug">
+						</div>
+						<span class="sal_name">${item.gname}</span>
+						</a>
+						<hr />
+						${item.gprice}<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
 					</div>
-					<span class="sal_name">강아지간식</span>
-					</a>
-					<hr />
-					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
-				</div>
-				<div class="gal_best">
-				<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
-					<div class="gal_sug_img">
-						<img src="/upload/img/index_gal_img2.jpg" id="img_sug">
-					</div>
-					<span class="sal_name">강아지간식</span>
-					</a>
-					<hr />
-					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
-				</div>
-				<div class="gal_best">
-				<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
-					<div class="gal_sug_img">
-						<img src="/upload/img/index_gal_img3.jpg" id="img_sug">
-					</div>
-					<span class="sal_name">강아지간식</span>
-					</a>
-					<hr />
-					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
-				</div>
-				<div class="gal_best">
-				<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
-					<div class="gal_sug_img">
-						<img src="/upload/img/index_gal_img1.jpg" id="img_sug">
-					</div>
-					<span class="sal_name">강아지간식</span>
-					</a>
-					<hr />
-					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
-				</div>
-				<div class="gal_best">
-				<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
-					<div class="gal_sug_img">
-						<img src="/upload/img/index_gal_img2.jpg" id="img_sug">
-					</div>
-					<span class="sal_name">강아지간식</span>
-					</a>
-					<hr />
-					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
-				</div>
-				<div class="gal_best">
-				<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
-					<div class="gal_sug_img">
-						<img src="/upload/img/index_gal_img3.jpg" id="img_sug">
-					</div>
-					<span class="sal_name">강아지간식</span>
-					</a>
-					<hr />
-					5,400원<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
-				</div>
+				</c:forEach>
+			<!-- jstl 반복문 끝 -->
 				<button type="button" class="btn btn-inverse index_btn"
 					onclick="location.href='${pageContext.request.contextPath }/gallery/gal_list.do'">뽀삐뽀삐 단독
 					최저가 보장</button>
