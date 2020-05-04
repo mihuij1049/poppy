@@ -10,7 +10,8 @@
 
 <head>
 <%@ include file="../share/head_tp.jsp"%>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/share/article.css" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/share/article.css" />
 
 </head>
 
@@ -19,29 +20,16 @@
 	<div class="content">
 		<!-- 여기에 작성 -->
 		<div class="container">
-		
+
 			<div class="page-title clearfix">
 
 				<h4>
-					<b> 
-					<a href="#" onclick="history.back(); return false;"><i
-							class="glyphicon glyphicon-chevron-left"></i></a> 
-							${output.bbstype }
-   							</b>
+					<b> <a href="#" onclick="history.back(); return false;"><i
+							class="glyphicon glyphicon-chevron-left"></i></a> ${output.bbstype }
+					</b>
 				</h4>
 
 			</div>
-			<div class="subject">
-				<b id="title">${output.bbstitle}</b><br> <small id="user_name">${output.username}
-					| <span id="wri_date">${output.regdate}</span> | 조회<span id="hit">215</span>
-				</small>
-				<div class="editbuttons">
-					<button type="submit" class="btn btn-sm btn-edit">수정</button>
-					<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
-				</div>
-			</div>
-
-			<hr>
 			<div class="nai">
 				<p id="main_text">${output.bbscontent}</p>
 			</div>
@@ -54,49 +42,45 @@
 				<div class="list-subject">
 					<b style="color: white;">댓글목록</b>
 				</div>
-				
-				<div class="comment-nai">
-					<div class="memory">
-						<small class="small"><span>김** | </span><span>20.02.03</span></small><br />
-						<span class="span">할인 많이 해주세요!!</span><br />
-					</div>
-					<div class="button2">
-						<button type="submit" class="btn btn-sm btn-edit">수정</button>
-						<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
-					</div>
-				</div>
-				<div class="comment-nai">
-					<div class="memory">
-						<small class="small"><span>최** | </span><span>20.02.07</span></small><br />
-						<span class="span">매일 놀러올게요>_ <</span> <br />
-					</div>
-					<div class="button2">
-						<button type="submit" class="btn btn-sm btn-edit">수정</button>
-						<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
-					</div>
-				</div>
-				<div class="comment-nai">
-					<div class="memory">
-						<small class="small"><span>이** | </span><span>20.02.10</span></small><br />
-						<span class="span">맛난 개껌 많이 팔아주세여~!</span><br />
-					</div>
-					<div class="button2">
-						<button type="submit" class="btn btn-sm btn-edit">수정</button>
-						<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
-					</div>
-				</div>
-				<div class="comment-nai">
-					<div class="memory">
-						<small class="small"><span>박** | </span><span>20.02.015</span></small><br />
-						<span class="span">번창하세용^___^</span><br />
-					</div>
-					<div class="button2">
-						<button type="submit" class="btn btn-sm btn-edit">수정</button>
-						<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
-					</div>
-				</div>
+				<table class="table">
+					<tbody>
+						<c:choose>
+							<%-- 조회결과가 없는 경우 --%>
+							<c:when test="${output2 == null || fn:length(output2) == 0}">
+								<tr>
+									<td colspan="9" align="center">조회결과가 없습니다.</td>
+								</tr>
+							</c:when>
+							<%-- 조회결과가 있는  경우 --%>
+							<c:otherwise>
+								<%-- 조회 결과에 따른 반복 처리 --%>
+								<c:forEach var="item" items="${output2}" varStatus="status">
+									<%-- 출력을 위해 준비한 변수 --%>
+									<c:set var="cmtno" value="${item.cmtno}" />
+									<%-- 상세페이지로 이동하기 위한 URL --%>
+									<c:url value="/community/article.do" var="viewUrl">
+										<c:param name="cmtno" value="${item.cmtno}" />
+										<c:param name="bbsno" value="${item.bbsno}" />
+									</c:url>
+									<tr class="comment-nai">
+										<td class="menory">
+										<small class="small"><span>${item.username} | </span><span>${item.regdate}</span></small>
+										</td>
+										<td>
+										<span class="span">${item.cmtcontent}</span><br />
+										</td>
+										<td class="editbuttons">
+											<button type="submit" class="btn btn-sm btn-edit">수정</button>
+											<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
+										</td>
+									</tr>
+									<hr />
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
 			</div>
-
 			<div class="comment-ana" id="comment-ana">
 				<small>회원에게만 댓글권한이 있습니다.</small>
 			</div>
@@ -120,9 +104,9 @@
 		<div class="next">
 			<p>
 				<b>다음글&nbsp;&nbsp;&nbsp;</b> <span><a href="#">신규 회원가입 고객
-						혜택안내</span>
+						혜택안내</a></span>
 			</p>
-			</a>
+
 		</div>
 		<!--   비밀번호 입력 모달 ------------------------->
 		<div class="customer_pass" id="customer_pass">

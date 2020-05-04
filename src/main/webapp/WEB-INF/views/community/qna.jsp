@@ -19,7 +19,7 @@
 		<div class="page-title clearfix">
 			<h4>
 				<b> <a href="#" onclick="history.back(); return false;"><i
-						class="glyphicon glyphicon-chevron-left"></i></a> Q&A
+						class="glyphicon glyphicon-chevron-left"></i></a>QnA
 				</b>
 			</h4>
 		</div>

@@ -3,6 +3,7 @@ package kr.co.poppy.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,8 +32,13 @@ public class CommunityController {
 	/** Serivce 패턴 구현체 주입 */
 	@Autowired
 	BbsService bbsService;
+	
 	@Autowired
 	CommentsService commentsService;
+	
+	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
+	@Value("#{servletContext.contextPath}")
+	String contextPath;
 
 	/** article */
 	@RequestMapping(value = "/community/article.do", method = RequestMethod.GET)
@@ -223,29 +229,35 @@ public class CommunityController {
 
 	/** 코멘트 다중행 조회 */
 	@RequestMapping(value = "/community/comments.do", method = RequestMethod.GET)
-	public ModelAndView listcomments(Model model, @RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
+	public ModelAndView listcomments(Model model, 
+			@RequestParam(value = "cmtno", defaultValue = "1") int cmtno,
+			@RequestParam(value = "bbsno", defaultValue = "1") int bbsno) {
 
 		/** 1) 유효성 검사 */
 		if (bbsno == 0) {
 			return webHelper.redirect(null, "게시글이 없습니다.");
 		}
+		if (cmtno==0) {
+			return webHelper.redirect(null, "댓글이 없습니다.");
+		}
 
 		/** 2) 데이터 조회하기 */
 		Comments input = new Comments();
+		input.setCmtno(cmtno);
 		input.setBbsno(bbsno);
 
 		// 조회 결과가 저장될 객체
-		List<Comments> output = null;
+		List<Comments> output2 = null;
 
 		try {
 			// 데이터 조회하기
-			output = commentsService.getCommentsList(input);
+			output2 = commentsService.getCommentsList(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
 		/** 3) view 처리 */
-		model.addAttribute("output", output);
+		model.addAttribute("output2", output2);
 		return new ModelAndView("community/article");
 	}
 

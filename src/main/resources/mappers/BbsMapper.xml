@@ -34,7 +34,6 @@
 		WHERE bbstype=#{bbstype} and bbsno=#{bbsno}
 	</select>
 
-
 	<!-- 다중행 조회를 위한 기능 정의 -->
 	<!-- QNA / 포토리뷰 글 목록 페이지 -->
 	<select id="selectList" parameterType="kr.co.poppy.model.Bbs"

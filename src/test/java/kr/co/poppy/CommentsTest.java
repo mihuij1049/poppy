@@ -1,5 +1,7 @@
 package kr.co.poppy;
 
+import java.util.Calendar;
+
 import org.apache.ibatis.session.SqlSession;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -27,10 +29,15 @@ import kr.co.poppy.model.Comments;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
 public class CommentsTest {
-    /** MyBatis의 SQL 세션 주입 설정 */
+	/** MyBatis의 SQL세션 주입 설정 */
     // import org.springframework.beans.factory.annotation.Autowired;
     @Autowired
     private SqlSession sqlSession;
+
+    Calendar c = Calendar.getInstance();
+	String date = String.format("%04d-%02d-%02d %02d:%02d:%02d", c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1,
+			c.get(Calendar.DAY_OF_MONTH), c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE), c.get(Calendar.SECOND));
+
 
     /** 단일행 조회 테스트 */
     @Test
@@ -43,7 +50,9 @@ public class CommentsTest {
     /** 다중행 조회 테스트 */
     @Test
     public void testB() {
-        sqlSession.selectList("CommentsMapper.selectList", null);
+    	Comments input = new Comments();
+    	input.setBbsno(1);
+        sqlSession.selectList("CommentsMapper.selectList", input);
     }
 
     /** 데이터 저장 테스트 */
