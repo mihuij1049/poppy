@@ -70,7 +70,7 @@ public class PointsServiceImpl implements PointsService {
 	public List<Points> getPointsMbList(Points input) throws Exception {
 		List<Points> output = null;
 		try {
-			output = sqlSession.selectList("PointsMapper.select_members_avlist", input);
+			output = sqlSession.selectList("PointsMapper.select_members_list", input);
 			if (output == null) {
 				throw new NullPointerException("output=null");
 			}
@@ -92,7 +92,7 @@ public class PointsServiceImpl implements PointsService {
 	public List<Points> getPointsMbAvList(Points input) throws Exception {
 		List<Points> output = null;
 		try {
-			output = sqlSession.selectList("PointsMapper.select_members_list", input);
+			output = sqlSession.selectList("PointsMapper.select_members_avlist", input);
 			if (output == null) {
 				throw new NullPointerException("output=null");
 			}

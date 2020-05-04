@@ -114,13 +114,13 @@
 			<div class="point clearfix">
 				<div class="point-header">적립금</div>
 				<div class="point-sub">총 적립금</div>
-				<div class="point-save">3,000원</div>
+				<div class="point-save">${myInfo.sumAvpoint+myInfo.sumNapoint }원</div>
 				<div class="point-sub">사용가능 적립금</div>
-				<div class="point-save">3,000원</div>
+				<div class="point-save">${myInfo.sumAvpoint }원</div>
 				<div class="point-sub">사용된 적립금</div>
-				<div class="point-save">0원</div>
+				<div class="point-save">${myInfo.sumUsedpoint }원</div>
 				<div class="point-sub">미가용 적립금</div>
-				<div class="point-save">0원</div>
+				<div class="point-save">${myInfo.sumNapoint }원</div>
 				<div class="point-sub">환불예정 적립금</div>
 				<div class="point-save">0원</div>
 			</div>
@@ -134,7 +134,7 @@
 					<div class="point-list-link">></div>
 				</div>
 				<div class="point-link" onclick="location.href='${pageContext.request.contextPath}/myInfoplist_grd.do'">
-					<div class="point-list-item">회원등급 적립내역</div>
+					<div class="point-list-item">적립금 사용내역</div>
 					<div class="point-list-link">></div>
 				</div>
 			</div>

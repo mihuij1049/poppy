@@ -10,6 +10,8 @@ public class Points {
 	private Integer avpoint;
 	// 미가용 적립금
 	private Integer napoint;
+	// 사용한 적립금
+	private Integer usedpoint;
 	// 포인트 적립내용
 	private String pointtype;
 	// 등록일시

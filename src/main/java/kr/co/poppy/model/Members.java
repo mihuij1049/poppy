@@ -29,6 +29,13 @@ public class Members {
 	/** 최종변경일시 */
 	private String editdate;
 		
-	// JOIN 절에 따른 추가 컬럼
-		
+	//  ( 세션 저장을 위한 추가 변수 선언 )
+	/** 총 가용 적립금 */
+	private int sumAvpoint;
+	
+	/** 총 미가용 적립금 */
+	private int sumNapoint;
+	
+	/** 총 사용된 적립금 */
+	private int sumUsedpoint;
 }

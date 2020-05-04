@@ -49,74 +49,84 @@ public class MyInfoController {
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 
-	@RequestMapping(value = "/myInfo/myinfo.do", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/myInfo/myinfo.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView myinfo(Model model) {
-		
+
 		// 세션 객체를 이용하여 저장된 세션값 얻기
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
-		
-		
-		
-		/** 1) 각종 정보 조회를 위한 Beans 생성  */
+
+		/** 1) 각종 정보 조회를 위한 Beans 생성 */
 		// 적립금 조회를 위한 빈즈
 		Points myPoint = new Points();
 		myPoint.setMemno(myInfo.getMemno());
 		// 조회 결과를 담을 List 객체 선언
 		List<Points> pointList = null;
-		
+
 		// 배송 상태를 조회할 빈즈
 		Orders myOrder = new Orders();
 		myOrder.setMemno(myInfo.getMemno());
 		// 조회 결과를 담을 List 객체 선언
 		List<Orders> orderList = null;
-		
-		/** 2) 정보 조회하기  */ 
+
+		/** 2) 정보 조회하기 */
 		try {
 			// 적립금 조회 리스트
-			pointList = pointsService.getPointsMbList(myPoint); 
+			pointList = pointsService.getPointsMbList(myPoint);
 			// 주문내역 조회 리스트
 			orderList = orderService.getOrdersList(myOrder);
-			
+
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-		
+
 		/** 3) 조회된 List객체에서 적립금 총합 구하기 */
 		int sumAvpoint = 0;
 		int sumNapoint = 0;
-		
-		for (int i=0; i<pointList.size(); i++) {
+		int sumUsedpoint = 0;
+
+		for (int i = 0; i < pointList.size(); i++) {
 			Points temp = null;
 			temp = pointList.get(i);
-			if(temp.getAvpoint()==null) {
+			if (temp.getAvpoint() == null) {
 				temp.setAvpoint(0);
 			}
-			sumAvpoint+=temp.getAvpoint();
-			if(temp.getNapoint()==null) {
+			sumAvpoint += temp.getAvpoint();
+			if (temp.getNapoint() == null) {
 				temp.setNapoint(0);
 			}
-			sumNapoint+=temp.getNapoint();
+			sumNapoint += temp.getNapoint();
+			if (temp.getUsedpoint() == null) {
+				temp.setUsedpoint(0);
+			}
+			sumUsedpoint += temp.getUsedpoint();
 		}
 		myPoint.setAvpoint(sumAvpoint);
 		myPoint.setNapoint(sumNapoint);
-		
+		myPoint.setUsedpoint(sumUsedpoint);
+		// 세션에도 정보 담기
+		myInfo.setSumAvpoint(sumAvpoint);
+		myInfo.setSumNapoint(sumNapoint);
+		myInfo.setSumUsedpoint(sumUsedpoint);
+
+		mySession.setAttribute("userInfo", myInfo);
+
 		/** 4) 조회된 List 객체에서 주문 상태별로 나누기 */
 		int status0 = 0;
 		int status1 = 0;
 		int status2 = 0;
 		int status3 = 0;
-		
-		for (int i=0; i<orderList.size(); i++) {
+
+		for (int i = 0; i < orderList.size(); i++) {
 			Orders temp = null;
 			temp = orderList.get(i);
-			if(temp.getOdstatus().equals("0")) {
+			if (temp.getOdstatus().equals("0")) {
 				status0++;
-			} else if(temp.getOdstatus().equals("1")) {
+			} else if (temp.getOdstatus().equals("1")) {
 				status1++;
-			} else if(temp.getOdstatus().equals("2")) {
+			} else if (temp.getOdstatus().equals("2")) {
 				status2++;
-			} else if(temp.getOdstatus().equals("3")) {
+			} else if (temp.getOdstatus().equals("3")) {
 				status3++;
 			}
 		}
@@ -125,8 +135,8 @@ public class MyInfoController {
 		String odstatus1 = "" + status1;
 		String odstatus2 = "" + status2;
 		String odstatus3 = "" + status3;
-		
-		/** 뷰에 데이터 전달  */
+
+		/** 뷰에 데이터 전달 */
 		// 적립금 정보를 담은 Beans
 		model.addAttribute("myPoint", myPoint);
 		// 주문상태를 담은 String객체
@@ -134,7 +144,7 @@ public class MyInfoController {
 		model.addAttribute("status1", odstatus1);
 		model.addAttribute("status2", odstatus2);
 		model.addAttribute("status3", odstatus3);
-		
+
 		return new ModelAndView("myInfo/myinfo");
 	}
 
@@ -154,8 +164,14 @@ public class MyInfoController {
 	}
 
 	@RequestMapping(value = "/myInfo/point.do", method = RequestMethod.GET)
-	public String point() {
-		return "myInfo/point";
+	public ModelAndView point(Model model) {
+		// 세션 객체를 이용하여 저장된 세션값 얻기
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+		
+		model.addAttribute("myInfo", myInfo);
+		
+		return new ModelAndView("myInfo/point");
 	}
 
 	@RequestMapping(value = "/myInfo/plist_nota.do", method = RequestMethod.GET)

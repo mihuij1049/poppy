@@ -23,8 +23,8 @@
 	<insert id="add_points"
 			parameterType="kr.co.poppy.model.Points"
 			useGeneratedKeys="true" keyProperty="pointno">
-			INSERT INTO points (avpoint, napoint, pointtype, regdate, editdate, memno, orderno)
-				VALUES (#{avpoint}, #{napoint}, #{pointtype}, #{regdate}, #{editdate}, #{memno}, #{orderno} )
+			INSERT INTO points (avpoint, napoint, usedpoint, pointtype, regdate, editdate, memno, orderno)
+				VALUES (#{avpoint}, #{napoint}, #{usedpoint}, #{pointtype}, #{regdate}, #{editdate}, #{memno}, #{orderno} )
 	</insert>
 	
 	<!-- 시간이 지나고 미가용 -> 가용으로 갱신 ** 추후 수정 필요 ** -->
@@ -36,7 +36,7 @@
 	<!-- 회원이 적립금을 사용했을 때의 업데이트 (삭제 대용)  -->
 	<update id="edit_use_points"
 			parameterType="kr.co.poppy.model.Points">
-		UPDATE points SET avpoint=#{avpoint}, editdate=#{editdate} WHERE pointno=#{pointno}
+		UPDATE points SET avpoint=#{avpoint}, usedpoint=#{usedpoint} ,editdate=#{editdate} WHERE pointno=#{pointno}
 	</update>
 	
 	<!-- 구매 상품의 적립금 표시를 위한 단일행 조회 -->
