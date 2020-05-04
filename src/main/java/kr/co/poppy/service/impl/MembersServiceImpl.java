@@ -104,6 +104,29 @@ public class MembersServiceImpl implements MembersService {
 		}
 		return output;
 	}
+	
+	/** 회원 정보 조회 임시비밀번호 수정 기능
+	 * @Param  회원의 이름(username)과 아이디(userid) 이메일(useremail)을 담고 있는 Beans
+	 * @return int
+	 */
+
+	@Override
+	public int editPwMembers(Members input) throws Exception {
+		int result = 0;
+		try  {
+			result = sqlSession.update("MembersMapper.editPw_members", input);
+			if(result==0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+		return result;
+	}
 
 	/** 회원 정보 수정
 	 * @Param  회원의 일련번호를 담고 있는 Beans

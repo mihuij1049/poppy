@@ -34,6 +34,13 @@ public interface MembersService {
 	 */
 	public Members findIdMembers(Members input) throws Exception;
 	
+	/** 회원 정보 조회 임시비밀번호 수정 기능
+	 * @Param  회원의 이름(username)과 아이디(userid) 이메일(useremail)을 담고 있는 Beans
+	 * @return int
+	 * @throws Exception
+	 */
+	public int editPwMembers(Members input) throws Exception;
+	
 	/** 회원 정보 수정하기
 	 * 
 	 * @Param 회원의 수정된 정보가 담긴 Beans 객체

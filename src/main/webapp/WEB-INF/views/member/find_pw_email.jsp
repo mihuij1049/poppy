@@ -25,18 +25,23 @@
 			</h4>
 		</div>
 		<div class="info">
-			<b>이 &nbsp;름</b><span class="info-name">김뽀삐</span><br> <b>이메일</b><span
-				class="info-email">abc123@naver.com</span>
+			<b>이 &nbsp;름</b><span class="info-name">${output.username }</span><br> <b>이메일</b><span
+				class="info-email">${output.useremail }</span>
 		</div>
 		<div class=id>
-			<input type="radio" value="id"><span class="id-info"><b>abc123</b></span>
-			&nbsp;(개인회원, 2020-02-12 가입)
+			<input type="radio" value="id"><span class="id-info"><b>${output.userid }</b></span>
+			&nbsp;(개인회원, ${output.regdate } 가입)
 		</div>
 	</div>
 	<div class="btn-goimail-div">
-	
-			<button type="button" class="btn btn-goimail" onclick="location.href='${pageContext.request.contextPath}/member/find_pw_ok.do'">임시 비밀번호 이메일로
+	        <form id="find_pw_email" method="post" action="${pageContext.request.contextPath}/member/find_pw_ok.do">
+	        <input type="hidden" name="user_name" value="${output.username }" />
+	        <input type="hidden" name="user_id" value="${output.userid }" />
+	        <input type="hidden" name="user_email" value="${output.useremail }" />
+	        <button type="submit" class="btn btn-goimail">임시 비밀번호 이메일로
 				전송</button>
+			</form>
+			
 	</div>
 
 	<%@ include file="../share/bottom_tp.jsp"%>

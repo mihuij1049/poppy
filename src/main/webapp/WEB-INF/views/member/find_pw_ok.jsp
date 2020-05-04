@@ -31,8 +31,8 @@
 				</p>
 			</div>
 			<div class="info">
-				<b>아이디</b><span class="info-name">bbobikim</span><br> <b>이메일</b><span
-					class="info-email">abc123@naver.com</span>
+				<b>아이디</b><span class="info-name">${output.userid }</span><br> <b>이메일</b><span
+					class="info-email">${output.useremail }</span>
 			</div>
 		</div>
 		<div class="btn-login-div">

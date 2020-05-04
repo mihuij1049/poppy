@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.poppy.helper.MailHelper;
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Agree;
@@ -29,7 +30,11 @@ public class MemberController {
 	/** RegexHelper 주입 */
 	@Autowired
 	RegexHelper regexHelper;
-
+	
+	/** RegexHelper 주입 */
+	@Autowired
+	MailHelper mailHelper;
+	
 	/** Serivce 패턴 구현체 주입 */
 	@Autowired
 	MembersService membersService;
@@ -98,7 +103,7 @@ public class MemberController {
 
 		/** 1) 유효성 검사 */
 		if (username == null) {
-			return webHelper.redirect(null, "아이디를 입력하세요.");
+			return webHelper.redirect(null, "이름을 입력하세요.");
 		}
 		if (useremail == null) {
 			return webHelper.redirect(null, "비밀번호를 입력하세요.");
@@ -123,22 +128,105 @@ public class MemberController {
 		return new ModelAndView("member/find_id_ok");
 	}
 
-	/** find_pw_email.jsp */
-	@RequestMapping(value = "/member/find_pw_email.do", method = RequestMethod.POST)
-	public String find_pw_email() {
-		return "member/find_pw_email";
-	}
-
-	/** find_pw_ok.jsp */
-	@RequestMapping(value = "/member/find_pw_ok.do", method = RequestMethod.GET)
-	public String find_pw_ok() {
-		return "member/find_pw_ok";
-	}
-
 	/** find_pw.jsp */
 	@RequestMapping(value = "/member/find_pw.do", method = RequestMethod.GET)
 	public String find_pw() {
 		return "member/find_pw";
+	}
+	
+	/** find_pw_email.jsp */
+	@RequestMapping(value = "/member/find_pw_email.do", method = RequestMethod.POST)
+	public ModelAndView find_pw_email(Model model,
+			@RequestParam(value="user_name", required=true) String username,
+			@RequestParam(value="user_id", required=true) String userid,
+			@RequestParam(value="user_email", required=true) String useremail) {
+		
+		/** 1) 유효성 검사 */
+		if (username == null) {
+			return webHelper.redirect(null, "이름을 입력하세요.");
+		}
+		if (userid == null) {
+			return webHelper.redirect(null, "아이디를 입력하세요.");
+		}
+		if (useremail == null) {
+			return webHelper.redirect(null, "이메일을 입력하세요.");
+		}
+		
+		/** 2) 데이터 조회하기 */
+		Members input = new Members();
+		input.setUsername(username);
+		input.setUserid(userid);
+		input.setUseremail(useremail);
+
+		// 조회한 데이터를 담을 Beans 선언
+		Members output = null;
+
+		try {
+			// 데이터 조회
+			output = membersService.findIdMembers(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, "가입된 회원 정보가 없습니다.");
+		}
+
+		model.addAttribute("output", output);
+		
+		return new ModelAndView("member/find_pw_email");
+	}
+	
+	/** find_pw_ok.jsp */
+	@RequestMapping(value = "/member/find_pw_ok.do", method = RequestMethod.POST)
+	public ModelAndView find_pw_ok(Model model,
+			@RequestParam(value="user_name", required=true) String username,
+			@RequestParam(value="user_id", required=true) String userid,
+			@RequestParam(value="user_email", required=true) String useremail) {
+		
+		/** 1) 유효성 검사 */
+		if (userid == null) {
+			return webHelper.redirect(null, "아이디를 입력하세요.");
+		}
+		if (useremail == null) {
+			return webHelper.redirect(null, "이메일을 입력하세요.");
+		}
+		
+		/** 2) 임시비밀 번호 메일 발송하기  */
+		// 임시 비밀번호 생성
+		int randomNum = (int)((Math.random() * (999999-1+1) + 1));
+		String randomPw = String.format("%06d", randomNum);
+		// 임시 비밀번호로 DB 수정하기
+		Members input = new Members();
+		input.setUserpw(randomPw);
+		input.setUsername(username);
+		input.setUserid(userid);
+		input.setUseremail(useremail);
+		
+		try {
+			membersService.editPwMembers(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, "가입된 회원 정보가 없습니다.");
+		}
+		
+		// 메일 발송 변수 설정 -> 받는사람(receiver), 제목(subject), 내용(content)
+		String receiver = useremail;
+		String subject = "뽀삐뽀삐 쇼핑몰에서 발송된 임시비밀번호 입니다.";
+		String content = username + " 님의 뽀삐뽀삐 쇼핑몰 아이디=" + userid + "<br><br>" 
+						+ "임시비밀번호는 " + "<b>" + randomPw +"</b>"+ " 변경되었습니다.";
+		
+		try {
+			mailHelper.sendMail(receiver, subject, content);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return webHelper.redirect(null, "메일 발송에 실패했습니다.");
+		}
+		
+		/** 3) View에 전달할 Beans */
+		// input 객체의 정보로 전달해도되지만, 임시비밀번호가 담긴 Beans를
+		// 노출시키는것 같아서 output 객체를 새로 생성하여 View에 전달하였다.
+		Members output = new Members();
+		output.setUserid(userid);
+		output.setUseremail(useremail);
+		
+		model.addAttribute("output", output);
+		return new ModelAndView("member/find_pw_ok");
 	}
 
 	/** login.jsp */
