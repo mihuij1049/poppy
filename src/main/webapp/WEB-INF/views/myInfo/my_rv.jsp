@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!doctype html>
 <html>
 
 <head>
 <%@ include file="../share/head_tp.jsp"%>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/share/my_rv.css" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/share/my_rv.css" />
 
 </head>
 
@@ -52,25 +53,41 @@
 				</div>
 			</div>
 			<div class="tab-pane fade" id="good2">
+
 				<div class="bar1">
-					<b>내가 작성한 리뷰<span style="color: #00C6ED;"> 1</span></b>
+					<b>내가 작성한 리뷰<span style="color: #00C6ED;">
+							${myReview.size() }</span></b>
 				</div>
-				<div class="onegood onegood-bottom">
-					<a href="#"><img src="../share/img/4_M.jpg" class="cart-img">
-						<div class="mybought">
-							<span><b>펫클럽 데이스포 케어츄르 15kg*4개입/츄르간식1</b></span><br></a>
-				</div>
-				<div class="star">
-					<p class="star-rating">
-						<a href="#" class="on">★</a> <a href="#" class="on">★</a> <a
-							href="#" class="on">★</a> <a href="#" class="on">★</a> <a
-							href="#" class="on">★</a>
-					</p>
-				</div>
-				<br />
-				<div class="review" id="review">
-					<span>만족합니다~ 항상 여기서만 구매합니다!</span>
-				</div>
+				<c:forEach var="item" items="${myReview }" varStatus="status">
+					<%-- 출력을 위한 변수 준비 --%>
+					<c:set var="gname" value="${item.gname }" />
+					<c:set var="rvlike" value="${item.rvlike }" />
+					<c:set var="bbstitle" value="${item.bbstitle }" />
+					<div>
+						<div class="onegood onegood-bottom">
+							<a href="#"><img src="../share/img/4_M.jpg" class="cart-img">
+								<div class="mybought">
+									<span><b>${item.gname }</b></span><br></a>
+						</div>
+						
+							<div class="star">
+							<c:choose>
+								<c:when test="${item.rvlike=='*****' }">
+									<p class="star-rating">★★★★★</p>
+								</c:when>
+								<c:when test="${item.rvlike=='****' }"><p class="star-rating">★★★★</p></c:when>
+								<c:when test="${item.rvlike=='***' }"><p class="star-rating">★★★</p></c:when>
+								<c:when test="${item.rvlike=='**' }"><p class="star-rating">★★</p></c:when>
+								<c:otherwise><p class="star-rating">★</p></c:otherwise>
+								</c:choose>
+							</div>
+						
+						<br />
+						<div class="review" id="review">
+							<span>${item.bbstitle }</span>
+						</div>
+					</div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>

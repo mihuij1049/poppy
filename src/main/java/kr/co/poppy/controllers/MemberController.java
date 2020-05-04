@@ -31,11 +31,11 @@ public class MemberController {
 	@Autowired
 	RegexHelper regexHelper;
 	
-	/** RegexHelper 주입 */
+	/** MailHelper 주입 */
 	@Autowired
 	MailHelper mailHelper;
 	
-	/** Serivce 패턴 구현체 주입 */
+	/** Service 패턴 구현체 주입 */
 	@Autowired
 	MembersService membersService;
 
@@ -275,7 +275,7 @@ public class MemberController {
 		/** 3) View 로 데이터 전달 */
 		model.addAttribute("myinfo", output);
 		
-		return webHelper.redirect("../myInfo/myinfo.do", "환영합니다! 회원님~");
+		return webHelper.redirect("../myInfo/myinfo.do", "환영합니다! 댕댕이 주인님~!");
 	}
 
 	/**

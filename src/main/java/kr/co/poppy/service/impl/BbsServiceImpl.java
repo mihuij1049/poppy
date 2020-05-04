@@ -87,7 +87,30 @@ public class BbsServiceImpl implements BbsService {
 		return result;
 	}
 	
-	
+	/**
+	 * 후기관리 글 목록
+	 * @param Bbs 검색조건(memno)과 페이지 구현 정보를 담고 있는 Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	@Override
+	public List<Bbs> getBbsList_myrv(Bbs input) throws Exception {
+		List<Bbs> result = null;
+		try {
+			result = sqlSession.selectList("BbsMapper.selectList_myrv", input);
+			if(result==null) {
+				throw new NullPointerException("result=null");
+			} 
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+
 	/**
 	 * 게시글 갯수 조회
 	 * @return	int

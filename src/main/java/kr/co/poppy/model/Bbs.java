@@ -32,6 +32,8 @@ public class Bbs {
 	private String username;
 	// 회원 아이디
 	private String userid;
+	// 상품 이름
+	private String gname;
 	
 	 // 3) 페이지 구현을 위한 static 변수
     /** LIMIT 절에서 사용할 조회 시작 위치 */

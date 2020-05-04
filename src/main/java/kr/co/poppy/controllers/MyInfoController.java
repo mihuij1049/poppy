@@ -18,12 +18,14 @@ import com.mysql.cj.log.Log;
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Address;
+import kr.co.poppy.model.Bbs;
 import kr.co.poppy.model.Goods;
 import kr.co.poppy.model.Members;
 import kr.co.poppy.model.Orderdetail;
 import kr.co.poppy.model.Orders;
 import kr.co.poppy.model.Points;
 import kr.co.poppy.service.AddressService;
+import kr.co.poppy.service.BbsService;
 import kr.co.poppy.service.OrderdetailService;
 import kr.co.poppy.service.OrdersService;
 import kr.co.poppy.service.PointsService;
@@ -49,11 +51,14 @@ public class MyInfoController {
 	OrderdetailService orderdetailService;
 	@Autowired
 	AddressService addressService;
+	@Autowired
+	BbsService bbsService;
 
 	/** "/프로젝트이름"에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
-
+	
+	/** My정보 페이지 */
 	@RequestMapping(value = "/myInfo/myinfo.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView myinfo(Model model) {
 
@@ -152,7 +157,8 @@ public class MyInfoController {
 
 		return new ModelAndView("myInfo/myinfo");
 	}
-
+	
+	/** 주문조회 상세보기 페이지 */
 	@RequestMapping(value = "/myInfo/order_desc.do", method = RequestMethod.GET)
 	public ModelAndView order_desc(Model model,
 			@RequestParam(value = "orderno", required=true) String orderno) {
@@ -251,7 +257,7 @@ public class MyInfoController {
 		
 		return new ModelAndView("myInfo/point");
 	}
-
+	
 	@RequestMapping(value = "/myInfo/plist_nota.do", method = RequestMethod.GET)
 	public String plist_nota() {
 		return "myInfo/plist_nota";
@@ -261,10 +267,31 @@ public class MyInfoController {
 	public String plist_grd() {
 		return "myInfo/plist_grd";
 	}
-
+	
+	/** 후기관리 페이지 */
 	@RequestMapping(value = "/myInfo/my_rv.do", method = RequestMethod.GET)
-	public String my_rv() {
-		return "myInfo/my_rv";
+	public ModelAndView my_rv(Model model) {
+		// 세션 객체를 이용하여 저장된 세션값 얻기
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members)mySession.getAttribute("userInfo");
+		
+		Bbs myBbs = new Bbs();
+		myBbs.setMemno(myInfo.getMemno());
+		
+		List<Bbs> myBbsList = null;
+		
+		try {
+			myBbsList = bbsService.getBbsList_myrv(myBbs);
+		} catch (Exception e) {
+			e.getLocalizedMessage();
+		}
+		
+		/** 1) 작성 가능한 리뷰 탭 (내가 구매한 상품목록(다중행조회)필요 param=memno) */
+		
+		/** 2) 내가 작성한 리뷰 탭 (bbs 다중행조회필요 - param=memno) */
+		model.addAttribute("myReview", myBbsList);
+		
+		return new ModelAndView("myInfo/my_rv");
 	}
 
 	@RequestMapping(value = "/myInfo/recent.do", method = RequestMethod.GET)
