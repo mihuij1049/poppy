@@ -33,7 +33,7 @@
         parameterType="kr.co.poppy.model.Orderdetail"
         resultMap="orderdetailMap">
         SELECT * FROM orderdetail   
-        WHERE orderdetailno = #{orderdetailno}
+        WHERE orderno = #{orderno}
               
     </select>
     

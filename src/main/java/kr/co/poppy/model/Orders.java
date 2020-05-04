@@ -36,6 +36,10 @@ public class Orders {
     /** 상품이름 (orderdetail 테이블 참조) */
     private String odgdoption;
     
+    // View 페이지에 이용할 변수 추가
+    private int sumOdgprice;
+    private int sumOdgsale;
+    
     // 페이지 관련 static 변수
 	// LIMIT 절에서 사용할 검색 시작 위치
 	private static int offset;

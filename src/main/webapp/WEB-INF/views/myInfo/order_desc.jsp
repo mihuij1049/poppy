@@ -207,12 +207,11 @@ p.prd-name {
 								<div class="info-title pull-left">주문번호</div>
 								<div class="info-desc1 order-num pull-left">20200318-0000195</div>
 								<div class="info-title pull-left">주문일자</div>
-								<div class="info-desc1 order-date pull-left">2020-03-18
-									21:07:17</div>
+								<div class="info-desc1 order-date pull-left">${orderInfo.regdate }</div>
 								<div class="info-title pull-left">주문고객</div>
-								<div class="info-desc1 order-name pull-left">조대철</div>
+								<div class="info-desc1 order-name pull-left">${myInfo.username }</div>
 								<div class="info-title pull-left">주문처리상태</div>
-								<div class="info-desc1 order-state pull-left">취소</div>
+								<div class="info-desc1 order-state pull-left">${orderInfo.odstatus }</div>
 							</div>
 						</div>
 					</div>
@@ -223,7 +222,7 @@ p.prd-name {
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
 								href="#collapseTwo" aria-expanded="true"
-								aria-controls="collapseTwo"> <b>주문상품 (총 1개/ 0원)</b> <img
+								aria-controls="collapseTwo"> <b>주문상품 (총 ${detailInfo.size() }개/ ${orderInfo.sumOdgprice }원)</b> <img
 								src="../share/img/arrow-down.png" align=right
 								class="arrow-down2 icon-rotate2">
 							</a>

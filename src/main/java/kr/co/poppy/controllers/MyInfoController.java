@@ -19,6 +19,7 @@ import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Goods;
 import kr.co.poppy.model.Members;
+import kr.co.poppy.model.Orderdetail;
 import kr.co.poppy.model.Orders;
 import kr.co.poppy.model.Points;
 import kr.co.poppy.service.OrderdetailService;
@@ -149,8 +150,72 @@ public class MyInfoController {
 	}
 
 	@RequestMapping(value = "/myInfo/order_desc.do", method = RequestMethod.GET)
-	public String order_desc() {
-		return "myInfo/order_desc";
+	public ModelAndView order_desc(Model model,
+			@RequestParam(value = "orderno", required=true) String orderno) {
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+		
+		/** 파라미터 유효성 검사 */
+		if (orderno==null) {
+			webHelper.redirect(null, "선택된 주문 정보가 없습니다.");
+		}
+		
+		/** 주문 정보 상세 조회를 위한 Beans 생성 */
+		// 1) orders 테이블 조회를 위한 Beans
+		int odnum = Integer.parseInt(orderno);
+		Orders orders = new Orders();
+		orders.setOrderno(odnum);
+		
+		// 2) orderdetail 테이블 조회를 위한 Beans
+		Orderdetail input = new Orderdetail();
+		input.setOrderno(odnum);
+		List<Orderdetail> orderDetail = null;
+		
+		/** DB 정보 조회 */
+		try {
+			// order 테이블의 정보 단일행 조회 (파라미터 orderno)
+			orders = orderService.getOrdersItem(orders);
+			// orderdetail 테이블의 정보 다중행 조회 (파라미터 orderno)
+			orderDetail = orderdetailService.getOrderdetailList(input);
+			
+		} catch (Exception e) {
+			log.debug(e.getLocalizedMessage());
+		}
+		
+		/** View 에 Beans를 통한 데이터 전달 */
+		// 주문 상태 > 한글 처리 
+		if (orders.getOdstatus().equals("0")) {
+			orders.setOdstatus("입금전");
+		} else if (orders.getOdstatus().equals("1")) {
+			orders.setOdstatus("배송준비중");
+		} else if (orders.getOdstatus().equals("2")) {
+			orders.setOdstatus("배송중");
+		} else if (orders.getOdstatus().equals("3")) {
+			orders.setOdstatus("배송완료");
+		} else if (orders.getOdstatus().equals("4")) {
+			orders.setOdstatus("주문취소");
+		} else if (orders.getOdstatus().equals("5")) {
+			orders.setOdstatus("반품처리중");
+		} else if (orders.getOdstatus().equals("6")) {
+			orders.setOdstatus("환불완료");
+		}
+		// orderdetail에서 동일한 orderno를 참조하는  odgprice 와 odgsale 총 금액 
+		int sumOdgprice = 0;
+		int sumOdgsale = 0;
+		
+		for (int i=0;i<orderDetail.size();i++) {
+			Orderdetail temp = orderDetail.get(i);
+			sumOdgprice += temp.getOdgprice();
+			sumOdgsale += temp.getOdgsale();
+		}
+		orders.setSumOdgprice(sumOdgprice);
+		orders.setSumOdgsale(sumOdgsale);
+		
+		model.addAttribute("myInfo", myInfo);
+		model.addAttribute("orderInfo", orders);
+		model.addAttribute("detailInfo", orderDetail);
+		
+		return new ModelAndView("myInfo/order_desc");
 	}
 
 	@RequestMapping(value = "/myInfo/myinfo_edit.do", method = RequestMethod.GET)
