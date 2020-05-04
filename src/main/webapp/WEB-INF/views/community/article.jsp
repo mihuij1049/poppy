@@ -11,7 +11,7 @@
 <head>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/share/article.css" />
+	href="${pageContext.request.contextPath}/share/article.css"/>
 
 </head>
 
@@ -59,21 +59,18 @@
 									<c:set var="cmtno" value="${item.cmtno}" />
 									<%-- 상세페이지로 이동하기 위한 URL --%>
 									<c:url value="/community/article.do" var="viewUrl">
-										<c:param name="cmtno" value="${item.cmtno}" />
 										<c:param name="bbsno" value="${item.bbsno}" />
 									</c:url>
-									<tr class="comment-nai">
-										<td class="menory">
+									<div class="comment-nai">
+										<div class="menory">
 										<small class="small"><span>${item.username} | </span><span>${item.regdate}</span></small>
-										</td>
-										<td>
+										</div>
 										<span class="span">${item.cmtcontent}</span><br />
-										</td>
-										<td class="editbuttons">
+										<div class="editbuttons">
 											<button type="submit" class="btn btn-sm btn-edit">수정</button>
 											<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
-										</td>
-									</tr>
+										</div>
+									</div>
 									<hr />
 								</c:forEach>
 							</c:otherwise>
@@ -81,23 +78,20 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="comment-ana" id="comment-ana">
-				<small>회원에게만 댓글권한이 있습니다.</small>
-			</div>
-			<form id="article-comment" class="article-comment"
-				name="article-comment" method="post" action="../api/a_comment.do">
+
+			<form class="article-comment" method="post" action="${pageContext.request.contextPath}/community/article.do">
 				<div class="comment-write">
 					<div class="info-name">
 						<label for="name_write">이름</label> <input type="text"
-							name="name_write" class="information1" id="name_write">
+							name="username" class="information1" id="name_write">
 					</div>
 					<div class=info-pass>
 						<label for="pass_write">비밀번호</label> <input type="password"
 							name="pass_write" class="information2" id="pass_write">
 					</div>
 				</div>
-				<textarea class="comment_area" id="comment_area"
-					placeholder="내용을 입력하세요." maxlength="1800"></textarea>
+				<textarea class="comment_area" id="comment_area" name="cmtcontent">
+					</textarea>
 				<button type="submit" class="enter btn btn-sm" id="enter">등록</button>
 			</form>
 		</div>
@@ -142,7 +136,7 @@
 
 						$.ajax({
 							// 결과를 읽어올 URL --> <form>태그의 action속성
-							url : "../api/a_pass.do",
+							url : "../api/comments.do",
 							// 웹 프로그램에게 데이터를 전송하는 방식 --> <form> 태그의 method 속성
 							method : "post",
 							// 전달할 조건값은 사용자의 입력값을 활용하여 JSON형식으로 구성

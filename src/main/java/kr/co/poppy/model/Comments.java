@@ -23,6 +23,8 @@ public class Comments {
 	/** 게시판 테이블 참조 */
 	private int bbsno;
 	
+	private String username;
+	
 	// JOIN 절에 따른 추가 컬럼
 
 }

@@ -1,6 +1,10 @@
 package kr.co.poppy.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,6 +20,7 @@ import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Bbs;
 import kr.co.poppy.model.Comments;
+import kr.co.poppy.model.Members;
 import kr.co.poppy.service.BbsService;
 import kr.co.poppy.service.CommentsService;
 
@@ -32,10 +37,10 @@ public class CommunityController {
 	/** Serivce 패턴 구현체 주입 */
 	@Autowired
 	BbsService bbsService;
-	
+
 	@Autowired
 	CommentsService commentsService;
-	
+
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
@@ -58,12 +63,17 @@ public class CommunityController {
 		input.setBbstype(bbstype);
 		input.setBbsno(bbsno);
 
+		Comments input2 = new Comments();
+		input2.setBbsno(bbsno);
+
 		// 조회 결과를 저장할 객체 선언
 		Bbs output = null;
+		List<Comments> output2 = null;
 
 		try {
 			// 데이터 조회
 			output = bbsService.getBbsItem(input);
+			output2 = commentsService.getCommentsList(input2);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
@@ -74,8 +84,11 @@ public class CommunityController {
 		} else {
 			output.setBbstype("Q&A");
 		}
+
 		model.addAttribute("output", output);
+		model.addAttribute("output2", output2);
 		return new ModelAndView("community/article");
+
 	}
 
 	/** notice */
@@ -182,20 +195,20 @@ public class CommunityController {
 		if (keyword == null) {
 			return webHelper.redirect(null, "검색 키워드가 없습니다.");
 		}
-		
+
 		/** 2) 어떤 범주로 검색할지 받은 파라미터 검사 */
 		Bbs input = new Bbs();
 		input.setBbstype("B");
-		if (bbstitle!=null) {
+		if (bbstitle != null) {
 			input.setBbstitle(keyword);
 		}
-		if (bbscontent!=null) {
+		if (bbscontent != null) {
 			input.setBbscontent(keyword);
 		}
-		if (userid!=null) {
+		if (userid != null) {
 			input.setUserid(keyword);
 		}
-		if (username!=null) {
+		if (username != null) {
 			input.setUsername(keyword);
 		}
 		/** 3) 페이지 구현에 필요한 변수값 생성 */
@@ -227,38 +240,45 @@ public class CommunityController {
 		return new ModelAndView("community/qna");
 	}
 
-	/** 코멘트 다중행 조회 */
-	@RequestMapping(value = "/community/comments.do", method = RequestMethod.GET)
-	public ModelAndView listcomments(Model model, 
-			@RequestParam(value = "cmtno", defaultValue = "1") int cmtno,
-			@RequestParam(value = "bbsno", defaultValue = "1") int bbsno) {
+	/** 댓글 저장히기 */
+	@RequestMapping(value = "community/comments.do", method = RequestMethod.POST)
+	public ModelAndView addcmt(Model model, 
+			@RequestParam(value = "cmtcontent", required = false) String cmtcontent,
+			@RequestParam(value = "regdate", required = false) String regdate,
+			@RequestParam(value = "editdate", required = false) String editdate,
+			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
 
 		/** 1) 유효성 검사 */
-		if (bbsno == 0) {
-			return webHelper.redirect(null, "게시글이 없습니다.");
-		}
-		if (cmtno==0) {
-			return webHelper.redirect(null, "댓글이 없습니다.");
+		if (cmtcontent.equals("")) {
+			return webHelper.redirect(null, "댓글을 입력하세요.");
 		}
 
-		/** 2) 데이터 조회하기 */
+		/** 2) 데이터 저장하기 */
+		// 저장할 값들을 Beans에 담는다.
 		Comments input = new Comments();
-		input.setCmtno(cmtno);
+		input.setCmtcontent(cmtcontent);
+		input.setRegdate(regdate);
+		input.setEditdate(editdate);
 		input.setBbsno(bbsno);
 
-		// 조회 결과가 저장될 객체
-		List<Comments> output2 = null;
-
+		// 세션 객체를 이용하여 저장된 세션값 얻기
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+		Comments myCmt = new Comments();
+		myCmt.setMemno(myInfo.getMemno());
+		myCmt.setUsername(myInfo.getUsername());
+		
 		try {
-			// 데이터 조회하기
-			output2 = commentsService.getCommentsList(input);
+			// 데이터 저장
+			commentsService.addComments(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
-		/** 3) view 처리 */
-		model.addAttribute("output2", output2);
-		return new ModelAndView("community/article");
+		/** 3) 결과를 확인하기 위한 페이지 이동 */
+		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야 한다.
+		String redirectUrl = contextPath + "/community/article.do?cmtno=" + input.getCmtno();
+		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 	}
 
 	/** photo_rv */
