@@ -2,6 +2,8 @@ package kr.co.poppy.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,7 @@ import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Bbs;
 import kr.co.poppy.model.Cart;
+import kr.co.poppy.model.Members;
 import kr.co.poppy.model.Orders;
 import kr.co.poppy.model.Points;
 import kr.co.poppy.service.BbsService;
@@ -170,8 +173,11 @@ public class KRTController {
 
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값을 Beans에 담는다.
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+		
 		Points input = new Points();
-		input.setMemno(2);
+		input.setMemno(myInfo.getMemno());
 
 		List<Points> output = null;
 		PageData pageData = null;
@@ -272,7 +278,8 @@ public class KRTController {
 	@RequestMapping(value = "/pay/cart.do", method = RequestMethod.GET)
 	public ModelAndView cart_list(Model model) {
 		Cart input = new Cart();
-
+		input.setMemno(2);
+		
 		List<Cart> output = null;
 
 		try {

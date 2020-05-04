@@ -71,7 +71,7 @@
 		<!-- 모달창 끝 -->
 		<div class="container">
 			<form class="form-horizontal" name="wri_form" id="wri_form" method="POST"
-				action="${pageContext.request.contextPath}/community/photo_rv.do">
+				action="${pageContext.request.contextPath}/community/photo_wri_ok.do">
 				<div class="select">
 					<div class="choice clearfix">
 						<div class="col-xs-4">
@@ -93,27 +93,21 @@
 						<p>제목</p>
 						<span class="redStar">＊</span>
 					</div>
-					<input type="text" name="title" class="tit" id="title"
+					<input type="text" name="bbstitle" class="tit" id="title"
 						maxlength="20">
 				</div>
 				<div class="star">
 					<div>
 						<p>평점</p>
 					</div>
-					<input type="radio" name="star" checked> <label>★★★★★</label>
-					<input type="radio" name="star"> <label>★★★★</label> <input
-						type="radio" name="star"> <label>★★★</label> <input
-						type="radio" name="star"> <label>★★</label> <input
-						type="radio" name="star"> <label>★</label>
+					<input type="radio" name="rvlike" checked> <label>★★★★★</label>
+					<input type="radio" name="rvlike"> <label>★★★★</label> <input
+						type="radio" name="rvlike"> <label>★★★</label> <input
+						type="radio" name="rvlike"> <label>★★</label> <input
+						type="radio" name="rvlike"> <label>★</label>
 				</div>
 				<div class="write">
 					<textarea name="content" class="ckeditor"></textarea>
-				</div>
-				<div class="UCC">
-					<div>
-						<p>UCC URL</p>
-					</div>
-					<input type="text" name="" class="url">
 				</div>
 				<div class="file">
 					<div>

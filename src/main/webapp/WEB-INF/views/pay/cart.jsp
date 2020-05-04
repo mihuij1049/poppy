@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -43,6 +43,70 @@
 					<div class="panel-header2">
 						일반상품 (<span class="cart-count"></span>)
 					</div>
+					<c:choose>
+						<%--조회결과가 없는 경우 --%>
+						<c:when test="${output==null||fn:length(output) ==0}">
+							<tr>
+								<td colspan="3" align="center">조회결과가 없습니다.</td>
+							</tr>
+						</c:when>
+						<%--조회결과가 있는 경우 --%>
+						<c:otherwise>
+							<%--조회결과에 따른 반복처리 --%>
+							<c:forEach var="item" items="${output }" varStatus="status">
+								<%--출력을 위해 준비한 학과 이름과 위치 --%>
+								<c:set var="imgname" value="${item.imgname }" />
+								<c:set var="imgext" value="${item.imgext }" />
+								<c:set var="imgpath" value="${item.imgpath }" />
+								<c:set var="imgtype" value="${item.imgtype }" />
+								<c:set var="gname" value="${item.gname }" />
+								<c:set var="deliprice" value="${item.deliprice }" />
+								<c:set var="gprice" value="${item.gprice }" />
+								<c:set var="cartqty" value="${item.cartqty }" />
+								<div class="cart-box clear">
+									<div class="list-item">
+										<div class="word">
+											<input type="checkbox" name="cart_check"
+												class="cart cart-size"> <img src="{{url}}"
+												class="cart-img" />
+
+											<p>
+												<b class="name">${item.gname}</b>
+											</p>
+											<span>배송:${item.deliprice}원[조건]/기본배송</span><br> <small><span
+												class="point-icon">적</span>&nbsp;<span class="point">${item.gprice/100}</span>원</small>
+											<b class="search-item-price">
+												<p>${item.gprice}
+											</b><b>원</b>
+											</p>
+											</br>
+										</div>
+										<div class="word-btn">
+											<button class="count minus">
+												<img src="../share/img/마이너스.png">
+											</button>
+											<input type="number" class="count-label" value="1"
+												id="count-label">
+											<button class="count plus">
+												<img src="../share/img/플러스.png">
+											</button>
+											<button class="change">변경</button>
+										</div>
+										<div class="word-botm">
+											<p>
+												<b>합계: <span class="price">${item.gprice}</span>원
+												</b>
+											</p>
+											<button type="button" class="delete">삭제</button>
+											<button type="button">관심상품</button>
+											<button type="button" class="btn btn2"
+												onclick="location.href='${pageContext.request.contextPath}/pay/orderform.do'">주문하기</button>
+										</div>
+									</div>
+								</div>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
 					<div class="panel-body2">
 						<div class="list-group" id="list"></div>
 						<div class="panel-header2 clearfix">[기본배송]</div>
@@ -161,38 +225,6 @@
 	<%@ include file="../share/bottom_tp.jsp"%>
 	<script src="../share/plugins/handlebars/handlebars-v4.0.5.js"></script>
 	<script type="text/x-handlebars-template" id="list-item-tmpl">
-	{{#each goods}}
-	<div class="cart-box clear">
-		<li class="list-item">
-			<div class="word">
-				<input type="checkbox" name="cart_check" class="cart cart-size">
-				<img src="{{url}}" class="cart-img" />
-				
-				<p><b class="name">{{name}}</b></p>
-				<span>배송:2500원[조건]/기본배송</span><br>
-				<small><span class="point-icon">적</span>&nbsp;<span class="point">{{point}}</span>원</small>
-				<b class="search-item-price">
-				<p>{{price}}</b><b>원</b></p></br>
-			</div>
-			<div class="word-btn">
-				<button class="count minus">
-					<img src="../share/img/마이너스.png">
-				</button>
-				<input type="number" class="count-label" value="1" id="count-label">
-				<button class="count plus">
-					<img src="../share/img/플러스.png">
-				</button>
-				<button class="change">변경</button>
-			</div>
-			<div class="word-botm">
-				<p><b>합계: <span class="price">{{price}}</span>원</b></p>
-				<button type="button" class="delete">삭제</button>
-				<button type="button">관심상품</button>
-				<button type="button" class="btn btn2" onclick="location.href='${pageContext.request.contextPath}/pay/orderform.do'">주문하기</button>
-			</div>
-		</li>
-	</div>
-	{{/each}}
 	</script>
 	<script type="text/x-handlebars-template" id="list-item-tmpl2">
 	{{#each goods}}

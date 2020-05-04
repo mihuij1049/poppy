@@ -37,15 +37,15 @@
 				<a href="${pageContext.request.contextPath}/gallery/goods.do"><img
 					src="../share/img/4_M.jpg" class="small-image"></a>
 				<div class="info-content clear">
-					<a href="${pageContext.request.contextPath}/gallery/goods.do">펫클럽
-						데이스포 케어츄르 15gX4개입/고양이츄르간식</a><br>
+					<a href="${pageContext.request.contextPath}/gallery/goods.do">
+						${output.bbstitle}</a><br>
 					<div class="star">
-						<p>★★★★★</p>
+						<p>${output.rvlike}</p>
 						<p>(5.0)</p>
 						<br>
 					</div>
 					<div class="writer">
-						<p>김****</p>
+						<p>${output.username}</p>
 					</div>
 				</div>
 			</div>
@@ -54,7 +54,7 @@
 			</div>
 			<div class="rv-content">
 				<p class="date">20.01.31</p>
-				<p>리뷰내용~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~</p>
+				<p>${output.bbscontent}</p>
 			</div>
 			<div class="recommend">
 				<p>이 리뷰가 도움이 되셨다면 눌러주세요.</p>
