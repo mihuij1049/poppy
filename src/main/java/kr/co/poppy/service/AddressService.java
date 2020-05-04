@@ -3,6 +3,7 @@ package kr.co.poppy.service;
 import java.util.List;
 
 import kr.co.poppy.model.Address;
+import kr.co.poppy.model.Orders;
 
 
 public interface AddressService {
@@ -54,5 +55,12 @@ public interface AddressService {
 	 */
 	public int deleteAddress(Address input) throws Exception;
 	
-
+	/**
+	 * 주소 데이터 주문번호로 상세 조회
+	 * @param Orders  조회할 주소의 주문번호를 담고 있는 Beans (서브쿼리 요청 변수)
+	 * @return 조회된 데이터가 저장된 Beans
+	 * @throws Exception
+	 */
+	public  Address getAddressItem(Orders input) throws Exception;
+	
 }

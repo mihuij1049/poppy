@@ -1,0 +1,165 @@
+@charset "UTF-8";
+/** 아코디언 클릭이벤트시 화살표 transform 회전 */
+.rotate1 {
+	-webkit-transform: rotate(180deg);
+}
+
+.icon-rotate1 {
+	-webkit-transition-duration: 0.5s;
+}
+
+.rotate2 {
+	-webkit-transform: rotate(180deg);
+}
+
+.icon-rotate2 {
+	-webkit-transition-duration: 0.5s;
+}
+
+.rotate3 {
+	-webkit-transform: rotate(180deg);
+}
+
+.icon-rotate3 {
+	-webkit-transition-duration: 0.5s;
+}
+
+.rotate4 {
+	-webkit-transform: rotate(180deg);
+}
+
+.icon-rotate4 {
+	-webkit-transition-duration: 0.5s;
+}
+
+.rotate5 {
+	-webkit-transform: rotate(180deg);
+}
+
+.icon-rotate5 {
+	-webkit-transition-duration: 0.5s;
+}
+
+.rotate6 {
+	-webkit-transform: rotate(180deg);
+}
+
+.icon-rotate6 {
+	-webkit-transition-duration: 0.5s;
+}
+
+#accordion {
+	width: 96%;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 50px;
+}
+
+#accordion .panel-heading {
+	padding: 0px;
+}
+
+.order-info {
+	width: 100%;
+	line-height: 20px;
+}
+
+.info-title {
+	width: 30%;
+	font-weight: bold;
+}
+
+.info-desc1 {
+	width: 70%;
+}
+
+.info-desc2 {
+	width: 70%;
+	text-align: right;
+}
+
+.prd-img {
+	width: 30%;
+}
+
+.prd {
+	width: 70%;
+}
+
+.prd-item-price {
+	padding-left: 12px;
+}
+
+.prd-foot {
+	text-align: right;
+}
+
+.prd-foot:hover {
+	cursor: pointer;
+}
+
+.refund-title {
+	background-color: #ffc7c1;
+	font-size: 16px;
+	padding: 7px 7px;
+}
+
+.info-title1 {
+	width: 75%;
+	padding-top: 5px;
+	padding-left: 50px;
+	line-height: 30px;
+}
+
+.info-title2 {
+	width: 25%;
+	padding-top: 5px;
+	text-align: center;
+	line-height: 30px;
+}
+
+.goods-info {
+	width: 75%;
+}
+
+p.prd-name {
+	margin: 5px 0px;
+	font-weight: bold;
+}
+
+.goods-qty {
+	font-size: 20px;
+	text-align: center;
+	width: 25%;
+	margin-top: 15px;
+}
+
+.refund-date {
+	width: 70%;
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+.refund-price {
+	width: 70%;
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+.price-pre {
+	width: 70%;
+	text-align: center;
+}
+
+.panel-desc a {
+	display: block;
+	text-decoration: none;
+	width: 100%;
+	padding: 10px 15px;
+}
+
+.panel-order {
+	padding: 15px;
+}
+
+/** 아코디언 클릭이벤트시 화살표 transform 회전 끝 */

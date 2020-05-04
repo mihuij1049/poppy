@@ -17,11 +17,13 @@ import com.mysql.cj.log.Log;
 
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
+import kr.co.poppy.model.Address;
 import kr.co.poppy.model.Goods;
 import kr.co.poppy.model.Members;
 import kr.co.poppy.model.Orderdetail;
 import kr.co.poppy.model.Orders;
 import kr.co.poppy.model.Points;
+import kr.co.poppy.service.AddressService;
 import kr.co.poppy.service.OrderdetailService;
 import kr.co.poppy.service.OrdersService;
 import kr.co.poppy.service.PointsService;
@@ -45,6 +47,8 @@ public class MyInfoController {
 	OrdersService orderService;
 	@Autowired
 	OrderdetailService orderdetailService;
+	@Autowired
+	AddressService addressService;
 
 	/** "/프로젝트이름"에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -89,15 +93,15 @@ public class MyInfoController {
 		for (int i = 0; i < pointList.size(); i++) {
 			Points temp = null;
 			temp = pointList.get(i);
-			if (temp.getAvpoint() == null) {
+			if (temp.getAvpoint() == null || temp.getAvpoint()==0 ) {
 				temp.setAvpoint(0);
 			}
 			sumAvpoint += temp.getAvpoint();
-			if (temp.getNapoint() == null) {
+			if (temp.getNapoint() == null || temp.getNapoint()==0 ) {
 				temp.setNapoint(0);
 			}
 			sumNapoint += temp.getNapoint();
-			if (temp.getUsedpoint() == null) {
+			if (temp.getUsedpoint() == null || temp.getUsedpoint() == 0 ) {
 				temp.setUsedpoint(0);
 			}
 			sumUsedpoint += temp.getUsedpoint();
@@ -171,13 +175,17 @@ public class MyInfoController {
 		input.setOrderno(odnum);
 		List<Orderdetail> orderDetail = null;
 		
+		// 3) Address 정보를 담기 위한 빈즈
+		Address addr = new Address();
+		
 		/** DB 정보 조회 */
 		try {
 			// order 테이블의 정보 단일행 조회 (파라미터 orderno)
 			orders = orderService.getOrdersItem(orders);
 			// orderdetail 테이블의 정보 다중행 조회 (파라미터 orderno)
 			orderDetail = orderdetailService.getOrderdetailList(input);
-			
+			// address 테이블의 정보 단일행 조회 (파라미터 orderno)
+			addr = addressService.getAddressItem(orders);	
 		} catch (Exception e) {
 			log.debug(e.getLocalizedMessage());
 		}
@@ -199,14 +207,18 @@ public class MyInfoController {
 		} else if (orders.getOdstatus().equals("6")) {
 			orders.setOdstatus("환불완료");
 		}
+		// 결제방식 > 한글처리
+		if (orders.getPaytype().equals("credit")) {
+			orders.setPaytype("신용카드");
+		}
 		// orderdetail에서 동일한 orderno를 참조하는  odgprice 와 odgsale 총 금액 
 		int sumOdgprice = 0;
 		int sumOdgsale = 0;
 		
 		for (int i=0;i<orderDetail.size();i++) {
 			Orderdetail temp = orderDetail.get(i);
-			sumOdgprice += temp.getOdgprice();
-			sumOdgsale += temp.getOdgsale();
+			sumOdgprice += temp.getOdgprice()*temp.getOdgqty();
+			sumOdgsale += temp.getOdgsale()*temp.getOdgqty();
 		}
 		orders.setSumOdgprice(sumOdgprice);
 		orders.setSumOdgsale(sumOdgsale);
@@ -214,6 +226,7 @@ public class MyInfoController {
 		model.addAttribute("myInfo", myInfo);
 		model.addAttribute("orderInfo", orders);
 		model.addAttribute("detailInfo", orderDetail);
+		model.addAttribute("addrInfo", addr);
 		
 		return new ModelAndView("myInfo/order_desc");
 	}

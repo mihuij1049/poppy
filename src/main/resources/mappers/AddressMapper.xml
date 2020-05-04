@@ -39,6 +39,14 @@
         FROM address WHERE memno=#{memno}; 
     </select>
     
+    <!-- 결제 정보의 주소지를 조회하기 위한 단일행 조회 -->
+    <select id="get_addr_item"
+        parameterType="kr.co.poppy.model.Address"
+        resultMap="addressMap">
+        SELECT * FROM address WHERE addrno=(
+        SELECT addrno FROM orders WHERE orderno=#{orderno}); 
+    </select>
+    
     <!-- 데이터 수 조회를 위한 기능 정의  -->
     <select id="selectCountAll"
         parameterType="kr.co.poppy.model.Address"

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.poppy.model.Address;
+import kr.co.poppy.model.Orders;
 import kr.co.poppy.service.AddressService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -176,5 +177,31 @@ public class AddressServiceImpl implements AddressService {
 
 		return result;
 	}
+	
+	/**
+	 * 주소 데이터 주문번호로 상세 조회
+	 * @param Orders  조회할 주소의 주문번호를 담고 있는 Beans (서브쿼리 요청 변수)
+	 * @return 조회된 데이터가 저장된 Beans
+	 */
+	@Override
+	public Address getAddressItem(Orders input) throws Exception {
+		Address result = null;
 
+		try {
+			result = sqlSession.selectOne("AddressMapper.get_addr_item", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
+	
 }

@@ -1,178 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
 <%@ include file="../share/head_tp.jsp"%>
-<style type="text/css">
-/** 아코디언 클릭이벤트시 화살표 transform 회전 */
-.rotate1 {
-	-webkit-transform: rotate(180deg);
-}
-
-.icon-rotate1 {
-	-webkit-transition-duration: 0.5s;
-}
-
-.rotate2 {
-	-webkit-transform: rotate(180deg);
-}
-
-.icon-rotate2 {
-	-webkit-transition-duration: 0.5s;
-}
-
-.rotate3 {
-	-webkit-transform: rotate(180deg);
-}
-
-.icon-rotate3 {
-	-webkit-transition-duration: 0.5s;
-}
-
-.rotate4 {
-	-webkit-transform: rotate(180deg);
-}
-
-.icon-rotate4 {
-	-webkit-transition-duration: 0.5s;
-}
-
-.rotate5 {
-	-webkit-transform: rotate(180deg);
-}
-
-.icon-rotate5 {
-	-webkit-transition-duration: 0.5s;
-}
-
-.rotate6 {
-	-webkit-transform: rotate(180deg);
-}
-
-.icon-rotate6 {
-	-webkit-transition-duration: 0.5s;
-}
-
-#accordion {
-	width: 96%;
-	margin: auto;
-	margin-top: 20px;
-	margin-bottom: 50px;
-}
-
-#accordion .panel-heading {
-	padding: 0px;
-}
-
-.order-info {
-	width: 100%;
-	line-height: 20px;
-}
-
-.info-title {
-	width: 30%;
-	font-weight: bold;
-}
-
-.info-desc1 {
-	width: 70%;
-}
-
-.info-desc2 {
-	width: 70%;
-	text-align: right;
-}
-
-.prd-img {
-	width: 30%;
-}
-
-.prd {
-	width: 70%;
-}
-.prd-item-price {
-	padding-left : 12px;
-}
-
-.prd-foot {
-	text-align: right;
-}
-.prd-foot:hover{
-	cursor:pointer;
-}
-
-.refund-title {
-	background-color: #ffc7c1;
-	font-size: 16px;
-	padding: 7px 7px;
-}
-
-.info-title1 {
-	width: 75%;
-	padding-top: 5px;
-	padding-left: 50px;
-	line-height: 30px;
-}
-
-.info-title2 {
-	width: 25%;
-	padding-top: 5px;
-	text-align: center;
-	line-height: 30px;
-}
-
-.goods-info {
-	width: 75%;
-}
-
-p.prd-name {
-	margin: 5px 0px;
-	font-weight: bold;
-}
-
-.goods-qty {
-	font-size: 20px;
-	text-align: center;
-	width: 25%;
-	margin-top: 15px;
-}
-
-.refund-date {
-	width: 70%;
-	text-align: center;
-	margin-bottom: 5px;
-}
-
-.refund-price {
-	width: 70%;
-	text-align: center;
-	margin-bottom: 5px;
-}
-
-.price-pre {
-	width: 70%;
-	text-align: center;
-}
-
-.panel-desc a {
-	display: block;
-	text-decoration: none;
-	width: 100%;
-	padding: 10px 15px;
-}
-
-.panel-order {
-	padding: 15px;
-}
-
-/** 아코디언 클릭이벤트시 화살표 transform 회전 끝 */
-</style>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/share/order_desc.css" />
 </head>
 
 <body>
@@ -222,8 +60,10 @@ p.prd-name {
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
 								href="#collapseTwo" aria-expanded="true"
-								aria-controls="collapseTwo"> <b>주문상품 (총 ${detailInfo.size() }개/ ${orderInfo.sumOdgprice }원)</b> <img
-								src="../share/img/arrow-down.png" align=right
+								aria-controls="collapseTwo"> <b>주문상품 (총
+									${detailInfo.size() }개/ <fmt:formatNumber
+										value="${orderInfo.sumOdgprice }" pattern="#,###" />원)
+							</b> <img src="../share/img/arrow-down.png" align=right
 								class="arrow-down2 icon-rotate2">
 							</a>
 						</h4>
@@ -231,33 +71,48 @@ p.prd-name {
 					<div id="collapseTwo" class="panel-collapse collapse"
 						role="tabpanel" aria-labelledby="headingTwo">
 						<div class="panel-body panel-order" id="goods_info">
-							<div class="prd-info clearfix">
-								<div class="prd-img pull-left">
-									<a href="#"> <img src="../share/img/slide.jpg" width="80"
-										height="80">
-									</a>
-								</div>
-								<div class="prd pull-left">
-									<div id="prd-title">
-										<strong class="prd-name" title="상품명"> <a href="#">펫클럽
-												벨버드 토일렛/애견토일렛/강아지화장실/패드</a>
-										</strong>
+							<%-- 조회 결과에 따른 반복 처리 --%>
+							<c:forEach var="item" items="${detailInfo}" varStatus="status">
+								<%-- 출력을 위해 준비한 변수 --%>
+								<c:set var="odgname" value="${item.odgname}" />
+								<c:set var="odgsale" value="${item.odgsale}" />
+								<c:set var="odgqty" value="${item.odgqty}" />
+								<div class="prd-info clearfix">
+									<div class="prd-img pull-left">
+										<a href="#"> <img src="../share/img/slide.jpg" width="80"
+											height="80">
+										</a>
 									</div>
-									<div class="prd-li">
-										<div class="prd-item-price">
-											<span class="prd-price" title="판매가"> <b
-												id="prd-price-total">6,900</b>원
-											</span> <span class="prd-count" title="수량"> <strong>1</strong>개
-											</span> <br> <span class="prd-deli"> <span>[조건]/기본배송</span>
-											</span>
+									<div class="prd pull-left">
+										<div id="prd-title">
+											<strong class="prd-name" title="상품명"> <a href="#">${item.odgname }</a>
+											</strong>
+										</div>
+										<div class="prd-li">
+											<div class="prd-item-price">
+												<span class="prd-price" title="판매가"> <b
+													id="prd-price-total"><fmt:formatNumber
+															value="${item.odgsale}" pattern="#,###" /></b>원
+												</span> <span class="prd-count" title="수량"> <strong>${item.odgqty}</strong>개
+												</span> <br> <span class="prd-deli"> <c:choose>
+														<c:when test="${(item.odgsale*item.odgqty)>30000 }">[조건]/기본배송
+												</c:when>
+														<c:otherwise>
+												[조건]/배송료 2500원
+												</c:otherwise>
+													</c:choose>
+												</span>
+											</div>
 										</div>
 									</div>
+									<div class="prd-foot" title="합계">
+										<span id="prd-total">합계</span> &nbsp; <b id="prd-price-total">
+											<fmt:formatNumber value="${item.odgsale*item.odgqty}"
+												pattern="#,###" />
+										</b>원
+									</div>
 								</div>
-								<div class="prd-foot" title="합계">
-									<span id="prd-total">합계</span> &nbsp; <b id="prd-price-total">
-										6,900 </b>원
-								</div>
-							</div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
@@ -278,13 +133,26 @@ p.prd-name {
 						<div class="panel-body panel-order">
 							<div class="order-info">
 								<div class="info-title pull-left">결제수단</div>
-								<div class="info-desc2 payment-method pull-left">신용카드</div>
+								<div class="info-desc2 payment-method pull-left">${orderInfo.paytype }</div>
 								<div class="info-title pull-left pull-left">총 결제금액</div>
-								<div class="info-desc2 price-all pull-left">5,400원</div>
+								<div class="info-desc2 price-all pull-left">
+									<fmt:formatNumber value="${orderInfo.sumOdgsale}"
+										pattern="#,###" />
+									원
+								</div>
 								<div class="info-title pull-left">총 주문금액</div>
-								<div class="info-desc2 price-order pull-left">0원</div>
+								<div class="info-desc2 price-order pull-left">
+									<fmt:formatNumber value="${orderInfo.sumOdgprice}"
+										pattern="#,###" />
+									원
+								</div>
 								<div class="info-title pull-left">총 할인금액</div>
-								<div class="info-desc2 price-disc pull-left">0원</div>
+								<div class="info-desc2 price-disc pull-left">
+									<fmt:formatNumber
+										value="${orderInfo.sumOdgprice-orderInfo.sumOdgsale }"
+										pattern="#,###" />
+									원
+								</div>
 							</div>
 						</div>
 					</div>
@@ -306,13 +174,31 @@ p.prd-name {
 						<div class="panel-body panel-order">
 							<div class="order-info clearfix">
 								<div class="info-title pull-left">총 결제금액</div>
-								<div class="info-desc2 price-all pull-left">0원</div>
+								<div class="info-desc2 price-all pull-left">
+									<fmt:formatNumber
+										value="${orderInfo.sumOdgsale+orderInfo.deliprice}"
+										pattern="#,###" />
+									원
+								</div>
 								<div class="info-title pull-left">상품구매금액</div>
-								<div class="info-desc2 price-good pull-left">0원</div>
+								<div class="info-desc2 price-good pull-left">
+									<fmt:formatNumber value="${orderInfo.sumOdgsale}"
+										pattern="#,###" />
+									원
+								</div>
 								<div class="info-title pull-left">배송비</div>
-								<div class="info-desc2 price-delivery pull-left">0원</div>
+								<div class="info-desc2 price-delivery pull-left">
+									<fmt:formatNumber value="${orderInfo.deliprice}"
+										pattern="#,###" />
+									원
+								</div>
 								<div class="info-title pull-left">결제예정금액</div>
-								<div class="info-desc2 pull-left">0원</div>
+								<div class="info-desc2 pull-left">
+									<fmt:formatNumber
+										value="${orderInfo.sumOdgsale+orderInfo.deliprice}"
+										pattern="#,###" />
+									원
+								</div>
 							</div>
 						</div>
 					</div>
@@ -334,18 +220,16 @@ p.prd-name {
 						<div class="panel-body panel-order">
 							<div class="order-info clearfix">
 								<div class="info-title pull-left">받는사람</div>
-								<div class="info-desc1 price-all pull-left">조대철</div>
+								<div class="info-desc1 price-all pull-left">${addrInfo.odname}</div>
 								<div class="info-title pull-left">우편번호</div>
-								<div class="info-desc1 price-good pull-left">05218</div>
+								<div class="info-desc1 price-good pull-left">${addrInfo.zcode}</div>
 								<div class="info-title pull-left">주소</div>
-								<div class="info-desc1 price-delivery pull-left">서울특별시 행복구
-									존버동 8282-5959 이젠아파트 3층 302호</div>
-								<div class="info-title pull-left">일반전화</div>
-								<div class="info-desc1 pull-left">02-777-5959</div>
+								<div class="info-desc1 price-delivery pull-left">
+									${addrInfo.addr1 } ${addrInfo.addr2 }</div>
 								<div class="info-title pull-left">휴대전화</div>
-								<div class="info-desc1 pull-left">010-8282-2-5959</div>
+								<div class="info-desc1 pull-left">${addrInfo.odphone}</div>
 								<div class="info-title pull-left">배송메시지</div>
-								<div class="info-desc1 pull-left">부재시 경비실로!</div>
+								<div class="info-desc1 pull-left">${orderInfo.odmsg}</div>
 							</div>
 						</div>
 					</div>
@@ -364,31 +248,43 @@ p.prd-name {
 					</div>
 					<div id="collapseSix" class="panel-collapse collapse"
 						role="tabpanel" aria-labelledby="headingSix">
-						<div class="panel-body panel-order">
-							<div class="order-info clreafix">
-								<div class="refund-title" colspan="2">취소 상품</div>
-								<div class="info-title1 pull-left">상품정보</div>
-								<div class="info-title2 pull-left">수량</div>
-								<div class="goods-info pull-left">
-									<p class="prd-name">펫클럽 알파독 칼슘 덴탈껌간식/강아지간식/치석제거</p>
-									<p class="prd-option">[옵션: 알파독칼슘밀크덴탈껌]</p>
+						<c:choose>
+							<c:when
+								test="${orderInfo.odstatus=='입금전' || orderInfo.odstatus=='배송준비중' || orderInfo.odstatus=='배송중' || orderInfo.odstatus=='배송완료'}">
+								<div class="panel-body panel-order">
+									<div class="order-info clreafix">환불 신청된 정보가 없습니다.</div>
 								</div>
-								<div class="goods-qty pull-left">1</div>
-								<div class="info-title pull-left">
-									&nbsp;환불일자<br>(처리상태)
-								</div>
-								<div class="refund-date pull-left">
-									2020-03-19 10:26:35<br> <b>(환불완료)</b>
-								</div>
-								<div class="info-title pull-left">&nbsp;환불금액</div>
-								<div class="refund-price pull-left">
-									상품금액 2,900+2,500(배송비) = 합계 : <b class="price-all">5,400원</b>
-								</div>
-								<div class="info-title pull-left">&nbsp;환불수단</div>
-								<div class="price-pre pull-left">신용카드</div>
+							</c:when>
 
-							</div>
-						</div>
+
+							<c:otherwise>
+								<div class="panel-body panel-order">
+									<div class="order-info clreafix">
+										<div class="refund-title" colspan="2">취소 상품</div>
+										<div class="info-title1 pull-left">상품정보</div>
+										<div class="info-title2 pull-left">수량</div>
+										<div class="goods-info pull-left">
+											<p class="prd-name">펫클럽 알파독 칼슘 덴탈껌간식/강아지간식/치석제거</p>
+											<p class="prd-option">[옵션: 알파독칼슘밀크덴탈껌]</p>
+										</div>
+										<div class="goods-qty pull-left">1</div>
+										<div class="info-title pull-left">
+											&nbsp;환불일자<br>(처리상태)
+										</div>
+										<div class="refund-date pull-left">
+											2020-03-19 10:26:35<br> <b>(환불완료)</b>
+										</div>
+										<div class="info-title pull-left">&nbsp;환불금액</div>
+										<div class="refund-price pull-left">
+											상품금액 2,900+2,500(배송비) = 합계 : <b class="price-all">5,400원</b>
+										</div>
+										<div class="info-title pull-left">&nbsp;환불수단</div>
+										<div class="price-pre pull-left">신용카드</div>
+									</div>
+								</div>
+							</c:otherwise>
+						</c:choose>
+
 					</div>
 					<!-- end panelSix -->
 				</div>
@@ -439,7 +335,7 @@ p.prd-name {
 			});
 		});
 		$("#goods_info").click(function(e) {
-			location.href="../gallery/goods.jsp";
+			location.href = "../gallery/goods.jsp";
 		});
 	</script>
 </body>
