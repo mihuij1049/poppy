@@ -10,55 +10,7 @@
 <head>
 
 <%@ include file="../share/head_tp.jsp"%>
-<style type="text/css">
-.login {
-	margin: 80px 30px;
-}
-
-input[type="text"], input[type="password"] {
-	width: 100%;
-	line-height: 40px;
-	border-radius: 5px;
-	font-size: 16px;
-	padding-left: 10px;
-}
-
-.login-go {
-	margin-top: 30px;
-	width: 100%;
-	font-size: 18px;
-	height: 45px;
-}
-
-.login-go:hover {
-	font-size: 20px;
-	color: #fff;
-}
-
-.help-user {
-	width: 90%;
-	margin: auto;
-	margin-top: -30px;
-	margin-bottom: 50px;
-}
-
-.help-user>a {
-	display: block;
-	float: left;
-	text-align: center;
-	text-decoration: none;
-	color: #191919;
-	width: 33%;
-	height: 30px;
-}
-
-.help-user>a:hover {
-	text-decoration: none;
-	color: #ff8f83;
-	font-size: 16px;
-	font-weight: bold;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/share/login.css" />
 </head>
 
 <body>

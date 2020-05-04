@@ -1,0 +1,76 @@
+@charset "UTF-8";
+.message {
+	border-top: 1px solid #ff6261;
+	border-bottom: 1px solid #ff6261;
+	background: #ff6261;
+	width: 96%;
+	text-align: center;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 15px;
+	height: 70px;
+	padding-top: 20px;
+}
+
+.message b {
+	color: white;
+}
+
+.info {
+	border: 1px solid #ffc7c1;
+	background: #ffc7c1;
+	width: 96%;
+	height: 90px;
+	margin: auto;
+	margin-top: 1px;
+	padding-top: 25px;
+	padding-left: 25px;
+}
+
+.info-name {
+	padding-left: 30px;
+	margin-bottom: 20px;
+}
+
+.info-email {
+	padding-left: 22px;
+}
+
+.id {
+	border: 1px solid #ffc7c1;
+	width: 96%;
+	height: 50px;
+	margin: auto;
+	margin-bottom: 15px;
+	padding-left: 25px;
+	padding-top: 12px;
+	border-top: none;
+}
+
+.id-info {
+	margin-left: 10px;
+}
+
+.btns {
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.btn1 {
+	width: 45%;
+	height: 40px;
+	margin-right: 10px;
+}
+
+.btn2 {
+	width: 45%;
+	height: 40px;
+}
+
+.btn1:hover {
+	color: white;
+}
+
+.btns>a:hover {
+	text-decoration: none;
+}

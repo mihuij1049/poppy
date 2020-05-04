@@ -9,68 +9,7 @@
 
 <head>
 <%@ include file="../share/head_tp.jsp"%>
-<style type="text/css">
-.message {
-	border-top: 1px solid #ff6261;
-	border-bottom: 1px solid #ff6261;
-	border-radius: 5px;
-	background: #ff6261;
-	width: 96%;
-	height: 150px;
-	text-align: center;
-	margin: auto;
-	margin-top: 20px;
-	color: white;
-}
-
-.info {
-	border: 1px solid #ffc1c7;
-	width: 96%;
-	margin: auto;
-	margin-top: 15px;
-	margin-bottom: 15px;
-	padding-top: 25px;
-	padding-bottom: 25px;
-	padding-left: 25px;
-	line-height: 35px;
-	border-radius: 5px;
-}
-
-.message .send-msg {
-	padding-top: 25px;
-	line-height: 30px;
-	font-size: 20px;
-}
-
-.info-name {
-	padding-left: 30px;
-	margin-bottom: 20px;
-	font-size: 18px;
-	letter-spacing: 2px;
-}
-
-.info-email {
-	padding-left: 25px;
-	font-size: 18px;
-	letter-spacing: 1px;
-}
-
-.btn-login-div {
-	text-align: center;
-	margin-bottom: 50px;
-}
-
-.btn-login {
-	width: 90%;
-	height: 40px;
-}
-
-.btn-login:hover {
-	font-weight: bold;
-	font-size: 15px;
-	color: #fff;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/share/find_pw_ok.css" />
 </head>
 
 <body>

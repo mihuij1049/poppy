@@ -9,30 +9,8 @@
 
 <head>
 <%@ include file="../share/head_tp.jsp"%>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/share/page_info1.css" />
 
-<style type="text/css">
-.table {
-	width: 96%;
-	margin: auto;
-	border-top: 1px solid #ffc7c1;
-	margin-top: 20px;
-	margin-bottom: 50px;
-}
-
-.table tr {
-	line-height: 30px;
-	border: 1px solid #ffc7c1;
-}
-
-.table th {
-	width: 35%;
-}
-
-.table>tbody>tr>th, .table>tbody>tr>td {
-	border-top: 1px solid #ffc7c1;
-	line-height: 30px;
-}
-</style>
 </head>
 
 <body>

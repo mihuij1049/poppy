@@ -9,17 +9,7 @@
 
 <head>
 <%@ include file="../share/head_tp.jsp"%>
-<style type="text/css">
-.terms {
-	border: 1px solid #ffc7c1;
-	width: 96%;
-	margin: auto;
-	margin-top: 20px;
-	margin-bottom: 50px;
-	font-size: 12px;
-	padding: 15px 8px;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/share/page_info2.css" />
 </head>
 
 <body>

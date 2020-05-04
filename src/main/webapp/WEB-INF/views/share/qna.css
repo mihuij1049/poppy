@@ -1,0 +1,131 @@
+@charset "UTF-8";
+
+.notice {
+	margin-top: 20px;
+}
+
+.table span {
+	font-size: 11px;
+}
+
+.table td {
+	height: 70px;
+}
+
+.table .subject {
+	vertical-align: middle;
+}
+
+.table .td .subject {
+	
+}
+
+.row {
+	margin-bottom: 50px;
+}
+
+.searchmenu {
+	padding-bottom: 15px;
+	margin: auto;
+	text-align: center;
+}
+
+/** 비밀번호 입력 모달 */
+.customer_pass {
+	margin: auto;
+	width: 90%;
+	padding: 20px 0px;
+	z-index: 1;
+	border: 1px solid #ffc7c1;
+	border-radius: 5px;
+	background: #ffc7c1;
+	text-align: center;
+}
+
+.pass_label {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+/** 키워드 메뉴 */
+.selectmenu {
+	width: 70px;
+	height: 27px;
+	margin-left: 15px;
+}
+
+/** 검색 input */
+.keyword {
+	width: 170px;
+	border: 1px solid;
+	color: #777;
+	margin-left: 5px;
+}
+
+/** 검색버튼 */
+.btn-search {
+	margin-left: 13px;
+}
+
+.subject {
+	text-decoration: none;
+	color: #777;
+}
+
+.subject:hover {
+	text-decoration: none;
+	color: #777;
+}
+
+.nowpage {
+	border: 1px solid #ffc7c1;
+	background: #ffc7c1;
+	padding: 6px 10px;
+	color: #ff6261;
+}
+
+.otherpage {
+	border: 1px solid #ffc7c1;
+	background: #ffc7c1;
+	padding: 6px 10px;
+	color: white;
+}
+
+.otherpage:hover {
+	text-decoration: none;
+	color: #333;
+}
+
+.pagenumber {
+	text-align: center;
+	margin-bottom: 20px;
+	margin-top: 50px;
+}
+
+.prevok {
+	border: 1px solid #ffc7c1;
+	padding: 6px 10px;
+	color: #ff6261;
+	text-decoration: none;
+}
+
+.prevno {
+	border: 1px solid #ffc7c1;
+	padding: 6px 10px;
+	color: #ffc7c1;
+	text-decoration: none;
+}
+
+.nextok {
+	border: 1px solid #ffc7c1;
+	padding: 6px 10px;
+	color: #ff6261;
+	text-decoration: none;
+}
+
+.nextno {
+	border: 1px solid #ffc7c1;
+	padding: 6px 10px;
+	color: #ffc7c1;
+	text-decoration: none;
+}

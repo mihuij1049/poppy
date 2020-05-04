@@ -1,0 +1,77 @@
+@charset "UTF-8";
+.mycart {
+	border: 1px solid #ffc7c1;
+	width: 96%;
+	margin: auto;
+	margin-bottom: 15px;
+}
+
+.recent {
+	margin-bottom: 50px;
+	margin-top: 20px;
+}
+
+.mygoods {
+	padding-top: 20px;
+}
+
+.mygoods:hover {
+	cursor: pointer;
+}
+
+.mygoods a {
+	display: block;
+	float: left;
+	margin: 5px;
+	height: auto;
+	padding-left: 5px;
+}
+
+.word {
+	float: left;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 70%;
+	margin-top: 10px;
+	font-size: 16px;
+}
+
+.word>b {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.cart-img {
+	width: 75px;
+	border: 1px solid #ffc7c1;
+}
+
+.summ {
+	text-align: right;
+	padding-bottom: 10px;
+}
+
+.word span {
+	text-decoration: line-through;
+	color: #696969;
+}
+
+.btns {
+	padding-left: 30px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	padding-right: 20px;
+}
+
+.btns .btn-inverse {
+	font-size: 12px;
+}
+
+.btn1 {
+	float: right;
+}
+
+.recent-item-list {
+	margin-bottom: 10px;
+}

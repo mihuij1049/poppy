@@ -1,0 +1,110 @@
+@charset "UTF-8";
+.tabtab {
+	margin-top: 10px;
+}
+
+.nav-tabs {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.nav-tabs li {
+	width: 50%;
+	text-align: center;
+}
+
+.nav-tabs a {
+	width: 100%;
+	color: #333;
+}
+
+.bar1 {
+	text-align: center;
+	background: #ff6261;
+	color: white;
+	margin: auto;
+	margin-top: 5px;
+	padding: 10px 0px;
+}
+
+.bar1-good {
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.onegood {
+	width: 96%;
+	margin: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 20px;
+	border: 1px solid #FFC7C1
+}
+
+.cart-img {
+	display: inline-block;
+	width: 80px;
+	float: left;
+	margin-right: 10px;
+}
+
+.mybought {
+	width: 70%;
+	display: inline-block;
+	float: left;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding-right: 10px;
+	padding-bottom: 10px;
+}
+
+.mybought small {
+	display: inline-block;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.star {
+	width: 70%;
+	display: inline-block;
+	float: left;
+}
+
+.review {
+	display: inline-block;
+	width: 70%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.btn1 {
+	display: inline-block;
+	float: right;
+	margin-top: 20px;
+}
+
+.btn1:hover {
+	color: white;
+}
+
+.solid-bottom {
+	border-bottom: 1px solid #eee;
+}
+
+.solid-bottom a {
+	color: #333;
+	text-decoration: none;
+}
+
+.onegood-bottom a {
+	color: #333;
+	text-decoration: none;
+}
+
+.footer {
+	margin-top: 50px;
+}

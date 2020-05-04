@@ -1,0 +1,77 @@
+@charset "UTF-8";
+.find {
+	margin-top: 10px;
+}
+
+.member {
+	border: 1px solid #ffc7c1;
+	border-bottom: none;
+	width: 96%;
+	height: 60px;
+	margin: auto;
+	margin-top: 20px;
+	padding-top: 16px;
+}
+
+.auth {
+	border: 1px solid #ffc7c1;
+	border-bottom: none;
+	width: 96%;
+	height: 60px;
+	margin: auto;
+	padding-top: 16px;
+}
+
+.auth input {
+	margin-left: 30px;
+}
+
+.name {
+	border: 1px solid #ffc7c1;
+	border-bottom: none;
+	width: 96%;
+	height: 60px;
+	margin: auto;
+	padding-top: 16px;
+}
+
+.email {
+	border: 1px solid #ffc7c1;
+	width: 96%;
+	height: 60px;
+	margin: auto;
+	padding-top: 16px;
+}
+
+.find-id b {
+	padding-left: 40px;
+}
+
+.m_type {
+	margin-left: 30px;
+}
+
+.name input {
+	margin-left: 55px;
+}
+
+.email input {
+	margin-left: 40px;
+}
+
+/** 확인버튼 전체영역 */
+.btn-confirm-div {
+	text-align: center;
+}
+
+/** 확인버튼 */
+.btn-confirm {
+	width: 90%;
+	height: 40px;
+	margin-top: 15px;
+	margin-bottom: 50px;
+}
+
+.btn-confirm:hover {
+	color: white;
+}
