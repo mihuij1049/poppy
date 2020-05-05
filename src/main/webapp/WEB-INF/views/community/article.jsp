@@ -11,7 +11,7 @@
 <head>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/share/article.css"/>
+	href="${pageContext.request.contextPath}/share/article.css" />
 
 </head>
 
@@ -63,7 +63,8 @@
 									</c:url>
 									<div class="comment-nai">
 										<div class="menory">
-										<small class="small"><span>${item.username} | </span><span>${item.regdate}</span></small>
+											<small class="small"><span>${item.username} |
+											</span><span>${item.regdate}</span></small>
 										</div>
 										<span class="span">${item.cmtcontent}</span><br />
 										<div class="editbuttons">
@@ -79,20 +80,15 @@
 				</table>
 			</div>
 
-			<form class="article-comment" method="post" action="${pageContext.request.contextPath}/community/article.do">
+			<form class="article-comment" method="post"
+				action="${pageContext.request.contextPath}/community/article.do">
 				<div class="comment-write">
 					<div class="info-name">
-						<label for="name_write">이름</label> <input type="text"
-							name="username" class="information1" id="name_write">
-					</div>
-					<div class=info-pass>
-						<label for="pass_write">비밀번호</label> <input type="password"
-							name="pass_write" class="information2" id="pass_write">
+						이름: ${myCmt.username}
 					</div>
 				</div>
-				<textarea class="comment_area" id="comment_area" name="cmtcontent">
-					</textarea>
-				<button type="submit" class="enter btn btn-sm" id="enter">등록</button>
+					<textarea class="comment_area" id="comment_area" name="cmtcontent" ></textarea>
+					<button type="submit" class="enter btn btn-sm" id="enter">등록</button>
 			</form>
 		</div>
 		<div class="next">

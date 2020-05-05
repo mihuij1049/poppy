@@ -134,6 +134,7 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
+			<button type="submit" class="write_qna btn btn-sm" id="enter" onclick="location.href='${pageContext.request.contextPath}/community/qna_wri.do'">글쓰기</button>
 		</div>
 		<div class="row">
 			<div class="searchmenu">

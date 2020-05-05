@@ -1,8 +1,6 @@
 package kr.co.poppy.controllers;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -112,15 +110,16 @@ public class CommunityController {
 		input.setBbstitle(keyword);
 		input.setUsername(keyword);
 		input.setUserid(keyword);
-
+		
 		// 조회 결과가 저장될 객체
 		List<Bbs> output = null;
 		PageData pageData = null;
-
+		
 		try {
 
 			// 전체 게시글 수 조회
 			totalCount = bbsService.getBbsCount(input);
+		
 			// 페이지 번호 계산 --> 계산결과가 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 
@@ -163,6 +162,7 @@ public class CommunityController {
 		try {
 			// 전체 게시글 수 조회
 			totalCount = bbsService.getBbsCount(input);
+			// 댓글 수 조회
 			// 페이지 번호 계산 --> 계산결과가 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 			// SQL의 limit절에서 사용될 값을 Beans의 static 변수에 저장
@@ -246,7 +246,8 @@ public class CommunityController {
 			@RequestParam(value = "cmtcontent", required = false) String cmtcontent,
 			@RequestParam(value = "regdate", required = false) String regdate,
 			@RequestParam(value = "editdate", required = false) String editdate,
-			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
+			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno,
+			@RequestParam(value = "memno", defaultValue = "0") int memno){
 
 		/** 1) 유효성 검사 */
 		if (cmtcontent.equals("")) {
@@ -271,6 +272,7 @@ public class CommunityController {
 		try {
 			// 데이터 저장
 			commentsService.addComments(input);
+			commentsService.addComments(myCmt);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}

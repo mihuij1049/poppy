@@ -33,14 +33,21 @@
 		WHERE bbsno=#{bbsno}
 		ORDER BY cmtno DESC
 	</select>
+	
+	<!-- 데이터 수 조회를 위한 기능 정의 -->
+	<select id="selectCountAll"
+		parameterType="kr.co.poppy.model.Comments" resultType="int">
+		SELECT COUNT(*)
+		FROM comments c
+		INNER JOIN members m ON c.memno=m.memno
+		WHERE bbsno=#{bbsno}
 
-
-	<!-- 데이터 저장을 위한 기능 정의 -->
+	<!-- 댓글저장 -->
 	<insert id="insertItem"
 		parameterType="kr.co.poppy.model.Comments" useGeneratedKeys="true"
 		keyProperty="cmtno">
-		INSERT INTO comments (cmtcontent, regdate, editdate, memno, bbsno) VALUES (
-		#{cmtcontent}, #{regdate}, #{editdate}, #{memno}, #{bbsno});
+		INSERT INTO comments (cmtcontent, regdate, editdate, bbsno, memno) VALUES (
+		#{cmtcontent}, #{regdate}, #{editdate}, #{bbsno}, #{memno});
 	</insert>
 
 	<!-- 데이터 삭제를 위한 기능 정의 -->

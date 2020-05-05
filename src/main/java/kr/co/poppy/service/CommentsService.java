@@ -2,7 +2,6 @@ package kr.co.poppy.service;
 
 import java.util.List;
 
-
 import kr.co.poppy.model.Comments;
 
 public interface CommentsService {
@@ -38,4 +37,14 @@ public interface CommentsService {
 	 * @throws Exception
 	 */
 	public int deleteComments(Comments input) throws Exception;
+	
+	/**
+	 * 게시글 데이터가 저장되어 있는 갯수 조회
+	 * @param Bbs 검색조건을 담고 있는 Beans
+	 * @return int
+	 * @throws Exception
+	 */
+	public int getCommentsCount(Comments input) throws Exception;
+
 }
+
