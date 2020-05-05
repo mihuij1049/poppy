@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.ModelAndViewDefiningException;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import kr.co.poppy.helper.WebHelper;
@@ -24,11 +25,8 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		
 		if (userSession.getAttribute("userInfo")==null) {
 			log.info("로그인 하지 않은 유저 입니다.");
-			
-			webHelper.redirect(null, "로그인 후 이용해주세요.");
-			 
-			response.sendRedirect("../member/login.do");
-			return false;
+
+			throw new ModelAndViewDefiningException(webHelper.redirect("../member/login.do", "로그인 후 이용해주세요."));
 		}
 		
 		return super.preHandle(request, response, handler);
