@@ -41,7 +41,7 @@
 		FROM comments c
 		INNER JOIN members m ON c.memno=m.memno
 		WHERE bbsno=#{bbsno}
-
+	</select>
 	<!-- 댓글저장 -->
 	<insert id="insertItem"
 		parameterType="kr.co.poppy.model.Comments" useGeneratedKeys="true"
