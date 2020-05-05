@@ -13,19 +13,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mysql.cj.log.Log;
-
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Address;
 import kr.co.poppy.model.Bbs;
 import kr.co.poppy.model.Goods;
+import kr.co.poppy.model.GoodsForRv;
 import kr.co.poppy.model.Members;
 import kr.co.poppy.model.Orderdetail;
 import kr.co.poppy.model.Orders;
 import kr.co.poppy.model.Points;
 import kr.co.poppy.service.AddressService;
 import kr.co.poppy.service.BbsService;
+import kr.co.poppy.service.GoodsForRvService;
 import kr.co.poppy.service.OrderdetailService;
 import kr.co.poppy.service.OrdersService;
 import kr.co.poppy.service.PointsService;
@@ -53,6 +53,8 @@ public class MyInfoController {
 	AddressService addressService;
 	@Autowired
 	BbsService bbsService;
+	@Autowired
+	GoodsForRvService goodsForRvService;
 
 	/** "/프로젝트이름"에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -275,6 +277,15 @@ public class MyInfoController {
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members)mySession.getAttribute("userInfo");
 		
+		/** 정보 조회를 위해 일할 Beans */
+		// 작성 가능한 리뷰 탭을 조회할 Beans
+		GoodsForRv goodsForRv = new GoodsForRv();
+		/* goodsForRv.setBbstype("C"); */
+		goodsForRv.setMemno(myInfo.getMemno());
+		
+		List<GoodsForRv> avRvList = null;
+		
+		// 내가 작성한 리뷰 탭을 조회할 Beans 
 		Bbs myBbs = new Bbs();
 		myBbs.setMemno(myInfo.getMemno());
 		
@@ -282,11 +293,14 @@ public class MyInfoController {
 		
 		try {
 			myBbsList = bbsService.getBbsList_myrv(myBbs);
+			
+			avRvList = goodsForRvService.getGoodsList(goodsForRv);
 		} catch (Exception e) {
 			e.getLocalizedMessage();
 		}
 		
 		/** 1) 작성 가능한 리뷰 탭 (내가 구매한 상품목록(다중행조회)필요 param=memno) */
+		model.addAttribute("avRvList", avRvList);
 		
 		/** 2) 내가 작성한 리뷰 탭 (bbs 다중행조회필요 - param=memno) */
 		model.addAttribute("myReview", myBbsList);

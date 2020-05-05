@@ -37,61 +37,80 @@
 			<div class="tab-content">
 				<div class="tab-pane fade in active all1" id="good1">
 					<div class="bar1">
-						<b>작성 가능한 리뷰<span style="color: #00C6ED"> 1</span></b>
+						<b>작성 가능한 리뷰<span style="color: #00C6ED">
+								${avRvList.size() }</span></b>
 					</div>
-					<div class="onegood clearfix">
-						<div class="solid-bottom clearfix">
-							<a href="#"><img src="../share/img/4_M.jpg" class="cart-img">
-								<div class="mybought">
-									<span><b class="bar1-good">펫클럽 데이스포 케어츄르
-											15kg*4개입/츄르간식1</b></span><br> <small>구매날짜: <span>20.02.22</span></small></a>
+					<c:forEach var="item" items="${avRvList }" varStatus="status">
+						<%-- 출력을 위한 변수 준비 --%>
+						<c:set var="gname" value="${item.gname }" />
+						<c:set var="regdate" value="${item.regdate }" />
+						<%-- <c:set var="bbstitle" value="${item.bbstitle }" /> 이미지 불러올 예정 --%>
+						<div class="onegood clearfix">
+							<div class="solid-bottom clearfix">
+								<a href="#"><img src="../share/img/4_M.jpg" class="cart-img">
+									<div class="mybought">
+										<span><b class="bar1-good">${item.gname }</b></span><br>
+										<small>구매날짜: <span>${item.regdate }</span>
+										</small>
+									</div></a>
+							</div>
+							<button type="button"
+								onclick="location.href='${pageContext.request.contextPath}/community/photo_wri.do?goodsno=${item.goodsno }'"
+								class="btn btn1">리뷰쓰기</button>
 						</div>
-					</div>
-					<button type="button"
-						onclick="location.href='${pageContext.request.contextPath}/community/photo_wri.do'"
-						class="btn btn1">리뷰쓰기</button>
+					</c:forEach>
 				</div>
-			</div>
-			<div class="tab-pane fade" id="good2">
 
-				<div class="bar1">
-					<b>내가 작성한 리뷰<span style="color: #00C6ED;">
-							${myReview.size() }</span></b>
-				</div>
-				<c:forEach var="item" items="${myReview }" varStatus="status">
-					<%-- 출력을 위한 변수 준비 --%>
-					<c:set var="gname" value="${item.gname }" />
-					<c:set var="rvlike" value="${item.rvlike }" />
-					<c:set var="bbstitle" value="${item.bbstitle }" />
-					<div>
+
+				<div class="tab-pane fade" id="good2">
+
+					<div class="bar1">
+						<b>내가 작성한 리뷰<span style="color: #00C6ED;">
+								${myReview.size() }</span></b>
+					</div>
+					<c:forEach var="item" items="${myReview }" varStatus="status">
+						<%-- 출력을 위한 변수 준비 --%>
+						<c:set var="gname" value="${item.gname }" />
+						<c:set var="rvlike" value="${item.rvlike }" />
+						<c:set var="bbstitle" value="${item.bbstitle }" />
+
 						<div class="onegood onegood-bottom">
 							<a href="#"><img src="../share/img/4_M.jpg" class="cart-img">
 								<div class="mybought">
-									<span><b>${item.gname }</b></span><br></a>
-						</div>
-						
+									<span><b>${item.gname }</b></span><br>
+								</div></a>
+
+
 							<div class="star">
-							<c:choose>
-								<c:when test="${item.rvlike=='*****' }">
-									<p class="star-rating">★★★★★</p>
-								</c:when>
-								<c:when test="${item.rvlike=='****' }"><p class="star-rating">★★★★</p></c:when>
-								<c:when test="${item.rvlike=='***' }"><p class="star-rating">★★★</p></c:when>
-								<c:when test="${item.rvlike=='**' }"><p class="star-rating">★★</p></c:when>
-								<c:otherwise><p class="star-rating">★</p></c:otherwise>
+								<c:choose>
+									<c:when test="${item.rvlike=='*****' }">
+										<p class="star-rating">★★★★★</p>
+									</c:when>
+									<c:when test="${item.rvlike=='****' }">
+										<p class="star-rating">★★★★</p>
+									</c:when>
+									<c:when test="${item.rvlike=='***' }">
+										<p class="star-rating">★★★</p>
+									</c:when>
+									<c:when test="${item.rvlike=='**' }">
+										<p class="star-rating">★★</p>
+									</c:when>
+									<c:otherwise>
+										<p class="star-rating">★</p>
+									</c:otherwise>
 								</c:choose>
 							</div>
-						
-						<br />
-						<div class="review" id="review">
-							<span>${item.bbstitle }</span>
+
+							<br />
+							<div class="review" id="review">
+								<span>${item.bbstitle }</span>
+							</div>
 						</div>
-					</div>
-				</c:forEach>
+
+					</c:forEach>
+				</div>
 			</div>
 		</div>
-	</div>
-	</div>
 	</div>
 
 	<%@ include file="../share/bottom_tp.jsp"%>
