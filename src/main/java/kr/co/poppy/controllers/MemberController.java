@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,11 +43,17 @@ public class MemberController {
 	/** Service 패턴 구현체 주입 */
 	@Autowired
 	AgreeService agreeService;
-
+	
+	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
+	@Value("#{servletContext.contextPath}")
+	String contextPath;
+	
+//-------------------------------------------------------------------------
+	
 	/** agree_0.jsp 약관동의 페이지 */
 	@RequestMapping(value = "/member/agree_0.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String agree_0() {
-
+		
 		return "member/agree_0";
 	}
 
@@ -275,7 +282,16 @@ public class MemberController {
 		/** 3) View 로 데이터 전달 */
 		model.addAttribute("myinfo", output);
 		
-		return webHelper.redirect("../myInfo/myinfo.do", "환영합니다! 댕댕이 주인님~!");
+		return webHelper.redirect(contextPath+"/myInfo/myinfo.do", "환영합니다! 댕댕이 주인님~!");
+	}
+	
+	/** 로그아웃 액션 페이지 */
+	@RequestMapping(value = "/member/logout.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView logout(Model model) {
+
+		webHelper.removeSession("userInfo");
+		
+		return webHelper.redirect(contextPath+"/index/index.do", "좋은 하루 되세요, 회원님!");
 	}
 
 	/**

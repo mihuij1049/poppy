@@ -28,7 +28,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 
 			throw new ModelAndViewDefiningException(webHelper.redirect("../member/login.do", "로그인 후 이용해주세요."));
 		}
-		
 		return super.preHandle(request, response, handler);
 	}
 	

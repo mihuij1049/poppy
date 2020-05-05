@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.net.URLDecoder"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="footer">
 		<div id="topbt">
 		<a style="display:scroll;position:fixed;bottom:80px; right:10px;" href="#">
@@ -141,12 +144,21 @@
 						<!-- 내용 -->
 						<div class="modal-body footer-body clearfix">
 							<div class="footer-buttons ">
+							<c:choose>
+							<c:when test="${empty userInfo.userid }">
 								<button type="button"
 									onclick="location.href='${pageContext.request.contextPath }/member/login.do'"
 									class="btn btn-footer btn-sm">로그인</button>
 								<button type="button"
 									onclick="location.href='${pageContext.request.contextPath }/member/agree_0.do'"
 									class="btn btn-footer btn-sm">회원가입</button>
+							</c:when>
+							<c:otherwise>
+								<button type="button"
+									onclick="location.href='${pageContext.request.contextPath }/member/logout.do'"
+									class="btn btn-footer btn-sm">로그아웃</button>
+							</c:otherwise>
+							</c:choose>
 							</div>
 							<div class="footer-category">
 								<b>카테고리</b>
