@@ -57,7 +57,9 @@ public class KRTController {
 	/** 목록 페이지 */
 	@RequestMapping(value = "/myInfo/order_list.do", method = RequestMethod.GET)
 	public ModelAndView order_list(Model model, @RequestParam(value = "page", defaultValue = "1") int nowPage) {
-
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+		
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
 		// 전체 게시글 수
 		int totalCount = 0;
@@ -67,8 +69,9 @@ public class KRTController {
 		int pageCount = 5;
 
 		/** 2) 데이터 조회하기 */
+		//int odnum = Integer.parseInt(orderno);
 		Orders input = new Orders();
-		input.setMemno(2);
+		//input.setOrderno(odnum);
 
 		List<Orders> output = null;
 		PageData pageData = null;
@@ -84,13 +87,32 @@ public class KRTController {
 			Orders.setListCount(pageData.getListCount());
 
 			// 데이터 조회하기
+			// input = orderService.getOrdersItem(input);
 			output = orderService.getOrdersList(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-		/** 3) view 처리 */
-		model.addAttribute("output", output);
+/**
+		if (input.getOdstatus().equals("0")) {
+			input.setOdstatus("입금전");
+		} else if (input.getOdstatus().equals("1")) {
+			input.setOdstatus("배송준비중");
+		} else if (input.getOdstatus().equals("2")) {
+			input.setOdstatus("배송중");
+		} else if (input.getOdstatus().equals("3")) {
+			input.setOdstatus("배송완료");
+		} else if (input.getOdstatus().equals("4")) {
+			input.setOdstatus("주문취소");
+		} else if (input.getOdstatus().equals("5")) {
+			input.setOdstatus("반품처리중");
+		} else if (input.getOdstatus().equals("6")) {
+			input.setOdstatus("환불완료");
+		} */
 
+		/** 3) view 처리 */
+		model.addAttribute("myInfo", myInfo);
+		model.addAttribute("output", output);
+		
 		String viewPath = "myInfo/order_list";
 		return new ModelAndView(viewPath);
 	}
@@ -175,7 +197,7 @@ public class KRTController {
 		// 조회에 필요한 조건값을 Beans에 담는다.
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
-		
+
 		Points input = new Points();
 		input.setMemno(myInfo.getMemno());
 
@@ -279,7 +301,7 @@ public class KRTController {
 	public ModelAndView cart_list(Model model) {
 		Cart input = new Cart();
 		input.setMemno(2);
-		
+
 		List<Cart> output = null;
 
 		try {

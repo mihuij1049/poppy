@@ -89,10 +89,10 @@
 							<div class="view">
 								<span class="date" title="주문일자">${fn:substring(item.regdate,0,10)}
 								</span> <span class="number" title="주문번호"> <a
-									href="${pageContext.request.contextPath}/myInfo/order_desc.do">
+									href="${pageContext.request.contextPath}/myInfo/order_desc.do?orderno=${item.orderno}">
 										(${fn:substring(item.regdate,0,10).replace("-","")}-${item.orderno})</a>
 								</span> <a
-									href="${pageContext.request.contextPath}/myInfo/order_desc.do"
+									href="${pageContext.request.contextPath}/myInfo/order_desc.do ?orderno=${item.orderno}"
 									class="btn-detail"><span id="GGuc">&#62;</span>상세보기</a>
 							</div>
 							<div class="prd-info">
