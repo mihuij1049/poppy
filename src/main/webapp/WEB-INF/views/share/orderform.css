@@ -500,8 +500,11 @@
  /** 배송지 끝 */
 
  /** 주문상품 시작 */
-
  .prd-info .prd-box {
+     position: relative;
+ }
+
+ .prd-info .goods-box {
      display: flex;
      padding-top: 20px;
      padding-left: 15px;
@@ -512,8 +515,8 @@
  }
 
  .prd-info #prd-title {
-     margin: auto;
-     width: 92%;
+     width: 80%;
+     margin-left: 10px;
  }
 
  .prd-info a {
@@ -521,8 +524,9 @@
  }
 
  .cencel-btn {
-     margin-right: 15px;
-     height: 30px;
+     position: absolute;
+     top: 22px;
+     right: 15px;
  }
 
  .prd-box #prd-del {

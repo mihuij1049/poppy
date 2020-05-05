@@ -874,23 +874,23 @@ dl {
 								<tbody>
 									<tr>
 										<th><span>상품명</span></th>
-										<td><sapn> ${output.gname} </sapn></td>
+										<td><span> ${output.gname} </span></td>
 									</tr>
 									<tr>
 										<th><span>소비자가</span></th>
-										<td><sapn> <b>${output.gprice}원</b> </sapn></td>
+										<td><span> <b>${output.gprice}원</b> </span></td>
 									</tr>
 									<tr>
 										<th><span>판매가</span></th>
-										<td><sapn> <b>${output.gsale}원</b> </sapn></td>
+										<td><span> <b>${output.gsale}원</b> </span></td>
 									</tr>
 									<tr>
 										<th><span>배송방법</span></th>
-										<td><sapn> 택배 </sapn></td>
+										<td><span> 택배 </span></td>
 									</tr>
 									<tr>
 										<th><span>배송비</span></th>
-										<td><sapn> <b>2,500원</b>(30,000원 이상 구매시 무료) </sapn></td>
+										<td><span> <b>2,500원</b>(30,000원 이상 구매시 무료) </span></td>
 									</tr>
 								</tbody>
 							</table>

@@ -402,14 +402,11 @@ table .quantity {
 .prd-review .writer {
 	color: #777;
 	font-size: 11px;
-	
-
 }
 
 .prd-review .writeDate {
 	color: #777;
 	font-size: 11px;
-
 }
 
 .prd-review .review-content {
@@ -423,9 +420,9 @@ dl {
 }
 
 .prd-review .star {
-    color: red;
-    font-size: 20px;
-    display: inline-block;
+	color: red;
+	font-size: 20px;
+	display: inline-block;
 }
 
 .box-left .editt {
@@ -788,7 +785,7 @@ dl {
 													<img src="/upload/img/goods_header.jpg">
 												</a>
 											</div>
-											<div calss="con">
+											<div class="con">
 												<p class="name">펫클럽 벨버드비쉬케어포덴탈 바르는치약 70g/위생</p>
 												<p class="sel-price">6,000원</p>
 											</div>
@@ -848,13 +845,13 @@ dl {
 					<div class="prd-action">
 						<div class="action-btn">
 							<button type="button"
-								onclick="location.href='${pageContext.request.contextPath }/pay/cart.do'"
+								onclick="location.href='${pageContext.request.contextPath}/pay/cart.do'"
 								id="action-cart">장바구니</button>
 							<button type="button"
-								onclick="location.href='${pageContext.request.contextPath }/myInfo/like_goods.do'"
+								onclick="location.href='${pageContext.request.contextPath}/myInfo/like_goods.do'"
 								id="action-like">관심상품</button>
-							<button type="button"
-								onclick="location.href='${pageContext.request.contextPath }/pay/orderform_ajax.do'"
+							<button type="submit"
+								onclick="location.href='${pageContext.request.contextPath}/pay/orderform_ajax.do'"
 								id="action-orderform">구매하기</button>
 						</div>
 					</div>
@@ -881,23 +878,26 @@ dl {
 								<tbody>
 									<tr>
 										<th><span>상품명</span></th>
-										<td><sapn> ${output.gname} </sapn></td>
+										<td><span> ${output.gname} </span></td>
 									</tr>
 									<tr>
 										<th><span>소비자가</span></th>
-										<td><sapn> <b>${output.gprice}원</b> </sapn></td>
+										<td><span> <b>${output.gprice}원</b>
+										</span></td>
 									</tr>
 									<tr>
 										<th><span>판매가</span></th>
-										<td><sapn> <b>${output.gsale}원</b> </sapn></td>
+										<td><span> <b>${output.gsale}원</b>
+										</span></td>
 									</tr>
 									<tr>
 										<th><span>배송방법</span></th>
-										<td><sapn> 택배 </sapn></td>
+										<td><span> 택배 </span></td>
 									</tr>
 									<tr>
 										<th><span>배송비</span></th>
-										<td><sapn> <b>2,500원</b>(30,000원 이상 구매시 무료) </sapn></td>
+										<td><span> <b>2,500원</b>(30,000원 이상 구매시 무료)
+										</span></td>
 									</tr>
 								</tbody>
 							</table>
@@ -967,10 +967,10 @@ dl {
 							</div>
 							<div class="write  clearfix">
 								<input type="text" class="photo-title" placeholder="제목" />
-								<textarea placeholder="리뷰를 남겨주세요."></textarea>
+								<textarea class="photo-content" placeholder="리뷰를 남겨주세요."></textarea>
 							</div>
 							<div class="photo-button">
-								<button type="button" id="review-submit">리뷰 등록</button>
+								<button type="submit" id="review-submit">리뷰 등록</button>
 								<button type="button" id="review-all"
 									onclick="location.href='${pageContext.request.contextPath}/community/photo_rv.jsp'">리뷰
 									전체보기</button>
@@ -1006,9 +1006,12 @@ dl {
 		</div>
 	</form>
 	<div class="footer">
-	    <div id="topbt">
-	    	<a style="display:scroll;position:fixed;bottom:80px; right:10px;" href="#">
-			    <img src="${pageContext.request.contextPath }/share/img/top_btn.png">
+		<div id="topbt">
+			<a
+				style="display: scroll; position: fixed; bottom: 80px; right: 10px;"
+				href="#"> <img
+				src="${pageContext.request.contextPath }/share/img/top_btn.png">
+			</a>
 		</div>
 		<!-- 하단 네비게이션 고정-->
 		<!--- 소개 4인방 링크 -->
@@ -1237,17 +1240,21 @@ dl {
 				$(".arrow-down").toggleClass("rotate");
 			});
 		});
-		
+
 		$(function() {
-			$("#photo_rv").click(function(e) { 
-				$.get("${pageContext.request.contextPath}/gallery",
-					function(json) {
-						var template = Handlebars.compile($("#photo_rv_tmpl").html());
-						var html = template(json);
-						$(".prd-review").append(html);
-				});
-			});
+			$("#photo_rv").click(
+					function(e) {
+						$.get("${pageContext.request.contextPath}/gallery",
+								function(json) {
+									var template = Handlebars.compile($(
+											"#photo_rv_tmpl").html());
+									var html = template(json);
+									$(".prd-review").append(html);
+								});
+					});
 		});
+
+	
 	</script>
 </body>
 

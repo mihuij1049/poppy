@@ -50,7 +50,7 @@ public class PayController {
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 
-	/** orderform 페이지 단일행 조회 */
+	/** orderform 페이지 조회 */
 	@RequestMapping(value = "/pay/orderform.do", method = RequestMethod.GET)
 	public ModelAndView orederformView(Model model) {
 
@@ -110,46 +110,17 @@ public class PayController {
 
 	}
 
-	/** 주소 목록페이지 */
-	@RequestMapping(value = "/pay/orderform_list.do", method = RequestMethod.GET)
-	public ModelAndView addrList(Model model, @RequestParam(value = "memno", defaultValue = "") int memno) {
-
-		/** 유효성 검사 */
-		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
-		if (memno == 0) {
-			return webHelper.redirect(null, "회원번호가 없습니다.");
-		}
-
-		/** 데이터 조회하기 */
-		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
-		Address input = new Address();
-		input.setMemno(memno);
-
-		// 조회결과를 저장할 객체 선언
-		List<Address> output = null;
-
-		try {
-			// 데이터 조회
-			output = addressService.getAddressList(input);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-
-		/** View 처리 */
-		model.addAttribute("output", output);
-		return new ModelAndView("pay/orderform");
-	}
-
 	/** 주소 작성 폼에 대한 action 페이지 */
 	@RequestMapping(value = "/pay/orderform_add_ok.do", method = RequestMethod.POST)
-	public ModelAndView addrAdd_ok(Model model, @RequestParam(value = "odname", required = false) String odname,
-			@RequestParam(value = "odphone", required = false) String odphone,
-			@RequestParam(value = "odemail", required = false) String odemail,
-			@RequestParam(value = "zcode", required = false) Integer zcode,
-			@RequestParam(value = "addr1", required = false) String addr1,
-			@RequestParam(value = "addr2", required = false) String addr2,
-			@RequestParam(value = "regdate", defaultValue = "0") int regdate,
-			@RequestParam(value = "editdate", defaultValue = "0") int editdate,
+	public ModelAndView addrAdd_ok(Model model, 
+			@RequestParam(value = "odname", defaultValue = "") String odname,
+			@RequestParam(value = "odphone", defaultValue = "0") String odphone,
+			@RequestParam(value = "odemail", defaultValue = "0") String odemail,
+			@RequestParam(value = "zcode", defaultValue = "") Integer zcode,
+			@RequestParam(value = "addr1", defaultValue = "") String addr1,
+			@RequestParam(value = "addr2", defaultValue = "") String addr2,
+			@RequestParam(value = "regdate", required = false) String regdate,
+			@RequestParam(value = "editdate", required = false) String editdate,
 			@RequestParam(value = "memno", defaultValue = "0") int memno) {
 
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
@@ -180,34 +151,35 @@ public class PayController {
 
 		/** 2) 데이터 저장하기 */
 		// 저장할 값들을 Beans에 담는다.
-		Address input = new Address();
-		input.setOdname(odname);
-		input.setOdphone(odphone);
-		input.setOdemail(odemail);
-		input.setZcode(zcode);
-		input.setAddr1(addr1);
-		input.setAddr2(addr2);
-		input.setRegdate("now()");
-		input.setEditdate("now()");
-		input.setMemno(memno);
+		Address save = new Address();
+		save.setOdname(odname);
+		save.setOdphone(odphone);
+		save.setOdemail(odemail);
+		save.setZcode(zcode);
+		save.setAddr1(addr1);
+		save.setAddr2(addr2);
+		save.setRegdate("now()");
+		save.setEditdate("now()");
+		save.setMemno(memno);
 
 		try {
 			// 데이터 저장
 			// --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
-			addressService.addAddress(input);
+			addressService.addAddress(save);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
 		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야 한다.
-		String redirectUrl = contextPath + "/pay/orderform.do?memno=" + input.getMemno();
+		String redirectUrl = contextPath + "/pay/orderform.do?memno=" + save.getMemno();
 		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 	}
 
 	/** 주소 수정 폼 페이지 */
 	@RequestMapping(value = "/pay/orderform_edit_ok.do", method = RequestMethod.POST)
-	public ModelAndView addrEdit_ok(Model model, @RequestParam(value = "odname", required = false) String odname,
+	public ModelAndView addrEdit_ok(Model model, 
+			@RequestParam(value = "odname", required = false) String odname,
 			@RequestParam(value = "zcode", required = false) Integer zcode,
 			@RequestParam(value = "addr1", required = false) String addr1,
 			@RequestParam(value = "addr2", required = false) String addr2,

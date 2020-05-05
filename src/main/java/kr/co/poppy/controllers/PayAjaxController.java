@@ -56,18 +56,17 @@ public class PayAjaxController {
 	
 		/** 데이터 조회하기 */
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
-		Address input = new Address();
-		Address input2 = new Address();
+		Address input = new Address();	
 		input.setMemno(myInfo.getMemno());
-		input2.setMemno(myInfo.getMemno());
-		
 		// 조회결과를 저장할 객체 선언
 		Address output = null;
+		
+		Address input2 = new Address();
+		input2.setMemno(myInfo.getMemno());
 		List<Address> output2 = null;
 		
 		Points input3 = new Points();
-		input3.setMemno(myInfo.getMemno());
-		
+		input3.setMemno(myInfo.getMemno());	
 		List<Points> output3 = null;
 
 		try { 
@@ -85,11 +84,10 @@ public class PayAjaxController {
 		for (int i = 0; i < output3.size(); i++) {
 			Points temp = null;
 			temp = output3.get(i);
-			if (temp.getAvpoint() == null) {
+			if (temp.getAvpoint() == null || temp.getAvpoint()==0) {
 				temp.setAvpoint(0);
 			}
-			sumAvpoint += temp.getAvpoint();
-			
+			sumAvpoint += temp.getAvpoint();		
 		}
 		
 		input3.setAvpoint(sumAvpoint);
