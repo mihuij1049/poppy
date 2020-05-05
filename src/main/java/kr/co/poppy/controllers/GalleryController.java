@@ -58,4 +58,29 @@ public class GalleryController {
 	
 		return new ModelAndView("gallery/gal_list");
 	}
+	
+	@RequestMapping(value="/gallery/gal_list_cate.do", method=RequestMethod.GET)
+	public ModelAndView gallistcate(Model model,
+			@RequestParam(value="cate1", required=false) String cate1) {
+		// 2) 데이터 조회
+		// 굿즈데이터조회
+		Goods input = new Goods();
+		input.setCate1(cate1);
+		
+		// 데이터저장할곳
+		List<Goods> output1 = null;
+		
+		try {
+			// 데이터조회
+			output1 = goodsService.getGoodsListCate1(input);
+			
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		// 3) 뷰처리
+		model.addAttribute("output1", output1);
+	
+		return new ModelAndView("gallery/gal_list");
+	}
 }

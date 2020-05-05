@@ -70,15 +70,96 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 	
 	/**
-	 * 특정 카테고리의 상품 조회
+	 * 상품 데이터 목록 조회 - 신상품순
+	 * 
+	 * @param Goods 검색조건과 페이지 구현 정보를 담고 있는 Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	
+	@Override
+	public List<Goods> getGoodsListCate1(Goods input) throws Exception {
+		List<Goods> result = null;
+		try {
+			result = sqlSession.selectList("GoodsMapper.selectListCate1", input);
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+	
+	/**
+	 * 상품 데이터 목록 조회 - 상품명순
+	 * 
+	 * @param Goods 검색조건과 페이지 구현 정보를 담고 있는 Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
 	 */
 
 	@Override
-	public Goods getGoodsItem2(Goods input) throws Exception {
-		Goods result = null;
-
+	public List<Goods> getGoodsListCate2(Goods input) throws Exception {
+		List<Goods> result = null;
 		try {
-			result = sqlSession.selectOne("GoodsMapper.selectItem2", input);
+			result = sqlSession.selectList("GoodsMapper.selectListCate2", input);
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+	
+	/**
+	 * 상품 데이터 목록 조회 - 낮은가격순
+	 * 
+	 * @param Goods 검색조건과 페이지 구현 정보를 담고 있는 Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	
+	@Override
+	public List<Goods> getGoodsListCate3(Goods input) throws Exception {
+		List<Goods> result = null;
+		try {
+			result = sqlSession.selectList("GoodsMapper.selectListCate3", input);
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+
+	/**
+	 * 상품 데이터 목록 조회 - 높은가격순
+	 * 
+	 * @param Goods 검색조건과 페이지 구현 정보를 담고 있는 Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	
+	@Override
+	public List<Goods> getGoodsListCate4(Goods input) throws Exception {
+		List<Goods> result = null;
+		try {
+			result = sqlSession.selectList("GoodsMapper.selectListCate4", input);
 			if (result == null) {
 				throw new NullPointerException("result=null");
 			}
