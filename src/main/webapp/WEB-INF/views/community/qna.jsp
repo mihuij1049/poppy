@@ -68,7 +68,7 @@
 											<span class="glyphicon glyphicon-lock"></span> 
 											<a href="${viewUrl}" class="subject">${bbstitle}</a> 
 											<span class="comment">[50]</span>
-									</strong><br /> <span class="name" title="작성자">${item.username}</span>
+									</strong><br /> <span class="name" title="작성자">${myCmt.username}</span>
 										<span class="date" title="작성일">${item.regdate}</span> <span>조회
 											235</span></td>
 								</tr>
