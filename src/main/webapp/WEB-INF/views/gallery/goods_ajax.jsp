@@ -1,4 +1,5 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -997,7 +998,79 @@ dl {
 										onclick="location.href='${pageContext.request.contextPath}/community/qna.do'"
 										id="qna-all">모두보기</button>
 								</p>
-								<p class="nodata">게시물이 없습니다</p>
+								<div class="qna">
+									<table>
+										<tbody id="qna_list">
+											<%-- 상세페이지로 이동하기 위한 URL --%>
+											<c:url value="/community/article.do" var="viewUrl">
+												<c:param name="bbstype" value="${item2.bbstype}" />
+												<c:param name="bbsno" value="${item2.bbsno}" />
+											</c:url>
+											<tr>
+												<td class="subject"><strong> <span
+														class="glyphicon glyphicon-lock"></span> <a
+														href="${viewUrl}" class="subject">${item2.bbstitle}</a> <span
+														class="comment">[${output2.cmtCount}]</span>
+												</strong><br /> <span class="name" title="작성자"></span> <span
+													class="date" title="작성일">${item2.regdate}</span> <span>조회
+														235</span></td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="pagenumber">
+										<!-- 페이지 번호 구현 -->
+										<%-- 이전 그룹에 대한 링크 --%>
+										<c:choose>
+											<%-- 이전 그룹으로 이동 가능하다면? --%>
+											<c:when test="${pageData.prevPage > 0}">
+												<%-- 이동할 URL 생성 --%>
+												<c:url value="/gallery/goods_ajax.do" var="prevPageUrl">
+													<c:param name="page" value="${pageData.prevPage}" />
+												</c:url>
+												<a href="${prevPageUrl}" class="prevok">≪</a>
+											</c:when>
+											<c:otherwise>
+												<span class="prevno">≪</span>
+											</c:otherwise>
+										</c:choose>
+
+										<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+										<c:forEach var="i" begin="${pageData.startPage}"
+											end="${pageData.endPage}" varStatus="status">
+											<%-- 이동할 URL 생성 --%>
+											<c:url value="/gallery/goods_ajax.do" var="pageUrl">
+												<c:param name="page" value="${i}" />
+											</c:url>
+
+											<%-- 페이지 번호 출력 --%>
+											<c:choose>
+												<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+												<c:when test="${pageData.nowPage == i}">
+													<strong class="nowpage">${i}</strong>
+												</c:when>
+												<%-- 나머지 페이지의 경우 링크 적용함 --%>
+												<c:otherwise>
+													<a href="${pageUrl}" class="otherpage">${i}</a>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
+
+										<%-- 다음 그룹에 대한 링크 --%>
+										<c:choose>
+											<%-- 다음 그룹으로 이동 가능하다면? --%>
+											<c:when test="${pageData.nextPage > 0}">
+												<%-- 이동할 URL 생성 --%>
+												<c:url value="/gallery/goods_ajax.do" var="nextPageUrl">
+													<c:param name="page" value="${pageData.nextPage}" />
+												</c:url>
+												<a href="${nextPageUrl}" class="nextok">≫</a>
+											</c:when>
+											<c:otherwise>
+												<span class="nextno">≫</span>
+											</c:otherwise>
+										</c:choose>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -1009,18 +1082,17 @@ dl {
 		<div id="topbt">
 			<a
 				style="display: scroll; position: fixed; bottom: 80px; right: 10px;"
-				href="#"> <img
-				src="${pageContext.request.contextPath }/share/img/top_btn.png">
+				href="#"> <img src="/upload/img/top_btn.png">
 			</a>
 		</div>
 		<!-- 하단 네비게이션 고정-->
 		<!--- 소개 4인방 링크 -->
 		<hr />
 		<div class="etc">
-			<a href="${pageContext.request.contextPath}/etc/page_info1.html">회사소개</a>
-			<a href="${pageContext.request.contextPath}/etc/page_info2.html">이용약관</a>
-			<a href="${pageContext.request.contextPath}/etc/page_info3.html">개인정보취급방침</a>
-			<a href="${pageContext.request.contextPath}/etc/page_info4.html">이용안내</a>
+			<a href="${pageContext.request.contextPath}/etc/page_info1.do">회사소개</a>
+			<a href="${pageContext.request.contextPath}/etc/page_info2.do">이용약관</a>
+			<a href="${pageContext.request.contextPath}/etc/page_info3.do">개인정보취급방침</a>
+			<a href="${pageContext.request.contextPath}/etc/page_info4.do">이용안내</a>
 		</div>
 		<hr />
 		<div class="row">
@@ -1095,6 +1167,18 @@ dl {
 			        </div>
 		        </li>
 	        </ul>
+        {{/each}}
+    </script>
+	<script id="qna_rv_tmpl" type="text/x-handlebars-template">
+        {{#each item2}}
+            <tr>
+			    <td class="subject"><strong> <span
+				         class="glyphicon glyphicon-lock"></span> <a href="${pageContext.request.contextPath}/community/article.do" 
+                         class="subject">${bbstitle}</a> <span class="comment">[${cmtCount}]</span>
+				</strong><br /> <span class="name" title="작성자"></span> <span
+				    class="date" title="작성일">${regdate}</span> <span>조회
+						235</span></td>
+			</tr>
         {{/each}}
     </script>
 	<!-- Javascript -->
@@ -1240,7 +1324,8 @@ dl {
 				$(".arrow-down").toggleClass("rotate");
 			});
 		});
-
+		
+        /** 포토리뷰 리스트 */
 		$(function() {
 			$("#photo_rv").click(
 					function(e) {
@@ -1253,8 +1338,21 @@ dl {
 								});
 					});
 		});
-
-	
+		
+        /** qna 리스트 */
+        $(function() {
+			$("#qna_rv").click(
+					function(e) {
+						$.get("${pageContext.request.contextPath}/gallery",
+								function(json) {
+									var template = Handlebars.compile($(
+											"#qna_rv_tmpl").html());
+									var html = template(json);
+									$("#qna_list").append(html);
+								});
+					});
+		});
+		
 	</script>
 </body>
 
