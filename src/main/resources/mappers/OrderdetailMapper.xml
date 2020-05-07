@@ -71,4 +71,9 @@
 		odgqty=#{odgqty}, editdate=now()
 		WHERE orderdetailno=#{orderdetailno};
 	</update>
+	
+	<!-- 특정 주문을 참조하는 주문상세 데이터를 모두 참조 해제 한다. -->
+	<update id="unsetOrders" parameterType="kr.co.poppy.model.Orderdetail">
+	UPDATE orderdetail SET orderno = null WHERE orderno = #{orderno}
+	</update>
 </mapper>

@@ -139,18 +139,19 @@
 .prd-info .prd-box {
 	display: flex;
 	padding: 20px 0px 10px;
+	width: 100%;
 }
 
 .prd-box .prd-content {
 	margin-left: 10px;
-	width: 100%;
+	width: 75%;
 }
 
 .prd-content .prd-name a {
+	display: inline-block;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	word-wrap: normal;
-	width : 100px;
+	width : 97%;
 	overflow : hidden;
 	color: #000;
 }

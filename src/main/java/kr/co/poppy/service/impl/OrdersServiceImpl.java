@@ -15,12 +15,11 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class OrdersServiceImpl implements OrdersService {
-	
+
 	/** MyBatis */
 	@Autowired
 	SqlSession sqlSession;
 
-	
 	/**
 	 * 주문 데이터 상세 조회
 	 * 
@@ -160,8 +159,9 @@ public class OrdersServiceImpl implements OrdersService {
 		int result = 0;
 
 		try {
-			// 주문 삭제 전 자신을 참조하는 회원들의 memno 컬럼을 null 로 수정
-			sqlSession.update("MembersMapper.unsetOrders", input);
+			// 주문 삭제 전 자신을 참조하는 주문상세의 orderno 컬럼을 null 로 수정
+			sqlSession.update("OrderdetailMapper.unsetOrders", input);
+			sqlSession.update("PointsMapper.unsetOrders", input);
 
 			result = sqlSession.delete("OrdersMapper.deleteItem", input);
 

@@ -31,7 +31,7 @@
 	<!-- 주문내역 다중행 조회를 위한 기능 정의 -->
 	<select id="selectList"
 		parameterType="kr.co.poppy.model.Orders" resultMap="ordersMap">
-		SELECT o.odstatus,
+		SELECT o.orderno, o.odstatus,
 		o.regdate, od.odgcode, od.odgname, od.odgprice, od.odgqty,
 		od.odgdoption
 		FROM orders o INNER JOIN orderdetail od ON o.orderno = od.orderno

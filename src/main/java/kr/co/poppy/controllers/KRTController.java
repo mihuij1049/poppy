@@ -1,5 +1,6 @@
 package kr.co.poppy.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -56,7 +57,8 @@ public class KRTController {
 	/** order_list (주문조회) */
 	/** 목록 페이지 */
 	@RequestMapping(value = "/myInfo/order_list.do", method = RequestMethod.GET)
-	public ModelAndView order_list(Model model, @RequestParam(value = "page", defaultValue = "1") int nowPage) {
+	public ModelAndView order_list(Model model, @RequestParam(value = "page", defaultValue = "1") int nowPage,
+			@RequestParam(value="odstatus", required=false) String odstatus) {
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
 		
@@ -70,15 +72,19 @@ public class KRTController {
 
 		/** 2) 데이터 조회하기 */
 		//int odnum = Integer.parseInt(orderno);
-		Orders input = new Orders();
+		Orders orders = new Orders();
+		orders.setMemno(myInfo.getMemno());
+		orders.setOdstatus(odstatus);
 		//input.setOrderno(odnum);
 
-		List<Orders> output = null;
+		List<Orders> ordersList = null;
+		List<Orders> output = new ArrayList<Orders>();
 		PageData pageData = null;
+		
 
 		try {
 			// 전체 게시글 수 조회
-			totalCount = orderService.getOrdersCount(input);
+			totalCount = orderService.getOrdersCount(orders);
 			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 
@@ -88,26 +94,31 @@ public class KRTController {
 
 			// 데이터 조회하기
 			// input = orderService.getOrdersItem(input);
-			output = orderService.getOrdersList(input);
+			ordersList = orderService.getOrdersList(orders);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-/**
-		if (input.getOdstatus().equals("0")) {
-			input.setOdstatus("입금전");
-		} else if (input.getOdstatus().equals("1")) {
-			input.setOdstatus("배송준비중");
-		} else if (input.getOdstatus().equals("2")) {
-			input.setOdstatus("배송중");
-		} else if (input.getOdstatus().equals("3")) {
-			input.setOdstatus("배송완료");
-		} else if (input.getOdstatus().equals("4")) {
-			input.setOdstatus("주문취소");
-		} else if (input.getOdstatus().equals("5")) {
-			input.setOdstatus("반품처리중");
-		} else if (input.getOdstatus().equals("6")) {
-			input.setOdstatus("환불완료");
-		} */
+	
+		for(int i=0; i<ordersList.size();i++) {
+		orders = ordersList.get(i);
+		if (orders.getOdstatus().equals("0")) {
+			orders.setOdstatus("입금전");
+		} else if (orders.getOdstatus().equals("1")) {
+			orders.setOdstatus("배송준비중");
+		} else if (orders.getOdstatus().equals("2")) {
+			orders.setOdstatus("배송중");
+		} else if (orders.getOdstatus().equals("3")) {
+			orders.setOdstatus("배송완료");
+		} else if (orders.getOdstatus().equals("4")) {
+			orders.setOdstatus("주문취소");
+		} else if (orders.getOdstatus().equals("5")) {
+			orders.setOdstatus("반품처리중");
+		} else if (orders.getOdstatus().equals("6")) {
+			orders.setOdstatus("환불완료");
+		}
+		output.add(orders);
+		}
+		
 
 		/** 3) view 처리 */
 		model.addAttribute("myInfo", myInfo);
@@ -128,11 +139,11 @@ public class KRTController {
 
 		/** 2) 데이터 삭제하기 */
 		// 데이터 삭제에 필요한 조건값을 Beans에 저장하기
-		Orders input = new Orders();
-		input.setOrderno(orderno);
+		Orders orders = new Orders();
+		orders.setOrderno(orderno);
 
 		try {
-			orderService.deleteOrders(input);
+			orderService.deleteOrders(orders);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}

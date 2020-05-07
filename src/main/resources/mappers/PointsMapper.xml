@@ -77,5 +77,11 @@
 			parameterType="kr.co.poppy.model.Points">
 		UPDATE points SET memno=null WHERE memno=#{memno}
 	</update>
+	
+	<!-- 특정 주문을 참조하는 적립금 데이터를 모두 참조 해제 한다. -->
+	<update id="unsetOrders" parameterType="kr.co.poppy.model.Points">
+	UPDATE points SET orderno = null WHERE orderno = #{orderno}
+	</update>
+	
 	<!-- 전체 회사가 보유중인 회원들의 적립금 (관리자 페이지 관련이므로 일단 보류) -->
 </mapper>
