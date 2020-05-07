@@ -78,7 +78,7 @@ public class PayController {
 			// 데이터 조회
 			output = addressService.getAddressItem(input);
 			output2 = addressService.getAddressList(input2);
-			output3 = pointsService.getPointsMbAvList(input3);
+			output3 = pointsService.getPointsMbList(input3);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}

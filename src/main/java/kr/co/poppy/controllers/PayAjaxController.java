@@ -48,7 +48,8 @@ public class PayAjaxController {
 	
 	/** 주소 목록페이지 */
 	@RequestMapping(value = "/pay/orderform_ajax.do", method = RequestMethod.GET)
-	public ModelAndView addrList(Model model) {
+	public ModelAndView addrList(Model model,
+			@RequestParam(value = "imgpath") String imgpath) {
 
 		// 세션 객체를 이용하여 저장된 세션값 얻기
 		HttpSession mySession = webHelper.getSession();

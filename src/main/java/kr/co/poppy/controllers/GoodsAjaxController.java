@@ -93,9 +93,12 @@ public class GoodsAjaxController {
 		
 		mySession.setAttribute("userInfo", myInfo);
 		
+		Heart count = (Heart) mySession.getAttribute("count(heartno)");
+		mySession.setAttribute("count(heartno)", count);
+		
 		// 3) 뷰처리
 		model.addAttribute("output", output);
-		model.addAttribute("output2", output2);
+		model.addAttribute("input2", input2);
 		model.addAttribute("item", output3);
 		return new ModelAndView("gallery/goods_ajax");
 	}
