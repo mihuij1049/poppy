@@ -147,6 +147,7 @@ public class KRTController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
+		
 		/** 3) 페이지 이동 */
 		return webHelper.redirect(contextPath + "/myInfo/order_list.do", "삭제되었습니다.");
 	}

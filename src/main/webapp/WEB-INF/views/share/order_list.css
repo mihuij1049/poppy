@@ -142,9 +142,13 @@
 	width: 100%;
 }
 
+.thumbnail {
+	width: 25%;
+}
+
 .prd-box .prd-content {
 	margin-left: 10px;
-	width: 100%;
+	width: 75%;
 }
 
 .prd-content .prd-name a {
@@ -185,7 +189,7 @@
 	border-bottom: 1px solid #ffc7c1;
 }
 
-#cancel {
+#change {
 	float: right;
 	position: relative;
 	bottom: 10px;
@@ -223,4 +227,31 @@
 
 .pagination>li>a {
 	color: #ffc7c1;
+}
+
+#myModal2 {
+	padding-top: 50%;
+}
+
+.cart-modal {
+	padding: 10px;
+}
+
+.modal-footer2 .btn2 {
+	width: 65px;
+	height: 34px;
+	float: right;
+	margin-left: 5px;
+}
+
+.modal-header2 {
+	height: 50px;
+}
+
+.modal-body2 {
+	height: 50px;
+}
+
+.modal-footer2 {
+	height: 40px;
 }

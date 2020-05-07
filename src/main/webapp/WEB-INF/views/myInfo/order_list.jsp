@@ -91,7 +91,7 @@
 								</span> <span class="number" title="주문번호"> <a
 									href="${pageContext.request.contextPath}/myInfo/order_desc.do?orderno=${item.orderno}">
 										(${fn:substring(item.regdate,0,10).replace("-","")}-000${item.orderno})</a>
-								</span> <a 
+								</span> <a
 									href="${pageContext.request.contextPath}/myInfo/order_desc.do?orderno=${item.orderno}"
 									class="btn-detail"><span id="GGuc">&#62;</span>상세보기</a>
 							</div>
@@ -113,13 +113,42 @@
 											</span></li>
 										</ul>
 										<p class="option">[옵션: ${item.odgdoption}]</p>
-										<button type="button" class="btn btn2" id="cancel"
-											onclick="location.href='${pageContext.request.contextPath}/myInfo/order_delete.do?orderno=${item.orderno}'">
-											주문취소</button>
+										<button type="button" class="btn btn2" id="change">주문변경</button>
 									</div>
 								</div>
 								<div class="prd-foot" title="주문처리상태">
 									<div class="ready">${item.odstatus}</div>
+								</div>
+							</div>
+						</div>
+						<!-- Modal -->
+						<div class="modal fade" id="myModal2">
+							<div class="modal-dialog modal-sm">
+								<div class="modal-content">
+									<div class="cart-modal">
+										<div class="modal-header2">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+											<h4 class="modal-title">주문 변경</h4>
+										</div>
+										<div class="modal-body2">
+											<p>
+												<span class="delete_message"></span> 주문을 정말 변경하시겠습니까?
+											</p>
+										</div>
+										<div class="modal-footer2">
+											<input type="radio" name="change" value="취소" checked>취소&nbsp;&nbsp;&nbsp;
+											<input type="radio" name="change" value="교환">교환&nbsp;&nbsp;&nbsp;
+											<input type="radio" name="change" value="반품">반품
+											<button type="reset" class="btn btn2 change_cancel"
+												data-dismiss="modal">아니오</button>
+											<button type="submit" class="btn btn2 change_ok"
+												data-dismiss="modal"
+												onclick="location.href='${pageContext.request.contextPath}/myInfo/order_delete.do?orderno=${item.orderno}'">예</button>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -136,6 +165,7 @@
 			</div>
 		</div>
 	</div>
+
 	<!-- Javascript -->
 	<%@ include file="../share/bottom_tp.jsp"%>
 	<!-- 플러그인 JS 참조 -->
@@ -190,15 +220,13 @@
 			});
 		});
 		$(function() {
-			$(document).on("click", "#cancel", function(e) {
-				var cancel = confirm("해당 상품을 주문취소 하시겠습니까?");
-				if (cancel) {
-					$(this).parent().parent().parent().parent().remove();
-					return "myInfo/order_delete";
-				} else {
-					return false;
-				}
-			})
+			$(document).on("click", "#change", function(e) {
+				$("#myModal2").modal("show");
+				var change_item = $(this).parent().parent().parent().parent();
+				$(document).on("click", ".change_ok", function(e) {
+					chage_item.remove();
+				});
+			});
 		});
 	</script>
 </body>
