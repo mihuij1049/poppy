@@ -47,9 +47,9 @@ public class PayAjaxController {
 	String contextPath;
 	
 	/** 주소 목록페이지 */
-	@RequestMapping(value = "/pay/orderform_ajax.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/pay/orderform_ajax.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView addrList(Model model,
-			@RequestParam(value = "imgpath") String imgpath) {
+			@RequestParam(value = "imgpath", required = false) String imgpath) {
 
 		// 세션 객체를 이용하여 저장된 세션값 얻기
 		HttpSession mySession = webHelper.getSession();
@@ -102,6 +102,7 @@ public class PayAjaxController {
 		model.addAttribute("output", output);
 		model.addAttribute("item", output2);
 		model.addAttribute("input3", input3);
+		model.addAttribute("user", imgpath);
 		return new ModelAndView("pay/orderform_ajax");
 	}
 

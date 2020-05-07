@@ -209,7 +209,7 @@
 									<div class="thumbnail">
 										<a
 											href="${pageContext.request.contextPath}/gallery/goods_ajax.do">
-											<img src="/upload/img/slide.jpg" width="70" height="70">
+											<img src="${user.imgpath}" width="70" height="70">
 										</a>
 									</div>
 									<div class="prd">

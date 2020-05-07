@@ -1006,15 +1006,7 @@ dl {
 												<c:param name="bbstype" value="${item2.bbstype}" />
 												<c:param name="bbsno" value="${item2.bbsno}" />
 											</c:url>
-											<tr>
-												<td class="subject"><strong> <span
-														class="glyphicon glyphicon-lock"></span> <a
-														href="${viewUrl}" class="subject">${item2.bbstitle}</a> <span
-														class="comment">[${output2.cmtCount}]</span>
-												</strong><br /> <span class="name" title="작성자"></span> <span
-													class="date" title="작성일">${item2.regdate}</span> <span>조회
-														235</span></td>
-											</tr>
+											
 										</tbody>
 									</table>
 									<div class="pagenumber">
@@ -1173,10 +1165,10 @@ dl {
         {{#each item2}}
             <tr>
 			    <td class="subject"><strong> <span
-				         class="glyphicon glyphicon-lock"></span> <a href="${pageContext.request.contextPath}/community/article.do" 
-                         class="subject">${bbstitle}</a> <span class="comment">[${cmtCount}]</span>
+				         class="glyphicon glyphicon-lock"></span> <a href="${pageContext.request.contextPath}/community/article.do?bbsno={{bbsno}}&bbstype={{bbstype}}" 
+                         class="subject">{{bbstitle}}</a> <span class="comment">[{{cmtCount}}]</span>
 				</strong><br /> <span class="name" title="작성자"></span> <span
-				    class="date" title="작성일">${regdate}</span> <span>조회
+				    class="date" title="작성일">{{regdate}}</span> <span>조회
 						235</span></td>
 			</tr>
         {{/each}}

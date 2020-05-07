@@ -52,7 +52,7 @@ public class GoodsAjaxController {
 	String contextPath;
 
 	/** 갤러리 상세 페이지 */
-	@RequestMapping(value = "/gallery/goods_ajax.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/gallery/goods_ajax.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView goods(Model model, @RequestParam(value = "goodsno", defaultValue = "1") int goodsno,
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 
