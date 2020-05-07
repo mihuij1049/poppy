@@ -25,6 +25,7 @@ public class Comments {
 	
 	private String username;
 	
+	
 	// JOIN 절에 따른 추가 컬럼
 
 }

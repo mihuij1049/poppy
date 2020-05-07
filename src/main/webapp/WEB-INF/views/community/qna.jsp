@@ -9,7 +9,8 @@
 
 <head>
 <%@ include file="../share/head_tp.jsp"%>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/share/qna.css" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/share/qna.css" />
 
 </head>
 
@@ -63,13 +64,11 @@
 									<c:param name="bbsno" value="${item.bbsno}" />
 								</c:url>
 								<tr>
-									<td class="subject">
-									<strong>
-											<span class="glyphicon glyphicon-lock"></span> 
-											<a href="${viewUrl}" class="subject">${bbstitle}</a> 
-											<span class="comment">[50]</span>
-									</strong><br /> <span class="name" title="작성자">${myCmt.username}</span>
-										<span class="date" title="작성일">${item.regdate}</span> <span>조회
+									<td class="subject"><strong> <span
+											class="glyphicon glyphicon-lock"></span> <a href="${viewUrl}"
+											class="subject">${bbstitle}</a> <span class="comment">[${output2.cmtCount}]</span>
+									</strong><br /> <span class="name" title="작성자"></span> <span
+										class="date" title="작성일">${item.regdate}</span> <span>조회
 											235</span></td>
 								</tr>
 							</c:forEach>
@@ -134,9 +133,14 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-			<button type="submit" class="write_qna btn btn-sm" id="enter" onclick="location.href='${pageContext.request.contextPath}/community/qna_wri.do'">글쓰기</button>
+				<!-- 로그인 시에만 글쓰기 버튼 보이게 하기 -->
+				<c:if test="${!empty userInfo.userid }">
+				<button type="submit" class="write_qna btn btn-sm" id="enter"
+						onclick="location.href='${pageContext.request.contextPath}/community/qna_wri.do'">글쓰기</button>
+				</c:if>
 		</div>
 		<div class="row">
+		
 			<div class="searchmenu">
 				<form method="get"
 					action="${pageContext.request.contextPath}/community/qnasearch.do">
@@ -164,7 +168,7 @@
 		</div>
 	</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
-	
+
 </body>
 
 </html>

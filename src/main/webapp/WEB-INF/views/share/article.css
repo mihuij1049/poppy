@@ -39,7 +39,6 @@
 .span {
 	display: inline-block;
 	padding-left: 20px;
-	padding-bottom: 10px;
 }
 
 .button2 {
@@ -120,15 +119,6 @@
 	padding-top: 8px;
 }
 
-.next a {
-	text-decoration: none;
-	color: #333;
-}
-
-.next a:hover {
-	font-weight: bold;
-}
-
 .solid {
 	border: solid 1px #eee;
 	margin-bottom: 50px;
@@ -160,6 +150,7 @@
 	background: #ffc7c1;
 	text-align: center;
 	margin: auto;
+	padding: 15px 0px;
 }
 
 .pass_label {
@@ -170,4 +161,14 @@
 /** 글 수정삭제 버튼 */
 .editbuttons {
 	float: right;
+}
+
+.cannot {
+	text-align: center;
+	border: 1px solid #FF8F83;
+	background: #FF8F83;
+	padding: 10px 10px;
+	color: white;
+	margin-bottom: 30px;
+	width: 100%;
 }

@@ -67,6 +67,17 @@ public class CommunityController {
 		// 조회 결과를 저장할 객체 선언
 		Bbs output = null;
 		List<Comments> output2 = null;
+		
+		// 세션 객체를 이용하여 저장된 세션값 얻기
+				HttpSession mySession = webHelper.getSession();
+				Members myInfo = (Members) mySession.getAttribute("userInfo");
+				Comments myCmt = new Comments();
+				
+				
+				if(myInfo!=null) {
+					myCmt.setUsername(myInfo.getUsername());
+					model.addAttribute("myCmt", myCmt);
+					}
 
 		try {
 			// 데이터 조회
@@ -75,14 +86,16 @@ public class CommunityController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-
+		
 		/** 3) view 처리 */
 		if (output.getBbstype().equals("A")) {
 			output.setBbstype("공지사항");
 		} else {
 			output.setBbstype("Q&A");
 		}
-
+		
+		
+		
 		model.addAttribute("output", output);
 		model.addAttribute("output2", output2);
 		return new ModelAndView("community/article");
@@ -101,6 +114,8 @@ public class CommunityController {
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 3; // 한 페이지 당 표시한 목록 수
 		int pageCount = 3; // 한 그룹 당 표시할 페이지 번호 수
+		
+		
 
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(겁색어)를 Beans에 담는다.
@@ -111,21 +126,26 @@ public class CommunityController {
 		input.setUsername(keyword);
 		input.setUserid(keyword);
 		
+			
 		// 조회 결과가 저장될 객체
 		List<Bbs> output = null;
 		PageData pageData = null;
+		Comments output2 = null;
 		
 		try {
 
 			// 전체 게시글 수 조회
 			totalCount = bbsService.getBbsCount(input);
+			
 		
 			// 페이지 번호 계산 --> 계산결과가 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
-
+			
+			
 			// SQL의 limit절에서 사용될 값을 Beans의 static 변수에 저장
 			Bbs.setOffset(pageData.getOffset());
 			Bbs.setListCount(pageData.getListCount());
+		
 			// 데이터 조회하기 --> 검색조건 없이 모든 학과 조회
 			output = bbsService.getBbsList(input);
 		} catch (Exception e) {
@@ -136,6 +156,7 @@ public class CommunityController {
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("output", output);
 		model.addAttribute("pageData", pageData);
+		model.addAttribute("output2", output2);
 		return new ModelAndView("community/notice");
 	}
 
@@ -149,6 +170,7 @@ public class CommunityController {
 		int totalCount = 0;
 		int listCount = 5;
 		int pageCount = 3;
+		
 
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(겁색어)를 Beans에 담는다.
@@ -158,16 +180,17 @@ public class CommunityController {
 		// 조회 결과가 저장될 객체
 		List<Bbs> output = null;
 		PageData pageData = null;
-
+		
+		
 		try {
 			// 전체 게시글 수 조회
 			totalCount = bbsService.getBbsCount(input);
-			// 댓글 수 조회
 			// 페이지 번호 계산 --> 계산결과가 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 			// SQL의 limit절에서 사용될 값을 Beans의 static 변수에 저장
 			Bbs.setOffset(pageData.getOffset());
 			Bbs.setListCount(pageData.getListCount());
+			
 			// 데이터 조회하기 --> 검색조건 없이 모든 학과 조회
 			output = bbsService.getBbsList(input);
 		} catch (Exception e) {
@@ -276,12 +299,14 @@ public class CommunityController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
+		model.addAttribute("myCmt", myCmt);
 
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
 		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야 한다.
 		String redirectUrl = contextPath + "/community/article.do?cmtno=" + input.getCmtno();
 		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 	}
+	
 
 	/** photo_rv */
 	@RequestMapping(value = "/community/photo_rv.do", method = { RequestMethod.GET, RequestMethod.POST })

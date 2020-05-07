@@ -66,11 +66,13 @@
 											<small class="small"><span>${item.username} |
 											</span><span>${item.regdate}</span></small>
 										</div>
+										<c:if test="${!empty userInfo.username }">
 										<span class="span">${item.cmtcontent}</span><br />
 										<div class="editbuttons">
 											<button type="submit" class="btn btn-sm btn-edit">수정</button>
 											<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
 										</div>
+										</c:if>
 									</div>
 									<hr />
 								</c:forEach>
@@ -79,7 +81,8 @@
 					</tbody>
 				</table>
 			</div>
-
+			<c:choose>
+			<c:when test="${!empty userInfo.username }">
 			<form class="article-comment" method="post"
 				action="${pageContext.request.contextPath}/community/article.do">
 				<div class="comment-write">
@@ -90,14 +93,15 @@
 					<textarea class="comment_area" id="comment_area" name="cmtcontent" ></textarea>
 					<button type="submit" class="enter btn btn-sm" id="enter">등록</button>
 			</form>
+			</c:when>
+			<c:otherwise>
+			<b class="cannot">작성 권한이 없습니다. 로그인 후 이용 부탁드립니다.</b>
+			</c:otherwise>
+			</c:choose>
+			
+			
 		</div>
-		<div class="next">
-			<p>
-				<b>다음글&nbsp;&nbsp;&nbsp;</b> <span><a href="#">신규 회원가입 고객
-						혜택안내</a></span>
-			</p>
 
-		</div>
 		<!--   비밀번호 입력 모달 ------------------------->
 		<div class="customer_pass" id="customer_pass">
 			<b class="plz_pass">비밀번호를 입력해 주세요.</b><br> <label for="cs_pass"
