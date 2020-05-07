@@ -192,9 +192,11 @@
 		$(function() {
 			$(document).on("click", "#cancel", function(e) {
 				var cancel = confirm("해당 상품을 주문취소 하시겠습니까?");
-				if (cancel == true) {
+				if (cancel) {
 					$(this).parent().parent().parent().parent().remove();
 					return "myInfo/order_delete";
+				} else {
+					return false;
 				}
 			})
 		});
