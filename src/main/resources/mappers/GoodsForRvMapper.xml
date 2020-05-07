@@ -38,5 +38,9 @@
 		and memno=#{memno} and goodsno in (SELECT goodsno from goods 
 		WHERE gcode IN (SELECT odgcode from orderdetail WHERE orderno IN (SELECT orderno from orders WHERE memno=#{memno}))));
 	</select>
-
+	<!-- 관심상품(좋아요) 다중행 조회 -->
+	<select id="selectLikeList" parameterType="kr.co.poppy.model.GoodsForRv"
+		resultMap="GoodsForRvMap">
+		SELECT * from goods WHERE goodsno in (SELECT goodsno from heart WHERE memno=#{memno}) 
+	</select>
 </mapper>

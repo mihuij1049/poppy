@@ -49,15 +49,15 @@
 	<%@ include file="../share/bottom_tp.jsp"%>
 	<!-- 여기서부터 핸들바 템플릿 구조 만들기 -->
 	<script id="goods_item_tmpl" type="text/x-handlebars-template">
-	{{#each goods}}
+	{{#each item}}
 	<li class="mycart" id="mycart1">
 		<div class="mygoods clearfix">
 			<span class="chkbox"> <input type="checkbox" class="cart"
 				name="check-select" ></span> <a
 				href="#"><img src="{{url}}" class="cart-img"></a>
 			<div class="word">
-				<b>{{name}}</b><br> <small>배송:2500원[조건]/기본배송</small><br>
-				<small><span>적</span>{{point}}원</small><br> <b>{{price}}원</b>
+				<b>{{item.gname}}</b><br> <small>배송:2500원[조건]/기본배송</small><br>
+				<small><span>적</span>{{item.gsale*0.02}}원</small><br> <b>{{item.gsale}}원</b>
 			</div>
 		</div>
 		<div class="btns">
@@ -74,7 +74,7 @@
 		$(function() {
 			// get요청을 통한 핸들바 템플릿 태그 조립하기
 			function get_list() {
-				$.get("../share/plugins/goods_list.json", function(req) {
+				$.get("like_goodsajax.do?item", function(req) {
 					// 미리 준비한 HTML틀을 읽어온다.
 					var template = Handlebars.compile($("#goods_item_tmpl")
 							.html());

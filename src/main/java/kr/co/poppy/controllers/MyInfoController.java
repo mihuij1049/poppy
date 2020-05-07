@@ -1,6 +1,8 @@
 package kr.co.poppy.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -59,7 +61,7 @@ public class MyInfoController {
 	/** "/프로젝트이름"에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
-	
+
 	/** My정보 페이지 */
 	@RequestMapping(value = "/myInfo/myinfo.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView myinfo(Model model) {
@@ -100,15 +102,15 @@ public class MyInfoController {
 		for (int i = 0; i < pointList.size(); i++) {
 			Points temp = null;
 			temp = pointList.get(i);
-			if (temp.getAvpoint() == null || temp.getAvpoint()==0 ) {
+			if (temp.getAvpoint() == null || temp.getAvpoint() == 0) {
 				temp.setAvpoint(0);
 			}
 			sumAvpoint += temp.getAvpoint();
-			if (temp.getNapoint() == null || temp.getNapoint()==0 ) {
+			if (temp.getNapoint() == null || temp.getNapoint() == 0) {
 				temp.setNapoint(0);
 			}
 			sumNapoint += temp.getNapoint();
-			if (temp.getUsedpoint() == null || temp.getUsedpoint() == 0 ) {
+			if (temp.getUsedpoint() == null || temp.getUsedpoint() == 0) {
 				temp.setUsedpoint(0);
 			}
 			sumUsedpoint += temp.getUsedpoint();
@@ -159,33 +161,32 @@ public class MyInfoController {
 
 		return new ModelAndView("myInfo/myinfo");
 	}
-	
+
 	/** 주문조회 상세보기 페이지 */
 	@RequestMapping(value = "/myInfo/order_desc.do", method = RequestMethod.GET)
-	public ModelAndView order_desc(Model model,
-			@RequestParam(value = "orderno", required=true) String orderno) {
+	public ModelAndView order_desc(Model model, @RequestParam(value = "orderno", required = true) String orderno) {
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
-		
+
 		/** 파라미터 유효성 검사 */
-		if (orderno==null) {
+		if (orderno == null) {
 			webHelper.redirect(null, "선택된 주문 정보가 없습니다.");
 		}
-		
+
 		/** 주문 정보 상세 조회를 위한 Beans 생성 */
 		// 1) orders 테이블 조회를 위한 Beans
 		int odnum = Integer.parseInt(orderno);
 		Orders orders = new Orders();
 		orders.setOrderno(odnum);
-		
+
 		// 2) orderdetail 테이블 조회를 위한 Beans
 		Orderdetail input = new Orderdetail();
 		input.setOrderno(odnum);
 		List<Orderdetail> orderDetail = null;
-		
+
 		// 3) Address 정보를 담기 위한 빈즈
 		Address addr = new Address();
-		
+
 		/** DB 정보 조회 */
 		try {
 			// order 테이블의 정보 단일행 조회 (파라미터 orderno)
@@ -193,13 +194,13 @@ public class MyInfoController {
 			// orderdetail 테이블의 정보 다중행 조회 (파라미터 orderno)
 			orderDetail = orderdetailService.getOrderdetailList(input);
 			// address 테이블의 정보 단일행 조회 (파라미터 orderno)
-			addr = addressService.getAddressItem(orders);	
+			addr = addressService.getAddressItem(orders);
 		} catch (Exception e) {
 			log.debug(e.getLocalizedMessage());
 		}
-		
+
 		/** View 에 Beans를 통한 데이터 전달 */
-		// 주문 상태 > 한글 처리 
+		// 주문 상태 > 한글 처리
 		if (orders.getOdstatus().equals("0")) {
 			orders.setOdstatus("입금전");
 		} else if (orders.getOdstatus().equals("1")) {
@@ -219,23 +220,23 @@ public class MyInfoController {
 		if (orders.getPaytype().equals("credit")) {
 			orders.setPaytype("신용카드");
 		}
-		// orderdetail에서 동일한 orderno를 참조하는  odgprice 와 odgsale 총 금액 
+		// orderdetail에서 동일한 orderno를 참조하는 odgprice 와 odgsale 총 금액
 		int sumOdgprice = 0;
 		int sumOdgsale = 0;
-		
-		for (int i=0;i<orderDetail.size();i++) {
+
+		for (int i = 0; i < orderDetail.size(); i++) {
 			Orderdetail temp = orderDetail.get(i);
-			sumOdgprice += temp.getOdgprice()*temp.getOdgqty();
-			sumOdgsale += temp.getOdgsale()*temp.getOdgqty();
+			sumOdgprice += temp.getOdgprice() * temp.getOdgqty();
+			sumOdgsale += temp.getOdgsale() * temp.getOdgqty();
 		}
 		orders.setSumOdgprice(sumOdgprice);
 		orders.setSumOdgsale(sumOdgsale);
-		
+
 		model.addAttribute("myInfo", myInfo);
 		model.addAttribute("orderInfo", orders);
 		model.addAttribute("detailInfo", orderDetail);
 		model.addAttribute("addrInfo", addr);
-		
+
 		return new ModelAndView("myInfo/order_desc");
 	}
 
@@ -245,8 +246,27 @@ public class MyInfoController {
 	}
 
 	@RequestMapping(value = "/myInfo/like_goods.do", method = RequestMethod.GET)
-	public String like_goods() {
-		return "myInfo/like_goods";
+	public ModelAndView like_goods(Model model) {
+		// 세션에서 멤버 정보 얻기
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+
+		//  DB조회준비  Beans, 조회결과를 담을 컬렉션
+		GoodsForRv input = new GoodsForRv();
+		input.setMemno(myInfo.getMemno());
+
+		List<GoodsForRv> output = null;
+
+		try {
+			output = goodsForRvService.getGoodsLikeList(input);
+		} catch (Exception e) {
+			log.debug(e.getLocalizedMessage());
+		}
+		
+		// View에 리스트 전달
+		model.addAttribute("output", output);
+
+		return new ModelAndView("myInfo/like_goods");
 	}
 
 	@RequestMapping(value = "/myInfo/point.do", method = RequestMethod.GET)
@@ -254,12 +274,12 @@ public class MyInfoController {
 		// 세션 객체를 이용하여 저장된 세션값 얻기
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
-		
+
 		model.addAttribute("myInfo", myInfo);
-		
+
 		return new ModelAndView("myInfo/point");
 	}
-	
+
 	@RequestMapping(value = "/myInfo/plist_nota.do", method = RequestMethod.GET)
 	public String plist_nota() {
 		return "myInfo/plist_nota";
@@ -269,42 +289,42 @@ public class MyInfoController {
 	public String plist_grd() {
 		return "myInfo/plist_grd";
 	}
-	
+
 	/** 후기관리 페이지 */
 	@RequestMapping(value = "/myInfo/my_rv.do", method = RequestMethod.GET)
 	public ModelAndView my_rv(Model model) {
 		// 세션 객체를 이용하여 저장된 세션값 얻기
 		HttpSession mySession = webHelper.getSession();
-		Members myInfo = (Members)mySession.getAttribute("userInfo");
-		
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+
 		/** 정보 조회를 위해 일할 Beans */
 		// 작성 가능한 리뷰 탭을 조회할 Beans
 		GoodsForRv goodsForRv = new GoodsForRv();
 		/* goodsForRv.setBbstype("C"); */
 		goodsForRv.setMemno(myInfo.getMemno());
-		
+
 		List<GoodsForRv> avRvList = null;
-		
-		// 내가 작성한 리뷰 탭을 조회할 Beans 
+
+		// 내가 작성한 리뷰 탭을 조회할 Beans
 		Bbs myBbs = new Bbs();
 		myBbs.setMemno(myInfo.getMemno());
-		
+
 		List<Bbs> myBbsList = null;
-		
+
 		try {
 			myBbsList = bbsService.getBbsList_myrv(myBbs);
-			
+
 			avRvList = goodsForRvService.getGoodsList(goodsForRv);
 		} catch (Exception e) {
 			e.getLocalizedMessage();
 		}
-		
+
 		/** 1) 작성 가능한 리뷰 탭 (내가 구매한 상품목록(다중행조회)필요 param=memno) */
 		model.addAttribute("avRvList", avRvList);
-		
+
 		/** 2) 내가 작성한 리뷰 탭 (bbs 다중행조회필요 - param=memno) */
 		model.addAttribute("myReview", myBbsList);
-		
+
 		return new ModelAndView("myInfo/my_rv");
 	}
 
