@@ -35,7 +35,7 @@
 	</select>
 
 	<!-- 다중행 조회를 위한 기능 정의 -->
-	<!-- QNA / 포토리뷰 글 목록 페이지 -->
+	<!-- QNA -->
 	<select id="selectList" parameterType="kr.co.poppy.model.Bbs"
 		resultMap="bbsMap">
 		SELECT bbsno, bbstype, bbstitle, bbscontent, qnasec, qnapw, rvlike,
@@ -69,11 +69,12 @@
 	<!-- 상품상세페이지 / 포토리뷰 글 목록 페이지 -->
 	<select id="selectList_goods" parameterType="kr.co.poppy.model.Bbs"
 		resultMap="bbsMap">
-		SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.qnasec, b.qnapw, b.rvlike,
+		SELECT bbsno, bbstype, bbstitle, bbscontent, rvlike,
 		b.regdate, b.editdate, b.memno, b.goodsno, m.username, m.userid
 		FROM bbs b
-		INNER JOIN members m ON b.memno=m.memno
-		WHERE b.bbstype = "C" AND b.memno = #{memno} AND b.goodsno = #{goodsno};
+		INNER JOIN members m ON b.memno=m.memno 
+		WHERE bbstype=#{bbstype}
+		
 	</select>
 	
 	<!-- 후기관리 글 목록 페이지 -->

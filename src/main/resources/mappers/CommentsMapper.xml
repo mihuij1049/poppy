@@ -38,8 +38,7 @@
 	<select id="selectCountAll"
 		parameterType="kr.co.poppy.model.Comments" resultType="int">
 		SELECT COUNT(*)
-		FROM comments c
-		INNER JOIN members m ON c.memno=m.memno
+		FROM comments
 		WHERE bbsno=#{bbsno}
 	</select>
 

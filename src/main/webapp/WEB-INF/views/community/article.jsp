@@ -34,9 +34,19 @@
 				<p id="main_text">${output.bbscontent}</p>
 			</div>
 			<div class="comment">
+			<c:choose>
+				<c:when test="${output.bbstype=='공지사항'}">
 				<button type="button"
 					onclick="location.href='${pageContext.request.contextPath}/community/notice.do'"
 					class="btn btn-inverse btn-sm list">목록</button>
+				</c:when>
+				<c:otherwise>
+				<button type="button"
+					onclick="location.href='${pageContext.request.contextPath}/community/qna.do'"
+					class="btn btn-inverse btn-sm list">목록</button>
+				</c:otherwise>
+			</c:choose>
+				
 			</div>
 			<div class="comment-list">
 				<div class="list-subject">
@@ -61,20 +71,22 @@
 									<c:url value="/community/article.do" var="viewUrl">
 										<c:param name="bbsno" value="${item.bbsno}" />
 									</c:url>
-									<div class="comment-nai">
+									<div class="comment-nai" style="border-bottom: 1px dotted #eee;;">
 										<div class="menory">
+										
 											<small class="small"><span>${item.username} |
 											</span><span>${item.regdate}</span></small>
 										</div>
-										<c:if test="${!empty userInfo.username }">
+										
 										<span class="span">${item.cmtcontent}</span><br />
-										<div class="editbuttons">
+										<c:if test="${userInfo.username==item.username}">
+										
 											<button type="submit" class="btn btn-sm btn-edit">수정</button>
 											<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
-										</div>
+										
 										</c:if>
 									</div>
-									<hr />
+									
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>

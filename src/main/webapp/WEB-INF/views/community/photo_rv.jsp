@@ -62,13 +62,11 @@
 									src="/upload/img/img1.jpg" class="img_size" />
 									<div>
 										<h5>
-											<b>글제목입니다. 말줄임 처리도 합니다.</b>
+											<b>${item.bbstitle}</b>
 										</h5>
 										아이디<br>
 										<hr />
-										<div class="pr_content">글내용입니다. 여기도 말줄임 처리가 되나요? 일단
-											해보겠습니다. 박스로 영역 크기를 잡은 후 말줄임 처리를 합니다. 긴 내용을 적어도 괜찮습니다. 지금은 4월
-											2일 오전 11시 6분. 점심시간까지 두 시간 좀 안 되게 남았어요.</div>
+										<div class="pr_content">${item.bbscontent}</div>
 									</div>
 								</a>
 								<button class="btn btn-inverse" id="heart_bt">

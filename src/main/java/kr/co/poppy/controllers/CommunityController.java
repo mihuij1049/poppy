@@ -67,17 +67,16 @@ public class CommunityController {
 		// 조회 결과를 저장할 객체 선언
 		Bbs output = null;
 		List<Comments> output2 = null;
-		
+
 		// 세션 객체를 이용하여 저장된 세션값 얻기
-				HttpSession mySession = webHelper.getSession();
-				Members myInfo = (Members) mySession.getAttribute("userInfo");
-				Comments myCmt = new Comments();
-				
-				
-				if(myInfo!=null) {
-					myCmt.setUsername(myInfo.getUsername());
-					model.addAttribute("myCmt", myCmt);
-					}
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+		Comments myCmt = new Comments();
+
+		if (myInfo != null) {
+			myCmt.setUsername(myInfo.getUsername());
+			model.addAttribute("myCmt", myCmt);
+		}
 
 		try {
 			// 데이터 조회
@@ -86,16 +85,14 @@ public class CommunityController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-		
+
 		/** 3) view 처리 */
 		if (output.getBbstype().equals("A")) {
 			output.setBbstype("공지사항");
 		} else {
 			output.setBbstype("Q&A");
 		}
-		
-		
-		
+
 		model.addAttribute("output", output);
 		model.addAttribute("output2", output2);
 		return new ModelAndView("community/article");
@@ -114,8 +111,6 @@ public class CommunityController {
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 3; // 한 페이지 당 표시한 목록 수
 		int pageCount = 3; // 한 그룹 당 표시할 페이지 번호 수
-		
-		
 
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(겁색어)를 Beans에 담는다.
@@ -125,27 +120,24 @@ public class CommunityController {
 		input.setBbstitle(keyword);
 		input.setUsername(keyword);
 		input.setUserid(keyword);
-		
-			
+
 		// 조회 결과가 저장될 객체
 		List<Bbs> output = null;
 		PageData pageData = null;
 		Comments output2 = null;
-		
+
 		try {
 
 			// 전체 게시글 수 조회
 			totalCount = bbsService.getBbsCount(input);
-			
-		
+
 			// 페이지 번호 계산 --> 계산결과가 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
-			
-			
+
 			// SQL의 limit절에서 사용될 값을 Beans의 static 변수에 저장
 			Bbs.setOffset(pageData.getOffset());
 			Bbs.setListCount(pageData.getListCount());
-		
+
 			// 데이터 조회하기 --> 검색조건 없이 모든 학과 조회
 			output = bbsService.getBbsList(input);
 		} catch (Exception e) {
@@ -160,6 +152,45 @@ public class CommunityController {
 		return new ModelAndView("community/notice");
 	}
 
+	/** photo_rv */
+	@RequestMapping(value = "/community/photo_rv.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView photo_rv(Model model,
+			// 페이지 구현에서 사용할 현재 페이지 번호
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+		
+		/** 1) 페이지 구현에 필요한 변수값 생성 */
+		int totalCount = 0;
+		int listCount = 5;
+		int pageCount = 3;
+
+		/** 2) 데이터 조회하기 */
+		// 조회에 필요한 조건값(겁색어)를 Beans에 담는다.
+		Bbs input = new Bbs();
+		input.setBbstype("C");
+
+		// 조회 결과가 저장될 객체
+		List<Bbs> output = null;
+		PageData pageData = null;
+
+		try {
+			// 전체 게시글 수 조회
+			totalCount = bbsService.getBbsCount(input);
+			// 페이지 번호 계산 --> 계산결과가 로그로 출력될 것이다.
+			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+			// SQL의 limit절에서 사용될 값을 Beans의 static 변수에 저장
+			Bbs.setOffset(pageData.getOffset());
+			Bbs.setListCount(pageData.getListCount());
+			// 데이터 조회하기 -->
+			output = bbsService.getBbsList_goods(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		/** 3) view 처리 */
+		model.addAttribute("output", output);
+		model.addAttribute("pageData", pageData);
+		return new ModelAndView("community/photo_rv");
+	}
+	
 	/** qna */
 	@RequestMapping(value = "/community/qna.do", method = RequestMethod.GET)
 	public ModelAndView listqna(Model model,
@@ -170,7 +201,6 @@ public class CommunityController {
 		int totalCount = 0;
 		int listCount = 5;
 		int pageCount = 3;
-		
 
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(겁색어)를 Beans에 담는다.
@@ -180,8 +210,7 @@ public class CommunityController {
 		// 조회 결과가 저장될 객체
 		List<Bbs> output = null;
 		PageData pageData = null;
-		
-		
+
 		try {
 			// 전체 게시글 수 조회
 			totalCount = bbsService.getBbsCount(input);
@@ -190,7 +219,6 @@ public class CommunityController {
 			// SQL의 limit절에서 사용될 값을 Beans의 static 변수에 저장
 			Bbs.setOffset(pageData.getOffset());
 			Bbs.setListCount(pageData.getListCount());
-			
 			// 데이터 조회하기 --> 검색조건 없이 모든 학과 조회
 			output = bbsService.getBbsList(input);
 		} catch (Exception e) {
@@ -202,6 +230,7 @@ public class CommunityController {
 		model.addAttribute("pageData", pageData);
 		return new ModelAndView("community/qna");
 	}
+	
 
 	/** QnA 검색 기능 구현 */
 	@RequestMapping(value = "/community/qnasearch.do", method = RequestMethod.GET)
@@ -265,12 +294,11 @@ public class CommunityController {
 
 	/** 댓글 저장히기 */
 	@RequestMapping(value = "community/comments.do", method = RequestMethod.POST)
-	public ModelAndView addcmt(Model model, 
-			@RequestParam(value = "cmtcontent", required = false) String cmtcontent,
+	public ModelAndView addcmt(Model model, @RequestParam(value = "cmtcontent", required = false) String cmtcontent,
 			@RequestParam(value = "regdate", required = false) String regdate,
 			@RequestParam(value = "editdate", required = false) String editdate,
 			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno,
-			@RequestParam(value = "memno", defaultValue = "0") int memno){
+			@RequestParam(value = "memno", defaultValue = "0") int memno) {
 
 		/** 1) 유효성 검사 */
 		if (cmtcontent.equals("")) {
@@ -291,7 +319,7 @@ public class CommunityController {
 		Comments myCmt = new Comments();
 		myCmt.setMemno(myInfo.getMemno());
 		myCmt.setUsername(myInfo.getUsername());
-		
+
 		try {
 			// 데이터 저장
 			commentsService.addComments(input);
@@ -306,13 +334,8 @@ public class CommunityController {
 		String redirectUrl = contextPath + "/community/article.do?cmtno=" + input.getCmtno();
 		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 	}
-	
 
-	/** photo_rv */
-	@RequestMapping(value = "/community/photo_rv.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String photo_rv() {
-		return "community/photo_rv";
-	}
+	
 
 	/** qna_wri */
 	@RequestMapping(value = "/community/qna_wri.do", method = RequestMethod.GET)

@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import kr.co.poppy.model.Bbs;
 import kr.co.poppy.model.Comments;
 import kr.co.poppy.service.CommentsService;
 import lombok.extern.slf4j.Slf4j;
@@ -99,7 +99,7 @@ public class CommentsServiceImpl implements CommentsService {
 	}
 
 	@Override
-	public int getCommentsCount(Comments input) throws Exception {
+	public int getCommentsCount(Bbs input) throws Exception {
 		int result = 0;
 		try {
 			result = sqlSession.selectOne("CommentsMapper.selectCountAll", input);

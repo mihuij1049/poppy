@@ -159,7 +159,7 @@
 }
 
 /** 글 수정삭제 버튼 */
-.editbuttons {
+.btn-edit, .btn-del {
 	float: right;
 }
 

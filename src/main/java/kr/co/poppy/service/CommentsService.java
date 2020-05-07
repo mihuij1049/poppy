@@ -2,6 +2,7 @@ package kr.co.poppy.service;
 
 import java.util.List;
 
+import kr.co.poppy.model.Bbs;
 import kr.co.poppy.model.Comments;
 
 public interface CommentsService {
@@ -44,7 +45,7 @@ public interface CommentsService {
 	 * @return int
 	 * @throws Exception
 	 */
-	public int getCommentsCount(Comments input) throws Exception;
+	public int getCommentsCount(Bbs input) throws Exception;
 
 }
 

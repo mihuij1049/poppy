@@ -66,10 +66,9 @@
 								<tr>
 									<td class="subject"><strong> <span
 											class="glyphicon glyphicon-lock"></span> <a href="${viewUrl}"
-											class="subject">${bbstitle}</a> <span class="comment">[${output2.cmtCount}]</span>
+											class="subject">${bbstitle}</a> <span class="comment">[조회수]</span>
 									</strong><br /> <span class="name" title="작성자"></span> <span
-										class="date" title="작성일">${item.regdate}</span> <span>조회
-											235</span></td>
+										class="date" title="작성일">${item.regdate}</span></td>
 								</tr>
 							</c:forEach>
 						</c:otherwise>
