@@ -145,7 +145,7 @@ public class KRTController {
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
 		Orders orders = new Orders();
 		orders.setOrderno(orderno);
-
+		
 		// 주문 조회 결과를 저장할 객체 선언
 		Orders output = null;
 
@@ -155,17 +155,18 @@ public class KRTController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
-		/** 2) 데이터 수정하기 */
-		// 데이터 삭제에 필요한 조건값을 Beans에 저장하기
+		/** 3) 데이터 수정하기 */
+		// 데이터 수정에 필요한 조건값을 Beans에 저장하기
 		output.setOdstatus("4");
-
+		output.setOrderno(orderno);
+		
 		try {
 			orderService.editOrders(output);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
-		/** 3) 페이지 이동 */
+		/** 4) 페이지 이동 */
 		model.addAttribute("myInfo", myInfo);
 		model.addAttribute("output", output);
 

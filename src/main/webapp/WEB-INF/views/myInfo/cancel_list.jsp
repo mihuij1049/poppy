@@ -107,18 +107,18 @@
 									<div class="ready">${item.odstatus}</div>
 								</div>
 							</div>
-							<div class=" paging">
-								<ul class="pagination pagination-sm">
-									<li class="disabled"><a href="#">&laquo;</a></li>
-									<!-- 활성화 버튼은 아래의 구조로 구성하시면 됩니다. sr-only는 스크린리더 전용입니다. -->
-									<li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
-									<li class="paging-right"><a href="#">&raquo;</a></li>
-								</ul>
-							</div>
 						</div>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
+			<div class=" paging">
+				<ul class="pagination pagination-sm">
+					<li class="disabled"><a href="#">&laquo;</a></li>
+					<!-- 활성화 버튼은 아래의 구조로 구성하시면 됩니다. sr-only는 스크린리더 전용입니다. -->
+					<li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
+					<li class="paging-right"><a href="#">&raquo;</a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
 	<!-- Javascript -->
