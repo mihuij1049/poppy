@@ -227,50 +227,6 @@ public class KRTController {
 		return new ModelAndView(viewPath);
 	}
 
-	/** plist (적립내역) */
-	/** 목록 페이지 */
-	@RequestMapping(value = "/myInfo/plist.do", method = RequestMethod.GET)
-	public ModelAndView point_list(Model model, @RequestParam(value = "page", defaultValue = "1") int nowPage) {
-		/** 1) 페이지 구현에 필요한 변수값 생성 */
-		// 전체 게시글 수
-		int totalCount = 0;
-		// 한 페이지당 표시할 목록 수
-		int listCount = 10;
-		// 한 그룹당 표시할 페이 번호 수
-		int pageCount = 5;
-
-		/** 2) 데이터 조회하기 */
-		// 조회에 필요한 조건값을 Beans에 담는다.
-		HttpSession mySession = webHelper.getSession();
-		Members myInfo = (Members) mySession.getAttribute("userInfo");
-
-		Points input = new Points();
-		input.setMemno(myInfo.getMemno());
-
-		List<Points> output = null;
-		PageData pageData = null;
-
-		try {
-			totalCount = pointsService.getPointsCount(input);
-			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
-
-			// SQL의 LIMIT 절에서 사용될 값을 Beans의 static 변수에 저장
-			Points.setOffset(pageData.getOffset());
-			Points.setListCount(pageData.getListCount());
-
-			// 데이터 조회하기
-			output = pointsService.getPointsMbList(input);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-
-		/** 3) view 처리 */
-		model.addAttribute("output", output);
-		model.addAttribute("pageData", pageData);
-
-		String viewPath = "myInfo/plist";
-		return new ModelAndView(viewPath);
-	}
 
 	/** photo_wri (포토리뷰 쓰기) */
 	/** 작성 폼 페이지 */
