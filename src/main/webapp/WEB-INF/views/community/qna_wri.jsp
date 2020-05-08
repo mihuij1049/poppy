@@ -318,8 +318,8 @@ a {
 							<label>비밀글설정</label>
 						</div>
 						<div class="col-xs-8">
-							<input type="radio" name="public" value="0" id="public"> <label>공개글
-								&nbsp;</label> <input type="radio" id="private" name="public" value="1" checked>
+							<input type="radio" name="qnasec" value="0" id="public"> <label>공개글
+								&nbsp;</label> <input type="radio" id="private" name="qnasec" value="1" checked>
 							<label>비밀글</label>
 						</div>
 					</div>
@@ -328,7 +328,7 @@ a {
 							<label>비밀번호</label>
 						</div>
 						<div class="col-xs-8">
-							<input type="password" id="password" name="qnasec" maxlength="4" placeholder="비밀번호 4자리를 입력하세요.">
+							<input type="password" id="password" name="qnapw" maxlength="4" placeholder="비밀번호 4자리를 입력하세요.">
 						</div>
 					</div>
 

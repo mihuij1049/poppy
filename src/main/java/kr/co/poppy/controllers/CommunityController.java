@@ -46,7 +46,8 @@ public class CommunityController {
 
 	/** article */
 	@RequestMapping(value = "/community/article.do", method = RequestMethod.GET)
-	public ModelAndView view(Model model, @RequestParam(value = "bbstype", required = false) String bbstype,
+	public ModelAndView view(Model model, 
+			@RequestParam(value = "bbstype", required = false) String bbstype,
 			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
 		/** 1) 유효성 검사 */
 		if (bbsno == 0) {
@@ -104,7 +105,8 @@ public class CommunityController {
 
 	/** qna 작성 */
 	@RequestMapping(value = "/community/qna_wri_ok.do", method = RequestMethod.POST)
-	public ModelAndView add_qna(Model model, @RequestParam(value = "bbstype", required = false) String bbstype,
+	public ModelAndView add_qna(Model model, 
+			@RequestParam(value = "bbstype", required = false) String bbstype,
 			@RequestParam(value = "bbstitle", required = false) String bbstitle,
 			@RequestParam(value = "bbscontent", required = false) String bbscontent,
 			@RequestParam(value = "qnasec", required = false) String qnasec,
@@ -148,7 +150,7 @@ public class CommunityController {
 		}
 
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
-		String redirectUrl = contextPath + "/community/article.do?bbsno=" + input.getBbsno();
+		String redirectUrl = contextPath + "/community/article.do?bbsno=" + input.getBbsno()+"&bbstype="+input.getBbstype();
 		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 	}
 
