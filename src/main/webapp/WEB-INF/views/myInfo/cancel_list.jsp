@@ -10,7 +10,7 @@
 <head>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/share/cancel_list.css" />
+	href="${pageContext.request.contextPath}/share/cancel_list.css?ver=1" />
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -25,11 +25,11 @@
 <body>
 	<%@ include file="../share/top_tp.jsp"%>
 	<div class="content">
-		<!-- 취소/교환/반품내역 -->
+		<!-- 취소내역 -->
 		<div class="page-title clearfix">
 			<h4>
 				<b> <a href="#" onclick="history.back(); return false;"><i
-						class="glyphicon glyphicon-chevron-left"></i></a>취소/교환/반품내역
+						class="glyphicon glyphicon-chevron-left"></i></a>취소내역
 				</b>
 			</h4>
 		</div>
@@ -38,7 +38,7 @@
 				<li class="col-xs-6 etc"><a
 					href="${pageContext.request.contextPath}/myInfo/order_list.do">주문조회</a></li>
 				<li class="active col-xs-6 etc"><a
-					href="${pageContext.request.contextPath}/myInfo/cancel_list.do">취소/교환/반품내역</a></li>
+					href="${pageContext.request.contextPath}/myInfo/cancel_list.do">취소내역</a></li>
 			</ul>
 			<div class="backg fade in">
 				<div class="container">
@@ -76,11 +76,11 @@
 							<div class="view">
 								<span class="date" title="주문일자">${fn:substring(item.regdate,0,10)}</span>
 								<span class="number" title="주문번호"> <a
-									href="${pageContext.request.contextPath}/myInfo/order_desc.do">
-										(${fn:substring(item.regdate,0,10).replace("-","")}-${item.orderno})</a>
+									href="${pageContext.request.contextPath}/myInfo/order_desc.do?orderno=${item.orderno}">
+										(${fn:substring(item.regdate,0,10).replace("-","")}-000${item.orderno})</a>
 								</span> <a
-									href="${pageContext.request.contextPath}/myInfo/order_desc.do"
-									class="btn-detail"><span id="GGuc">&#62;</span>상세보기</a>
+									href="${pageContext.request.contextPath}/myInfo/order_desc.do?orderno=${item.orderno}"
+									class="btn-detail"><span id="GGuc">&#62;</span>상세보기 </a>
 							</div>
 							<div class="prd-info">
 								<div class="prd-box">
@@ -101,7 +101,6 @@
 											</span></li>
 										</ul>
 										<p class="option">[옵션: ${item.odgdoption}]</p>
-										<button type="button" class="btn btn2" id="cancel">주문취소</button>
 									</div>
 								</div>
 								<div class="prd-foot" title="주문처리상태">

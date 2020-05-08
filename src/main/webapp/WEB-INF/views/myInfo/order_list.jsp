@@ -40,7 +40,7 @@
 				<li class="active col-xs-6 etc"><a
 					href="${pageContext.request.contextPath}/myInfo/order_list.do">주문조회</a></li>
 				<li class="col-xs-6 etc"><a
-					href="${pageContext.request.contextPath}/myInfo/cancel_list.do">취소/교환/반품내역</a></li>
+					href="${pageContext.request.contextPath}/myInfo/cancel_list.do">취소내역</a></li>
 			</ul>
 			<div class="backg">
 				<div class="container">
@@ -51,9 +51,6 @@
 						<option>배송준비중</option>
 						<option>배송중</option>
 						<option>배송완료</option>
-						<option>취소</option>
-						<option>교환</option>
-						<option>반품</option>
 					</select>
 					<div class="period">
 						<p class="col-xs-1">기간</p>
@@ -85,6 +82,9 @@
 				<c:otherwise>
 					<c:forEach var="item" items="${output}" varStatus="status">
 						<c:set var="orderno" value="${item.orderno}" />
+						<c:set var="memno" value="${item.memno}" />
+						<c:set var="paytype" value="${item.paytype}" />
+						<c:set var="odstatus" value="${item.odstatus}" />
 						<div>
 							<div class="view">
 								<span class="date" title="주문일자">${fn:substring(item.regdate,0,10)}
@@ -113,7 +113,7 @@
 											</span></li>
 										</ul>
 										<p class="option">[옵션: ${item.odgdoption}]</p>
-										<button type="button" class="btn btn2" id="change">주문변경</button>
+										<button type="button" class="btn btn2" id="change">주문취소</button>
 									</div>
 								</div>
 								<div class="prd-foot" title="주문처리상태">
@@ -131,22 +131,19 @@
 												aria-label="Close">
 												<span aria-hidden="true">&times;</span>
 											</button>
-											<h4 class="modal-title">주문 변경</h4>
+											<h4 class="modal-title">주문 취소</h4>
 										</div>
 										<div class="modal-body2">
 											<p>
-												<span class="delete_message"></span> 주문을 정말 변경하시겠습니까?
+												<span class="delete_message"></span> 주문을 취소 하시겠습니까?
 											</p>
 										</div>
 										<div class="modal-footer2">
-											<input type="radio" name="change" value="취소" checked>취소&nbsp;&nbsp;&nbsp;
-											<input type="radio" name="change" value="교환">교환&nbsp;&nbsp;&nbsp;
-											<input type="radio" name="change" value="반품">반품
 											<button type="reset" class="btn btn2 change_cancel"
 												data-dismiss="modal">아니오</button>
 											<button type="submit" class="btn btn2 change_ok"
 												data-dismiss="modal"
-												onclick="location.href='${pageContext.request.contextPath}/myInfo/order_delete.do?orderno=${item.orderno}'">예</button>
+												onclick="location.href='${pageContext.request.contextPath}/myInfo/order_change.do?orderno=${item.orderno}'">예</button>
 										</div>
 									</div>
 								</div>
@@ -224,7 +221,7 @@
 				$("#myModal2").modal("show");
 				var change_item = $(this).parent().parent().parent().parent();
 				$(document).on("click", ".change_ok", function(e) {
-					chage_item.remove();
+					change_item.remove();
 				});
 			});
 		});

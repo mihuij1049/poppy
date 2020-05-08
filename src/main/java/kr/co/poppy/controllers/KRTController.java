@@ -58,10 +58,10 @@ public class KRTController {
 	/** 목록 페이지 */
 	@RequestMapping(value = "/myInfo/order_list.do", method = RequestMethod.GET)
 	public ModelAndView order_list(Model model, @RequestParam(value = "page", defaultValue = "1") int nowPage,
-			@RequestParam(value="odstatus", required=false) String odstatus) {
+			@RequestParam(value = "odstatus", required = false) String odstatus) {
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
-		
+
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
 		// 전체 게시글 수
 		int totalCount = 0;
@@ -71,16 +71,13 @@ public class KRTController {
 		int pageCount = 5;
 
 		/** 2) 데이터 조회하기 */
-		//int odnum = Integer.parseInt(orderno);
 		Orders orders = new Orders();
 		orders.setMemno(myInfo.getMemno());
 		orders.setOdstatus(odstatus);
-		//input.setOrderno(odnum);
 
 		List<Orders> ordersList = null;
 		List<Orders> output = new ArrayList<Orders>();
 		PageData pageData = null;
-		
 
 		try {
 			// 전체 게시글 수 조회
@@ -98,64 +95,89 @@ public class KRTController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-	
-		for(int i=0; i<ordersList.size();i++) {
-		orders = ordersList.get(i);
-		if (orders.getOdstatus().equals("0")) {
-			orders.setOdstatus("입금전");
-		} else if (orders.getOdstatus().equals("1")) {
-			orders.setOdstatus("배송준비중");
-		} else if (orders.getOdstatus().equals("2")) {
-			orders.setOdstatus("배송중");
-		} else if (orders.getOdstatus().equals("3")) {
-			orders.setOdstatus("배송완료");
-		} else if (orders.getOdstatus().equals("4")) {
-			orders.setOdstatus("주문취소");
-		} else if (orders.getOdstatus().equals("5")) {
-			orders.setOdstatus("반품처리중");
-		} else if (orders.getOdstatus().equals("6")) {
-			orders.setOdstatus("환불완료");
+
+		for (int i = 0; i < ordersList.size(); i++) {
+			orders = ordersList.get(i);
+			if (orders.getOdstatus().equals("0")) {
+				orders.setOdstatus("입금전");
+			} else if (orders.getOdstatus().equals("1")) {
+				orders.setOdstatus("배송준비중");
+			} else if (orders.getOdstatus().equals("2")) {
+				orders.setOdstatus("배송중");
+			} else if (orders.getOdstatus().equals("3")) {
+				orders.setOdstatus("배송완료");
+			} else if (orders.getOdstatus().equals("4")) {
+				orders.setOdstatus("취소");
+			} else if (orders.getOdstatus().equals("5")) {
+				orders.setOdstatus("교환");
+			} else if (orders.getOdstatus().equals("6")) {
+				orders.setOdstatus("반품");
+			}
+			output.add(orders);
 		}
-		output.add(orders);
-		}
-		
 
 		/** 3) view 처리 */
 		model.addAttribute("myInfo", myInfo);
 		model.addAttribute("output", output);
-		
+
 		String viewPath = "myInfo/order_list";
 		return new ModelAndView(viewPath);
 	}
 
-	/** 삭제 처리 구현 */
-	@RequestMapping(value = "/myInfo/order_delete.do", method = RequestMethod.GET)
-	public ModelAndView order_delete(Model model, @RequestParam(value = "orderno", required = false) int orderno) {
+	/** 주문 변경 처리 구현 */
+	@RequestMapping(value = "/myInfo/order_change.do", method = RequestMethod.GET)
+	public ModelAndView order_editk(Model model, @RequestParam(value = "orderno", defaultValue = "0") int orderno,
+			@RequestParam(value = "odmsg", required = false) String odmsg,
+			@RequestParam(value = "paytype", required = false) String paytype,
+			@RequestParam(value = "odstatus", required = false) String odstatus,
+			@RequestParam(value = "deliprice", defaultValue = "0") int deliprice,
+			@RequestParam(value = "memno", defaultValue = "0") int memno) {
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+
 		/** 1) 파라미터 유효성 검사 */
 		// 이 값이 존재하지 않는다면 데이터 삭제가 불가능하므로 반드시 필수값으로 처리해야 한다.
 		if (orderno == 0) {
 			return webHelper.redirect(null, "주문번호가 없습니다.");
 		}
-
-		/** 2) 데이터 삭제하기 */
-		// 데이터 삭제에 필요한 조건값을 Beans에 저장하기
+		
+		/** 2) 데이터 조회하기 */
+		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
 		Orders orders = new Orders();
 		orders.setOrderno(orderno);
 
+		// 주문 조회 결과를 저장할 객체 선언
+		Orders output = null;
+
 		try {
-			orderService.deleteOrders(orders);
+			output = orderService.getOrdersItem(orders);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-		
+
+		/** 2) 데이터 수정하기 */
+		// 데이터 삭제에 필요한 조건값을 Beans에 저장하기
+		output.setOdstatus("4");
+
+		try {
+			orderService.editOrders(output);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+
 		/** 3) 페이지 이동 */
-		return webHelper.redirect(contextPath + "/myInfo/order_list.do", "삭제되었습니다.");
+		model.addAttribute("myInfo", myInfo);
+		model.addAttribute("output", output);
+
+		return webHelper.redirect(contextPath + "/myInfo/order_list.do", "주문 취소 되었습니다.");
 	}
 
 	/** cancel_list (주문취소내역) */
 	/** 목록 페이지 */
 	@RequestMapping(value = "/myInfo/cancel_list.do", method = RequestMethod.GET)
 	public ModelAndView cancel_list(Model model, @RequestParam(value = "page", defaultValue = "1") int nowPage) {
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
 
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
 		// 전체 게시글 수
@@ -165,15 +187,17 @@ public class KRTController {
 		// 한 그룹당 표시할 페이 번호 수
 		int pageCount = 5;
 
-		Orders input = new Orders();
-		input.setMemno(1);
+		Orders orders = new Orders();
+		orders.setMemno(myInfo.getMemno());
+		
+		List<Orders> ordersList = null;
+		List<Orders> output = new ArrayList<Orders>();
 
-		List<Orders> output = null;
 		PageData pageData = null;
 
 		try {
 			// 전체 게시글 수 조회
-			totalCount = orderService.getOrdersCount(input);
+			totalCount = orderService.getOrdersCount(orders);
 			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 
@@ -182,11 +206,20 @@ public class KRTController {
 			Orders.setListCount(pageData.getListCount());
 
 			// 데이터 조회하기
-			output = orderService.getOrdersList(input);
+			ordersList = orderService.getOrdersList2(orders);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
+		
+		for (int i = 0; i < ordersList.size(); i++) {
+			orders = ordersList.get(i);
+			if (orders.getOdstatus().equals("4")) {
+				orders.setOdstatus("취소");
+			}
+			output.add(orders);
+		}
 
+		model.addAttribute("myInfo", myInfo);
 		model.addAttribute("output", output);
 
 		String viewPath = "myInfo/cancel_list";

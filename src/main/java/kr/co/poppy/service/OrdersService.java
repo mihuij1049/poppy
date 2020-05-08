@@ -13,7 +13,7 @@ public interface OrdersService {
 	 * @throws Exception
 	 */
 	public  Orders getOrdersItem(Orders input) throws Exception;
-
+	
 	/**
 	 * 주문 데이터 목록 조회
 	 * @param Orders 검색조건과 페이지 구현 정보를 담고 있는 Beans
@@ -21,6 +21,14 @@ public interface OrdersService {
 	 * @throws Exception
 	 */
 	public  List<Orders> getOrdersList(Orders input) throws Exception;
+
+	/**
+	 * 주문 취소/교환/반품 데이터 목록 조회
+	 * @param Orders 검색조건과 페이지 구현 정보를 담고 있는 Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	public  List<Orders> getOrdersList2(Orders input) throws Exception;
 	
 	/**
 	 * 주문 데이터가 저장되어 있는 갯수 조회

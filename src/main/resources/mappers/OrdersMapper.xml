@@ -35,8 +35,17 @@
 		o.regdate, od.odgcode, od.odgname, od.odgprice, od.odgqty,
 		od.odgdoption
 		FROM orders o INNER JOIN orderdetail od ON o.orderno = od.orderno
-		WHERE o.memno=#{memno} AND o.odstatus IN (SELECT odstatus FROM orders WHERE
-		o.odstatus="0" OR o.odstatus="1" OR o.odstatus="2" OR o.odstatus="3");
+		WHERE o.memno=#{memno} AND o.odstatus IN ("0", "1", "2", "3");
+	</select>
+	
+	<!-- 취소/교환/반품내역 다중행 조회를 위한 기능 정의 -->
+	<select id="selectList2"
+		parameterType="kr.co.poppy.model.Orders" resultMap="ordersMap">
+		SELECT o.orderno, o.odstatus,
+		o.regdate, od.odgcode, od.odgname, od.odgprice, od.odgqty,
+		od.odgdoption
+		FROM orders o INNER JOIN orderdetail od ON o.orderno = od.orderno
+		WHERE o.memno=#{memno} AND o.odstatus IN ("4", "5", "6");
 	</select>
 
 	<!-- 데이터 수 조회를 위한 기능 정의 -->
