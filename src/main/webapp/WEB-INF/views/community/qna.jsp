@@ -67,8 +67,8 @@
 									<td class="subject"><strong> <span
 											class="glyphicon glyphicon-lock"></span> <a href="${viewUrl}"
 											class="subject">${bbstitle}</a> <span class="comment">[댓글수]</span>
-									</strong><br /> <span class="name" title="작성자">${item.username}</span> <span
-										class="date" title="작성일">${item.regdate}</span></td>
+									</strong><br /> <span class="name" title="작성자">${item.username}</span>
+										<span class="date" title="작성일">${item.regdate}</span></td>
 								</tr>
 							</c:forEach>
 						</c:otherwise>
@@ -132,29 +132,32 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-				
+
 		</div>
 		<!-- 로그인 시에만 글쓰기 버튼 보이게 하기 -->
-				<c:if test="${!empty userInfo.userid }">
-				<button type="button"
-							onclick="location.href='${pageContext.request.contextPath}/community/qna_wri.do'"
-							class="btn btn-sm list">글쓰기</button>
-				</c:if>
+		<c:if test="${!empty userInfo.userid }">
+			<button type="button"
+				onclick="location.href='${pageContext.request.contextPath}/community/qna_wri.do'"
+				class="btn btn-sm list">글쓰기</button>
+		</c:if>
+
+		<div class="searchmenu">
+			<form method="post"
+				action="${pageContext.request.contextPath}/community/qnasearch.do">
+				<select id="array2" name="searchType" class="selectmenu">
+					<option value="bbstitle">제목</option>
+					<option value="bbscontent">내용</option>
+					<option value="username">이름</option>
+					<option value="userid">아이디</option>
+				</select>  <input type="search" name="keyword"
+					id="keyword" class="keyword" value="${keyword}" />
+				<button type="submit"
+					class="btn btn-sm btn-search">검색</button>
+			</form>
+		</div>
 		<div class="row">
-		
-			<div class="searchmenu">
-				<form method="get"
-					action="${pageContext.request.contextPath}/community/qnasearch.do">
-					<select id="array2" class="selectmenu">
-						<option value="bbstitle">제목</option>
-						<option value="bbscontent">내용</option>
-						<option value="username">이름</option>
-						<option value="userid">아이디</option>
-					</select> <label for="keyword"></label> <input type="search" name="keyword"
-						id="keyword" class="keyword" value="${keyword}">
-					<button type="submit" class="btn btn-sm btn-search">검색</button>
-				</form>
-			</div>
+
+
 			<!--   비밀번호 입력 모달 ------------------------->
 			<div class="customer_pass" id="customer_pass">
 				<b class="plz_pass">비밀번호를 입력해 주세요.</b><br> <label for="cs_pass"
@@ -162,8 +165,8 @@
 					name="cs_pass" class="cs_pass" id="cs_pass"><br>
 
 				<div class="cs_pass_2btns">
-					<button type="submit" class="btn btn-sm btn-ok">확인</button>
-					<button type="submit" class="btn btn-inverse btn-sm btn-cancel">취소</button>
+					<button type="button" class="btn btn-sm btn-ok">확인</button>
+					<button type="button" class="btn btn-inverse btn-sm btn-cancel">취소</button>
 				</div>
 			</div>
 		</div>

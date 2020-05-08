@@ -1,0 +1,90 @@
+@charset "UTF-8";
+.mypoint {
+	border: 2px solid #ff8f83;
+	border-radius: 2px;
+	width: 96%;
+	margin: auto;
+	line-height: 35px;
+	margin-bottom: 25px;
+	margin-top: 20px;
+	padding: 5px 15px;
+	font-size: 16px;
+	letter-spacing: 2px;
+}
+
+.mydelivery {
+	border: 2px solid #ffc7c1;
+	border-radius: 2px;
+	width: 96%;
+	margin: auto;
+	line-height: 40px;
+	margin-bottom: 25px;
+	padding: 10px 0px;
+	font-size: 16px;
+}
+
+.mydelivery-current {
+	text-align: center;
+	float: left;
+	width: 25%;
+	border-right: 1px solid #ff8f83;
+}
+
+.mydelivery-current:nth-child(4) {
+	border-right: none;
+}
+
+.myinfo-list {
+	width: 96%;
+	margin: auto;
+	margin-top: 15px;
+	margin-bottom: 50px;
+	text-align: center;
+	border: 2px solid #ff8f83;
+	border-radius: 2px;
+}
+
+.myinfo-list-item {
+	height: 110px;
+	width: 33.33%;
+	float: left;
+	border-right: 1px dotted #ffc7c1;
+	border-bottom: 1px dotted #ffc7c1;
+}
+
+.myinfo-list-item:nth-child(3) {
+	border-right: none;
+}
+
+.myinfo-list-item:nth-child(4) {
+	border-bottom: none;
+}
+
+.myinfo-list-item:nth-child(5) {
+	border-bottom: none;
+}
+
+.myinfo-list-item:nth-child(6) {
+	border-right: none;
+	border-bottom: none;
+}
+
+.myinfo-list-item:hover {
+	width: 33.33%;
+	background: #ffc7c1;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.myinfo-list-item>a {
+	padding-top: 30px;
+	color: #333;
+	display: block;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+.myinfo-list .glyphicon {
+	font-size: 20px;
+	line-height: 30px;
+}

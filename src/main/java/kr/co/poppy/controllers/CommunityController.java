@@ -267,7 +267,7 @@ public class CommunityController {
 	}
 
 	/** qna */
-	@RequestMapping(value = "/community/qna.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/community/qna.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView listqna(Model model,
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
@@ -307,13 +307,10 @@ public class CommunityController {
 	}
 
 	/** QnA 검색 기능 구현 */
-	@RequestMapping(value = "/community/qnasearch.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/community/qnasearch.do", method = {RequestMethod.GET, RequestMethod.POST} )
 	public ModelAndView qnaSearch(Model model,
 			// 검색어
-			@RequestParam(value = "bbstitle", required = false) String bbstitle,
-			@RequestParam(value = "bbscontent", required = false) String bbscontent,
-			@RequestParam(value = "username", required = false) String username,
-			@RequestParam(value = "userid", required = false) String userid,
+			@RequestParam(value = "searchType", required = false) String searchType,
 			@RequestParam(value = "keyword", required = false) String keyword,
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
@@ -325,16 +322,16 @@ public class CommunityController {
 		/** 2) 어떤 범주로 검색할지 받은 파라미터 검사 */
 		Bbs input = new Bbs();
 		input.setBbstype("B");
-		if (bbstitle != null) {
+		if (searchType.equals("bbstitle")) {
 			input.setBbstitle(keyword);
 		}
-		if (bbscontent != null) {
+		if (searchType.equals("bbscontent")) {
 			input.setBbscontent(keyword);
 		}
-		if (userid != null) {
+		if (searchType.equals("username")) {
 			input.setUserid(keyword);
 		}
-		if (username != null) {
+		if (searchType.equals("userid")) {
 			input.setUsername(keyword);
 		}
 		/** 3) 페이지 구현에 필요한 변수값 생성 */

@@ -45,18 +45,18 @@
 		INNER JOIN members m ON b.memno=m.memno
 
 		<where>
-			bbstype=#{bbstype}
+			bbstype=#{bbstype} 
 			<if test="bbscontent != null and bbscontent != ''">
-				bbscontent LIKE concat('%', #{bbscontent}, '%')
+				and bbscontent LIKE concat('%', #{bbscontent}, '%')
 			</if>
 			<if test="bbstitle != null and bbstitle != ''">
-				bbstitle LIKE concat('%', #{bbstitle}, '%')
+				and bbstitle LIKE concat('%', #{bbstitle}, '%')
 			</if>
 			<if test="username != null and username != ''">
-				username LIKE concat('%', #{username}, '%')
+				and username LIKE concat('%', #{username}, '%')
 			</if>
 			<if test="userid != null and userid != ''">
-				userid LIKE concat('%', #{userid}, '%')
+				and userid LIKE concat('%', #{userid}, '%')
 			</if>
 		</where>
 		ORDER BY bbsno DESC
@@ -98,16 +98,16 @@
 		<where>
 			bbstype=#{bbstype}
 			<if test="bbscontent != null and bbscontent != ''">
-				bbscontent LIKE concat('%', #{bbscontent}, '%')
+				and bbscontent LIKE concat('%', #{bbscontent}, '%')
 			</if>
 			<if test="bbstitle != null and bbstitle != ''">
-				bbstitle LIKE concat('%', #{bbstitle}, '%')
+				and bbstitle LIKE concat('%', #{bbstitle}, '%')
 			</if>
 			<if test="username != null and username != ''">
-				username LIKE concat('%', #{username}, '%')
+				and username LIKE concat('%', #{username}, '%')
 			</if>
 			<if test="userid != null and userid != ''">
-				userid LIKE concat('%', #{userid}, '%')
+				and userid LIKE concat('%', #{userid}, '%')
 			</if>
 		</where>
 	</select>
