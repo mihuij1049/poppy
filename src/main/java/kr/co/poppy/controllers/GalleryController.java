@@ -59,28 +59,63 @@ public class GalleryController {
 		return new ModelAndView("gallery/gal_list");
 	}
 	
-	@RequestMapping(value="/gallery/gal_list_cate.do", method=RequestMethod.GET)
+	@RequestMapping(value="/gallery/gal_list_cate.do?cate1=${cate1}", method=RequestMethod.GET)
 	public ModelAndView gallistcate(Model model,
-			@RequestParam(value="cate1", required=false) String cate1) {
+			@RequestParam(value="cate1", required=false) String cate1,
+			@RequestParam("searchCondition") String searchCondition) {
 		// 2) 데이터 조회
 		// 굿즈데이터조회
 		Goods input = new Goods();
 		input.setCate1(cate1);
 		
 		// 데이터저장할곳
-		List<Goods> output1 = null;
+		List<Goods> output1 = null;		
 		
+		if (searchCondition=="A") {
+			/** select에서 a를 선택했을 때 */
+			try {
+				// 데이터조회
+				output1 = goodsService.getGoodsListCate1(input);
+				
+			} catch (Exception e) {
+				return webHelper.redirect(null, e.getLocalizedMessage());
+			}
+			
+		} else if (searchCondition=="B") {
+			/** select에서 B를 선택했을 때 */
+			try {
+				// 데이터조회
+				output1 = goodsService.getGoodsListCate2(input);
+				
+			} catch (Exception e) {
+				return webHelper.redirect(null, e.getLocalizedMessage());
+			}
+			
+		} else if (searchCondition=="C") {
+			/** select에서 C를 선택했을 때 */
+			try {
+				// 데이터조회
+				output1 = goodsService.getGoodsListCate3(input);
+				
+			} catch (Exception e) {
+				return webHelper.redirect(null, e.getLocalizedMessage());
+			}
+			
+		} else if (searchCondition=="D") {
+			
 		try {
+			/** select에서 D를 선택했을 때 */
 			// 데이터조회
-			output1 = goodsService.getGoodsListCate1(input);
+			output1 = goodsService.getGoodsListCate4(input);
 			
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-		
+
+		}
+
 		// 3) 뷰처리
 		model.addAttribute("output1", output1);
-	
 		return new ModelAndView("gallery/gal_list");
 	}
 }

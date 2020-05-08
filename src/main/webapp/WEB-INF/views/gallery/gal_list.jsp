@@ -28,15 +28,15 @@
 		</div>
 			<div class="container_1">
 				<div>
-					<form action="${pageContext.request.contextPath }/gallery/gal_list_cate.do">
+					<form action="${pageContext.request.contextPath}/gallery/gal_list_cate.do">
 						<div class="search_tab_bg">
-							<select name="cate1" class="cate_select" onchange="this.form.submit()">
+							<select name="cate1" class="cate_select" onchange="this.form.submit()" >
 								<c:forEach var="item" items="${output}" varStatus="status" end="0">
-								<option value="NONE">정렬방식</option>
-								<option value="'${item.cate1}'">신상품</option>
-								<option value="'${item.cate1}'">상품명</option>
-								<option value="'${item.cate1}'">낮은가격</option>
-								<option value="'${item.cate1}'">높은가격</option>
+								<option value="NONE">정렬방식</a></option>
+								<option value="A">신상품</option>
+								<option value="B">상품명</option>
+								<option value="C">낮은가격</option>
+								<option value="D">높은가격</option>
 								</c:forEach>
 							</select>
 						</div>
@@ -45,29 +45,30 @@
 				<!-- 게시물 영역 시작 -->
 				<!-- 이 부분 이프문 사용해야 할 것 같은데(select에 따라 output, output1,2,3,4...
 						어떻게 해야 이프문을 돌릴 수 있을지 모르겠음... 더 생각해볼것... -->
-				<c:forEach var="item" items="${output}" varStatus="status">
-					<div>
-						<div class="pr_box">
-							<div class="pr_in_box">
-								<a href="${pageContext.request.contextPath }/gallery/goods.do">
-									<img alt="사진" src="${item.imgpath}${item.imgname}.jpg" class="img_size">
-										<h5>
-											<div class="gnameblock"  style="height: 32px">
-												<b>
-													${item.gname}
-												</b>
-											</div>
-										</h5>
-											<hr />
-										${item.gprice}원
-									</a>
-								<div id="pay">
-									<i class="glyphicon glyphicon-heart-empty"></i>
+				<div>
+					<c:forEach var="item" items="${output}" varStatus="status">
+						<div>
+							<div class="pr_box">
+								<div class="pr_in_box">
+									<a href="${pageContext.request.contextPath }/gallery/goods.do">
+										<img alt="사진" src="${item.imgpath}${item.imgname}.jpg" class="img_size">
+											<h5>
+												<div class="gnameblock"  style="height: 32px">
+													<b>
+														${item.gname}
+													</b>
+												</div>
+											</h5>
+												<hr />
+											${item.gprice}원
+										</a>
+									<div id="pay">
+										<i class="glyphicon glyphicon-heart-empty"></i>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</c:forEach>
+					</c:forEach>
 			</div>
 			<div class="text-center">
 				<ul class="pagination pagination-sm">
