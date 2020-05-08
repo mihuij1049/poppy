@@ -138,7 +138,7 @@
 				</b>
 			</h4>
 		</div>
-				<div class="plist_nota">
+				<div class="pointList">
 					<table class="table table-responsive">
 						<thead>
 							<tr>

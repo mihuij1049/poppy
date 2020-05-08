@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.poppy.helper.PageData;
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Address;
@@ -285,9 +286,65 @@ public class MyInfoController {
 		return "myInfo/plist_nota";
 	}
 
-	@RequestMapping(value = "/myInfo/plist_grd.do", method = RequestMethod.GET)
-	public String plist_grd() {
-		return "myInfo/plist_grd";
+	@RequestMapping(value = "/myInfo/pointList.do", method = RequestMethod.GET)
+	public ModelAndView plist_used(Model model,
+					@RequestParam(value="pointList", defaultValue="1") int pointList,
+					// 페이지 구현에서 사용할 현재 페이지 번호
+					@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+		// 세션으로 회원의 일련번호 획득
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+		
+		/** 1) 페이지 구현에 필요한 변수값 생성 */
+		String pageTitle = null;
+		int totalCount = 0; // 전체 게시글 수
+		int listCount = 3; // 한 페이지 당 표시한 목록 수
+		int pageCount = 3; // 한 그룹 당 표시할 페이지 번호 수
+		
+		/** 2) 데이터 조회하기  */
+		Points input = new Points();
+		input.setMemno(myInfo.getMemno());
+		
+		List<Points> output = null;
+		PageData pageData = null;
+		
+		try {
+			// 전체 적립금 갯수 조회
+			totalCount = pointsService.getPointsCount(input);
+			// 페이지 번호 계산 --> 계산결과가 로그로 출력될 것이다.
+			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+			// SQL의 limit절에서 사용될 값을 Beans의 static 변수에 저장
+			Points.setOffset(pageData.getOffset());
+			Points.setListCount(pageData.getListCount());
+			// 데이터 조회
+			output=pointsService.getPointsMbList(input);
+			
+			
+			
+		} catch (Exception e) {
+			log.debug(e.getLocalizedMessage());
+		}
+		
+		if (pointList==1) {
+			pageTitle = "적립내역";
+		}
+		if (pointList==2) {
+			pageTitle = "미가용 적립내역";
+		}
+		if (pointList==3) {
+			pageTitle = "적립금 사용내역";
+			// 적립금 사용내역이 있는지 없는지 검사 --> sumUsedPoint == null || =0
+			
+		}
+		
+		/** View 에 데이터 전달 */
+		model.addAttribute("myInfo", myInfo);
+		model.addAttribute("pointList", pointList);
+		model.addAttribute("pageTitle", pageTitle);
+		model.addAttribute("output", output);
+		model.addAttribute("pageData", pageData);
+		
+		return new ModelAndView("myInfo/pointList");
 	}
 
 	/** 후기관리 페이지 */

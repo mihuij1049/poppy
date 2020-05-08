@@ -1,0 +1,64 @@
+@charset "UTF-8";
+.pointList {
+	margin-top: 20px;
+}
+.non-list {
+	width: 100%;
+	margin : auto;
+}
+
+.table {
+	width: 95%;
+	border: 1px solid #ffc7c1;
+	margin: auto;
+}
+
+.table thead {
+	border-left: 1px solid #ffc7c1;
+	border-right: 1px solid #ffc7c1;
+	background-color: #ffc7c1;
+	color: #fff;
+}
+
+.table>thead>tr>th {
+	border: 0px;
+}
+
+.td-mny {
+	text-align: right;
+}
+
+#table-content {
+	padding-top: 15px;
+}
+
+.paging {
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.paging .disabled {
+	position: relative;
+	right: 10px;
+}
+#disabled >span {
+	position: relative;
+	right: 10px;
+}
+.paging .paging-right {
+	position: relative;
+	left: 10px;
+}
+
+.pagination>.active>span {
+	background-color: #ffc7c1;
+	border-color: #ffc7c1;
+}
+
+.pagination>.disabled>a {
+	color: #ffc7c1;
+}
+
+.pagination>li>a {
+	color: #ffc7c1;
+}
