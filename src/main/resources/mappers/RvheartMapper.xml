@@ -1,60 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-    
+
 <mapper namespace="RvheartMapper">
 
-    <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
-    <resultMap id="rvheartMap"
-        type="kr.co.poppy.model.Rvheart">
-        <result property="rvheartno"  	column="rvheartno" />
-        <result property="regdate"      column="regdate" />
-        <result property="editdate"     column="editdate" />
-        <result property="memno"      	column="memno" />
-        <result property="bbsno"    	column="bbsno" />
-   </resultMap>
-   
+	<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+	<resultMap id="rvheartMap" type="kr.co.poppy.model.Rvheart">
+		<result property="rvheartno" column="rvheartno" />
+		<result property="regdate" column="regdate" />
+		<result property="editdate" column="editdate" />
+		<result property="memno" column="memno" />
+		<result property="bbsno" column="bbsno" />
+	</resultMap>
+
 	<!-- 단일행 조회를 위한 기능 정의 -->
-    <select id="selectItem"
-        parameterType="kr.co.poppy.model.Rvheart"
-        resultMap="rvheartMap">
-        SELECT rvheartno, DATE_FORMAT(regdate, '%Y-%m-%d') AS regdate,
-        DATE_FORMAT(editdate, '%Y-%m-%d') AS editdate, memno, bbsno FROM rvheart
-        WHERE rvheartno=#{rvheartno};
-    </select>
+	<select id="selectItem"
+		parameterType="kr.co.poppy.model.Rvheart" resultMap="rvheartMap">
+		SELECT rvheartno, DATE_FORMAT(regdate, '%Y-%m-%d') AS regdate,
+		DATE_FORMAT(editdate, '%Y-%m-%d') AS editdate, memno, bbsno FROM
+		rvheart
+		WHERE rvheartno=#{rvheartno};
+	</select>
 
-    <!-- 다중행 조회를 위한 기능 정의 -->
-    <select id="selectList"
-        parameterType="kr.co.poppy.model.Rvheart"
-        resultMap="rvheartMap">
-        SELECT rvheartno, DATE_FORMAT(regdate, '%Y-%m-%d') AS regdate,
-        DATE_FORMAT(editdate, '%Y-%m-%d') AS editdate, memno, bbsno FROM rvheart
-    </select>
+	<!-- 다중행 조회를 위한 기능 정의 -->
+	<select id="selectList"
+		parameterType="kr.co.poppy.model.Rvheart" resultMap="rvheartMap">
+		SELECT rvheartno, DATE_FORMAT(regdate, '%Y-%m-%d') AS regdate,
+		DATE_FORMAT(editdate, '%Y-%m-%d') AS editdate, memno, bbsno FROM
+		rvheart
+	</select>
 
-    <!-- 데이터 저장을 위한 기능 정의 -->
-    <insert id="insertItem"
-        parameterType="kr.co.poppy.model.Rvheart"
-        useGeneratedKeys="true"
-        keyProperty="rvheartno">
-        INSERT INTO rvheart (regdate, editdate, memno, bbsno) VALUES (
-        #{regdate}, #{editdate}, #{memno}, #{bbsno});
-    </insert>
+	<!-- 데이터 저장을 위한 기능 정의 -->
+	<insert id="insertItem"
+		parameterType="kr.co.poppy.model.Rvheart" useGeneratedKeys="true"
+		keyProperty="rvheartno">
+		INSERT INTO rvheart (regdate, editdate, memno, bbsno) VALUES (
+		#{regdate}, #{editdate}, #{memno}, #{bbsno});
+	</insert>
 
-    <!-- 데이터 삭제를 위한 기능 정의 -->
-    <delete id="deleteItem"
-        parameterType="kr.co.poppy.model.Rvheart">
-        DELETE FROM rvheart WHERE rvheartno=#{rvheartno};
-    </delete>
+	<!-- 게시글 삭제 시 rvheart도 삭제 -->
+	<delete id="delete_bbs_item"
+		parameterType="kr.co.poppy.model.Bbs">
+		DELETE FROM rvheart WHERE bbsno=#{bbsno}
+	</delete>
 
-    <!-- 데이터 갱신을 위한 기능 정의 -->
-    <update id="updateItem"
-        parameterType="kr.co.poppy.model.Rvheart">
-        UPDATE rvheart SET regdate=#{regdate}, editdate=#{editdate}, memno=#{memno}, bbsno=#{bbsno}
-        WHERE rvheartno=#{rvheartno};
-    </update>
-    <!-- 회원탈퇴를 위한 참조 해제  정의 -->
-    <update id="unsetMembers"
-        parameterType="kr.co.poppy.model.Members">
-        UPDATE rvheart SET memno=null WHERE memno=#{memno}
-     </update>
+	<!-- 데이터 삭제를 위한 기능 정의 -->
+	<delete id="deleteItem"
+		parameterType="kr.co.poppy.model.Rvheart">
+		DELETE FROM rvheart WHERE rvheartno=#{rvheartno};
+	</delete>
+
+	<!-- 데이터 갱신을 위한 기능 정의 -->
+	<update id="updateItem"
+		parameterType="kr.co.poppy.model.Rvheart">
+		UPDATE rvheart SET regdate=#{regdate}, editdate=#{editdate}, memno=#{memno},
+		bbsno=#{bbsno}
+		WHERE rvheartno=#{rvheartno};
+	</update>
+	<!-- 회원탈퇴를 위한 참조 해제 정의 -->
+	<update id="unsetMembers"
+		parameterType="kr.co.poppy.model.Members">
+		UPDATE rvheart SET memno=null WHERE memno=#{memno}
+	</update>
 </mapper>

@@ -66,10 +66,10 @@
 								<tr>
 									<td class="subject" style="cursor: pointer;"><strong>
 											<a href="${viewUrl}" class="subject">${bbstitle}</a> <span
-											class="comment">[50]</span>
+											class="comment">[댓글수]</span>
 									</strong><br /> <span class="name" title="작성자">${item.username}</span>
 										<span class="date" title="작성일">${item.regdate}</span> <span>조회
-											235</span></td>
+											[조회수]</span></td>
 								</tr>
 							</c:forEach>
 						</c:otherwise>
@@ -137,7 +137,7 @@
 		<div class="row">
 			<div class="searchmenu">
 				<form method="get"
-					action="${pageContext.request.contextPath}/community/qna.do">
+					action="${pageContext.request.contextPath}/community/notice.do">
 					<select id="array2" class="selectmenu">
 						<option value="bbstitle">제목</option>
 						<option value="bbscontent">내용</option>

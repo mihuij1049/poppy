@@ -34,20 +34,33 @@
 				<p id="main_text">${output.bbscontent}</p>
 			</div>
 			<div class="comment">
-			<c:choose>
-				<c:when test="${output.bbstype=='공지사항'}">
-				<button type="button"
-					onclick="location.href='${pageContext.request.contextPath}/community/notice.do'"
-					class="btn btn-inverse btn-sm list">목록</button>
-				</c:when>
-				<c:otherwise>
-				<button type="button"
-					onclick="location.href='${pageContext.request.contextPath}/community/qna.do'"
-					class="btn btn-inverse btn-sm list">목록</button>
-				</c:otherwise>
-			</c:choose>
-				
+				<c:choose>
+					<c:when test="${output.bbstype=='공지사항'}">
+						<button type="button"
+							onclick="location.href='${pageContext.request.contextPath}/community/notice.do'"
+							class="btn btn-inverse btn-sm list">목록</button>
+					</c:when>
+					<c:otherwise>
+						<button type="button"
+							onclick="location.href='${pageContext.request.contextPath}/community/qna.do'"
+							class="btn btn-inverse btn-sm list">목록</button>
+						<c:if test="${userInfo.username==output.username}">
+							<a
+								href="${pageContext.request.contextPath}/community/qna_edit.do?bbsno=${output.bbsno}">
+								<button type="submit" class="btn btn-inverse btn-sm btn-del">수정</button>
+							</a>
+							<a
+								href="${pageContext.request.contextPath}/community/deleteqna.do?bbsno=${output.bbsno}">
+								<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
+							</a>
+						</c:if>
+					</c:otherwise>
+
+				</c:choose>
+
 			</div>
+
+
 			<div class="comment-list">
 				<div class="list-subject">
 					<b style="color: white;">댓글목록</b>
@@ -71,22 +84,21 @@
 									<c:url value="/community/article.do" var="viewUrl">
 										<c:param name="bbsno" value="${item.bbsno}" />
 									</c:url>
-									<div class="comment-nai" style="border-bottom: 1px dotted #eee;;">
+									<div class="comment-nai"
+										style="border-bottom: 1px dotted #eee;">
 										<div class="menory">
-										
+
 											<small class="small"><span>${item.username} |
 											</span><span>${item.regdate}</span></small>
 										</div>
-										
-										<span class="span">${item.cmtcontent}</span><br />
 										<c:if test="${userInfo.username==item.username}">
-										
 											<button type="submit" class="btn btn-sm btn-edit">수정</button>
 											<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
-										
 										</c:if>
+										<span class="span">${item.cmtcontent}</span><br />
+
 									</div>
-									
+
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
@@ -94,24 +106,22 @@
 				</table>
 			</div>
 			<c:choose>
-			<c:when test="${!empty userInfo.username }">
-			<form class="article-comment" method="post"
-				action="${pageContext.request.contextPath}/community/article.do">
-				<div class="comment-write">
-					<div class="info-name">
-						이름: ${myCmt.username}
-					</div>
-				</div>
-					<textarea class="comment_area" id="comment_area" name="cmtcontent" ></textarea>
-					<button type="submit" class="enter btn btn-sm" id="enter">등록</button>
-			</form>
-			</c:when>
-			<c:otherwise>
-			<b class="cannot">작성 권한이 없습니다. 로그인 후 이용 부탁드립니다.</b>
-			</c:otherwise>
+				<c:when test="${!empty userInfo.username }">
+					<form class="article-comment" method="post"
+						action="${pageContext.request.contextPath}/community/article.do">
+						<div class="comment-write">
+							<div class="info-name">이름: ${myCmt.username}</div>
+						</div>
+						<textarea class="comment_area" id="comment_area" name="cmtcontent"></textarea>
+						<button type="submit" class="enter btn btn-sm" id="enter">등록</button>
+					</form>
+				</c:when>
+				<c:otherwise>
+					<b class="cannot">작성 권한이 없습니다. 로그인 후 이용 부탁드립니다.</b>
+				</c:otherwise>
 			</c:choose>
-			
-			
+
+
 		</div>
 
 		<!--   비밀번호 입력 모달 ------------------------->

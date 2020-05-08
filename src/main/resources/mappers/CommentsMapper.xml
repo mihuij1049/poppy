@@ -60,6 +60,12 @@
 		parameterType="kr.co.poppy.model.Members">
 		DELETE FROM comments WHERE memno=#{memno};
 	</delete>
+	
+	<!-- 게시글 삭제 시 댓글도 삭제 -->
+	<delete id="delete_bbs_item"
+		parameterType="kr.co.poppy.model.Bbs">
+		DELETE FROM comments WHERE bbsno=#{bbsno}
+	</delete>
 
 	<!-- 데이터 갱신을 위한 기능 정의 -->
 	<update id="updateItem"

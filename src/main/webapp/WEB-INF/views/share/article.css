@@ -39,6 +39,7 @@
 .span {
 	display: inline-block;
 	padding-left: 20px;
+	padding-bottom:25px;
 }
 
 .button2 {
@@ -161,6 +162,7 @@
 /** 글 수정삭제 버튼 */
 .btn-edit, .btn-del {
 	float: right;
+	margin-rignt: 10px;
 }
 
 .cannot {
@@ -169,6 +171,6 @@
 	background: #FF8F83;
 	padding: 10px 10px;
 	color: white;
+	margin: auto;
 	margin-bottom: 30px;
-	width: 100%;
 }

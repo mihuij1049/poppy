@@ -182,9 +182,11 @@ public class BbsServiceImpl implements BbsService {
 	public int deleteBbs(Bbs input) throws Exception {
 		int result = 0;
 		try {
-			// 게시글 삭제 전 bbs를 참조하는 rvheart, imgs bbsno컬럽을 null로 수정
-			sqlSession.update("RvheartMapper.deleteItem", input);
-			sqlSession.update("ImgsMapper.deleteItem", input);
+			// 게시글 삭제 전 bbs를 참조하는 rvheart, imgs, comments 삭제 */
+			sqlSession.delete("RvheartMapper.delete_bbs_item", input);
+			sqlSession.delete("CommentsMapper.delete_bbs_item", input);
+			
+			result = sqlSession.delete("BbsMapper.deleteItem", input);
 			
 			if(result==0) {
 				throw new NullPointerException("result=0");

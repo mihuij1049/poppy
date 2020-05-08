@@ -116,15 +116,10 @@ public class CommunityController {
 		// 조회에 필요한 조건값(겁색어)를 Beans에 담는다.
 		Bbs input = new Bbs();
 		input.setBbstype("A");
-		input.setBbscontent(keyword);
-		input.setBbstitle(keyword);
-		input.setUsername(keyword);
-		input.setUserid(keyword);
 
 		// 조회 결과가 저장될 객체
 		List<Bbs> output = null;
 		PageData pageData = null;
-		Comments output2 = null;
 
 		try {
 
@@ -145,10 +140,8 @@ public class CommunityController {
 		}
 
 		/** 3) view 처리 */
-		model.addAttribute("keyword", keyword);
 		model.addAttribute("output", output);
 		model.addAttribute("pageData", pageData);
-		model.addAttribute("output2", output2);
 		return new ModelAndView("community/notice");
 	}
 
@@ -291,6 +284,66 @@ public class CommunityController {
 		model.addAttribute("pageData", pageData);
 		return new ModelAndView("community/qna");
 	}
+	
+	/** 공지사항 검색 기능 구현 */
+	@RequestMapping(value = "/community/noticesearch.do", method = RequestMethod.GET)
+	public ModelAndView noticeSearch(Model model,
+			// 검색어
+			@RequestParam(value = "bbstitle", required = false) String bbstitle,
+			@RequestParam(value = "bbscontent", required = false) String bbscontent,
+			@RequestParam(value = "username", required = false) String username,
+			@RequestParam(value = "userid", required = false) String userid,
+			@RequestParam(value = "keyword", required = false) String keyword,
+			// 페이지 구현에서 사용할 현재 페이지 번호
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+		/** 1) keyword에 대한 유효성 검사 */
+		if (keyword == null) {
+			return webHelper.redirect(null, "검색 키워드가 없습니다.");
+		}
+
+		/** 2) 어떤 범주로 검색할지 받은 파라미터 검사 */
+		Bbs input = new Bbs();
+		input.setBbstype("A");
+		if (bbstitle != null) {
+			input.setBbstitle(keyword);
+		}
+		if (bbscontent != null) {
+			input.setBbscontent(keyword);
+		}
+		if (userid != null) {
+			input.setUserid(keyword);
+		}
+		if (username != null) {
+			input.setUsername(keyword);
+		}
+		/** 3) 페이지 구현에 필요한 변수값 생성 */
+		int totalCount = 0;
+		int listCount = 5;
+		int pageCount = 3;
+		// 조회 결과가 저장될 객체
+		List<Bbs> output = null;
+		PageData pageData = null;
+
+		try {
+			// 전체 게시글 수 조회
+			totalCount = bbsService.getBbsCount(input);
+			// 페이지 번호 계산 --> 계산결과가 로그로 출력될 것이다.
+			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+			// SQL의 limit절에서 사용될 값을 Beans의 static 변수에 저장
+			Bbs.setOffset(pageData.getOffset());
+			Bbs.setListCount(pageData.getListCount());
+			// 데이터 조회하기 --> 검색조건 없이 모든 학과 조회
+			output = bbsService.getBbsList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+
+		/** 3) view 처리 */
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("output", output);
+		model.addAttribute("pageData", pageData);
+		return new ModelAndView("community/notice");
+	}
 
 	/** 댓글 저장히기 */
 	@RequestMapping(value = "community/comments.do", method = RequestMethod.POST)
@@ -334,13 +387,35 @@ public class CommunityController {
 		String redirectUrl = contextPath + "/community/article.do?cmtno=" + input.getCmtno();
 		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 	}
-
 	
+	/** qna 삭제 */
+	@RequestMapping(value="/community/deleteqna.do", method=RequestMethod.GET)
+		public ModelAndView delete_ok(Model model,
+				@RequestParam(value="bbsno", defaultValue="0") int bbsno) {
+			
+		/** 1) 파라미터 유효성 검사 */
+		if(bbsno==0) {
+			return webHelper.redirect(null, "게시글 번호가 없습니다.");
+		}
+		
+		/** 2) 데이터 삭제하기 */
+		Bbs input = new Bbs();
+		input.setBbsno(bbsno);
+		
+		try {
+			bbsService.deleteBbs(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		/** 3) 페이지 이동 */
+		return webHelper.redirect(contextPath + "/community/qna.do", "게시글이 삭제되었습니다.");
+		}
 
-	/** qna_wri */
+
+	/** qna_wri 
 	@RequestMapping(value = "/community/qna_wri.do", method = RequestMethod.GET)
 	public String qna_wri() {
 		return "community/qna_wri";
-	}
+	} */
 
 }
