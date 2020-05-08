@@ -719,7 +719,7 @@ dl {
 			</div>
 			<div class="product">
 				<div class="prd-img">
-					<img src="${output.imgpath}">
+					<img src="${output.imgpath}${output.imgname}.${output.imgext}">
 				</div>
 				<fieldset class="btn-group">
 					<button type="button" class="like-btn" aria-label="좋아요">
@@ -860,20 +860,20 @@ dl {
 			</div>
 			<div class="prd-tab">
 				<ul class="nav nav-tabs" id="mytab">
-					<li class="active"><a href="#page1" data-toggle="tab">상세정보</a></li>
-					<li><a href="#page2" data-toggle="tab">구매안내</a></li>
-					<li><a href="#page3" data-toggle="tab" id="photo_rv">상품후기(2)</a></li>
-					<li><a href="#page4" data-toggle="tab" id="qna_rv">Q&A(0)</a></li>
+					<li class="active"><a href="#Tpage1" data-toggle="tab">상세정보</a></li>
+					<li><a href="#Tpage2" data-toggle="tab">구매안내</a></li>
+					<li><a href="#Tpage3" data-toggle="tab" id="photo_rv">상품후기(2)</a></li>
+					<li><a href="#Tpage4" data-toggle="tab" id="qna_rv">Q&A(0)</a></li>
 				</ul>
 				<div class="tab-content">
-					<div role="tabpanel" class="tab-pane fade active in" id="page1">
+					<div role="tabpanel" class="tab-pane fade active in" id="Tpage1">
 						<div class="prd-detail">
 							<img src="/upload/img/goods_content.jpg"> <img
 								src="/upload/img/goods_content2.jpg"> <img
 								src="/upload/img/goods_footer.jpg" id="prd-foot">
 						</div>
 					</div>
-					<div role="tabpanel" class="tab-pane fade" id="page2">
+					<div role="tabpanel" class="tab-pane fade" id="Tpage2">
 						<div class="prd-Info">
 							<table>
 								<tbody>
@@ -904,7 +904,7 @@ dl {
 							</table>
 						</div>
 					</div>
-					<div role="tabpanel" class="tab-pane fade" id="page3">
+					<div role="tabpanel" class="tab-pane fade" id="Tpage3">
 						<div class="prd-photo">
 							<div class="photo">
 								<h5>별점</h5>
@@ -987,7 +987,7 @@ dl {
 							</div>
 						</div>
 					</div>
-					<div role="tabpanel" class="tab-pane fade" id="page4">
+					<div role="tabpanel" class="tab-pane fade" id="Tpage4">
 						<div class="prd-qna">
 							<div class="qna-head">
 								<p class="qna-btn">
@@ -1127,7 +1127,7 @@ dl {
 						<button type="button"
 							onclick="location.href='${pageContext.request.contextPath }/myInfo/like_goods.do'"
 							id="action-like2">관심상품</button>
-						<button type="button"
+						<button type="submit"
 							onclick="location.href='${pageContext.request.contextPath}/pay/orderform_ajax.do'"
 							id="action-orderform2">구매하기</button>
 					</div>

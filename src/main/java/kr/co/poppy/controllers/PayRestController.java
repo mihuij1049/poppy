@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestController
 public class PayRestController {
-	
+
 	/** WebHelper 주입 */
 	@Autowired
 	WebHelper webHelper;
@@ -38,7 +38,6 @@ public class PayRestController {
 	@Autowired
 	AddressService addressService;
 
-
 	/** 주소 목록페이지 */
 	@RequestMapping(value = "/pay", method = RequestMethod.GET)
 	public Map<String, Object> get_list(Model model) {
@@ -46,7 +45,7 @@ public class PayRestController {
 		// 세션 객체를 이용하여 저장된 세션값 얻기
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
-		
+
 		/** 데이터 조회하기 */
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
 		Address input = new Address();
@@ -55,34 +54,32 @@ public class PayRestController {
 		// 조회결과를 저장할 객체 선언
 		List<Address> output = null;
 
-		try { 
+		try {
 			// 데이터 조회
 			output = addressService.getAddressList(input);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
-		
+
 		mySession.setAttribute("userInfo", myInfo);
-		
+
 		/** View 처리 */
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("item", output);
-		
+
 		return webHelper.getJsonData(data);
-	} 
-	
+	}
+
 	/** 주소 작성 폼에 대한 action 페이지 */
-	@RequestMapping(value = "/pay", method = RequestMethod.POST)
-	public Map<String, Object> addrAdd_ok( 
-			@RequestParam(value = "odname", defaultValue = "") String odname,
-			@RequestParam(value = "odphone", defaultValue = "0") String odphone,
-			@RequestParam(value = "odemail", defaultValue = "0") String odemail,
+	@RequestMapping(value = "/pay_ok", method = RequestMethod.POST)
+	public Map<String, Object> addrAdd_ok(@RequestParam(value = "odname", defaultValue = "") String odname,
+			@RequestParam(value = "odphone", defaultValue = "") String odphone,
+			@RequestParam(value = "odemail", defaultValue = "") String odemail,
 			@RequestParam(value = "zcode", defaultValue = "") Integer zcode,
 			@RequestParam(value = "addr1", defaultValue = "") String addr1,
 			@RequestParam(value = "addr2", defaultValue = "") String addr2,
 			@RequestParam(value = "regdate", required = false) String regdate,
-			@RequestParam(value = "editdate", required = false) String editdate,
-			@RequestParam(value = "memno", defaultValue = "0") int memno) {
+			@RequestParam(value = "editdate", required = false) String editdate) {
 
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
 		// 일반 문자열 입력 컬럼 --> String으로 파라미터가 선언되어 있는 경우는 값이 입력되지 않으면 빈 문자열로 처리된다.
@@ -95,8 +92,8 @@ public class PayRestController {
 		if (odemail.equals("")) {
 			return webHelper.getJsonWarning("이메일을 입력하세요.");
 		}
-		if (!regexHelper.isEngNum(odemail)) {
-			return webHelper.getJsonWarning("이메일은 영어와 숫자로만 가능합니다.");
+		if (!regexHelper.isEmail(odemail)) {
+			return webHelper.getJsonWarning("이메일 형식이 아닙니다.");
 		}
 		if (addr1.equals("")) {
 			return webHelper.getJsonWarning("주소를 입력하세요.");
@@ -110,6 +107,10 @@ public class PayRestController {
 			return webHelper.getJsonWarning("우편번호를 입력하세요.");
 		}
 
+		// 세션 객체를 이용하여 저장된 세션값 얻기
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+
 		/** 2) 데이터 저장하기 */
 		// 저장할 값들을 Beans에 담는다.
 		Address save = new Address();
@@ -121,23 +122,25 @@ public class PayRestController {
 		save.setAddr2(addr2);
 		save.setRegdate("now()");
 		save.setEditdate("now()");
-		save.setMemno(memno);
-		
+		save.setMemno(myInfo.getMemno());
+
 		// 저장된 결과를 조회하기 위한 객체
 		Address saves = null;
 
 		try {
 			// 데이터 저장
-			// --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
+			// --> 데이터 저장에 성공하면 파라미터로 전달하는 save 객체에 PK값이 저장된다.
 			addressService.addAddress(save);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
+		
+		mySession.setAttribute("userInfo", myInfo);
 
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
 		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야 한다.
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("item", saves);
+		map.put("orders", saves);
 		return webHelper.getJsonData(map);
 	}
 }

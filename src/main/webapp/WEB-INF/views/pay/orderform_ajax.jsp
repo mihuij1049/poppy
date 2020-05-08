@@ -111,7 +111,7 @@
 											<div class="required">＊</div>
 											<div class="na-body">
 												<div class="input-text">
-													<input type="text" name="delivery-name" id="delivery-name" />
+													<input type="text" name="odname" id="delivery-name" />
 												</div>
 											</div>
 										</div>
@@ -121,11 +121,13 @@
 												<div class="required">＊</div>
 											</div>
 											<div class="na-address-body">
-												<input type="text" id="zonecode" placeholder="우편번호" readonly />
-												<input type="button" id="address-btn"
-													onclick="DaumPostcode()" value="주소 찾기" readonly /><br>
-												<input type="text" id="address" placeholder="주소" readonly /><br>
-												<input type="text" id="detail-address" placeholder="상세주소">
+												<input type="text" id="zonecode" name="zcode"
+													placeholder="우편번호" readonly /> <input type="button"
+													id="address-btn" onclick="DaumPostcode()" value="주소 찾기"
+													readonly /><br> <input type="text" id="address"
+													name="addr1" placeholder="주소" readonly /><br> <input
+													type="text" id="detail-address" name="addr2"
+													placeholder="상세주소">
 												<div id="wrap"
 													style="display: none; border: 1px solid; width: 100%; height: 390px; margin: 5px 0; position: relative; border: 1px solid #ddd;">
 													<img
@@ -138,13 +140,12 @@
 											</div>
 											<div class="na-phone">
 												<div class="na-phone-head">
-													<label class="receiver">휴대전화</label>
+													<label class="receiver" name="">휴대전화</label>
 													<div class="required">＊</div>
 												</div>
 												<div class="na-phone-body">
 													<div class="input-text">
-														<input type="text" name="delivery-phone"
-															id="delivery-phone" />
+														<input type="text" name="odphone" id="delivery-phone" />
 													</div>
 												</div>
 											</div>
@@ -155,11 +156,15 @@
 												</div>
 												<div class="na-email-body">
 													<div class="input-text">
-														<input type="text" name="delivery-email"
-															id="delivery-email" />
+														<input type="text" name="odemail" id="delivery-email" />
 													</div>
 												</div>
 											</div>
+										</div>
+										<div class="order">
+											<button type="submit" class="btn">
+												<span id="order-total-price"> 9,400 </span>원 <span>결제하기</span>
+											</button>
 										</div>
 									</form>
 									<div class="form-group2">
@@ -482,9 +487,11 @@
 	<script
 		src="${pageContext.request.contextPath}/share/assets/js/jquery-3.2.1.min.js"></script>
 	<!-- jQuery Ajax Form plugin CDN -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
-    <!-- jQuery Ajax Setup -->
-    <script src="${pageContext.request.contextPath}/share/plugins/ajax/ajax_helper.js"></script>
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+	<!-- jQuery Ajax Setup -->
+	<script
+		src="${pageContext.request.contextPath}/share/plugins/ajax/ajax_helper.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/share/assets/js/bootstrap.min.js"></script>
 	<script
@@ -702,18 +709,17 @@
 
 		$(function() {
 			// #new-addr에 대한 submit 이벤트롤 가로채서 Ajax 요청을 전송한다.
-			$("#new-addr").ajaxForm({
-					// 전송 메서드 지정
-					method : "POST",
-					// 서버에서 200 응답을 전달한 경우 실행됨
-					success : function(json) {
-						console.log(json);
-						// json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
-						if (json.rt == "OK") {
-							window.location = "${pageContext.request.contextPath}/pay_ajax/orderform.do?memno=" + json.item.memno;
-						}
-				   }
-			});
+			$("#new-addr")
+					.ajaxForm(
+							{
+								// 전송 메서드 지정
+								method : "POST",
+								// 서버에서 200 응답을 전달한 경우 실행됨
+								success : function(json) {
+									console.log(json);
+									
+								}
+							});
 		});
 	</script>
 </body>

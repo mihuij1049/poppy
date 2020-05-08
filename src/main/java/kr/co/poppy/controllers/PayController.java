@@ -82,10 +82,10 @@ public class PayController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-		
+
 		/** 조회된 List객체에서 적립금 총합 구하기 */
 		int sumAvpoint = 0;
-		
+
 		for (int i = 0; i < output3.size(); i++) {
 			Points temp = null;
 			temp = output3.get(i);
@@ -94,7 +94,7 @@ public class PayController {
 			}
 			sumAvpoint += temp.getAvpoint();
 		}
-		
+
 		input3.setAvpoint(sumAvpoint);
 
 		// 세션에도 정보 담기
@@ -111,17 +111,15 @@ public class PayController {
 	}
 
 	/** 주소 작성 폼에 대한 action 페이지 */
-	@RequestMapping(value = "/pay/orderform_add_ok.do", method = RequestMethod.POST)
-	public ModelAndView addrAdd_ok(Model model, 
-			@RequestParam(value = "odname", defaultValue = "") String odname,
+	@RequestMapping(value = "/pay/orderform_ok.do", method = RequestMethod.POST)
+	public ModelAndView addrAdd_ok(Model model, @RequestParam(value = "odname", defaultValue = "") String odname,
 			@RequestParam(value = "odphone", defaultValue = "0") String odphone,
 			@RequestParam(value = "odemail", defaultValue = "0") String odemail,
 			@RequestParam(value = "zcode", defaultValue = "") Integer zcode,
 			@RequestParam(value = "addr1", defaultValue = "") String addr1,
 			@RequestParam(value = "addr2", defaultValue = "") String addr2,
 			@RequestParam(value = "regdate", required = false) String regdate,
-			@RequestParam(value = "editdate", required = false) String editdate,
-			@RequestParam(value = "memno", defaultValue = "0") int memno) {
+			@RequestParam(value = "editdate", required = false) String editdate) {
 
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
 		// 일반 문자열 입력 컬럼 --> String으로 파라미터가 선언되어 있는 경우는 값이 입력되지 않으면 빈 문자열로 처리된다.
@@ -149,6 +147,10 @@ public class PayController {
 			return webHelper.redirect(null, "우편번호를 입력하세요.");
 		}
 
+		// 세션 객체를 이용하여 저장된 세션값 얻기
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+
 		/** 2) 데이터 저장하기 */
 		// 저장할 값들을 Beans에 담는다.
 		Address save = new Address();
@@ -160,7 +162,7 @@ public class PayController {
 		save.setAddr2(addr2);
 		save.setRegdate("now()");
 		save.setEditdate("now()");
-		save.setMemno(memno);
+		save.setMemno(myInfo.getMemno());
 
 		try {
 			// 데이터 저장
@@ -169,17 +171,19 @@ public class PayController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
+		
+		mySession.setAttribute("userInfo", myInfo);
+
 
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
 		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야 한다.
-		String redirectUrl = contextPath + "/pay/orderform.do?memno=" + save.getMemno();
+		String redirectUrl = contextPath + "/pay/orderform_ajax.do?memno=" + save.getMemno();
 		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 	}
 
 	/** 주소 수정 폼 페이지 */
 	@RequestMapping(value = "/pay/orderform_edit_ok.do", method = RequestMethod.POST)
-	public ModelAndView addrEdit_ok(Model model, 
-			@RequestParam(value = "odname", required = false) String odname,
+	public ModelAndView addrEdit_ok(Model model, @RequestParam(value = "odname", required = false) String odname,
 			@RequestParam(value = "zcode", required = false) Integer zcode,
 			@RequestParam(value = "addr1", required = false) String addr1,
 			@RequestParam(value = "addr2", required = false) String addr2,
