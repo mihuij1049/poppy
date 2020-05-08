@@ -153,7 +153,7 @@ public class MyInfoController {
 
 		/** 뷰에 데이터 전달 */
 		// 적립금 정보를 담은 Beans
-		model.addAttribute("myPoint", myPoint);
+		model.addAttribute("myInfo", myInfo);
 		// 주문상태를 담은 String객체
 		model.addAttribute("status0", odstatus0);
 		model.addAttribute("status1", odstatus1);
@@ -298,7 +298,7 @@ public class MyInfoController {
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
 		String pageTitle = null;
 		int totalCount = 0; // 전체 게시글 수
-		int listCount = 3; // 한 페이지 당 표시한 목록 수
+		int listCount = 5; // 한 페이지 당 표시한 목록 수
 		int pageCount = 3; // 한 그룹 당 표시할 페이지 번호 수
 		
 		/** 2) 데이터 조회하기  */
@@ -307,33 +307,54 @@ public class MyInfoController {
 		
 		List<Points> output = null;
 		PageData pageData = null;
-		
-		try {
-			// 전체 적립금 갯수 조회
-			totalCount = pointsService.getPointsCount(input);
-			// 페이지 번호 계산 --> 계산결과가 로그로 출력될 것이다.
-			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
-			// SQL의 limit절에서 사용될 값을 Beans의 static 변수에 저장
-			Points.setOffset(pageData.getOffset());
-			Points.setListCount(pageData.getListCount());
-			// 데이터 조회
-			output=pointsService.getPointsMbList(input);
-			
-			
-			
-		} catch (Exception e) {
-			log.debug(e.getLocalizedMessage());
-		}
-		
+
 		if (pointList==1) {
 			pageTitle = "적립내역";
+			try {
+				// 전체 적립금 갯수 조회
+				totalCount = pointsService.getPointsCount1(input);
+				// 페이지 번호 계산 --> 계산결과가 로그로 출력될 것이다.
+				pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+				// SQL의 limit절에서 사용될 값을 Beans의 static 변수에 저장
+				Points.setOffset(pageData.getOffset());
+				Points.setListCount(pageData.getListCount());
+				// 데이터 조회
+				output=pointsService.getPointsMbList1(input);
+			} catch (Exception e) {
+				log.debug(e.getLocalizedMessage());
+			}
 		}
 		if (pointList==2) {
 			pageTitle = "미가용 적립내역";
+			try {
+				// 전체 적립금 갯수 조회
+				totalCount = pointsService.getPointsCount2(input);
+				// 페이지 번호 계산 --> 계산결과가 로그로 출력될 것이다.
+				pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+				// SQL의 limit절에서 사용될 값을 Beans의 static 변수에 저장
+				Points.setOffset(pageData.getOffset());
+				Points.setListCount(pageData.getListCount());
+				// 데이터 조회
+				output=pointsService.getPointsMbList2(input);
+			} catch (Exception e) {
+				log.debug(e.getLocalizedMessage());
+			}
 		}
 		if (pointList==3) {
 			pageTitle = "적립금 사용내역";
-			// 적립금 사용내역이 있는지 없는지 검사 --> sumUsedPoint == null || =0
+			try {
+				// 전체 적립금 갯수 조회
+				totalCount = pointsService.getPointsCount3(input);
+				// 페이지 번호 계산 --> 계산결과가 로그로 출력될 것이다.
+				pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+				// SQL의 limit절에서 사용될 값을 Beans의 static 변수에 저장
+				Points.setOffset(pageData.getOffset());
+				Points.setListCount(pageData.getListCount());
+				// 데이터 조회
+				output=pointsService.getPointsMbList3(input);
+			} catch (Exception e) {
+				log.debug(e.getLocalizedMessage());
+			}
 			
 		}
 		

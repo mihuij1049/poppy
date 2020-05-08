@@ -62,9 +62,9 @@ public class PointsServiceImpl implements PointsService {
 		return output;
 	}
 	
-	/** 회원의 가용포인트 정보에 대한 적립금조회
+	/** 회원 일련번호에 대한 적립금조회
 	 * @Param 회원정보(memno)를 담고 있는 Beans 객체
-	 * @return 적립금 정보를 담고 있는 Beans 객체
+	 * @return 적립금 정보를 담고 있는 컬렉션 객체
 	 */
 	@Override
 	public List<Points> getPointsMbList(Points input) throws Exception {
@@ -83,8 +83,73 @@ public class PointsServiceImpl implements PointsService {
 		}
 		return output;
 	}
+
+	/** 회원 일련번호에 대한 적립금조회
+	 * @Param 회원정보(memno)를 담고 있는 Beans 객체
+	 * @return 적립금 정보를 담고 있는 컬렉션 객체
+	 */
+	@Override
+	public List<Points> getPointsMbList1(Points input) throws Exception {
+		List<Points> output = null;
+		try {
+			output = sqlSession.selectList("PointsMapper.select_members_list1", input);
+			if (output == null) {
+				throw new NullPointerException("output=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return output;
+	}
 	
+	/** 회원 일련번호에 대한 미가용 적립금조회
+	 * @Param 회원정보(memno)를 담고 있는 Beans 객체
+	 * @return 적립금 정보를 담고 있는 컬렉션 객체
+	 */
+	@Override
+	public List<Points> getPointsMbList2(Points input) throws Exception {
+		List<Points> output = null;
+		try {
+			output = sqlSession.selectList("PointsMapper.select_members_list2", input);
+			if (output == null) {
+				throw new NullPointerException("output=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return output;
+	}
 	
+	/** 회원 일련번호에 대한 사용된 적립금조회
+	 * @Param 회원정보(memno)를 담고 있는 Beans 객체
+	 * @return 적립금 정보를 담고 있는 컬렉션 객체
+	 */
+	@Override
+	public List<Points> getPointsMbList3(Points input) throws Exception {
+		List<Points> output = null;
+		try {
+			output = sqlSession.selectList("PointsMapper.select_members_list3", input);
+			if (output == null) {
+				throw new NullPointerException("output=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return output;
+	}
+
 	/**
 	 * 적립금 데이터가 저장되어 있는 갯수 조회
 	 * 
@@ -92,11 +157,11 @@ public class PointsServiceImpl implements PointsService {
 	 * @throws Exception
 	 */
 	@Override
-	public int getPointsCount(Points input) throws Exception {
+	public int getPointsCount1(Points input) throws Exception {
 		int result = 0;
 
 		try {
-			result = sqlSession.selectOne("PointsMapper.selectCountAll", input);
+			result = sqlSession.selectOne("PointsMapper.selectCountList1", input);
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 조회에 실패했습니다.");
@@ -105,6 +170,46 @@ public class PointsServiceImpl implements PointsService {
 		return result;
 	}
 	
+	/**
+	 * 미가용 적립금 데이터가 저장되어 있는 갯수 조회
+	 * 
+	 * @return int
+	 * @throws Exception
+	 */
+	@Override
+	public int getPointsCount2(Points input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("PointsMapper.selectCountList2", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
+
+	/**
+	 * 사용된 적립금 데이터가 저장되어 있는 갯수 조회
+	 * 
+	 * @return int
+	 * @throws Exception
+	 */
+	@Override
+	public int getPointsCount3(Points input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("PointsMapper.selectCountList3", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
+
 	/** 미가용 -> 가용 적립금 전환
 	 * @Param 적립금 일련번호 (pointno) 를 담고 있는 Beans 객체
 	 * @return 적립금 정보를 담고 있는 Beans 객체

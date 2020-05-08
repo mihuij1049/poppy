@@ -22,20 +22,57 @@ public interface PointsService {
 	 */
 	public Points getPointsOdItem(Points input) throws Exception;
 	
-	/** 회원의 적립금 정보 조회
+	/** 회원의 적립금 정보 조회 ( 금액 표시용 )
 	 * @Param 회원정보(memno)를 담은 Beans 객체
 	 * @return 적립금 정보를 담은 Beans 객체
 	 * @throws Exception  
 	 */
 	public List<Points> getPointsMbList(Points input) throws Exception;
 	
+	/** 회원의 적립금 정보 조회 ( 내역 표시용 )
+	 * @Param 회원정보(memno)를 담은 Beans 객체
+	 * @return 적립금 정보를 담은 Beans 객체
+	 * @throws Exception  
+	 */
+	public List<Points> getPointsMbList1(Points input) throws Exception;
+	
+	/** 회원의 적립금 정보 조회 ( 미가용 내역 표시용 )
+	 * @Param 회원정보(memno)를 담은 Beans 객체
+	 * @return 적립금 정보를 담은 Beans 객체
+	 * @throws Exception  
+	 */
+	public List<Points> getPointsMbList2(Points input) throws Exception;
+	
+	/** 회원의 적립금 정보 조회 ( 사용된 내역 표시용 )
+	 * @Param 회원정보(memno)를 담은 Beans 객체
+	 * @return 적립금 정보를 담은 Beans 객체
+	 * @throws Exception  
+	 */
+	public List<Points> getPointsMbList3(Points input) throws Exception;
+	
 	/**
-	 * 적립금 데이터가 저장되어 있는 갯수 조회
+	 * 적립금 데이터가 저장되어 있는 갯수 조회 (전체)
 	 * @param Points 검색조건을 담고 있는 Beans
 	 * @return int
 	 * @throws Exception
 	 */
-	public int getPointsCount(Points input) throws Exception;
+	public int getPointsCount1(Points input) throws Exception;
+	
+	/**
+	 * 적립금 데이터가 저장되어 있는 갯수 조회 (미가용만)
+	 * @param Points 검색조건을 담고 있는 Beans
+	 * @return int
+	 * @throws Exception
+	 */
+	public int getPointsCount2(Points input) throws Exception;
+	
+	/**
+	 * 적립금 데이터가 저장되어 있는 갯수 조회 (사용된만)
+	 * @param Points 검색조건을 담고 있는 Beans
+	 * @return int
+	 * @throws Exception
+	 */
+	public int getPointsCount3(Points input) throws Exception;
 	
 	/** 미가용 -> 가용으로 적립금 전환
 	 * @Param 적립금 일련번호(pointno)를 담고 있는 Beans

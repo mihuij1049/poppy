@@ -51,17 +51,61 @@
 	parameterType="kr.co.poppy.model.Points"
 	resultMap="pointsMap">
 	SELECT * from points WHERE memno=#{memno}
+	ORDER BY regdate DESC
+	</select>
+	<!-- 회원의 적립금 내역을 표시하기 위한 다중행 조회 -->
+	<select id="select_members_list1"
+	parameterType="kr.co.poppy.model.Points"
+	resultMap="pointsMap">
+	SELECT * from points WHERE memno=#{memno}
+	ORDER BY regdate DESC
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if>
+	</select>
+	<select id="select_members_list2"
+	parameterType="kr.co.poppy.model.Points"
+	resultMap="pointsMap">
+	SELECT napoint, regdate from points WHERE memno=#{memno} and napoint > 0
+	ORDER BY regdate DESC
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if>
+	</select>
+	<select id="select_members_list3"
+	parameterType="kr.co.poppy.model.Points"
+	resultMap="pointsMap">
+	SELECT usedpoint from points WHERE memno=#{memno} and usedpoint > 0
 	ORDER BY editdate DESC
 		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
 	
-		<!-- 데이터 수 조회를 위한 기능 정의 -->
-	<select id="selectCountAll"
+		<!-- 데이터 수 조회를 위한 기능 정의(적립내역) -->
+	<select id="selectCountList1"
 		parameterType="kr.co.poppy.model.Points" resultType="int">
 		SELECT COUNT(*)
 		FROM points
+		<where>
+			<if test="memno != 0 and memno != ''">
+				memno = #{memno}
+			</if>
+		</where>
+	</select>
+	<select id="selectCountList2"
+		parameterType="kr.co.poppy.model.Points" resultType="int">
+		SELECT COUNT(napoint) FROM points
+		<where>
+			napoint > 0 and
+			<if test="memno != 0 and memno != ''">
+				memno = #{memno}
+			</if>
+		</where>
+	</select>
+	<select id="selectCountList3"
+		parameterType="kr.co.poppy.model.Points" resultType="int">
+		SELECT COUNT(usedpoint) FROM points
 		<where>
 			<if test="memno != 0 and memno != ''">
 				memno = #{memno}
