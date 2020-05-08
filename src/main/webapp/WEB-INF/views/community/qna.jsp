@@ -132,12 +132,14 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-				<!-- 로그인 시에만 글쓰기 버튼 보이게 하기 -->
-				<c:if test="${!empty userInfo.userid }">
-				<button type="submit" class="write_qna btn btn-sm" id="enter"
-						onclick="location.href='${pageContext.request.contextPath}/community/qna_wri.do'">글쓰기</button>
-				</c:if>
+				
 		</div>
+		<!-- 로그인 시에만 글쓰기 버튼 보이게 하기 -->
+				<c:if test="${!empty userInfo.userid }">
+				<button type="button"
+							onclick="location.href='${pageContext.request.contextPath}/community/qna_wri.do'"
+							class="btn btn-sm list">글쓰기</button>
+				</c:if>
 		<div class="row">
 		
 			<div class="searchmenu">

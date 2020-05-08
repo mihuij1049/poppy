@@ -1,5 +1,6 @@
 package kr.co.poppy.controllers;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -51,9 +52,6 @@ public class CommunityController {
 		if (bbsno == 0) {
 			return webHelper.redirect(null, "게시글 번호가 없습니다.");
 		}
-		if (bbstype == null) {
-			return webHelper.redirect(null, "게시글 타입이 없습니다.");
-		}
 
 		/** 2) 데이터 조회하기 */
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
@@ -96,7 +94,89 @@ public class CommunityController {
 		model.addAttribute("output", output);
 		model.addAttribute("output2", output2);
 		return new ModelAndView("community/article");
+	}
 
+	/** qna 작성폼 페이지 */
+	@RequestMapping(value = "/community/qna_wri.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView add(Model model) {
+		return new ModelAndView("community/qna_wri");
+	}
+
+	/** qna 작성 */
+	@RequestMapping(value = "/community/qna_wri_ok.do", method = RequestMethod.POST)
+	public ModelAndView add_qna(Model model, @RequestParam(value = "bbstype", required = false) String bbstype,
+			@RequestParam(value = "bbstitle", required = false) String bbstitle,
+			@RequestParam(value = "bbscontent", required = false) String bbscontent,
+			@RequestParam(value = "qnasec", required = false) String qnasec,
+			@RequestParam(value = "qnapw", required = false) String qnapw,
+			@RequestParam(value = "regdate", required = false) String regdate,
+			@RequestParam(value = "editdate", required = false) String editdate,
+			@RequestParam(value = "memno", defaultValue = "0") Integer memno,
+			@RequestParam(value = "goodsno", defaultValue = "0") Integer goodsno) {
+		// 가입한 시각을 담은 date 생성
+		Calendar c = Calendar.getInstance();
+		String date = String.format("%04d-%02d-%02d %02d:%02d:%02d", c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1,
+				c.get(Calendar.DAY_OF_MONTH), c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE),
+				c.get(Calendar.SECOND));
+
+		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
+
+		// 세션 객체를 이용하여 저장된 세션값 얻기
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+		Comments myCmt = new Comments();
+		myCmt.setMemno(myInfo.getMemno());
+		myCmt.setUsername(myInfo.getUsername());
+		
+		/** 2) 데이터 저장하기 */
+		Bbs input = new Bbs();
+		input.setBbstype("B");
+		input.setBbstitle(bbstitle);
+		input.setBbscontent(bbscontent);
+		input.setQnasec(qnasec);
+		input.setQnapw(qnapw);
+		input.setRegdate(date);
+		input.setEditdate(date);
+		input.setMemno(myInfo.getMemno());
+		input.setGoodsno(1);
+
+		try {
+			// 데이터 저장 --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
+			bbsService.addBbs(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+
+		/** 3) 결과를 확인하기 위한 페이지 이동 */
+		String redirectUrl = contextPath + "/community/article.do?bbsno=" + input.getBbsno();
+		return webHelper.redirect(redirectUrl, "저장되었습니다.");
+	}
+
+	/** qna 수정 */
+	@RequestMapping(value = "/community/editqna.do", method = RequestMethod.GET)
+	public ModelAndView edit(Model model, @RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
+
+		/** 1) 파라미터 유효성 검사 */
+		if (bbsno == 0) {
+			return webHelper.redirect(null, "게시글이 없습니다.");
+		}
+		/** 2) 데이터 조회하기 */
+		// 데이터 조회에 필요한 값을 beans에 저장하기
+		Bbs input = new Bbs();
+		input.setBbsno(bbsno);
+
+		// 게시글 조회결과를 저장할 객체 선언
+		Bbs output = null;
+
+		try {
+			// 게시글 기본 정보 조회
+			output = bbsService.getBbsItem(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		/** 3) view 처리 */
+		model.addAttribute("output", output);
+		return new ModelAndView("community/qna_edit");
 	}
 
 	/** notice */
@@ -150,7 +230,7 @@ public class CommunityController {
 	public ModelAndView photo_rv(Model model,
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
-		
+
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
 		int totalCount = 0;
 		int listCount = 5;
@@ -183,7 +263,7 @@ public class CommunityController {
 		model.addAttribute("pageData", pageData);
 		return new ModelAndView("community/photo_rv");
 	}
-	
+
 	/** qna */
 	@RequestMapping(value = "/community/qna.do", method = RequestMethod.GET)
 	public ModelAndView listqna(Model model,
@@ -223,7 +303,6 @@ public class CommunityController {
 		model.addAttribute("pageData", pageData);
 		return new ModelAndView("community/qna");
 	}
-	
 
 	/** QnA 검색 기능 구현 */
 	@RequestMapping(value = "/community/qnasearch.do", method = RequestMethod.GET)
@@ -284,7 +363,7 @@ public class CommunityController {
 		model.addAttribute("pageData", pageData);
 		return new ModelAndView("community/qna");
 	}
-	
+
 	/** 공지사항 검색 기능 구현 */
 	@RequestMapping(value = "/community/noticesearch.do", method = RequestMethod.GET)
 	public ModelAndView noticeSearch(Model model,
@@ -387,21 +466,20 @@ public class CommunityController {
 		String redirectUrl = contextPath + "/community/article.do?cmtno=" + input.getCmtno();
 		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 	}
-	
+
 	/** qna 삭제 */
-	@RequestMapping(value="/community/deleteqna.do", method=RequestMethod.GET)
-		public ModelAndView delete_ok(Model model,
-				@RequestParam(value="bbsno", defaultValue="0") int bbsno) {
-			
+	@RequestMapping(value = "/community/deleteqna.do", method = RequestMethod.GET)
+	public ModelAndView delete_ok(Model model, @RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
+
 		/** 1) 파라미터 유효성 검사 */
-		if(bbsno==0) {
+		if (bbsno == 0) {
 			return webHelper.redirect(null, "게시글 번호가 없습니다.");
 		}
-		
+
 		/** 2) 데이터 삭제하기 */
 		Bbs input = new Bbs();
 		input.setBbsno(bbsno);
-		
+
 		try {
 			bbsService.deleteBbs(input);
 		} catch (Exception e) {
@@ -409,13 +487,6 @@ public class CommunityController {
 		}
 		/** 3) 페이지 이동 */
 		return webHelper.redirect(contextPath + "/community/qna.do", "게시글이 삭제되었습니다.");
-		}
-
-
-	/** qna_wri 
-	@RequestMapping(value = "/community/qna_wri.do", method = RequestMethod.GET)
-	public String qna_wri() {
-		return "community/qna_wri";
-	} */
+	}
 
 }

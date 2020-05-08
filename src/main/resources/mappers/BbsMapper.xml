@@ -115,16 +115,9 @@
 	<!-- 데이터 저장을 위한 기능 정의 -->
 	<insert id="insertItem" parameterType="kr.co.poppy.model.Bbs"
 		useGeneratedKeys="true" keyProperty="bbsno">
-		INSERT INTO bbs (
-		bbstype,
-		bbstitle, bbscontent, qnasec, qnapw, rvlike, regdate, editdate,
-		memno,
-		goodsno
-		) VALUES (
-		#{bbstype}, #{bbstitle}, #{bbscontent}, #{qnasec},
-		#{qnapw}, #{rvlike},
-		#{regdate}, #{editdate}, #{memno}, #{goodsno}
-		)
+		INSERT INTO bbs 
+		(bbstype, bbstitle, bbscontent, qnasec, qnapw, regdate, editdate, memno, goodsno) 
+		VALUES (#{bbstype}, #{bbstitle}, #{bbscontent}, #{qnasec}, #{qnapw}, #{regdate}, #{editdate}, #{memno}, #{goodsno})
 	</insert>
 
 	<!-- 데이터 삭제를 위한 기능 정의 -->

@@ -139,7 +139,7 @@ public class BbsServiceImpl implements BbsService {
 		try {
 			result = sqlSession.insert("BbsMapper.insertItem", input);
 			if(result==0) {
-				result = sqlSession.selectOne("BbsMapper.selectCountAll", input);
+				throw new NullPointerException("result=0");
 			}
 		} catch (NullPointerException e) {
 			log.error(e.getLocalizedMessage());
