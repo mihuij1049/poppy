@@ -1,6 +1,7 @@
 package kr.co.poppy.controllers;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.poppy.helper.PageData;
@@ -15,9 +17,11 @@ import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Bbs;
 import kr.co.poppy.model.Goods;
+import kr.co.poppy.model.Heart;
 import kr.co.poppy.model.Imgs;
 import kr.co.poppy.service.GoodsService;
 import kr.co.poppy.service.GoodsdetailService;
+import kr.co.poppy.service.HeartService;
 import kr.co.poppy.service.ImgsService;
 
 @Controller
@@ -32,6 +36,9 @@ public class GalleryController {
 	@Autowired GoodsService goodsService;
 	@Autowired ImgsService imgsService;
 	@Autowired GoodsdetailService goodsdetailService;
+	@Autowired HeartService heartService;
+	
+	/** 상품 목록에서 heart버튼을 눌렀을 때. */
 	
 	/** 갤러리 목록 페이지 */
 	@RequestMapping(value="/gallery/gal_list_all.do", method=RequestMethod.GET)
@@ -143,4 +150,5 @@ public class GalleryController {
 		model.addAttribute("output1", output1);
 		return new ModelAndView("gallery/gal_list");
 	}
+	
 }

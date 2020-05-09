@@ -63,7 +63,8 @@
 											${item.gprice}원
 										</a>
 									<div id="pay">
-										<i class="glyphicon glyphicon-heart-empty"></i>
+									<button type="button" class="btn btn-inverse delete-one"
+									id="delete-one" data-heartno="${item.heartno}">삭제</button>
 									</div>
 								</div>
 							</div>

@@ -3,6 +3,7 @@ package kr.co.poppy;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -12,11 +13,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.poppy.helper.MailHelper;
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.RetrofitHelper;
 import kr.co.poppy.helper.WebHelper;
+import kr.co.poppy.model.Goods;
+import kr.co.poppy.service.GoodsService;
+import kr.co.poppy.service.GoodsdetailService;
+import kr.co.poppy.service.ImgsService;
 
 /**
  * Handles requests for the application home page.
@@ -35,6 +41,10 @@ public class HomeController {
 	
 	@Autowired
 	RetrofitHelper retrofitHelper;
+	
+	@Autowired GoodsService goodsService;
+	@Autowired ImgsService imgsService;
+	@Autowired GoodsdetailService goodsdetailService;
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
@@ -42,17 +52,26 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = { "/","/index/index.do" }, method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-		String formattedDate = dateFormat.format(date);
-
-		model.addAttribute("serverTime", formattedDate);
-
-		return "index/index";
+	public ModelAndView home(Locale locale, Model model) {
+		// 2) 데이터 조회
+		// 굿즈데이터조회
+		Goods input = new Goods();
+				
+		// 데이터저장할곳
+		List<Goods> output = null;
+				
+		try {
+			// 데이터조회
+			output = goodsService.getGoodsList2(input);
+					
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+				
+		// 3) 뷰처리
+		model.addAttribute("output", output);
+		
+		return new ModelAndView("index/index");
 	}
 
 }

@@ -64,103 +64,50 @@
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
 						<div class="gal_sug_main">
-							<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
+							<c:forEach var="item" items="${output}" varStatus="status" begin="0" end="2">
+							<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do?goodsno=1">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
-									<img src="/upload/img/index_gal_img1.jpg" id="img_sug">
+									<img src="${item.imgpath}${item.imgname}.jpg" id="img_sug">
 								</div>
-								<span class="sal_name">강아지간식</span>
+								<span class="sal_name">${item.gname}</span>
 								<hr />
-								5,400원
+								${item.gprice}
 							</div>
 							</a>
-							<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
-							<div class="gal_sug">
-								<div class="gal_sug_img">
-									<img src="/upload/img/index_gal_img2.jpg" id="img_sug">
-								</div>
-								<span class="sal_name">강아지간식</span>
-								<hr />
-								5,400원
-							</div>
-							</a>
-							<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
-							<div class="gal_sug">
-								<div class="gal_sug_img">
-									<img src="/upload/img/index_gal_img3.jpg" id="img_sug">
-								</div>
-								<span class="sal_name">강아지간식</span>
-								<hr />
-								5,400원
-							</div>
-							</a>
+							</c:forEach>
 						</div>
 					</div>
 					<div class="swiper-slide">
 						<div class="gal_sug_main">
+							<c:forEach var="item" items="${output}" varStatus="status" begin="3" end="5">
 							<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
-									<img src="/upload/img/index_gal_img1.jpg" id="img_sug">
+									<img src="${item.imgpath}${item.imgname}.jpg" id="img_sug">
 								</div>
-								<span class="sal_name">강아지간식</span>
+								<span class="sal_name">${item.gname}</span>
 								<hr />
-								5,400원
+								${item.gprice}
 							</div>
 							</a>
-							<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
-							<div class="gal_sug">
-								<div class="gal_sug_img">
-									<img src="/upload/img/index_gal_img2.jpg" id="img_sug">
-								</div>
-								<span class="sal_name">강아지간식</span>
-								<hr />
-								5,400원
-							</div>
-							</a>
-							<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
-							<div class="gal_sug">
-								<div class="gal_sug_img">
-									<img src="/upload/img/index_gal_img3.jpg" id="img_sug">
-								</div>
-								<span class="sal_name">강아지간식</span>
-								<hr />
-								5,400원
-							</div>
-							</a>
+							</c:forEach>
 						</div>
 					</div>
 					<div class="swiper-slide">
 						<div class="gal_sug_main">
-							<a href="${pageContext.request.contextPath }/gallery/goods.do">
-							<div class="gal_sug">
-								<div class="gal_sug_img">
-									<img src="/upload/img/index_gal_img1.jpg" id="img_sug">
-								</div>
-								<span class="sal_name">강아지간식</span>
-								<hr />
-								5,400원
-							</div>
+							<c:forEach var="item" items="${output}" varStatus="status" begin="6" end="8">
 							<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
-									<img src="/upload/img/index_gal_img2.jpg" id="img_sug">
+									<img src="${item.imgpath}${item.imgname}.jpg" id="img_sug">
 								</div>
-								<span class="sal_name">강아지간식</span>
+								<span class="sal_name">${item.gname}</span>
 								<hr />
-								5,400원
+								${item.gprice}
 							</div>
 							</a>
-							<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
-							<div class="gal_sug">
-								<div class="gal_sug_img">
-									<img src="/upload/img/index_gal_img3.jpg" id="img_sug">
-								</div>
-								<span class="sal_name">강아지간식</span>
-								<hr />
-								5,400원
-							</div>
-							</a>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
@@ -180,7 +127,7 @@
 			</center>
 			<div class="gal_best_main">
 			<!-- jstl 반복문 시작 -->
-				<c:forEach var="item" items="${output}" varStatus="status">
+				<c:forEach var="item" items="${output}" varStatus="status" end="8">
 					<div class="gal_best">
 					<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
 						<div class="gal_sug_img">
@@ -202,108 +149,6 @@
 					src="/upload/img/index_banner2.jpg"> <img
 					src="/upload/img/index_banner3.jpg">
 			</div>
-			<div class="review">
-				<center>
-					<h3 id="sale_h3">실시간 리뷰</h3>
-				</center>
-				<div>
-					<!-- 게시물 하나 시작 -->
-					<div width="50%">
-						<div class="pr_box">
-							<div class="pr_in_box">
-								<a href="${pageContext.request.contextPath }/community/photo.do"> <img alt="사진"
-									src="/upload/img/img1.jpg" class="img_size" />
-									<div>
-										<h5>
-											<b>글제목입니다. 말줄임 처리도 합니다.</b>
-										</h5>
-										아이디<br>
-										<hr />
-										<div class="pr_content">글내용입니다. 여기도 말줄임 처리가 되나요? 일단
-											해보겠습니다. 박스로 영역 크기를 잡은 후 말줄임 처리를 합니다. 긴 내용을 적어도 괜찮습니다. 지금은 4월
-											2일 오전 11시 6분. 점심시간까지 두 시간 좀 안 되게 남았어요.</div>
-									</div>
-								</a>
-								<button class="btn btn-inverse" id="heart_bt">
-									<i class="glyphicon glyphicon-heart icon_size"></i> 추천
-								</button>
-							</div>
-						</div>
-					</div>
-					<!-- 게시물 하나 끝 -->
-					<!-- 게시물 하나 시작 -->
-					<div>
-						<div class="pr_box">
-							<div class="pr_in_box">
-								<a href="${pageContext.request.contextPath }/community/photo.do"> <img alt="사진"
-									src="/upload/img/img2.jpg" class="img_size" />
-									<div>
-										<h5>
-											<b>글제목입니다. 말줄임 처리도 합니다.</b>
-										</h5>
-										아이디<br>
-										<hr />
-										<div class="pr_content">글내용입니다. 여기도 말줄임 처리가 되나요? 일단
-											해보겠습니다. 박스로 영역 크기를 잡은 후 말줄임 처리를 합니다. 긴 내용을 적어도 괜찮습니다. 지금은 4월
-											2일 오전 11시 6분. 점심시간까지 두 시간 좀 안 되게 남았어요.</div>
-									</div>
-								</a>
-								<button class="btn btn-inverse" id="heart_bt">
-									<i class="glyphicon glyphicon-heart icon_size"></i> 추천
-								</button>
-							</div>
-						</div>
-					</div>
-					<!--// 게시물 하나 끝 -->
-					<!-- 게시물 하나 시작 -->
-					<div>
-						<div class="pr_box">
-							<div class="pr_in_box">
-								<a href="${pageContext.request.contextPath }/community/photo.do"> <img alt="사진"
-									src="/upload/img/img3.jpg" class="img_size" />
-									<div>
-										<h5>
-											<b>글제목입니다. 말줄임 처리도 합니다.</b>
-										</h5>
-										아이디<br>
-										<hr />
-										<div class="pr_content">글내용입니다. 여기도 말줄임 처리가 되나요? 일단
-											해보겠습니다. 박스로 영역 크기를 잡은 후 말줄임 처리를 합니다. 긴 내용을 적어도 괜찮습니다. 지금은 4월
-											2일 오전 11시 6분. 점심시간까지 두 시간 좀 안 되게 남았어요.</div>
-									</div>
-								</a>
-								<button class="btn btn-inverse" id="heart_bt">
-									<i class="glyphicon glyphicon-heart icon_size"></i> 추천
-								</button>
-							</div>
-						</div>
-					</div>
-					<!--// 게시물 하나 끝 -->
-					<!-- 게시물 하나 시작 -->
-					<div>
-						<div class="pr_box">
-							<div class="pr_in_box">
-								<a href="${pageContext.request.contextPath }/community/photo.do"> <img alt="사진"
-									src="/upload/img/img4.jpg" class="img_size" />
-									<div>
-										<h5>
-											<b>글제목입니다. 말줄임 처리도 합니다.</b>
-										</h5>
-										아이디<br>
-										<hr />
-										<div class="pr_content">글내용입니다. 여기도 말줄임 처리가 되나요? 일단
-											해보겠습니다. 박스로 영역 크기를 잡은 후 말줄임 처리를 합니다. 긴 내용을 적어도 괜찮습니다. 지금은 4월
-											2일 오전 11시 6분. 점심시간까지 두 시간 좀 안 되게 남았어요.</div>
-									</div>
-								</a>
-								<button class="btn btn-inverse" id="heart_bt">
-									<i class="glyphicon glyphicon-heart icon_size"></i> 추천
-								</button>
-							</div>
-						</div>
-					</div>
-					<!--// 게시물 하나 끝 -->
-				</div>
 				<center>
 					<button type="button" class="btn btn-inverse index_btn"
 						onclick="location.href='${pageContext.request.contextPath }/community/photo_rv.do'">실시간
