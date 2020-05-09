@@ -31,9 +31,14 @@
 
 			</div>
 			<div class="wriinfo">
-				
-					<p class="articletitle">제목: ${output.bbstitle}</p>
-				
+				<c:choose>
+					<c:when test="${output.bbstype=='공지사항'}">
+						<p class="articletitle">[공지사항] ${output.bbstitle}</p>
+					</c:when>
+					<c:otherwise>
+						<p class="articletitle">[Q&A] ${output.bbstitle}</p>
+					</c:otherwise>
+				</c:choose>
 				<p class="articlewriter">${output.username }</p>
 			</div>
 			<div class="nai">
@@ -61,7 +66,7 @@
 								</a>
 								<a
 									href="${pageContext.request.contextPath}/community/editqna.do?bbsno=${output.bbsno}">
-									<button type="submit" class="btn btn-sm btn-del">수정</button>
+									<button type="submit" class="btn btn-sm btn-edit">수정</button>
 								</a>
 
 
@@ -105,9 +110,10 @@
 											</span><span>${item.regdate}</span></small>
 										</div>
 										<c:if test="${userInfo.username==item.username}">
-										
+
 											<button type="submit" class="btn btn-sm btn-editar">수정</button>
-											<button type="submit" class="btn btn-inverse btn-sm btn-delar">삭제</button>
+											<button type="submit"
+												class="btn btn-inverse btn-sm btn-delar">삭제</button>
 										</c:if>
 										<span class="span">${item.cmtcontent}</span><br />
 
@@ -153,7 +159,32 @@
 
 
 	<%@ include file="../share/bottom_tp.jsp"%>
-
+	<!--Google CDN 서버로부터 jQuery 참조 -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- jQuery Ajax Form plugin CDN -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+    <!-- jQuery Ajax Setup -->
+    <script src="${pageContext.request.contextPath}/assets/plugins/ajax/ajax_helper.js"></script>
+    <!-- User Code -->
+    <script>
+    $(function() {
+        // #addForm에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다.
+        $("#addForm").ajaxForm({
+            // 전송 메서드 지정
+            method: "POST",
+            // 서버에서 200 응답을 전달한 경우 실행됨
+            success: function(json) {
+                console.log(json);
+                
+                // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
+                if (json.rt == "OK") {
+                    window.location = "${pageContext.request.contextPath}cummunity/article.do?cmtno=" + json.item.cmtno + 
+    				+ json.getBbsno;
+                }
+            }
+        });
+    });
+    </script>
 
 	<script type="text/javascript">
 		/** 댓글 수정 삭제 --- 등록 취소 버튼 기능 구현 */
