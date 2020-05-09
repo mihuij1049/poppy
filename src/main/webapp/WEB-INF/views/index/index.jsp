@@ -65,7 +65,7 @@
 					<div class="swiper-slide">
 						<div class="gal_sug_main">
 							<c:forEach var="item" items="${output}" varStatus="status" begin="0" end="2">
-							<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do?goodsno=1">
+							<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=1">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
 									<img src="${item.imgpath}${item.imgname}.jpg" id="img_sug">
@@ -81,7 +81,7 @@
 					<div class="swiper-slide">
 						<div class="gal_sug_main">
 							<c:forEach var="item" items="${output}" varStatus="status" begin="3" end="5">
-							<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
+							<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
 									<img src="${item.imgpath}${item.imgname}.jpg" id="img_sug">
@@ -97,7 +97,7 @@
 					<div class="swiper-slide">
 						<div class="gal_sug_main">
 							<c:forEach var="item" items="${output}" varStatus="status" begin="6" end="8">
-							<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
+							<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
 									<img src="${item.imgpath}${item.imgname}.jpg" id="img_sug">
@@ -129,7 +129,7 @@
 			<!-- jstl 반복문 시작 -->
 				<c:forEach var="item" items="${output}" varStatus="status" end="8">
 					<div class="gal_best">
-					<a href="${pageContext.request.contextPath }/gallery/goods_ajax.do">
+					<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do">
 						<div class="gal_sug_img">
 							<img src="${item.imgpath}${item.imgname}.jpg" id="img_sug">
 						</div>

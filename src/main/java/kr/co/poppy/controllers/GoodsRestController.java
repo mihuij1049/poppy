@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,9 +50,12 @@ public class GoodsRestController {
 	BbsService bbsService;
 
 	/** 갤러리 상세 페이지 */
-	@RequestMapping(value = "/gallery", method = RequestMethod.GET)
-	public Map<String, Object> goods(Model model, @RequestParam(value = "goodsno", defaultValue = "1") int goodsno,
+	@RequestMapping(value = "/gallery/{goodsno}", method = RequestMethod.GET)
+	public Map<String, Object> goods(Model model, 
+			@PathVariable(value = "goodsno") int goodsno,
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+		
+		// int goodsno = webHelper.getInt("goodsno");
 
 		/** 유효성 검사 */
 		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
@@ -69,15 +73,24 @@ public class GoodsRestController {
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
 
 		// 빈즈에 담기
-		Bbs input = new Bbs();
+		Goods input = new Goods();
 		input.setGoodsno(goodsno);
-		input.setMemno(myInfo.getMemno());
+
+		Heart input2 = new Heart();
+		input2.setGoodsno(goodsno);
+		input2.setMemno(myInfo.getMemno());
+		
+		Bbs input3 = new Bbs();
+		input3.setGoodsno(goodsno);
+		input3.setMemno(myInfo.getMemno());
 
 		Bbs qna = new Bbs();
 		qna.setBbstype("B");
 
 		// 조회결과를 저장할 객체 선언
-		List<Bbs> output = null;
+		Goods output = null;
+		int output2 = 0;
+		List<Bbs> output3 = null;
 		List<Bbs> qoutput = null;
 		PageData pageData = null;
 
@@ -91,7 +104,9 @@ public class GoodsRestController {
 			Bbs.setListCount(pageData.getListCount());
 
 			// 데이터 조회
-			output = bbsService.getBbsList_goods(input);
+			output = goodsService.getGoodsItem(input);
+			output2 = heartService.getHeartCount(input2);
+			output3 = bbsService.getBbsList_goods(input3);
 			qoutput = bbsService.getBbsList(qna);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
@@ -101,7 +116,9 @@ public class GoodsRestController {
 
 		// 3) 뷰처리
 		Map<String, Object> data = new HashMap<String, Object>();
-		data.put("item", output);
+		data.put("output", output);
+		data.put("output2", output2);
+		data.put("item", output3);
 		data.put("item2", qoutput);
 		data.put("meta", pageData);
 		return webHelper.getJsonData(data);

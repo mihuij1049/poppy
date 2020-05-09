@@ -53,8 +53,10 @@ public class GoodsController {
 
 	/** 갤러리 상세 페이지 */
 	@RequestMapping(value = "/gallery/goods.do", method = RequestMethod.GET)
-	public ModelAndView goods(Model model, @RequestParam(value = "goodsno", defaultValue = "1") int goodsno,
+	public ModelAndView goods(Model model, @RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+		
+		int goodsno = webHelper.getInt("goodsno");
 
 		/** 유효성 검사 */
 		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
