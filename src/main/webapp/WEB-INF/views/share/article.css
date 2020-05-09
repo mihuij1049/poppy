@@ -1,6 +1,26 @@
 @charset "UTF-8";
+
+.wriinfo {
+	border: 1px solid #FFc7c1;
+	background: #FFc7c1;
+	width: 100%;
+	margin: 10px 0px;
+}
+
+.articletitle {
+	font-size: 16px;
+	padding-top: 10px;
+	padding-left: 15px;
+}
+
+.articlewriter {
+	text-align: right;
+	margin-top: 5px;
+	margin-right: 10px;
+}
+
 .subject {
-	margin: 20px 15px;
+	margin: 20px 0px;
 }
 
 .subject b {
@@ -10,7 +30,7 @@
 
 .nai {
 	text-align: center;
-	font-size: 17px;
+	font-size: 14px;
 	padding-top: 30px;
 	padding-bottom: 30px;
 }
@@ -39,7 +59,7 @@
 .span {
 	display: inline-block;
 	padding-left: 20px;
-	padding-bottom:25px;
+	padding-bottom: 25px;
 }
 
 .button2 {
@@ -52,7 +72,6 @@
 .comment_nai {
 	border-bottom: 1px solid #red;
 }
-
 
 /** 댓글창div 전체 */
 .memory {
@@ -160,13 +179,13 @@
 }
 
 /** 글 수정삭제 버튼 */
-.btn-del {
+.btn-delar {
 	float: right;
-	margin-bottom:10px;
-	mrgin-right:10px;
+	margin-bottom: 10px;
+	mrgin-right: 10px;
 }
 
-.cannot {
+.cannotar {
 	text-align: center;
 	border: 1px solid #FF8F83;
 	background: #FF8F83;

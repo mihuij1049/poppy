@@ -153,9 +153,10 @@ public class CommunityController {
 		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 	}
 
-	/** qna 수정 */
-	@RequestMapping(value = "/community/editqna.do", method = RequestMethod.GET)
-	public ModelAndView edit(Model model, @RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
+	/** qna 수정 폼 페이지 */
+	@RequestMapping(value = "/community/editqna.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView edit(Model model, @RequestParam(value = "bbstype", required = false) String bbstype,
+			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
 
 		/** 1) 파라미터 유효성 검사 */
 		if (bbsno == 0) {
@@ -165,9 +166,20 @@ public class CommunityController {
 		// 데이터 조회에 필요한 값을 beans에 저장하기
 		Bbs input = new Bbs();
 		input.setBbsno(bbsno);
+		input.setBbstype("B");
 
 		// 게시글 조회결과를 저장할 객체 선언
 		Bbs output = null;
+
+		// 세션 객체를 이용하여 저장된 세션값 얻기
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+		Comments myCmt = new Comments();
+
+		if (myInfo != null) {
+			myCmt.setUsername(myInfo.getUsername());
+			model.addAttribute("myCmt", myCmt);
+		}
 
 		try {
 			// 게시글 기본 정보 조회
@@ -180,11 +192,61 @@ public class CommunityController {
 		return new ModelAndView("community/qna_edit");
 	}
 
-	/** notice */
+	/** qna 수정폼에 대한 action페이지 */
+	@RequestMapping(value = "/community/qna_edit_ok.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView add_qna(Model model, 
+			@RequestParam(value = "memno", required = false) Integer memno,
+			@RequestParam(value = "bbsno", required = false) int bbsno,
+			@RequestParam(value = "bbstype", required = false) String bbstype,
+			@RequestParam(value = "bbstitle", required = false) String bbstitle,
+			@RequestParam(value = "bbscontent", required = false) String bbscontent,
+			@RequestParam(value = "qnasec", required = false) String qnasec,
+			@RequestParam(value = "qnapw", required = false) String qnapw,
+			@RequestParam(value = "editdate", required = false) String editdate) {
+		// 가입한 시각을 담은 date 생성
+		Calendar c = Calendar.getInstance();
+		String date = String.format("%04d-%02d-%02d %02d:%02d:%02d", c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1,
+				c.get(Calendar.DAY_OF_MONTH), c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE),
+				c.get(Calendar.SECOND));
+
+		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
+
+		// 세션 객체를 이용하여 저장된 세션값 얻기
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+		Comments myCmt = new Comments();
+		myCmt.setMemno(myInfo.getMemno());
+		myCmt.setUsername(myInfo.getUsername());
+
+		/** 2) 데이터 저장하기 */
+		Bbs input = new Bbs();
+		input.setBbstype("B");
+		input.setBbsno(bbsno);
+		input.setBbstitle(bbstitle);
+		input.setBbscontent(bbscontent);
+		input.setQnasec(qnasec);
+		input.setQnapw(qnapw);
+		input.setEditdate(date);
+		input.setMemno(myInfo.getMemno());
+
+		try {
+			// 데이터 수정
+			bbsService.editBbs(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+
+		/** 3) 결과를 확인하기 위한 페이지 이동 */
+		String redirectUrl = contextPath + "/community/article.do?bbsno=" + input.getBbsno() + "&bbstype="
+				+ input.getBbstype();
+		return webHelper.redirect(redirectUrl, "수정되었습니다.");
+	}
+
+	/** notice 목록페이지 다중행조회 */
 	@RequestMapping(value = "/community/notice.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView list(Model model,
 			// 페이지 구현에서 사용할 현재 페이지 번호
-						@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
 		int totalCount = 0; // 전체 게시글 수
@@ -220,7 +282,7 @@ public class CommunityController {
 		return new ModelAndView("community/notice");
 	}
 
-	/** photo_rv */
+	/** photo_rv 목록페이지 다중행조회 */
 	@RequestMapping(value = "/community/photo_rv.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView photo_rv(Model model,
 			// 페이지 구현에서 사용할 현재 페이지 번호
@@ -259,7 +321,7 @@ public class CommunityController {
 		return new ModelAndView("community/photo_rv");
 	}
 
-	/** qna */
+	/** qna 목록페이지 다중행조회 */
 	@RequestMapping(value = "/community/qna.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView listqna(Model model,
 			// 페이지 구현에서 사용할 현재 페이지 번호
@@ -407,49 +469,6 @@ public class CommunityController {
 		model.addAttribute("output", output);
 		model.addAttribute("pageData", pageData);
 		return new ModelAndView("community/notice");
-	}
-
-	/** 댓글 저장히기 */
-	@RequestMapping(value = "community/comments.do", method = RequestMethod.POST)
-	public ModelAndView addcmt(Model model, @RequestParam(value = "cmtcontent", required = false) String cmtcontent,
-			@RequestParam(value = "regdate", required = false) String regdate,
-			@RequestParam(value = "editdate", required = false) String editdate,
-			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno,
-			@RequestParam(value = "memno", defaultValue = "0") int memno) {
-
-		/** 1) 유효성 검사 */
-		if (cmtcontent.equals("")) {
-			return webHelper.redirect(null, "댓글을 입력하세요.");
-		}
-
-		/** 2) 데이터 저장하기 */
-		// 저장할 값들을 Beans에 담는다.
-		Comments input = new Comments();
-		input.setCmtcontent(cmtcontent);
-		input.setRegdate(regdate);
-		input.setEditdate(editdate);
-		input.setBbsno(bbsno);
-
-		// 세션 객체를 이용하여 저장된 세션값 얻기
-		HttpSession mySession = webHelper.getSession();
-		Members myInfo = (Members) mySession.getAttribute("userInfo");
-		Comments myCmt = new Comments();
-		myCmt.setMemno(myInfo.getMemno());
-		myCmt.setUsername(myInfo.getUsername());
-
-		try {
-			// 데이터 저장
-			commentsService.addComments(input);
-			commentsService.addComments(myCmt);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-		model.addAttribute("myCmt", myCmt);
-
-		/** 3) 결과를 확인하기 위한 페이지 이동 */
-		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야 한다.
-		String redirectUrl = contextPath + "/community/article.do?cmtno=" + input.getCmtno();
-		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 	}
 
 	/** qna 삭제 */

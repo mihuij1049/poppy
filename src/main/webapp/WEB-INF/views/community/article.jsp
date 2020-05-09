@@ -30,6 +30,12 @@
 				</h4>
 
 			</div>
+			<div class="wriinfo">
+				
+					<p class="articletitle">제목: ${output.bbstitle}</p>
+				
+				<p class="articlewriter">${output.username }</p>
+			</div>
 			<div class="nai">
 				<p id="main_text">${output.bbscontent}</p>
 			</div>
@@ -54,7 +60,7 @@
 									<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
 								</a>
 								<a
-									href="${pageContext.request.contextPath}/community/qna_edit.do?bbsno=${output.bbsno}">
+									href="${pageContext.request.contextPath}/community/editqna.do?bbsno=${output.bbsno}">
 									<button type="submit" class="btn btn-sm btn-del">수정</button>
 								</a>
 
@@ -99,8 +105,9 @@
 											</span><span>${item.regdate}</span></small>
 										</div>
 										<c:if test="${userInfo.username==item.username}">
-											<button type="submit" class="btn btn-sm btn-edit">수정</button>
-											<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
+										
+											<button type="submit" class="btn btn-sm btn-editar">수정</button>
+											<button type="submit" class="btn btn-inverse btn-sm btn-delar">삭제</button>
 										</c:if>
 										<span class="span">${item.cmtcontent}</span><br />
 

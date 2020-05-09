@@ -135,7 +135,7 @@
 	<!-- 데이터 갱신을 위한 기능 정의 -->
 	<update id="updateItem" parameterType="kr.co.poppy.model.Bbs">
 		UPDATE bbs SET
-		bbstitle=#{bbstitle}, bbscontent=#{bbscontent}, editdate=#{editdate}
+		bbstitle=#{bbstitle}, bbscontent=#{bbscontent}, editdate=#{editdate}, qnasec=#{qnasec}, qnapw=#{qnapw}, memno=#{memno}
 		WHERE bbsno=#{bbsno}
 	</update>
 
