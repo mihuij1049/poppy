@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!doctype html>
 <html>
 
 <head>
 <%@ include file="../share/head_tp.jsp"%>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/share/like_goods.css" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/share/like_goods.css" />
 <script src="../share/plugins/handlebars/handlebars-v4.0.5.js"></script>
 
 </head>
@@ -28,11 +29,31 @@
 		</div>
 		<div class="favorite">
 			<p class="align">
-				My상품(<span>2</span>)
+				My상품(<span>${output.size() }</span>)
 			</p>
 			<!-- 물건 1 -->
 			<ul class="mycart-list" id="interest-item-group">
-				
+				<c:forEach var="item" items="${output}" varStatus="status">
+				<c:set var="gname" value="${item.gname }" />
+				<c:set var="gsale" value="${item.gsale }" />
+				<c:set var="heartno" value="${item.heartno }" />
+					<li class="mycart" id="mycart1">
+						<div class="mygoods clearfix">
+							<span class="chkbox"> <input type="checkbox" class="cart"
+								name="check-select"></span> <a href="#"><img src=""
+								class="cart-img"></a>
+							<div class="word">
+								<b>${item.gname}</b><br> <small>배송:2500원[조건]/기본배송</small><br>
+								<small><span>적</span><fmt:formatNumber value="${item.gsale*0.02}" pattern="#,###" />원</small><br> <b><fmt:formatNumber value="${item.gsale}" pattern="#,###" />원</b>
+							</div>
+						</div>
+						<div class="btns">
+							<button type="button" class="btn btn-inverse delete-one"
+								id="delete-one" data-heartno="${item.heartno }">삭제</button>
+							<button type="button" class="btn gocart" id="gotocart">장바구니담기</button>
+						</div>
+					</li>
+				</c:forEach>
 			</ul>
 			<div class="selectbtn">
 				<button type="button" class="select-all" id="select-all">전체선택</button>
@@ -47,10 +68,12 @@
 
 	</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
+	<script
+		src="${pageContext.request.contextPath}/share/plugins/ajax/ajax_helper.js"></script>
 	<!-- 여기서부터 핸들바 템플릿 구조 만들기 -->
-	<script id="goods_item_tmpl" type="text/x-handlebars-template">
-	{{#each item}}
-	<li class="mycart" id="mycart1">
+	<!-- <script id="goods_item_tmpl" type="text/x-handlebars-template"> -->
+	<!-- {{#each item}} -->
+	<!-- <li class="mycart" id="mycart1">
 		<div class="mygoods clearfix">
 			<span class="chkbox"> <input type="checkbox" class="cart"
 				name="check-select" ></span> <a
@@ -65,12 +88,12 @@
 				id="delete-one">삭제</button>
 			<button type="button" class="btn gocart" id="gotocart">장바구니담기</button>
 		</div>
-	</li>
-	{{/each}}
-	</script>
+	</li> -->
+	<!-- {{/each}} -->
+	<!-- </script> -->
 	<!-- 핸들바 템플릿 구조 끝 -->
 	<script type="text/javascript">
-		/** Ajax 통신을 통해 json 파일을 읽어들여 핸들바 템플릿에 적용 */
+		/* /** Ajax 통신을 통해 json 파일을 읽어들여 핸들바 템플릿에 적용
 		$(function() {
 			// get요청을 통한 핸들바 템플릿 태그 조립하기
 			function get_list() {
@@ -84,9 +107,9 @@
 					$("#interest-item-group").append(html);
 				});
 			} // 검색 결과를 템플릿을 이용해서 화면에 나타낼 함수 정의 끝
-			/** 함수 호출 -> 이 부분에서 상품 리스트가 화면에 뿌려짐 */
+			/** 함수 호출 -> 이 부분에서 상품 리스트가 화면에 뿌려짐 
 			get_list();
-		});
+		}); // end ajax */
 		/** 전체선택 */
 		$(function() {
 			$("#select-all").click(function() {
@@ -101,13 +124,20 @@
 
 		/** 선택삭제 버튼 */
 		$(function() {
-			$("#select-choice").click(function() {
-				// 전체 체크박스를 탐색한다 (반복문 개념)
-				$("input:checkbox[name=check-select]").each(function() {
-					// 체크가 되었다면 부모(span)의 부모(div)의 부모(li)를 제거한다! byebye!
-					$("input:checkbox[name=check-select]:checked").parent().parent().parent().remove();
-				});
-			});
+			$("#select-choice")
+					.click(
+							function() {
+								// 전체 체크박스를 탐색한다 (반복문 개념)
+								$("input:checkbox[name=check-select]")
+										.each(
+												function() {
+													// 체크가 되었다면 부모(span)의 부모(div)의 부모(li)를 제거한다! byebye!
+													$(
+															"input:checkbox[name=check-select]:checked")
+															.parent().parent()
+															.parent().remove();
+												});
+							});
 		});
 
 		/** 전체상품 주문 버튼 예외상황 */
@@ -124,9 +154,7 @@
 			var count = $("#cart-qty").text();
 			var put_cart = count;
 			$("#cart-qty").text(put_cart);
-			$("#interest-item-group").on("click",
-					"#gotocart",
-					function(e) {
+			$("#interest-item-group").on("click", "#gotocart", function(e) {
 				put_cart++;
 				if (put_cart == Number(count) + 1) {
 					$("#cart-qty").text(put_cart);
@@ -138,9 +166,27 @@
 		});
 
 		/** 상품삭제 */
-		$("#interest-item-group").on("click",
-				"#delete-one",
-				function(e) {
+		$("#interest-item-group").on("click", "#delete-one", function(e) {
+			e.preventDefault();
+			
+			let current = $("#delete-one");   // 이벤트가 발생한 객체 자신 #delete-one
+			let heartno = current.data('heartno');
+			// 삭제 확인
+			if (!confirm("정말 이 상품을 관심상품에서 삭제하시겠습니까?")) {
+				 return false;
+			}
+			
+			// delete 메서드로 Ajax 요청하기 
+			$.delete("${pageContext.request.contextPath}/myInfo", {
+				"heartno" : heartno
+			}, function(json) {
+				if (json.rt == "OK") {
+					alert("삭제되었습니다.");
+					// 삭제완료 후 목록 페이지 이동
+					window.location = "${pageContext.request.contextPath}/myInfo/like_goods.do";
+				}
+			});
+			
 			$(this).parent().parent().remove();
 		});
 	</script>

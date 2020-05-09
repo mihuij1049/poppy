@@ -41,6 +41,7 @@
 	<!-- 관심상품(좋아요) 다중행 조회 -->
 	<select id="selectLikeList" parameterType="kr.co.poppy.model.GoodsForRv"
 		resultMap="GoodsForRvMap">
-		SELECT * from goods WHERE goodsno in (SELECT goodsno from heart WHERE memno=#{memno}) 
+		SELECT * from goods g inner join heart h on g.goodsno=h.goodsno 
+		WHERE g.goodsno in (SELECT h.goodsno from heart WHERE h.memno=#{memno}) 
 	</select>
 </mapper>

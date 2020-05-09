@@ -281,11 +281,6 @@ public class MyInfoController {
 		return new ModelAndView("myInfo/point");
 	}
 
-	@RequestMapping(value = "/myInfo/plist_nota.do", method = RequestMethod.GET)
-	public String plist_nota() {
-		return "myInfo/plist_nota";
-	}
-
 	@RequestMapping(value = "/myInfo/pointList.do", method = RequestMethod.GET)
 	public ModelAndView plist_used(Model model,
 					@RequestParam(value="pointList", defaultValue="1") int pointList,
