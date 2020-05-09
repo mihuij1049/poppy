@@ -1,6 +1,7 @@
 package kr.co.poppy.controllers;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -126,12 +127,8 @@ public class KRTController {
 
 	/** 주문 변경 처리 구현 */
 	@RequestMapping(value = "/myInfo/order_change.do", method = RequestMethod.GET)
-	public ModelAndView order_editk(Model model, @RequestParam(value = "orderno", defaultValue = "0") int orderno,
-			@RequestParam(value = "odmsg", required = false) String odmsg,
-			@RequestParam(value = "paytype", required = false) String paytype,
-			@RequestParam(value = "odstatus", required = false) String odstatus,
-			@RequestParam(value = "deliprice", defaultValue = "0") int deliprice,
-			@RequestParam(value = "memno", defaultValue = "0") int memno) {
+	public ModelAndView order_edit(Model model, @RequestParam(value = "orderno", defaultValue = "0") int orderno,
+			@RequestParam(value = "odstatus", required = false) String odstatus) {
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
 
@@ -145,7 +142,7 @@ public class KRTController {
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
 		Orders orders = new Orders();
 		orders.setOrderno(orderno);
-		
+
 		// 주문 조회 결과를 저장할 객체 선언
 		Orders output = null;
 
@@ -155,20 +152,19 @@ public class KRTController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
-		/** 3) 데이터 수정하기 */
-		// 데이터 수정에 필요한 조건값을 Beans에 저장하기
+		/** 2) 데이터 수정하기 */
+		// 데이터 수정에 필요한 조건값을 조회 결과에 저장하기
 		output.setOdstatus("4");
-		output.setOrderno(orderno);
-		
+
 		try {
 			orderService.editOrders(output);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
-		/** 4) 페이지 이동 */
-		model.addAttribute("myInfo", myInfo);
+		/** 3) 페이지 이동 */
 		model.addAttribute("output", output);
+		model.addAttribute("myInfo", myInfo);
 
 		return webHelper.redirect(contextPath + "/myInfo/order_list.do", "주문 취소 되었습니다.");
 	}
@@ -227,7 +223,6 @@ public class KRTController {
 		return new ModelAndView(viewPath);
 	}
 
-
 	/** photo_wri (포토리뷰 쓰기) */
 	/** 작성 폼 페이지 */
 	@RequestMapping(value = "/community/photo_wri.do", method = RequestMethod.GET)
@@ -236,10 +231,20 @@ public class KRTController {
 	}
 
 	/** 작성 폼에 대한 action 페이지 */
-	@RequestMapping(value = "/community/photo_wri_ok/do", method = RequestMethod.POST)
+	@RequestMapping(value = "/community/photo_wri_ok.do", method = RequestMethod.POST)
 	public ModelAndView photo_wri_ok(Model model, @RequestParam(value = "bbstitle", required = false) String bbstitle,
 			@RequestParam(value = "rvlike", required = false) String rvlike,
-			@RequestParam(value = "bbscontent", required = false) String bbscontent) {
+			@RequestParam(value = "bbscontent", required = false) String bbscontent,
+			@RequestParam(value="memno", defaultValue="0")int memno,
+			@RequestParam(value="memno", defaultValue="0")int goodsno) {
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+		
+		Calendar c = Calendar.getInstance();
+		String date = String.format("%04d-%02d-%02d %02d:%02d:%02d", c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1,
+				c.get(Calendar.DAY_OF_MONTH), c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE),
+				c.get(Calendar.SECOND));
+		
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
 		// 포토리뷰 제목은 필수 항목 이므로 입력 여부를 검사
 		if (bbstitle == null) {
@@ -249,9 +254,14 @@ public class KRTController {
 		/** 2) 데이터 저장하기 */
 		// 저장할 값들을 Beans에 담는다.
 		Bbs input = new Bbs();
+		input.setBbstype("C");
 		input.setBbstitle(bbstitle);
 		input.setBbscontent(bbscontent);
 		input.setRvlike(rvlike);
+		input.setRegdate(date);
+		input.setEditdate(date);
+		input.setMemno(myInfo.getMemno());
+		input.setGoodsno(1);
 
 		try {
 			// 데이터 저장
@@ -262,8 +272,10 @@ public class KRTController {
 
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
 		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야한다.
+		model.addAttribute("myInfo", myInfo);
+		
 		String redirectUrl = contextPath + "/community/photo_rv.do?bbsno=" + input.getBbsno();
-
+		
 		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 	}
 

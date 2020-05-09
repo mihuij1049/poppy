@@ -67,7 +67,7 @@
 									<div class="list-item">
 										<div class="word">
 											<input type="checkbox" name="cart_check"
-												class="cart cart-size"> <img src="{{url}}"
+												class="cart cart-size"> <img src="${item.imgpath}${item.imgname}.jpg"
 												class="cart-img" />
 
 											<p>
@@ -281,7 +281,20 @@
 					var length = $(".cart-box").length;
 					length = $(".cart-box").length;
 					$(".cart-count").html(length);
-
+					
+					for (var i = 0; i < length; i++) {
+						sum_price += parseInt($(".price").eq(i).html());
+					}
+					
+					for (var i = 0; i < length; i++) {
+						sum_price += parseInt($(".price").eq(i).html());
+					}
+					$("#table_price").html(sum_price);
+					if (sum_price >= 30000) {
+						table_delivery = 0;
+						$("#table_delivery").html(table_delivery);
+					}
+					
 					for (var i = 0; i < length; i++) {
 						table_price += parseInt($(".price").eq(i).html());
 						if (i == length - 1) {

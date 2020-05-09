@@ -45,12 +45,12 @@
 			<div class="backg">
 				<div class="container">
 					<p class="col-xs-1">상태</p>
-					<select class="form-control status">
+					<select class="form-control status" id="sel_odstatus">
 						<option>전체 주문처리상태</option>
-						<option>입금전</option>
-						<option>배송준비중</option>
-						<option>배송중</option>
-						<option>배송완료</option>
+						<option value="0">입금전</option>
+						<option value="1">배송준비중</option>
+						<option value="2">배송중</option>
+						<option value="3">배송완료</option>
 					</select>
 					<div class="period">
 						<p class="col-xs-1">기간</p>
@@ -121,37 +121,37 @@
 								</div>
 							</div>
 						</div>
-						<!-- Modal -->
-						<div class="modal fade" id="myModal2">
-							<div class="modal-dialog modal-sm">
-								<div class="modal-content">
-									<div class="cart-modal">
-										<div class="modal-header2">
-											<button type="button" class="close" data-dismiss="modal"
-												aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
-											<h4 class="modal-title">주문 취소</h4>
-										</div>
-										<div class="modal-body2">
-											<p>
-												<span class="delete_message"></span> 주문을 취소 하시겠습니까?
-											</p>
-										</div>
-										<div class="modal-footer2">
-											<button type="reset" class="btn btn2 change_cancel"
-												data-dismiss="modal">아니오</button>
-											<button type="submit" class="btn btn2 change_ok"
-												data-dismiss="modal"
-												onclick="location.href='${pageContext.request.contextPath}/myInfo/order_change.do?orderno=${item.orderno}'">예</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
+			<!-- Modal -->
+			<div class="modal fade" id="myModal2">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<div class="cart-modal">
+							<div class="modal-header2">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<h4 class="modal-title">주문 취소</h4>
+							</div>
+							<div class="modal-body2">
+								<p>
+									<span class="delete_message"></span> 주문을 취소 하시겠습니까?
+								</p>
+							</div>
+							<div class="modal-footer2">
+								<button type="reset" class="btn btn2 change_cancel"
+									data-dismiss="modal">아니오</button>
+								<button type="submit" class="btn btn2 change_ok"
+									data-dismiss="modal"
+									onclick="location.href='${pageContext.request.contextPath}/myInfo/order_change.do?orderno=${orderno}'">예</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class=" paging">
 				<ul class="pagination pagination-sm">
 					<li class="disabled"><a href="#">&laquo;</a></li>
@@ -165,12 +165,12 @@
 
 	<!-- Javascript -->
 	<%@ include file="../share/bottom_tp.jsp"%>
-	<!-- 플러그인 JS 참조 -->
+    <!-- 플러그인 JS 참조 -->
 	<script src="../share/plugins/datepicker/datepicker.min.js"></script>
 	<script src="../share/plugins/datepicker/datepicker.ko-KR.js"></script>
 	<!-- 사용자 정의 스크립트 -->
 	<script type="text/javascript">
-		function set_term(days) {
+	function set_term(days) {
 			days = days * 24 * 60 * 60 * 1000;
 
 			var date = new Date();

@@ -15,7 +15,7 @@
 <title>Poppy-Poppy</title>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/share/photo_wri.css" />
+	href="${pageContext.request.contextPath}/share/photo_wri.css?ver=1" />
 <!-- 플러그인 CSS 참조 -->
 <link rel="stylesheet"
 	href="../share/plugins/sweetalert/sweetalert2.min.css" />
@@ -107,7 +107,8 @@
 						type="radio" name="rvlike"> <label>★</label>
 				</div>
 				<div class="write">
-					<textarea name="content" class="ckeditor"></textarea>
+					<textarea name="bbscontent" class="rv_area"
+								placeholder="내용을 입력하세요." maxlength="1800"></textarea>
 				</div>
 				<div class="file">
 					<div>
@@ -179,7 +180,6 @@
 		{{/each}}
 	</script>
 	<!-- 플러그인 JS 참조 -->
-	<script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 	<script src="../share/plugins/validate/jquery.validate.min.js"></script>
 	<script src="../share/plugins/validate/additional-methods.min.js"></script>
 	<script src="../share/plugins/sweetalert/sweetalert2.min.js"></script>

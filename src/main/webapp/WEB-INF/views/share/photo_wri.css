@@ -81,23 +81,10 @@ input {
 	height: 100px;
 }
 
-.UCC {
-	border: 1px solid #ffc7c1;
-	border-top: none;
-	padding: 16px 14px;
-}
-
-.UCC p {
-	font-size: 13px;
-}
-
-.UCC div {
-	display: inline-block;
-	width: 18%;
-}
-
-.url {
-	width: 80%;
+.rv_area {
+	width: 100%;
+	min-height: 180px;
+	resize: none;
 }
 
 .file {
