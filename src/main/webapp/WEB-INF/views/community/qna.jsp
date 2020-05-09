@@ -24,9 +24,16 @@
 				</b>
 			</h4>
 		</div>
+		<!-- 로그인 시에만 글쓰기 버튼 보이게 하기 -->
+		
 		<div class="notice">
 			<table class="table">
 				<tbody>
+				<c:if test="${!empty userInfo.userid }">
+			<button type="button"
+				onclick="location.href='${pageContext.request.contextPath}/community/qna_wri.do'"
+				class="btn btn-sm btn-list">글쓰기</button>
+		</c:if>
 					<c:choose>
 						<%-- 조회결과가 없는 경우 --%>
 						<c:when test="${output == null || fn:length(output) == 0}">
@@ -63,9 +70,13 @@
 									<c:param name="bbstype" value="${item.bbstype}" />
 									<c:param name="bbsno" value="${item.bbsno}" />
 								</c:url>
+								
 								<tr>
-									<td class="subject"><strong> <span
-											class="glyphicon glyphicon-lock"></span> <a href="${viewUrl}"
+									<td class="subject" id="subject"><strong> 
+									<c:if test="${!empty item.qnapw}">
+									<span class="glyphicon glyphicon-lock"></span> 
+									</c:if>
+									<a href="${viewUrl}"
 											class="subject">${bbstitle}</a> <span class="comment">[댓글수]</span>
 									</strong><br /> <span class="name" title="작성자">${item.username}</span>
 										<span class="date" title="작성일">${item.regdate}</span></td>
@@ -134,12 +145,7 @@
 			</div>
 
 		</div>
-		<!-- 로그인 시에만 글쓰기 버튼 보이게 하기 -->
-		<c:if test="${!empty userInfo.userid }">
-			<button type="button"
-				onclick="location.href='${pageContext.request.contextPath}/community/qna_wri.do'"
-				class="btn btn-sm list">글쓰기</button>
-		</c:if>
+		
 
 		<div class="searchmenu">
 			<form method="post"
@@ -148,7 +154,6 @@
 					<option value="bbstitle">제목</option>
 					<option value="bbscontent">내용</option>
 					<option value="username">이름</option>
-					<option value="userid">아이디</option>
 				</select>  <input type="search" name="keyword"
 					id="keyword" class="keyword" value="${keyword}" />
 				<button type="submit"
@@ -156,8 +161,6 @@
 			</form>
 		</div>
 		<div class="row">
-
-
 			<!--   비밀번호 입력 모달 ------------------------->
 			<div class="customer_pass" id="customer_pass">
 				<b class="plz_pass">비밀번호를 입력해 주세요.</b><br> <label for="cs_pass"

@@ -14,6 +14,7 @@
 
 .table .subject {
 	vertical-align: middle;
+	padding-left:15px;
 }
 
 .table .td .subject {
@@ -28,6 +29,12 @@
 	padding-bottom: 15px;
 	margin: auto;
 	text-align: center;
+}
+
+/** 글쓰기 버튼 */
+.btn-list {
+	float: right;
+	margin-rignt:15px;
 }
 
 /** 비밀번호 입력 모달 */
@@ -108,6 +115,9 @@
 	color: #ff6261;
 	text-decoration: none;
 }
+.prevok:hover {
+	text-decoration:none;
+}
 
 .prevno {
 	border: 1px solid #ffc7c1;
@@ -123,6 +133,9 @@
 	text-decoration: none;
 }
 
+.nextof:hover {
+	text-decoration: none;
+}
 .nextno {
 	border: 1px solid #ffc7c1;
 	padding: 6px 10px;

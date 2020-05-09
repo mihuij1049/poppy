@@ -35,25 +35,32 @@
 			</div>
 			<div class="comment">
 				<c:choose>
+
 					<c:when test="${output.bbstype=='공지사항'}">
 						<button type="button"
 							onclick="location.href='${pageContext.request.contextPath}/community/notice.do'"
 							class="btn btn-inverse btn-sm list">목록</button>
 					</c:when>
+
 					<c:otherwise>
-						<button type="button"
-							onclick="location.href='${pageContext.request.contextPath}/community/qna.do'"
-							class="btn btn-inverse btn-sm list">목록</button>
-						<c:if test="${userInfo.username==output.username}">
-							<a
-								href="${pageContext.request.contextPath}/community/qna_edit.do?bbsno=${output.bbsno}">
-								<button type="submit" class="btn btn-inverse btn-sm btn-del">수정</button>
-							</a>
-							<a
-								href="${pageContext.request.contextPath}/community/deleteqna.do?bbsno=${output.bbsno}">
-								<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
-							</a>
-						</c:if>
+						<div class="eddlbuttons clearfix">
+							<button type="button"
+								onclick="location.href='${pageContext.request.contextPath}/community/qna.do'"
+								class="btn btn-inverse btn-sm list">목록</button>
+							<!-- 글쓴이가 로그인중인 사용자라면 수정/삭제 버튼이 보인다 -->
+							<c:if test="${userInfo.username==output.username}">
+								<a
+									href="${pageContext.request.contextPath}/community/deleteqna.do?bbsno=${output.bbsno}">
+									<button type="submit" class="btn btn-inverse btn-sm btn-del">삭제</button>
+								</a>
+								<a
+									href="${pageContext.request.contextPath}/community/qna_edit.do?bbsno=${output.bbsno}">
+									<button type="submit" class="btn btn-sm btn-del">수정</button>
+								</a>
+
+
+							</c:if>
+						</div>
 					</c:otherwise>
 
 				</c:choose>

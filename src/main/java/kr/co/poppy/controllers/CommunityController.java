@@ -46,8 +46,7 @@ public class CommunityController {
 
 	/** article */
 	@RequestMapping(value = "/community/article.do", method = RequestMethod.GET)
-	public ModelAndView view(Model model, 
-			@RequestParam(value = "bbstype", required = false) String bbstype,
+	public ModelAndView view(Model model, @RequestParam(value = "bbstype", required = false) String bbstype,
 			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
 		/** 1) 유효성 검사 */
 		if (bbsno == 0) {
@@ -105,8 +104,7 @@ public class CommunityController {
 
 	/** qna 작성 */
 	@RequestMapping(value = "/community/qna_wri_ok.do", method = RequestMethod.POST)
-	public ModelAndView add_qna(Model model, 
-			@RequestParam(value = "bbstype", required = false) String bbstype,
+	public ModelAndView add_qna(Model model, @RequestParam(value = "bbstype", required = false) String bbstype,
 			@RequestParam(value = "bbstitle", required = false) String bbstitle,
 			@RequestParam(value = "bbscontent", required = false) String bbscontent,
 			@RequestParam(value = "qnasec", required = false) String qnasec,
@@ -129,7 +127,7 @@ public class CommunityController {
 		Comments myCmt = new Comments();
 		myCmt.setMemno(myInfo.getMemno());
 		myCmt.setUsername(myInfo.getUsername());
-		
+
 		/** 2) 데이터 저장하기 */
 		Bbs input = new Bbs();
 		input.setBbstype("B");
@@ -150,7 +148,8 @@ public class CommunityController {
 		}
 
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
-		String redirectUrl = contextPath + "/community/article.do?bbsno=" + input.getBbsno()+"&bbstype="+input.getBbstype();
+		String redirectUrl = contextPath + "/community/article.do?bbsno=" + input.getBbsno() + "&bbstype="
+				+ input.getBbstype();
 		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 	}
 
@@ -182,12 +181,10 @@ public class CommunityController {
 	}
 
 	/** notice */
-	@RequestMapping(value = "/community/notice.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/community/notice.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView list(Model model,
-			// 검색어
-			@RequestParam(value = "keyword", required = false) String keyword,
 			// 페이지 구현에서 사용할 현재 페이지 번호
-			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+						@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
 		int totalCount = 0; // 전체 게시글 수
@@ -204,18 +201,14 @@ public class CommunityController {
 		PageData pageData = null;
 
 		try {
-
 			// 전체 게시글 수 조회
 			totalCount = bbsService.getBbsCount(input);
-
 			// 페이지 번호 계산 --> 계산결과가 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
-
 			// SQL의 limit절에서 사용될 값을 Beans의 static 변수에 저장
 			Bbs.setOffset(pageData.getOffset());
 			Bbs.setListCount(pageData.getListCount());
-
-			// 데이터 조회하기 --> 검색조건 없이 모든 학과 조회
+			// 데이터 조회하기 --> 모든 공지사항 게시글 조회
 			output = bbsService.getBbsList(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
@@ -267,7 +260,7 @@ public class CommunityController {
 	}
 
 	/** qna */
-	@RequestMapping(value = "/community/qna.do", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/community/qna.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView listqna(Model model,
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
@@ -294,7 +287,7 @@ public class CommunityController {
 			// SQL의 limit절에서 사용될 값을 Beans의 static 변수에 저장
 			Bbs.setOffset(pageData.getOffset());
 			Bbs.setListCount(pageData.getListCount());
-			// 데이터 조회하기 --> 검색조건 없이 모든 학과 조회
+			// 데이터 조회하기 --> 검색조건 없이 모든 QnA데이터 조회
 			output = bbsService.getBbsList(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
@@ -307,7 +300,7 @@ public class CommunityController {
 	}
 
 	/** QnA 검색 기능 구현 */
-	@RequestMapping(value = "/community/qnasearch.do", method = {RequestMethod.GET, RequestMethod.POST} )
+	@RequestMapping(value = "/community/qnasearch.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView qnaSearch(Model model,
 			// 검색어
 			@RequestParam(value = "searchType", required = false) String searchType,
@@ -329,11 +322,9 @@ public class CommunityController {
 			input.setBbscontent(keyword);
 		}
 		if (searchType.equals("username")) {
-			input.setUserid(keyword);
-		}
-		if (searchType.equals("userid")) {
 			input.setUsername(keyword);
 		}
+
 		/** 3) 페이지 구현에 필요한 변수값 생성 */
 		int totalCount = 0;
 		int listCount = 5;
@@ -367,10 +358,7 @@ public class CommunityController {
 	@RequestMapping(value = "/community/noticesearch.do", method = RequestMethod.GET)
 	public ModelAndView noticeSearch(Model model,
 			// 검색어
-			@RequestParam(value = "bbstitle", required = false) String bbstitle,
-			@RequestParam(value = "bbscontent", required = false) String bbscontent,
-			@RequestParam(value = "username", required = false) String username,
-			@RequestParam(value = "userid", required = false) String userid,
+			@RequestParam(value = "searchType", required = false) String searchType,
 			@RequestParam(value = "keyword", required = false) String keyword,
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
@@ -381,19 +369,17 @@ public class CommunityController {
 
 		/** 2) 어떤 범주로 검색할지 받은 파라미터 검사 */
 		Bbs input = new Bbs();
-		input.setBbstype("A");
-		if (bbstitle != null) {
+		input.setBbstype("B");
+		if (searchType.equals("bbstitle")) {
 			input.setBbstitle(keyword);
 		}
-		if (bbscontent != null) {
+		if (searchType.equals("bbscontent")) {
 			input.setBbscontent(keyword);
 		}
-		if (userid != null) {
-			input.setUserid(keyword);
-		}
-		if (username != null) {
+		if (searchType.equals("username")) {
 			input.setUsername(keyword);
 		}
+
 		/** 3) 페이지 구현에 필요한 변수값 생성 */
 		int totalCount = 0;
 		int listCount = 5;

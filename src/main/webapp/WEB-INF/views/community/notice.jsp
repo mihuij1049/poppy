@@ -134,21 +134,19 @@
 				</c:choose>
 			</div>
 		</div>
-		<div class="row">
-			<div class="searchmenu">
-				<form method="get"
-					action="${pageContext.request.contextPath}/community/notice.do">
-					<select id="array2" class="selectmenu">
-						<option value="bbstitle">제목</option>
-						<option value="bbscontent">내용</option>
-						<option value="username">이름</option>
-						<option value="userid">아이디</option>
-					</select> <label for="keyword"></label> <input type="search" name="keyword"
-						id="keyword" class="keyword" value="${keyword}">
-					<button type="submit" class="btn btn-sm btn-search">검색</button>
-				</form>
-			</div>
-	</div>
+		<div class="searchmenu">
+			<form method="post"
+				action="${pageContext.request.contextPath}/community/noticesearch.do">
+				<select id="array2" name="searchType" class="selectmenu">
+					<option value="bbstitle">제목</option>
+					<option value="bbscontent">내용</option>
+					<option value="username">이름</option>
+				</select>  <input type="search" name="keyword"
+					id="keyword" class="keyword" value="${keyword}" />
+				<button type="submit"
+					class="btn btn-sm btn-search">검색</button>
+			</form>
+		</div>
 	</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
 </body>

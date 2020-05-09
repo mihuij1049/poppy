@@ -160,9 +160,10 @@
 }
 
 /** 글 수정삭제 버튼 */
-.btn-edit, .btn-del {
+.btn-del {
 	float: right;
-	margin-rignt: 10px;
+	margin-bottom:10px;
+	mrgin-right:10px;
 }
 
 .cannot {
