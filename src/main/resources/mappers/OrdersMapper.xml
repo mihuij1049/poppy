@@ -20,6 +20,10 @@
 		<result property="odgprice" column="odgprice" />
 		<result property="odgqty" column="odgqty" />
 		<result property="odgdoption" column="odgdoption" />
+		<result property="imgname" column="imgname" />
+		<result property="imgext" column="imgext" />
+		<result property="imgpath" column="imgpath" />
+		<result property="imgtype" column="imgtype" />
 	</resultMap>
 
 	<!-- 단일행 조회를 위한 기능 정의 -->
@@ -33,9 +37,12 @@
 		parameterType="kr.co.poppy.model.Orders" resultMap="ordersMap">
 		SELECT o.orderno, o.odstatus,
 		o.regdate, od.odgcode, od.odgname, od.odgprice, od.odgqty,
-		od.odgdoption
+		od.odgdoption, i.imgname, i.imgext, i.imgpath, i.imgtype
 		FROM orders o INNER JOIN orderdetail od ON o.orderno = od.orderno
-		WHERE o.memno=#{memno} AND o.odstatus IN ("0", "1", "2", "3");
+        INNER JOIN cart c ON o.memno = c.memno
+        INNER JOIN goodsdetail gd ON c.gddetailno = gd.gddetailno
+        INNER JOIN imgs i ON gd.goodsno = i.goodsno
+		WHERE o.memno=#{memno} AND o.odstatus IN ("0", "1", "2", "3") AND i.imgtype="A" AND i.goodsno=#{goodsno};
 	</select>
 	
 	<!-- 취소/교환/반품내역 다중행 조회를 위한 기능 정의 -->

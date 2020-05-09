@@ -28,17 +28,15 @@
 	<!-- 다중행 조회를 위한 기능 정의 -->
 	<select id="selectList" parameterType="kr.co.poppy.model.Cart"
 		resultMap="cartMap">
-		SELECT i.imgname, i.imgext, i.imgpath, i.imgtype,
-		g.gname,
-		o.deliprice, g.gprice, c.cartqty
+		SELECT c.cartno, i.imgname, i.imgext, i.imgpath, i.imgtype,
+		g.gname, o.deliprice, g.gprice, c.cartqty
 		FROM goods g
-		INNER JOIN imgs i ON
-		g.goodsno=i.goodsno
+		INNER JOIN imgs i ON g.goodsno=i.goodsno
 		INNER JOIN goodsdetail gd ON g.goodsno = gd.goodsno
 		INNER JOIN cart c ON gd.gddetailno = c.gddetailno
-		INNER JOIN orders o
-		ON o.memno = c.memno
-		WHERE c.memno=#{memno}
+		INNER JOIN members m ON c.memno = m.memno
+        INNER JOIN orders o ON m.memno = o.orderno
+		WHERE c.memno=#{memno} AND i.imgtype="A";
 	</select>
 
 	<!-- 데이터 저장을 위한 기능 정의 -->
