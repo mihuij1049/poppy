@@ -28,11 +28,11 @@
 		</div>
 			<div class="container_1">
 				<div>
-					<form action="${pageContext.request.contextPath}/gallery/gal_list_cate.do">
+					<form action="${pageContext.request.contextPath}/gallery/gal_list_cate.do?cate1='푸드'">
 						<div class="search_tab_bg">
-							<select name="cate1" class="cate_select" onchange="this.form.submit()" >
+							<select name="searchCondition" class="cate_select" onchange="this.form.submit()" >
 								<c:forEach var="item" items="${output}" varStatus="status" end="0">
-								<option value="NONE">정렬방식</a></option>
+								<option value="NONE">정렬방식</option>
 								<option value="A">신상품</option>
 								<option value="B">상품명</option>
 								<option value="C">낮은가격</option>

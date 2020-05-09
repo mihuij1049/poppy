@@ -34,6 +34,30 @@ public class GalleryController {
 	@Autowired GoodsdetailService goodsdetailService;
 	
 	/** 갤러리 목록 페이지 */
+	@RequestMapping(value="/gallery/gal_list_all.do", method=RequestMethod.GET)
+	public ModelAndView gallistall(Model model) {
+		// 2) 데이터 조회
+		// 굿즈데이터조회
+		Goods input = new Goods();
+		
+		// 데이터저장할곳
+		List<Goods> output = null;
+		
+		try {
+			// 데이터조회
+			output = goodsService.getGoodsList2(input);
+			
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		// 3) 뷰처리
+		model.addAttribute("output", output);
+	
+		return new ModelAndView("gallery/gal_list");
+	}
+	
+	/** 갤러리 목록 페이지 */
 	@RequestMapping(value="/gallery/gal_list.do", method=RequestMethod.GET)
 	public ModelAndView gallist(Model model,
 			@RequestParam(value="cate1", required=false) String cate1) {
@@ -59,7 +83,7 @@ public class GalleryController {
 		return new ModelAndView("gallery/gal_list");
 	}
 	
-	@RequestMapping(value="/gallery/gal_list_cate.do?cate1=${cate1}", method=RequestMethod.GET)
+	@RequestMapping(value="/gallery/gal_list_cate.do", method=RequestMethod.GET)
 	public ModelAndView gallistcate(Model model,
 			@RequestParam(value="cate1", required=false) String cate1,
 			@RequestParam("searchCondition") String searchCondition) {
@@ -67,6 +91,7 @@ public class GalleryController {
 		// 굿즈데이터조회
 		Goods input = new Goods();
 		input.setCate1(cate1);
+		input.setSearchCondition(searchCondition);
 		
 		// 데이터저장할곳
 		List<Goods> output1 = null;		

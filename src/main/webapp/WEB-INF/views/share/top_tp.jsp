@@ -14,10 +14,10 @@
 		</a>
 		<hr>
 		<ul class="category">
-			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1='BEST'">
+			<a href="${pageContext.request.contextPath }/gallery/gal_list_all.do">
 				<li>BEST</li>
 			</a>
-			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1='NEW'">
+			<a href="${pageContext.request.contextPath }/gallery/gal_list_all.do">
 				<li>NEW</li>
 			</a>
 			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1='푸드'">
@@ -35,10 +35,10 @@
 			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1='대형견'">
 				<li>대형견</li>
 			</a>
-			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1='타임세일'">
+			<a href="${pageContext.request.contextPath }/gallery/gal_list_all.do">
 				<li>타임세일</li>
 			</a>
-			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1='유통임박'">
+			<a href="${pageContext.request.contextPath }/gallery/gal_list_all.do">
 				<li>유통임박</li>
 			</a>
 		</ul>
