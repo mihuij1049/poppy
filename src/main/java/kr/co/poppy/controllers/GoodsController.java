@@ -55,8 +55,6 @@ public class GoodsController {
 	@RequestMapping(value = "/gallery/goods.do", method = RequestMethod.GET)
 	public ModelAndView goods(Model model, @RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
-		
-		int goodsno = webHelper.getInt("goodsno");
 
 		/** 유효성 검사 */
 		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
@@ -84,14 +82,17 @@ public class GoodsController {
 		Bbs input3 = new Bbs();
 		input3.setGoodsno(goodsno);
 		input3.setMemno(myInfo.getMemno());
+		input3.setBbstype("C");
+		
 
 		Bbs qna = new Bbs();
 		qna.setBbstype("B");
+		qna.setGoodsno(goodsno);
 
 		// 조회결과를 저장할 객체 선언
-		Goods output = null;
-		int output2 = 0;
-		List<Bbs> output3 = null;
+		Goods goods = null;
+		int heart = 0;
+		List<Bbs> ptrv = null;
 		List<Bbs> qoutput = null;
 		PageData pageData = null;
 
@@ -105,9 +106,9 @@ public class GoodsController {
 			Bbs.setListCount(pageData.getListCount());
 			
 			// 데이터 조회
-			output = goodsService.getGoodsItem(input);
-			output2 = heartService.getHeartCount(input2);
-			output3 = bbsService.getBbsList_goods(input3);
+			goods = goodsService.getGoodsItem(input);
+			heart = heartService.getHeartCount(input2);
+			ptrv = bbsService.getBbsList(input3);
 			qoutput = bbsService.getBbsList(qna);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
@@ -116,9 +117,9 @@ public class GoodsController {
 		mySession.setAttribute("userInfo", myInfo);
 
 		// 3) 뷰처리
-		model.addAttribute("output", output);
-		model.addAttribute("output2", output2);
-		model.addAttribute("output3", output3);
+		model.addAttribute("goods", goods);
+		model.addAttribute("heart", heart);
+		model.addAttribute("ptrv", ptrv);
 		model.addAttribute("qoutput", qoutput);
 		model.addAttribute("pageData", pageData);
 		return new ModelAndView("gallery/goods");

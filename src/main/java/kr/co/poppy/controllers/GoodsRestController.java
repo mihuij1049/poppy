@@ -52,11 +52,9 @@ public class GoodsRestController {
 	/** 갤러리 상세 페이지 */
 	@RequestMapping(value = "/gallery/{goodsno}", method = RequestMethod.GET)
 	public Map<String, Object> goods(Model model, 
-			@PathVariable(value = "goodsno") int goodsno,
+			@PathVariable("goodsno") int goodsno,
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 		
-		// int goodsno = webHelper.getInt("goodsno");
-
 		/** 유효성 검사 */
 		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
 		if (goodsno == 0) {
@@ -83,14 +81,16 @@ public class GoodsRestController {
 		Bbs input3 = new Bbs();
 		input3.setGoodsno(goodsno);
 		input3.setMemno(myInfo.getMemno());
+		input3.setBbstype("C");
 
 		Bbs qna = new Bbs();
+		qna.setGoodsno(goodsno);
 		qna.setBbstype("B");
 
 		// 조회결과를 저장할 객체 선언
-		Goods output = null;
-		int output2 = 0;
-		List<Bbs> output3 = null;
+		Goods goods = null;
+		int heart = 0;
+		List<Bbs> ptrv = null;
 		List<Bbs> qoutput = null;
 		PageData pageData = null;
 
@@ -104,9 +104,9 @@ public class GoodsRestController {
 			Bbs.setListCount(pageData.getListCount());
 
 			// 데이터 조회
-			output = goodsService.getGoodsItem(input);
-			output2 = heartService.getHeartCount(input2);
-			output3 = bbsService.getBbsList_goods(input3);
+			goods = goodsService.getGoodsItem(input);
+			heart = heartService.getHeartCount(input2);
+			ptrv = bbsService.getBbsList(input3);
 			qoutput = bbsService.getBbsList(qna);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
@@ -116,9 +116,9 @@ public class GoodsRestController {
 
 		// 3) 뷰처리
 		Map<String, Object> data = new HashMap<String, Object>();
-		data.put("output", output);
-		data.put("output2", output2);
-		data.put("item", output3);
+		data.put("goods", goods);
+		data.put("heart", heart);
+		data.put("item", ptrv);
 		data.put("item2", qoutput);
 		data.put("meta", pageData);
 		return webHelper.getJsonData(data);
