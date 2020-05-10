@@ -48,7 +48,8 @@ public class CommunityController {
 	@RequestMapping(value = "/community/article.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView view(Model model, 
 			@RequestParam(value = "bbstype", required = false) String bbstype,
-			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
+			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno,
+	@RequestParam(value = "cmtno", defaultValue = "0") int cmtno){
 		/** 1) 유효성 검사 */
 		if (bbsno == 0) {
 			return webHelper.redirect(null, "게시글 번호가 없습니다.");
@@ -189,14 +190,13 @@ public class CommunityController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		/** 3) view 처리 */
-		model.addAttribute("output", output);
+		model.addAttribute("item", output);
 		return new ModelAndView("community/qna_edit");
 	}
 
 	/** Q&A 수정폼에 대한 action페이지 */
 	@RequestMapping(value = "/community/qna_edit_ok.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView add_qna(Model model, 
-			@RequestParam(value = "memno", required = false) Integer memno,
+	public ModelAndView add_qna(Model model, @RequestParam(value = "memno", required = false) Integer memno,
 			@RequestParam(value = "bbsno", required = false) int bbsno,
 			@RequestParam(value = "bbstype", required = false) String bbstype,
 			@RequestParam(value = "bbstitle", required = false) String bbstitle,

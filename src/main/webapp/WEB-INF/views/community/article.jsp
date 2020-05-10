@@ -127,8 +127,10 @@
 			</div>
 			<c:choose>
 				<c:when test="${!empty userInfo.username }">
-					<form class="article-comment" method="post"
-						action="${pageContext.request.contextPath}/community/article.do">
+					<form class="article-comment" id="addForm" 
+						action="${pageContext.request.contextPath}/community/article">
+						<input type="hidden" value="${output.memno}" name="memno" />
+						<input type="hidden" value="${output.bbsno}" name="bbsno" />
 						<div class="comment-write">
 							<div class="info-name">이름: ${myCmt.username}</div>
 						</div>
@@ -178,8 +180,7 @@
                 
                 // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
                 if (json.rt == "OK") {
-                    window.location = "${pageContext.request.contextPath}cummunity/article.do?cmtno=" + json.item.cmtno + 
-    				+ json.getBbsno;
+                	window.location = "${pageContext.request.contextPath}/community/article.do?=bbsno" + json.item.bbsno; 
                 }
             }
         });
