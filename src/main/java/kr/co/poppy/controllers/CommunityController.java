@@ -296,7 +296,6 @@ public class CommunityController {
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(겁색어)를 Beans에 담는다.
 		Bbs input = new Bbs();
-		input.setBbstype("C");
 
 		// 조회 결과가 저장될 객체
 		List<Bbs> output = null;
@@ -311,7 +310,7 @@ public class CommunityController {
 			Bbs.setOffset(pageData.getOffset());
 			Bbs.setListCount(pageData.getListCount());
 			// 데이터 조회하기 -->
-			output = bbsService.getBbsList_goods(input);
+			output = bbsService.getBbsList_myrv(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
@@ -492,5 +491,5 @@ public class CommunityController {
 		/** 3) 페이지 이동 */
 		return webHelper.redirect(contextPath + "/community/qna.do", "게시글이 삭제되었습니다.");
 	}
-
+	
 }

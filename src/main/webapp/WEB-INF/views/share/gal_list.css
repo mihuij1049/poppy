@@ -1,5 +1,5 @@
 @charset "UTF-8";
-<style type="text/css">
+
 .container_1 {
 	margin-bottom: 50px
 }
@@ -88,39 +88,15 @@
 	border-color: #FF8F83;
 }
 
-/** 이건 그겁니다. 하트 버튼이요! 누르면 숫자가 올라가는 그거. */
+/** 하트버튼 시작 */
 
-.pr_in_box #pay {
-	display: inline-block;
-	float: right;
+.pr_in_box button {
+	float: left;
+	padding: 0px 10px;
+	border: 0px;
 }
 
-.pr_in_box #pay i {
-	margin: 0px 2px 0px 0px;
-}
-
-.pr_in_box #pay p {
-	display: inline-block;
-	float: right;
-	margin: 1px 0px 0px 2px;
-}
-
-.container .glyphicon-heart {
-	height: 8px;
-	font-size: 20px;
-	color: #ff8f83;
-	margin-right: 10px;
-	z-index: 10000;
-}
-
-.container .glyphicon-heart-empty {
-	height: 8px;
-	font-size: 20px;
-	color: #ff8f83;
-	margin-right: 10px;
-}
-
-/** 하트버튼 끝입니다! */
+/** 하트버튼 끝 */
 
 .container a {
 	color: #777;

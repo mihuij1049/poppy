@@ -34,6 +34,16 @@ public class Bbs {
 	private String userid;
 	// 상품 이름
 	private String gname;
+	// 이미지 일련번호
+	private int imgsno;
+	// 이미지 이름
+	private String imgname;
+	// 이미지 경로
+	private String imgpath;
+	// 이미지 종류
+	private String imgtype;
+	// 이미지 확장자
+	private String imgext;
 	
 	/** 게시판 목록에 댓글 갯수를 위한 변수 */
 	private int cmtCount;

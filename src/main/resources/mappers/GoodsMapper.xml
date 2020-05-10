@@ -45,8 +45,8 @@
 	<!-- 다중행 조회(갤리스트)를 위한 기능 정의 -->
 	<select id="selectList" parameterType="kr.co.poppy.model.Goods"
 		resultMap="goodsMap">
-		SELECT i.imgname, i.imgpath, imgext,
-		g.gname, g.gcode,
+		SELECT i.imgname, i.imgpath, imgext, 
+		g.goodsno, g.gcode,
 		g.gname, g.ginfo, g.gprice, g.gsale, g.gdate, g.cate1, g.cate2
 		from goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
@@ -57,7 +57,7 @@
 	<select id="selectList2" parameterType="kr.co.poppy.model.Goods"
 		resultMap="goodsMap">
 		SELECT i.imgname, i.imgpath, imgext,
-		g.gname, g.gcode,
+		g.goodsno, g.gcode,
 		g.gname, g.ginfo, g.gprice, g.gsale, g.gdate, g.cate1, g.cate2
 		from goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
@@ -68,7 +68,7 @@
 	<select id="selectListCate1" parameterType="kr.co.poppy.model.Goods"
 		resultMap="goodsMap">
 		SELECT i.imgname, i.imgpath, imgext,
-		g.gname, g.gcode,
+		g.goodsno, g.gcode,
 		g.gname, g.ginfo, g.gprice, g.gsale, g.gdate, g.cate1, g.cate2, g.regdate, g.editdate
 		from goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
@@ -80,7 +80,7 @@
 	<select id="selectListCate2" parameterType="kr.co.poppy.model.Goods"
 		resultMap="goodsMap">
 		SELECT i.imgname, i.imgpath, imgext,
-		g.gname, g.gcode,
+		g.goodsno, g.gcode,
 		g.gname, g.ginfo, g.gprice, g.gsale, g.gdate, g.cate1, g.cate2
 		from goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
@@ -92,7 +92,7 @@
 	<select id="selectListCate3" parameterType="kr.co.poppy.model.Goods"
 		resultMap="goodsMap">
 		SELECT i.imgname, i.imgpath, imgext,
-		g.gname, g.gcode,
+		g.goodsno, g.gcode,
 		g.gname, g.ginfo, g.gprice, g.gsale, g.gdate, g.cate1, g.cate2
 		from goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
@@ -104,7 +104,7 @@
 	<select id="selectListCate4" parameterType="kr.co.poppy.model.Goods"
 		resultMap="goodsMap">
 		SELECT i.imgname, i.imgpath, imgext,
-		g.gname, g.gcode,
+		g.goodsno, g.gcode,
 		g.gname, g.ginfo, g.gprice, g.gsale, g.gdate, g.cate1, g.cate2
 		from goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno

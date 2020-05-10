@@ -11,8 +11,12 @@
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/share/index.css" />
-<style type="text/css">
-
+<style>
+.gal_best_main #delete-one {
+	padding: 0px 10px;
+	margin-left : 15px;
+	border: 0px;
+}
 </style>
 </head>
 
@@ -136,7 +140,8 @@
 						<span class="sal_name">${item.gname}</span>
 						</a>
 						<hr />
-						${item.gprice}<i class="glyphicon glyphicon-heart-empty icon_size1" id="glyp_gal"></i>
+						${item.gprice}<button type="button" class="btn btn-inverse delete-one"
+									id="delete-one" data-heartno="${item.heartno}">♥</button>
 					</div>
 				</c:forEach>
 			<!-- jstl 반복문 끝 -->

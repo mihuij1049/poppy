@@ -33,8 +33,6 @@
 									<i class="glyphicon glyphicon-th-list icon_size"></i> 카테고리선택
 								</div>
 								<select name="category" class="cate_select">
-									<option value="">best</option>
-									<option value="">new</option>
 									<option value="">푸드</option>
 									<option value="">의류</option>
 									<option value="">외출용품</option>
@@ -55,16 +53,17 @@
 				</div>
 				<div>
 					<!-- 게시물 하나 시작 -->
+					<c:forEach var="item" items="${output}" varStatus="status">
 					<div width="50%">
 						<div class="pr_box">
 							<div class="pr_in_box">
-								<a href="${pageContext.request.contextPath}/community/photo.do"> <img alt="사진"
-									src="/upload/img/img1.jpg" class="img_size" />
+								<a href="${pageContext.request.contextPath}/community/photo_rv.do"> <img alt="사진"
+									src="${item.imgpath}${item.imgname}.${item.imgext}" class="img_size" />
 									<div>
 										<h5>
 											<b>${item.bbstitle}</b>
 										</h5>
-										아이디<br>
+										${item.userid}<br>
 										<hr />
 										<div class="pr_content">${item.bbscontent}</div>
 									</div>
@@ -74,7 +73,8 @@
 								</button>
 							</div>
 						</div>
-					</div>
+					</div>			
+					</c:forEach>
 					<!-- 게시물 하나 끝 -->
 				</div>
 				<div class="text-center">

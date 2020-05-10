@@ -69,7 +69,7 @@
 						<div class="community_md_content">
 							<a href="${pageContext.request.contextPath }/community/notice.do"><div class="cmu_menu">공지사항</div></a>
 							<hr />
-							<a href="${pageContext.request.contextPath }/community/photo_rv.do"><div class="cmu_menu">포토리뷰</div></a>
+							<a href="${pageContext.request.contextPath}/community/photo_rv.do"><div class="cmu_menu">포토리뷰</div></a>
 							<hr />
 							<a href="${pageContext.request.contextPath }/community/qna.do"><div class="cmu_menu">Q
 									& A</div></a>

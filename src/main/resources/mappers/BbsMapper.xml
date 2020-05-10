@@ -77,12 +77,13 @@
 	<!-- 후기관리 글 목록 페이지 -->
 	<select id="selectList_myrv" parameterType="kr.co.poppy.model.Bbs"
 		resultMap="bbsMap">
-		SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.qnasec, b.qnapw, b.rvlike,
-		b.regdate, b.editdate, b.memno, b.goodsno, m.username, m.userid, g.gname
+		SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno, b.goodsno,
+		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype, i.goodsno,
+		m.memno, m.userid
 		FROM bbs b
-		INNER JOIN members m ON b.memno=m.memno
-		INNER JOIN goods g ON b.goodsno=g.goodsno
-		WHERE b.bbstype = "C" AND b.memno = #{memno};
+		INNER JOIN imgs i
+		INNER JOIN members m
+		WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C";
 	</select>
 	
 	<!-- 데이터 수 조회를 위한 기능 정의 -->

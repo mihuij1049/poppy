@@ -11,7 +11,13 @@
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/share/gal_list.css" />
 </head>
-
+<style>
+.pr_in_box button {
+	float: left;
+	padding: 0px 10px;
+	border: 0px;
+}
+</style>
 <body>
 	<%@ include file="../share/top_tp.jsp"%>
 	<div class="content">
@@ -43,14 +49,12 @@
 					</form>
 				</div>
 				<!-- 게시물 영역 시작 -->
-				<!-- 이 부분 이프문 사용해야 할 것 같은데(select에 따라 output, output1,2,3,4...
-						어떻게 해야 이프문을 돌릴 수 있을지 모르겠음... 더 생각해볼것... -->
 				<div>
 					<c:forEach var="item" items="${output}" varStatus="status">
 						<div>
 							<div class="pr_box">
 								<div class="pr_in_box">
-									<a href="${pageContext.request.contextPath }/gallery/goods.do">
+									<a href="${pageContext.request.contextPath }/gallery/goods.do?goodsno=${item.goodsno}">
 										<img alt="사진" src="${item.imgpath}${item.imgname}.jpg" class="img_size">
 											<h5>
 												<div class="gnameblock"  style="height: 32px">
@@ -64,7 +68,7 @@
 										</a>
 									<div id="pay">
 									<button type="button" class="btn btn-inverse delete-one"
-									id="delete-one" data-heartno="${item.heartno}">삭제</button>
+									id="delete-one" data-heartno="${item.heartno}">♥</button>
 									</div>
 								</div>
 							</div>
