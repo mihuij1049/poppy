@@ -89,10 +89,6 @@
 							<c:set var="imgtype" value="${item.imgtype }" />
 							<c:set var="paytype" value="${item.paytype}" />
 							<c:set var="odstatus" value="${item.odstatus}" />
-							<%-- 상세페이지로 이동하기 위한 URL --%>
-							<c:url value="/gallery/goods.do" var="viewUrl">
-								<c:param name="goodsno" value="${item.goodsno}" />
-							</c:url>
 							<div>
 								<div class="view">
 									<span class="date" title="주문일자">${fn:substring(item.regdate,0,10)}
@@ -106,14 +102,15 @@
 								<div class="prd-info">
 									<div class="prd-box">
 										<div class="thumbnail">
-											<a href="${viewUrl}"> <img
-												src="${item.imgpath}${item.imgname}.jpg" width="70"
+											<a href="${pageContext.request.contextPath}/gallery/goods.do">
+												<img src="${item.imgpath}${item.imgname}.jpg" width="70"
 												height="70">
 											</a>
 										</div>
 										<div class="prd-content">
 											<strong class="prd-name" title="상품명"> <a
-												href="${viewUrl}"> ${item.odgname}</a>
+												href="${pageContext.request.contextPath}/gallery/goods.do">
+													${item.odgname}</a>
 											</strong>
 											<ul class="prd-li">
 												<li><span class="price" title="판매가"> <strong>${item.odgprice}</strong>원
@@ -174,17 +171,76 @@
 
 	<!-- Javascript -->
 	<%@ include file="../share/bottom_tp.jsp"%>
+	<!-- Handlebar 탬플릿 코드 -->
+    <script id="prof-list-tmpl" type="text/x-handlebars-template">
+        {{#each item}}
+        <div>
+			<div class="view">
+				<span class="date" title="주문일자">${fn:substring(regdate,0,10)}
+				</span> <span class="number" title="주문번호"> <a
+				href="${pageContext.request.contextPath}/myInfo/order_desc.do?orderno=${orderno}">
+				(${fn:substring(regdate,0,10).replace("-","")}-000${orderno})</a>
+				</span> <a
+				href="${pageContext.request.contextPath}/myInfo/order_desc.do?orderno=${orderno}"
+				class="btn-detail"><span id="GGuc">&#62;</span>상세보기</a>
+			</div>
+			<div class="prd-info">
+				<div class="prd-box">
+					<div class="thumbnail">
+						<a href="${pageContext.request.contextPath}/gallery/goods.do">
+							<img src="${imgpath}${imgname}.jpg" width="70"
+								height="70">
+						</a>
+					</div>
+					<div class="prd-content">
+						<strong class="prd-name" title="상품명"> <a
+							href="${pageContext.request.contextPath}/gallery/goods.do">
+							${odgname}</a>
+						</strong>
+						<ul class="prd-li">
+							<li><span class="price" title="판매가"> <strong>${odgprice}</strong>원
+								</span> <span class="prd-count" title="수량"> <strong>${odgqty}</strong>개
+								</span></li>
+						</ul>
+							<p class="option">[옵션: ${odgdoption}]</p>
+									<button type="button" class="btn btn2" id="change">주문취소</button>
+					</div>
+				</div>
+				<div class="prd-foot" title="주문처리상태">
+					<div class="ready">${odstatus}</div>
+				</div>
+				</div>
+			</div>
+        {{/each}}
+    </script>
+	<!-- jQuery Ajax Form plugin CDN -->
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+	<!-- jQuery Ajax Setup -->
+	<script
+		src="${pageContext.request.contextPath}/share/plugins/ajax/ajax_helper.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/share/assets/js/bootstrap.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/share/plugins/handlebars/handlebars-v4.0.5.js"></script>
 	<!-- 플러그인 JS 참조 -->
 	<script src="../share/plugins/datepicker/datepicker.min.js"></script>
 	<script src="../share/plugins/datepicker/datepicker.ko-KR.js"></script>
 	<!-- 사용자 정의 스크립트 -->
 	<script type="text/javascript">
 		$(function() {
+			 $.get("${pageContext.request.contextPath}/myInfo", function(json) {
+				 var source = $("#prof-list-tmpl").html();   // 템플릿 코드 가져오기
+                 var template = Handlebars.compile(source);  // 템플릿 코드 컴파일
+                 var result = template(json);    // 템플릿 컴파일 결과물에 json 전달
+                 $("#list").append(result);      // 최종 결과물을 #list 요소에 추가한다.
+			 });				 
+			 
 			$(document).on("change", "#sel_odstatus", function(e) {
 				var sel_odstatus = $("#sel_odstatus option:selected").val();
 				console.log(sel_odstatus);
 				//$.get("/myInfo/order_status.do" + sel_odstatus, function(data) {
-				//$("#list").html(data);
+					//$("#list").html(data);
 				//});
 			});
 		});

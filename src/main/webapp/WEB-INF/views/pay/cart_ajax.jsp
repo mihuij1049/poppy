@@ -11,7 +11,7 @@
 <head>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/share/cart.css?ver=2" />
+	href="${pageContext.request.contextPath}/share/cart.css?ver=1" />
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -66,21 +66,15 @@
 									<c:set var="deliprice" value="${item.deliprice }" />
 									<c:set var="gprice" value="${item.gprice }" />
 									<c:set var="cartqty" value="${item.cartqty }" />
-									<c:set var="goodsno" value="${item.goodsno }" />
-									<%-- 상세페이지로 이동하기 위한 URL --%>
-									<c:url value="/gallery/goods.do" var="viewUrl">
-										<c:param name="goodsno" value="${item.goodsno}" />
-									</c:url>
 									<div class="cart-box clear">
 										<div class="list-item">
 											<div class="word">
 												<input type="checkbox" name="cart_check"
-													class="cart cart-size"> <a href="${viewUrl}"><img
+													class="cart cart-size"> <img
 													src="${item.imgpath}${item.imgname}.jpg" class="cart-img" />
-												</a>
 
 												<p>
-													<a href="${viewUrl}"><b class="name">${item.gname}</b></a>
+													<b class="name">${item.gname}</b>
 												</p>
 												<span>배송:${item.deliprice}원[조건]/기본배송</span><br> <small><span
 													class="point-icon">적</span>&nbsp;<span class="point">${fn:substring(item.gprice/100, 0, fn:indexOf(item.gprice/100,"."))}</span>원</small>

@@ -1,19 +1,16 @@
-<%@page import="kr.co.poppy.model.Orders"%>
-<%@page import="kr.co.poppy.helper.WebHelper"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/share/order_list.css?ver=1" />
+	href="${pageContext.request.contextPath}/share/cancel_list.css?ver=1" />
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -22,36 +19,29 @@
 <!-- 플러그인 CSS 참조 -->
 <link rel="stylesheet" type="text/css"
 	href="../share/plugins/datepicker/datepicker.min.css">
+
 </head>
 
 <body>
 	<%@ include file="../share/top_tp.jsp"%>
 	<div class="content">
-		<!-- 주문조회 -->
+		<!-- 취소내역 -->
 		<div class="page-title clearfix">
 			<h4>
 				<b> <a href="#" onclick="history.back(); return false;"><i
-						class="glyphicon glyphicon-chevron-left"></i></a>주문조회
+						class="glyphicon glyphicon-chevron-left"></i></a>취소내역
 				</b>
 			</h4>
 		</div>
 		<div class="container">
 			<ul class="nav nav-tabs">
-				<li class="active col-xs-6 etc"><a
-					href="${pageContext.request.contextPath}/myInfo/order_list.do">주문조회</a></li>
 				<li class="col-xs-6 etc"><a
+					href="${pageContext.request.contextPath}/myInfo/order_list.do">주문조회</a></li>
+				<li class="active col-xs-6 etc"><a
 					href="${pageContext.request.contextPath}/myInfo/cancel_list.do">취소내역</a></li>
 			</ul>
-			<div class="backg">
+			<div class="backg fade in">
 				<div class="container">
-					<p class="col-xs-1">상태</p>
-					<select class="form-control status" id="sel_odstatus">
-						<option value="">전체 주문처리상태</option>
-						<option value="0">입금전</option>
-						<option value="1">배송준비중</option>
-						<option value="2">배송중</option>
-						<option value="3">배송완료</option>
-					</select>
 					<div class="period">
 						<p class="col-xs-1">기간</p>
 						<button class="btn btn2 btn-default col-xs-2"
@@ -79,49 +69,44 @@
 							<td colspan="3" align="center">조회결과가 없습니다.</td>
 						</tr>
 					</c:when>
+
 					<c:otherwise>
 						<c:forEach var="item" items="${output}" varStatus="status">
 							<c:set var="orderno" value="${item.orderno}" />
-							<c:set var="memno" value="${item.memno}" />
 							<c:set var="imgname" value="${item.imgname }" />
 							<c:set var="imgext" value="${item.imgext }" />
 							<c:set var="imgpath" value="${item.imgpath }" />
 							<c:set var="imgtype" value="${item.imgtype }" />
-							<c:set var="paytype" value="${item.paytype}" />
-							<c:set var="odstatus" value="${item.odstatus}" />
-							<%-- 상세페이지로 이동하기 위한 URL --%>
-							<c:url value="/gallery/goods.do" var="viewUrl">
-								<c:param name="goodsno" value="${item.goodsno}" />
-							</c:url>
 							<div>
 								<div class="view">
-									<span class="date" title="주문일자">${fn:substring(item.regdate,0,10)}
-									</span> <span class="number" title="주문번호"> <a
+									<span class="date" title="주문일자">${fn:substring(item.regdate,0,10)}</span>
+									<span class="number" title="주문번호"> <a
 										href="${pageContext.request.contextPath}/myInfo/order_desc.do?orderno=${item.orderno}">
 											(${fn:substring(item.regdate,0,10).replace("-","")}-000${item.orderno})</a>
 									</span> <a
 										href="${pageContext.request.contextPath}/myInfo/order_desc.do?orderno=${item.orderno}"
-										class="btn-detail"><span id="GGuc">&#62;</span>상세보기</a>
+										class="btn-detail"><span id="GGuc">&#62;</span>상세보기 </a>
 								</div>
 								<div class="prd-info">
 									<div class="prd-box">
 										<div class="thumbnail">
-											<a href="${viewUrl}"> <img
-												src="${item.imgpath}${item.imgname}.jpg" width="70"
+											<a
+												href="..${pageContext.request.contextPath}/gallery/goods.do">
+												<img src="${item.imgpath}${item.imgname}.jpg" width="70"
 												height="70">
 											</a>
 										</div>
 										<div class="prd-content">
 											<strong class="prd-name" title="상품명"> <a
-												href="${viewUrl}"> ${item.odgname}</a>
+												href="${pageContext.request.contextPath}/gallery/goods.do">
+													${item.odgname}</a>
 											</strong>
 											<ul class="prd-li">
 												<li><span class="price" title="판매가"> <strong>${item.odgprice}</strong>원
-												</span> <span class="prd-count" title="수량"> <strong>${item.odgqty}</strong>개
+												</span> <span class="prd-count" title="수량"> <strong>1</strong>개
 												</span></li>
 											</ul>
 											<p class="option">[옵션: ${item.odgdoption}]</p>
-											<button type="button" class="btn btn2" id="change">주문취소</button>
 										</div>
 									</div>
 									<div class="prd-foot" title="주문처리상태">
@@ -133,34 +118,6 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-			<!-- Modal -->
-			<div class="modal fade" id="myModal2">
-				<div class="modal-dialog modal-sm">
-					<div class="modal-content">
-						<div class="cart-modal">
-							<div class="modal-header2">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-								<h4 class="modal-title">주문 취소</h4>
-							</div>
-							<div class="modal-body2">
-								<p>
-									<span class="delete_message"></span> 주문을 취소 하시겠습니까?
-								</p>
-							</div>
-							<div class="modal-footer2">
-								<button type="reset" class="btn btn2 change_cancel"
-									data-dismiss="modal">아니오</button>
-								<button type="submit" class="btn btn2 change_ok"
-									data-dismiss="modal"
-									onclick="location.href='${pageContext.request.contextPath}/myInfo/order_change.do?orderno=${orderno}'">예</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 			<div class=" paging">
 				<ul class="pagination pagination-sm">
 					<li class="disabled"><a href="#">&laquo;</a></li>
@@ -171,23 +128,64 @@
 			</div>
 		</div>
 	</div>
-
 	<!-- Javascript -->
 	<%@ include file="../share/bottom_tp.jsp"%>
+	<!-- Handlebar 탬플릿 코드 -->
+	<script id="prof-list-tmpl" type="text/x-handlebars-template">
+        {{#each item}}
+        <div>
+			<div class="view">
+				<span class="date" title="주문일자">${fn:substring(regdate,0,10)}</span>
+				<span class="number" title="주문번호"> <a
+					href="${pageContext.request.contextPath}/myInfo/order_desc.do?orderno=${orderno}">
+					(${fn:substring(regdate,0,10).replace("-","")}-000${orderno})</a>
+				</span> <a
+					href="${pageContext.request.contextPath}/myInfo/order_desc.do?orderno=${orderno}"
+					class="btn-detail"><span id="GGuc">&#62;</span>상세보기 </a>
+			</div>
+			<div class="prd-info">
+				<div class="prd-box">
+					<div class="thumbnail">
+						<a
+							href="..${pageContext.request.contextPath}/gallery/goods.do">
+							<img src="../share/img/slide.jpg" width="70" height="70">
+						</a>
+					</div>
+					<div class="prd-content">
+						<strong class="prd-name" title="상품명"> <a
+							href="${pageContext.request.contextPath}/gallery/goods.do">
+							${odgname}</a>
+						</strong>
+						<ul class="prd-li">
+							<li><span class="price" title="판매가"> <strong>${odgprice}</strong>원
+								</span> <span class="prd-count" title="수량"> <strong>1</strong>개
+							</span></li>
+						</ul>
+						<p class="option">[옵션: ${odgdoption}]</p>
+					</div>
+					</div>
+					<div class="prd-foot" title="주문처리상태">
+					<div class="ready">${odstatus}</div>
+				</div>
+			</div>
+			</div>
+        {{/each}}
+    </script>
+	<!-- jQuery Ajax Form plugin CDN -->
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+	<!-- jQuery Ajax Setup -->
+	<script
+		src="${pageContext.request.contextPath}/share/plugins/ajax/ajax_helper.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/share/assets/js/bootstrap.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/share/plugins/handlebars/handlebars-v4.0.5.js"></script>
 	<!-- 플러그인 JS 참조 -->
 	<script src="../share/plugins/datepicker/datepicker.min.js"></script>
 	<script src="../share/plugins/datepicker/datepicker.ko-KR.js"></script>
 	<!-- 사용자 정의 스크립트 -->
 	<script type="text/javascript">
-		$(function() {
-			$(document).on("change", "#sel_odstatus", function(e) {
-				var sel_odstatus = $("#sel_odstatus option:selected").val();
-				console.log(sel_odstatus);
-				//$.get("/myInfo/order_status.do" + sel_odstatus, function(data) {
-				//$("#list").html(data);
-				//});
-			});
-		});
 		function set_term(days) {
 			days = days * 24 * 60 * 60 * 1000;
 
@@ -232,15 +230,6 @@
 				language : "ko-KR",
 				// 시작요일 (0=일요일~6=토요일)
 				weekStart : 0
-			});
-		});
-		$(function() {
-			$(document).on("click", "#change", function(e) {
-				$("#myModal2").modal("show");
-				var change_item = $(this).parent().parent().parent().parent();
-				$(document).on("click", ".change_ok", function(e) {
-					change_item.remove();
-				});
 			});
 		});
 	</script>

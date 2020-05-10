@@ -32,7 +32,7 @@ import kr.co.poppy.service.OrdersService;
 import kr.co.poppy.service.PointsService;
 
 @Controller
-public class KRTController {
+public class KRTAjaxController {
 	/** WebHelper 주입 */
 	@Autowired
 	WebHelper webHelper;
@@ -59,7 +59,7 @@ public class KRTController {
 
 	/** order_list (주문조회) */
 	/** 목록 페이지 */
-	@RequestMapping(value = "/myInfo/order_list.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/myInfo_ajax/order_list.do", method = RequestMethod.GET)
 	public ModelAndView order_list(Model model, @RequestParam(value = "page", defaultValue = "1") int nowPage,
 			@RequestParam(value = "odstatus", required = false) String odstatus,
 			@RequestParam(value="goodsno", defaultValue="0") int goodsno) {
@@ -125,12 +125,11 @@ public class KRTController {
 		model.addAttribute("myInfo", myInfo);
 		model.addAttribute("output", output);
 
-		String viewPath = "myInfo/order_list";
-		return new ModelAndView(viewPath);
+		return new ModelAndView("myInfo/order_list_ajax");
 	}
 	
 	/** 주문 상태 조회 */
-	@RequestMapping(value="/myInfo/order_status.do", method=RequestMethod.GET)
+	@RequestMapping(value="/myInfo_ajax/order_status.do", method=RequestMethod.GET)
 	public ModelAndView order_status(Model model,@RequestParam(value = "page", defaultValue = "1") int nowPage,
 			@RequestParam(value="orderno", defaultValue="0") int orderno,
 			@RequestParam(value="odstatus", required=false)String odstatus) {
@@ -195,13 +194,12 @@ public class KRTController {
 		/** 3) view 처리 */
 		model.addAttribute("myInfo", myInfo);
 		model.addAttribute("output", output);
-
-		String viewPath = "myInfo/order_list";
-		return new ModelAndView(viewPath);
+		
+		return new ModelAndView("myInfo/order_list_ajax");
 	}
 
 	/** 주문 변경 처리 구현 */
-	@RequestMapping(value = "/myInfo/order_change.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/myInfo_ajax/order_change.do", method = RequestMethod.GET)
 	public ModelAndView order_edit(Model model, @RequestParam(value = "orderno", defaultValue = "0") int orderno,
 			@RequestParam(value = "odstatus", required = false) String odstatus) {
 		HttpSession mySession = webHelper.getSession();
@@ -241,12 +239,12 @@ public class KRTController {
 		model.addAttribute("output", output);
 		model.addAttribute("myInfo", myInfo);
 
-		return webHelper.redirect(contextPath + "/myInfo/order_list.do", "주문 취소 되었습니다.");
+		return webHelper.redirect(contextPath + "/myInfo/order_list_ajax.do", "주문 취소 되었습니다.");
 	}
 
 	/** cancel_list (주문취소내역) */
 	/** 목록 페이지 */
-	@RequestMapping(value = "/myInfo/cancel_list.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/myInfo_ajax/cancel_list.do", method = RequestMethod.GET)
 	public ModelAndView cancel_list(Model model, @RequestParam(value = "page", defaultValue = "1") int nowPage,
 			@RequestParam(value="orderno", defaultValue="0") int orderno,
 			@RequestParam(value="goodsno", defaultValue="0") int goodsno) {
@@ -297,69 +295,19 @@ public class KRTController {
 		model.addAttribute("myInfo", myInfo);
 		model.addAttribute("output", output);
 
-		String viewPath = "myInfo/cancel_list";
-		return new ModelAndView(viewPath);
+		return new ModelAndView("myInfo/cancel_list_ajax");
 	}
 
 	/** photo_wri (포토리뷰 쓰기) */
 	/** 작성 폼 페이지 */
-	@RequestMapping(value = "/community/photo_wri.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/community_ajax/photo_wri.do", method = RequestMethod.GET)
 	public ModelAndView photo_wri(Model model) {
 		return new ModelAndView("community/photo_wri");
 	}
 
-	/** 작성 폼에 대한 action 페이지 */
-	@RequestMapping(value = "/community/photo_wri_ok.do", method = RequestMethod.POST)
-	public ModelAndView photo_wri_ok(Model model, @RequestParam(value = "bbstitle", required = false) String bbstitle,
-			@RequestParam(value = "rvlike", required = false) String rvlike,
-			@RequestParam(value = "bbscontent", required = false) String bbscontent,
-			@RequestParam(value = "memno", defaultValue = "0") int memno,
-			@RequestParam(value = "memno", defaultValue = "0") int goodsno) {
-		HttpSession mySession = webHelper.getSession();
-		Members myInfo = (Members) mySession.getAttribute("userInfo");
-
-		Calendar c = Calendar.getInstance();
-		String date = String.format("%04d-%02d-%02d %02d:%02d:%02d", c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1,
-				c.get(Calendar.DAY_OF_MONTH), c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE),
-				c.get(Calendar.SECOND));
-
-		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
-		// 포토리뷰 제목은 필수 항목 이므로 입력 여부를 검사
-		if (bbstitle == null) {
-			return webHelper.redirect(null, "포토리뷰 제목을 입력하세요.");
-		}
-
-		/** 2) 데이터 저장하기 */
-		// 저장할 값들을 Beans에 담는다.
-		Bbs input = new Bbs();
-		input.setBbstype("C");
-		input.setBbstitle(bbstitle);
-		input.setBbscontent(bbscontent);
-		input.setRvlike(rvlike);
-		input.setRegdate(date);
-		input.setEditdate(date);
-		input.setMemno(myInfo.getMemno());
-		input.setGoodsno(1);
-
-		try {
-			// 데이터 저장
-			bbsService.addBbs(input);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-
-		/** 3) 결과를 확인하기 위한 페이지 이동 */
-		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야한다.
-		model.addAttribute("myInfo", myInfo);
-
-		String redirectUrl = contextPath + "/community/photo_rv.do?bbsno=" + input.getBbsno();
-
-		return webHelper.redirect(redirectUrl, "저장되었습니다.");
-	}
-
 	/** photo (포토리뷰 상세조회) */
 	/** 상세 페이지 */
-	@RequestMapping(value = "/community/photo.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/community_ajax/photo.do", method = RequestMethod.GET)
 	public ModelAndView photo(Model model, @RequestParam(value = "bbsno", defaultValue = "24") int bbsno) {
 		/** 1) 유효성 검사 */
 		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
@@ -390,7 +338,7 @@ public class KRTController {
 
 	/** 장바구니 */
 	/** 목록 페이지 */
-	@RequestMapping(value = "/pay/cart.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/pay_ajax/cart.do", method = RequestMethod.GET)
 	public ModelAndView cart_list(Model model) {
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
@@ -408,12 +356,11 @@ public class KRTController {
 
 		model.addAttribute("output", output);
 
-		String viewPath = "pay/cart";
-		return new ModelAndView(viewPath);
+		return new ModelAndView("pay/cart_ajax");
 	}
 
 	/** 삭제 처리 구현 */
-	@RequestMapping(value = "/pay/cart_delete.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/pay_ajax/cart_delete.do", method = RequestMethod.GET)
 	public ModelAndView cart_delete(Model model, @RequestParam(value = "cartno", defaultValue = "0") int cartno) {
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");

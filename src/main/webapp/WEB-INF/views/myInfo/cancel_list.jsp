@@ -72,6 +72,14 @@
 				<c:otherwise>
 					<c:forEach var="item" items="${output}" varStatus="status">
 						<c:set var="orderno" value="${item.orderno}" />
+						<c:set var="imgname" value="${item.imgname }" />
+						<c:set var="imgext" value="${item.imgext }" />
+						<c:set var="imgpath" value="${item.imgpath }" />
+						<c:set var="imgtype" value="${item.imgtype }" />
+						<%-- 상세페이지로 이동하기 위한 URL --%>
+						<c:url value="/gallery/goods.do" var="viewUrl">
+							<c:param name="goodsno" value="${item.goodsno}" />
+						</c:url>
 						<div>
 							<div class="view">
 								<span class="date" title="주문일자">${fn:substring(item.regdate,0,10)}</span>
@@ -85,15 +93,14 @@
 							<div class="prd-info">
 								<div class="prd-box">
 									<div class="thumbnail">
-										<a
-											href="..${pageContext.request.contextPath}/gallery/goods.do">
-											<img src="../share/img/slide.jpg" width="70" height="70">
+										<a href="${viewUrl}"> <img
+											src="${item.imgpath}${item.imgname}.jpg" width="70"
+											height="70">
 										</a>
 									</div>
 									<div class="prd-content">
 										<strong class="prd-name" title="상품명"> <a
-											href="${pageContext.request.contextPath}/gallery/goods.do">
-												${item.odgname}</a>
+											href="${viewUrl}"> ${item.odgname}</a>
 										</strong>
 										<ul class="prd-li">
 											<li><span class="price" title="판매가"> <strong>${item.odgprice}</strong>원
