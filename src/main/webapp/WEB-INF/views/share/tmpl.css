@@ -283,3 +283,11 @@ address>p {
 	height: 40px;
 	z-index: 20000;
 }
+
+/** 검색결과 없을 때 */
+.non-list {
+	text-align:center;
+	font-size:18px;
+	height: 150px;
+	vertical-align: middle;
+}

@@ -34,7 +34,7 @@
 			<c:choose>
 				<%-- 조회결과가 없는 경우 --%>
 				<c:when test="${output == null || fn:length(output) == 0}">
-					<div class="non-list" style="text-align: center; font-size: 18px;">조회결과가
+					<div class="non-list">조회결과가
 						없습니다.</div>
 				</c:when>
 				<%-- 조회결과가 있는 경우 --%>
@@ -68,10 +68,16 @@
 					</ul>
 				</c:otherwise>
 			</c:choose>
-			<div class="selectbtn">
-				<button type="button" class="select-all" id="select-all">전체선택</button>
-				<button type="button" class="border-botton" id="select-choice">선택삭제</button>
-			</div>
+			<c:choose>
+				<c:when test="${output == null || fn:length(output) == 0}">
+				</c:when>
+				<c:otherwise>
+					<div class="selectbtn">
+						<button type="button" class="select-all" id="select-all">전체선택</button>
+						<button type="button" class="border-botton" id="select-choice">선택삭제</button>
+					</div>
+				</c:otherwise>
+			</c:choose>
 			<div class="lastbtn">
 				<a href="${pageContext.request.contextPath }/pay/orderform.do">
 					<button type="button" class="btn btn2" id="all-bye">전체상품주문</button>
@@ -211,8 +217,8 @@
 			}, function(json) {
 				if (json.rt == "OK") {
 					alert("삭제되었습니다.");
-					// 삭제완료 후 목록 페이지 이동
-					window.location = "${pageContext.request.contextPath}/myInfo/like_goods.do";
+					// 삭제완료 후 목록 페이지 이동 -> 할 필요 없음..ajax 처리 완료이므로
+					/* window.location = "${pageContext.request.contextPath}/myInfo/like_goods.do"; */
 				}
 			});
 			

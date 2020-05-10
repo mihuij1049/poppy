@@ -43,7 +43,7 @@ public class LikeGoodsRestController {
 		// 삭제할 대상에 대한 PK 값 얻기
 		int heartno = webHelper.getInt("heartno");
 
-		/** 1) 요청받은 파라미터가 heartno 라면? */
+		/** 1) 요청받은 파라미터가 0이 아니라면? */
 		if (heartno != 0) {
 
 			/** 2) 데이터 삭제하기 */
@@ -66,20 +66,25 @@ public class LikeGoodsRestController {
 	@RequestMapping(value = "/myInfo/del_list", method = RequestMethod.DELETE)
 	public Map<String, Object> delete_list(@RequestParam(value="delList[]") List<Integer> delList)  {
 		
-		/** 2) 요청받은 파라미터가 delList 라면? */
+		/** 1) 요청받은 파라미터가 null 이 아니라면? */
 		
 		if (delList!=null) {
+			
+			// 리스트 객체 생성 및 할당
 			List<Heart> heartList = new ArrayList<Heart>();
 			
+			// 전달받은 배열을 반복문으로 Heart객체의 Heartno에 할당하여
+			// Heart 객체를 리스트 객체에 할당  
 			for (int i=0; i<delList.size();i++) {
 				Heart temp = new Heart();
 				temp.setHeartno(delList.get(i));
 				heartList.add(temp);
 			}
-			
+			// MyBatis의 파라미터로 전달할 Map 객체 생성 및 할당 
 			Map<String, Object> input = new HashMap<String, Object>();
 			input.put("input", heartList);
 			
+			/** 2) 데이터 삭제하기 */
 			try {
 				heartService.deleteHeartList(input);
 			} catch (Exception e) {
