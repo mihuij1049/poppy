@@ -313,8 +313,8 @@ a {
 					</div>
 					<div class="qna-desc">
 						<div class="col-xs-12">
-							<textarea class="qna_area" id="bbsconten" placeholder="내용을 입력하세요."
-								maxlength="1800" name="bbscontent">${output.bbscontent}</textarea>
+							<textarea class="qna_area" id="bbsconten"
+								placeholder="내용을 입력하세요." maxlength="1800" name="bbscontent">${output.bbscontent}</textarea>
 						</div>
 					</div>
 
@@ -324,32 +324,29 @@ a {
 							<label>비밀글설정</label>
 						</div>
 						<div class="col-xs-8">
-							<label>
-							<input type="radio" name="qnasec" value="0" id="public"
-								<c:if test="${output.qnasec==0}">checked</c:if>/>
-								공개글 &nbsp; </label>
-								<label>
-								<input
-								type="radio" name="qnasec" value="1"
-								<c:if test="${output.qnasec==1}">checked</c:if>/>비밀글</label>
+							<label> <input type="radio" name="qnasec" value="0"
+								id="public" <c:if test="${output.qnasec==0}">checked</c:if> />
+								공개글 &nbsp;
+							</label> <label> <input type="radio" name="qnasec" value="1"
+								<c:if test="${output.qnasec==1}">checked</c:if> />비밀글
+							</label>
 						</div>
-					</div>
-					<div class="qna-pw">
-						<div class="col-xs-4">
-							<label>비밀번호</label>
+						
+						<div class="qna-pw">
+							<div class="col-xs-4">
+								<label>비밀번호</label>
+							</div>
+							<div class="col-xs-8">
+								<input type="password" id="password" name="qnapw" maxlength="4" />
+							</div>
 						</div>
-						<div class="col-xs-8">
-							<input type="password" id="password" name="qnapw" maxlength="4"
-								value="${output.qnapw}" />
-						</div>
-					</div>
 
-				</div>
-				<div class="qna_btn">
-					<button type="submit" id="qna_ok" class="btn">등록</button>
-					<button type="button" id="qna_re" class="btn btn-inverse"
-						onclick="history.back(); return false;">취소</button>
-				</div>
+					</div>
+					<div class="qna_btn">
+						<button type="submit" id="qna_ok" class="btn">등록</button>
+						<button type="button" id="qna_re" class="btn btn-inverse"
+							onclick="history.back(); return false;">취소</button>
+					</div>
 			</form>
 		</div>
 	</div>
@@ -378,17 +375,17 @@ a {
 	</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
 	<script>
-	<script type="text/javascript">
-	$(function() {
-		// 체크박스의 상태가 변화되면
-		$("#public").change(function() {
-			// 비밀번호 입력창 비활성화
-			var none = $("#password").prop('disabled');
-			// 가져온 값을 역으로 변경하여 다시 적용
-			$("#password").prop('disabled', !none);
-			
+		<script type="text/javascript">
+		$(function() {
+			// 체크박스의 상태가 변화되면
+			$("#public").change(function() {
+				// 비밀번호 입력창 비활성화
+				var none = $("#password").prop('disabled');
+				// 가져온 값을 역으로 변경하여 다시 적용
+				$("#password").prop('disabled', !none);
+
+			});
 		});
-	});
 	</script>
 	<!-- Handlebars 를 이용한 HTML 템플릿 구성 -->
 	<!--  	<script id="goods_item_tmpl" type="text/x-handlebars-template">
@@ -413,7 +410,8 @@ a {
 	
 		/** 모달창 켜고 끄기 */
 		$(function() {
-			$(".item-select").click(function(e) {
+			$("
+									.item-select").click(function(e) {
 				$("#search-modal").fadeIn();
 			});
 			$(".search-close").click(function(e) {
@@ -421,54 +419,68 @@ a {
 				$("li").remove(".search-list-item");
 				$(".search-qty").text("0");
 			});
-		}); // end 모달창 켜고 끄기
+		}); // end
+									모달창 켜고 끄기
 
 		/** 검색 버튼 클릭시 검색 결과 화면에 나타내기 */
-		function get_list() {
+		function
+									get_list() {
 			$.get("../share/plugins/goods_list.json",
 					function(req) {
-						// 미리 준비한 HTML틀을 읽어온다.
-						var template = Handlebars.compile($("#goods_item_tmpl")
+						// 미리
+									준비한 HTML틀을 읽어온다. var template=Handlebars.compile($(
+									"#goods_item_tmpl")
 								.html());
-						// Ajax 를 통해서 읽어온 JSON 을 템플릿에 병합한다.
-						var html = template(req);
-						// #search_goods_list 에 읽어온 내용을 추가한다.
+						// Ajax 를 통해서 읽어온
+									JSON 을 템플릿에 병합한다. var html=template(req); // #search_goods_list
+									에 읽어온 내용을
+									추가한다.
 						$("#search_goods_list").append(html);
 					});
-		} // 검색 결과를 템플릿을 이용해서 화면에 나타낼 함수 정의
+		} // 검색
+									결과를 템플릿을 이용해서 화면에 나타낼 함수
+									정의
 
 		$(function() {
 			$("#search_goods_btn").click(function(e) {
-				get_list(); // 버튼이 클릭되면 호출된다.
-				var length = $("ul").length;
+				get_list(); // 버튼이
+									클릭되면 호출된다. var length=$(
+									"ul").length;
 				// console.log(length);
 				$(".search-qty").text(length);
 			});
-		}); // 함수 호출하며 검색 결과 n개 나타내기 
+		}); // 함수
+									호출하며 검색 결과 n개 나타내기 
 
-		/** 선택 버튼을 누르면 item의 정보를 본문으로 넣기 */
+		/** 선택 버튼을 누르면 item의 정보를 본문으로 넣기
+									*/
 		$(function() {
-			// 링크가 클릭된 경우
+			// 링크가 클릭된
+									경우
 			$("#search_goods_list").on(
 					'click',
 					'button',
 					function(e) {
 						
-						// 클릭된 상품의 href 속성 가져오기
-						var src = $(event.target).parent().prev().prev()
-								.children().attr('src');
+						// 클릭된
+									상품의 href 속성 가져오기 var src=$(event.target).parent().prev().prev()
+									.children().attr('src');
 						// console.log(src);
 
-						// 클릭된 상품의 이름 및 가격 가져오기
-						var name = $(event.target).parent().prev().children()
-								.html();
+						// 클릭된
+									상품의 이름 및 가격 가져오기 var
+									name=$(event.target).parent().prev().children()
+									.html();
 						// console.log(name);
-						// 1) 본문의 '#item_img'를 찾아 상품이미지 설정
+						// 1)
+									본문의 '#item_img'를 찾아 상품이미지
+									설정
 						$("#item_img").attr('src', src);
-						// 2) 제목 및 가격 설정
+						// 2) 제목 및 가격
+									설정
 						$("#item_name").html(name);
 
-						// 모달창 닫기
+						// 모달창닫기
 						$("#search-modal").fadeOut();
 						$("li").remove(".search-list-item");
 						$(".search-qty").text("0");
@@ -485,7 +497,9 @@ a {
 			$("#qna_wri").submit();
 		});
 		
-	</script>-->
+	
+									</script>-->
+
 </body>
 
 </html>

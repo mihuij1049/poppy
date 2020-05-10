@@ -13,7 +13,7 @@ public class Bbs {
 	/** 내용 */
 	private String bbscontent;
 	/** 공개글 여부 (0:false default(공개글), 1: true(비밀글) */
-	private String qnasec;
+	private int qnasec;
 	/** 비밀글일 경우 비밀번호 4자리 */
 	private String qnapw;
 	/** 좋아요를 받은 횟수(누적) */

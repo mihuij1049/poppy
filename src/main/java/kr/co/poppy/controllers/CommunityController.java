@@ -108,7 +108,7 @@ public class CommunityController {
 	public ModelAndView add_qna(Model model, @RequestParam(value = "bbstype", required = false) String bbstype,
 			@RequestParam(value = "bbstitle", required = false) String bbstitle,
 			@RequestParam(value = "bbscontent", required = false) String bbscontent,
-			@RequestParam(value = "qnasec", required = false) String qnasec,
+			@RequestParam(value = "qnasec", defaultValue = "0") Integer qnasec,
 			@RequestParam(value = "qnapw", required = false) String qnapw,
 			@RequestParam(value = "regdate", required = false) String regdate,
 			@RequestParam(value = "editdate", required = false) String editdate,
@@ -189,7 +189,7 @@ public class CommunityController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		/** 3) view 처리 */
-		model.addAttribute("item", output);
+		model.addAttribute("output", output);
 		return new ModelAndView("community/qna_edit");
 	}
 
@@ -200,7 +200,7 @@ public class CommunityController {
 			@RequestParam(value = "bbstype", required = false) String bbstype,
 			@RequestParam(value = "bbstitle", required = false) String bbstitle,
 			@RequestParam(value = "bbscontent", required = false) String bbscontent,
-			@RequestParam(value = "qnasec", required = false) String qnasec,
+			@RequestParam(value = "qnasec", defaultValue = "0") Integer qnasec,
 			@RequestParam(value = "qnapw", required = false) String qnapw,
 			@RequestParam(value = "editdate", required = false) String editdate) {
 		// 가입한 시각을 담은 date 생성

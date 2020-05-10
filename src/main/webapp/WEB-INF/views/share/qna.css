@@ -39,6 +39,12 @@
 	border-radius: 5px;
 	background: #ffc7c1;
 	text-align: center;
+	position: fixed;
+	left: 4%;
+	margin-left: -20%;
+	top: 35%;
+	margin-top: -150px;
+	display: none;
 }
 
 .pass_label {
