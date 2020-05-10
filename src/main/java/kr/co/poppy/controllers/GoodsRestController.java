@@ -1,5 +1,6 @@
 package kr.co.poppy.controllers;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,11 +51,10 @@ public class GoodsRestController {
 	BbsService bbsService;
 
 	/** 갤러리 상세 페이지 */
-	@RequestMapping(value = "/gallery/{goodsno}", method = RequestMethod.GET)
-	public Map<String, Object> goods(Model model, 
-			@PathVariable("goodsno") int goodsno,
+	@RequestMapping(value = "/gallery", method = RequestMethod.GET)
+	public Map<String, Object> goods(Model model, @RequestParam(value = "goodsno", defaultValue = "1") int goodsno,
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
-		
+
 		/** 유효성 검사 */
 		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
 		if (goodsno == 0) {
@@ -77,7 +77,7 @@ public class GoodsRestController {
 		Heart input2 = new Heart();
 		input2.setGoodsno(goodsno);
 		input2.setMemno(myInfo.getMemno());
-		
+
 		Bbs input3 = new Bbs();
 		input3.setGoodsno(goodsno);
 		input3.setMemno(myInfo.getMemno());
@@ -122,6 +122,74 @@ public class GoodsRestController {
 		data.put("item2", qoutput);
 		data.put("meta", pageData);
 		return webHelper.getJsonData(data);
+	}
+
+	/** 작성 폼에 대한 action 페이지 */
+	@RequestMapping(value = "/gallery", method = RequestMethod.POST)
+	public Map<String, Object> add_ok(Model model, @RequestParam(value = "bbstype", defaultValue = "B") String bbstype,
+			@RequestParam(value = "bbstitle", defaultValue = "") String bbstitle,
+			@RequestParam(value = "bbscontent", defaultValue = "") String bbscontent,
+			@RequestParam(value = "qnasec", required = false) String qnasec,
+			@RequestParam(value = "qnapw", required = false) String qnapw,
+			@RequestParam(value = "rvlike", required = false) String rvlike,
+			@RequestParam(value = "regdate", required = false) String regdate,
+			@RequestParam(value = "editdate", required = false) String editdate,
+			@RequestParam(value = "memno", defaultValue = "0") int memno,
+			@RequestParam(value = "goodsno", defaultValue = "0") int goodsno) {
+
+		// 가입한 시각을 담은 date 생성
+		Calendar c = Calendar.getInstance();
+		String date = String.format("%04d-%02d-%02d %02d:%02d:%02d", c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1,
+				c.get(Calendar.DAY_OF_MONTH), c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE),
+				c.get(Calendar.SECOND));
+
+		// 세션 객체를 이용하여 저장된 세션값 얻기
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+
+		/** 사용자가 입력한 파라미터에 대한 유효성 검사 */
+		// 일반 문자열 입력 컬럼 --> String으로 파라미터가 선언되어 있는 경우는 값이 입력되지 않으면 빈 문자열로 처리된다.
+		if (bbstitle.equals("")) {
+			return webHelper.getJsonWarning("제목을 입력하세요.");
+		}
+		if (bbscontent.equals("")) {
+			return webHelper.getJsonWarning("내용을 입력하세요.");
+		}
+
+		/** 2) 데이터 저장하기 */
+		// 저장할 값들을 Beans에 담는다.
+		Bbs qsave = new Bbs();
+		qsave.setBbstype("B");
+		qsave.setBbstitle(bbstitle);
+		qsave.setBbscontent(bbscontent);
+		qsave.setQnasec(qnasec);
+		qsave.setQnapw(qnapw);
+		qsave.setRvlike(rvlike);
+		qsave.setRegdate(date);
+		qsave.setEditdate(date);
+		qsave.setMemno(myInfo.getMemno());
+		qsave.setGoodsno(goodsno);
+		qsave.setUsername(myInfo.getUsername());
+
+		// 저장된 결과를 조회하기 위한 객체
+		Bbs qsoutput = null;
+
+		try {
+			// 데이터 저장
+			// --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
+			bbsService.addBbs(qsave);
+			
+
+			// 데이터 조회
+			qsoutput = bbsService.getBbsItem(qsave);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		/** 결과를확인하기 위한 JSON 출력 */
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("item", qsoutput);
+		return webHelper.getJsonData(map);
 	}
 
 }

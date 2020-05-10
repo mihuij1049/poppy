@@ -126,5 +126,6 @@ public class GoodsAjaxController {
 		model.addAttribute("pageData", pageData);
 		return new ModelAndView("gallery/goods_ajax");
 	}
+	
 
 }

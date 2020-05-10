@@ -1,5 +1,6 @@
 package kr.co.poppy.controllers;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -62,7 +63,7 @@ public class GoodsController {
 			return webHelper.redirect(null, "상품번호가 없습니다.");
 		}
 
-		/**  페이지 구현에 필요한 변수값 생성 */
+		/** 페이지 구현에 필요한 변수값 생성 */
 		int totalCount = 0;
 		int listCount = 5;
 		int pageCount = 3;
@@ -83,7 +84,6 @@ public class GoodsController {
 		input3.setGoodsno(goodsno);
 		input3.setMemno(myInfo.getMemno());
 		input3.setBbstype("C");
-		
 
 		Bbs qna = new Bbs();
 		qna.setBbstype("B");
@@ -104,7 +104,7 @@ public class GoodsController {
 			// SQL의 limit절에서 사용될 값을 Beans의 static 변수에 저장
 			Bbs.setOffset(pageData.getOffset());
 			Bbs.setListCount(pageData.getListCount());
-			
+
 			// 데이터 조회
 			goods = goodsService.getGoodsItem(input);
 			heart = heartService.getHeartCount(input2);
@@ -123,6 +123,69 @@ public class GoodsController {
 		model.addAttribute("qoutput", qoutput);
 		model.addAttribute("pageData", pageData);
 		return new ModelAndView("gallery/goods");
+	}
+
+	/** 작성 폼에 대한 action 페이지 */
+	@RequestMapping(value = "/gallery/goods_ok.do", method = RequestMethod.POST)
+	public ModelAndView add_ok(Model model, @RequestParam(value = "bbstype", defaultValue = "B") String bbstype,
+			@RequestParam(value = "bbstitle", defaultValue = "") String bbstitle,
+			@RequestParam(value = "bbscontent", defaultValue = "") String bbscontent,
+			@RequestParam(value = "qnasec", required = false) String qnasec,
+			@RequestParam(value = "qnapw", required = false) String qnapw,
+			@RequestParam(value = "rvlike", required = false) String rvlike,
+			@RequestParam(value = "regdate", required = false) String regdate,
+			@RequestParam(value = "editdate", required = false) String editdate,
+			@RequestParam(value = "memno", defaultValue = "0") int memno,
+			@RequestParam(value = "goodsno", defaultValue = "0") int goodsno) {
+
+		// 가입한 시각을 담은 date 생성
+		Calendar c = Calendar.getInstance();
+		String date = String.format("%04d-%02d-%02d %02d:%02d:%02d", c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1,
+				c.get(Calendar.DAY_OF_MONTH), c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE),
+				c.get(Calendar.SECOND));
+		
+		// 세션 객체를 이용하여 저장된 세션값 얻기
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+
+		/** 사용자가 입력한 파라미터에 대한 유효성 검사 */
+		// 일반 문자열 입력 컬럼 --> String으로 파라미터가 선언되어 있는 경우는 값이 입력되지 않으면 빈 문자열로 처리된다.
+		if (bbstitle.equals("")) {
+			return webHelper.redirect(null, "제목을 입력하세요.");
+		}
+		if (bbscontent.equals("")) {
+			return webHelper.redirect(null, "내용을 입력하세요.");
+		}
+		
+		/** 2) 데이터 저장하기 */
+        // 저장할 값들을 Beans에 담는다.
+        Bbs qsave = new Bbs();
+        qsave.setBbstype("B");
+        qsave.setBbstitle(bbstitle);
+        qsave.setBbscontent(bbscontent);
+        qsave.setQnasec(qnasec);
+        qsave.setQnapw(qnapw);
+        qsave.setRvlike(rvlike);
+        qsave.setRegdate(date);
+        qsave.setEditdate(date);
+        qsave.setMemno(myInfo.getMemno());
+        qsave.setGoodsno(goodsno);
+        
+
+        try {
+            // 데이터 저장
+            // --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
+            bbsService.addBbs(qsave);
+        } catch (Exception e) {
+            return webHelper.redirect(null, e.getLocalizedMessage());
+        }
+
+
+		/** 결과를 확인하기 위한 페이지 이동 */
+		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야 한다.
+		String redirectUrl = contextPath + "/gallery/goods.do?goodsno=" + qsave.getGoodsno();
+		return webHelper.redirect(redirectUrl, "저장되었습니다.");
+
 	}
 
 }

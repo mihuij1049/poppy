@@ -140,46 +140,24 @@ input {
 	font-size: 12px;
 }
 
-.prd-option {
+.gdoption {
 	margin-top: 15px;
-	margin-bottom: 15px;
 }
 
-table .quantity {
-	width: 100%;
-}
-
-.prd-option .quantity th {
+.gdoption .gdtitle {
 	font-size: 12px;
-	font-weight: lighter;
-	width: 48%;
-}
-
-.prd-option button {
-	width: 30px;
-	height: 28px;
-	color: #000;
-	padding: 0;
-	font-size: 15px;
-	text-decoration: none;
-	background-color: #fff;
-	border: none;
-}
-
-.prd-option button img {
-	width: auto;
-	height: 28px;
-}
-
-.prd-option input {
-	width: 30px;
-	height: 26.5px;
-	text-align: center;
-	font-size: 12px;
+	width: 25%;
 	display: inline-block;
-	border: 1px solid #ddd;
-	border-radius: 2px;
-	vertical-align: -0.5px;
+}
+
+.gdoption .goods-select {
+	outline: 0;
+	width: 73%;
+	height: 32px;
+	font-size: 12px;
+	color: #777;
+	padding: 0px 5px;
+	border: 1px solid #ff8f83;
 }
 
 .prd-total {
@@ -456,37 +434,6 @@ dl {
 	border-bottom: 1px solid #ddd;
 }
 
-.paging {
-	text-align: center;
-}
-
-.paging .disabled {
-	position: relative;
-	right: 10px;
-}
-
-.paging .paging-right {
-	position: relative;
-	left: 10px;
-}
-
-.pagination>.active>span {
-	background-color: #ffc7c1;
-	border-color: #ffc7c1;
-}
-
-.pagination>.disabled>a {
-	height: 30px;
-	color: #ffc7c1;
-	padding-top: 6px;
-}
-
-.pagination>li>a {
-	height: 30px;
-	color: #ffc7c1;
-	padding-top: 6px;
-}
-
 .qna-btn {
 	text-align: center;
 	padding-top: 15px;
@@ -705,6 +652,15 @@ dl {
 .select-prd .cencel span {
 	color: #ff8f83;
 }
+
+.customer_pass {
+	position: fixed;
+	left: 4%;
+	margin-left: -20%;
+	top: 35%;
+	margin-top: -150px;
+	display: none;
+}
 </style>
 </head>
 
@@ -723,7 +679,8 @@ dl {
 			</div>
 			<div class="product">
 				<div class="prd-img">
-					<img src="${goods.imgpath}${goods.imgname}.${goods.imgext}" name="goods">
+					<img src="${goods.imgpath}${goods.imgname}.${goods.imgext}"
+						name="goods">
 				</div>
 				<fieldset class="btn-group">
 					<button type="button" class="like-btn" aria-label="좋아요">
@@ -751,23 +708,12 @@ dl {
 							<li><strong>2,500원</strong>(30,000원 이상 구매시 무료)</li>
 						</ul>
 					</div>
-					<div class="prd-option">
-						<table>
-							<tbody>
-								<tr class="quantity">
-									<th>수량</th>
-									<td>
-										<button type="button" class="btn btnDown">
-											<img src="/upload/img/마이너스.png">
-										</button> <input type="number" value="1" min="1" max="99" name="count"
-										id="count" />
-										<button type="button" class="btn btnUp">
-											<img src="/upload/img/플러스.png">
-										</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+					<div class="gdoption">
+						<div class="gdtitle">상품선택</div>
+						<select class="goods-select">
+							<option value="active">- [필수] 옵션을 선택해 주세요. -</option>
+							<option value="1">${goods.gdoption}</option>
+						</select>
 					</div>
 					<div class="collapse">
 						<!-- 게시글 하나 단위 -->
@@ -813,21 +759,21 @@ dl {
 									<tr class="add-prd">
 										<td>
 											<p class="prd">
-												<strong>펫클럽 벨버드비쉬케어포덴탈 바르는치약 70g/위생</strong> <br> <span>펫클럽
-													벨버드비쉬케어포덴탈 바르는치약 70g/위생</span>
+												<strong>${goods.gname}</strong> <br> <span>${goods.gdoption}</span>
 											</p>
 											<p>
 												<button type="button" class="btn btnDown2">
 													<img src="/upload/img/마이너스.png">
 												</button>
 												<input type="number" value="0" min="1" max="99"
-													name="count2" id="count2" />
+													name="count" id="count" />
 												<button type="button" class="btn btnUp2">
 													<img src="/upload/img/플러스.png">
 												</button>
 											</p>
 										</td>
-										<td class="add-price"><span id=add-price>6000</span> <span>원</span></td>
+										<td class="add-price"><span id=add-price>${goods.gsale}</span>
+											<span>원</span></td>
 										<td class="cencel">
 											<div class="cencel-btn">
 												<button type="button" class="btn" id="prd-del">
@@ -981,6 +927,29 @@ dl {
 									전체보기</button>
 							</div>
 							<div class="prd-review">
+								<ul class="review-list" style="display: none">
+									<li class="list1">
+										<div class="box">
+											<dl class="box-left">
+												<dd class="star">${qsoutput.rvlike}</dd>
+												<dd class="writer">${qsoutput.username}</dd>
+												<dd class="writeDate">${qsoutput.regdate}</dd>
+												<dd class="review-content"
+													onclick="location.href='${pageContext.request.contextPath}/community/article.do?bbsno={{bbsno}}&bbstype={{bbstype}}'">
+													${qsoutput.bbscontent}<br>
+												</dd>
+												<dd class="edit">
+													<a href="#" class="editt">수정</a>
+												</dd>
+												<dd class="txt">
+													<span> 리뷰가 도움이 되었나요? <a href="#">추천</a> <span
+														class="voteCount"> 3 </span>
+													</span>
+												</dd>
+											</dl>
+										</div>
+									</li>
+								</ul>
 								<%-- 상세페이지로 이동하기 위한 URL --%>
 								<c:url value="/community/article.do" var="viewUrl">
 									<c:param name="bbstype" value="${item2.bbstype}" />
@@ -994,7 +963,7 @@ dl {
 									<%-- 이전 그룹으로 이동 가능하다면? --%>
 									<c:when test="${pageData.prevPage > 0}">
 										<%-- 이동할 URL 생성 --%>
-										<c:url value="/gallery/goods_ajax.do" var="prevPageUrl">
+										<c:url value="/gallery_ajax/goods.do" var="prevPageUrl">
 											<c:param name="page" value="${pageData.prevPage}" />
 										</c:url>
 										<a href="${prevPageUrl}" class="prevok">≪</a>
@@ -1008,7 +977,7 @@ dl {
 								<c:forEach var="i" begin="${pageData.startPage}"
 									end="${pageData.endPage}" varStatus="status">
 									<%-- 이동할 URL 생성 --%>
-									<c:url value="/gallery/goods_ajax.do" var="pageUrl">
+									<c:url value="/gallery_ajax/goods.do" var="pageUrl">
 										<c:param name="page" value="${i}" />
 									</c:url>
 
@@ -1024,13 +993,12 @@ dl {
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
-
 								<%-- 다음 그룹에 대한 링크 --%>
 								<c:choose>
 									<%-- 다음 그룹으로 이동 가능하다면? --%>
 									<c:when test="${pageData.nextPage > 0}">
 										<%-- 이동할 URL 생성 --%>
-										<c:url value="/gallery/goods_ajax.do" var="nextPageUrl">
+										<c:url value="/gallery_ajax/goods.do" var="nextPageUrl">
 											<c:param name="page" value="${pageData.nextPage}" />
 										</c:url>
 										<a href="${nextPageUrl}" class="nextok">≫</a>
@@ -1056,12 +1024,54 @@ dl {
 								<div class="qna">
 									<table>
 										<tbody id="qna_list">
-											<%-- 상세페이지로 이동하기 위한 URL --%>
-											<c:url value="/community/article.do" var="viewUrl">
-												<c:param name="bbstype" value="${item2.bbstype}" />
-												<c:param name="bbsno" value="${item2.bbsno}" />
-											</c:url>
-
+											<c:choose>
+												<%-- 조회결과가 없는 경우 --%>
+												<c:when test="${qoutput == null || fn:length(qoutput) == 0}">
+													<tr>
+														<td colspan="9" align="center">게시물이 없습니다.</td>
+													</tr>
+												</c:when>
+												<%-- 조회결과가 있는  경우 --%>
+												<c:otherwise>
+													<%-- 조회 결과에 따른 반복 처리 --%>
+													<c:forEach var="item" items="${output}" varStatus="status">
+														<%-- 출력을 위해 준비한 변수 --%>
+														<c:set var="bbstitle" value="${item.bbstitle}" />
+														<c:set var="bbscontent" value="${item.bbscontent}" />
+														<c:set var="username" value="${item.username}" />
+														<c:set var="qnapw" value="${item.qnapw}" />
+														<c:set var="bbsno" value="${item.bbsno}" />
+														<%-- 상세페이지로 이동하기 위한 URL --%>
+														<c:url value="/community/article.do" var="viewUrl">
+															<c:param name="bbstype" value="${item2.bbstype}" />
+															<c:param name="bbsno" value="${item2.bbsno}" />
+														</c:url>
+														<c:choose>
+															<c:when test="${!empty item2.qnapw}">
+																<tr>
+																	<td class="subject" id="subject"><strong>
+																			<span class="glyphicon glyphicon-lock"></span> <a
+																			href="${viewUrl}" class="subject" id="confirm-pw"
+																			data-qnapw="${item2.qnapw}"
+																			data-bbsno="${item2.bbsno}">${bbstitle}</a> <span
+																			class="comment">[댓글수]</span>
+																	</strong><br /> <span class="name" title="작성자">${item2.username}</span>
+																		<span class="date" title="작성일">${item2.regdate}</span></td>
+																</tr>
+															</c:when>
+															<c:otherwise>
+																<tr>
+																	<td class="subject"><strong> <a
+																			href="${viewUrl}" class="subject">${bbstitle}</a> <span
+																			class="comment">[댓글수]</span></strong><br /> <span
+																		class="name" title="작성자">${item2.username}</span> <span
+																		class="date" title="작성일">${item2.regdate}</span></td>
+																</tr>
+															</c:otherwise>
+														</c:choose>
+													</c:forEach>
+												</c:otherwise>
+											</c:choose>
 										</tbody>
 									</table>
 									<div class="pagenumber">
@@ -1071,7 +1081,7 @@ dl {
 											<%-- 이전 그룹으로 이동 가능하다면? --%>
 											<c:when test="${pageData.prevPage > 0}">
 												<%-- 이동할 URL 생성 --%>
-												<c:url value="/gallery/goods_ajax.do" var="prevPageUrl">
+												<c:url value="/gallery_ajax/goods.do" var="prevPageUrl">
 													<c:param name="page" value="${pageData.prevPage}" />
 												</c:url>
 												<a href="${prevPageUrl}" class="prevok">≪</a>
@@ -1085,7 +1095,7 @@ dl {
 										<c:forEach var="i" begin="${pageData.startPage}"
 											end="${pageData.endPage}" varStatus="status">
 											<%-- 이동할 URL 생성 --%>
-											<c:url value="/gallery/goods_ajax.do" var="pageUrl">
+											<c:url value="/gallery_ajax/goods.do" var="pageUrl">
 												<c:param name="page" value="${i}" />
 											</c:url>
 
@@ -1107,7 +1117,7 @@ dl {
 											<%-- 다음 그룹으로 이동 가능하다면? --%>
 											<c:when test="${pageData.nextPage > 0}">
 												<%-- 이동할 URL 생성 --%>
-												<c:url value="/gallery/goods_ajax.do" var="nextPageUrl">
+												<c:url value="/gallery_ajax/goods.do" var="nextPageUrl">
 													<c:param name="page" value="${pageData.nextPage}" />
 												</c:url>
 												<a href="${nextPageUrl}" class="nextok">≫</a>
@@ -1116,6 +1126,20 @@ dl {
 												<span class="nextno">≫</span>
 											</c:otherwise>
 										</c:choose>
+									</div>
+								</div>
+								<!-- 비밀번호 입력 모달 -->
+								<div class="customer_pass" id="customer_pass">
+									<b class="plz_pass">비밀번호를 입력해 주세요.</b><br> <label
+										for="cs_pass" class="pass_label">비밀번호</label> <input
+										type="password" name="cs_pass" class="cs_pass" id="cs_pass" /><br>
+
+									<div class="cs_pass_2btns">
+										<button type="button" class="btn btn-sm btn-ok"
+											id="confirm_qnapw">확인</button>
+										<button type="button"
+											class="btn btn-inverse btn-sm btn-cancel"
+											id="modal-cancel-btn">취소</button>
 									</div>
 								</div>
 							</div>
@@ -1199,7 +1223,7 @@ dl {
 					        <dd class="star">{{rvlike}}</dd>
 					        <dd class="writer">{{username}}</dd>
 					        <dd class="writeDate">{{regdate}}</dd>
-					        <dd class="review-content">
+					        <dd class="review-content" onclick="location.href='${pageContext.request.contextPath}/community/article.do?bbsno={{bbsno}}&bbstype={{bbstype}}'">
 					    	{{bbscontent}}<br>
 					        </dd>
 					        <dd class="edit">
@@ -1240,6 +1264,8 @@ dl {
 		src="${pageContext.request.contextPath}/share/assets/js/regex.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/share/plugins/handlebars/handlebars-v4.0.5.js"></script>
+	<!-- jQuery Ajax Form plugin CDN -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			$('.star span').click(function() {
@@ -1249,7 +1275,7 @@ dl {
 			});
 
 			var counter = 1;
-			var counted = $("#count2").val();
+	
 			var acount = parseInt(counted);
 			var price = $(".price").text();
 			var add_price = $("#add-price").text();
@@ -1271,7 +1297,7 @@ dl {
 					function(e) {
 						acount++;
 
-						$("#count2").val(acount);
+					
 						$("#price-count").html(counter + acount);
 						$("#add-price").html(acount * add_price);
 						$("#total-price").html(
@@ -1300,17 +1326,17 @@ dl {
 						}
 						acount--;
 
-						$("#count2").val(acount);
+				
 						$("#add-price").html(acount * add_price);
 						$("#price-count").html(counter + acount);
 						$("#total-price").html(
 								(counter * price) + (acount * add_price));
 					});
 
-			jQuery('.prd-select').change(
+			jQuery('.goods-select').change(
 					function() {
-						var index = $(".prd-select option").index(
-								$(".prd-select option:selected"));
+						var index = $(".goods-select option").index(
+								$(".goods-select option:selected"));
 						if (index) {
 							jQuery('.select-prd').show();
 							acount = 0;
@@ -1322,7 +1348,7 @@ dl {
 				$(this).parents(".select-prd").hide();
 				$("#price-count").html(counter);
 				$("#total-price").html(counter * price);
-				$("#count2").val(counted);
+				
 				$("#add-price").html(add_price);
 			});
 		});
@@ -1398,6 +1424,57 @@ dl {
 									$("#qna_list").append(html);
 								});
 					});
+		});
+
+		$(function() {
+			// 비밀번호 모달창 띄우기
+			$("#subject").click(function(e) {
+				e.preventDefault();
+				$("#customer_pass").show();
+			});
+
+			$("#confirm_qnapw")
+					.click(
+							function(e) {
+								e.preventDefault();
+								var inputpw = $("#cs_pass").val();
+								let current = $("#confirm-pw");
+								let bbsno = current.data("bbsno");
+								let qnapw = current.data("qnapw");
+								console.log(qnapw);
+								console.log(inputpw);
+								if (qnapw == inputpw) {
+									window.location = "${pageContext.request.contextPath}/community/article.do?bbstype=B&bbsno="
+											+ bbsno;
+								} else {
+									alert("비밀번호를 확인해주세요.");
+								}
+							});
+			$("#modal-cancel-btn").click(function() {
+				$("#customer_pass").hide();
+			});
+
+		});
+
+		$(function() {
+			// #addForm에 대한 submit 이벤트롤 가로채서 Ajax 요청을 전송한다.
+			$(".prd-photo").ajaxForm({
+				// 전송 메서드 지정
+				method : "POST",
+				// 서버에서 200 응답을 전달한 경우 실행됨
+				success : function(json) {
+					console.log(json);
+					
+					// json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
+					if (json.rt == "OK") {
+						window.location = "${pageContext.request.contextPath}/gallery_ajax/goods.do?goodsno=" + json.item.goodsno;
+					}
+				}
+			});
+			
+			$("#review-submit").click(function(e){
+				$("review-list").show();
+			});
 		});
 	</script>
 </body>
