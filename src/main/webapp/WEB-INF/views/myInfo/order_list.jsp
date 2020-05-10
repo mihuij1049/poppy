@@ -83,6 +83,10 @@
 					<c:forEach var="item" items="${output}" varStatus="status">
 						<c:set var="orderno" value="${item.orderno}" />
 						<c:set var="memno" value="${item.memno}" />
+						<c:set var="imgname" value="${item.imgname }" />
+						<c:set var="imgext" value="${item.imgext }" />
+						<c:set var="imgpath" value="${item.imgpath }" />
+						<c:set var="imgtype" value="${item.imgtype }" />
 						<c:set var="paytype" value="${item.paytype}" />
 						<c:set var="odstatus" value="${item.odstatus}" />
 						<div>
@@ -99,7 +103,8 @@
 								<div class="prd-box">
 									<div class="thumbnail">
 										<a href="${pageContext.request.contextPath}/gallery/goods.do">
-											<img src="../share/img/slide.jpg" width="70" height="70">
+											<img src="${item.imgpath}${item.imgname}.jpg" width="70"
+											height="70">
 										</a>
 									</div>
 									<div class="prd-content">
@@ -165,12 +170,12 @@
 
 	<!-- Javascript -->
 	<%@ include file="../share/bottom_tp.jsp"%>
-    <!-- 플러그인 JS 참조 -->
+	<!-- 플러그인 JS 참조 -->
 	<script src="../share/plugins/datepicker/datepicker.min.js"></script>
 	<script src="../share/plugins/datepicker/datepicker.ko-KR.js"></script>
 	<!-- 사용자 정의 스크립트 -->
 	<script type="text/javascript">
-	function set_term(days) {
+		function set_term(days) {
 			days = days * 24 * 60 * 60 * 1000;
 
 			var date = new Date();

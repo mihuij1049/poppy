@@ -8,6 +8,18 @@
 <html lang="ko">
 
 <head>
+<style type="text/css">
+.customer_pass {
+	position: fixed;
+	left: 4%;
+	margin-left: -20%;
+	top: 35%;
+	margin-top: -150px;
+	display: none;
+}
+
+
+</style>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/share/qna.css" />
@@ -25,15 +37,15 @@
 			</h4>
 		</div>
 		<!-- 로그인 시에만 글쓰기 버튼 보이게 하기 -->
-		
+
 		<div class="notice">
 			<table class="table">
 				<tbody>
-				<c:if test="${!empty userInfo.userid }">
-			<button type="button"
-				onclick="location.href='${pageContext.request.contextPath}/community/qna_wri.do'"
-				class="btn btn-sm btn-list">글쓰기</button>
-		</c:if>
+					<c:if test="${!empty userInfo.userid }">
+						<button type="button"
+							onclick="location.href='${pageContext.request.contextPath}/community/qna_wri.do'"
+							class="btn btn-sm btn-list">글쓰기</button>
+					</c:if>
 					<c:choose>
 						<%-- 조회결과가 없는 경우 --%>
 						<c:when test="${output == null || fn:length(output) == 0}">
@@ -49,7 +61,7 @@
 								<c:set var="bbstitle" value="${item.bbstitle}" />
 								<c:set var="bbscontent" value="${item.bbscontent}" />
 								<c:set var="username" value="${item.username}" />
-								<c:set var="userid" value="${item.userid}" />
+								<c:set var="qnapw" value="${item.qnapw}" />
 
 								<%-- 검색어가 있다면? --%>
 								<c:if test="${keyword != ''}">
@@ -62,25 +74,37 @@
 										value="${fn:replace(bbscontent, keyword, mark)}" />
 									<c:set var="username"
 										value="${fn:replace(username, keyword, mark)}" />
-									<c:set var="userid"
-										value="${fn:replace(userid, keyword, mark)}" />
+
 								</c:if>
 								<%-- 상세페이지로 이동하기 위한 URL --%>
 								<c:url value="/community/article.do" var="viewUrl">
 									<c:param name="bbstype" value="${item.bbstype}" />
 									<c:param name="bbsno" value="${item.bbsno}" />
 								</c:url>
-								
-								<tr>
-									<td class="subject" id="subject"><strong> 
-									<c:if test="${!empty item.qnapw}">
-									<span class="glyphicon glyphicon-lock"></span> 
-									</c:if>
-									<a href="${viewUrl}"
-											class="subject">${bbstitle}</a> <span class="comment">[댓글수]</span>
-									</strong><br /> <span class="name" title="작성자">${item.username}</span>
-										<span class="date" title="작성일">${item.regdate}</span></td>
-								</tr>
+								<c:choose>
+									<c:when test="${!empty item.qnapw}">
+										<tr>
+											<td class="subject" id="subject"><strong> <span
+													class="glyphicon glyphicon-lock"></span> <a
+													href="${viewUrl}" class="subject" id="confirm-pw"
+													data-qnapw="${item.qnapw}">${bbstitle}</a> <span
+													class="comment">[댓글수]</span></strong><br /> <span class="name"
+												title="작성자">${item.username}</span> <span class="date"
+												title="작성일">${item.regdate}</span></td>
+										</tr>
+									</c:when>
+									<c:otherwise>
+										<tr>
+											<td class="subject"><strong> <a
+													href="${viewUrl}" class="subject">${bbstitle}</a> <span
+													class="comment">[댓글수]</span></strong><br /> <span class="name"
+												title="작성자">${item.username}</span> <span class="date"
+												title="작성일">${item.regdate}</span></td>
+										</tr>
+									</c:otherwise>
+
+
+								</c:choose>
 							</c:forEach>
 						</c:otherwise>
 					</c:choose>
@@ -145,7 +169,7 @@
 			</div>
 
 		</div>
-		
+
 
 		<div class="searchmenu">
 			<form method="post"
@@ -154,28 +178,56 @@
 					<option value="bbstitle">제목</option>
 					<option value="bbscontent">내용</option>
 					<option value="username">이름</option>
-				</select>  <input type="search" name="keyword"
-					id="keyword" class="keyword" value="${keyword}" />
-				<button type="submit"
-					class="btn btn-sm btn-search">검색</button>
+				</select> <input type="search" name="keyword" id="keyword" class="keyword"
+					value="${keyword}" />
+				<button type="submit" class="btn btn-sm btn-search">검색</button>
 			</form>
 		</div>
-		<div class="row">
-			<!--   비밀번호 입력 모달 ------------------------->
-			<div class="customer_pass" id="customer_pass">
-				<b class="plz_pass">비밀번호를 입력해 주세요.</b><br> <label for="cs_pass"
-					class="pass_label">비밀번호</label> <input type="password"
-					name="cs_pass" class="cs_pass" id="cs_pass"><br>
 
-				<div class="cs_pass_2btns">
-					<button type="button" class="btn btn-sm btn-ok">확인</button>
-					<button type="button" class="btn btn-inverse btn-sm btn-cancel">취소</button>
-				</div>
+		<!--   비밀번호 입력 모달 ------------------------->
+		<div class="customer_pass" id="customer_pass">
+			<b class="plz_pass">비밀번호를 입력해 주세요.</b><br> <label for="cs_pass"
+				class="pass_label">비밀번호</label> 
+				<input type="password"
+				name="cs_pass" class="cs_pass" id="cs_pass" /><br>
+
+			<div class="cs_pass_2btns">
+				<button type="submit" class="btn btn-sm btn-ok">확인</button>
+				<button type="button" class="btn btn-inverse btn-sm btn-cancel"
+					id="modal-cancel-btn">취소</button>
 			</div>
 		</div>
+
 	</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
-
+	<script type="text/javascript">
+		$(function() {
+			// 비밀번호 모달창 띄우기
+			$("#subject").click(function(e) {
+				e.preventDefault();
+				$("#customer_pass").show();
+			});
+			
+			$("#post").submit(function(e) {
+				e.preventDefault();
+			var inputpw = $("#cs_pass").val();
+			let current = $(this);
+			let qnapw=current.data("qnapw");
+			console.log(qnapw);
+			console.log(inputpw);
+			if(qnapw==inputpw) {
+				$(this).submit();
+			} else {
+				alert("비밀번호를 확인해주세요.");
+			}
+		});
+			$("#modal-cancel-btn").click(function() {
+				$("#customer_pass").hide();
+			});
+			
+		});
+		
+	</script>
 </body>
 
 </html>

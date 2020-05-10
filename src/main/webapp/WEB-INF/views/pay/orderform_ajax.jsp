@@ -51,7 +51,7 @@
 							<div role="tabpanel" class="tab-pane fade active in" id="page1">
 								<div class="recent-address">
 									<form class="recents"
-										action="${pageContext.request.contextPath}/pay/orderform_ajax.do"
+										action="${pageContext.request.contextPath}/pay_ajax/orderform.do"
 										method="GET">
 										<div class="recent">
 											<strong class="name"><span id="delivery-info-name">${output.odname}</span></strong>
@@ -207,21 +207,20 @@
 					role="tabpanel" aria-labelledby="headingTwo">
 					<div class="panel-body">
 						<form class="prd-info"
-							action="${pageContext.request.contextPath}/pay/orderform_ajax.do"
+							action="${pageContext.request.contextPath}/pay_ajax/orderform.do"
 							method="GET">
 							<div class="prd-box">
 								<div class=goods-box>
 									<div class="thumbnail">
 										<a
-											href="${pageContext.request.contextPath}/gallery/goods_ajax.do">
-											<img src="${user.imgpath}" width="70" height="70">
+											href="${pageContext.request.contextPath}/gallery_ajax/goods.do">
+											<img src="" width="70" height="70">
 										</a>
 									</div>
 									<div class="prd">
 										<div id="prd-title">
 											<strong class="prd-name" title="상품명"> <a
-												href="${pageContext.request.contextPath}/gallery/goods.jsp">펫클럽
-													벨버드 토일렛/애견토일렛/강아지화장실/패드</a>
+												href="${pageContext.request.contextPath}/gallery_ajax/goods.jsp">모르겠다 정말</a>
 											</strong>
 										</div>
 										<ul class="prd-li">
@@ -285,7 +284,7 @@
 				<div id="collapseThree" class="panel-collapse collapse"
 					role="tabpanel" aria-labelledby="headingThree">
 					<form class="panel-body"
-						action="${pageContext.request.contextPath}/pay/orderform_ajax.do"
+						action="${pageContext.request.contextPath}/pay_ajax/orderform.do"
 						method="GET">
 						<div class="discount clear">
 							<div class="dis-title">

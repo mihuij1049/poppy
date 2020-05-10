@@ -10,7 +10,7 @@
 <head>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/share/photo.css" />
+	href="${pageContext.request.contextPath}/share/photo.css?ver=1" />
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -40,17 +40,16 @@
 					<a href="${pageContext.request.contextPath}/gallery/goods.do">
 						${output.bbstitle}</a><br>
 					<div class="star">
-						<p>${output.rvlike}</p>
 						<p>(5.0)</p>
 						<br>
 					</div>
 					<div class="writer">
-						<p>${output.username}</p>
+						<p>(${fn:substring(output.username,0,1)}**)</p>
 					</div>
 				</div>
 			</div>
 			<div class="rv-title">
-				<p>이 리뷰에 대해 n명의 고객님께서 추천해 주셨습니다.</p>
+				<p>이 리뷰에 대해 <p id="rvcount">5<p>명의 고객님께서 추천해 주셨습니다.</p>
 			</div>
 			<div class="rv-content">
 				<p class="date">20.01.31</p>
@@ -69,11 +68,12 @@
 	<!-- Javascript -->
 	<script type="text/javascript">
 		$(function() {
-			var count = 0;
+			var count = 5;
 			$("#recommend").click(function() {
-				if (count == 0) {
+				if (count == 5) {
 					alert("추천되었습니다.");
 					count++;
+					$("#rvcount").html(count);
 				} else {
 					alert("이 게시물에는 더이상 추천하실 수 없습니다.")
 				}

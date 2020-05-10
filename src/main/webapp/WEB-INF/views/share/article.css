@@ -62,12 +62,6 @@
 	padding-bottom: 25px;
 }
 
-.button2 {
-	display: inline-block;
-	float: right;
-	margin-right: 15px;
-	margin-top: 60px;
-}
 /** 하나의 댓글 전체 */
 .comment_nai {
 	border-bottom: 1px solid #red;
@@ -143,7 +137,7 @@
 	border: solid 1px #eee;
 	margin-bottom: 50px;
 }
-/** 원래있던 댓글 */
+
 
 /** 동적 생성된 textaread */
 .comment_edit {
@@ -151,14 +145,6 @@
 	min-height: 50px;
 }
 
-.insert {
-	
-}
-
-/** 비밀번호 입력 모달 */
-.content {
-	position: relative;
-}
 
 .customer_pass {
 	margin: auto;
@@ -178,12 +164,7 @@
 	padding-bottom: 15px;
 }
 
-/** 글 수정삭제 버튼 */
-.btn-delar {
-	float: right;
-	margin-bottom: 10px;
-	mrgin-right: 10px;
-}
+
 
 .cannotar {
 	text-align: center;
@@ -193,4 +174,26 @@
 	color: white;
 	margin: auto;
 	margin-bottom: 30px;
+}
+
+/** 버튼들 */
+.nai {
+	padding: 25px 10px;
+}
+
+.btn-del {
+	float: right;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+.btn-edit {
+	float: right;
+	margin: 10px;
+}
+
+.btn-delar, .btn-editar {
+	float: right;
+	margin-right: 10px;
 }

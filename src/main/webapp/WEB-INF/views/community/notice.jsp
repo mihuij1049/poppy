@@ -41,7 +41,6 @@
 								<c:set var="bbstitle" value="${item.bbstitle}" />
 								<c:set var="bbscontent" value="${item.bbscontent}" />
 								<c:set var="username" value="${item.username}" />
-								<c:set var="userid" value="${item.userid}" />
 
 								<%-- 검색어가 있다면? --%>
 								<c:if test="${keyword != ''}">
@@ -54,8 +53,7 @@
 										value="${fn:replace(bbscontent, keyword, mark)}" />
 									<c:set var="username"
 										value="${fn:replace(username, keyword, mark)}" />
-									<c:set var="userid"
-										value="${fn:replace(userid, keyword, mark)}" />
+									
 								</c:if>
 								
 								<%-- 상세페이지로 이동하기 위한 URL --%>

@@ -116,6 +116,10 @@ input {
 	margin-bottom: 15px;
 }
 
+.prd-price .price {
+	font-size: 12px;
+}
+
 .prd-price div {
 	display: inline;
 }
@@ -707,7 +711,7 @@ dl {
 <body>
 	<%@ include file="../share/top_tp.jsp"%>
 	<form method="get"
-		action="${pageContext.request.contextPath}/gallery/goods_ajax.do">
+		action="${pageContext.request.contextPath}/gallery_ajax/goods.do">
 		<div class="content">
 			<!-- 여기에 작성 -->
 			<div class="page-title clearfix">
@@ -719,12 +723,12 @@ dl {
 			</div>
 			<div class="product">
 				<div class="prd-img">
-					<img src="${output.imgpath}${output.imgname}.${output.imgext}">
+					<img src="${goods.imgpath}${goods.imgname}.${goods.imgext}" name="goods">
 				</div>
 				<fieldset class="btn-group">
 					<button type="button" class="like-btn" aria-label="좋아요">
 						<span class="glyphicon glyphicon-heart-empty like"></span> <span
-							class="like-txt">좋아요</span> <span class="like-count ct">11</span>
+							class="like-txt">좋아요</span> <span class="like-count ct">18</span>
 					</button>
 					<button type="button" class="share-btn">
 						<span class="glyphicon glyphicon-link"></span> <span>공유하기</span>
@@ -732,10 +736,10 @@ dl {
 					<input id="my-url" type="text" value="<%=request.getRequestURL()%>" />
 				</fieldset>
 				<div class="prd-title">
-					<div class="prd-name">${output.gname}</div>
+					<div class="prd-name" name="gname">${goods.gname}</div>
 					<div class="prd-price">
-						<div class="price">${output.gprice}</div>
-						원
+						<strike class="price">${goods.gprice}원</strike><br /> <b
+							class="sale">${goods.gsale}원</b>
 					</div>
 					<div class="prd-delivery">
 						<ul>
@@ -852,7 +856,7 @@ dl {
 								onclick="location.href='${pageContext.request.contextPath}/myInfo/like_goods.do'"
 								id="action-like">관심상품</button>
 							<button type="submit"
-								onclick="location.href='${pageContext.request.contextPath}/pay/orderform_ajax.do'"
+								onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do'"
 								id="action-orderform">구매하기</button>
 						</div>
 					</div>
@@ -879,16 +883,16 @@ dl {
 								<tbody>
 									<tr>
 										<th><span>상품명</span></th>
-										<td><span> ${output.gname} </span></td>
+										<td><span> ${goods.gname} </span></td>
 									</tr>
 									<tr>
 										<th><span>소비자가</span></th>
-										<td><span> <b>${output.gprice}원</b>
+										<td><span> <b>${goods.gprice}원</b>
 										</span></td>
 									</tr>
 									<tr>
 										<th><span>판매가</span></th>
-										<td><span> <b>${output.gsale}원</b>
+										<td><span> <b>${goods.gsale}원</b>
 										</span></td>
 									</tr>
 									<tr>
@@ -976,14 +980,65 @@ dl {
 									onclick="location.href='${pageContext.request.contextPath}/community/photo_rv.jsp'">리뷰
 									전체보기</button>
 							</div>
-							<div class="prd-review"></div>
-							<div class="paging">
-								<ul class="pagination pagination-sm">
-									<li class="disabled"><a href="#">&laquo;</a></li>
-									<!-- 활성화 버튼은 아래의 구조로 구성하시면 됩니다. sr-only는 스크린리더 전용입니다. -->
-									<li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
-									<li class="paging-right"><a href="#">&raquo;</a></li>
-								</ul>
+							<div class="prd-review">
+								<%-- 상세페이지로 이동하기 위한 URL --%>
+								<c:url value="/community/article.do" var="viewUrl">
+									<c:param name="bbstype" value="${item2.bbstype}" />
+									<c:param name="bbsno" value="${item2.bbsno}" />
+								</c:url>
+							</div>
+							<div class="pagenumber">
+								<!-- 페이지 번호 구현 -->
+								<%-- 이전 그룹에 대한 링크 --%>
+								<c:choose>
+									<%-- 이전 그룹으로 이동 가능하다면? --%>
+									<c:when test="${pageData.prevPage > 0}">
+										<%-- 이동할 URL 생성 --%>
+										<c:url value="/gallery/goods_ajax.do" var="prevPageUrl">
+											<c:param name="page" value="${pageData.prevPage}" />
+										</c:url>
+										<a href="${prevPageUrl}" class="prevok">≪</a>
+									</c:when>
+									<c:otherwise>
+										<span class="prevno">≪</span>
+									</c:otherwise>
+								</c:choose>
+
+								<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+								<c:forEach var="i" begin="${pageData.startPage}"
+									end="${pageData.endPage}" varStatus="status">
+									<%-- 이동할 URL 생성 --%>
+									<c:url value="/gallery/goods_ajax.do" var="pageUrl">
+										<c:param name="page" value="${i}" />
+									</c:url>
+
+									<%-- 페이지 번호 출력 --%>
+									<c:choose>
+										<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+										<c:when test="${pageData.nowPage == i}">
+											<strong class="nowpage">${i}</strong>
+										</c:when>
+										<%-- 나머지 페이지의 경우 링크 적용함 --%>
+										<c:otherwise>
+											<a href="${pageUrl}" class="otherpage">${i}</a>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+
+								<%-- 다음 그룹에 대한 링크 --%>
+								<c:choose>
+									<%-- 다음 그룹으로 이동 가능하다면? --%>
+									<c:when test="${pageData.nextPage > 0}">
+										<%-- 이동할 URL 생성 --%>
+										<c:url value="/gallery/goods_ajax.do" var="nextPageUrl">
+											<c:param name="page" value="${pageData.nextPage}" />
+										</c:url>
+										<a href="${nextPageUrl}" class="nextok">≫</a>
+									</c:when>
+									<c:otherwise>
+										<span class="nextno">≫</span>
+									</c:otherwise>
+								</c:choose>
 							</div>
 						</div>
 					</div>
@@ -1006,7 +1061,7 @@ dl {
 												<c:param name="bbstype" value="${item2.bbstype}" />
 												<c:param name="bbsno" value="${item2.bbsno}" />
 											</c:url>
-											
+
 										</tbody>
 									</table>
 									<div class="pagenumber">
@@ -1069,72 +1124,72 @@ dl {
 				</div>
 			</div>
 		</div>
-	</form>
-	<div class="footer">
-		<div id="topbt">
-			<a
-				style="display: scroll; position: fixed; bottom: 80px; right: 10px;"
-				href="#"> <img src="/upload/img/top_btn.png">
-			</a>
-		</div>
-		<!-- 하단 네비게이션 고정-->
-		<!--- 소개 4인방 링크 -->
-		<hr />
-		<div class="etc">
-			<a href="${pageContext.request.contextPath}/etc/page_info1.do">회사소개</a>
-			<a href="${pageContext.request.contextPath}/etc/page_info2.do">이용약관</a>
-			<a href="${pageContext.request.contextPath}/etc/page_info3.do">개인정보취급방침</a>
-			<a href="${pageContext.request.contextPath}/etc/page_info4.do">이용안내</a>
-		</div>
-		<hr />
-		<div class="row">
-			<div class="col-xs-6 etc">
-				<h5>
-					<b>상담센터</b>
-				</h5>
-				<p style="font-size: 15px; font-weight: bold;">070-123-4567</p>
-				<p style="font-size: 12px">
-					운영시간 : 10:00 - 18:00<br />주말, 공휴일은 후뮤입니다.
-				</p>
+		<div class="footer">
+			<div id="topbt">
+				<a
+					style="display: scroll; position: fixed; bottom: 80px; right: 10px;"
+					href="#"> <img src="/upload/img/top_btn.png">
+				</a>
 			</div>
-			<div class="col-xs-6 etc">
-				<h5>
-					<b>입금계좌안내</b>
-				</h5>
-				<br />
-				<p>
-					하나 355-342432-23445<br>예금주 : (주)뽀삐뽀삐
-				</p>
+			<!-- 하단 네비게이션 고정-->
+			<!--- 소개 4인방 링크 -->
+			<hr />
+			<div class="etc">
+				<a href="${pageContext.request.contextPath}/etc/page_info1.do">회사소개</a>
+				<a href="${pageContext.request.contextPath}/etc/page_info2.do">이용약관</a>
+				<a href="${pageContext.request.contextPath}/etc/page_info3.do">개인정보취급방침</a>
+				<a href="${pageContext.request.contextPath}/etc/page_info4.do">이용안내</a>
 			</div>
-		</div>
-		<address class="clearfix">
-			<p>
-				상점명: (주)뽀삐뽀삐 대표 : 아무개 <br>주소 : 서울특별시 행복구 존버동 8282-5959 102호 -
-				물류팀<br> 사업자등록번호 : 123-86-43567<br> 통신판매업신고 :
-				제2020-서울서초-0082호<br> 개인정보관리책임 : 아무개 <br> <br />
-				COPYRIGHT&copy; (주)뽀삐뽀삐 ALL RIGHTS RESERVED <br /> <i>DESIGN BY
-					EZEN-team4</i>
-			</p>
-		</address>
-		<div class="navbar" id="navbarback">
-			<ul class="btmbar-nav clearfix navbar-fixed-bottom">
-				<hr />
-				<div class="prd-action2">
-					<div class="action-btn2">
-						<button type="button"
-							onclick="location.href='${pageContext.request.contextPath }/pay/cart.do'"
-							id="action-cart2">장바구니</button>
-						<button type="button"
-							onclick="location.href='${pageContext.request.contextPath }/myInfo/like_goods.do'"
-							id="action-like2">관심상품</button>
-						<button type="submit"
-							onclick="location.href='${pageContext.request.contextPath}/pay/orderform_ajax.do'"
-							id="action-orderform2">구매하기</button>
-					</div>
+			<hr />
+			<div class="row">
+				<div class="col-xs-6 etc">
+					<h5>
+						<b>상담센터</b>
+					</h5>
+					<p style="font-size: 15px; font-weight: bold;">070-123-4567</p>
+					<p style="font-size: 12px">
+						운영시간 : 10:00 - 18:00<br />주말, 공휴일은 후뮤입니다.
+					</p>
 				</div>
-			</ul>
+				<div class="col-xs-6 etc">
+					<h5>
+						<b>입금계좌안내</b>
+					</h5>
+					<br />
+					<p>
+						하나 355-342432-23445<br>예금주 : (주)뽀삐뽀삐
+					</p>
+				</div>
+			</div>
+			<address class="clearfix">
+				<p>
+					상점명: (주)뽀삐뽀삐 대표 : 아무개 <br>주소 : 서울특별시 행복구 존버동 8282-5959 102호 -
+					물류팀<br> 사업자등록번호 : 123-86-43567<br> 통신판매업신고 :
+					제2020-서울서초-0082호<br> 개인정보관리책임 : 아무개 <br> <br />
+					COPYRIGHT&copy; (주)뽀삐뽀삐 ALL RIGHTS RESERVED <br /> <i>DESIGN
+						BY EZEN-team4</i>
+				</p>
+			</address>
+			<div class="navbar" id="navbarback">
+				<ul class="btmbar-nav clearfix navbar-fixed-bottom">
+					<hr />
+					<div class="prd-action2">
+						<div class="action-btn2">
+							<button type="button"
+								onclick="location.href='${pageContext.request.contextPath }/pay/cart.do'"
+								id="action-cart2">장바구니</button>
+							<button type="button"
+								onclick="location.href='${pageContext.request.contextPath }/myInfo/like_goods.do'"
+								id="action-like2">관심상품</button>
+							<button type="submit"
+								onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do'"
+								id="action-orderform2">구매하기</button>
+						</div>
+					</div>
+				</ul>
+			</div>
 		</div>
-	</div>
+	</form>
 	<script id="photo_rv_tmpl" type="text/x-handlebars-template">
         {{#each item}}
 	        <ul class="review-list">
@@ -1316,8 +1371,8 @@ dl {
 				$(".arrow-down").toggleClass("rotate");
 			});
 		});
-		
-        /** 포토리뷰 리스트 */
+
+		/** 포토리뷰 리스트 */
 		$(function() {
 			$("#photo_rv").click(
 					function(e) {
@@ -1330,9 +1385,9 @@ dl {
 								});
 					});
 		});
-		
-        /** qna 리스트 */
-        $(function() {
+
+		/** qna 리스트 */
+		$(function() {
 			$("#qna_rv").click(
 					function(e) {
 						$.get("${pageContext.request.contextPath}/gallery",
@@ -1344,7 +1399,6 @@ dl {
 								});
 					});
 		});
-		
 	</script>
 </body>
 

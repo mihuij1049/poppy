@@ -76,6 +76,8 @@
 					</div>			
 					</c:forEach>
 					<!-- 게시물 하나 끝 -->
+					
+					
 				</div>
 				<div class="text-center">
 					<ul class="pagination pagination-sm">

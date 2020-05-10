@@ -52,6 +52,10 @@
         parameterType="kr.co.poppy.model.Heart">
         DELETE FROM heart WHERE heartno=#{heartno};
     </delete>
+    <delete id="deleteList"
+        parameterType="hashmap">
+        DELETE FROM heart WHERE heartno in <foreach collection="input" item="item" index="index" open="(" separator="," close=")">${item.heartno}</foreach> 
+    </delete>
     
 
     <!-- 데이터 갱신을 위한 기능 정의 -->

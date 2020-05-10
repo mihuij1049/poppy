@@ -54,6 +54,10 @@ p {
 	border-bottom: 1px solid #ddd;
 }
 
+.rv-title p {
+	display: inline;
+}
+
 .rv-content {
 	padding: 10px 0;
 }

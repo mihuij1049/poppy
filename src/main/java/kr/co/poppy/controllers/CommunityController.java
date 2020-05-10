@@ -44,9 +44,10 @@ public class CommunityController {
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 
-	/** article */
-	@RequestMapping(value = "/community/article.do", method = RequestMethod.GET)
-	public ModelAndView view(Model model, @RequestParam(value = "bbstype", required = false) String bbstype,
+	/** article 공지사항/Q&A 글보기 페이지 */
+	@RequestMapping(value = "/community/article.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView view(Model model, 
+			@RequestParam(value = "bbstype", required = false) String bbstype,
 			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
 		/** 1) 유효성 검사 */
 		if (bbsno == 0) {
@@ -96,13 +97,13 @@ public class CommunityController {
 		return new ModelAndView("community/article");
 	}
 
-	/** qna 작성폼 페이지 */
+	/** Q&A 작성폼 페이지 */
 	@RequestMapping(value = "/community/qna_wri.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView add(Model model) {
 		return new ModelAndView("community/qna_wri");
 	}
 
-	/** qna 작성 */
+	/** Q&A 작성폼에 대한 action페이지 */
 	@RequestMapping(value = "/community/qna_wri_ok.do", method = RequestMethod.POST)
 	public ModelAndView add_qna(Model model, @RequestParam(value = "bbstype", required = false) String bbstype,
 			@RequestParam(value = "bbstitle", required = false) String bbstitle,
@@ -153,7 +154,7 @@ public class CommunityController {
 		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 	}
 
-	/** qna 수정 폼 페이지 */
+	/** Q&A 수정 폼 페이지 */
 	@RequestMapping(value = "/community/editqna.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView edit(Model model, @RequestParam(value = "bbstype", required = false) String bbstype,
 			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
@@ -192,7 +193,7 @@ public class CommunityController {
 		return new ModelAndView("community/qna_edit");
 	}
 
-	/** qna 수정폼에 대한 action페이지 */
+	/** Q&A 수정폼에 대한 action페이지 */
 	@RequestMapping(value = "/community/qna_edit_ok.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView add_qna(Model model, 
 			@RequestParam(value = "memno", required = false) Integer memno,
@@ -470,7 +471,7 @@ public class CommunityController {
 		return new ModelAndView("community/notice");
 	}
 
-	/** qna 삭제 */
+	/** Q&A 삭제 */
 	@RequestMapping(value = "/community/deleteqna.do", method = RequestMethod.GET)
 	public ModelAndView delete_ok(Model model, @RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
 
@@ -492,4 +493,8 @@ public class CommunityController {
 		return webHelper.redirect(contextPath + "/community/qna.do", "게시글이 삭제되었습니다.");
 	}
 	
+<<<<<<< HEAD
+=======
+
+>>>>>>> fe22533b27f986f2b8ad6ad311ad1e32dd3aef1f
 }

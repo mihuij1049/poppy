@@ -20,6 +20,8 @@ import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Bbs;
 import kr.co.poppy.model.Cart;
+import kr.co.poppy.model.Goods;
+import kr.co.poppy.model.Imgs;
 import kr.co.poppy.model.Members;
 import kr.co.poppy.model.Orders;
 import kr.co.poppy.model.Points;
@@ -59,7 +61,8 @@ public class KRTController {
 	/** 목록 페이지 */
 	@RequestMapping(value = "/myInfo/order_list.do", method = RequestMethod.GET)
 	public ModelAndView order_list(Model model, @RequestParam(value = "page", defaultValue = "1") int nowPage,
-			@RequestParam(value = "odstatus", required = false) String odstatus) {
+			@RequestParam(value = "odstatus", required = false) String odstatus,
+			@RequestParam(value="goodsno", defaultValue="0") int goodsno) {
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
 
@@ -75,6 +78,7 @@ public class KRTController {
 		Orders orders = new Orders();
 		orders.setMemno(myInfo.getMemno());
 		orders.setOdstatus(odstatus);
+		orders.setGoodsno(1);
 
 		List<Orders> ordersList = null;
 		List<Orders> output = new ArrayList<Orders>();
@@ -137,7 +141,7 @@ public class KRTController {
 		if (orderno == 0) {
 			return webHelper.redirect(null, "주문번호가 없습니다.");
 		}
-		
+
 		/** 2) 데이터 조회하기 */
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
 		Orders orders = new Orders();
@@ -186,7 +190,7 @@ public class KRTController {
 
 		Orders orders = new Orders();
 		orders.setMemno(myInfo.getMemno());
-		
+
 		List<Orders> ordersList = null;
 		List<Orders> output = new ArrayList<Orders>();
 
@@ -207,7 +211,7 @@ public class KRTController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-		
+
 		for (int i = 0; i < ordersList.size(); i++) {
 			orders = ordersList.get(i);
 			if (orders.getOdstatus().equals("4")) {
@@ -235,16 +239,16 @@ public class KRTController {
 	public ModelAndView photo_wri_ok(Model model, @RequestParam(value = "bbstitle", required = false) String bbstitle,
 			@RequestParam(value = "rvlike", required = false) String rvlike,
 			@RequestParam(value = "bbscontent", required = false) String bbscontent,
-			@RequestParam(value="memno", defaultValue="0")int memno,
-			@RequestParam(value="memno", defaultValue="0")int goodsno) {
+			@RequestParam(value = "memno", defaultValue = "0") int memno,
+			@RequestParam(value = "memno", defaultValue = "0") int goodsno) {
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
-		
+
 		Calendar c = Calendar.getInstance();
 		String date = String.format("%04d-%02d-%02d %02d:%02d:%02d", c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1,
 				c.get(Calendar.DAY_OF_MONTH), c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE),
 				c.get(Calendar.SECOND));
-		
+
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
 		// 포토리뷰 제목은 필수 항목 이므로 입력 여부를 검사
 		if (bbstitle == null) {
@@ -273,16 +277,16 @@ public class KRTController {
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
 		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야한다.
 		model.addAttribute("myInfo", myInfo);
-		
+
 		String redirectUrl = contextPath + "/community/photo_rv.do?bbsno=" + input.getBbsno();
-		
+
 		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 	}
 
 	/** photo (포토리뷰 상세조회) */
 	/** 상세 페이지 */
 	@RequestMapping(value = "/community/photo.do", method = RequestMethod.GET)
-	public ModelAndView photo(Model model, @RequestParam(value = "bbsno", required = false) int bbsno) {
+	public ModelAndView photo(Model model, @RequestParam(value = "bbsno", defaultValue = "24") int bbsno) {
 		/** 1) 유효성 검사 */
 		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
 		if (bbsno == 0) {
@@ -293,6 +297,7 @@ public class KRTController {
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
 		Bbs input = new Bbs();
 		input.setBbsno(bbsno);
+		input.setBbstype("C");
 
 		// 조회 결과를 저장할 객체 선언
 		Bbs output = null;
@@ -313,8 +318,11 @@ public class KRTController {
 	/** 목록 페이지 */
 	@RequestMapping(value = "/pay/cart.do", method = RequestMethod.GET)
 	public ModelAndView cart_list(Model model) {
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+
 		Cart input = new Cart();
-		input.setMemno(2);
+		input.setMemno(myInfo.getMemno());
 
 		List<Cart> output = null;
 
@@ -332,7 +340,10 @@ public class KRTController {
 
 	/** 삭제 처리 구현 */
 	@RequestMapping(value = "/pay/cart_delete.do", method = RequestMethod.GET)
-	public ModelAndView cart_delete(Model model, @RequestParam(value = "cartno", required = false) int cartno) {
+	public ModelAndView cart_delete(Model model, @RequestParam(value = "cartno", defaultValue = "0") int cartno) {
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+
 		/** 1) 파라미터 유효성 검사 */
 		// 이 값이 존재하지 않는다면 데이터 삭제가 불가능하므로 반드시 필수값으로 처리해야 한다.
 		if (cartno == 0) {
@@ -343,6 +354,7 @@ public class KRTController {
 		// 데이터 삭제에 필요한 조건값을 Beans에 저장하기
 		Cart input = new Cart();
 		input.setCartno(cartno);
+		input.setMemno(myInfo.getMemno());
 
 		try {
 			// 데이터 삭제

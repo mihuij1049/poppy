@@ -35,6 +35,16 @@ public class Orders {
     private int odgqty;
     /** 상품이름 (orderdetail 테이블 참조) */
     private String odgdoption;
+    /** 이미지명 (imgs 테이블 참조) */
+    private String imgname;
+    /** 이미지 확장자 (imgs 테이블 참조) */
+    private String imgext;
+    /** 이미지 경로 (imgs 테이블 참조) */
+    private String imgpath;
+    /** 이미지 타입 (imgs 테이블 참조) */
+    private String imgtype;
+    /** 상품 번호 (goods 테이블 참조) */
+    private int goodsno;
     
     // View 페이지에 이용할 변수 추가
     private int sumOdgprice;

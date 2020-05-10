@@ -1,6 +1,7 @@
 package kr.co.poppy.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.co.poppy.model.Heart;
 
@@ -44,4 +45,12 @@ public interface HeartService {
 	 * @throws Exception
 	 */
 	public int deleteHeart(Heart input) throws Exception;
+	
+	/**
+	 * 관심상품 데이터 삭제하기
+	 * @param Heart 삭제할 정보를 담고 있는 Beans
+	 * @return int
+	 * @throws Exception
+	 */
+	public int deleteHeartList(Map<String, Object> input) throws Exception;
 }
