@@ -492,9 +492,4 @@ public class CommunityController {
 		/** 3) 페이지 이동 */
 		return webHelper.redirect(contextPath + "/community/qna.do", "게시글이 삭제되었습니다.");
 	}
-	
-<<<<<<< HEAD
-=======
-
->>>>>>> fe22533b27f986f2b8ad6ad311ad1e32dd3aef1f
 }
