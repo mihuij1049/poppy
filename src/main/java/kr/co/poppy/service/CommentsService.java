@@ -47,5 +47,13 @@ public interface CommentsService {
 	 */
 	public int getCommentsCount(Bbs input) throws Exception;
 
+	
+	/**
+	 * 댓글 데이터 수정하기
+	 * @param Bbs 수정할 정보를 담고 있는 Beans
+	 * @return int
+	 * @throws Exception
+	 */
+	public int editComments(Comments input) throws Exception;
 }
 

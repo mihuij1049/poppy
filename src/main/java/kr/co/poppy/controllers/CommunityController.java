@@ -51,9 +51,7 @@ public class CommunityController {
 			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno,
 	@RequestParam(value = "cmtno", defaultValue = "0") int cmtno){
 		/** 1) 유효성 검사 */
-		if (bbsno == 0) {
-			return webHelper.redirect(null, "게시글 번호가 없습니다.");
-		}
+
 
 		/** 2) 데이터 조회하기 */
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
@@ -75,6 +73,7 @@ public class CommunityController {
 
 		if (myInfo != null) {
 			myCmt.setUsername(myInfo.getUsername());
+			myCmt.setMemno(myInfo.getMemno());
 			model.addAttribute("myCmt", myCmt);
 		}
 

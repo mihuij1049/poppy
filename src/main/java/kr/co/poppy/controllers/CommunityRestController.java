@@ -2,6 +2,7 @@ package kr.co.poppy.controllers;
 
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -37,7 +38,7 @@ public class CommunityRestController {
 	CommentsService commentsService;
 
 	/** 댓글 작성폼에 대한 action page */
-	@RequestMapping(value = "/community/article", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/community/article_cmtAdd", method = RequestMethod.POST)
 	public Map<String, Object> post(@RequestParam(value = "cmtcontent", required = false) String cmtcontent,
 			@RequestParam(value = "regdate", required = false) String regdate,
 			@RequestParam(value = "editdate", required = false) String editdate,
@@ -54,8 +55,6 @@ public class CommunityRestController {
 				c.get(Calendar.DAY_OF_MONTH), c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE),
 				c.get(Calendar.SECOND));
 
-	
-
 		/** 2) 데이터 저장하기 */
 		// 저장할 값들을 beans에 담는다.
 		Comments input = new Comments();
@@ -65,22 +64,79 @@ public class CommunityRestController {
 		input.setMemno(memno);
 		input.setBbsno(bbsno);
 
-		Comments output2 = null;
+		Comments output = new Comments();
 
 		try {
 			// 데이터 저장 --> 저장에 성공하면 파라미터로 전달하는 input객체에 pk값이 저장된다.
 			commentsService.addComments(input);
-
+			// 저장결과 조회
+			output = commentsService.getCommentsItem(input);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
 
 		/** 3) 결과를 확인하기 위한 JSON 출력 */
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("item", output2);
+		map.put("item", output);
 		return webHelper.getJsonData(map);
 	}
 
+	@RequestMapping(value = "/community/article", method = RequestMethod.PUT)
+	public Map<String, Object> put(@RequestParam(value = "cmtno", defaultValue = "0") int cmtno,
+			@RequestParam(value = "cmtcontent", required = false) String cmtcontent,
+			@RequestParam(value = "editdate", required = false) String editdate,
+			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
+		/** 1) 유효성 검사 */
+		if (cmtcontent.equals("")) {
+			return webHelper.getJsonWarning("댓글을 입력하세요");
+		}
 
+		/** 2) 데이터 수정하기 */
+		Comments input = new Comments();
+		input.setCmtno(cmtno);
+		input.setCmtcontent(cmtcontent);
+		input.setEditdate(editdate);
+		input.setBbsno(bbsno);
 
+		// 수정된 결과를 조회하기 위한 객체
+		Comments output = null;
+
+		try {
+			commentsService.editComments(input);
+			// 수정결과 조회
+			output = commentsService.getCommentsItem(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+
+		/** 3) 결과를 확인하기 위한 JSON 출력 */
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("item", output);
+		return webHelper.getJsonData(map);
+
+	}
+	
+	/** 댓글 삭제 */
+	@RequestMapping(value = "/community/article", method = RequestMethod.DELETE)
+	public Map<String, Object> delete(
+			@RequestParam(value="cmtno", defaultValue="0") int cmtno) {
+		/** 1) 유효성 검사 */
+		if(cmtno==0) {
+			return webHelper.getJsonWarning("댓글번호가 없습니다.");
+		}
+		/** 2) 데이터 삭제하기 */
+		Comments input = new Comments();
+		input.setCmtno(cmtno);
+		
+		try {
+			commentsService.deleteComments(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		/** 3) 결과를 확인하기 위한 JSON출력 */
+		return webHelper.getJsonData();
+		
+	}
+	
+	
 }

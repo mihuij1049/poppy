@@ -111,7 +111,7 @@
 										</div>
 										<c:if test="${userInfo.username==item.username}">
 
-											<button type="submit" class="btn btn-sm btn-editar">수정</button>
+											<button type="submit" class="btn btn-sm btn-editar" id="btn-editar">수정</button>
 											<button type="submit"
 												class="btn btn-inverse btn-sm btn-delar">삭제</button>
 										</c:if>
@@ -127,9 +127,9 @@
 			</div>
 			<c:choose>
 				<c:when test="${!empty userInfo.username }">
-					<form class="article-comment" id="addForm" 
-						action="${pageContext.request.contextPath}/community/article">
-						<input type="hidden" value="${output.memno}" name="memno" />
+					<form class="article-comment" id="addForm" method="POST"
+						action="${pageContext.request.contextPath}/community/article_cmtAdd">
+						<input type="hidden" value="${myCmt.memno}" name="memno" />
 						<input type="hidden" value="${output.bbsno}" name="bbsno" />
 						<div class="comment-write">
 							<div class="info-name">이름: ${myCmt.username}</div>
@@ -161,12 +161,11 @@
 
 
 	<%@ include file="../share/bottom_tp.jsp"%>
-	<!--Google CDN 서버로부터 jQuery 참조 -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
     <!-- jQuery Ajax Form plugin CDN -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
     <!-- jQuery Ajax Setup -->
-    <script src="${pageContext.request.contextPath}/assets/plugins/ajax/ajax_helper.js"></script>
+    <script src="${pageContext.request.contextPath}/share/plugins/ajax/ajax_helper.js"></script>
     <!-- User Code -->
     <script>
     $(function() {
@@ -176,18 +175,101 @@
             method: "POST",
             // 서버에서 200 응답을 전달한 경우 실행됨
             success: function(json) {
+                
+                // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
+                if (json.rt == "OK") {
+                	window.location = "${pageContext.request.contextPath}/community/article.do?bbsno=" + json.item.bbsno; 
+                }
+            }
+        });
+    });
+   $(function() {
+	   $(function() {
+			// 댓글 내용을 text에 담기
+			var original = $(this).parent().next().text();
+			// 수정 버튼 클릭시
+			$("#btn-editar").on("click",function(e) {
+						var edit_commit = $(this).text();
+						// 사용자의 입력값을 가져온다.
+						var upass = $("cs_pass").val();
+        // #addForm에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다.
+        $("#addForm").ajaxForm({
+            // 전송 메서드 지정
+            method: "PUT",
+            // 서버에서 200 응답을 전달한 경우 실행됨
+            success: function(json) {
                 console.log(json);
                 
+                if (edit_commit == "수정") {
+					var original = $(this).parent().prev().children()
+							.eq(2).text();
+					// 댓글 내용을 지워버리기
+					$(this).parent().prev().children().eq(2).text("");
+
+					// 텍스트 태그를 html에 담기
+					var comment_edit = $("<textarea>");
+					// <textarea class="comment-edit"></textarea> --> 아랫줄 실행시 완성된 HTML 태그
+					comment_edit.addClass('comment_edit');
+					// 생성된 태그에 원래의 댓글 내용 original 추가하기
+					comment_edit.text(original);
+					// "" 로 지운 댓글 내용에 textarea 추가하기
+					$(this).parent().prev().children().eq(2).append(
+							comment_edit);
+					$(this).text("등록");
+					$(this).next().text("취소");
+
+				} else {
+					// 사용자가  글 내용을 담는다.
+					var result = confirm("수정하시겠습니까?");
+					if (result) {
+						var recommit = $("#btn-editar").val();
+						$(this).parent().prev().children().eq(3)
+								.remove();
+						$(this).parent().prev().children().eq(2).text(
+								recommit);
+						$(this).text("수정");
+						$(this).next().text("삭제");
+					} else {
+						return false;
+					}
+
+				}
+
+			});
                 // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
                 if (json.rt == "OK") {
                 	window.location = "${pageContext.request.contextPath}/community/article.do?=bbsno" + json.item.bbsno; 
                 }
             }
         });
-    });
+    }); 
+	   }); 
+   
+   $(function() {
+	   $("#btn-delar").click(function(e) {
+		   e.preventDefault();
+		   let current = $(this);
+		   let cmtno = current.data('cmtno');
+		   //삭제 확인
+		   if(!confirm("댓글을 삭제하시겠습니까?")) {
+			   return false;
+		   }
+		// delete 메서드로 Ajax 요청 --> <form> 전송이 아니므로 직접 구현한다.
+           $.delete("${pageContext.request.contextPath}/community/article", {
+               "cmtno": cmtno
+           }, function(json) {
+               if (json.rt == "OK") {
+                   alert("삭제되었습니다.");
+                   // 삭제 완료 후 목록 페이지로 이동
+                   window.location = "${pageContext.request.contextPath}/community/article.do";
+               }
+           });
+	   });
+   });
+  
     </script>
 
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		/** 댓글 수정 삭제 --- 등록 취소 버튼 기능 구현 */
 		$(function() {
 			// 댓글 내용을 text에 담기
@@ -271,7 +353,7 @@
 				}
 			});
 
-		});
+		}); -->
 	</script>
 </body>
 
