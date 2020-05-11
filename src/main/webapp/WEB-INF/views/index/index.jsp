@@ -69,7 +69,7 @@
 					<div class="swiper-slide">
 						<div class="gal_sug_main">
 							<c:forEach var="item" items="${output}" varStatus="status" begin="0" end="2">
-							<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=1">
+							<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=${item.goodsno}">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
 									<img src="${item.imgpath}${item.imgname}.jpg" id="img_sug">

@@ -36,25 +36,7 @@ public interface GoodsService {
 	 * 상품 데이터 목록 조회
 	 * order by > 신상품순 조회
 	 */
-	public List<Goods> getGoodsListCate1(Goods input) throws Exception;
-	
-	/**
-	 * 상품 데이터 목록 조회
-	 * order by > 상품명순 조회
-	 */
-	public List<Goods> getGoodsListCate2(Goods input) throws Exception;
-	
-	/**
-	 * 상품 데이터 목록 조회
-	 * order by > 낮은가격순 조회
-	 */
-	public List<Goods> getGoodsListCate3(Goods input) throws Exception;
-	
-	/**
-	 * 상품 데이터 목록 조회
-	 * order by > 높은가격순 조회
-	 */
-	public List<Goods> getGoodsListCate4(Goods input) throws Exception;
+	public List<Goods> getGoodsListCate(Goods input) throws Exception;
 
 	/**
 	 * 상품 데이터가 저장되어있는 개수 조회

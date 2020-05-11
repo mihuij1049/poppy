@@ -285,6 +285,8 @@ public class CommunityController {
 	/** photo_rv 목록페이지 다중행조회 */
 	@RequestMapping(value = "/community/photo_rv.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView photo_rv(Model model,
+			// 검색어
+			@RequestParam(value="keyword", required=false) String keyword,
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 
@@ -296,6 +298,7 @@ public class CommunityController {
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(겁색어)를 Beans에 담는다.
 		Bbs input = new Bbs();
+		input.setBbstitle(keyword);
 
 		// 조회 결과가 저장될 객체
 		List<Bbs> output = null;
@@ -315,8 +318,10 @@ public class CommunityController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		/** 3) view 처리 */
+		model.addAttribute("keyword", keyword);
 		model.addAttribute("output", output);
 		model.addAttribute("pageData", pageData);
+
 		return new ModelAndView("community/photo_rv");
 	}
 

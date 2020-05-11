@@ -83,7 +83,12 @@
 		FROM bbs b
 		INNER JOIN imgs i
 		INNER JOIN members m
-		WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C";
+		<where>
+			b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
+			<if test="bbstitle != null and bbstitle != ''">
+				and bbstitle LIKE concat('%', #{bbstitle}, '%')
+			</if>
+		</where>
 	</select>
 	
 	<!-- 데이터 수 조회를 위한 기능 정의 -->

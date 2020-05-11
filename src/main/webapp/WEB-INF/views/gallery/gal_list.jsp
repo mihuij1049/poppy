@@ -34,9 +34,9 @@
 		</div>
 			<div class="container_1">
 				<div>
-					<form action="${pageContext.request.contextPath}/gallery/gal_list_cate.do?cate1='푸드'">
+					<form action="${pageContext.request.contextPath}/gallery/gal_list_cate.do">
 						<div class="search_tab_bg">
-							<select name="searchCondition" class="cate_select" onchange="this.form.submit()" >
+							<select name="searchCondition" class="cate_select">
 								<c:forEach var="item" items="${output}" varStatus="status" end="0">
 								<option value="NONE">정렬방식</option>
 								<option value="A">신상품</option>
@@ -54,7 +54,7 @@
 						<div>
 							<div class="pr_box">
 								<div class="pr_in_box">
-									<a href="${pageContext.request.contextPath }/gallery/goods.do?goodsno=${item.goodsno}">
+									<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=${item.goodsno}">
 										<img alt="사진" src="${item.imgpath}${item.imgname}.jpg" class="img_size">
 											<h5>
 												<div class="gnameblock"  style="height: 32px">
@@ -93,6 +93,10 @@
         $('.pr_in_box i').click(function() {
             $(this).toggleClass("glyphicon-heart glyphicon-heart-empty");
         });
+        
+        $('.cate_select').click(function(e) {
+        	$.ajax ({
+        	})
     });
     </script>
 </body>

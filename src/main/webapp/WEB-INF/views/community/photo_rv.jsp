@@ -43,8 +43,10 @@
 									<div class="cate_ip">
 										<i class="glyphicon glyphicon-search icon_size"></i> 상품검색
 									</div>
-									<input type="text" name="search" class="h_input">
-									<button class="btn" id="sc_bt">검색</button>
+									<form method="get" action="${pageContext.request.contextPath}/community/photo_rv.do">
+										<input type="search" name="keyword" class="h_input">
+										<button type="submit" class="btn" id="sc_bt" value="${keyword}">검색</button>
+									</form>
 									<a href="${pageContext.request.contextPath}/community/photo_wri.do"><div class="pencil"><i class="glyphicon glyphicon-pencil"></i>글쓰기</div></a>
 								</div>
 							</div>
@@ -52,6 +54,8 @@
 					</form>
 				</div>
 				<div>
+				<c:set var="a" value="${keyword}" />
+				<c:if test="${a == null}">
 					<!-- 게시물 하나 시작 -->
 					<c:forEach var="item" items="${output}" varStatus="status">
 					<div width="50%">
@@ -76,8 +80,34 @@
 					</div>			
 					</c:forEach>
 					<!-- 게시물 하나 끝 -->
-					
-					
+				</c:if>
+				<c:set var="a" value="${keyword}" />
+				<c:if test="${a == a}">
+					<!-- 게시물 하나 시작 -->
+					<c:forEach var="item" items="${output}" varStatus="status">
+					<div width="50%">
+						<div class="pr_box">
+							<div class="pr_in_box">
+								<a href="${pageContext.request.contextPath}/community/photo_rv.do"> <img alt="사진"
+									src="${item.imgpath}${item.imgname}.${item.imgext}" class="img_size" />
+									<div>
+										<h5>
+											<b>${item.bbstitle}</b>
+										</h5>
+										${item.userid}<br>
+										<hr />
+										<div class="pr_content">${item.bbscontent}</div>
+									</div>
+								</a>
+								<button class="btn btn-inverse" id="heart_bt">
+									<i class="glyphicon glyphicon-heart icon_size"></i> 추천
+								</button>
+							</div>
+						</div>
+					</div>			
+					</c:forEach>
+					<!-- 게시물 하나 끝 -->
+				</c:if>	
 				</div>
 				<div class="text-center">
 					<ul class="pagination pagination-sm">

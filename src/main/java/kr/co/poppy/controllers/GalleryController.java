@@ -101,53 +101,19 @@ public class GalleryController {
 		input.setSearchCondition(searchCondition);
 		
 		// 데이터저장할곳
-		List<Goods> output1 = null;		
+		List<Goods> output = null;		
 		
-		if (searchCondition=="A") {
-			/** select에서 a를 선택했을 때 */
-			try {
-				// 데이터조회
-				output1 = goodsService.getGoodsListCate1(input);
-				
-			} catch (Exception e) {
-				return webHelper.redirect(null, e.getLocalizedMessage());
-			}
-			
-		} else if (searchCondition=="B") {
-			/** select에서 B를 선택했을 때 */
-			try {
-				// 데이터조회
-				output1 = goodsService.getGoodsListCate2(input);
-				
-			} catch (Exception e) {
-				return webHelper.redirect(null, e.getLocalizedMessage());
-			}
-			
-		} else if (searchCondition=="C") {
-			/** select에서 C를 선택했을 때 */
-			try {
-				// 데이터조회
-				output1 = goodsService.getGoodsListCate3(input);
-				
-			} catch (Exception e) {
-				return webHelper.redirect(null, e.getLocalizedMessage());
-			}
-			
-		} else if (searchCondition=="D") {
-			
 		try {
-			/** select에서 D를 선택했을 때 */
 			// 데이터조회
-			output1 = goodsService.getGoodsListCate4(input);
+			output = goodsService.getGoodsList(input);
 			
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-
-		}
+			
 
 		// 3) 뷰처리
-		model.addAttribute("output1", output1);
+		model.addAttribute("output", output);
 		return new ModelAndView("gallery/gal_list");
 	}
 	
