@@ -288,7 +288,6 @@
 					$("#list").append(html);
 
 					var length = $(".cart-box").length;
-					length = $(".cart-box").length;
 					$(".cart-count").html(length);
 
 					for (var i = 0; i < length; i++) {
