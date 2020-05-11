@@ -200,7 +200,7 @@
                 
                 // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
                 if (json.rt == "OK") {
-                	window.location="${pageContext.request.contextPath}/community/article.do?bbsno=" + json.item.bbsno;
+                	window.location="${pageContext.request.contextPath}/community/article.do" + json.item.bbsno; 
                 }
             }
         });
@@ -208,26 +208,26 @@
 
 	   $(function() {
 			// 댓글 내용을 text에 담기
-			var original = $(this).next().text();
+			
 			// 수정 버튼 클릭시
 			$("#btn-editar").on("click",function(e) {
+				// 원래 댓글 담기
+				var original = $(this).next().text();
+				console.log(original);
 						// 버튼의 텍스트 담기 --> 수정
 						var edit_commit = $(this).text();
                 if (edit_commit == "수정") {
-					var original = $(this).next().text();
-					// 댓글 내용을 지워버리기
-					$(this).next().text("");
+                	// 댓글 지우기 
+                	$(this).next().text("");
 					// 텍스트 태그를 html에 담기
-					var comment_edit = $("<textarea>");
+					var comment_edit = $("<textarea></textarea>");
 					// <textarea class="comment-edit"></textarea> --> 아랫줄 실행시 완성된 HTML 태그
 					comment_edit.addClass('comment_edit');
 					// 생성된 태그에 원래의 댓글 내용 original 추가하기
 					comment_edit.text(original);
 					// "" 로 지운 댓글 내용에 textarea 추가하기
-					$(this).next().append(
-							comment_edit);
 					$(this).text("등록");
-					$(this).next().text("취소");
+					$(this).prev().text("취소");
 
 				} else {
 					// 사용자가  글 내용을 담는다.
@@ -235,7 +235,7 @@
 					if (result) {
 						var recommit = $("#btn-editar").val();
 						$(this).text("수정");
-						$(this).next().text("삭제");
+						$(this).prev.text("삭제");
 					} else {
 						return false;
 					}
