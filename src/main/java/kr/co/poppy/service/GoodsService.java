@@ -5,14 +5,6 @@ import java.util.List;
 import kr.co.poppy.model.Goods;
 
 public interface GoodsService {
-	/**
-	 * 상품 데이터 상세 조회
-	 * 
-	 * @param Goods 조회할 상품의 일련번호를 담고 있는 Beans
-	 * @return 조회할 데이터가 저장된 Beans
-	 * @throws Exception
-	 */
-	public Goods getGoodsItem(Goods input) throws Exception;
 
 	/**
 	 * 상품 데이터 목록 조회

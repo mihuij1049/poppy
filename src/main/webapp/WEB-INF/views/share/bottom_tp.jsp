@@ -103,13 +103,11 @@
 								aria-hidden="true">&times;</button>
 						</div>
 						<div class="search_md_content">
-							<!-- 쿠키값 출력합니다! -->
-							<form method="post" action="../share/search_cookie.jsp">
+							<form method="get" action="${pageContext.request.contextPath}/gallery/gal_list_search.do">
 								<label><i class="glyphicon glyphicon-search"
-									id="searchicon"></i></label> <input type="text" name="search_input" />
+									id="searchicon"></i></label> <input type="search" name="keyword" value="${keyword}" />
 								<button type="submit" class="btn btn">검색</button>
 							</form>
-							<!-- 쿠키값~! 출력~! 끝~! -->
 						</div>
 						<div class="search_md_footer">
 							<hr />

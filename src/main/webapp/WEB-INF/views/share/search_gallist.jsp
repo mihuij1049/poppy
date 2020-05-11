@@ -26,30 +26,11 @@
 			<h4>
 				<b> <a href="#" onclick="history.back(); return false;"><i
 						class="glyphicon glyphicon-chevron-left"></i></a>
-						<c:forEach var="item" items="${output}" varStatus="status" end="0">
-							${item.cate1}
-						</c:forEach>
+						검색결과
 				</b>
 			</h4>
 		</div>
-		<!-- 여기... 에 cate2 값 넣어야 하는데... 이거... jstl 이프문 써서 cate2값 넣어주고
-		그거 선택하는대로 a href 링크 넣어서... get값을 주도록 합시다. cate1값을 유지할 필요는 없어요. -->
 			<div class="container_1">
-				<div>
-					<form action="${pageContext.request.contextPath}/gallery/gal_list_cate.do">
-						<div class="search_tab_bg">
-							<select name="searchCondition" class="cate_select">
-								<c:forEach var="item" items="${output}" varStatus="status" end="0">
-								<option value="NONE">정렬방식</option>
-								<option value="A">신상품</option>
-								<option value="B">상품명</option>
-								<option value="C">낮은가격</option>
-								<option value="D">높은가격</option>
-								</c:forEach>
-							</select>
-						</div>
-					</form>
-				</div>
 				<!-- 게시물 영역 시작 -->
 				<div>
 					<c:forEach var="item" items="${output}" varStatus="status">
@@ -77,30 +58,7 @@
 						</div>
 					</c:forEach>
 			</div>
-			<div class="text-center">
-				<ul class="pagination pagination-sm">
-					<li class="disabled"><a href="#">&laquo;</a></li>
-					<li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#">&raquo;</a></li>
-				</ul>
-			</div>
 		</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
-	<script type="text/javascript">
-    $(function() {
-        $('.pr_in_box i').click(function() {
-            $(this).toggleClass("glyphicon-heart glyphicon-heart-empty");
-        });
-        
-        $('.cate_select').click(function(e) {
-        	$.ajax ({
-        	})
-    });
-    </script>
 </body>
-
 </html>
