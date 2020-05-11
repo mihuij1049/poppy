@@ -22,8 +22,7 @@
 			<b>주문/결제</b>
 		</h4>
 	</div>
-	<div id="orderform" class="orderform" target="_self"
-		enctype="multipart/form-data">
+	<form id="orderform" class="orderform" action="${pageContext.request.contextPath}/pay" target="_self" enctype="multipart/form-data">
 		<div class="panel-group" id="accordion" role="tablist"
 			aria-multiselectable="true">
 			<div class="panel panel-default">
@@ -50,9 +49,7 @@
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane fade active in" id="page1">
 								<div class="recent-address">
-									<form class="recents"
-										action="${pageContext.request.contextPath}/pay_ajax/orderform.do"
-										method="GET">
+									<div class="recents">
 										<div class="recent">
 											<strong class="name"><span id="delivery-info-name">${output.odname}</span></strong>
 											<p class="address">
@@ -69,7 +66,7 @@
 											<button type="button" id="recent-address-list">배송지
 												목록</button>
 										</span>
-									</form>
+									</div>
 									<div class="recent-addr" id="recent-addr"
 										style="display: none;">
 										<h4 class="heading">배송지를 선택해주세요.</h4>
@@ -104,8 +101,7 @@
 												for="same-addr2">새로운 배송지</label>
 										</div>
 									</div>
-									<form class="new-addr" id="new-addr"
-										action="${pageContext.request.contextPath}/pay">
+									<div class="new-addr" id="new-addr">
 										<div class="na-name">
 											<label class="receiver">받는분</label>
 											<div class="required">＊</div>
@@ -161,12 +157,7 @@
 												</div>
 											</div>
 										</div>
-										<div class="order">
-											<button type="submit" class="btn">
-												<span id="order-total-price"> 9,400 </span>원 <span>결제하기</span>
-											</button>
-										</div>
-									</form>
+									</div>
 									<div class="form-group2">
 										<select id="selbox2">
 											<option value="">-- 메시지 선택(선택사항) --</option>
@@ -206,9 +197,7 @@
 				<div id="collapseTwo" class="panel-collapse collapse"
 					role="tabpanel" aria-labelledby="headingTwo">
 					<div class="panel-body">
-						<form class="prd-info"
-							action="${pageContext.request.contextPath}/pay_ajax/orderform.do"
-							method="GET">
+						<div class="prd-info">
 							<div class="prd-box">
 								<div class=goods-box>
 									<div class="thumbnail">
@@ -264,7 +253,7 @@
 									id="prd-tal-pri"> 6,900 </span>원
 								</span>
 							</div>
-						</form>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -283,9 +272,7 @@
 				</div>
 				<div id="collapseThree" class="panel-collapse collapse"
 					role="tabpanel" aria-labelledby="headingThree">
-					<form class="panel-body"
-						action="${pageContext.request.contextPath}/pay_ajax/orderform.do"
-						method="GET">
+					<div class="panel-body">
 						<div class="discount clear">
 							<div class="dis-title">
 								<span class="head">적립금 할인</span> <span class="coupon"> (
@@ -304,7 +291,7 @@
 							<strong class="total-sum"> - <span id="totla-sale-price">0</span>원
 							</strong>
 						</div>
-					</form>
+					</div>
 				</div>
 			</div>
 			<div class="panel panel-default">
@@ -451,7 +438,7 @@
 				</ul>
 			</div>
 		</div>
-	</div>
+	</form>
 	<!-- 배송지 목록 조회 -->
 	<script id="recent_addr_tmpl" type="text/x-handlebars-template">
         {{#each item}}
@@ -708,7 +695,7 @@
 
 		$(function() {
 			// #new-addr에 대한 submit 이벤트롤 가로채서 Ajax 요청을 전송한다.
-			$("#new-addr")
+			$("#orderform")
 					.ajaxForm(
 							{
 								// 전송 메서드 지정
@@ -716,7 +703,9 @@
 								// 서버에서 200 응답을 전달한 경우 실행됨
 								success : function(json) {
 									console.log(json);
-									
+									if (json.rt == "OK") {
+					    				window.location = "${pageContext.request.contextPath}/myInfo/order_list.do?addrno=" + json.orders.addrno;
+								}
 								}
 							});
 		});

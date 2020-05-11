@@ -23,7 +23,7 @@
     <select id="selectItem"
 		parameterType="kr.co.poppy.model.Address"
 		resultMap="addressMap">
-		SELECT odname, odphone, odemail, zcode, addr1, addr2 FROM address WHERE memno=#{memno}
+		SELECT * FROM address WHERE memno=#{memno}
 		
 		ORDER BY regdate DESC
         
@@ -34,7 +34,7 @@
     <select id="selectList"
         parameterType="kr.co.poppy.model.Address"
         resultMap="addressMap">
-        SELECT odname, odphone, odemail, zcode, addr1, addr2 
+        SELECT *
         
         FROM address WHERE memno=#{memno}; 
     </select>

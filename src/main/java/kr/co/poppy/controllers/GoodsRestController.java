@@ -52,7 +52,7 @@ public class GoodsRestController {
 
 	/** 갤러리 상세 페이지 */
 	@RequestMapping(value = "/gallery", method = RequestMethod.GET)
-	public Map<String, Object> goods(Model model, @RequestParam(value = "goodsno", defaultValue = "1") int goodsno,
+	public Map<String, Object> goods(Model model, @RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 
 		/** 유효성 검사 */
@@ -129,7 +129,7 @@ public class GoodsRestController {
 	public Map<String, Object> add_ok(Model model, @RequestParam(value = "bbstype", defaultValue = "B") String bbstype,
 			@RequestParam(value = "bbstitle", defaultValue = "") String bbstitle,
 			@RequestParam(value = "bbscontent", defaultValue = "") String bbscontent,
-			@RequestParam(value = "qnasec", required = false) String qnasec,
+			@RequestParam(value = "qnasec", defaultValue = "0") int qnasec,
 			@RequestParam(value = "qnapw", required = false) String qnapw,
 			@RequestParam(value = "rvlike", required = false) String rvlike,
 			@RequestParam(value = "regdate", required = false) String regdate,

@@ -130,7 +130,7 @@ public class GoodsController {
 	public ModelAndView add_ok(Model model, @RequestParam(value = "bbstype", defaultValue = "B") String bbstype,
 			@RequestParam(value = "bbstitle", defaultValue = "") String bbstitle,
 			@RequestParam(value = "bbscontent", defaultValue = "") String bbscontent,
-			@RequestParam(value = "qnasec", required = false) String qnasec,
+			@RequestParam(value = "qnasec", defaultValue = "0") int qnasec,
 			@RequestParam(value = "qnapw", required = false) String qnapw,
 			@RequestParam(value = "rvlike", required = false) String rvlike,
 			@RequestParam(value = "regdate", required = false) String regdate,

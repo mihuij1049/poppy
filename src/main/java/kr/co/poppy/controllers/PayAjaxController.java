@@ -49,6 +49,7 @@ public class PayAjaxController {
 	/** 주소 목록페이지 */
 	@RequestMapping(value = "/pay_ajax/orderform.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView addrList(Model model) {
+		
 
 		// 세션 객체를 이용하여 저장된 세션값 얻기
 		HttpSession mySession = webHelper.getSession();
@@ -68,15 +69,19 @@ public class PayAjaxController {
 		Points input3 = new Points();
 		input3.setMemno(myInfo.getMemno());	
 		List<Points> output3 = null;
-
-		try { 
-			// 데이터 조회
-			output = addressService.getAddressItem(input);
-			output2 = addressService.getAddressList(input2);
-			output3 = pointsService.getPointsMbList(input3);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
+		
+		if (input!=null) {
+			try { 
+				// 데이터 조회
+				output = addressService.getAddressItem(input);
+				output2 = addressService.getAddressList(input2);
+				output3 = pointsService.getPointsMbList(input3);
+			} catch (Exception e) {
+				// 신규회원일 경우, 조회된 데이터가 없으므로 오류를 발생시키면 안된다.
+				return webHelper.redirect(null, e.getLocalizedMessage());
+			}
 		}
+		
 		
 		/** 조회된 List객체에서 적립금 총합 구하기 */
 		int sumAvpoint = 0;

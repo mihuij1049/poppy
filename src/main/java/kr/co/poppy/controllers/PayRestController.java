@@ -71,7 +71,7 @@ public class PayRestController {
 	}
 
 	/** 주소 작성 폼에 대한 action 페이지 */
-	@RequestMapping(value = "/pay_ok", method = RequestMethod.POST)
+	@RequestMapping(value = "/pay", method = RequestMethod.POST)
 	public Map<String, Object> addrAdd_ok(@RequestParam(value = "odname", defaultValue = "") String odname,
 			@RequestParam(value = "odphone", defaultValue = "") String odphone,
 			@RequestParam(value = "odemail", defaultValue = "") String odemail,
@@ -101,7 +101,6 @@ public class PayRestController {
 		if (addr2.equals("")) {
 			return webHelper.getJsonWarning("상세주소를 입력하세요.");
 		}
-
 		// 숫자형으로 선언된 파라미터()
 		if (zcode == null) {
 			return webHelper.getJsonWarning("우편번호를 입력하세요.");
@@ -140,7 +139,7 @@ public class PayRestController {
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
 		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야 한다.
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("orders", saves);
+		map.put("orders", save);
 		return webHelper.getJsonData(map);
 	}
 }

@@ -142,6 +142,7 @@ input {
 
 .gdoption {
 	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 .gdoption .gdtitle {
@@ -506,52 +507,6 @@ dl {
 	background: #ff8f83;
 }
 
-.collapse {
-	width: 100%;
-	margin-bottom: 20px;
-	display: block;
-}
-
-.collapse-title {
-	background: #eeeeee;
-	border: 1px solid #d5d5d5;
-}
-
-.collapse-title a {
-	display: block;
-	width: auto;
-	padding: 10px;
-	color: #777;
-	font-size: 12px;
-	text-decoration: none;
-	background: #fff;
-	border: 1px solid #ff8f83;
-}
-
-.collapse .content {
-	padding: 10px 15px;
-	font-size: 12px;
-	border-left: 1px solid #d5d5d5;
-	border-right: 1px solid #d5d5d5;
-	display: none;
-}
-
-.collapse .content:last-child {
-	border-bottom: 1px solid #d5d5d5;
-}
-
-.rotate {
-	-webkit-transform: rotate(180deg);
-}
-
-.icon-rotate {
-	-webkit-transition-duration: 1s;
-}
-
-.collapse .product {
-	margin: 0;
-}
-
 .information {
 	display: flex;
 }
@@ -666,8 +621,8 @@ dl {
 
 <body>
 	<%@ include file="../share/top_tp.jsp"%>
-	<form method="get"
-		action="${pageContext.request.contextPath}/gallery_ajax/goods.do">
+	<form method="post"
+		action="${pageContext.request.contextPath}/pay_ajax/orderform.do">
 		<div class="content">
 			<!-- 여기에 작성 -->
 			<div class="page-title clearfix">
@@ -695,8 +650,8 @@ dl {
 				<div class="prd-title">
 					<div class="prd-name" name="gname">${goods.gname}</div>
 					<div class="prd-price">
-						<strike class="price">${goods.gprice}원</strike><br /> <b
-							class="sale">${goods.gsale}원</b>
+						<strike class="price">${goods.gprice}</strike><b>원</b><br /> <b
+							class="sale">${goods.gsale}</b><b>원</b>
 					</div>
 					<div class="prd-delivery">
 						<ul>
@@ -715,81 +670,42 @@ dl {
 							<option value="1">${goods.gdoption}</option>
 						</select>
 					</div>
-					<div class="collapse">
-						<!-- 게시글 하나 단위 -->
-						<div class='collapse-item'>
-							<!-- 게시글 제목영역 -->
-							<h2 class='collapse-title'>
-								<a href="#content1"> <span>추가구성상품</span> <img
-									src="/upload/img/arrow-down.png" align=right
-									class="arrow-down icon-rotate">
-								</a>
-							</h2>
-							<!-- 게시글 내용영역 -->
-							<div id="content1" class="content">
-								<ul class="product">
-									<li style="list-style: none;">
-										<div class="information">
-											<div class="thumbnail">
-												<a
-													href="${pageContext.request.contextPath}/gallery/goods.do">
-													<img src="/upload/img/goods_header.jpg">
-												</a>
-											</div>
-											<div class="con">
-												<p class="name">펫클럽 벨버드비쉬케어포덴탈 바르는치약 70g/위생</p>
-												<p class="sel-price">6,000원</p>
-											</div>
+					<div class="select-prd">
+						<table>
+							<tbody class="add-prds">
+								<tr class="add-prd">
+									<td>
+										<p class="prd">
+											<strong>${goods.gname}</strong> <br> <span>${goods.gdoption}</span>
+										</p>
+										<p>
+											<button type="button" class="btn btnDown">
+												<img src="/upload/img/마이너스.png">
+											</button>
+											<input type="number" value="1" min="1" max="99" name="count"
+												id="count" />
+											<button type="button" class="btn btnUp">
+												<img src="/upload/img/플러스.png">
+											</button>
+										</p>
+									</td>
+									<td class="add-price"><span id=add-price>${goods.gsale}</span>
+										<span>원</span></td>
+									<td class="cencel">
+										<div class="cencel-btn">
+											<button type="button" class="btn" id="prd-del">
+												<span class="glyphicon glyphicon-remove"></span>
+											</button>
 										</div>
-										<div class="option">
-											<div class="title">상품선택</div>
-											<select class="prd-select">
-												<option class="active">- [필수] 상품 선택 -</option>
-												<option class="prd-select-1">펫클럽 벨버드비쉬케어포덴탈 바르는치약
-													70g/위생</option>
-											</select>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="select-prd">
-							<table>
-								<tbody class="add-prds">
-									<tr class="add-prd">
-										<td>
-											<p class="prd">
-												<strong>${goods.gname}</strong> <br> <span>${goods.gdoption}</span>
-											</p>
-											<p>
-												<button type="button" class="btn btnDown2">
-													<img src="/upload/img/마이너스.png">
-												</button>
-												<input type="number" value="0" min="1" max="99"
-													name="count" id="count" />
-												<button type="button" class="btn btnUp2">
-													<img src="/upload/img/플러스.png">
-												</button>
-											</p>
-										</td>
-										<td class="add-price"><span id=add-price>${goods.gsale}</span>
-											<span>원</span></td>
-										<td class="cencel">
-											<div class="cencel-btn">
-												<button type="button" class="btn" id="prd-del">
-													<span class="glyphicon glyphicon-remove"></span>
-												</button>
-											</div>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 					<div class="prd-total">
 						<strong>총 상품금액(수량)</strong>
 						<div class="total-price">
-							<b id="total-price">19900</b> <b>원</b> <b>(</b><b
+							<b id="total-price">${goods.gsale}</b> <b>원</b> <b>(</b><b
 								id="price-count">1</b><b>개)</b>
 						</div>
 					</div>
@@ -1265,7 +1181,8 @@ dl {
 	<script
 		src="${pageContext.request.contextPath}/share/plugins/handlebars/handlebars-v4.0.5.js"></script>
 	<!-- jQuery Ajax Form plugin CDN -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			$('.star span').click(function() {
@@ -1274,82 +1191,51 @@ dl {
 				return false;
 			});
 
-			var counter = 1;
-	
-			var acount = parseInt(counted);
-			var price = $(".price").text();
-			var add_price = $("#add-price").text();
-			var price_count = $("#price-count").html(counter + acount);
-			var total_price = $("#total-price").html(
-					(counter * price) + (acount * add_price));
-
-			$(".btnUp").click(
-					function(e) {
-						counter++;
-
-						$("#count").val(counter);
-						$("#price-count").html(counter + acount);
-						$("#total-price").html(
-								(counter * price) + (acount * add_price));
-					});
-
-			$(".btnUp2").click(
-					function(e) {
-						acount++;
-
-					
-						$("#price-count").html(counter + acount);
-						$("#add-price").html(acount * add_price);
-						$("#total-price").html(
-								(counter * price) + (acount * add_price));
-					});
-
-			$(".btnDown").click(
-					function(e) {
-						if (counter < 2) {
-							alert("최소 주문수량은 1개 입니다.");
-							return;
-						}
-						counter--;
-
-						$("#count").val(counter);
-						$("#price-count").html(counter + acount);
-						$("#total-price").html(
-								(counter * price) + (acount * add_price));
-					});
-
-			$(".btnDown2").click(
-					function(e) {
-						if (acount < 2) {
-							alert("최소 주문수량은 1개 입니다.");
-							return;
-						}
-						acount--;
-
-				
-						$("#add-price").html(acount * add_price);
-						$("#price-count").html(counter + acount);
-						$("#total-price").html(
-								(counter * price) + (acount * add_price));
-					});
-
-			jQuery('.goods-select').change(
+			jQuery(".goods-select").change(
 					function() {
 						var index = $(".goods-select option").index(
 								$(".goods-select option:selected"));
 						if (index) {
-							jQuery('.select-prd').show();
+							jQuery(".select-prd").show();
 							acount = 0;
 
 						}
 					});
 
+			var counter = 1;
+			var counted = $("#count").val();
+			var acount = parseInt(counted);
+			var price = $(".sale").text();
+			var total_price = $("#total-price").text();
+
+			$(".btnUp").click(function(e) {
+				counter++;
+
+				$("#count").val(counter);
+				$("#price-count").html(counter);
+				$("#add-price").html(price * counter)
+				$("#total-price").html(price * counter);
+			});
+
+			$(".btnDown").click(function(e) {
+				if (counter < 2) {
+					alert("최소 주문수량은 1개 입니다.");
+					return;
+				}
+				counter--;
+
+				$("#count").val(counter);
+				$("#price-count").html(counter);
+				$("#add-price").html(price * counter)
+				$("#total-price").html(price * counter);
+			});
+
 			$(document).on("click", "#prd-del", function() {
 				$(this).parents(".select-prd").hide();
-				$("#price-count").html(counter);
-				$("#total-price").html(counter * price);
-				
-				$("#add-price").html(add_price);
+				$("#price-count").html(counted);
+				$("#total-price").html(total_price);
+				$("#count").val(counted);
+				$("#add-price").html(total_price);
 			});
 		});
 
@@ -1458,21 +1344,24 @@ dl {
 
 		$(function() {
 			// #addForm에 대한 submit 이벤트롤 가로채서 Ajax 요청을 전송한다.
-			$(".prd-photo").ajaxForm({
-				// 전송 메서드 지정
-				method : "POST",
-				// 서버에서 200 응답을 전달한 경우 실행됨
-				success : function(json) {
-					console.log(json);
-					
-					// json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
-					if (json.rt == "OK") {
-						window.location = "${pageContext.request.contextPath}/gallery_ajax/goods.do?goodsno=" + json.item.goodsno;
-					}
-				}
-			});
-			
-			$("#review-submit").click(function(e){
+			$(".prd-photo")
+					.ajaxForm(
+							{
+								// 전송 메서드 지정
+								method : "POST",
+								// 서버에서 200 응답을 전달한 경우 실행됨
+								success : function(json) {
+									console.log(json);
+
+									// json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
+									if (json.rt == "OK") {
+										window.location = "${pageContext.request.contextPath}/gallery_ajax/goods.do?goodsno="
+												+ json.item.goodsno;
+									}
+								}
+							});
+
+			$("#review-submit").click(function(e) {
 				$("review-list").show();
 			});
 		});
