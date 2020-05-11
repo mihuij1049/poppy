@@ -29,6 +29,18 @@
 		<result property="imgtype" column="imgtype" />
 
 	</resultMap>
+	
+	<!-- 상품상세 페이지 단일행 조회를 위한 기능 정의 -->
+	<select id="selectItem" parameterType="kr.co.poppy.model.Goods"
+		resultMap="goodsMap">
+		SELECT i.imgname, i.imgpath, imgtype, imgext, gd.gdoption,
+		g.gcode, g.gname, g.ginfo, g.gprice, g.gsale
+		FROM goods g
+		INNER JOIN imgs i ON
+		g.goodsno = i.goodsno
+		INNER JOIN goodsdetail gd ON g.goodsno = gd.goodsno
+		WHERE g.goodsno = ${goodsno} AND i.imgtype = "A";
+	</select>
 
 	<!-- 다중행 조회(갤리스트)를 위한 기능 정의 -->
 	<select id="selectList" parameterType="kr.co.poppy.model.Goods"

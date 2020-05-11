@@ -635,7 +635,7 @@ dl {
 			<div class="product">
 				<div class="prd-img">
 					<img src="${goods.imgpath}${goods.imgname}.${goods.imgext}"
-						name="goods">
+						name="gImg">
 				</div>
 				<fieldset class="btn-group">
 					<button type="button" class="like-btn" aria-label="좋아요">

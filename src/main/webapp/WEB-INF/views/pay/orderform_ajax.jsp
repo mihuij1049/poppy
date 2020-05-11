@@ -203,18 +203,18 @@
 									<div class="thumbnail">
 										<a
 											href="${pageContext.request.contextPath}/gallery_ajax/goods.do">
-											<img src="" width="70" height="70">
+											<img src="${output4.imgpath}${output4.imgname}.${output4.imgext}" width="70" height="70">
 										</a>
 									</div>
 									<div class="prd">
 										<div id="prd-title">
 											<strong class="prd-name" title="상품명"> <a
-												href="${pageContext.request.contextPath}/gallery_ajax/goods.jsp">모르겠다 정말</a>
+												href="${pageContext.request.contextPath}/gallery_ajax/goods.jsp">${output4.gname}</a>
 											</strong>
 										</div>
 										<ul class="prd-li">
 											<li style="list-style: none"><span class="prd-price"
-												title="판매가"> <strong>6,900</strong>원
+												title="판매가"> <strong>${output4.gsale}</strong>원
 											</span> <span class="prd-count" title="수량"> <strong>1</strong>개
 											</span> <br> <span class="prd-deli"> <span>[조건]/기본배송</span>
 											</span></li>
