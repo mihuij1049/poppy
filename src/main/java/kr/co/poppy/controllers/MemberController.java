@@ -306,7 +306,9 @@ public class MemberController {
 			@RequestParam(value = "user_id", required = true) String userid,
 			@RequestParam(value = "user_pw", required = true) String userpw,
 			@RequestParam(value = "user_name", required = true) String username,
-			@RequestParam(value = "tel", required = true) String userphone,
+			@RequestParam(value = "tel1", required = true) String userphone1,
+			@RequestParam(value = "tel2", required = true) String userphone2,
+			@RequestParam(value = "tel3", required = true) String userphone3,
 			@RequestParam(value = "email", required = true) String useremail) {
 		// 가입한 시각을 담은 date 생성
 		Calendar c = Calendar.getInstance();
@@ -338,7 +340,7 @@ public class MemberController {
 		newmem.setUserpw(userpw);
 		newmem.setUsername(username);
 		newmem.setUseremail(useremail);
-		newmem.setUserphone(userphone);
+		newmem.setUserphone(userphone1+"-"+userphone2+"-"+userphone3);
 		newmem.setRegdate(date);
 		newmem.setEditdate(date);
 

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -34,12 +34,15 @@
 			</h4>
 		</div>
 		<div class="container">
-			<form class="form-horizontal" name="join_form" id="join_form" method="post"
+			<form class="form-horizontal" name="join_form" id="join_form"
+				method="post"
 				action="${pageContext.request.contextPath}/member/join_members_ok.do">
 				<input type="hidden" name="useagree" value="${agree_ok.useagree }" />
-				<input type="hidden" name="privateagree" value="${agree_ok.privateagree }" />
-				<input type="hidden" name="emailagree" value="${agree_ok.emailagree }" />
-				<input type="hidden" name="shoppingagree" value="${agree_ok.shoppingagree }" />
+				<input type="hidden" name="privateagree"
+					value="${agree_ok.privateagree }" /> <input type="hidden"
+					name="emailagree" value="${agree_ok.emailagree }" /> <input
+					type="hidden" name="shoppingagree"
+					value="${agree_ok.shoppingagree }" />
 				<div class="id-box join-form">
 					<label for="user_id"> 아이디<span>＊</span>
 					</label> <input type="text" name="user_id" id="user_id" maxlength="20">
@@ -61,18 +64,18 @@
 					</label> <input type="text" name="user_name" id="user_name" maxlength="20">
 				</div>
 				<div class="join-form">
-					<label for="tel"> 휴대전화 </label> <select class="form-control status">
-						<option>010</option>
-						<option>011</option>
-						<option>016</option>
-						<option>017</option>
-						<option>018</option>
-						<option>019</option>
+					<label for="tel"> 휴대전화 </label> <select class="form-control status" name="tel1">
+						<option value="010">010</option>
+						<option value="011">011</option>
+						<option value="016">016</option>
+						<option value="017">017</option>
+						<option value="018">018</option>
+						<option value="019">019</option>
 					</select>
 					<p class="dash">-</p>
-					<input type="tel" name="tel" id="tel" maxlength="4">
+					<input type="tel" name="tel2" id="tel" maxlength="4">
 					<p class="dash">-</p>
-					<input type="tel" name="tel2" id="tel2" maxlength="4">
+					<input type="tel" name="tel3" id="tel2" maxlength="4">
 				</div>
 				<div class="join-form">
 					<label for="email"> 이메일<span>*</span>
@@ -210,33 +213,40 @@
 			});
 			var id_check = 0;
 			var email_check = 0;
-			$("#id_check").click(function() {
+			$("#id_check").click(function(e) {
+				e.preventDefault();
+				
 				var user_id = $("#user_id").val();
+				
 				id_check = 0;
 				if (user_id.length != 0) {
-					if (user_id == "test") {
-						alert("사용 불가능한 아이디 입니다.");
-					} else {
-						alert("사용 가능한 아이디 입니다.");
-						id_check++;
-					}
-				} else {
-					alert("아이디를 입력해주세요.");
-				}
+					$.get("${pageContext.request.contextPath}/myInfo/same_check",
+							{ "userid" : user_id },
+						function(json) {
+							if (json.rt == "OK") {
+								alert("사용이 불가능한 아이디 입니다.");
+							} else {
+								alert("사용이 가능한 아이디 입니다^^");
+								id_check++;
+							}
+						});
+				} 
 			});
 			$("#email_check").click(function() {
-				var email = $("#email").val();
+				var useremail = $("#email").val();
 				email_check = 0;
 				if (email.length != 0) {
-					if (email == "test@naver.com") {
-						alert("사용 불가능한 이메일 입니다.");
-					} else {
-						alert("사용 가능한 이메일 입니다.");
-						email_check++;
-					}
-				} else {
-					alert("이메일을 입력해주세요.");
-				}
+					$.get("${pageContext.request.contextPath}/myInfo/same_check",
+							{ "useremail" : useremail },
+						function(json) {
+							if (json.rt == "OK") {
+								alert("사용이 불가능한 이메일 입니다.");
+							} else {
+								alert("사용이 가능한 이메일 입니다^^");
+								email_check++;
+							}
+						});
+				} 
 			});
 
 			$("#join").click(function() {

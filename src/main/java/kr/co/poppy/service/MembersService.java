@@ -41,6 +41,13 @@ public interface MembersService {
 	 */
 	public int editPwMembers(Members input) throws Exception;
 	
+	/** 회원가입 중복 체크 기능
+	 * @Param  회원의 아이디(userid) 또는 이메일(useremail)을 담고 있는 Beans
+	 * @return  조회된 회원의 정보를 담고 있는 Beans
+	 * @throws Exception
+	 */
+	public Members sameCheckMembers(Members input) throws Exception;
+	
 	/** 회원 정보 수정하기
 	 * 
 	 * @Param 회원의 수정된 정보가 담긴 Beans 객체

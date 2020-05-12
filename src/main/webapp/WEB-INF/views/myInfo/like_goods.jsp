@@ -171,7 +171,6 @@
 						window.location = "${pageContext.request.contextPath}/myInfo/like_goods.do";
 					}
 				});
-				;
 			});
 		});
 

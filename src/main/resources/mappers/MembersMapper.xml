@@ -58,5 +58,26 @@
 	parameterType="kr.co.poppy.model.Members">
 	UPDATE members SET userpw=#{userpw}, editdate=now() WHERE userid=#{userid} and username=#{username} and useremail=#{useremail}
 </update>
+<!-- 회원아이디 중복 조회(회원가입) -->
+<select id="same_check"
+	parameterType="kr.co.poppy.model.Members"
+	resultMap="membersMap">
+	SELECT userid, useremail from members 
+	<where>
+		<if test="userid != null and userid != ''">
+		userid = #{userid}
+		</if>
+		<if test="useremail != null and useremail != ''">
+		or useremail = #{useremail}
+		</if>
+	</where>
+</select>
+<!-- 회원 이메일 중복 조회(회원가입) -->
+<!-- <select id="findId_members"
+	parameterType="kr.co.poppy.model.Members"
+	resultMap="membersMap">
+	SELECT * from members WHERE username=#{username} and useremail=#{useremail}
+</select> -->
+
 <!-- 모든 회원의 정보조회 (관리자페이지용 같아서 일단 보류) -->
 </mapper>

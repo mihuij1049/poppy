@@ -42,6 +42,7 @@
 			<mapping path="/pay/**" />
 			<mapping path="/community/photo_wri.do" />
 			<mapping path="/community/qna_wri.do" />
+			<exclude-mapping path="/myInfo/same_check" />
 			<beans:bean id = "AuthInterceptor"
 				class="kr.co.poppy.interceptor.AuthInterceptor">
 			</beans:bean>
