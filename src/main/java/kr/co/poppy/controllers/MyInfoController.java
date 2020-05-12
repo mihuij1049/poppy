@@ -22,6 +22,7 @@ import kr.co.poppy.model.Address;
 import kr.co.poppy.model.Bbs;
 import kr.co.poppy.model.Goods;
 import kr.co.poppy.model.GoodsForRv;
+import kr.co.poppy.model.Goodsdetail;
 import kr.co.poppy.model.Members;
 import kr.co.poppy.model.Orderdetail;
 import kr.co.poppy.model.Orders;
@@ -257,16 +258,17 @@ public class MyInfoController {
 		input.setMemno(myInfo.getMemno());
 
 		List<GoodsForRv> output = null;
-
+		List<GoodsForRv> output2 = null;
 		try {
 			output = goodsForRvService.getGoodsLikeList(input);
+			output2 = goodsForRvService.getGoodsLikeListDetail(input);
 		} catch (Exception e) {
 			log.debug(e.getLocalizedMessage());
 		}
 		
 		// View에 리스트 전달
 		model.addAttribute("output", output);
-
+		model.addAttribute("output2", output);
 		return new ModelAndView("myInfo/like_goods");
 	}
 

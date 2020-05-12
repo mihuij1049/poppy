@@ -117,3 +117,47 @@
 	font-size: 15px;
 	color: white;
 }
+/** 모달창 CSS */
+
+#cart_in {
+	margin: auto;
+	width: 90%;
+	padding: 20px 0px;
+	z-index: 1;
+	border: 1px solid #ffc7c1;
+	border-radius: 5px;
+	background: #ffc7c1;
+	text-align: center;
+	position: fixed;
+	left: 4%;
+	margin-left: -20%;
+	top: 35%;
+	margin-top: -150px;
+	display: none;
+}
+
+.qty_label {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.word-btn {
+	margin-top: 10px;
+	padding-left: 120px;
+}
+
+.word-btn .count {
+	padding: 0;
+	border: none;
+}
+
+.count-label {
+	vertical-align: -1px;
+	width: 40px;
+	text-align: right;
+}
+
+.change {
+	height: 29px;
+	vertical-align: -1.5px;
+}

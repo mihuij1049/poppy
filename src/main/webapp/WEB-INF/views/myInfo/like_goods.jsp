@@ -34,8 +34,7 @@
 			<c:choose>
 				<%-- 조회결과가 없는 경우 --%>
 				<c:when test="${output == null || fn:length(output) == 0}">
-					<div class="non-list">조회결과가
-						없습니다.</div>
+					<div class="non-list">조회결과가 없습니다.</div>
 				</c:when>
 				<%-- 조회결과가 있는 경우 --%>
 				<c:otherwise>
@@ -45,6 +44,7 @@
 							<c:set var="gname" value="${item.gname }" />
 							<c:set var="gsale" value="${item.gsale }" />
 							<c:set var="heartno" value="${item.heartno }" />
+							<c:set var="goodsno" value="${item.goodsno }" />
 							<li class="mycart" id="mycart1">
 								<div class="mygoods clearfix">
 									<span class="chkbox"> <input type="checkbox"
@@ -52,16 +52,35 @@
 										data-checknum="${item.heartno }" /></span> <a href="#"><img
 										src="" class="cart-img"></a>
 									<div class="word">
-										<b>${item.gname}</b><br> <small>배송:2500원[조건]/기본배송</small><br>
-										<small><span>적</span> <fmt:formatNumber
-												value="${item.gsale*0.02}" pattern="#,###" />원</small><br> <b><fmt:formatNumber
-												value="${item.gsale}" pattern="#,###" />원</b>
+										<b>${item.gname}</b><br>
+										<div class="plz-opt">
+											<select id="select-option">
+												<option value="opt">옵션을 선택해 주세요.</option>
+											</select>
+										</div>
+										<div class="qty">
+											<b class="plz_qty">수량을 입력해 주세요.</b><br>
+											<div class="word-btn">
+												<button class="count minus">
+													<img src="../share/img/마이너스.png">
+												</button>
+												<input type="number" class="count-label" value="1"
+													id="count-label" />
+												<button class="count plus">
+													<img src="../share/img/플러스.png">
+												</button>
+											</div>
+										</div>
+										<small>배송:2500원[조건]/기본배송</small><br> <small><span>적</span>
+											<fmt:formatNumber value="${item.gsale*0.02}" pattern="#,###" />원</small><br>
+										<b><fmt:formatNumber value="${item.gsale}" pattern="#,###" />원</b>
 									</div>
 								</div>
 								<div class="btns">
 									<button type="button" class="btn btn-inverse delete-one"
 										id="delete-one" data-heartno="${item.heartno }">삭제</button>
-									<button type="button" class="btn gocart" id="gotocart">장바구니담기</button>
+									<button type="button" class="btn gocart" id="gotocart"
+										data-goodsno="${item.goodsno }">장바구니담기</button>
 								</div>
 							</li>
 						</c:forEach>
@@ -84,7 +103,35 @@
 				</a>
 			</div>
 		</div>
+		<!--   장바구니 옵션 및 수량 선택 모달 ------------------------->
+		<div class="cart_in" id="cart_in">
+			<div class="cart-in-title">
+				<strong>* 장바구니 담기 *</strong>
+			</div>
+			<div class="plz-opt">
+				<select>
+					<option value="0">옵션을 선택해 주세요.</option>
+				</select>
+			</div>
+			<div class="qty">
+				<b class="plz_qty">수량을 입력해 주세요.</b><br>
+				<div class="word-btn">
+					<button class="count minus">
+						<img src="../share/img/마이너스.png">
+					</button>
+					<input type="number" class="count-label" value="1" id="count-label">
+					<button class="count plus">
+						<img src="../share/img/플러스.png">
+					</button>
+				</div>
+			</div>
 
+			<div class="cs_pass_2btns">
+				<button type="button" class="btn btn-sm btn-ok" id="confirm_cart">확인</button>
+				<button type="button" class="btn btn-inverse btn-sm btn-cancel"
+					id="modal-cancel-btn">취소</button>
+			</div>
+		</div>
 	</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
 	<script
@@ -184,7 +231,7 @@
 		});
 
 		/** 장바구니 담기 */
-		$(function() {
+		/* $(function() {
 			var count = $("#cart-qty").text();
 			var put_cart = count;
 			$("#cart-qty").text(put_cart);
@@ -197,7 +244,7 @@
 					alert("이미 해당 상품을 장바구니에 담았습니다.");
 				}
 			});
-		});
+		}); */
 
 		/** 상품삭제 */
 		$("#interest-item-group").on("click", "#delete-one", function(e) {
@@ -222,6 +269,50 @@
 			});
 			
 			$(this).parent().parent().remove();
+		});
+		/** 장바구니 담기 모달창 */
+		$(function() {
+			// 장바구니 모달창 띄우기
+			$("#confirm_cart").click(function(e) {
+				e.preventDefault();
+			console.log(goodsno);
+			
+		});
+			$("#modal-cancel-btn").click(function() {
+				$("#cart_in").hide();
+			});
+			
+		});
+		$(".qty").on(
+				"click",
+				".plus",
+				function(e) {
+					var value = $(this).prev().val();
+					value++;
+					$(this).prev().val(value);
+				});
+
+		$(".qty").on(
+				"click",
+				".minus",
+				function(e) {
+					var value = $(this).next().val();
+					if (value == 1) {
+						alert("구매수량은 1미만으로 불가능합니다.");
+						return;
+					}
+					value--;
+					$(this).next().val(value);
+				});
+		$("#interest-item-group").on("click", "#gotocart", function(e) {
+			/* e.preventDefault(); */
+			/* $("#cart_in").show(); */
+			let goodsno = $(this).data("goodsno");
+			let opt = $(this).parent().prev().children().eq(2).children().eq(2).children().val();
+			let qty = $(this).parent().prev().children().eq(2).children().eq(3).children().children("input").val();
+			console.log(goodsno);
+			console.log(opt);
+			console.log(qty);
 		});
 	</script>
 

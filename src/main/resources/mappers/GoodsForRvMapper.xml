@@ -41,7 +41,17 @@
 	<!-- 관심상품(좋아요) 다중행 조회 -->
 	<select id="selectLikeList" parameterType="kr.co.poppy.model.GoodsForRv"
 		resultMap="GoodsForRvMap">
-		SELECT * from goods g inner join heart h on g.goodsno=h.goodsno 
+		SELECT * from goods g 
+		inner join heart h on g.goodsno=h.goodsno
+		inner join imgs i on g.goodsno=i.goodsno 
 		WHERE g.goodsno in (SELECT h.goodsno from heart WHERE h.memno=#{memno}) 
+	</select>
+	<!-- 관심상품(좋아요) 디테일 다중행 조회 -->
+	<select id="selectLikeListDetail" parameterType="kr.co.poppy.model.GoodsForRv"
+		resultMap="GoodsForRvMap">
+	SELECT * from goods g 
+	inner join heart h on g.goodsno=h.goodsno 
+	inner join goodsdetail d on g.goodsno=d.goodsno
+	where g.goodsno in (SELECT h.goodsno from heart WHERE h.memno=#{memno}); 
 	</select>
 </mapper>
