@@ -57,7 +57,7 @@ public class GoodsRestController {
 	
 	/** 갤러리 상세 페이지 */
 	@RequestMapping(value = "/gallery", method = RequestMethod.GET)
-	public Map<String, Object> goods(Model model, @RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
+	public Map<String, Object> goods(@RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 
 		/** 유효성 검사 */
@@ -79,19 +79,20 @@ public class GoodsRestController {
 		input3.setGoodsno(goodsno);
 		input3.setMemno(myInfo.getMemno());
 		input3.setBbstype("C");
-		List<Bbs> ptrv = null;
 
 		Bbs qna = new Bbs();
 		qna.setGoodsno(goodsno);
 		qna.setMemno(myInfo.getMemno());
 		qna.setBbstype("B");
+	
+		List<Bbs> ptrv = null;
 		List<Bbs> qoutput = null;
-			
 		PageData pageData = null;
 
 		try {
 			// 전체 게시글 수 조회
 			totalCount = bbsService.getBbsCount(qna);
+			totalCount = bbsService.getBbsCount(input3);
 			// 페이지 번호 계산 --> 계산결과가 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 			// SQL의 limit절에서 사용될 값을 Beans의 static 변수에 저장
@@ -99,8 +100,8 @@ public class GoodsRestController {
 			Bbs.setListCount(pageData.getListCount());
 
 			// 데이터 조회
-			ptrv = bbsService.getBbsList(input3);
-			qoutput = bbsService.getBbsList(qna);
+			ptrv = bbsService.getBbsList_goods(input3);
+			qoutput = bbsService.getBbsList_goods(qna);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}

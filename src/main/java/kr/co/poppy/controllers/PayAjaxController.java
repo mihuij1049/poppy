@@ -44,13 +44,12 @@ public class PayAjaxController {
 
 	@Autowired
 	PointsService pointsService;
-	
+
 	@Autowired
 	GoodsService goodsService;
-	
+
 	@Autowired
 	GoodsdetailService goodsdetailService;
-
 
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -58,9 +57,19 @@ public class PayAjaxController {
 
 	/** 주문결제페이지 */
 	@RequestMapping(value = "/pay_ajax/orderform.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView addrList(Model model,
-		    @RequestParam(value="goodsno", defaultValue="0") int goodsno,
-		    @RequestParam(value="gddetailno", defaultValue="0") int gddetailno) {
+	public ModelAndView addrList(Model model, @RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
+			@RequestParam(value = "gddetailno", defaultValue = "0") int gddetailno,
+			@RequestParam(value = "gdoption", required = false) String gdoption) {
+
+		/** 유효성 검사 */
+		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
+		if (goodsno == 0) {
+			return webHelper.redirect(null, "상품번호가 없습니다.");
+		}
+
+		if (gdoption == null) {
+			return webHelper.redirect(null, "상품옵션이 없습니다.");
+		}
 
 		// 세션 객체를 이용하여 저장된 세션값 얻기
 		HttpSession mySession = webHelper.getSession();
@@ -70,28 +79,30 @@ public class PayAjaxController {
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
 		Address input = new Address();
 		input.setMemno(myInfo.getMemno());
-		// 조회결과를 저장할 객체 선언
-		Address output = null;
 
 		Address input2 = new Address();
 		input2.setMemno(myInfo.getMemno());
-		List<Address> output2 = null;
 
 		Points input3 = new Points();
 		input3.setMemno(myInfo.getMemno());
-		List<Points> output3 = null;
-		
+
 		Goods gd = new Goods();
 		gd.setGoodsno(goodsno);
 		gd.setMemno(myInfo.getMemno());
-		Goods goods = null;
-		
+
 		Goodsdetail gdetail = new Goodsdetail();
 		gdetail.setGoodsno(goodsno);
 		gdetail.setGddetailno(gddetailno);
+		gdetail.setGdoption(gdoption);
 		gdetail.setMemno(myInfo.getMemno());
+
+		// 조회결과를 저장할 객체 선언
+		Address output = null;
+		List<Address> output2 = null;
+		List<Points> output3 = null;
+		Goods goods = null;
 		List<Goodsdetail> gdoutput = null;
-		
+
 		try {
 			// 데이터 조회
 			output = addressService.getAddressItem(input);

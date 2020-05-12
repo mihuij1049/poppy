@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,10 +43,10 @@ public class PayRestController {
 	/** Service 패턴 구현체 주입 */
 	@Autowired
 	AddressService addressService;
-
+	
 	/** 주문결제페이지 */
 	@RequestMapping(value = "/pay", method = RequestMethod.GET)
-	public Map<String, Object> get_list(Model model) {
+	public Map<String, Object> get_list() {
 
 		// 세션 객체를 이용하여 저장된 세션값 얻기
 		HttpSession mySession = webHelper.getSession();

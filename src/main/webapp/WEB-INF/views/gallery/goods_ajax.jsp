@@ -46,7 +46,6 @@
 				</fieldset>
 				<div class="prd-title">
 					<div class="prd-name" name="gname">${goods.gname}</div>
-					<input type="hidden" value="${goods.gname}" />
 					<div class="prd-price">
 						<strike class="price">${goods.gprice}</strike><b>원</b><br /> <b
 							class="sale">${goods.gsale}</b><b>원</b>
@@ -63,7 +62,7 @@
 					</div>
 					<div class="gdoption">
 						<div class="gdtitle">상품선택</div>
-						<select class="goods-select">
+						<select class="goods-select" name="gdoptions">
 							<option value="active">- [필수] 옵션을 선택해 주세요. -</option>
 							<c:forEach var="gdoutput" items="${gdoutput}" varStatus="status">
 								<option value="${gdoutput.gdoption}">${gdoutput.gdoption}</option>
@@ -519,7 +518,8 @@
 				</ul>
 			</div>
 		</div>
-		<script id="photo_rv_tmpl" type="text/x-handlebars-template">
+	</form>
+	<script id="photo_rv_tmpl" type="text/x-handlebars-template">
         {{#each item}}
 	        <ul class="review-list">
 	        	<li class="list1">
@@ -544,8 +544,8 @@
 		        </li>
 	        </ul>
         {{/each}}
-        </script>
-		<script id="qna_rv_tmpl" type="text/x-handlebars-template">
+    </script>
+	<script id="qna_rv_tmpl" type="text/x-handlebars-template">
         {{#each item2}}
             <tr>
 			    <td class="subject"><strong> <span
@@ -557,7 +557,7 @@
 			</tr>
         {{/each}}
         </script>
-	</form>
+
 	<!-- Javascript -->
 	<script
 		src="${pageContext.request.contextPath}/share/assets/js/jquery-3.2.1.min.js"></script>
@@ -734,8 +734,6 @@
 			});
 
 		});
-
-		
 	</script>
 </body>
 

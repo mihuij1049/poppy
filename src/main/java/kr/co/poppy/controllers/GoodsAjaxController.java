@@ -80,29 +80,29 @@ public class GoodsAjaxController {
 		// 빈즈에 담기
 		Goods gd = new Goods();
 		gd.setGoodsno(goodsno);
-		Goods goods = null;
 		
 		Goodsdetail gdetail = new Goodsdetail();
 		gdetail.setGoodsno(goodsno);
-		List<Goodsdetail> gdoutput = null;
 
 		Heart input2 = new Heart();
 		input2.setHeartno(heartno);
 		input2.setGoodsno(goodsno);
 		input2.setMemno(myInfo.getMemno());
-		int heart = 0;
 
 		Bbs input3 = new Bbs();
 		input3.setGoodsno(goodsno);
 		input3.setMemno(myInfo.getMemno());
 		input3.setBbstype("C");
-		List<Bbs> ptrv = null;
 
 		Bbs qna = new Bbs();
 		qna.setGoodsno(goodsno);
 		qna.setBbstype("B");
+		
+		Goods goods = null;
+		List<Goodsdetail> gdoutput = null;
+		int heart = 0;
+		List<Bbs> ptrv = null;
 		List<Bbs> qoutput = null;
-
 		PageData pageData = null;
 
 		try {
@@ -136,6 +136,5 @@ public class GoodsAjaxController {
 		model.addAttribute("pageData", pageData);
 		return new ModelAndView("gallery/goods_ajax");
 	}
-	
 
 }
