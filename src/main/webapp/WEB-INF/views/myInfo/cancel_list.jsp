@@ -77,7 +77,7 @@
 						<c:set var="imgpath" value="${item.imgpath }" />
 						<c:set var="imgtype" value="${item.imgtype }" />
 						<%-- 상세페이지로 이동하기 위한 URL --%>
-						<c:url value="/gallery/goods.do" var="viewUrl">
+						<c:url value="/gallery_ajax/goods.do" var="viewUrl">
 							<c:param name="goodsno" value="${item.goodsno}" />
 						</c:url>
 						<div>

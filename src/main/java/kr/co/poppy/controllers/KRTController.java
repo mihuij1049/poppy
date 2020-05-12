@@ -77,7 +77,6 @@ public class KRTController {
 		/** 2) 데이터 조회하기 */
 		Orders orders = new Orders();
 		orders.setMemno(myInfo.getMemno());
-		orders.setOdstatus(odstatus);
 		orders.setGoodsno(1);
 
 		List<Orders> ordersList = null;
@@ -133,7 +132,8 @@ public class KRTController {
 	@RequestMapping(value="/myInfo/order_status.do", method=RequestMethod.GET)
 	public ModelAndView order_status(Model model,@RequestParam(value = "page", defaultValue = "1") int nowPage,
 			@RequestParam(value="orderno", defaultValue="0") int orderno,
-			@RequestParam(value="odstatus", required=false)String odstatus) {
+			@RequestParam(value="odstatus", required=false)String odstatus,
+			@RequestParam(value="goodsno", defaultValue="0") int goodsno) {
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
 		
@@ -147,9 +147,9 @@ public class KRTController {
 		
 		/** 2) 데이터 조회하기 */
 		Orders orders = new Orders();
+		Imgs imgs = new Imgs();
 		orders.setMemno(myInfo.getMemno());
-		orders.setOdstatus(odstatus);
-		orders.setGoodsno(1);
+		imgs.setGoodsno(1);
 
 		List<Orders> ordersList = null;
 		List<Orders> output = new ArrayList<Orders>();
@@ -166,7 +166,6 @@ public class KRTController {
 			Orders.setListCount(pageData.getListCount());
 
 			// 데이터 조회하기
-			// input = orderService.getOrdersItem(input);
 			ordersList = orderService.getOrdersList(orders);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());

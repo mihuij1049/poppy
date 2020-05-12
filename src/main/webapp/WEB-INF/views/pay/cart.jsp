@@ -68,7 +68,7 @@
 									<c:set var="cartqty" value="${item.cartqty }" />
 									<c:set var="goodsno" value="${item.goodsno }" />
 									<%-- 상세페이지로 이동하기 위한 URL --%>
-									<c:url value="/gallery/goods.do" var="viewUrl">
+									<c:url value="/gallery_ajax/goods.do" var="viewUrl">
 										<c:param name="goodsno" value="${item.goodsno}" />
 									</c:url>
 									<div class="cart-box clear">
@@ -106,7 +106,7 @@
 													<b>합계: <span class="price">${item.gprice}</span>원
 													</b>
 												</p>
-												<button type="button" class="delete">삭제</button>
+												<button type="button" class="delete" data-cartno="${item.cartno}">삭제</button>
 												<button type="button">관심상품</button>
 												<button type="button" class="btn btn2"
 													onclick="location.href='${pageContext.request.contextPath}/pay/orderform.do'">주문하기</button>
@@ -137,8 +137,7 @@
 											<button type="button" class="btn btn2 delete_cancel"
 												data-dismiss="modal">아니오</button>
 											<button type="button" class="btn btn2 delete_ok"
-												data-dismiss="modal"
-												onclick="location.href='${pageContext.request.contextPath}/pay/cart_delete.do?cartno=${cartno}'">예</button>
+												data-dismiss="modal">예</button>
 										</div>
 									</div>
 								</div>
@@ -306,8 +305,12 @@
 					for (var i = 0; i < length; i++) {
 						table_price += parseInt($(".price").eq(i).html());
 						if (i == length - 1) {
-							$("#table_sum").html(table_price + table_delivery);
+							table_sum = table_price + table_delivery;
+							table_sum = table_sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+							$("#table_sum").html(table_sum);
+							table_price = table_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 							$("#table_price").html(table_price);
+							table_delivery = table_delivery.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 							$("#table_delivery").html(table_delivery);
 						}
 					}
@@ -392,6 +395,7 @@
 						for (var i = 0; i < length; i++) {
 							sum_price += parseInt($(".price").eq(i).html());
 						}
+						sum_price = sum_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 						$("#table_price").html(sum_price);
 						if (sum_price < 30000) {
 							table_delivery = 2500;
@@ -453,10 +457,15 @@
 			});
 
 			$(document).on("click", ".delete", function(e) {
+				let current = $(this);   // 이벤트가 발생한 객체 자신 #delete-one
+				let cartno = current.data('cartno');
+				
 				$("#myModal2").modal("show");
 				$(".delete_message").html("해당");
 				var delete_item = $(this).parent().parent().parent();
 				$(document).on("click", ".delete_ok", function(e) {
+					
+					location.href='${pageContext.request.contextPath}/pay/cart_delete.do?cartno='+cartno;
 					delete_item.remove();
 
 					var length = $(".cart-box").length;

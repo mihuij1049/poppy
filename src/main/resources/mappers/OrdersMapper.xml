@@ -20,6 +20,7 @@
 		<result property="odgprice" column="odgprice" />
 		<result property="odgqty" column="odgqty" />
 		<result property="odgdoption" column="odgdoption" />
+		<result property="goodsno" column="goodsno" />
 		<result property="imgname" column="imgname" />
 		<result property="imgext" column="imgext" />
 		<result property="imgpath" column="imgpath" />
@@ -37,7 +38,7 @@
 		parameterType="kr.co.poppy.model.Orders" resultMap="ordersMap">
 		SELECT o.orderno, o.odstatus,
 		o.regdate, od.odgcode, od.odgname, od.odgprice, od.odgqty,
-		od.odgdoption, i.imgname, i.imgext, i.imgpath, i.imgtype
+		od.odgdoption, i.imgname, i.imgext, i.imgpath, i.imgtype, i.goodsno
 		FROM orders o INNER JOIN orderdetail od ON o.orderno = od.orderno
         INNER JOIN cart c ON o.memno = c.memno
         INNER JOIN goodsdetail gd ON c.gddetailno = gd.gddetailno

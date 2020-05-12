@@ -83,6 +83,7 @@
 						<c:forEach var="item" items="${output}" varStatus="status">
 							<c:set var="orderno" value="${item.orderno}" />
 							<c:set var="memno" value="${item.memno}" />
+							<c:set var="goodsno" value="${item.goodsno}" />
 							<c:set var="imgname" value="${item.imgname }" />
 							<c:set var="imgext" value="${item.imgext }" />
 							<c:set var="imgpath" value="${item.imgpath }" />
@@ -90,7 +91,7 @@
 							<c:set var="paytype" value="${item.paytype}" />
 							<c:set var="odstatus" value="${item.odstatus}" />
 							<%-- 상세페이지로 이동하기 위한 URL --%>
-							<c:url value="/gallery/goods.do" var="viewUrl">
+							<c:url value="/gallery_ajax/goods.do" var="viewUrl">
 								<c:param name="goodsno" value="${item.goodsno}" />
 							</c:url>
 							<div>
@@ -121,7 +122,8 @@
 												</span></li>
 											</ul>
 											<p class="option">[옵션: ${item.odgdoption}]</p>
-											<button type="button" class="btn btn2" id="change" data-orderno="${item.orderno }">주문취소</button>
+											<button type="button" class="btn btn2" id="change"
+												data-orderno="${item.orderno }">주문취소</button>
 										</div>
 									</div>
 									<div class="prd-foot" title="주문처리상태">
@@ -129,168 +131,172 @@
 									</div>
 								</div>
 							</div>
-
-							<!-- Modal -->
-							<div class="modal fade" id="myModal2">
-								<div class="modal-dialog modal-sm">
-									<div class="modal-content">
-										<div class="cart-modal">
-											<div class="modal-header2">
-												<button type="button" class="close" data-dismiss="modal"
-													aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-												</button>
-												<h4 class="modal-title">주문 취소</h4>
-											</div>
-											<div class="modal-body2">
-												<p>
-													<span class="delete_message"></span> 주문을 취소 하시겠습니까?
-												</p>
-											</div>
-											<div class="modal-footer2">
-												<button type="reset" class="btn btn2 change_cancel"
-													data-dismiss="modal">아니오</button>
-												<button type="submit" class="btn btn2 change_ok"
-													data-dismiss="modal"
-													onclick="location.href='${pageContext.request.contextPath}/myInfo/order_change.do?orderno=${orderno}'">예</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
 						</c:forEach>
 					</c:otherwise>
 				</c:choose>
-			</div>
-			<div class=" paging">
-				<ul class="pagination pagination-sm">
-					<li class="disabled"><a href="#">&laquo;</a></li>
-					<!-- 활성화 버튼은 아래의 구조로 구성하시면 됩니다. sr-only는 스크린리더 전용입니다. -->
-					<li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
-					<li class="paging-right"><a href="#">&raquo;</a></li>
-				</ul>
+				<!-- Modal -->
+				<div class="modal fade" id="myModal2">
+					<div class="modal-dialog modal-sm">
+						<div class="modal-content">
+							<div class="cart-modal">
+								<div class="modal-header2">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title" data-orderno="${item.orderno}">주문 취소</h4>
+								</div>
+								<div class="modal-body2">
+									<p>
+										<span class="delete_message"></span> 주문을 취소 하시겠습니까?
+									</p>
+								</div>
+								<div class="modal-footer2">
+									<button type="reset" class="btn btn2 change_cancel"
+										data-dismiss="modal">아니오</button>
+									<button type="submit" class="btn btn2 change_ok"
+										data-dismiss="modal">예</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class=" paging">
+					<ul class="pagination pagination-sm">
+						<li class="disabled"><a href="#">&laquo;</a></li>
+						<!-- 활성화 버튼은 아래의 구조로 구성하시면 됩니다. sr-only는 스크린리더 전용입니다. -->
+						<li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
+						<li class="paging-right"><a href="#">&raquo;</a></li>
+					</ul>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<!-- Javascript -->
-	<%@ include file="../share/bottom_tp.jsp"%>
-	<!-- 플러그인 JS 참조 -->
-	<script src="../share/plugins/datepicker/datepicker.min.js"></script>
-	<script src="../share/plugins/datepicker/datepicker.ko-KR.js"></script>
-	<!-- 사용자 정의 스크립트 -->
-	<script type="text/javascript">
-		$(function() {
-			$(document).on(
-					"change",
-					"#sel_odstatus",
-					function(e) {
-						var length = $(".view").length;
-						// console.log(length);
-						var sel_odstatus = $("#sel_odstatus option:selected")
-								.val();
-						// console.log(sel_odstatus);
-						$(".view").parent().hide();
-						for (var i = 0; i < length; i++) {
-							var odstatus = $(".ready").eq(i).html();
-							// console.log(odstatus);
-							if (sel_odstatus == -1) {
-								$(".view").parent().show();
-							}
-							if (sel_odstatus == 0) {
-								if (odstatus == "입금전") {
-									$(".view").eq(i).parent().show();
+		<!-- Javascript -->
+		<%@ include file="../share/bottom_tp.jsp"%>
+		<!-- 플러그인 JS 참조 -->
+		<script src="../share/plugins/datepicker/datepicker.min.js"></script>
+		<script src="../share/plugins/datepicker/datepicker.ko-KR.js"></script>
+		<!-- 사용자 정의 스크립트 -->
+		<script type="text/javascript">
+			$(function() {
+				$(document).on(
+						"change",
+						"#sel_odstatus",
+						function(e) {
+							var length = $(".view").length;
+							// console.log(length);
+							var sel_odstatus = $(
+									"#sel_odstatus option:selected").val();
+							// console.log(sel_odstatus);
+							$(".view").parent().hide();
+							for (var i = 0; i < length; i++) {
+								var odstatus = $(".ready").eq(i).html();
+								// console.log(odstatus);
+								if (sel_odstatus == -1) {
+									$(".view").parent().show();
+								}
+								if (sel_odstatus == 0) {
+									if (odstatus == "입금전") {
+										$(".view").eq(i).parent().show();
+									}
+								}
+								if (sel_odstatus == 1) {
+									if (odstatus == "배송준비중") {
+										$(".view").eq(i).parent().show();
+									}
+								}
+								if (sel_odstatus == 2) {
+									if (odstatus == "배송중") {
+										$(".view").eq(i).parent().show();
+									}
+								}
+								if (sel_odstatus == 3) {
+									if (odstatus == "배송완료") {
+										$(".view").eq(i).parent().show();
+									}
 								}
 							}
-							if (sel_odstatus == 1) {
-								if (odstatus == "배송준비중") {
-									$(".view").eq(i).parent().show();
-								}
-							}
-							if (sel_odstatus == 2) {
-								if (odstatus == "배송중") {
-									$(".view").eq(i).parent().show();
-								}
-							}
-							if (sel_odstatus == 3) {
-								if (odstatus == "배송완료") {
-									$(".view").eq(i).parent().show();
-								}
-							}
-						}
-					});
-		});
-		function set_term(days) {
-			var length = $(".view").length;
-			
-			days = days * 24 * 60 * 60 * 1000;
+						});
+			});
+			function set_term(days) {
+				var length = $(".view").length;
 
-			var date = new Date();
-			var yy = date.getFullYear();
-			var mm = date.getMonth() + 1;
-			var dd = date.getDate();
-			var today = yy+"-"+mm+"-"+dd;
+				days = days * 24 * 60 * 60 * 1000;
 
-			var setday = date.getTime() - days;
-			date.setTime(setday);
+				var date = new Date();
+				var yy = date.getFullYear();
+				var mm = date.getMonth() + 1;
+				var dd = date.getDate();
+				var today = yy + "-" + mm + "-" + dd;
 
-			var s_yy = date.getFullYear();
-			var s_mm = date.getMonth() + 1;
-			var s_dd = date.getDate();
-			
-			
-			alert(s_yy + "년 " + s_mm + "월 " + s_dd + "일 " + "~" + yy + "년 "
-					+ mm + "월 " + dd + "일" + "의 주문조회 결과");
-			
-			console.log(today);
-			
-			for (var i = 0; i < length; i++) {
-				var oddate = $(".date").eq(i).html();
-				console.log(oddate);
-				if (oddate==today) {
-					$(".view").eq(i).parent().hide();
+				var setday = date.getTime() - days;
+				date.setTime(setday);
+
+				var s_yy = date.getFullYear();
+				var s_mm = date.getMonth() + 1;
+				var s_dd = date.getDate();
+
+				alert(s_yy + "년 " + s_mm + "월 " + s_dd + "일 " + "~" + yy + "년 "
+						+ mm + "월 " + dd + "일" + "의 주문조회 결과");
+
+				console.log(today);
+
+				for (var i = 0; i < length; i++) {
+					var oddate = $(".date").eq(i).html();
+					console.log(oddate);
+					if (oddate == today) {
+						$(".view").eq(i).parent().hide();
+					}
 				}
 			}
-		}
 
-		$(function() {
-			$(".dateSearch").hide();
-			$("#period_set").click(function() {
-				$(".dateSearch").toggle();
-			});
+			$(function() {
+				$(".dateSearch").hide();
+				$("#period_set").click(function() {
+					$(".dateSearch").toggle();
+				});
 
-			$("#datepicker_before").datepicker({
-				// 날짜 선택후 사동 숨김 (true/false)
-				autoHide : true,
-				// 날짜 형식
-				format : "yyyy-mm-dd",
-				// 언어
-				language : "ko-KR",
-				// 시작요일 (0=일요일~6=토요일)
-				weekStart : 0
-			});
+				$("#datepicker_before").datepicker({
+					// 날짜 선택후 사동 숨김 (true/false)
+					autoHide : true,
+					// 날짜 형식
+					format : "yyyy-mm-dd",
+					// 언어
+					language : "ko-KR",
+					// 시작요일 (0=일요일~6=토요일)
+					weekStart : 0
+				});
 
-			$("#datepicker_after").datepicker({
-				// 날짜 선택후 사동 숨김 (true/false)
-				autoHide : true,
-				// 날짜 형식
-				format : "yyyy-mm-dd",
-				// 언어
-				language : "ko-KR",
-				// 시작요일 (0=일요일~6=토요일)
-				weekStart : 0
-			});
-		});
-		$(function() {
-			$(document).on("click", "#change", function(e) {
-				$("#myModal2").modal("show");
-				var change_item = $(this).parent().parent().parent().parent();
-				$(document).on("click", ".change_ok", function(e) {
-					change_item.remove();
+				$("#datepicker_after").datepicker({
+					// 날짜 선택후 사동 숨김 (true/false)
+					autoHide : true,
+					// 날짜 형식
+					format : "yyyy-mm-dd",
+					// 언어
+					language : "ko-KR",
+					// 시작요일 (0=일요일~6=토요일)
+					weekStart : 0
 				});
 			});
-		});
-	</script>
+			$(function() {
+				$(document).on(
+						"click",
+						"#change",
+						function(e) {
+							let current = $(this);   // 이벤트가 발생한 객체 자신 #delete-one
+							let order_no = current.data('orderno');
+							$("#myModal2").modal("show");
+							var change_item = $(this).parent().parent()
+									.parent().parent();
+							$(document).on("click", ".change_ok", function(e) {
+								
+								window.location.href='${pageContext.request.contextPath}/myInfo/order_change.do?orderno='+order_no;
+								change_item.remove();
+							});
+						});
+			});
+		</script>
 </body>
 
 </html>
