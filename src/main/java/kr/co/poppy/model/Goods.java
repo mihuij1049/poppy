@@ -40,7 +40,7 @@ public class Goods {
 	private String imgpath;
 	private String imgext;
 	private String imgtype;
-	public String SearchCondition;
+	public String searchCondition;
 
 	// 페이지 관련 static 변수 미정
 	/** LIMIT 절에서 사용할 조회 시작 위치 */

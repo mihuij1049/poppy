@@ -106,7 +106,7 @@
 							<form method="get" action="${pageContext.request.contextPath}/gallery/gal_list_search.do">
 								<label><i class="glyphicon glyphicon-search"
 									id="searchicon"></i></label> <input type="search" name="keyword" value="${keyword}" />
-								<button type="submit" class="btn btn">검색</button>
+								<button type="submit" class="btn btn" value="${keyword}">검색</button>
 							</form>
 						</div>
 						<div class="search_md_footer">

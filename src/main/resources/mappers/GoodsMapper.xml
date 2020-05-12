@@ -27,6 +27,7 @@
 		<result property="imgpath" column="imgpath" />
 		<result property="imgext" column="imgext" />
 		<result property="imgtype" column="imgtype" />
+		<result property="searchCondition" column="searchCondition" />
 
 	</resultMap>
 	
@@ -56,7 +57,7 @@
 	<!-- 다중행 조회(갤리스트)를 위한 기능 정의2 -->
 	<select id="selectList2" parameterType="kr.co.poppy.model.Goods"
 		resultMap="goodsMap">
-		SELECT i.imgname, i.imgpath, imgext,
+		SELECT i.imgname, i.imgpath, i.imgext,
 		g.goodsno, g.gcode,
 		g.gname, g.ginfo, g.gprice, g.gsale, g.gdate, g.cate1, g.cate2
 		from goods g
@@ -75,33 +76,24 @@
 		g.goodsno, g.gcode,
 		g.gname, g.ginfo, g.gprice, g.gsale, g.gdate, g.cate1, g.cate2, g.regdate, g.editdate
 		from goods g
-		<where>
-			SearchCondition=#{SearchCondition} 
-			<if test="SearchCondition == 'A'">
+		INNER JOIN imgs i on g.goodsno = i.goodsno
+		WHERE g.cate1=${cate1}
+			<if test="regdate != null and regdate !=''"> 
 				<!-- 다중행 조회(갤리스트-신상품순)을 위한 기능 정의 -->
-				INNER JOIN imgs i on g.goodsno = i.goodsno
-				WHERE i.imgtype="A" AND g.cate1=${cate1}
 				ORDER BY g.regdate ASC;
 			</if>
-			<if test="SearchCondition == 'B'">
+			<if test="gname != null and gname !=''">
 				<!-- 다중행 조회(갤리스트-제품명순)을 위한 기능 정의 -->
-				INNER JOIN imgs i on g.goodsno = i.goodsno
-				WHERE i.imgtype="A" AND g.cate1=${cate1}
-				ORDER BY gname ASC;
+				ORDER BY g.gname ASC;
 			</if>
-			<if test="SearchCondition == 'C'">
+			<if test="gprice != null and gprice !=''">
 				<!-- 다중행 조회(갤리스트-낮은가격순)을 위한 기능 정의 -->			
-				INNER JOIN imgs i on g.goodsno = i.goodsno
-				WHERE i.imgtype="A" AND g.cate1=${cate1}
-				ORDER BY gprice DESC;
+				ORDER BY g.gprice DESC;
 			</if>
-			<if test="SearchCondition == 'D'">
-				<!-- 다중행 조회(갤리스트-높은가격순)을 위한 기능 정의 -->			
-				INNER JOIN imgs i on g.goodsno = i.goodsno
-				WHERE i.imgtype="A" AND g.cate1=${cate1}
-				ORDER BY gprice ASC;
-			</if>
-		</where>
+			<!-- <if test="gprice != null and gprice !=''">
+				다중행 조회(갤리스트-높은가격순)을 위한 기능 정의			
+				ORDER BY g.gprice ASC;
+			</if> -->
 	</select>
 	
 	<!-- 데이터 수 조회를 위한 기능 정의 -->

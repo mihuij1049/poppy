@@ -91,13 +91,25 @@ public class GalleryController {
 	@RequestMapping(value="/gallery/gal_list_cate.do", method=RequestMethod.GET)
 	public ModelAndView gallistcate(Model model,
 			@RequestParam(value="cate1", required=false) String cate1,
-			@RequestParam("searchCondition") String searchCondition) {
+			@RequestParam(value="searchCondition") String searchCondition) {
+		if (searchCondition == null) {
+			return webHelper.redirect(null, "ㅁㄴㅇㄹ");
+		}
+		if (cate1 == null) {
+			return webHelper.redirect(null, "ㅁㄴㅇㄹ");
+		}
 		// 2) 데이터 조회
 		// 굿즈데이터조회
 		Goods input = new Goods();
 		input.setCate1(cate1);
 		input.setSearchCondition(searchCondition);
-		
+		if (searchCondition=="A") {
+			input.setRegdate("now()");
+		} else if (searchCondition=="B") {
+			input.setGname("상품이름");
+		} else if (searchCondition=="C") {
+			input.setGprice(12345);
+		}
 		// 데이터저장할곳
 		List<Goods> output = null;		
 		

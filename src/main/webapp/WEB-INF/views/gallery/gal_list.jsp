@@ -32,13 +32,11 @@
 				</b>
 			</h4>
 		</div>
-		<!-- 여기... 에 cate2 값 넣어야 하는데... 이거... jstl 이프문 써서 cate2값 넣어주고
-		그거 선택하는대로 a href 링크 넣어서... get값을 주도록 합시다. cate1값을 유지할 필요는 없어요. -->
 			<div class="container_1">
 				<div>
-					<form action="${pageContext.request.contextPath}/gallery/gal_list_cate.do">
+					<form action="${pageContext.request.contextPath}/gallery/gal_list_cate.do" method="get">
 						<div class="search_tab_bg">
-							<select name="searchCondition" class="cate_select">
+							<select name="searchCondition" class="cate_select" id="cate_select">
 								<c:forEach var="item" items="${output}" varStatus="status" end="0">
 								<option value="NONE">정렬방식</option>
 								<option value="A">신상품</option>
@@ -51,7 +49,7 @@
 					</form>
 				</div>
 				<!-- 게시물 영역 시작 -->
-				<div>
+				<div id="result">
 					<c:forEach var="item" items="${output}" varStatus="status">
 						<div>
 							<div class="pr_box">
@@ -90,15 +88,22 @@
 			</div>
 		</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
+	
+	<!-- $('.pr_in_box i').click(function() {
+            $(this).toggleClass("glyphicon-heart glyphicon-heart-empty");
+    }); -->
+	
 	<script type="text/javascript">
     $(function() {
-        $('.pr_in_box i').click(function() {
-            $(this).toggleClass("glyphicon-heart glyphicon-heart-empty");
-        });
-        
-        $('.cate_select').click(function(e) {
-        	$.ajax ({
-        	})
+    	$(document).on('change', '#cate_select', function(e) {
+    		var choice = $(this).find("option:selected").val();
+        	console.log ("어케해야할지 모르갰다")
+        	console.log(choice)
+        	if(!choice) {
+        		return false;
+        	}
+        	location.href="../gallery/gal_list_cate.do?cate1='푸드'"+"&searchCondition="+choice;
+    	});
     });
     </script>
 </body>
