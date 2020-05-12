@@ -21,10 +21,12 @@ import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Bbs;
 import kr.co.poppy.model.Goods;
+import kr.co.poppy.model.Goodsdetail;
 import kr.co.poppy.model.Heart;
 import kr.co.poppy.model.Members;
 import kr.co.poppy.service.BbsService;
 import kr.co.poppy.service.GoodsService;
+import kr.co.poppy.service.GoodsdetailService;
 import kr.co.poppy.service.HeartService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,13 +45,16 @@ public class GoodsRestController {
 	/** Service 패턴 구현체 주입 */
 	@Autowired
 	GoodsService goodsService;
+	
+	@Autowired
+	GoodsdetailService goodsdetailService;
 
 	@Autowired
 	HeartService heartService;
 
 	@Autowired
 	BbsService bbsService;
-
+	
 	/** 갤러리 상세 페이지 */
 	@RequestMapping(value = "/gallery", method = RequestMethod.GET)
 	public Map<String, Object> goods(Model model, @RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
@@ -71,27 +76,32 @@ public class GoodsRestController {
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
 
 		// 빈즈에 담기
-		Goods input = new Goods();
-		input.setGoodsno(goodsno);
+		Goods gd = new Goods();
+		gd.setGoodsno(goodsno);
+		gd.setMemno(myInfo.getMemno());
+		Goods goods = null;
+		
+		Goodsdetail gdetail = new Goodsdetail();
+		gdetail.setGoodsno(goodsno);
+		gdetail.setMemno(myInfo.getMemno());
+		List<Goodsdetail> gdoutput = null;
 
 		Heart input2 = new Heart();
 		input2.setGoodsno(goodsno);
 		input2.setMemno(myInfo.getMemno());
+		int heart = 0;
 
 		Bbs input3 = new Bbs();
 		input3.setGoodsno(goodsno);
 		input3.setMemno(myInfo.getMemno());
 		input3.setBbstype("C");
+		List<Bbs> ptrv = null;
 
 		Bbs qna = new Bbs();
 		qna.setGoodsno(goodsno);
 		qna.setBbstype("B");
-
-		// 조회결과를 저장할 객체 선언
-		Goods goods = null;
-		int heart = 0;
-		List<Bbs> ptrv = null;
 		List<Bbs> qoutput = null;
+			
 		PageData pageData = null;
 
 		try {
@@ -104,7 +114,8 @@ public class GoodsRestController {
 			Bbs.setListCount(pageData.getListCount());
 
 			// 데이터 조회
-			goods = goodsService.getGoodsItem(input);
+			goods = goodsService.getGoodsItem(gd);
+			gdoutput = goodsdetailService.getGoodsdetailList(gdetail);
 			heart = heartService.getHeartCount(input2);
 			ptrv = bbsService.getBbsList(input3);
 			qoutput = bbsService.getBbsList(qna);
@@ -117,6 +128,7 @@ public class GoodsRestController {
 		// 3) 뷰처리
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("goods", goods);
+		data.put("gdoutput", gdoutput);
 		data.put("heart", heart);
 		data.put("item", ptrv);
 		data.put("item2", qoutput);

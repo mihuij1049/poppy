@@ -18,10 +18,12 @@ import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Bbs;
 import kr.co.poppy.model.Goods;
+import kr.co.poppy.model.Goodsdetail;
 import kr.co.poppy.model.Heart;
 import kr.co.poppy.model.Members;
 import kr.co.poppy.service.BbsService;
 import kr.co.poppy.service.GoodsService;
+import kr.co.poppy.service.GoodsdetailService;
 import kr.co.poppy.service.HeartService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -40,6 +42,9 @@ public class GoodsAjaxController {
 	/** Service 패턴 구현체 주입 */
 	@Autowired
 	GoodsService goodsService;
+	
+	@Autowired
+	GoodsdetailService goodsdetailService;
 
 	@Autowired
 	HeartService heartService;
@@ -73,28 +78,31 @@ public class GoodsAjaxController {
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
 
 		// 빈즈에 담기
-		Goods input = new Goods();
-		input.setGoodsno(goodsno);
+		Goods gd = new Goods();
+		gd.setGoodsno(goodsno);
+		Goods goods = null;
+		
+		Goodsdetail gdetail = new Goodsdetail();
+		gdetail.setGoodsno(goodsno);
+		List<Goodsdetail> gdoutput = null;
 
 		Heart input2 = new Heart();
 		input2.setHeartno(heartno);
 		input2.setGoodsno(goodsno);
 		input2.setMemno(myInfo.getMemno());
+		int heart = 0;
 
 		Bbs input3 = new Bbs();
 		input3.setGoodsno(goodsno);
 		input3.setMemno(myInfo.getMemno());
 		input3.setBbstype("C");
+		List<Bbs> ptrv = null;
 
 		Bbs qna = new Bbs();
 		qna.setGoodsno(goodsno);
 		qna.setBbstype("B");
-
-		// 조회결과를 저장할 객체 선언
-		Goods goods = null;
-		int heart = 0;
-		List<Bbs> ptrv = null;
 		List<Bbs> qoutput = null;
+
 		PageData pageData = null;
 
 		try {
@@ -108,7 +116,8 @@ public class GoodsAjaxController {
 			Bbs.setListCount(pageData.getListCount());
 
 			// 데이터 조회
-			goods = goodsService.getGoodsItem(input);
+			goods = goodsService.getGoodsItem(gd);
+			gdoutput = goodsdetailService.getGoodsdetailList(gdetail);
 			heart = heartService.getHeartCount(input2);
 			ptrv = bbsService.getBbsList(input3);
 			qoutput = bbsService.getBbsList(qna);
@@ -120,6 +129,7 @@ public class GoodsAjaxController {
 
 		// 3) 뷰처리
 		model.addAttribute("goods", goods);
+		model.addAttribute("gdoutput", gdoutput);
 		model.addAttribute("heart", heart);
 		model.addAttribute("item", ptrv);
 		model.addAttribute("qoutput", qoutput);

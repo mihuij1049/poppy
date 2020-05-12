@@ -17,10 +17,12 @@ import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Address;
 import kr.co.poppy.model.Goods;
+import kr.co.poppy.model.Goodsdetail;
 import kr.co.poppy.model.Members;
 import kr.co.poppy.model.Points;
 import kr.co.poppy.service.AddressService;
 import kr.co.poppy.service.GoodsService;
+import kr.co.poppy.service.GoodsdetailService;
 import kr.co.poppy.service.PointsService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -45,15 +47,20 @@ public class PayAjaxController {
 	
 	@Autowired
 	GoodsService goodsService;
+	
+	@Autowired
+	GoodsdetailService goodsdetailService;
+
 
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 
-	/** 주소 목록페이지 */
+	/** 주문결제페이지 */
 	@RequestMapping(value = "/pay_ajax/orderform.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView addrList(Model model,
-			@RequestParam(value = "goodsno", defaultValue = "0") int goodsno) {
+		    @RequestParam(value="goodsno", defaultValue="0") int goodsno,
+		    @RequestParam(value="gddetailno", defaultValue="0") int gddetailno) {
 
 		// 세션 객체를 이용하여 저장된 세션값 얻기
 		HttpSession mySession = webHelper.getSession();
@@ -67,6 +74,7 @@ public class PayAjaxController {
 		Address output = null;
 
 		Address input2 = new Address();
+
 		input2.setMemno(myInfo.getMemno());
 		List<Address> output2 = null;
 
@@ -74,16 +82,24 @@ public class PayAjaxController {
 		input3.setMemno(myInfo.getMemno());
 		List<Points> output3 = null;
 		
-		Goods input4 = new Goods();
-		input4.setGoodsno(goodsno);
-		Goods output4 = null;
-
+		Goods gd = new Goods();
+		gd.setGoodsno(goodsno);
+		gd.setMemno(myInfo.getMemno());
+		Goods goods = null;
+		
+		Goodsdetail gdetail = new Goodsdetail();
+		gdetail.setGoodsno(goodsno);
+		gdetail.setGddetailno(gddetailno);
+		gdetail.setMemno(myInfo.getMemno());
+		List<Goodsdetail> gdoutput = null;
+		
 		try {
 			// 데이터 조회
 			output = addressService.getAddressItem(input);
 			output2 = addressService.getAddressList(input2);
 			output3 = pointsService.getPointsMbList(input3);
-			output4 = goodsService.getGoodsItem(input4);
+			goods = goodsService.getGoodsItem(gd);
+			gdoutput = goodsdetailService.getGoodsdetailList(gdetail);
 		} catch (Exception e) {
 			// 신규회원일 경우, 조회된 데이터가 없으므로 오류를 발생시키면 안된다.
 			return webHelper.redirect(null, e.getLocalizedMessage());
@@ -112,7 +128,8 @@ public class PayAjaxController {
 		model.addAttribute("output", output);
 		model.addAttribute("item", output2);
 		model.addAttribute("input3", input3);
-		model.addAttribute("output4", output4);
+		model.addAttribute("goods", goods);
+		model.addAttribute("gdoutput", gdoutput);
 		return new ModelAndView("pay/orderform_ajax");
 	}
 

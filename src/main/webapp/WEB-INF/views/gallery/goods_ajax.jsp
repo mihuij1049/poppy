@@ -10,618 +10,15 @@
 
 <head>
 <%@ include file="../share/head_tp.jsp"%>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/share/goods_ajax.css" />
 <style type="text/css">
-.product {
-	margin-top: 10px;
-	margin-bottom: 40px;
-}
-
-.prd-img {
-	border-top: 1px solid #ddd;
-	border-bottom: 1px solid #ddd;
-}
-
-.prd-img img {
-	width: 100%;
-}
-
-button {
-	border: 0;
-	outline: 0;
-}
-
-input {
-	border: 0;
-	outline: 0;
-}
-
-#my-url {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 1px;
-	height: 1px;
-	margin: 0;
-	padding: 0;
-	border: 0;
-}
-
-.product .btn-group {
-	width: 96%;
-	margin-left: 2%;
-	margin-top: 10px;
-}
-
-.product .btn-group button {
-	width: 100px;
-	height: 28px;
-	font-size: 12px;
-	padding: 3px;
-	border-radius: 3px;
-	background-color: #fff;
-}
-
-.product .btn-group .like-btn {
-	border: 1px solid #ddd;
-}
-
-.product .btn-group .share-btn {
-	border: 1px solid #ddd;
-}
-
-.product .btn-group .glyphicon-heart-empty {
-	position: relative;
-	right: 3px;
-	top: 3px;
-}
-
-.product .btn-group .glyphicon-heart {
-	color: #ff8f83;
-	position: relative;
-	right: 3px;
-	top: 3px;
-}
-
-.change_border {
-	border: 1px solid #ff8f83;
-}
-
-.change_color {
-	color: #ff8f83;
-}
-
-.change_color2 {
-	color: #ff8f83;
-}
-
-.product .btn-group .glyphicon-link {
-	position: relative;
-	right: 3px;
-	top: 2px;
-}
-
-.prd-title {
-	width: 96%;
-	margin-left: 2%;
-}
-
-.prd-name {
-	font-size: 15px;
-	font-weight: bold;
-	padding-top: 20px;
-	margin-bottom: 15px;
-}
-
-.prd-price {
-	margin-bottom: 15px;
-}
-
-.prd-price .price {
-	font-size: 12px;
-}
-
-.prd-price div {
-	display: inline;
-}
-
-.prd-delivery {
-	padding-top: 10px;
-	padding-bottom: 10px;
-	border-top: 1px solid #ddd;
-	border-bottom: 1px solid #ddd;
-}
-
-.prd-delivery ul li:nth-child(odd) {
-	width: 25%;
-}
-
-.prd-delivery ul li {
-	display: inline-block;
-	font-size: 12px;
-}
-
-.gdoption {
-	margin-top: 15px;
-	margin-bottom: 15px;
-}
-
-.gdoption .gdtitle {
-	font-size: 12px;
-	width: 25%;
-	display: inline-block;
-}
-
-.gdoption .goods-select {
-	outline: 0;
-	width: 73%;
-	height: 32px;
-	font-size: 12px;
-	color: #777;
-	padding: 0px 5px;
-	border: 1px solid #ff8f83;
-}
-
-.prd-total {
-	padding-left: 15px;
-	padding-right: 15px;
-	padding-top: 10px;
-	margin-bottom: 30px;
-	border-top: 1px solid #000;
-}
-
-.prd-total .total-price {
-	float: right;
-}
-
-.prd-action .action-btn {
-	text-align: center;
-	width: 100%;
-}
-
-.prd-action button {
-	width: 32%;
-	height: 40px;
-	font-size: 12px;
-	border: 1px solid #ddd;
-	background-color: #fff;
-}
-
-.prd-action #action-cart {
-	display: inline;
-	font-size: 12px;
-	background-color: #fff;
-	border: 1px solid #ddd;
-	margin-right: 3px;
-}
-
-.prd-action #action-like {
-	margin-right: 3px;
-}
-
-.prd-action #action-orderform {
-	color: #fff;
-	border: 1px #ff8f83;
-	background-color: #ff8f83;
-}
-
-.prd-tab {
-	margin-left: 2%;
-	margin-right: 2%;
-}
-
-.prd-tab li {
-	width: 25%;
-}
-
-.prd-tab li a {
-	margin: 0;
-	padding: 8px;
-	height: 36px;
-	text-align: center;
-	font-size: 12px;
-	margin-bottom: 20px;
-	color: #000;
-	border: 1px solid #ddd;
-	border-radius: 2px 2px 0 0;
-}
-
-.tab-content .prd-detail img {
-	width: 100%;
-}
-
-.tab-content .prd-detail #prd-foot {
-	padding-bottom: 50px;
-}
-
-.tab-content .prd-Info {
-	border-bottom: 1px solid #ddd;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	margin-bottom: 10px
-}
-
-.tab-content .prd-Info tbody {
-	font-size: 12px;
-}
-
-.prd-Info tr {
-	height: 26px;
-}
-
-.prd-Info th {
-	width: 25%;
-}
-
-.prd-photo .photo {
-	padding-top: 10px;
-}
-
-.prd-photo h5 {
-	width: 25%;
-	font-size: 12px;
-	padding-left: 15px;
-	display: inline-block;
-}
-
-.prd-photo .star {
-	float: right;
-	display: inline-block;
-	width: 75%;
-}
-
-.starR {
-	background:
-		url('http://miuu227.godohosting.com/images/icon/ico_review.png')
-		no-repeat right 0;
-	background-size: auto 100%;
-	width: 30px;
-	height: 30px;
-	display: inline-block;
-	text-indent: -9999px;
-	cursor: pointer;
-}
-
-.starR.on {
-	background-position: 0 0;
-}
-
-.prd-photo .photo-add {
-	margin-top: 10px;
-	height: 53px;
-}
-
-.photo-add li {
-	width: 20%;
-	height: 100%;
-	list-style: none;
-	float: right;
-}
-
-.photo-add h5 {
-	font-size: 12px;
-	width: 25%;
-	padding-left: 15px;
-	display: inline-block;
-}
-
-.photo-add .photo-files {
-	float: right;
-	width: 75%;
-}
-
-.clearfix:before {
-	content: "";
-	display: block;
-	float: none;
-	clear: both;
-}
-
-.photo-add img {
-	width: 100%;
-	image-rendering: pixelated;
-}
-
-.photo {
-	margin-bottom: 10px;
-}
-
-.write {
-	padding-top: 10px;
-	border-top: 1px solid #ddd;
-}
-
-.write .photo-title {
-	width: 100%;
-	height: 32px;
-	padding: 10px;
-	margin-bottom: 5px;
-	font-size: 14px;
-	background-color: #f5f5f5;
-	border: 1px solid #ffc7c1;
-}
-
-.write textarea {
-	outline: 0;
-	resize: none;
-	width: 100%;
-	height: 100px;
-	padding: 10px;
-	font-size: 14px;
-	background-color: #f5f5f5;
-	border: 1px solid #ffc7c1;
-}
-
-.photo-button {
-	text-align: right;
-	padding-top: 20px;
-	margin-bottom: 20px;
-}
-
-.photo-button #review-submit {
-	width: 70px;
-	height: 34px;
-	font-size: 12px;
-	color: #fff;
-	border: 1px solid #ff8f83;
-	background-color: #ff8f83;
-}
-
-.photo-button #review-all {
-	width: 90px;
-	height: 34px;
-	font-size: 12px;
-	border: 1px solid #ddd;
-	background-color: #fff;
-}
-
-.prd-review {
-	border-top: 1px solid #000;
-	padding-top: 10px;
-}
-
-.prd-review .list1 {
-	width: 100%;
-}
-
-.prd-review .writer {
-	color: #777;
-	font-size: 11px;
-}
-
-.prd-review .writeDate {
-	color: #777;
-	font-size: 11px;
-}
-
-.prd-review .review-content {
-	font-size: 12px;
-	margin-top: 12px;
-	margin-bottom: 12px;
-}
-
-dl {
-	margin-bottom: 15px;
-}
-
-.prd-review .star {
-	color: red;
-	font-size: 20px;
-	display: inline-block;
-}
-
-.box-left .editt {
-	font-size: 11px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-
-.box-left .txt {
-	color: #777;
-	font-size: 11px;
-	margin-top: 12px;
-}
-
-.txt span a {
-	font-size: 11px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-
-.prd-review .list2 {
-	width: 100%;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	border-top: 1px solid #ddd;
-	border-bottom: 1px solid #ddd;
-}
-
-.qna-btn {
-	text-align: center;
-	padding-top: 15px;
-}
-
-.qna-btn #qna-write {
-	display: inline;
-	width: 47%;
-	height: 36px;
-	font-size: 12px;
-	color: #fff;
-	background: #ff8f83;
-	border: 1px #ff8f83;
-	text-align: center;
-	padding: 8px;
-}
-
-.qna-btn #qna-all {
-	width: 47%;
-	height: 36px;
-	font-size: 12px;
-	color: #000;
-	background: #fff;
-	border: 1px solid #ddd;
-	margin-left: 2%;
-}
-
-.prd-qna .nodata {
-	height: 50px;
-	text-align: center;
-	padding-top: 20px;
-}
-
-#navbarback {
-	height: 71px;
-}
-
-.btmbar-nav {
-	background: #fff;
-}
-
-#navbarback .action-btn2 {
-	height: 71px;
-	padding: 15px 15px;
-}
-
-#navbarback .action-btn2 button {
-	width: 30%;
-	height: 44px;
-	font-weight: bold;
-	border-radius: 3px;
-}
-
-.action-btn2 #action-cart2 {
-	color: #ff8f83;
-	background: #fff;
-	border: 1px solid #ff8f83;
-}
-
-.action-btn2 #action-like2 {
-	margin-right: 5px;
-	margin-left: 5px;
-	background: #fff;
-	color: #ff8f83;
-	border: 1px solid #ff8f83;
-}
-
-.action-btn2 #action-orderform2 {
-	color: #fff;
-	background: #ff8f83;
-}
-
-.information {
-	display: flex;
-}
-
-.information .thumbnail {
-	width: 50px;
-	height: 50px;
-	margin-right: 10px;
-}
-
-.information .name {
-	width: auto;
-	margin-bottom: 0px;
-}
-
-.product .option {
-	padding-bottom: 8px;
-}
-
-.product .option .title {
-	width: 30%;
-	display: inline;
-}
-
-.product .option .prd-select {
-	width: 70%;
-	height: 30px;
-	float: right;
-	padding: 5px;
-	border: 1px solid #ddd;
-	position: relative;
-	bottom: 5px;
-}
-
-.product .option .prd-select option {
-	width: 70%;
-}
-
-.select-prd {
-	display: none;
-	background: #FFF8F4;
-	border-bottom: 1px solid #ddd;
-	background: #FFF8F4;
-}
-
-.select-prd .prd {
-	font-size: 12px;
-	margin-bottom: 0;
-}
-
-.select-prd td p {
-	width: 210px;
-	padding-top: 10px;
-	padding-left: 20px;
-}
-
-.select-prd button {
-	width: 30px;
-	height: 28px;
-	color: #000;
-	padding: 0;
-	font-size: 15px;
-	text-decoration: none;
-	background-color: #fff;
-	border: none;
-}
-
-.select-prd button img {
-	width: auto;
-	height: 28px;
-}
-
-.select-prd input {
-	width: 30px;
-	height: 26.5px;
-	text-align: center;
-	font-size: 12px;
-	display: inline-block;
-	border: 1px solid #ddd;
-	border-radius: 2px;
-	vertical-align: -0.5px;
-}
-
-.select-prd .add-price {
-	width: 80px;
-	font-size: 12px;
-	text-align: right;
-}
-
-.select-prd .cencel {
-	padding: 0 10px;
-}
-
-.select-prd .cencel #prd-del {
-	border: 1px solid #ff8f83;
-}
-
-.select-prd .cencel span {
-	color: #ff8f83;
-}
-
-.customer_pass {
-	position: fixed;
-	left: 4%;
-	margin-left: -20%;
-	top: 35%;
-	margin-top: -150px;
-	display: none;
-}
 </style>
 </head>
 
 <body>
 	<%@ include file="../share/top_tp.jsp"%>
-	<form method="post"
+	<form id="gForm" method="post"
 		action="${pageContext.request.contextPath}/pay_ajax/orderform.do">
 		<div class="content">
 			<!-- 여기에 작성 -->
@@ -632,7 +29,7 @@ dl {
 					</b>
 				</h4>
 			</div>
-			<div class="product">
+			<div class="product" id="goodsno" data-goodsno="${goods.goodsno}">
 				<div class="prd-img">
 					<img src="${goods.imgpath}${goods.imgname}.${goods.imgext}"
 						name="gImg">
@@ -649,6 +46,7 @@ dl {
 				</fieldset>
 				<div class="prd-title">
 					<div class="prd-name" name="gname">${goods.gname}</div>
+					<input type="hidden" value="${goods.gname}" />
 					<div class="prd-price">
 						<strike class="price">${goods.gprice}</strike><b>원</b><br /> <b
 							class="sale">${goods.gsale}</b><b>원</b>
@@ -667,7 +65,9 @@ dl {
 						<div class="gdtitle">상품선택</div>
 						<select class="goods-select">
 							<option value="active">- [필수] 옵션을 선택해 주세요. -</option>
-							<option value="1">${goods.gdoption}</option>
+							<c:forEach var="gdoutput" items="${gdoutput}" varStatus="status">
+							<option value="${gdoutput.gdoption}">${gdoutput.gdoption}</option>
+							</c:forEach>
 						</select>
 					</div>
 					<div class="select-prd">
@@ -718,7 +118,7 @@ dl {
 								onclick="location.href='${pageContext.request.contextPath}/myInfo/like_goods.do'"
 								id="action-like">관심상품</button>
 							<button type="submit"
-								onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do'"
+								onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do?goodsno=${goods.goodsno}'"
 								id="action-orderform">구매하기</button>
 						</div>
 					</div>
@@ -774,7 +174,7 @@ dl {
 						<div class="prd-photo">
 							<div class="photo">
 								<h5>별점</h5>
-								<div class="star">
+								<div class="star" name="rvlike">
 									<span class="starR on">별1</span> <span class="starR">별2</span>
 									<span class="starR">별3</span> <span class="starR">별4</span> <span
 										class="starR">별5</span>
@@ -833,8 +233,8 @@ dl {
 								</div>
 							</div>
 							<div class="write  clearfix">
-								<input type="text" class="photo-title" placeholder="제목" />
-								<textarea class="photo-content" placeholder="리뷰를 남겨주세요."></textarea>
+								<input type="text" class="photo-title" name="bbstitle" placeholder="제목" />
+								<textarea class="photo-content" name="bbscontent" placeholder="리뷰를 남겨주세요."></textarea>
 							</div>
 							<div class="photo-button">
 								<button type="submit" id="review-submit">리뷰 등록</button>
@@ -843,29 +243,6 @@ dl {
 									전체보기</button>
 							</div>
 							<div class="prd-review">
-								<ul class="review-list" style="display: none">
-									<li class="list1">
-										<div class="box">
-											<dl class="box-left">
-												<dd class="star">${qsoutput.rvlike}</dd>
-												<dd class="writer">${qsoutput.username}</dd>
-												<dd class="writeDate">${qsoutput.regdate}</dd>
-												<dd class="review-content"
-													onclick="location.href='${pageContext.request.contextPath}/community/article.do?bbsno={{bbsno}}&bbstype={{bbstype}}'">
-													${qsoutput.bbscontent}<br>
-												</dd>
-												<dd class="edit">
-													<a href="#" class="editt">수정</a>
-												</dd>
-												<dd class="txt">
-													<span> 리뷰가 도움이 되었나요? <a href="#">추천</a> <span
-														class="voteCount"> 3 </span>
-													</span>
-												</dd>
-											</dl>
-										</div>
-									</li>
-								</ul>
 								<%-- 상세페이지로 이동하기 위한 URL --%>
 								<c:url value="/community/article.do" var="viewUrl">
 									<c:param name="bbstype" value="${item2.bbstype}" />
@@ -1129,8 +506,7 @@ dl {
 				</ul>
 			</div>
 		</div>
-	</form>
-	<script id="photo_rv_tmpl" type="text/x-handlebars-template">
+		<script id="photo_rv_tmpl" type="text/x-handlebars-template">
         {{#each item}}
 	        <ul class="review-list">
 	        	<li class="list1">
@@ -1155,8 +531,8 @@ dl {
 		        </li>
 	        </ul>
         {{/each}}
-    </script>
-	<script id="qna_rv_tmpl" type="text/x-handlebars-template">
+        </script>
+		<script id="qna_rv_tmpl" type="text/x-handlebars-template">
         {{#each item2}}
             <tr>
 			    <td class="subject"><strong> <span
@@ -1167,7 +543,8 @@ dl {
 						235</span></td>
 			</tr>
         {{/each}}
-    </script>
+        </script>
+	</form>
 	<!-- Javascript -->
 	<script
 		src="${pageContext.request.contextPath}/share/assets/js/jquery-3.2.1.min.js"></script>
@@ -1283,12 +660,14 @@ dl {
 				$(".arrow-down").toggleClass("rotate");
 			});
 		});
-
+		
 		/** 포토리뷰 리스트 */
-		$(function() {
+		let goodsno = $("#goodsno").data("goodsno");	
+		$(function() {		 
 			$("#photo_rv").click(
 					function(e) {
 						$.get("${pageContext.request.contextPath}/gallery",
+								{"goodsno" : goodsno},
 								function(json) {
 									var template = Handlebars.compile($(
 											"#photo_rv_tmpl").html());
@@ -1299,10 +678,11 @@ dl {
 		});
 
 		/** qna 리스트 */
-		$(function() {
+		$(function() {		
 			$("#qna_rv").click(
 					function(e) {
 						$.get("${pageContext.request.contextPath}/gallery",
+								{"goodsno" : goodsno},
 								function(json) {
 									var template = Handlebars.compile($(
 											"#qna_rv_tmpl").html());
@@ -1344,7 +724,7 @@ dl {
 
 		$(function() {
 			// #addForm에 대한 submit 이벤트롤 가로채서 Ajax 요청을 전송한다.
-			$(".prd-photo")
+			$("#gForm")
 					.ajaxForm(
 							{
 								// 전송 메서드 지정
@@ -1352,18 +732,13 @@ dl {
 								// 서버에서 200 응답을 전달한 경우 실행됨
 								success : function(json) {
 									console.log(json);
-
 									// json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
 									if (json.rt == "OK") {
-										window.location = "${pageContext.request.contextPath}/gallery_ajax/goods.do?goodsno="
-												+ json.item.goodsno;
+										window.location = "${pageContext.request.contextPath}/gallery_ajax/goods.do?bbsno="
+												+ json.item.bbsno;
 									}
 								}
 							});
-
-			$("#review-submit").click(function(e) {
-				$("review-list").show();
-			});
 		});
 	</script>
 </body>
