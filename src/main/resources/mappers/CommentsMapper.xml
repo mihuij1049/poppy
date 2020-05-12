@@ -31,7 +31,7 @@
 		FROM comments c
 		INNER JOIN members m ON c.memno=m.memno
 		WHERE bbsno=#{bbsno}
-		ORDER BY cmtno DESC
+		ORDER BY cmtno 
 	</select>
 	
 	<!-- 데이터 수 조회를 위한 기능 정의 -->

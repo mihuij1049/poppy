@@ -42,7 +42,7 @@
 		b.regdate, b.editdate,
 		b.memno, m.username, m.userid
 		FROM bbs b
-		INNER JOIN members m ON b.memno= #{memno}
+		INNER JOIN members m ON b.memno= m.memno
 
 		<where>
 			bbstype=#{bbstype} 

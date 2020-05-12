@@ -9,19 +9,15 @@
 <html>
 <style type="text/css">
 .cannot {
-	dispay: block;
-	border: 1px solid #ffc7c1;
-	background: #ffc7c1;
-	padding: 15px;
 	text-align: center;
-	width: 100%;
-	color: white;
-	margin: auto;
+	width: auto;
 	color: white;
 }
 
 .cannotbox {
-	width: 100%;
+border: 1px solid #ffc7c1;
+	background: #ffc7c1;
+	width: auto;
 	height: 50px;
 }
 .nai {
@@ -87,17 +83,18 @@
 					<hr class="solidhr">
 						<button type="button"
 							onclick="location.href='${pageContext.request.contextPath}/community/notice.do'"
-							class="btn btn-inverse btn-sm list">목록</button>
+							class="btn btn-inverse btn-sm list" style="margin-bottom: 10px;">목록</button>
 							<hr class="solidhr">
 					</c:when>
 
 					<c:otherwise>
 					<div class="comment">
+					<hr class="solidhr">
 						<div class="eddlbuttons clearfix">
 						
 							<button type="button"
 								onclick="location.href='${pageContext.request.contextPath}/community/qna.do'"
-								class="btn btn-inverse btn-sm list">목록</button>
+								class="btn btn-inverse btn-sm list" style="margin-bottom: 10px;">목록</button>
 								
 							<!-- 글쓴이가 로그인중인 사용자라면 수정/삭제 버튼이 보인다 -->
 							<c:if test="${userInfo.username==output.username}">
@@ -156,8 +153,8 @@
 										<c:if test="${userInfo.username==item.username}">
 
 
-											<button type="submit"
-												class="btn btn-inverse btn-sm btn-delar" id="btn-delar" data-cmtno="${item.cmtno}">삭제</button>
+											<button type="button"
+												class="btn btn-inverse btn-sm btn-delar" id="btn-delar" data-cmtno="${item.cmtno}" data-bbsno="${item.bbsno}">삭제</button>
 											<button type="submit" class="btn btn-sm btn-editar"
 												id="btn-editar">수정</button>
 										</c:if>
@@ -238,10 +235,11 @@
     });
     
     $(function() {
- 	   $("#btn-delar").click(function(e) {
+ 	   $(".btn-delar").click(function(e) {
  		   e.preventDefault();
  		   let current = $(this);
  		   let cmtno = current.data('cmtno');
+ 		   let bbsno= current.data('bbsno')
  		   //삭제 확인
  		   if(!confirm("댓글을 삭제하시겠습니까?")) {
  			   return false;
@@ -253,7 +251,7 @@
                 if (json.rt == "OK") {
                     alert("삭제되었습니다.");
                     // 삭제 완료 후 목록 페이지로 이동
-                    window.location="${pageContext.request.contextPath}/community/article.do?bbstype=B&bbsno=" + json.item.bbsno;
+                    window.location="${pageContext.request.contextPath}/community/article.do?bbstype=B&bbsno=" + bbsno;
                 }
             });
             });
@@ -263,7 +261,7 @@
 			// 댓글 내용을 text에 담기
 			
 			// 수정 버튼 클릭시
-			$("#btn-editar").on("click",function(e) {
+			$(".btn-editar").on("click",function(e) {
 				// 원래 댓글 담기
 				var original = $(this).next().text();
 				console.log(original);
@@ -273,7 +271,9 @@
                 	// 댓글 지우기 
                 	$(this).next().text("");
 					// 텍스트 태그를 html에 담기
+					var form = $('<form id="sendcmt"></form>');
 					var comment_edit = $("<textarea></textarea>");
+					form.append(comment_edit);
 					comment_edit.id = 'editcomment';
 					// <textarea class="comment-edit"></textarea> --> 아랫줄 실행시 완성된 HTML 태그
 					comment_edit.addClass('comment_edit');
@@ -293,14 +293,8 @@
 						$(this).text("수정");
 						$(this).prev().text("삭제");
 					}
-					}
-				}); 
-			}); 
-					
-					$("#btn-editar").on("click",function(e) {
-							
 							// #addForm에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다.
-					        $(".comment_edit").ajaxForm({
+					        $("#sendcmt").ajaxForm({
 					            // 전송 메서드 지정
 					            method: "PUT",
 					            // 서버에서 200 응답을 전달한 경우 실행됨
@@ -311,9 +305,12 @@
 				                	window.location = "${pageContext.request.contextPath}/community/article.do?bbstype=B" + "&bbsno=" + json.item.bbsno; 
 				                }
 				            }
-					        }); 
-					        
-									 });
+					        });     
+				}
+				
+									 
+	   }); 	
+	   });
     </script>
 
 </body>

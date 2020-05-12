@@ -122,6 +122,7 @@ public class CommunityRestController {
 	/** 댓글 삭제 */
 	@RequestMapping(value = "/community/article", method = RequestMethod.DELETE)
 	public Map<String, Object> delete(
+			@RequestParam(value = "bbstype", required = false) String bbstype,
 			@RequestParam(value="cmtno", defaultValue="0") int cmtno,
 			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno){
 		/** 1) 유효성 검사 */
@@ -131,6 +132,8 @@ public class CommunityRestController {
 		/** 2) 데이터 삭제하기 */
 		Comments input = new Comments();
 		input.setCmtno(cmtno);
+		input.setBbsno(bbsno);
+		input.setBbstype(bbstype);
 		
 		try {
 			commentsService.deleteComments(input);
@@ -138,7 +141,8 @@ public class CommunityRestController {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
 		/** 3) 결과를 확인하기 위한 JSON출력 */
-		return webHelper.getJsonData();
+		Map<String, Object> map = new HashMap<String, Object>();
+		return webHelper.getJsonData(map);
 		
 	}
 	

@@ -11,9 +11,9 @@
 <style type="text/css">
 .customer_pass {
 	position: fixed;
-	left: 4%;
+	left: 24%;
 	margin-left: -20%;
-	top: 35%;
+	top: 55%;
 	margin-top: -150px;
 	display: none;
 }
