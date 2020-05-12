@@ -74,7 +74,6 @@ public class PayAjaxController {
 		Address output = null;
 
 		Address input2 = new Address();
-
 		input2.setMemno(myInfo.getMemno());
 		List<Address> output2 = null;
 

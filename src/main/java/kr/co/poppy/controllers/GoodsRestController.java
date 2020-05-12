@@ -75,22 +75,6 @@ public class GoodsRestController {
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
 
-		// 빈즈에 담기
-		Goods gd = new Goods();
-		gd.setGoodsno(goodsno);
-		gd.setMemno(myInfo.getMemno());
-		Goods goods = null;
-		
-		Goodsdetail gdetail = new Goodsdetail();
-		gdetail.setGoodsno(goodsno);
-		gdetail.setMemno(myInfo.getMemno());
-		List<Goodsdetail> gdoutput = null;
-
-		Heart input2 = new Heart();
-		input2.setGoodsno(goodsno);
-		input2.setMemno(myInfo.getMemno());
-		int heart = 0;
-
 		Bbs input3 = new Bbs();
 		input3.setGoodsno(goodsno);
 		input3.setMemno(myInfo.getMemno());
@@ -99,6 +83,7 @@ public class GoodsRestController {
 
 		Bbs qna = new Bbs();
 		qna.setGoodsno(goodsno);
+		qna.setMemno(myInfo.getMemno());
 		qna.setBbstype("B");
 		List<Bbs> qoutput = null;
 			
@@ -114,9 +99,6 @@ public class GoodsRestController {
 			Bbs.setListCount(pageData.getListCount());
 
 			// 데이터 조회
-			goods = goodsService.getGoodsItem(gd);
-			gdoutput = goodsdetailService.getGoodsdetailList(gdetail);
-			heart = heartService.getHeartCount(input2);
 			ptrv = bbsService.getBbsList(input3);
 			qoutput = bbsService.getBbsList(qna);
 		} catch (Exception e) {
@@ -127,9 +109,6 @@ public class GoodsRestController {
 
 		// 3) 뷰처리
 		Map<String, Object> data = new HashMap<String, Object>();
-		data.put("goods", goods);
-		data.put("gdoutput", gdoutput);
-		data.put("heart", heart);
 		data.put("item", ptrv);
 		data.put("item2", qoutput);
 		data.put("meta", pageData);

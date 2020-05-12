@@ -42,22 +42,10 @@ public class PayRestController {
 	/** Service 패턴 구현체 주입 */
 	@Autowired
 	AddressService addressService;
-	
-	@Autowired
-	PointsService pointsService;
-	
-	@Autowired
-	GoodsService goodsService;
-	
-	@Autowired
-	GoodsdetailService goodsdetailService;
-
 
 	/** 주문결제페이지 */
 	@RequestMapping(value = "/pay", method = RequestMethod.GET)
-	public Map<String, Object> get_list(Model model,
-		    @RequestParam(value="goodsno", defaultValue="0") int goodsno,
-		    @RequestParam(value="gddetailno", defaultValue="0") int gddetailno) {
+	public Map<String, Object> get_list(Model model) {
 
 		// 세션 객체를 이용하여 저장된 세션값 얻기
 		HttpSession mySession = webHelper.getSession();
@@ -65,65 +53,22 @@ public class PayRestController {
 
 		/** 데이터 조회하기 */
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
-		Address input = new Address();
-		input.setMemno(myInfo.getMemno());
-		// 조회결과를 저장할 객체 선언
-		Address output = null;
-
 		Address input2 = new Address();
 		input2.setMemno(myInfo.getMemno());
 		List<Address> output2 = null;
 
-		Points input3 = new Points();
-		input3.setMemno(myInfo.getMemno());
-		List<Points> output3 = null;
-		
-		Goods gd = new Goods();
-		gd.setGoodsno(goodsno);
-		gd.setMemno(myInfo.getMemno());
-		Goods goods = null;
-		
-		Goodsdetail gdetail = new Goodsdetail();
-		gdetail.setGoodsno(goodsno);
-		gdetail.setGddetailno(gddetailno);
-		gdetail.setMemno(myInfo.getMemno());
-		List<Goodsdetail> gdoutput = null;
-
 		try {
-			// 데이터 조회
-			output = addressService.getAddressItem(input);
+			// 데이터 조회			
 			output2 = addressService.getAddressList(input2);
-			output3 = pointsService.getPointsMbList(input3);
-			goods = goodsService.getGoodsItem(gd);
-			gdoutput = goodsdetailService.getGoodsdetailList(gdetail);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
 		
-		/** 조회된 List객체에서 적립금 총합 구하기 */
-		int sumAvpoint = 0;
-
-		for (int i = 0; i < output3.size(); i++) {
-			Points temp = null;
-			temp = output3.get(i);
-			if (temp.getAvpoint() == null || temp.getAvpoint() == 0) {
-				temp.setAvpoint(0);
-			}
-			sumAvpoint += temp.getAvpoint();
-		}
-
-		input3.setAvpoint(sumAvpoint);
-
-
 		mySession.setAttribute("userInfo", myInfo);
 
 		/** View 처리 */
-		Map<String, Object> data = new HashMap<String, Object>();
-		data.put("output", output);
+		Map<String, Object> data = new HashMap<String, Object>();	
 		data.put("item", output2);
-		data.put("input3", input3);
-		data.put("goods", goods);
-		data.put("gdoutput", gdoutput);
 		return webHelper.getJsonData(data);
 	}
 

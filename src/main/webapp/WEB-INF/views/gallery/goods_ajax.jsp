@@ -66,7 +66,7 @@
 						<select class="goods-select">
 							<option value="active">- [필수] 옵션을 선택해 주세요. -</option>
 							<c:forEach var="gdoutput" items="${gdoutput}" varStatus="status">
-							<option value="${gdoutput.gdoption}">${gdoutput.gdoption}</option>
+								<option value="${gdoutput.gdoption}">${gdoutput.gdoption}</option>
 							</c:forEach>
 						</select>
 					</div>
@@ -233,8 +233,10 @@
 								</div>
 							</div>
 							<div class="write  clearfix">
-								<input type="text" class="photo-title" name="bbstitle" placeholder="제목" />
-								<textarea class="photo-content" name="bbscontent" placeholder="리뷰를 남겨주세요."></textarea>
+								<input type="text" class="photo-title" name="bbstitle"
+									placeholder="제목" />
+								<textarea class="photo-content" name="bbscontent"
+									placeholder="리뷰를 남겨주세요."></textarea>
 							</div>
 							<div class="photo-button">
 								<button type="submit" id="review-submit">리뷰 등록</button>
@@ -243,11 +245,22 @@
 									전체보기</button>
 							</div>
 							<div class="prd-review">
-								<%-- 상세페이지로 이동하기 위한 URL --%>
-								<c:url value="/community/article.do" var="viewUrl">
-									<c:param name="bbstype" value="${item2.bbstype}" />
-									<c:param name="bbsno" value="${item2.bbsno}" />
-								</c:url>
+								<c:choose>
+									<%-- 조회결과가 없는 경우 --%>
+									<c:when test="${ptrv == null || fn:length(ptrv) == 0}">
+										<div>
+											<div>게시물이 없습니다.</div>
+										</div>
+									</c:when>
+									<%-- 조회결과가 있는  경우 --%>
+									<c:otherwise>
+										<%-- 상세페이지로 이동하기 위한 URL --%>
+										<c:url value="/community/article.do" var="viewUrl">
+											<c:param name="bbstype" value="${item2.bbstype}" />
+											<c:param name="bbsno" value="${item2.bbsno}" />
+										</c:url>
+									</c:otherwise>
+								</c:choose>
 							</div>
 							<div class="pagenumber">
 								<!-- 페이지 번호 구현 -->
@@ -321,7 +334,7 @@
 												<%-- 조회결과가 없는 경우 --%>
 												<c:when test="${qoutput == null || fn:length(qoutput) == 0}">
 													<tr>
-														<td colspan="9" align="center">게시물이 없습니다.</td>
+														<td>게시물이 없습니다.</td>
 													</tr>
 												</c:when>
 												<%-- 조회결과가 있는  경우 --%>
@@ -660,35 +673,35 @@
 				$(".arrow-down").toggleClass("rotate");
 			});
 		});
-		
+
 		/** 포토리뷰 리스트 */
-		let goodsno = $("#goodsno").data("goodsno");	
-		$(function() {		 
+		let goodsno = $("#goodsno").data("goodsno");
+		$(function() {
 			$("#photo_rv").click(
 					function(e) {
-						$.get("${pageContext.request.contextPath}/gallery",
-								{"goodsno" : goodsno},
-								function(json) {
-									var template = Handlebars.compile($(
-											"#photo_rv_tmpl").html());
-									var html = template(json);
-									$(".prd-review").append(html);
-								});
+						$.get("${pageContext.request.contextPath}/gallery", {
+							"goodsno" : goodsno
+						}, function(json) {
+							var template = Handlebars.compile($(
+									"#photo_rv_tmpl").html());
+							var html = template(json);
+							$(".prd-review").append(html);
+						});
 					});
 		});
 
 		/** qna 리스트 */
-		$(function() {		
+		$(function() {
 			$("#qna_rv").click(
 					function(e) {
-						$.get("${pageContext.request.contextPath}/gallery",
-								{"goodsno" : goodsno},
-								function(json) {
-									var template = Handlebars.compile($(
-											"#qna_rv_tmpl").html());
-									var html = template(json);
-									$("#qna_list").append(html);
-								});
+						$.get("${pageContext.request.contextPath}/gallery", {
+							"goodsno" : goodsno
+						}, function(json) {
+							var template = Handlebars.compile($("#qna_rv_tmpl")
+									.html());
+							var html = template(json);
+							$("#qna_list").append(html);
+						});
 					});
 		});
 

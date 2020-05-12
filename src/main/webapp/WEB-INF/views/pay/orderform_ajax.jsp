@@ -704,7 +704,7 @@
 								success : function(json) {
 									console.log(json);
 									if (json.rt == "OK") {
-					    				window.location = "${pageContext.request.contextPath}/myInfo/order_list.do?addrno=" + json.orders.addrno;
+					    				window.location = "${pageContext.request.contextPath}/myInfo/order_list.do?memno=" + json.orders.memno;
 								}
 								}
 							});

@@ -38,11 +38,11 @@
 	<!-- QNA -->
 	<select id="selectList" parameterType="kr.co.poppy.model.Bbs"
 		resultMap="bbsMap">
-		SELECT bbsno, bbstype, bbstitle, bbscontent, qnasec, qnapw, rvlike,
+		SELECT bbsno, bbstype, bbstitle, bbscontent, qnasec, qnapw, rvlike, goodsno,
 		b.regdate, b.editdate,
 		b.memno, m.username, m.userid
 		FROM bbs b
-		INNER JOIN members m ON b.memno=m.memno
+		INNER JOIN members m ON b.memno= #{memno}
 
 		<where>
 			bbstype=#{bbstype} 
