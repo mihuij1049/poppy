@@ -11,7 +11,7 @@
 <head>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/share/cart.css?ver=2" />
+	href="${pageContext.request.contextPath}/share/cart.css?ver=1" />
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -31,242 +31,149 @@
 			</h4>
 		</div>
 		<div class="container">
-			<!-- 탭 버튼 구성 -->
-			<ul class="nav nav-tabs" id="mytab">
-				<li class="active col-xs-6 etc"><a href="#page1"
-					data-toggle="tab">국내배송상품</a></li>
-				<li class="col-xs-6 etc"><a href="#page2" data-toggle="tab">해외배송상품</a></li>
-			</ul>
-			<!-- 탭 페이지 구성 -->
-			<div class="tab-content">
-				<div role="tabpanel" class="tab-pane active fade in" id="page1">
-					<div class="panel-title6">장바구니 상품</div>
-					<div class="panel-header2">
-						일반상품 (<span class="cart-count"></span>)
-					</div>
-					<div class="panel-body2">
-						<c:choose>
-							<%--조회결과가 없는 경우 --%>
-							<c:when test="${output==null||fn:length(output) ==0}">
-								<tr>
-									<td colspan="3" align="center">조회결과가 없습니다.</td>
-								</tr>
-							</c:when>
-							<%--조회결과가 있는 경우 --%>
-							<c:otherwise>
-								<%--조회결과에 따른 반복처리 --%>
-								<c:forEach var="item" items="${output }" varStatus="status">
-									<%--출력을 위해 준비한 학과 이름과 위치 --%>
-									<c:set var="cartno" value="${item.cartno}" />
-									<c:set var="imgname" value="${item.imgname }" />
-									<c:set var="imgext" value="${item.imgext }" />
-									<c:set var="imgpath" value="${item.imgpath }" />
-									<c:set var="imgtype" value="${item.imgtype }" />
-									<c:set var="gname" value="${item.gname }" />
-									<c:set var="deliprice" value="${item.deliprice }" />
-									<c:set var="gprice" value="${item.gprice }" />
-									<c:set var="cartqty" value="${item.cartqty }" />
-									<c:set var="goodsno" value="${item.goodsno }" />
-									<%-- 상세페이지로 이동하기 위한 URL --%>
-									<c:url value="/gallery_ajax/goods.do" var="viewUrl">
-										<c:param name="goodsno" value="${item.goodsno}" />
-									</c:url>
-									<div class="cart-box clear">
-										<div class="list-item">
-											<div class="word">
-												<input type="checkbox" name="cart_check"
-													class="cart cart-size"> <a href="${viewUrl}"><img
-													src="${item.imgpath}${item.imgname}.jpg" class="cart-img" />
-												</a>
+			<div class="panel-title6">장바구니 상품</div>
+			<div class="panel-header2">
+				일반상품 (<span class="cart-count"></span>)
+			</div>
+			<div class="panel-body2">
+				<c:choose>
+					<%--조회결과가 없는 경우 --%>
+					<c:when test="${output==null||fn:length(output) ==0}">
+						<tr>
+							<td colspan="3" align="center">조회결과가 없습니다.</td>
+						</tr>
+					</c:when>
+					<%--조회결과가 있는 경우 --%>
+					<c:otherwise>
+						<%--조회결과에 따른 반복처리 --%>
+						<c:forEach var="item" items="${output }" varStatus="status">
+							<%--출력을 위해 준비한 학과 이름과 위치 --%>
+							<c:set var="cartno" value="${item.cartno}" />
+							<c:set var="imgname" value="${item.imgname }" />
+							<c:set var="imgext" value="${item.imgext }" />
+							<c:set var="imgpath" value="${item.imgpath }" />
+							<c:set var="imgtype" value="${item.imgtype }" />
+							<c:set var="gname" value="${item.gname }" />
+							<c:set var="deliprice" value="${item.deliprice }" />
+							<c:set var="gprice" value="${item.gprice }" />
+							<c:set var="cartqty" value="${item.cartqty }" />
+							<c:set var="goodsno" value="${item.goodsno }" />
+							<%-- 상세페이지로 이동하기 위한 URL --%>
+							<c:url value="/gallery_ajax/goods.do" var="viewUrl">
+								<c:param name="goodsno" value="${item.goodsno}" />
+							</c:url>
+							<div class="cart-box clear">
+								<div class="list-item">
+									<div class="word">
+										<input type="checkbox" name="cart_check"
+											class="cart cart-size"> <a href="${viewUrl}"><img
+											src="${item.imgpath}${item.imgname}.jpg" class="cart-img" />
+										</a>
 
-												<p>
-													<a href="${viewUrl}"><b class="name">${item.gname}</b></a>
-												</p>
-												<span>배송:${item.deliprice}원[조건]/기본배송</span><br> <small><span
-													class="point-icon">적</span>&nbsp;<span class="point">${fn:substring(item.gprice/100, 0, fn:indexOf(item.gprice/100,"."))}</span>원</small>
-												<b class="search-item-price">
-													<p>${item.gprice}
-												</b><b>원</b>
-												</p>
-												</br>
-											</div>
-											<div class="word-btn">
-												<button class="count minus">
-													<img src="../share/img/마이너스.png">
-												</button>
-												<input type="number" class="count-label" value="1"
-													id="count-label">
-												<button class="count plus">
-													<img src="../share/img/플러스.png">
-												</button>
-												<button class="change">변경</button>
-											</div>
-											<div class="word-botm">
-												<p>
-													<b>합계: <span class="price">${item.gprice}</span>원
-													</b>
-												</p>
-												<button type="button" class="delete" data-cartno="${item.cartno}">삭제</button>
-												<button type="button">관심상품</button>
-												<button type="button" class="btn btn2"
-													onclick="location.href='${pageContext.request.contextPath}/pay/orderform.do'">주문하기</button>
-											</div>
-										</div>
+										<p>
+											<a href="${viewUrl}"><b class="name">${item.gname}</b></a>
+										</p>
+										<span>배송:${item.deliprice}원[조건]/기본배송</span><br> <small><span
+											class="point-icon">적</span>&nbsp;<span class="point">${fn:substring(item.gprice/100, 0, fn:indexOf(item.gprice/100,"."))}</span>원</small>
+										<b class="item_price">
+											<p>${item.gprice}
+										</b><b>원</b>
+										</p>
+										</br>
 									</div>
-								</c:forEach>
-							</c:otherwise>
-						</c:choose>
-						<!-- Modal -->
-						<div class="modal fade" id="myModal2">
-							<div class="modal-dialog modal-sm">
-								<div class="modal-content">
-									<div class="cart-modal">
-										<div class="modal-header2">
-											<button type="button" class="close" data-dismiss="modal"
-												aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
-											<h4 class="modal-title">상품 삭제</h4>
-										</div>
-										<div class="modal-body2">
-											<p>
-												<span class="delete_message"></span> 상품을 정말 삭제하시겠습니까?
-											</p>
-										</div>
-										<div class="modal-footer2">
-											<button type="button" class="btn btn2 delete_cancel"
-												data-dismiss="modal">아니오</button>
-											<button type="button" class="btn btn2 delete_ok"
-												data-dismiss="modal">예</button>
-										</div>
+									<div class="word-btn">
+										<button class="count minus">
+											<img src="../share/img/마이너스.png">
+										</button>
+										<input type="number" class="count-label" value="1"
+											id="count-label">
+										<button class="count plus">
+											<img src="../share/img/플러스.png">
+										</button>
+										<button class="change">변경</button>
+									</div>
+									<div class="word-botm">
+										<p>
+											<b>합계: <span class="price">${item.gprice}</span>원
+											</b>
+										</p>
+										<button type="button" class="delete"
+											data-cartno="${item.cartno}">삭제</button>
+										<button type="button">관심상품</button>
+										<button type="button" class="btn btn2"
+											onclick="location.href='${pageContext.request.contextPath}/pay/orderform.do'">주문하기</button>
 									</div>
 								</div>
 							</div>
-						</div>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+			</div>
+			<div class="list-group" id="list"></div>
+			<div class="panel-header2 clearfix">[기본배송]</div>
+			<div class="selectbtn">
+				<button type="button" class="all-check">전체선택</button>
+				<button type="button" class="select_delete">선택삭제</button>
+			</div>
+			<table class="table table-responsive">
+				<thead>
+					<tr>
+						<td class="table-header">결제예정금액</td>
+						<td class="table-header2 td-mny"><span id="table_sum">
+						</span>원</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="td-title">총 상품금액</td>
+						<td class="td-mny"><span id="table_price"> </span>원</td>
+					</tr>
+					<tr>
+						<td class="td-title">총 배송비</td>
+						<td class="td-mny"><span id="table_delivery"> </span>원</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="pay">
+				<button class="btn btn2 btn-inverse"
+					onclick="location.href='${pageContext.request.contextPath}/pay/orderform.do'">선택상품주문</button>
+				<button class="btn btn2"
+					onclick="location.href='${pageContext.request.contextPath}/pay/orderform.do'">
+					전체상품주문</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal2">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="cart-modal">
+					<div class="modal-header2">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">상품 삭제</h4>
 					</div>
-					<div class="list-group" id="list"></div>
-					<div class="panel-header2 clearfix">[기본배송]</div>
-					<div class="selectbtn">
-						<button type="button" class="all-check">전체선택</button>
-						<button type="button" class="select_delete">선택삭제</button>
+					<div class="modal-body2">
+						<p>
+							<span class="delete_message"></span> 상품을 정말 삭제하시겠습니까?
+						</p>
 					</div>
-					<div class="cart-move">
-						<button type="button" class="btn btn2" id="cart-move">해외장바구니로
-							이동</button>
-					</div>
-					<table class="table table-responsive">
-						<thead>
-							<tr>
-								<td class="table-header">결제예정금액</td>
-								<td class="table-header2 td-mny"><span id="table_sum">
-								</span>원</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td class="td-title">총 상품금액</td>
-								<td class="td-mny"><span id="table_price"> </span>원</td>
-							</tr>
-							<tr>
-								<td class="td-title">총 배송비</td>
-								<td class="td-mny"><span id="table_delivery"> </span>원</td>
-							</tr>
-						</tbody>
-					</table>
-					<div class="pay">
-						<button class="btn btn2 btn-inverse"
-							onclick="location.href='${pageContext.request.contextPath}/pay/orderform.do'">선택상품주문</button>
-						<button class="btn btn2"
-							onclick="location.href='${pageContext.request.contextPath}/pay/orderform.do'">
-							전체상품주문</button>
-					</div>
-				</div>
-				<div role="tabpanel" class="tab-pane fade" id="page2">
-					<div class="panel-title6">장바구니 상품</div>
-					<div class="panel-header2">
-						일반상품 (<span class="cart-count2"></span>)
-					</div>
-					<div class="panel-body2">
-						<div class="list-group" id="list2"></div>
-						<div class="panel-header2 clearfix">[기본배송]</div>
-						<div class="selectbtn">
-							<button type="button" class="all-check2">전체선택</button>
-							<button type="button" class="select_delete2">선택삭제</button>
-						</div>
-						<div class="cart-move">
-							<button type="button" class="btn btn2" id="cart-move2">국내장바구니로
-								이동</button>
-						</div>
-					</div>
-					<table class="table table-responsive">
-						<thead>
-							<tr>
-								<td class="table-header">결제예정금액</td>
-								<td class="table-header2 td-mny"><span id="table_sum2">
-								</span>원</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td class="td-title">총 상품금액</td>
-								<td class="td-mny"><span id="table_price2"> </span>원</td>
-							</tr>
-							<tr>
-								<td class="td-title">총 배송비</td>
-								<td class="td-mny"><span id="table_delivery2"> </span>원</td>
-							</tr>
-						</tbody>
-					</table>
-					<div class="pay">
-						<button class="btn btn2 btn-inverse"
-							onclick="location.href='${pageContext.request.contextPath}/pay/orderform.do'">선택상품주문</button>
-						<button class="btn btn2"
-							onclick="location.href='${pageContext.request.contextPath}/pay/orderform.do'">
-							전체상품주문</button>
+					<div class="modal-footer2">
+						<button type="button" class="btn btn2 delete_cancel"
+							data-dismiss="modal">아니오</button>
+						<button type="button" class="btn btn2 delete_ok"
+							data-dismiss="modal">예</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 	<!-- Javascript -->
 	<%@ include file="../share/bottom_tp.jsp"%>
-	<script src="../share/plugins/handlebars/handlebars-v4.0.5.js"></script>
-	<script type="text/x-handlebars-template" id="list-item-tmpl">
-	</script>
-	<script type="text/x-handlebars-template" id="list-item-tmpl2">
-	{{#each goods}}
-	<div class="cart-box2 clear">
-		<li class="list-item">
-			<div class="word">
-				<input type="checkbox" name="cart_check" class="cart2 cart-size">
-				<img src="{{url}}" class="cart-img" />
-				<p><b class="name">{{name}}</b></p>
-				<span>배송:2500원[조건]/기본배송</span><br>
-				<small><span class="point-icon">적</span>&nbsp;<span class="point">{{point}}</span>원</small>
-				<b class="search-item-price">
-				<p>{{price}}</b><b>원</b></p></br>
-			</div>
-			<div class="word-btn">
-				<button class="count minus">
-					<img src="../share/img/마이너스.png">
-				</button>
-				<input type="number" class="count-label" value="1" id="count-label">
-				<button class="count plus">
-					<img src="../share/img/플러스.png">
-				</button>
-				<button class="change">변경</button>
-			</div>
-			<div class="word-botm">
-				<p><b>합계: <span class="price">{{price}}</span>원</b></p>
-				<button type="button">삭제</button>
-				<button type="button">관심상품</button>
-				<button type="button" class="btn btn2" onclick="location.href='${pageContext.request.contextPath}/pay/orderform.do'">주문하기</button>
-			</div>
-		</li>
-	</div>
-	{{/each}}
-	</script>
+
 	<!-- 사용자 정의 스크립트 -->
 	<script type="text/javascript">
 		$(function() {
@@ -274,69 +181,36 @@
 			var table_price = 0;
 			var table_delivery = 2500;
 			var sum_price = 0;
+			var item_price = 0;
 
-			var table_sum2 = 0;
-			var table_price2 = 0;
-			var table_delivery2 = 2500;
+			var length = $(".cart-box").length;
+			$(".cart-count").html(length);
 
-			$.get("../share/plugins/goods_list.json", function(req) {
-				$(function() {
-					var template = Handlebars.compile($("#list-item-tmpl")
-							.html());
-					var html = template(req);
-					$("#list").append(html);
+			for (var i = 0; i < length; i++) {
+				sum_price += parseInt($(".price").eq(i).html());
+			}
 
-					var length = $(".cart-box").length;
-					$(".cart-count").html(length);
+			$("#table_price").html(sum_price);
+			if (sum_price >= 30000) {
+				table_delivery = 0;
+				$("#table_delivery").html(table_delivery);
+			}
 
-					for (var i = 0; i < length; i++) {
-						sum_price += parseInt($(".price").eq(i).html());
-					}
-
-					for (var i = 0; i < length; i++) {
-						sum_price += parseInt($(".price").eq(i).html());
-					}
-					$("#table_price").html(sum_price);
-					if (sum_price >= 30000) {
-						table_delivery = 0;
-						$("#table_delivery").html(table_delivery);
-					}
-
-					for (var i = 0; i < length; i++) {
-						table_price += parseInt($(".price").eq(i).html());
-						if (i == length - 1) {
-							table_sum = table_price + table_delivery;
-							table_sum = table_sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-							$("#table_sum").html(table_sum);
-							table_price = table_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-							$("#table_price").html(table_price);
-							table_delivery = table_delivery.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-							$("#table_delivery").html(table_delivery);
-						}
-					}
-				});
-			});
-
-			$.get("../share/plugins/goods_list.json", function(req) {
-				$(function() {
-					var template = Handlebars.compile($("#list-item-tmpl2")
-							.html());
-					var html = template(req);
-					$("#list2").append(html);
-					var length = $(".cart-box2").length;
-					$(".cart-count2").html(length);
-
-					for (var i = 0; i < length; i++) {
-						table_price2 += parseInt($(".price").eq(i).html());
-						if (i == length - 1) {
-							$("#table_sum2").html(
-									table_price2 + table_delivery2);
-							$("#table_price2").html(table_price2);
-							$("#table_delivery2").html(table_delivery2);
-						}
-					}
-				});
-			});
+			for (var i = 0; i < length; i++) {
+				table_price += parseInt($(".price").eq(i).html());
+				if (i == length - 1) {
+					table_sum = table_price + table_delivery;
+					table_sum = table_sum.toString().replace(
+							/\B(?=(\d{3})+(?!\d))/g, ",");
+					$("#table_sum").html(table_sum);
+					table_price = table_price.toString().replace(
+							/\B(?=(\d{3})+(?!\d))/g, ",");
+					$("#table_price").html(table_price);
+					table_delivery = table_delivery.toString().replace(
+							/\B(?=(\d{3})+(?!\d))/g, ",");
+					$("#table_delivery").html(table_delivery);
+				}
+			}
 
 			$(document).on(
 					"click",
@@ -348,7 +222,7 @@
 						var one_price = $(this).parent().next().children()
 								.children().children();
 						var price = $(this).parent().prev().children("p")
-								.children(".search-item-price").html();
+								.children(".item_price").html();
 						var result = price * value;
 						$(one_price).html(result);
 
@@ -383,7 +257,7 @@
 						var one_price = $(this).parent().next().children()
 								.children().children();
 						var price = $(this).parent().prev().children("p")
-								.children(".search-item-price").html();
+								.children(".item_price").html();
 						var result = price * value;
 						$(one_price).html(result);
 
@@ -395,7 +269,8 @@
 						for (var i = 0; i < length; i++) {
 							sum_price += parseInt($(".price").eq(i).html());
 						}
-						sum_price = sum_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+						sum_price = sum_price.toString().replace(
+								/\B(?=(\d{3})+(?!\d))/g, ",");
 						$("#table_price").html(sum_price);
 						if (sum_price < 30000) {
 							table_delivery = 2500;
@@ -414,7 +289,7 @@
 						var one_price = $(this).parent().next().children()
 								.children().children();
 						var price = $(this).parent().prev().children("p")
-								.children(".search-item-price").html();
+								.children(".item_price").html();
 						var result = price * value;
 						$(one_price).html(result);
 
@@ -456,31 +331,49 @@
 				}
 			});
 
-			$(document).on("click", ".delete", function(e) {
-				let current = $(this);   // 이벤트가 발생한 객체 자신 #delete-one
-				let cartno = current.data('cartno');
-				
-				$("#myModal2").modal("show");
-				$(".delete_message").html("해당");
-				var delete_item = $(this).parent().parent().parent();
-				$(document).on("click", ".delete_ok", function(e) {
-					
-					location.href='${pageContext.request.contextPath}/pay/cart_delete.do?cartno='+cartno;
-					delete_item.remove();
+			$(document)
+					.on(
+							"click",
+							".delete",
+							function(e) {
+								let current = $(this); // 이벤트가 발생한 객체 자신 #delete-one
+								let cartno = current.data('cartno');
 
-					var length = $(".cart-box").length;
-					for (var i = 0; i < length; i++) {
-						sum_price += parseInt($(".price").eq(i).html());
-					}
-					$("#table_price").html(sum_price);
-					if (sum_price < 30000) {
-						table_delivery = 2500;
-						$("#table_delivery").html(table_delivery);
-					}
-					$("#table_sum").html(sum_price + table_delivery);
-					sum_price = 0;
-				});
-			});
+								$("#myModal2").modal("show");
+								$(".delete_message").html("해당");
+								var delete_item = $(this).parent().parent()
+										.parent();
+								$(document)
+										.on(
+												"click",
+												".delete_ok",
+												function(e) {
+
+													location.href = '${pageContext.request.contextPath}/pay/cart_delete.do?cartno='
+															+ cartno;
+													delete_item.remove();
+
+													var length = $(".cart-box").length;
+													for (var i = 0; i < length; i++) {
+														sum_price += parseInt($(
+																".price").eq(i)
+																.html());
+													}
+													$("#table_price").html(
+															sum_price);
+													if (sum_price < 30000) {
+														table_delivery = 2500;
+														$("#table_delivery")
+																.html(
+																		table_delivery);
+													}
+													$("#table_sum")
+															.html(
+																	sum_price
+																			+ table_delivery);
+													sum_price = 0;
+												});
+							});
 
 			$(document)
 					.on(
@@ -541,14 +434,6 @@
 			$("#like2").click(function(e) {
 				alert("해당상품이 관심상품으로 등록되었습니다.")
 			})
-
-			$("#cart-move").click(function(e) {
-				alert("해외장바구니로 해당 상품이 이동 되었습니다.");
-			});
-
-			$("#cart-move2").click(function(e) {
-				alert("국내장바구니로 해당 상품이 이동 되었습니다.");
-			});
 		});
 	</script>
 </body>
