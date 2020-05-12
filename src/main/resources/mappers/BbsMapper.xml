@@ -66,11 +66,11 @@
 	<!-- 상품상세페이지 / 포토리뷰 글 목록 페이지 -->
 	<select id="selectList_goods" parameterType="kr.co.poppy.model.Bbs"
 		resultMap="bbsMap">
-		SELECT bbsno, bbstype, bbstitle, bbscontent, rvlike,
+		SELECT bbsno, bbstype, bbstitle, bbscontent, rvlike, qnasec, qnapw,
 		b.regdate, b.editdate, b.memno, b.goodsno, m.username, m.userid
 		FROM bbs b
 		INNER JOIN members m ON b.memno=m.memno 
-		WHERE bbstype=#{bbstype}
+		WHERE bbstype=#{bbstype} AND b.goodsno = #{goodsno}
 		
 	</select>
 	

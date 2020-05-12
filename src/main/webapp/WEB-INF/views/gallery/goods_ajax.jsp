@@ -735,24 +735,7 @@
 
 		});
 
-		$(function() {
-			// #addForm에 대한 submit 이벤트롤 가로채서 Ajax 요청을 전송한다.
-			$("#gForm")
-					.ajaxForm(
-							{
-								// 전송 메서드 지정
-								method : "POST",
-								// 서버에서 200 응답을 전달한 경우 실행됨
-								success : function(json) {
-									console.log(json);
-									// json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
-									if (json.rt == "OK") {
-										window.location = "${pageContext.request.contextPath}/gallery_ajax/goods.do?bbsno="
-												+ json.item.bbsno;
-									}
-								}
-							});
-		});
+		
 	</script>
 </body>
 

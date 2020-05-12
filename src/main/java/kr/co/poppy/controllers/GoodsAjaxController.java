@@ -119,8 +119,8 @@ public class GoodsAjaxController {
 			goods = goodsService.getGoodsItem(gd);
 			gdoutput = goodsdetailService.getGoodsdetailList(gdetail);
 			heart = heartService.getHeartCount(input2);
-			ptrv = bbsService.getBbsList(input3);
-			qoutput = bbsService.getBbsList(qna);
+			ptrv = bbsService.getBbsList_goods(input3);
+			qoutput = bbsService.getBbsList_goods(qna);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
