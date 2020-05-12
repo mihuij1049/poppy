@@ -19,7 +19,7 @@
 	<select id="selectItem"
 		parameterType="kr.co.poppy.model.Comments" resultMap="commentsMap">
 		 SELECT * FROM comments
-		WHERE cmtno=#{cmtno}
+		WHERE bbsno=#{bbsno} and cmtno=#{cmtno}
 	</select>
 
 	<!-- 다중행 조회를 위한 기능 정의 -->

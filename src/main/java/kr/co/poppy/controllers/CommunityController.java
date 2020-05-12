@@ -61,6 +61,7 @@ public class CommunityController {
 
 		Comments input2 = new Comments();
 		input2.setBbsno(bbsno);
+		input2.setBbstype(bbstype);
 
 		// 조회 결과를 저장할 객체 선언
 		Bbs output = null;
@@ -85,13 +86,7 @@ public class CommunityController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
-		/** 3) view 처리 */
-		if (output.getBbstype().equals("A")) {
-			output.setBbstype("공지사항");
-		} else {
-			output.setBbstype("Q&A");
-		}
-
+	
 		model.addAttribute("output", output);
 		model.addAttribute("output2", output2);
 		return new ModelAndView("community/article");

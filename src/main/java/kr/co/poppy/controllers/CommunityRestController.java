@@ -42,8 +42,10 @@ public class CommunityRestController {
 	public Map<String, Object> post(@RequestParam(value = "cmtcontent", required = false) String cmtcontent,
 			@RequestParam(value = "regdate", required = false) String regdate,
 			@RequestParam(value = "editdate", required = false) String editdate,
+			@RequestParam(value = "bbstype", required = false) String bbstype,
 			@RequestParam(value = "memno", defaultValue = "0") int memno,
 			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
+		
 		/** 1) 유효성 검사 */
 		if (cmtcontent.equals("")) {
 			return webHelper.getJsonWarning("댓글을 입력하세요");
@@ -63,6 +65,7 @@ public class CommunityRestController {
 		input.setEditdate(date);
 		input.setMemno(memno);
 		input.setBbsno(bbsno);
+		input.setBbstype(bbstype);
 
 		Comments output = new Comments();
 
@@ -119,7 +122,8 @@ public class CommunityRestController {
 	/** 댓글 삭제 */
 	@RequestMapping(value = "/community/article", method = RequestMethod.DELETE)
 	public Map<String, Object> delete(
-			@RequestParam(value="cmtno", defaultValue="0") int cmtno) {
+			@RequestParam(value="cmtno", defaultValue="0") int cmtno,
+			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno){
 		/** 1) 유효성 검사 */
 		if(cmtno==0) {
 			return webHelper.getJsonWarning("댓글번호가 없습니다.");

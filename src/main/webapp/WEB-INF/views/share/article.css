@@ -35,9 +35,6 @@
 	padding-bottom: 30px;
 }
 
-.list {
-	margin: 10px 10px;
-}
 
 .list-subject {
 	border: 1px solid #ffc7c1;
@@ -164,10 +161,6 @@
 	padding-bottom: 15px;
 }
 
-/** 버튼들 */
-.nai {
-	padding: 25px 10px;
-}
 
 .btn-del {
 	float: right;

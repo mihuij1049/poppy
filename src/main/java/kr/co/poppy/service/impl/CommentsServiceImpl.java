@@ -31,7 +31,7 @@ public class CommentsServiceImpl implements CommentsService {
             }
         } catch (NullPointerException e) {
             log.error(e.getLocalizedMessage());
-            throw new Exception("조회된 데이터가 없습니다.");
+            throw new Exception("조회된 데이터가 없습니다. c_selectItem");
         } catch (Exception e) {
             log.error(e.getLocalizedMessage());
             throw new Exception("데이터 조회에 실패했습니다.");
@@ -90,7 +90,7 @@ public class CommentsServiceImpl implements CommentsService {
 			} 
 		} catch (NullPointerException e) {
 			log.error(e.getLocalizedMessage());
-			throw new Exception("조회된 데이터가 없습니다.");
+			throw new Exception("조회된 데이터가 없습니다.  c_selectList");
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 조회에 실패했습니다.");

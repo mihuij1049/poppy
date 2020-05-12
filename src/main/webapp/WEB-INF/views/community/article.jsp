@@ -24,6 +24,17 @@
 	width: 100%;
 	height: 50px;
 }
+.nai {
+	padding-top: 15px;
+	margin-bottom: 50px;
+}
+
+.list {
+	margin: 10px 10px;
+}
+.solidhr {
+	margin: 0px;
+}
 </style>
 <head>
 <%@ include file="../share/head_tp.jsp"%>
@@ -42,14 +53,22 @@
 
 				<h4>
 					<b> <a href="#" onclick="history.back(); return false;"><i
-							class="glyphicon glyphicon-chevron-left"></i></a> ${output.bbstype }
+							class="glyphicon glyphicon-chevron-left"></i></a> 
+							<c:choose>
+					<c:when test="${output.bbstype=='A'}">
+					공지사항
+					</c:when>
+					<c:otherwise>
+					QnA
+					</c:otherwise>
+					</c:choose>
 					</b>
 				</h4>
 
 			</div>
 			<div class="wriinfo">
 				<c:choose>
-					<c:when test="${output.bbstype=='공지사항'}">
+					<c:when test="${output.bbstype=='A'}">
 						<p class="articletitle">[공지사항] ${output.bbstitle}</p>
 					</c:when>
 					<c:otherwise>
@@ -61,20 +80,25 @@
 			<div class="nai">
 				<p id="main_text">${output.bbscontent}</p>
 			</div>
-			<div class="comment">
-				<c:choose>
-
-					<c:when test="${output.bbstype=='공지사항'}">
+			
+				
+<c:choose>
+					<c:when test="${output.bbstype=='A'}">
+					<hr class="solidhr">
 						<button type="button"
 							onclick="location.href='${pageContext.request.contextPath}/community/notice.do'"
 							class="btn btn-inverse btn-sm list">목록</button>
+							<hr class="solidhr">
 					</c:when>
 
 					<c:otherwise>
+					<div class="comment">
 						<div class="eddlbuttons clearfix">
+						
 							<button type="button"
 								onclick="location.href='${pageContext.request.contextPath}/community/qna.do'"
 								class="btn btn-inverse btn-sm list">목록</button>
+								
 							<!-- 글쓴이가 로그인중인 사용자라면 수정/삭제 버튼이 보인다 -->
 							<c:if test="${userInfo.username==output.username}">
 								<a
@@ -89,14 +113,16 @@
 
 							</c:if>
 						</div>
+						</div>
 					</c:otherwise>
 
 				</c:choose>
 
-			</div>
+			
 
 
 			<div class="comment-list">
+			<c:if test="${output.bbstype=='B'}">
 				<div class="list-subject">
 					<b style="color: white;">댓글목록</b>
 				</div>
@@ -119,6 +145,7 @@
 									<%-- 상세페이지로 이동하기 위한 URL --%>
 									<c:url value="/community/article.do" var="viewUrl">
 										<c:param name="bbsno" value="${item.bbsno}" />
+										<c:param name="bbstype" value="${item.bbstype}" />
 									</c:url>
 									<div class="comment-nai"
 										style="border-bottom: 1px dotted #eee;">
@@ -142,13 +169,16 @@
 						</c:choose>
 					</tbody>
 				</table>
+				</c:if>
 			</div>
+			<c:if test="${output.bbstype=='B'}">
 			<c:choose>
 				<c:when test="${!empty userInfo.username }">
 					<form class="article-comment" id="addForm" method="POST"
 						action="${pageContext.request.contextPath}/community/article_cmtAdd">
-						<input type="hidden" value="${myCmt.memno}" name="memno" /> <input
-							type="hidden" value="${output.bbsno}" name="bbsno" />
+						<input type="hidden" value="${myCmt.memno}" name="memno" /> 
+						<input type="hidden" value="${output.bbsno}" name="bbsno" />
+						<input type="hidden" value="${output.bbstype}" name="bbstype" />
 						<div class="comment-write">
 							<div class="info-name">이름: ${myCmt.username}</div>
 						</div>
@@ -162,6 +192,7 @@
 					</div>
 				</c:otherwise>
 			</c:choose>
+			</c:if>
 
 
 		</div>
@@ -174,7 +205,7 @@
 
 			<div class="cs_pass_2btns">
 				<button type="submit" class="btn btn-sm btn-ok">확인</button>
-				<button type="submit" class="btn btn-inverse btn-sm btn-cancel">취소</button>
+				<button type="button" class="btn btn-inverse btn-sm btn-cancel">취소</button>
 			</div>
 		</div>
 	</div>
@@ -200,13 +231,35 @@
                 
                 // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
                 if (json.rt == "OK") {
-                	window.location="${pageContext.request.contextPath}/community/article.do" + json.item.bbsno; 
+                	window.location="${pageContext.request.contextPath}/community/article.do?bbstype=B&bbsno=" + json.item.bbsno; 
                 }
             }
         });
     });
-
-	   $(function() {
+    
+    $(function() {
+ 	   $("#btn-delar").click(function(e) {
+ 		   e.preventDefault();
+ 		   let current = $(this);
+ 		   let cmtno = current.data('cmtno');
+ 		   //삭제 확인
+ 		   if(!confirm("댓글을 삭제하시겠습니까?")) {
+ 			   return false;
+ 		   }
+ 		//delete 메서드로 Ajax 요청 --> <form> 전송이 아니므로 직접 구현한다.
+            $.delete("${pageContext.request.contextPath}/community/article", {
+                "cmtno": cmtno
+            }, function(json) {
+                if (json.rt == "OK") {
+                    alert("삭제되었습니다.");
+                    // 삭제 완료 후 목록 페이지로 이동
+                    window.location="${pageContext.request.contextPath}/community/article.do?bbstype=B&bbsno=" + json.item.bbsno;
+                }
+            });
+            });
+        });
+ 	   
+	   $(function() { 
 			// 댓글 내용을 text에 담기
 			
 			// 수정 버튼 클릭시
@@ -221,146 +274,47 @@
                 	$(this).next().text("");
 					// 텍스트 태그를 html에 담기
 					var comment_edit = $("<textarea></textarea>");
+					comment_edit.id = 'editcomment';
 					// <textarea class="comment-edit"></textarea> --> 아랫줄 실행시 완성된 HTML 태그
 					comment_edit.addClass('comment_edit');
 					// 생성된 태그에 원래의 댓글 내용 original 추가하기
 					comment_edit.text(original);
 					// "" 로 지운 댓글 내용에 textarea 추가하기
+					$(this).next().append(comment_edit);
 					$(this).text("등록");
 					$(this).prev().text("취소");
-
+					
+				// 등록일 때...
 				} else {
 					// 사용자가  글 내용을 담는다.
 					var result = confirm("수정하시겠습니까?");
 					if (result) {
 						var recommit = $("#btn-editar").val();
 						$(this).text("수정");
-						$(this).prev.text("삭제");
-					} else {
-						return false;
+						$(this).prev().text("삭제");
 					}
-
-				}
-
-			});
-			// #addForm에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다.
-	        $("#addForm").ajaxForm({
-	            // 전송 메서드 지정
-	            method: "PUT",
-	            // 서버에서 200 응답을 전달한 경우 실행됨
-	            success: function(json) {
-	                console.log(json);
-                // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
-                if (json.rt == "OK") {
-                	window.location = "${pageContext.request.contextPath}/community/article.do?=bbsno" + json.item.bbsno; 
-                }
-            }
-        });
-    }); 
-	  
-   
-   $(function() {
-	   $("#btn-delar").click(function(e) {
-		   let current = $(this);
-		   let cmtno = current.data('cmtno');
-		   //삭제 확인
-		   if(!confirm("댓글을 삭제하시겠습니까?")) {
-			   return false;
-		   }
-		// delete 메서드로 Ajax 요청 --> <form> 전송이 아니므로 직접 구현한다.
-           $.delete("${pageContext.request.contextPath}/community/article", {
-               "cmtno": cmtno
-           }, function(json) {
-               if (json.rt == "OK") {
-                   alert("삭제되었습니다.");
-                   // 삭제 완료 후 목록 페이지로 이동
-                   window.location = "${pageContext.request.contextPath}/community/article.do" + json.item.bbsno; 
-               }
-           });
-	   });
-   });
-  
+					}
+				}); 
+			}); 
+					
+					$("#btn-editar").on("click",function(e) {
+							
+							// #addForm에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다.
+					        $(".comment_edit").ajaxForm({
+					            // 전송 메서드 지정
+					            method: "PUT",
+					            // 서버에서 200 응답을 전달한 경우 실행됨
+					            success: function(json) {
+					                console.log(json);
+				                // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
+				                if (json.rt == "OK") {
+				                	window.location = "${pageContext.request.contextPath}/community/article.do?bbstype=B" + "&bbsno=" + json.item.bbsno; 
+				                }
+				            }
+					        }); 
+					        
+									 });
     </script>
-	<!--
-	 <script type="text/javascript">
-		/** 댓글 수정 삭제 --- 등록 취소 버튼 기능 구현 */
-		$(function() {
-			// 댓글 내용을 text에 담기
-			var original = $(this).parent().prev().children().eq(2).text();
-			// 수정 버튼 클릭시
-			$(".btn-edit").on(
-					"click",
-					function(e) {
-						$("#customer_pass").show();
-						var edit_commit = $(this).text();
-
-						// 사용자의 입력값을 가져온다.
-						var upass = $("cs_pass").val();
-
-						$.ajax({
-							// 결과를 읽어올 URL -->
-	<form>
-		태그의 action속성 url : "../api/comments.do", // 웹 프로그램에게 데이터를 전송하는 방식 -->
-		<form>
-			태그의 method 속성 method : "post", // 전달할 조건값은 사용자의 입력값을 활용하여 JSON형식으로 구성
-			data : { cs_pass : upass }, // 읽어올 내용의 형식 (생략할 경우 json) dataType :
-			"html", // 읽어온 내용을 처리하기 위한 함수 success : function(req) {
-			$("#result").html(req); } }); if (edit_commit == "수정") { var original
-			= $(this).parent().prev().children() .eq(2).text(); // 댓글 내용을 지워버리기
-			$(this).parent().prev().children().eq(2).text(""); // 텍스트 태그를 html에
-			담기 var comment_edit = $("
-			<textarea>");
-							// <textarea class="comment-edit"></textarea> --> 아랫줄 실행시 완성된 HTML 태그
-							comment_edit.addClass('comment_edit');
-							// 생성된 태그에 원래의 댓글 내용 original 추가하기
-							comment_edit.text(original);
-							// "" 로 지운 댓글 내용에 textarea 추가하기
-							$(this).parent().prev().children().eq(2).append(
-									comment_edit);
-							$(this).text("등록");
-							$(this).next().text("취소");
-
-						} else {
-							// 사용자가  글 내용을 담는다.
-							var result = confirm("수정하시겠습니까?");
-							if (result) {
-								var recommit = $(".comment_edit").val();
-								$(this).parent().prev().children().eq(3)
-										.remove();
-								$(this).parent().prev().children().eq(2).text(
-										recommit);
-								$(this).text("수정");
-								$(this).next().text("삭제");
-							} else {
-								return false;
-							}
-
-						}
-
-					});
-
-			// 댓글 삭제 버튼 
-			$(".btn-del").on('click', function(e) {
-				var del_cancel = $(this).text();
-				var original = $(this).parent().prev().children().eq(2).text();
-
-				if (del_cancel == "삭제") {
-					$(this).parent().parent().remove();
-				} else {
-					$(this).parent().prev().children().eq(3).remove();
-					$(this).parent().prev().children().eq(2).text(original);
-					$(this).text("삭제");
-					$(this).prev().text("수정");
-				}
-			});
-
-		}); 
-	</script> 
-	-->
-
-
-
-
 
 </body>
 

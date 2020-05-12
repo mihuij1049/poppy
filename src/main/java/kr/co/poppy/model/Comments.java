@@ -23,6 +23,8 @@ public class Comments {
 	/** 게시판 테이블 참조 */
 	private int bbsno;
 	
+	private String bbstype;
+	
 	private String username;
 	
 	
