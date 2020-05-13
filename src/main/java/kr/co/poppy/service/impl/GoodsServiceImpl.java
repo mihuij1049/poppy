@@ -45,7 +45,7 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 
 	/**
-	 * 상품 데이터 목록 조회
+	 * 상품 데이터 목록(전체상품) 조회
 	 * 
 	 * @param Goods 검색조건과 페이지 구현 정보를 담고 있는 Beans
 	 * @return 조회 결과에 대한 컬렉션
@@ -55,25 +55,7 @@ public class GoodsServiceImpl implements GoodsService {
 	public List<Goods> getGoodsList(Goods input) throws Exception {
 		List<Goods> result = null;
 		try {
-			result = sqlSession.selectList("GoodsMapper.selectList", input);
-			if (result == null) {
-				throw new NullPointerException("result=null");
-			}
-		} catch (NullPointerException e) {
-			log.error(e.getLocalizedMessage());
-			throw new Exception("조회된 데이터가 없습니다.");
-		} catch (Exception e) {
-			log.error(e.getLocalizedMessage());
-			throw new Exception("데이터 조회에 실패했습니다.");
-		}
-		return result;
-	}
-	
-	@Override
-	public List<Goods> getGoodsList2(Goods input) throws Exception {
-		List<Goods> result = null;
-		try {
-			result = sqlSession.selectList("GoodsMapper.selectList2");
+			result = sqlSession.selectList("GoodsMapper.selectListAll", input);
 			if (result == null) {
 				throw new NullPointerException("result=null");
 			}
@@ -88,18 +70,67 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 	
 	/**
-	 * 상품 데이터 목록 조회 - 신상품순
+	 * 상품 데이터 목록(카테고리별) 조회
 	 * 
 	 * @param Goods 검색조건과 페이지 구현 정보를 담고 있는 Beans
 	 * @return 조회 결과에 대한 컬렉션
 	 * @throws Exception
 	 */
-	
 	@Override
 	public List<Goods> getGoodsListCate(Goods input) throws Exception {
 		List<Goods> result = null;
 		try {
-			result = sqlSession.selectList("GoodsMapper.selectListCate1");
+			result = sqlSession.selectList("GoodsMapper.selectListCate", input);
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+	
+	/**
+	 * 상품 데이터 목록(카테고리별-셀렉트) 조회
+	 * 
+	 * @param Goods 검색조건과 페이지 구현 정보를 담고 있는 Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	@Override
+	public List<Goods> getGoodsListCateS(Goods input) throws Exception {
+		List<Goods> result = null;
+		try {
+			result = sqlSession.selectList("GoodsMapper.selectListCateS", input);
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+	
+	/**
+	 * 상품 데이터 목록(검색별) 조회
+	 * 
+	 * @param Goods 검색조건과 페이지 구현 정보를 담고 있는 Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	@Override
+	public List<Goods> getGoodsListSearch(Goods input) throws Exception {
+		List<Goods> result = null;
+		try {
+			result = sqlSession.selectList("GoodsMapper.selectListSearch", input);
 			if (result == null) {
 				throw new NullPointerException("result=null");
 			}

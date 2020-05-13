@@ -102,7 +102,7 @@
         	if(!choice) {
         		return false;
         	}
-        	location.href="../gallery/gal_list_cate.do?cate1='푸드'"+"&searchCondition="+choice;
+        	location.href="../gallery/gal_list_select.do?cate1=푸드"+"&searchCondition="+choice;
     	});
     });
     </script>

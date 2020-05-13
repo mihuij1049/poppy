@@ -16,7 +16,7 @@ public interface GoodsService {
 	public Goods getGoodsItem(Goods input) throws Exception;
 
 	/**
-	 * 상품 데이터 목록 조회
+	 * 상품 데이터 목록(전체상품) 조회
 	 * 
 	 * @param Goods 검색조건과 페이지 구현 정보를 담고 있는 Beans
 	 * @return 조회 결과에 대한 컬렉션
@@ -25,20 +25,32 @@ public interface GoodsService {
 	public List<Goods> getGoodsList(Goods input) throws Exception;
 
 	/**
-	 * 상품 데이터 목록 조회
+	 * 상품 데이터 목록(카테고리별) 조회
 	 * 
 	 * @param Goods 검색조건과 페이지 구현 정보를 담고 있는 Beans
 	 * @return 조회 결과에 대한 컬렉션
 	 * @throws Exception
 	 */
-	public List<Goods> getGoodsList2(Goods input) throws Exception;
+	public List<Goods> getGoodsListCate(Goods input) throws Exception;
 	
 	/**
-	 * 상품 데이터 목록 조회
-	 * order by > 신상품순 조회
+	 * 상품 데이터 목록(카테고리별-셀렉트) 조회
+	 * 
+	 * @param Goods 검색조건과 페이지 구현 정보를 담고 있는 Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
 	 */
-	public List<Goods> getGoodsListCate(Goods input) throws Exception;
-
+	public List<Goods> getGoodsListCateS(Goods input) throws Exception;
+	
+	/**
+	 * 상품 데이터 목록(검색별) 조회
+	 * 
+	 * @param Goods 검색조건과 페이지 구현 정보를 담고 있는 Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	public List<Goods> getGoodsListSearch(Goods input) throws Exception;
+	
 	/**
 	 * 상품 데이터가 저장되어있는 개수 조회
 	 * 

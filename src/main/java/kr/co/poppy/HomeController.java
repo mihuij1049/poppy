@@ -62,7 +62,7 @@ public class HomeController {
 				
 		try {
 			// 데이터조회
-			output = goodsService.getGoodsList2(input);
+			output = goodsService.getGoodsList(input);
 					
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());

@@ -49,7 +49,7 @@ public class GalleryController {
 		
 		try {
 			// 데이터조회
-			output = goodsService.getGoodsList2(input);
+			output = goodsService.getGoodsList(input);
 			
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
@@ -57,7 +57,7 @@ public class GalleryController {
 		
 		// 3) 뷰처리
 		model.addAttribute("output", output);
-	
+
 		return new ModelAndView("gallery/gal_list");
 	}
 	
@@ -75,7 +75,7 @@ public class GalleryController {
 		
 		try {
 			// 데이터조회
-			output = goodsService.getGoodsList(input);
+			output = goodsService.getGoodsListCate(input);
 			
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
@@ -88,10 +88,10 @@ public class GalleryController {
 	}
 	
 	/** Goods 카테고리별 select 탭 */
-	@RequestMapping(value="/gallery/gal_list_cate.do", method=RequestMethod.GET)
+	@RequestMapping(value="/gallery/gal_list_select.do", method=RequestMethod.GET)
 	public ModelAndView gallistcate(Model model,
 			@RequestParam(value="cate1", required=false) String cate1,
-			@RequestParam(value="searchCondition") String searchCondition) {
+			@RequestParam(value="searchCondition", defaultValue="A") String searchCondition) {
 		if (searchCondition == null) {
 			return webHelper.redirect(null, "ㅁㄴㅇㄹ");
 		}
@@ -101,27 +101,21 @@ public class GalleryController {
 		// 2) 데이터 조회
 		// 굿즈데이터조회
 		Goods input = new Goods();
-		input.setCate1(cate1);
+		String category = cate1;
+		input.setCate1(category);
 		input.setSearchCondition(searchCondition);
-		if (searchCondition=="A") {
-			input.setRegdate("now()");
-		} else if (searchCondition=="B") {
-			input.setGname("상품이름");
-		} else if (searchCondition=="C") {
-			input.setGprice(12345);
-		}
+		
 		// 데이터저장할곳
 		List<Goods> output = null;		
 		
 		try {
 			// 데이터조회
-			output = goodsService.getGoodsList(input);
+			output = goodsService.getGoodsListCateS(input);
 			
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 			
-
 		// 3) 뷰처리
 		model.addAttribute("output", output);
 		return new ModelAndView("gallery/gal_list");
@@ -142,7 +136,7 @@ public class GalleryController {
 		
 		try {
 			// 데이터조회
-			output = goodsService.getGoodsList2(input);
+			output = goodsService.getGoodsListSearch(input);
 			
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
@@ -153,6 +147,5 @@ public class GalleryController {
 		model.addAttribute("keyword", keyword);
 		
 		return new ModelAndView("share/search_gallist");
-	}
-	
+	}	
 }

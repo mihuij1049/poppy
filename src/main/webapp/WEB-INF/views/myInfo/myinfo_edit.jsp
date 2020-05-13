@@ -28,14 +28,15 @@
 		</div>
 		<div class="container">
 			<form class="form-horizontal" name="join_form" id="join_form"
-				action="myinfo_wri_ok.jsp">
+				method="post"
+				action="${pageContext.request.contextPath}/myinfo/myinfo_edit.do">
 				<div class="id-box join-form">
-					<label for="user_id"> 아이디<span>＊</span>
-					</label> <input type="text" name="user_id" id="user_id" maxlength="20" placeholder="poppy" disabled>
+					<label for="userid"> 아이디<span>＊</span>
+					</label> <input type="text" name="userid" id="user_id" maxlength="20" value="${userInfo.userid}" disabled>
 				</div>
 				<div class="join-form">
 					<label for="user_pw"> 비밀번호<span>＊</span>
-					</label> <input type="password" name="user_pw" id="user_pw" maxlength="20">
+					</label> <input type="password" name="userpw" id="user_pw" maxlength="20">
 				</div>
 				<div class="join-form">
 					<label for="user_pw"> 비밀번호<br>확인<span>＊</span>
@@ -44,25 +45,28 @@
 				</div>
 				<div class="join-form">
 					<label for="user_name"> 이름<span>*</span>
-					</label> <input type="text" name="user_name" id="user_name" maxlength="20" placeholder="김뽀삐" disabled>
+					</label> <input type="text" name="username" id="user_name" maxlength="20" value="${userInfo.username}" disabled>
 				</div>
 				<div class="join-form">
-					<label for="tel"> 휴대전화 </label> <select class="form-control status">
-						<option>010</option>
-						<option>011</option>
-						<option>016</option>
-						<option>017</option>
-						<option>018</option>
-						<option>019</option>
+					<label for="tel"> 휴대전화 </label> <select class="form-control status" name="userphone">
+						<option value="010">010</option>
+						<option value="011">011</option>
+						<option value="016">016</option>
+						<option value="017">017</option>
+						<option value="018">018</option>
+						<option value="019">019</option>
 					</select>
 					<p class="dash">-</p>
-					<input type="tel" name="tel" id="tel" maxlength="4">
+					<input type="tel" name="tel2" id="tel" maxlength="4">
 					<p class="dash">-</p>
-					<input type="tel" name="tel2" id="tel2" maxlength="4">
+					<input type="tel" name="tel3" id="tel2" maxlength="4">
 				</div>
 				<div class="join-form">
 					<label for="email"> 이메일<span>*</span>
-					</label> <input type="email" name="email" id="email" maxlength="50">
+					</label> <input type="email" name="useremail" id="email" maxlength="50" value="${userInfo.useremail}">
+					<button type="button" class="btn btn2 id-btn" id="email_check">
+						<p>중복확인</p>
+					</button>
 				</div>
 				<div class="join">
 					<button type="submit" class="btn btn2" id="join">수정하기</button>
@@ -193,47 +197,60 @@
 			});
 			var id_check = 0;
 			var email_check = 0;
-			$("#id_check").click(function() {
+			$("#id_check").click(function(e) {
+				e.preventDefault();
+				
 				var user_id = $("#user_id").val();
+				
 				id_check = 0;
 				if (user_id.length != 0) {
-					if (user_id == "test") {
-						alert("사용 불가능한 아이디 입니다.");
-					} else {
-						alert("사용 가능한 아이디 입니다.");
-						id_check++;
-					}
-				} else {
-					alert("아이디를 입력해주세요.");
-				}
+					$.get("${pageContext.request.contextPath}/myInfo/same_check",
+							{ "userid" : user_id },
+						function(json) {
+							if (json.rt == "OK") {
+								alert("사용이 불가능한 아이디 입니다.");
+							} else {
+								alert("사용이 가능한 아이디 입니다^^");
+								id_check++;
+							}
+						});
+				} 
 			});
 			$("#email_check").click(function() {
-				var email = $("#email").val();
+				var useremail = $("#email").val();
 				email_check = 0;
 				if (email.length != 0) {
-					if (email == "test@naver.com") {
-						alert("사용 불가능한 이메일 입니다.");
-					} else {
-						alert("사용 가능한 이메일 입니다.");
-						email_check++;
-					}
-				} else {
-					alert("이메일을 입력해주세요.");
-				}
+					$.get("${pageContext.request.contextPath}/myInfo/same_check",
+							{ "useremail" : useremail },
+						function(json) {
+							if (json.rt == "OK") {
+								alert("사용이 불가능한 이메일 입니다.");
+							} else {
+								alert("사용이 가능한 이메일 입니다^^");
+								email_check++;
+							}
+						});
+				} 
 			});
 
 			$("#join").click(function() {
-				user_id = $("#user_id").val();
-				if (user_id.length != 0 && id_check == 0) {
-					alert("아이디 중복확인 바랍니다.");
-					return false;
-				}
 				email = $("#email").val();
 				if (email.length != 0 && email_check == 0) {
 					alert("이메일 중복확인 바랍니다.");
 					return false;
 				}
 			});
+			
+			$("#tel").show(function() {
+			var userphone = "${userInfo.userphone}";
+			var userphone2 = userphone.substr(4,4);
+			var userphone3 = userphone.substr(9,14);
+			console.log(userphone)
+			console.log(userphone2)
+			console.log(userphone3)
+			$(this).val(userphone2);
+			$(this).next().next().val(userphone3);
+		});
 		});
 	</script>
 </body>

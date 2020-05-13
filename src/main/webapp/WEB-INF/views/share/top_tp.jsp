@@ -20,19 +20,19 @@
 			<a href="${pageContext.request.contextPath }/gallery/gal_list_all.do">
 				<li>NEW</li>
 			</a>
-			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1='푸드'">
+			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1=푸드">
 				<li>푸드</li>
 			</a>
-			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1='의류'">
+			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1=의류">
 				<li>의류</li>
 			</a>
-			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1='외출용품'">
+			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1=외출용품">
 				<li>외출용품</li>
 			</a>
-			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1='홈리빙'">
+			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1=홈리빙">
 				<li>홈리빙</li>
 			</a>
-			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1='대형견'">
+			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1=대형견">
 				<li>대형견</li>
 			</a>
 			<a href="${pageContext.request.contextPath }/gallery/gal_list_all.do">

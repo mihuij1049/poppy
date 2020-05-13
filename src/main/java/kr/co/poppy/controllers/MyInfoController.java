@@ -30,6 +30,7 @@ import kr.co.poppy.model.Points;
 import kr.co.poppy.service.AddressService;
 import kr.co.poppy.service.BbsService;
 import kr.co.poppy.service.GoodsForRvService;
+import kr.co.poppy.service.MembersService;
 import kr.co.poppy.service.OrderdetailService;
 import kr.co.poppy.service.OrdersService;
 import kr.co.poppy.service.PointsService;
@@ -51,6 +52,8 @@ public class MyInfoController {
 	PointsService pointsService;
 	@Autowired
 	OrdersService orderService;
+	@Autowired
+	MembersService membersSerivce;
 	@Autowired
 	OrderdetailService orderdetailService;
 	@Autowired
@@ -406,5 +409,60 @@ public class MyInfoController {
 	@RequestMapping(value = "/myInfo/recent.do", method = RequestMethod.GET)
 	public String recent() {
 		return "myInfo/recent";
+	}
+	
+	/** myinfo_edit.jsp 개인정보 수정 페이지 */
+	/** My정보 페이지 */
+	@RequestMapping(value = "/myInfo/myinfo_edit_view.do", method = RequestMethod.POST)
+	public ModelAndView myinfo_edit_view(Model model) {
+		// 세션 객체를 이용하여 저장된 세션값 얻기
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");	
+
+		/** 1) 정보 조회를 위한 Beans 생성 및 정보 수정 */
+		Members members = new Members();
+		members.setMemno(myInfo.getMemno());
+		
+		Members membersContents = null;
+
+		/** 2) 정보 조회 및 정보 수정 */
+		try {
+			membersContents = membersSerivce.getMembersItem(members);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		model.addAttribute("membersContents", membersContents);
+		return new ModelAndView("myInfo/myinfo_edit");
+	}
+	
+	@RequestMapping(value="/myinfo/myinfo_edit.do", method=RequestMethod.POST)
+	public ModelAndView myinfo_edit(Model model,
+			@RequestParam(value="userid", required=false) String userid,
+			@RequestParam(value="userpw", required=false) String userpw,
+			@RequestParam(value="userphone", required=false) String userphone,
+			@RequestParam(value="useremail", required=false) String useremail) {
+		
+		// 세션 객체를 이용하여 저장된 세션값 얻기
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");	
+
+		/** 1) 정보 조회를 위한 Beans 생성 및 정보 수정 */
+		Members members = new Members();
+		members.setMemno(myInfo.getMemno());
+		members.setUserpw(userid);
+		members.setUserpw(userpw);
+		members.setUserphone(userphone);
+		members.setUseremail(useremail);
+
+		/** 2) 정보 조회 및 정보 수정 */
+		try {
+			membersSerivce.getMembersItem(members);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+
+		String redirectUrl = contextPath + "/myinfo/myinfo.do";
+		return webHelper.redirect(redirectUrl, "수정되었습니당.");
 	}
 }
