@@ -71,16 +71,16 @@
 		from goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
 		WHERE i.imgtype="A" AND g.cate1=#{cate1} 
-		<if test="searchCondition.equals('A')">
+		<if test='searchCondition.equals("A")'>
 			ORDER BY g.regdate ASC;
 		</if>
-		<if test="searchCondition.equals('B')">
+		<if test='searchCondition.equals("B")'>
 			ORDER BY g.gname ASC;
 		</if>
-		<if test="searchCondition.equals('C')">
+		<if test='searchCondition.equals("C")'>
 			ORDER BY g.gprice ASC;
 		</if>
-		<if test="searchCondition.equals('D')">
+		<if test='searchCondition.equals("D")'>
 			ORDER BY g.gprice DESC;
 		</if>
 		<if test="searchCondition==null">
