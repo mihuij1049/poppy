@@ -45,7 +45,7 @@ public class GoodsRestController {
 	/** Service 패턴 구현체 주입 */
 	@Autowired
 	GoodsService goodsService;
-	
+
 	@Autowired
 	GoodsdetailService goodsdetailService;
 
@@ -54,7 +54,7 @@ public class GoodsRestController {
 
 	@Autowired
 	BbsService bbsService;
-	
+
 	/** 갤러리 상세 페이지 */
 	@RequestMapping(value = "/gallery", method = RequestMethod.GET)
 	public Map<String, Object> goods(@RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
@@ -66,25 +66,24 @@ public class GoodsRestController {
 			return webHelper.getJsonWarning("상품번호가 없습니다.");
 		}
 
+		// 세션 객체를 이용하여 저장된 세션값 얻기
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+
 		/** 페이지 구현에 필요한 변수값 생성 */
 		int totalCount = 0;
 		int listCount = 5;
 		int pageCount = 3;
 
-		// 세션 객체를 이용하여 저장된 세션값 얻기
-		HttpSession mySession = webHelper.getSession();
-		Members myInfo = (Members) mySession.getAttribute("userInfo");
-
 		Bbs input3 = new Bbs();
 		input3.setGoodsno(goodsno);
-		input3.setMemno(myInfo.getMemno());
+
 		input3.setBbstype("C");
 
 		Bbs qna = new Bbs();
 		qna.setGoodsno(goodsno);
-		qna.setMemno(myInfo.getMemno());
 		qna.setBbstype("B");
-	
+
 		List<Bbs> ptrv = null;
 		List<Bbs> qoutput = null;
 		PageData pageData = null;
@@ -105,8 +104,6 @@ public class GoodsRestController {
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
-
-		mySession.setAttribute("userInfo", myInfo);
 
 		// 3) 뷰처리
 		Map<String, Object> data = new HashMap<String, Object>();
@@ -170,14 +167,13 @@ public class GoodsRestController {
 			// 데이터 저장
 			// --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
 			bbsService.addBbs(qsave);
-			
 
 			// 데이터 조회
 			qsoutput = bbsService.getBbsItem(qsave);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
-		
+
 		/** 결과를확인하기 위한 JSON 출력 */
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("item", qsoutput);

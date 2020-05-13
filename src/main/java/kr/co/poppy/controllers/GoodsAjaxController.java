@@ -25,6 +25,7 @@ import kr.co.poppy.service.BbsService;
 import kr.co.poppy.service.GoodsService;
 import kr.co.poppy.service.GoodsdetailService;
 import kr.co.poppy.service.HeartService;
+import kr.co.poppy.service.MembersService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -57,9 +58,8 @@ public class GoodsAjaxController {
 	String contextPath;
 
 	/** 갤러리 상세 페이지 */
-	@RequestMapping(value = "/gallery_ajax/goods.do", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/gallery_ajax/goods.do", method =  RequestMethod.GET)
 	public ModelAndView goods(Model model, @RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
-			@RequestParam(value = "heartno", defaultValue = "0") int heartno,
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 
 		/** 유효성 검사 */
@@ -83,15 +83,12 @@ public class GoodsAjaxController {
 		
 		Goodsdetail gdetail = new Goodsdetail();
 		gdetail.setGoodsno(goodsno);
-
+		
 		Heart input2 = new Heart();
-		input2.setHeartno(heartno);
 		input2.setGoodsno(goodsno);
-		input2.setMemno(myInfo.getMemno());
 
 		Bbs input3 = new Bbs();
 		input3.setGoodsno(goodsno);
-		input3.setMemno(myInfo.getMemno());
 		input3.setBbstype("C");
 
 		Bbs qna = new Bbs();
@@ -124,10 +121,11 @@ public class GoodsAjaxController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-
+		
 		mySession.setAttribute("userInfo", myInfo);
-
+		
 		// 3) 뷰처리
+		model.addAttribute("myInfo", myInfo);
 		model.addAttribute("goods", goods);
 		model.addAttribute("gdoutput", gdoutput);
 		model.addAttribute("heart", heart);

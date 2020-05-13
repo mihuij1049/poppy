@@ -388,7 +388,9 @@ input {
 }
 
 dl {
-	margin-bottom: 15px;
+	padding-bottom: 15px;
+	margin-bottom: 0px;
+	border-bottom: 1px solid #ddd;
 }
 
 .prd-review .star {
@@ -597,10 +599,107 @@ dl {
 }
 
 .customer_pass {
+	margin: auto;
+	width: 90%;
+	padding: 20px 0px;
+	z-index: 1;
+	border: 1px solid #ffc7c1;
+	border-radius: 5px;
+	background: #ffc7c1;
+	text-align: center;
 	position: fixed;
 	left: 4%;
 	margin-left: -20%;
 	top: 35%;
 	margin-top: -150px;
 	display: none;
+}
+
+/** qna */
+.qna table span {
+	font-size: 11px;
+}
+
+.qna table {
+	width:100%;
+}
+
+.qna table td {
+	height: 50px;
+}
+
+.qna table .subjects {
+	width: 100%;
+	padding: 10px 0;
+	vertical-align: middle;
+	border-bottom: 1px solid #ddd;
+}
+
+.qna  .subject {
+	text-decoration: none;
+	color: #777;
+}
+
+.subject:hover {
+	text-decoration: none;
+	color: #777;
+}
+/** paging */
+.nowpage {
+	border: 1px solid #ffc7c1;
+	background: #ffc7c1;
+	padding: 6px 10px;
+	color: #ff6261;
+}
+
+.otherpage {
+	border: 1px solid #ffc7c1;
+	background: #ffc7c1;
+	padding: 6px 10px;
+	color: white;
+}
+
+.otherpage:hover {
+	text-decoration: none;
+	color: #333;
+}
+
+.pagenumber {
+	text-align: center;
+	margin-bottom: 20px;
+	margin-top: 50px;
+}
+
+.prevok {
+	border: 1px solid #ffc7c1;
+	padding: 6px 10px;
+	color: #ff6261;
+	text-decoration: none;
+}
+.prevok:hover {
+	text-decoration:none;
+}
+
+.prevno {
+	border: 1px solid #ffc7c1;
+	padding: 6px 10px;
+	color: #ffc7c1;
+	text-decoration: none;
+}
+
+.nextok {
+	border: 1px solid #ffc7c1;
+	padding: 6px 10px;
+	color: #ff6261;
+	text-decoration: none;
+}
+
+.nextof:hover {
+	text-decoration: none;
+}
+.nextno {
+	border: 1px solid #ffc7c1;
+	padding: 6px 10px;
+	color: #ffc7c1;
+	text-decoration: none;
 }
