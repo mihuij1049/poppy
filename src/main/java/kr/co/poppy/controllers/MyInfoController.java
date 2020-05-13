@@ -441,6 +441,8 @@ public class MyInfoController {
 			@RequestParam(value="userid", required=false) String userid,
 			@RequestParam(value="userpw", required=false) String userpw,
 			@RequestParam(value="userphone", required=false) String userphone,
+			@RequestParam(value="tel2", required=false) String tel2,
+			@RequestParam(value="tel3", required=false) String tel3,
 			@RequestParam(value="useremail", required=false) String useremail) {
 		
 		// 세션 객체를 이용하여 저장된 세션값 얻기
@@ -450,19 +452,18 @@ public class MyInfoController {
 		/** 1) 정보 조회를 위한 Beans 생성 및 정보 수정 */
 		Members members = new Members();
 		members.setMemno(myInfo.getMemno());
-		members.setUserpw(userid);
 		members.setUserpw(userpw);
-		members.setUserphone(userphone);
+		members.setUserphone(userphone+"-"+tel2+"-"+tel3);
 		members.setUseremail(useremail);
-
+		
 		/** 2) 정보 조회 및 정보 수정 */
 		try {
-			membersSerivce.getMembersItem(members);
+			membersSerivce.editMembers(members);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
-		String redirectUrl = contextPath + "/myinfo/myinfo.do";
-		return webHelper.redirect(redirectUrl, "수정되었습니당.");
+		String redirectUrl = contextPath + "/myInfo/myinfo.do";
+		return webHelper.redirect(redirectUrl, "고객님의 소중한 정보가 수정되었습니다.");
 	}
 }
