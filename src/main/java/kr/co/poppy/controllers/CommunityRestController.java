@@ -84,7 +84,7 @@ public class CommunityRestController {
 		return webHelper.getJsonData(map);
 	}
 
-	@RequestMapping(value = "/community/article", method = RequestMethod.PUT)
+	@RequestMapping(value = "/community/article_cmtEdit", method = {RequestMethod.GET, RequestMethod.PUT})
 	public Map<String, Object> put(@RequestParam(value = "cmtno", defaultValue = "0") int cmtno,
 			@RequestParam(value = "cmtcontent", required = false) String cmtcontent,
 			@RequestParam(value = "editdate", required = false) String editdate,

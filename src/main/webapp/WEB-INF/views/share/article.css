@@ -28,12 +28,6 @@
 	margin-top: 10px;
 }
 
-.nai {
-	font-size: 14px;
-	padding-top: 30px;
-	padding-bottom: 30px;
-}
-
 
 .list-subject {
 	border: 1px solid #ffc7c1;
@@ -50,17 +44,6 @@
 	padding-top: 25px;
 	padding-bottom: 5px;
 	padding-left: 15px;
-}
-
-.span {
-	display: inline-block;
-	padding-left: 20px;
-	padding-bottom: 25px;
-}
-
-/** 하나의 댓글 전체 */
-.comment_nai {
-	border-bottom: 1px solid #red;
 }
 
 /** 댓글창div 전체 */
@@ -135,11 +118,7 @@
 }
 
 
-/** 동적 생성된 textaread */
-.comment_edit {
-	width: 100%;
-	min-height: 50px;
-}
+
 
 
 .customer_pass {
@@ -173,7 +152,3 @@
 	margin: 10px;
 }
 
-.btn-delar, .btn-editar {
-	float: right;
-	margin-right: 10px;
-}
