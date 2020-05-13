@@ -37,7 +37,7 @@
 /** 동적 생성된 textaread */
 
 .editForm {
-width:65%;
+width:75%;
 }
 .all {
 width:100%;
@@ -308,13 +308,13 @@ overflow-y: auto;
     				var original=$(this).parent().parent().children().eq(0).text().trim();
     				console.log(original);
                 	// 댓글 지우기 
-                	$(this).parent().prev().children().text("");
+                	$(this).parent().prev().children().hide();
                 	var comment_form = $("<form></form>");
                 	$(this).parent().prev().append(comment_form);
 					// set attribute <form>
 					comment_form.attr("id", "editForm");
 					comment_form.attr("class", "editForm");
-					comment_form.attr("action", "${pageContext.request.contextPath}/community/article_cmtEdit}"); 
+					comment_form.attr("action", "${pageContext.request.contextPath}/community/article_cmtEdit"); 
 					
 					// textarea 생성
 					var comment_textarea = $("<textarea></textarea>");
@@ -327,52 +327,36 @@ overflow-y: auto;
 					$(this).next().text("취소");
 					$(this).next().attr("id", "cancelar");
 					$("#cancelar").on("click", function(e) {
-						$('#editForm').remove();
 						$('#editTextarea').remove();
 						$(this).text("삭제");
 						$(this).prev().text("수정");
 						$(this).next().attr("id", "btn-delar");
 						$(this).next().attr("class", "btn-delar");
-						$(this).parent().prev().children().text(original);
+						$(this).parent().prev().children().show();
 					   });
 				// 등록일 때...
 				} else {
-					// 사용자가  글 내용을 담는다.
 					var result = confirm("수정하시겠습니까?");
 					if (result) {
-						var recommit = $("#btn-editar").val();
+						$("#editForm").ajaxForm({
+				            // 전송 메서드 지정
+				            method: "PUT",
+				            // 서버에서 200 응답을 전달한 경우 실행됨
+				            success: function(json) {
+				                console.log(json);
+			                // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
+			                if (json.rt == "OK") {
+			                	window.location = "${pageContext.request.contextPath}/community/article.do?bbstype=B" + "&bbsno=" + json.item.bbsno; 
+			                }
+			            }
+				        }); 
 						$(this).text("수정");
 						$(this).next().text("삭제");
-						 $(this).next().attr("id", "cancelar");
+						$(this).next().attr("id", "cancelar");
 					}
 				   }
 			});
 			});
-
-	   
-	  
-	   
-	   
-	   $(function() {
-							// #addForm에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다.
-					        $("#editForm").ajaxForm({
-					            // 전송 메서드 지정
-					            method: "PUT",
-					            // 서버에서 200 응답을 전달한 경우 실행됨
-					            success: function(json) {
-					                console.log(json);
-				                // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
-				                if (json.rt == "OK") {
-				                	window.location = "${pageContext.request.contextPath}/community/article.do?bbstype=B" + "&bbsno=" + json.item.bbsno; 
-				                }
-				            }
-					        });     
-	   });  
-				
-				
-		
     </script>
-
 </body>
-
 </html>
