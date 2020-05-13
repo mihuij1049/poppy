@@ -333,6 +333,7 @@ overflow-y: auto;
 						$(this).prev().text("수정");
 						$(this).next().attr("id", "btn-delar");
 						$(this).next().attr("class", "btn-delar");
+						$(this).parent().prev().children().text(original);
 					   });
 				// 등록일 때...
 				} else {
@@ -343,12 +344,9 @@ overflow-y: auto;
 						$(this).text("수정");
 						$(this).next().text("삭제");
 						 $(this).next().attr("id", "cancelar");
-		
 					}
-					 
 				   }
 			});
-			
 			});
 
 	   
