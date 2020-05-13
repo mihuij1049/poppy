@@ -211,7 +211,7 @@
 											<strong class="prd-name" title="상품명"> <a
 												href="${pageContext.request.contextPath}/gallery_ajax/goods.jsp">${goods.gname}</a>
 											</strong><br/>
-											<span class="prd-option"></span>		
+											<span class="prd-option">${gdoutput.gdoption}</span>		
 										</div>
 										<ul class="prd-li">
 											<li style="list-style: none"><span class="prd-price"

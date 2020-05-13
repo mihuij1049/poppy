@@ -28,7 +28,7 @@
 			</h4>
 		</div>
 		<form class="product" id="goodsno" data-goodsno="${goods.goodsno}"
-			method="GET"
+			method="POST"
 			action="${pageContext.request.contextPath}/pay_ajax/orderform.do">
 			<div class="prd-img">
 				<img src="${goods.imgpath}${goods.imgname}.${goods.imgext}"
@@ -45,10 +45,10 @@
 				<input id="my-url" type="text" value="<%=request.getRequestURL()%>" />
 			</fieldset>
 			<div class="prd-title">
-				<div class="prd-name" name="gname">${goods.gname}</div>
+				<div class="prd-name">${goods.gname}</div>
 				<div class="prd-price">
-					<strike class="price">${goods.gprice}</strike><b>원</b><br /> <b
-						class="sale">${goods.gsale}</b><b>원</b>
+					<strike class="price"><fmt:formatNumber value="${goods.gprice}" pattern="#,###" /></strike><b>원</b><br /> <b
+						class="sale"><fmt:formatNumber value="${goods.gsale}" pattern="#,###" /></b><b>원</b>
 				</div>
 				<div class="prd-delivery">
 					<ul>
@@ -64,9 +64,11 @@
 					<div class="gdtitle">상품선택</div>
 					<select class="goods-select" name="gdoptions">
 						<option value="active">- [필수] 옵션을 선택해 주세요. -</option>
-						<c:forEach var="gdoutput" items="${gdoutput}" varStatus="status">
-							<option value="${gdoutput.gdoption}">${gdoutput.gdoption}</option>
-						</c:forEach>
+						<c:if test="${gdoutput != null}">
+							<c:forEach var="gdoutput" items="${gdoutput}" varStatus="status">
+								<option value="${gdoutput.gdoption}">${gdoutput.gdoption}</option>
+							</c:forEach>
+						</c:if>
 					</select>
 				</div>
 				<div class="select-prd">
@@ -103,7 +105,7 @@
 				<div class="prd-total">
 					<strong>총 상품금액(수량)</strong>
 					<div class="total-price">
-						<b id="total-price">${goods.gsale}</b> <b>원</b> <b>(</b><b
+						<b id="total-price"><fmt:formatNumber value="${goods.gsale}" pattern="#,###" /></b> <b>원</b> <b>(</b><b
 							id="price-count" name="gdcount">1</b><b>개)</b>
 					</div>
 				</div>
@@ -115,9 +117,8 @@
 						<button type="button"
 							onclick="location.href='${pageContext.request.contextPath}/myInfo/like_goods.do'"
 							id="action-like">관심상품</button>
-						<input type="hidden" name="goodsno" value="${goods.goodsno}" />
-						<input type="hidden" name="memno"
-							value="${userInfo.memno}" />
+						<input type="hidden" name="goodsno" value="${goods.goodsno}" /> <input
+							type="hidden" name="memno" value="${userInfo.memno}" />
 						<button type="submit"
 							onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do'"
 							id="action-orderform">구매하기</button>
@@ -150,12 +151,12 @@
 								</tr>
 								<tr>
 									<th><span>소비자가</span></th>
-									<td><span> <b>${goods.gprice}원</b>
+									<td><span> <b><fmt:formatNumber value="${goods.gprice}" pattern="#,###" />원</b>
 									</span></td>
 								</tr>
 								<tr>
 									<th><span>판매가</span></th>
-									<td><span> <b>${goods.gsale}원</b>
+									<td><span> <b><fmt:formatNumber value="${goods.gsale}" pattern="#,###" />원</b>
 									</span></td>
 								</tr>
 								<tr>

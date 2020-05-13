@@ -38,12 +38,9 @@
 	<select id="selectItem"
 		parameterType="kr.co.poppy.model.Goodsdetail"
 		resultMap="goodsdetailMap">
-		SELECT i.imgname, i.imgtype, i.imgpath, imgext, gd.gdoption,
-		g.gcode, g.gname, g.gprice, g.gsale
-		FROM goods g
-		INNER JOIN imgs i ON g.goodsno = i.goodsno
-		INNER JOIN goodsdetail gd ON g.goodsno = gd.goodsno
-		WHERE g.goodsno = #{goodsno} AND i.imgtype = "A";
+		SELECT *
+		FROM goodsdetail
+		WHERE goodsno = #{goodsno}
 	</select>
 
 	<!-- 다중행 조회를 위한 기능 정의 -->

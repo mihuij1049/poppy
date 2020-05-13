@@ -145,4 +145,82 @@ public class PayRestController {
 		map.put("orders", save);
 		return webHelper.getJsonData(map);
 	}
+	
+	/** 주소 수정 폼 페이지 */
+	@RequestMapping(value = "/pay", method = RequestMethod.PUT)
+	public Map<String, Object> addrEdit_ok(
+			@RequestParam(value = "addrno", defaultValue = "0") int addrno,
+			@RequestParam(value = "odname", required = false) String odname,
+			@RequestParam(value = "zcode", required = false) Integer zcode,
+			@RequestParam(value = "addr1", required = false) String addr1,
+			@RequestParam(value = "addr2", required = false) String addr2,
+			@RequestParam(value = "odphone", required = false) String odphone,
+			@RequestParam(value = "odemail", required = false) String odemail,
+			@RequestParam(value = "editdate", required = false) String editdate) {
+
+		/** 1) 사용자가 입력한 파라미터 유효성 검사 */
+		if (addrno == 0) {
+			return webHelper.getJsonWarning("주소번호가 없습니다.");
+		}
+		if (odname == null) {
+			return webHelper.getJsonWarning("이름을 입력하세요.");
+		}
+		if (!regexHelper.isKor(odname)) {
+			return webHelper.getJsonWarning("이름은 한글만 가능합니다.");
+		}
+		if (odemail == null) {
+			return webHelper.getJsonWarning("이메일을 입력하세요.");
+		}
+		if (!regexHelper.isEmail(odemail)) {
+			return webHelper.getJsonWarning("이메일 형식이 아닙니다.");
+		}
+		if (addr1 == null) {
+			return webHelper.getJsonWarning("주소를 입력하세요.");
+		}
+		if (addr2 == null) {
+			return webHelper.getJsonWarning("상세주소를 입력하세요.");
+		}
+		if (!regexHelper.isKor(addr2)) {
+			return webHelper.getJsonWarning("상세주소는 한글만 가능합니다.");
+		}
+		if (odphone == null) {
+			return webHelper.getJsonWarning("핸드폰 번호를 입력하세요.");
+		}
+		if (!regexHelper.isNum(odphone)) {
+			return webHelper.getJsonWarning("핸드폰 번호는 숫자만 가능합니다.");
+		}
+		if (zcode == null) {
+			return webHelper.getJsonWarning("우편번호를 입력하세요.");
+		}
+
+		/** 2) 데이터 수정하기 */
+		// 수정할 값들을 Beans에 담는다.
+		Address addr = new Address();
+		addr.setAddrno(addrno);
+		addr.setOdname(odname);
+		addr.setZcode(zcode);
+		addr.setAddr1(addr1);
+		addr.setAddr2(addr2);
+		addr.setOdphone(odphone);
+		addr.setOdemail(odemail);
+		addr.setEditdate(editdate);
+		
+		// 수정된 결과를 조회하기 위한 객체 
+		Address addrup = null;
+
+		try {
+			// 데이터 수정
+			addressService.editAddress(addr);
+			// 수정결과 조회
+			addrup = addressService.getAddressItem(addr);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+
+		/** 3) 결과를 확인하기 위한 페이지 이동 */
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("item", addrup);
+		return webHelper.getJsonData(map);	
+	}
+
 }

@@ -132,8 +132,8 @@ public class PayController {
 		if (odemail.equals("")) {
 			return webHelper.redirect(null, "이메일을 입력하세요.");
 		}
-		if (!regexHelper.isEngNum(odemail)) {
-			return webHelper.redirect(null, "이메일은 영어와 숫자로만 가능합니다.");
+		if (!regexHelper.isEmail(odemail)) {
+			return webHelper.redirect(null, "이메일 형식이 아닙니다.");
 		}
 		if (addr1.equals("")) {
 			return webHelper.redirect(null, "주소를 입력하세요.");
@@ -183,7 +183,9 @@ public class PayController {
 
 	/** 주소 수정 폼 페이지 */
 	@RequestMapping(value = "/pay/orderform_edit_ok.do", method = RequestMethod.POST)
-	public ModelAndView addrEdit_ok(Model model, @RequestParam(value = "odname", required = false) String odname,
+	public ModelAndView addrEdit_ok(Model model, 
+			@RequestParam(value = "addrno", defaultValue = "0") int addrno,
+			@RequestParam(value = "odname", required = false) String odname,
 			@RequestParam(value = "zcode", required = false) Integer zcode,
 			@RequestParam(value = "addr1", required = false) String addr1,
 			@RequestParam(value = "addr2", required = false) String addr2,
@@ -192,6 +194,9 @@ public class PayController {
 			@RequestParam(value = "editdate", required = false) String editdate) {
 
 		/** 1) 사용자가 입력한 파라미터 유효성 검사 */
+		if (addrno == 0) {
+			return webHelper.redirect(null, "주소번호가 없습니다.");
+		}
 		if (odname == null) {
 			return webHelper.redirect(null, "이름을 입력하세요.");
 		}
@@ -201,8 +206,8 @@ public class PayController {
 		if (odemail == null) {
 			return webHelper.redirect(null, "이메일을 입력하세요.");
 		}
-		if (!regexHelper.isEngNum(odemail)) {
-			return webHelper.redirect(null, "이메일은 영어와 숫자로만 가능합니다.");
+		if (!regexHelper.isEmail(odemail)) {
+			return webHelper.redirect(null, "이메일 형식이 아닙니다.");
 		}
 		if (addr1 == null) {
 			return webHelper.redirect(null, "주소를 입력하세요.");
@@ -222,25 +227,26 @@ public class PayController {
 
 		/** 2) 데이터 수정하기 */
 		// 수정할 값들을 Beans에 담는다.
-		Address input = new Address();
-		input.setOdname(odname);
-		input.setZcode(zcode);
-		input.setAddr1(addr1);
-		input.setAddr2(addr2);
-		input.setOdphone(odphone);
-		input.setOdemail(odemail);
-		input.setEditdate(editdate);
+		Address addr = new Address();
+		addr.setAddrno(addrno);
+		addr.setOdname(odname);
+		addr.setZcode(zcode);
+		addr.setAddr1(addr1);
+		addr.setAddr2(addr2);
+		addr.setOdphone(odphone);
+		addr.setOdemail(odemail);
+		addr.setEditdate(editdate);
 
 		try {
 			// 데이터 수정
-			addressService.editAddress(input);
+			addressService.editAddress(addr);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
 		// 수정한 대상을 상세페이지에 알려주기 위해서 PK값을 전달해야 한다.
-		String redirectUrl = contextPath + "/pay/orderform.do?memno=" + input.getMemno();
+		String redirectUrl = contextPath + "/pay/orderform.do?memno=" + addr.getAddrno();
 		return webHelper.redirect(redirectUrl, "수정되었습니다.");
 	}
 

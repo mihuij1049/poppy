@@ -60,13 +60,13 @@ public class PayAjaxController {
 	String contextPath;
 
 	/** 주문결제페이지 */
-	@RequestMapping(value = "/pay_ajax/orderform.do", method =  RequestMethod.GET)
+	@RequestMapping(value = "/pay_ajax/orderform.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView addrList(Model model, 
 			@RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
 			@RequestParam(value = "memno", defaultValue = "0") int memno,
 			@RequestParam(value = "addrno", defaultValue = "0") int addrno,
 			@RequestParam(value = "gddetailno", defaultValue = "0") int gddetailno,
-			@RequestParam(value = "gdoptions", required = false) String gdoptions) {
+			@RequestParam(value = "gdoptions", defaultValue = "") String gdoptions) {
 
 		/** 유효성 검사 */
 		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
@@ -76,7 +76,7 @@ public class PayAjaxController {
 		if (goodsno == 0) {
 			return webHelper.redirect(null, "상품번호가 없습니다.");
 		}
-		if (gdoptions == null) {
+		if (gdoptions.equals("")) {
 			return webHelper.redirect(null, "상품옵션을 선택해주세요.");
 		}
 
@@ -115,7 +115,7 @@ public class PayAjaxController {
 		List<Address> output2 = null;
 		List<Points> output3 = null;
 		Goods goods = null;
-		List<Goodsdetail> gdoutput = null;
+		Goodsdetail gdoutput = null;
 
 		try {
 			// 데이터 조회
@@ -123,7 +123,7 @@ public class PayAjaxController {
 			output2 = addressService.getAddressList(input2);
 			output3 = pointsService.getPointsMbList(input3);
 			goods = goodsService.getGoodsItem(gd);
-			gdoutput = goodsdetailService.getGoodsdetailList(gdetail);
+			gdoutput = goodsdetailService.getGoodsdetailItem(gdetail);
 		} catch (Exception e) {
 			// 신규회원일 경우, 조회된 데이터가 없으므로 오류를 발생시키면 안된다.
 			return webHelper.redirect(null, e.getLocalizedMessage());
