@@ -77,7 +77,6 @@ public class KRTController {
 		/** 2) 데이터 조회하기 */
 		Orders orders = new Orders();
 		orders.setMemno(myInfo.getMemno());
-		orders.setGoodsno(1);
 
 		List<Orders> ordersList = null;
 		List<Orders> output = new ArrayList<Orders>();

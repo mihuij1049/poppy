@@ -34,29 +34,47 @@
 	</select>
 
 	<!-- 주문내역 다중행 조회를 위한 기능 정의 -->
-	<select id="selectList"
-		parameterType="kr.co.poppy.model.Orders" resultMap="ordersMap">
-		SELECT o.orderno, o.odstatus,
-		o.regdate, od.odgcode, od.odgname, od.odgprice, od.odgqty,
-		od.odgdoption, i.imgname, i.imgext, i.imgpath, i.imgtype, i.goodsno
-		FROM orders o INNER JOIN orderdetail od ON o.orderno = od.orderno
-        INNER JOIN cart c ON o.memno = c.memno
-        INNER JOIN goodsdetail gd ON c.gddetailno = gd.gddetailno
-        INNER JOIN imgs i ON gd.goodsno = i.goodsno
-		WHERE o.memno=#{memno} AND o.odstatus IN ("0", "1", "2", "3") AND i.imgtype="A" AND i.goodsno=#{goodsno};
+	<select id="selectList" parameterType="kr.co.poppy.model.Orders"
+		resultMap="ordersMap">
+		SELECT Distinct o.orderno,
+		o.odstatus, od.orderdetailno,
+		o.regdate, od.odgcode,g.gcode, od.odgname, g.gname,od.odgprice,
+		od.odgqty,
+		od.odgdoption, g.goodsno, i.imgname, i.imgext, i.imgpath,
+		i.imgtype,
+		g.goodsno FROM imgs i, goods g, orders o INNER JOIN
+		orderdetail od ON o.orderno =
+		od.orderno
+		INNER JOIN cart c ON c.memno =
+		o.memno
+		INNER JOIN goodsdetail gd ON gd.gddetailno = c.gddetailno
+		WHERE
+		o.memno=1 AND i.imgtype = "A" AND od.odgcode=g.gcode AND
+		i.goodsno=g.goodsno
+		AND o.odstatus IN ("0", "1", "2", "3");
 	</select>
-	
+
 	<!-- 취소/교환/반품내역 다중행 조회를 위한 기능 정의 -->
 	<select id="selectList2"
 		parameterType="kr.co.poppy.model.Orders" resultMap="ordersMap">
-		SELECT o.orderno, o.odstatus,
-		o.regdate, od.odgcode, od.odgname, od.odgprice, od.odgqty,
-		od.odgdoption, i.imgname, i.imgext, i.imgpath, i.imgtype
-		FROM orders o INNER JOIN orderdetail od ON o.orderno = od.orderno
-        INNER JOIN cart c ON o.memno = c.memno
-        INNER JOIN goodsdetail gd ON c.gddetailno = gd.gddetailno
-        INNER JOIN imgs i ON gd.goodsno = i.goodsno
-		WHERE o.memno=#{memno} AND o.odstatus IN ("4", "5", "6") AND i.imgtype="A" AND i.goodsno=#{goodsno};
+		SELECT Distinct
+		o.orderno,
+		o.odstatus, od.orderdetailno,
+		o.regdate, od.odgcode,g.gcode,
+		od.odgname, g.gname,od.odgprice, od.odgqty,
+		od.odgdoption, g.goodsno,
+		i.imgname, i.imgext, i.imgpath, i.imgtype,
+		g.goodsno
+		FROM imgs i, goods
+		g, orders o INNER JOIN orderdetail od ON o.orderno =
+		od.orderno
+		INNER
+		JOIN cart c ON c.memno = o.memno
+		INNER JOIN goodsdetail gd ON
+		gd.gddetailno = c.gddetailno
+		WHERE o.memno=1 AND i.imgtype = "A" AND
+		od.odgcode=g.gcode AND i.goodsno=g.goodsno
+		AND o.odstatus IN ("4", "5", "6");
 	</select>
 
 	<!-- 데이터 수 조회를 위한 기능 정의 -->
@@ -76,8 +94,10 @@
 	<insert id="insertItem" parameterType="kr.co.poppy.model.Orders"
 		useGeneratedKeys="true" keyProperty="orderno">
 		INSERT INTO orders (
-		odmsg, paytype, odstatus, deliprice, regdate, editdate, memno, addrno
-		) VALUES (
+		odmsg,
+		paytype, odstatus, deliprice, regdate, editdate, memno, addrno
+		) VALUES
+		(
 		#{odmsg}, #{paytype}, #{odstatus}, deliprice, now(), now(), #{memno},
 		#{addrno}
 		)
@@ -86,7 +106,7 @@
 	<!-- 데이터 삭제를 위한 기능 정의 -->
 	<delete id="deleteItem" parameterType="kr.co.poppy.model.Orders">
 		DELETE FROM orders WHERE
-		 orderno=#{orderno}
+		orderno=#{orderno}
 	</delete>
 
 	<!-- 데이터 갱신을 위한 기능 정의 -->
@@ -97,13 +117,13 @@
 		WHERE orderno=#{orderno};
 	</update>
 	<!-- 특정 멤버를 참조하는 주문 데이터를 모두 참조 해제한다. -->
-   <update id="unsetMembers"
-   		parameterType="kr.co.poppy.model.Members">
-   		UPDATE orders SET memno=null  WHERE memno=#{memno}
-   </update>
-   <!-- 특정 주소를 참조하는 주문 데이터를 모두 참조 해제한다. -->
-   <update id="unsetAddress"
-   		parameterType="kr.co.poppy.model.Members">
-   		UPDATE orders SET addrno=null  WHERE memno=#{memno}
-   </update>
+	<update id="unsetMembers"
+		parameterType="kr.co.poppy.model.Members">
+		UPDATE orders SET memno=null WHERE memno=#{memno}
+	</update>
+	<!-- 특정 주소를 참조하는 주문 데이터를 모두 참조 해제한다. -->
+	<update id="unsetAddress"
+		parameterType="kr.co.poppy.model.Members">
+		UPDATE orders SET addrno=null WHERE memno=#{memno}
+	</update>
 </mapper>

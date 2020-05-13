@@ -177,11 +177,26 @@
 	<!-- 사용자 정의 스크립트 -->
 	<script type="text/javascript">
 		$(function() {
+			// 결제 예정 금액, 2는 3자리수 마다 (,) 추가적용
 			var table_sum = 0;
+			var table_sum2 = 0;
+			// 총 상품금액
 			var table_price = 0;
+			var table_price2 = 0;
+			// 총 배송비
 			var table_delivery = 2500;
-			var sum_price = 0;
+			var table_delivery2 = 2500;
+			// 각 상품 금액
 			var item_price = 0;
+			var item_price2 = 0;
+			// 각 상품 합계 금액
+			var sum_price = 0;
+			var sum_price2 = 0;
+			// 각 상품 적립금 (상품금액/100)
+			var point = 0;
+			// 각 상품 최종 가격 (한개의 금액 * 구매수량)
+			var result = 0;
+			var result2 = 0;
 
 			var length = $(".cart-box").length;
 			$(".cart-count").html(length);
@@ -196,22 +211,24 @@
 				$("#table_delivery").html(table_delivery);
 			}
 
+			// 로딩시 초기 하단 테이블 금액 표시
 			for (var i = 0; i < length; i++) {
 				table_price += parseInt($(".price").eq(i).html());
 				if (i == length - 1) {
 					table_sum = table_price + table_delivery;
-					table_sum = table_sum.toString().replace(
+					table_sum2 = table_sum.toString().replace(
 							/\B(?=(\d{3})+(?!\d))/g, ",");
-					$("#table_sum").html(table_sum);
-					table_price = table_price.toString().replace(
+					$("#table_sum").html(table_sum2);
+					table_price2 = table_price.toString().replace(
 							/\B(?=(\d{3})+(?!\d))/g, ",");
-					$("#table_price").html(table_price);
-					table_delivery = table_delivery.toString().replace(
+					$("#table_price").html(table_price2);
+					table_delivery2 = table_delivery.toString().replace(
 							/\B(?=(\d{3})+(?!\d))/g, ",");
-					$("#table_delivery").html(table_delivery);
+					$("#table_delivery").html(table_delivery2);
 				}
 			}
 
+			// 수량 플러스 버튼 클릭시 금액 조정
 			$(document).on(
 					"click",
 					".plus",
@@ -219,28 +236,35 @@
 						var value = $(this).prev().val();
 						value++;
 						$(this).prev().val(value);
-						var one_price = $(this).parent().next().children()
+						sum_price = $(this).parent().next().children()
 								.children().children();
-						var price = $(this).parent().prev().children("p")
+						item_price = $(this).parent().prev().children("p")
 								.children(".item_price").html();
-						var result = price * value;
-						$(one_price).html(result);
+						result = item_price * value;
+						result2 = result.toString().replace(
+								/\B(?=(\d{3})+(?!\d))/g, ",");
+						$(sum_price).html(result2);
 
-						var point = $(this).parent().prev().children("small")
+						point = $(this).parent().prev().children("small")
 								.children().next();
-						$(point).html(result / 100);
+						
+						$(point).html((result / 100).toString().replace(
+								/\B(?=(\d{3})+(?!\d))/g, ","));
 
-						var length = $(".cart-box").length;
+						// 장바구니에 담긴 상품 수 많큼 반복 하여 상품가격 테이블에 값을 출력
+						length = $(".cart-box").length;
 						for (var i = 0; i < length; i++) {
 							sum_price += parseInt($(".price").eq(i).html());
 						}
+						sum_price = sum_price.toString().replace(
+								/\B(?=(\d{3})+(?!\d))/g, ",");
 						$("#table_price").html(sum_price);
 						if (sum_price >= 30000) {
 							table_delivery = 0;
 							$("#table_delivery").html(table_delivery);
 						}
 						$("#table_sum").html(sum_price + table_delivery);
-						sum_price = 0;
+						table_price = 0;
 					});
 
 			$(document).on(
