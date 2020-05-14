@@ -44,7 +44,7 @@
         useGeneratedKeys="true"
         keyProperty="heartno">
         INSERT INTO heart (regdate, editdate, memno, goodsno) VALUES (
-        #{regdate}, #{editdate}, #{memno}, #{goodsno});
+        now(), now(), #{memno}, #{goodsno});
     </insert>
 
     <!-- 데이터 삭제를 위한 기능 정의 -->

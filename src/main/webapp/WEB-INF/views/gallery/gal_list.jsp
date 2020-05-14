@@ -13,9 +13,12 @@
 </head>
 <style>
 .pr_in_box button {
-	float: left;
+	float: right;
+	width: 50px;
+	height: 45px;
 	padding: 0px 10px;
 	border: 0px;
+	font-size: 10px;
 }
 </style>
 <body>
@@ -57,18 +60,20 @@
 									<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=${item.goodsno}">
 										<img alt="사진" src="${item.imgpath}${item.imgname}.jpg" class="img_size">
 											<h5>
-												<div class="gnameblock"  style="height: 32px">
-													<b>
-														${item.gname}
-													</b>
+												<div class="gnameblock">
+													<b>${item.gname}</b>
 												</div>
 											</h5>
-												<hr />
-											${item.gprice}원
-										</a>
-									<div id="pay">
-									<button type="button" class="btn btn-inverse delete-one"
-									id="delete-one" data-heartno="${item.heartno}">♥</button>
+										<hr />
+									</a>
+									<div class="price_box">
+										<del>₩${item.gprice}원</del>
+										<button type="submit" class="btn btn-inverse insert-one" id="insert-one" data-heartno="${item.heartno}" data-goodsno="${item.goodsno}">
+										like
+										♥
+										</button>
+										<br>
+										₩${item.gsale}원
 									</div>
 								</div>
 							</div>
@@ -89,20 +94,38 @@
 		</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
 	
-	<!-- $('.pr_in_box i').click(function() {
-            $(this).toggleClass("glyphicon-heart glyphicon-heart-empty");
-    }); -->
+	
 	
 	<script type="text/javascript">
-    $(function() {
+	$('.pr_in_box i').click(function() {
+        $(this).toggleClass("glyphicon-heart glyphicon-heart-empty");
+	});
+	
+	$("#result").on("click", "#insert-one", function(e) {
+        e.preventDefault();
+  
+        let goodsno = $(this).data("goodsno");
+        
+        // 여기서 이미 추천했는지 검사하던지 컨트롤러에서 해주던지
+        $.post("${pageContext.request.contextPath}/gallery/in_item",
+              { "goodsno" : goodsno },
+                   function(json) {
+                     if(json.rt=="OK");
+                  }
+              )
+        /* $(this).css('color', 'red');
+        clicked = false; */
+     });
+	
+	$(function() {
     	$(document).on('change', '#cate_select', function(e) {
     		var choice = $(this).find("option:selected").val();
-        	console.log ("어케해야할지 모르갰다")
-        	console.log(choice)
         	if(!choice) {
         		return false;
         	}
-        	location.href="../gallery/gal_list_select.do?cate1=푸드"+"&searchCondition="+choice;
+        	<c:forEach var="item" items="${output}" varStatus="status" end="0">
+        	location.href="../gallery/gal_list_select.do?cate1=${item.cate1}"+"&searchCondition="+choice;
+        	</c:forEach>
     	});
     });
     </script>

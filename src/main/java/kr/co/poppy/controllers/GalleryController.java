@@ -61,9 +61,32 @@ public class GalleryController {
 		return new ModelAndView("gallery/gal_list");
 	}
 	
+	/** 갤러리 목록 페이지 (신상품별) */
+	@RequestMapping(value="/gallery/gal_list_new.do", method=RequestMethod.GET)
+	public ModelAndView gallistnew(Model model) {
+		// 2) 데이터 조회
+		// 굿즈데이터조회
+		Goods input = new Goods();
+		// 데이터저장할곳
+		List<Goods> output = null;
+		
+		try {
+			// 데이터조회
+			output = goodsService.getGoodsListNew(input);
+			
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		// 3) 뷰처리
+		model.addAttribute("output", output);
+	
+		return new ModelAndView("gallery/gal_list");
+	}
+	
 	/** 갤러리 목록 페이지 (카테고리별) */
 	@RequestMapping(value="/gallery/gal_list.do", method=RequestMethod.GET)
-	public ModelAndView gallist(Model model,
+	public ModelAndView gallistcate(Model model,
 			@RequestParam(value="cate1", required=false) String cate1) {
 		// 2) 데이터 조회
 		// 굿즈데이터조회

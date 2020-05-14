@@ -121,7 +121,7 @@
 			<!-- 스와이퍼 플러그인 갤러리 끝!!! -->
 			<center>
 				<button type="button" class="btn btn-inverse index_btn"
-					onclick="location.href='${pageContext.request.contextPath }/gallery/gal_list.do'">베스트 상품
+					onclick="location.href='${pageContext.request.contextPath }/gallery/gal_list_best_.do'">베스트 상품
 					더보기</button>
 			</center>
 			<center>
@@ -146,13 +146,13 @@
 				</c:forEach>
 			<!-- jstl 반복문 끝 -->
 				<button type="button" class="btn btn-inverse index_btn"
-					onclick="location.href='${pageContext.request.contextPath }/gallery/gal_list.do'">뽀삐뽀삐 단독
+					onclick="location.href='${pageContext.request.contextPath }/gallery/gal_list_.do'">뽀삐뽀삐 단독
 					최저가 보장</button>
 			</div>
 			<div class="img_banner">
-				<img src="/upload/img/index_banner1.jpg"> <img
-					src="/upload/img/index_banner2.jpg"> <img
-					src="/upload/img/index_banner3.jpg">
+				<img src="/upload/img/index_banner1.jpg">
+				<img src="/upload/img/index_banner2.jpg">
+				<img src="/upload/img/index_banner3.jpg">
 			</div>
 				<center>
 					<button type="button" class="btn btn-inverse index_btn"
