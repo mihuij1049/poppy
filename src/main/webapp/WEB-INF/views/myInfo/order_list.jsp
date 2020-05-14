@@ -108,7 +108,7 @@
 									<div class="prd-box">
 										<div class="thumbnail">
 											<a href="${viewUrl}"> <img
-												src="${item.imgpath}${item.imgname}.jpg" width="70"
+												src="${item.imgpath}${item.imgname}.${item.imgext}" width="70"
 												height="70">
 											</a>
 										</div>

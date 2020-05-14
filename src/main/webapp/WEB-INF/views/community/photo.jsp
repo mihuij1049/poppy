@@ -40,7 +40,7 @@
 					<a href="${pageContext.request.contextPath}/gallery/goods.do">
 						${output.bbstitle}</a><br>
 					<div class="star">
-						<p>(5.0)</p>
+						<p>${output.rvlike}(.0)</p>
 						<br>
 					</div>
 					<div class="writer">
@@ -48,11 +48,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="rv-title">
-				<p>이 리뷰에 대해 <p id="rvcount">5<p>명의 고객님께서 추천해 주셨습니다.</p>
-			</div>
 			<div class="rv-content">
-				<p class="date">20.01.31</p>
+				<p class="date">${output.regdate}</p>
 				<p>${output.bbscontent}</p>
 			</div>
 			<div class="recommend">

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -70,7 +70,8 @@
 		</div>
 		<!-- 모달창 끝 -->
 		<div class="container">
-			<form class="form-horizontal" name="wri_form" id="wri_form" method="POST"
+			<form class="form-horizontal" name="wri_form" id="wri_form"
+				method="POST" enctype="multipart/form-data"
 				action="${pageContext.request.contextPath}/community/photo_wri_ok.do">
 				<div class="select">
 					<div class="choice clearfix">
@@ -93,7 +94,7 @@
 						<p>제목</p>
 						<span class="redStar">＊</span>
 					</div>
-					<input type="text" name="bbstitle" class="tit" id="title"
+					<input type="text" name="bbstitle" class="tit" id="bbstitle"
 						maxlength="20">
 				</div>
 				<div class="star">
@@ -101,48 +102,20 @@
 						<p>평점</p>
 					</div>
 					<input type="radio" name="rvlike" value="★★★★★" checked> <label>★★★★★</label>
-					<input type="radio" name="rvlike" value="★★★★"> <label>★★★★</label> <input
-						type="radio" name="rvlike" value="★★★"> <label>★★★</label> <input
-						type="radio" name="rvlike" value="★★"> <label>★★</label> <input
-						type="radio" name="rvlike" value="★"> <label>★</label>
+					<input type="radio" name="rvlike" value="★★★★"> <label>★★★★</label>
+					<input type="radio" name="rvlike" value="★★★"> <label>★★★</label>
+					<input type="radio" name="rvlike" value="★★"> <label>★★</label>
+					<input type="radio" name="rvlike" value="★"> <label>★</label>
 				</div>
 				<div class="write">
-					<textarea name="bbscontent" class="rv_area"
-								placeholder="내용을 입력하세요." maxlength="1800"></textarea>
+					<textarea name="bbscontent" class="rv_area" id="bbscontent"
+						placeholder="내용을 입력하세요." maxlength="1800"></textarea>
 				</div>
 				<div class="file">
 					<div>
-						<p>첨부파일 1</p>
+						<p>첨부파일</p>
 					</div>
-					<input type="file" name="">
-				</div>
-				<div class="file">
-					<div>
-						<p>첨부파일 2</p>
-						&nbsp;&nbsp;
-					</div>
-					<input type="file" name="">
-				</div>
-				<div class="file">
-					<div>
-						<p>첨부파일 3</p>
-						&nbsp;&nbsp;
-					</div>
-					<input type="file" name="">
-				</div>
-				<div class="file">
-					<div>
-						<p>첨부파일 4</p>
-						&nbsp;&nbsp;
-					</div>
-					<input type="file" name="">
-				</div>
-				<div class="file">
-					<div>
-						<p>첨부파일 5</p>
-						&nbsp;&nbsp;
-					</div>
-					<input type="file" name="">
+					<input type="file" name="photo" id="photo" />
 				</div>
 				<div class="password">
 					<div>
@@ -220,11 +193,11 @@
 
 			$("#wri_form").validate({
 				rules : {
-					title : {
+					bbstitle : {
 						required : true,
 						minlength : 4
 					},
-					photo_content : {
+					bbscontent : {
 						required : true,
 						minlength : 4
 					},
@@ -235,11 +208,11 @@
 				},
 
 				messages : {
-					title : {
+					bbstitle : {
 						required : "제목을 입력하세요.",
 						minlength : "제목은 4글자 이상 입력하셔야 합니다."
 					},
-					photo_content : {
+					bbscontent : {
 						required : "내용을 입력하세요.",
 						minlength : "내용은 4글자 이상 입력하셔야 합니다."
 					},

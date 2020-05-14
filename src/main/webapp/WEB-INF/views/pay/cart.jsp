@@ -11,7 +11,7 @@
 <head>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/share/cart.css?ver=1" />
+	href="${pageContext.request.contextPath}/share/cart.css" />
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -68,7 +68,7 @@
 									<div class="word">
 										<input type="checkbox" name="cart_check"
 											class="cart cart-size"> <a href="${viewUrl}"> <img
-											src="${item.imgpath}${item.imgname}.jpg" class="cart-img" />
+											src="${item.imgpath}${item.imgname}.${item.imgext}" class="cart-img" />
 										</a>
 
 										<p>
@@ -365,10 +365,8 @@
 						}
 						sum2 = sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g,
 								",");
-						console.log(sum);
 						$("#table_price").html(sum2);
 						if (sum >= 30000) {
-							console.log(sum);
 							table_delivery = 0;
 							$("#table_delivery").html(table_delivery);
 						} else {
