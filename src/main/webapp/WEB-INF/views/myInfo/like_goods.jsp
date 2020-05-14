@@ -45,12 +45,15 @@
 							<c:set var="gsale" value="${item.gsale }" />
 							<c:set var="heartno" value="${item.heartno }" />
 							<c:set var="goodsno" value="${item.goodsno }" />
+							<c:set var="imgname" value="${item.imgname }" />
+							<c:set var="imgpath" value="${item.imgpath }" />
+							<c:set var="imgext" value="${item.imgext }" />
 							<li class="mycart" id="mycart1">
 								<div class="mygoods clearfix">
 									<span class="chkbox"> <input type="checkbox"
 										class="cart" name="check-select"
 										data-checknum="${item.heartno }" /></span> <a href="#"><img
-										src="" class="cart-img"></a>
+										src="${item.imgpath}${item.imgname}.${item.imgext}" class="cart-img"></a>
 									<div class="word">
 										<b>${item.gname}</b><br>
 										<div class="plz-opt">

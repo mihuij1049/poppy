@@ -43,11 +43,14 @@
 					<c:forEach var="item" items="${avRvList }" varStatus="status">
 						<%-- 출력을 위한 변수 준비 --%>
 						<c:set var="gname" value="${item.gname }" />
+						<c:set var="gname" value="${item.imgname }" />
+						<c:set var="gname" value="${item.imgpath }" />
+						<c:set var="gname" value="${item.imgext }" />
 						<c:set var="regdate" value="${item.regdate }" />
 						<%-- <c:set var="bbstitle" value="${item.bbstitle }" /> 이미지 불러올 예정 --%>
 						<div class="onegood clearfix">
 							<div class="solid-bottom clearfix">
-								<a href="#"><img src="../share/img/4_M.jpg" class="cart-img">
+								<a href="#"><img src="${item.imgpath}${item.imgname}.${item.imgext}" class="cart-img">
 									<div class="mybought">
 										<span><b class="bar1-good">${item.gname }</b></span><br>
 										<small>구매날짜: <span>${item.regdate }</span>
@@ -73,9 +76,12 @@
 						<c:set var="gname" value="${item.gname }" />
 						<c:set var="rvlike" value="${item.rvlike }" />
 						<c:set var="bbstitle" value="${item.bbstitle }" />
+						<c:set var="imgname" value="${item.imgname }" />
+						<c:set var="imgpath" value="${item.imgpath }" />
+						<c:set var="imgext" value="${item.imgext }" />
 
 						<div class="onegood onegood-bottom">
-							<a href="#"><img src="../share/img/4_M.jpg" class="cart-img">
+							<a href="#"><img src="${item.imgpath}${item.imgname}.${item.imgext}" class="cart-img">
 								<div class="mybought">
 									<span><b>${item.gname }</b></span><br>
 								</div></a>

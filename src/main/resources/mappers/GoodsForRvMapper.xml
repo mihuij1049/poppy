@@ -32,19 +32,20 @@
 	<!-- 다중행 조회(작성가능한 리뷰)를 위한 기능 정의 -->
 	<select id="selectList" parameterType="kr.co.poppy.model.GoodsForRv"
 		resultMap="GoodsForRvMap">
-		SELECT * from goods WHERE gcode IN (SELECT odgcode from orderdetail 
+		SELECT *, i.imgname, i.imgpath, i.imgext from goods g inner join imgs i on g.goodsno = i.goodsno 
+		WHERE g.gcode IN (SELECT odgcode from orderdetail 
 		WHERE orderno IN (SELECT orderno from orders WHERE memno=#{memno}))
-		and not goodsno in(SELECT goodsno FROM bbs WHERE bbstype="C" 
-		and memno=#{memno} and goodsno in (SELECT goodsno from goods 
-		WHERE gcode IN (SELECT odgcode from orderdetail WHERE orderno IN (SELECT orderno from orders WHERE memno=#{memno}))));
+		and not g.goodsno in(SELECT b.goodsno FROM bbs b WHERE bbstype="C" 
+		and memno=#{memno} and g.goodsno in (SELECT g.goodsno from goods 
+		WHERE g.gcode IN (SELECT odgcode from orderdetail WHERE orderno IN (SELECT orderno from orders WHERE memno=#{memno}))));
 	</select>
 	<!-- 관심상품(좋아요) 다중행 조회 -->
 	<select id="selectLikeList" parameterType="kr.co.poppy.model.GoodsForRv"
 		resultMap="GoodsForRvMap">
-		SELECT * from goods g 
+		SELECT *, i.imgname, i.imgpath, i.imgext from goods g 
 		inner join heart h on g.goodsno=h.goodsno
 		inner join imgs i on g.goodsno=i.goodsno 
-		WHERE g.goodsno in (SELECT h.goodsno from heart WHERE h.memno=#{memno}) 
+		WHERE g.goodsno in (SELECT h.goodsno from heart WHERE h.memno=#{memno})  
 	</select>
 	<!-- 관심상품(좋아요) 디테일 다중행 조회 -->
 	<select id="selectLikeListDetail" parameterType="kr.co.poppy.model.GoodsForRv"
