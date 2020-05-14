@@ -8,6 +8,8 @@ public interface BbsService {
 
 	public Bbs getBbsItem(Bbs input) throws Exception;
 	
+	public Bbs getBbsrv_Item(Bbs input) throws Exception;
+	
 	/**
 	 * 공지사항 / QNA / 포토리뷰 글 목록
 	 * @param Imgs 검색조건과 페이지 구현 정보를 담고 있는 Beans

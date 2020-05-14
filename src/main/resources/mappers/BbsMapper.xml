@@ -18,6 +18,17 @@
 		<result property="memno" column="memno" />
 		<result property="goodsno" column="goodsno" />
 		<result property="cmtcount" column="cmtcount" />
+		<!-- imgs 테이블의 조인 컬럼 -->
+		<result property="imgname" column="imgname" />
+		<result property="imgpath" column="imgpath" />
+		<result property="imgtype" column="imgtype" />
+		<result property="imgext" column="imgext" />
+		<!-- 상품 이미지를 위한 가상 조인 컬럼 -->
+		<result property="giname" column="giname" />
+		<result property="gipath" column="gipath" />
+		<result property="giext" column="giext" />
+		<!-- members 테이블의 조인 컬럼 -->
+		<result property="username" column="username" />
 	</resultMap>
 
 
@@ -35,18 +46,34 @@
 		WHERE bbstype=#{bbstype} and bbsno=#{bbsno}
 	</select>
 
+	<!-- 포토리뷰 글 보기 페이지 -->
+	<select id="selectrv_Item" parameterType="kr.co.poppy.model.Bbs"
+		resultMap="bbsMap">
+		SELECT m.memno, m.username, b.bbsno, b.bbstype, b.bbstitle, b.bbscontent,
+		b.rvlike, b.regdate, b.editdate, b.goodsno,
+		i.imgname, i.imgpath, i.imgext, i.imgtype, 
+        (SELECT i.imgname FROM imgs i WHERE i.goodsno = b.goodsno AND imgtype="A") AS giname,
+        (SELECT i.imgpath FROM imgs i WHERE i.goodsno = b.goodsno AND imgtype="A") AS gipath,
+        (SELECT i.imgext FROM imgs i WHERE i.goodsno = b.goodsno AND imgtype="A") AS giext
+        FROM bbs b
+		INNER JOIN imgs i ON i.bbsno = b.bbsno
+		INNER JOIN members m ON b.memno = m.memno
+		WHERE b.bbsno = #{bbsno};
+	</select>
+
 	<!-- 다중행 조회를 위한 기능 정의 -->
 	<!-- QNA -->
 	<select id="selectList" parameterType="kr.co.poppy.model.Bbs"
 		resultMap="bbsMap">
-		SELECT bbsno, bbstype, bbstitle, bbscontent, qnasec, qnapw, rvlike, goodsno,
+		SELECT bbsno, bbstype, bbstitle, bbscontent, qnasec, qnapw, rvlike,
+		goodsno,
 		b.regdate, b.editdate,
 		b.memno, m.username, m.userid
 		FROM bbs b
 		INNER JOIN members m ON b.memno= m.memno
 
 		<where>
-			bbstype=#{bbstype} 
+			bbstype=#{bbstype}
 			<if test="bbscontent != null and bbscontent != ''">
 				and bbscontent LIKE concat('%', #{bbscontent}, '%')
 			</if>
@@ -62,32 +89,37 @@
 			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
-	
+
 	<!-- 다중행 조회를 위한 기능 정의 -->
 	<!-- 상품상세페이지 / 포토리뷰 글 목록 페이지 -->
-	<select id="selectList_goods" parameterType="kr.co.poppy.model.Bbs"
-		resultMap="bbsMap">
+	<select id="selectList_goods"
+		parameterType="kr.co.poppy.model.Bbs" resultMap="bbsMap">
 		SELECT bbsno, bbstype, bbstitle, bbscontent, rvlike, qnasec, qnapw,
 		b.regdate, b.editdate, b.memno, b.goodsno, m.username, m.userid
-		FROM bbs b
-		INNER JOIN members m ON b.memno=m.memno 
-		WHERE bbstype=#{bbstype} AND b.goodsno = #{goodsno}
+		FROM
+		bbs b
+		INNER JOIN members m ON b.memno=m.memno
+		WHERE bbstype=#{bbstype}
+		AND b.goodsno = #{goodsno}
 		ORDER BY bbsno DESC
 		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
 		</if>
-		
+
 	</select>
-	
+
 	<!-- 후기관리 글 목록 페이지 -->
-	<select id="selectList_myrv" parameterType="kr.co.poppy.model.Bbs"
-		resultMap="bbsMap">
-		SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno, b.goodsno,
-		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype, i.goodsno,
+	<select id="selectList_myrv"
+		parameterType="kr.co.poppy.model.Bbs" resultMap="bbsMap">
+		SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,
+		b.goodsno,
+		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,
+		i.goodsno,
 		m.memno, m.userid
 		FROM bbs b
 		INNER JOIN imgs i
-		INNER JOIN members m
+		INNER JOIN
+		members m
 		<where>
 			b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
 			<if test="bbstitle != null and bbstitle != ''">
@@ -95,7 +127,7 @@
 			</if>
 		</where>
 	</select>
-	
+
 	<!-- 데이터 수 조회를 위한 기능 정의 -->
 	<select id="selectCountAll"
 		parameterType="kr.co.poppy.model.Bbs" resultType="int">
@@ -123,9 +155,12 @@
 	<!-- 데이터 저장을 위한 기능 정의 -->
 	<insert id="insertItem" parameterType="kr.co.poppy.model.Bbs"
 		useGeneratedKeys="true" keyProperty="bbsno">
-		INSERT INTO bbs 
-		(bbstype, bbstitle, bbscontent, qnasec, qnapw, rvlike, regdate, editdate, memno, goodsno) 
-		VALUES (#{bbstype}, #{bbstitle}, #{bbscontent}, #{qnasec}, #{qnapw}, #{rvlike}, #{regdate}, #{editdate}, #{memno}, #{goodsno})
+		INSERT INTO bbs
+		(bbstype, bbstitle,
+		bbscontent, qnasec, qnapw, rvlike, regdate, editdate,
+		memno, goodsno)
+		VALUES (#{bbstype}, #{bbstitle}, #{bbscontent}, #{qnasec}, #{qnapw},
+		#{rvlike}, #{regdate}, #{editdate}, #{memno}, #{goodsno})
 	</insert>
 
 	<!-- 데이터 삭제를 위한 기능 정의 -->
@@ -142,11 +177,12 @@
 		parameterType="kr.co.poppy.model.Bbs">
 		DELETE FROM bbs WHERE memno=#{memno}
 	</delete>
-	
+
 	<!-- 데이터 갱신을 위한 기능 정의 -->
 	<update id="updateItem" parameterType="kr.co.poppy.model.Bbs">
 		UPDATE bbs SET
-		bbstitle=#{bbstitle}, bbscontent=#{bbscontent}, editdate=#{editdate}, qnasec=#{qnasec}, qnapw=#{qnapw}, memno=#{memno}
+		bbstitle=#{bbstitle}, bbscontent=#{bbscontent}, editdate=#{editdate},
+		qnasec=#{qnasec}, qnapw=#{qnapw}, memno=#{memno}
 		WHERE bbsno=#{bbsno}
 	</update>
 

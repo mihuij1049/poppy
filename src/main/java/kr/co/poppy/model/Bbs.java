@@ -45,6 +45,11 @@ public class Bbs {
 	// 이미지 확장자
 	private String imgext;
 	
+	/* 포토리뷰 상품 이미지 가상 컬럼 */
+	private String giname;
+	private String gipath;
+	private String giext;
+	
 	/** 게시판 목록에 댓글 갯수를 위한 변수 */
 	private int cmtcount;
 	

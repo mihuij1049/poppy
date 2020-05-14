@@ -33,6 +33,8 @@ public class Cart {
     private int deliprice;
 	/** 상품 가격 */
 	private int gprice;
+	/** 상품 세일가격 */
+	private int gsale;
 	/** 상품 번호 */
 	private int goodsno;
 	/** 주문 번호 */

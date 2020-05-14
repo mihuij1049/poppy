@@ -32,10 +32,10 @@
 			</h4>
 		</div>
 		<div class="container">
-			<img src="../share/img/img1.jpg" alt="리뷰사진" class="big-image">
+			<img src="${output.imgpath}${output.imgname}.${output.imgext}" alt="리뷰사진" class="big-image">
 			<div class="info-box">
 				<a href="${pageContext.request.contextPath}/gallery/goods.do"><img
-					src="../share/img/4_M.jpg" class="small-image"></a>
+					src="${output.gipath}${output.giname}.${output.giext}" class="small-image"></a>
 				<div class="info-content clear">
 					<a href="${pageContext.request.contextPath}/gallery/goods.do">
 						${output.bbstitle}</a><br>

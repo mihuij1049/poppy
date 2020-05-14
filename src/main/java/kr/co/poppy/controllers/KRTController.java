@@ -369,14 +369,13 @@ public class KRTController {
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
 		Bbs input = new Bbs();
 		input.setBbsno(bbsno);
-		input.setBbstype("C");
 
 		// 조회 결과를 저장할 객체 선언
 		Bbs output = null;
 
 		try {
 			// 데이터 조회
-			output = bbsService.getBbsItem(input);
+			output = bbsService.getBbsrv_Item(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}

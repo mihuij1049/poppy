@@ -21,6 +21,7 @@
 		<result property="gname" column="gname" />
 		<result property="deliprice" column="deliprice" />
 		<result property="gprice" column="gprice" />
+		<result property="gsale" column="gsale" />
 		<result property="goodsno" column="goodsno" />
 		<result property="orderno" column="orderno" />
 	</resultMap>
@@ -29,7 +30,7 @@
 	<select id="selectList" parameterType="kr.co.poppy.model.Cart"
 		resultMap="cartMap">
 		SELECT c.cartno, i.imgname, i.imgext, i.imgpath, i.imgtype,
-		g.gname, g.goodsno, o.deliprice, g.gprice, c.cartqty
+		g.gname, g.goodsno, o.deliprice, g.gprice, g.gsale, c.cartqty
 		FROM goods g
 		INNER JOIN imgs i ON g.goodsno=i.goodsno
 		INNER JOIN goodsdetail gd ON g.goodsno = gd.goodsno

@@ -100,11 +100,11 @@
 					<div>
 						<p>평점</p>
 					</div>
-					<input type="radio" name="rvlike" checked> <label>★★★★★</label>
-					<input type="radio" name="rvlike"> <label>★★★★</label> <input
-						type="radio" name="rvlike"> <label>★★★</label> <input
-						type="radio" name="rvlike"> <label>★★</label> <input
-						type="radio" name="rvlike"> <label>★</label>
+					<input type="radio" name="rvlike" value="★★★★★" checked> <label>★★★★★</label>
+					<input type="radio" name="rvlike" value="★★★★"> <label>★★★★</label> <input
+						type="radio" name="rvlike" value="★★★"> <label>★★★</label> <input
+						type="radio" name="rvlike" value="★★"> <label>★★</label> <input
+						type="radio" name="rvlike" value="★"> <label>★</label>
 				</div>
 				<div class="write">
 					<textarea name="bbscontent" class="rv_area"
