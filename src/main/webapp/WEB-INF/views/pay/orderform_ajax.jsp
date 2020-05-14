@@ -22,7 +22,9 @@
 			<b>주문/결제</b>
 		</h4>
 	</div>
-	<form id="orderform" class="orderform" action="${pageContext.request.contextPath}/pay" target="_self" enctype="multipart/form-data">
+	<form id="orderform" class="orderform"
+		action="${pageContext.request.contextPath}/pay" target="_self"
+		enctype="multipart/form-data">
 		<div class="panel-group" id="accordion" role="tablist"
 			aria-multiselectable="true">
 			<div class="panel panel-default">
@@ -136,7 +138,7 @@
 											</div>
 											<div class="na-phone">
 												<div class="na-phone-head">
-													<label class="receiver" name="">휴대전화</label>
+													<label class="receiver">휴대전화</label>
 													<div class="required">＊</div>
 												</div>
 												<div class="na-phone-body">
@@ -202,21 +204,22 @@
 								<div class=goods-box>
 									<div class="thumbnail">
 										<a
-											href="${pageContext.request.contextPath}/gallery_ajax/goods.do">
-											<img src="${goods.imgpath}${goods.imgname}.${goods.imgext}" width="70" height="70">
+											href="${pageContext.request.contextPath}/gallery_ajax/goods.do?goodno=${goods.goodsno}">
+											<img src="${goods.imgpath}${goods.imgname}.${goods.imgext}"
+											width="70" height="70">
 										</a>
 									</div>
 									<div class="prd">
 										<div id="prd-title">
 											<strong class="prd-name" title="상품명"> <a
 												href="${pageContext.request.contextPath}/gallery_ajax/goods.jsp">${goods.gname}</a>
-											</strong><br/>
-											<span class="prd-option">${gdoutput.gdoption}</span>		
+											</strong><br /> <span class="prd-option">${gdoutput.gdoption}</span>
 										</div>
 										<ul class="prd-li">
 											<li style="list-style: none"><span class="prd-price"
-												title="판매가"> <strong>${goods.gsale}</strong>원
-											</span> <span class="prd-count" title="수량"> <strong>1</strong>개
+												title="판매가"> <strong><fmt:formatNumber
+															value="${goods.gsale}" pattern="#,###" /></strong>원
+											</span> <span class="prd-count" title="수량"> <strong>${gdcount}</strong>개
 											</span> <br> <span class="prd-deli"> <span>[조건]/기본배송</span>
 											</span></li>
 										</ul>
@@ -250,9 +253,13 @@
 								</div>
 							</div>
 							<div class="prd-foot" title="합계">
+
 								<span id="prd-total">합계</span> <span class="pt-right"> <span
-									id="prd-tal-pri"> 6,900 </span>원
+									id="prd-tal-pri"> <fmt:formatNumber
+											value="${goods.gsale * gdcount}" pattern="#,###" />
+								</span>원
 								</span>
+
 							</div>
 						</div>
 					</div>
@@ -312,29 +319,80 @@
 					role="tabpanel" aria-labelledby="headingFour">
 					<div class="panel-body">
 						<div class="pay-info">
-							<div class="pay-content">
-								<div class="pay-con1">
-									<h5>주문상품</h5>
-									<span class="total-price"> <span
-										id="total-gallery-price">6,900</span>원
-									</span>
-								</div>
-								<div class="pay-con2">
-									<h5>할인/부가결제</h5>
-									<span class="total-price"> - <span id="totla-sale-price">0</span>원
-									</span>
-								</div>
-								<div class="pay-con3">
-									<h5>배송비</h5>
-									<span class="total-price"> + <span id="delivery-price">2,500</span>원
-									</span>
-								</div>
-							</div>
-							<div class="pay-price">
-								<h4 class="head">결제금액</h4>
-								<strong class="total-price"> <span id="pay-price">9,400</span>원
-								</strong>
-							</div>
+							<c:choose>
+								<c:when test="${goods.gsale * gdcount} < 30,000">
+									<div class="pay-content">
+										<div class="pay-con1">
+											<h5>주문상품</h5>
+											<span class="total-price"> <span
+												id="total-gallery-price"> <fmt:formatNumber
+														value="${goods.gsale * gdcount}" pattern="#,###" />
+											</span>원
+											</span>
+										</div>
+										<div class="pay-con2">
+											<h5>할인/부가결제</h5>
+											<span class="total-price"> - <span
+												id="totla-sale-price">0</span>원
+											</span>
+										</div>
+										<div class="pay-con3">
+											<h5>배송비</h5>
+											<span class="total-price"> <c:choose>
+													<c:when test="${goods.gsale * gdcount} < 30,000">
+														<span id="delivery-price">2,500</span>원
+													</c:when>
+													<c:otherwise>
+														<span id="delivery-price">0</span>원
+													</c:otherwise>
+												</c:choose>
+											</span>
+										</div>
+									</div>
+									<div class="pay-price">
+										<h4 class="head">결제금액</h4>
+										<strong class="total-price"> <span id="pay-price"><fmt:formatNumber
+													value="${goods.gsale * gdcount + 2500}" pattern="#,###" /></span>원
+										</strong>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="pay-content">
+										<div class="pay-con1">
+											<h5>주문상품</h5>
+											<span class="total-price"> <span
+												id="total-gallery-price"> <fmt:formatNumber
+														value="${goods.gsale * gdcount}" pattern="#,###" />
+											</span>원
+											</span>
+										</div>
+										<div class="pay-con2">
+											<h5>할인/부가결제</h5>
+											<span class="total-price"> - <span
+												id="totla-sale-price">0</span>원
+											</span>
+										</div>
+										<div class="pay-con3">
+											<h5>배송비</h5>
+											<span class="total-price"> <c:choose>
+													<c:when test="${goods.gsale * gdcount} < 30,000">
+														<span id="delivery-price">2,500</span>원
+													</c:when>
+													<c:otherwise>
+														<span id="delivery-price">0</span>원
+													</c:otherwise>
+												</c:choose>
+											</span>
+										</div>
+									</div>
+									<div class="pay-price">
+										<h4 class="head">결제금액</h4>
+										<strong class="total-price"> <span id="pay-price"><fmt:formatNumber
+													value="${goods.gsale * gdcount + 0}" pattern="#,###" /></span>원
+										</strong>
+									</div>
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 				</div>
@@ -387,7 +445,9 @@
 						<a class="collapsed" data-toggle="collapse"
 							data-parent="#accordion" href="#collapseSix"
 							aria-expanded="false" aria-controls="collapseSix"> <b>적립
-								혜택</b> <span id="arrow-down"> <img
+								혜택</b><b id="poi"><fmt:formatNumber
+									value="${(goods.gsale * gdcount) * 0.02}" pattern="#,###" />원
+								예정</b> <span id="arrow-down"> <img
 								src="/upload/img/arrow-down.png" align=right
 								class="arrow-down6 icon-rotate6">
 						</span>
@@ -402,7 +462,8 @@
 								<div class="save-con1">
 									<h5>상품별 적립금</h5>
 									<span class="total-price"> <span
-										id="total-gallery-price">70</span>원
+										id="total-gallery-price"><fmt:formatNumber
+												value="${(goods.gsale * gdcount) * 0.02}" pattern="#,###" /></span>원
 									</span>
 								</div>
 								<div class="save-con2">
@@ -419,7 +480,8 @@
 						</div>
 						<div class="save-price">
 							<h4 class="head">적립 예정금액</h4>
-							<strong class="total-price"> <span id="pay-price">70</span>원
+							<strong class="total-price"> <span id="pay-price"><fmt:formatNumber
+										value="${(goods.gsale * gdcount) * 0.02}" pattern="#,###" /></span>원
 							</strong>
 						</div>
 					</div>
@@ -427,9 +489,20 @@
 			</div>
 			<div class="order">
 				<button type="submit" class="btn">
-					<span id="order-total-price"> 9,400 </span>원 <span>결제하기</span>
+					<span id="order-total-price"> <fmt:formatNumber
+							value="${goods.gsale * gdcount}" pattern="#,###" />
+					</span>원 <span>결제하기</span>
 				</button>
 			</div>
+			<input type="hidden" name="odmasg" value="" />
+			<input type="hidden" name="paytype" value="" />
+			<input type="hidden" name="odstatus" value="" /> 
+			<input type="hidden" name="deliprice" value="" />
+			<input type="hidden" name="gname" value="${goods.gname}" />
+			<input type="hidden" name="pay-price" value="" />
+			<input type="hidden" name="gsale" value="${goods.gsale}" /> 
+			<input type="hidden" name="gdoption" value="${gdoutput.gdoption}" />
+			<input type="hidden" name="gdcount" value="${gdcount}" />					
 			<div class="order-info">
 				<ul class="order-info-box">
 					<li>무이자할부가 적용되지 않은 상품과 무이자할부가 가능한 상품을 동시에 구매할 경우 전체 주문 상품 금액에
@@ -705,8 +778,9 @@
 								success : function(json) {
 									console.log(json);
 									if (json.rt == "OK") {
-					    				window.location = "${pageContext.request.contextPath}/myInfo/order_list.do?memno=" + json.orders.memno;
-								}
+										window.location = "${pageContext.request.contextPath}/myInfo/order_list.do?memno="
+												+ json.address.memno;
+									}
 								}
 							});
 		});

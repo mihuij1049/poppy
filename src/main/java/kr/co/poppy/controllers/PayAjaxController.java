@@ -66,7 +66,8 @@ public class PayAjaxController {
 			@RequestParam(value = "memno", defaultValue = "0") int memno,
 			@RequestParam(value = "addrno", defaultValue = "0") int addrno,
 			@RequestParam(value = "gddetailno", defaultValue = "0") int gddetailno,
-			@RequestParam(value = "gdoptions", defaultValue = "") String gdoptions) {
+			@RequestParam(value = "gdoptions", defaultValue = "") String gdoptions,
+			@RequestParam(value = "gdcount", defaultValue = "0") int gdcount) {
 
 		/** 유효성 검사 */
 		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
@@ -149,6 +150,7 @@ public class PayAjaxController {
 		mySession.setAttribute("userInfo", myInfo);
 
 		/** View 처리 */
+		model.addAttribute("gdcount", gdcount);
 		model.addAttribute("output", output);
 		model.addAttribute("item", output2);
 		model.addAttribute("input3", input3);

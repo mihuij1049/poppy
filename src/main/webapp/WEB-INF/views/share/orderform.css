@@ -826,6 +826,17 @@
  /** 결제수단 끝 */
 
  /** 적립 혜택 시작 */
+ #headingSix .collapsed {
+     position: relative;
+ }
+ 
+ #headingSix .panel-title #poi {
+    float:right;
+    position: absolute;
+    right: 40px;
+    color: #ff6261;
+ }
+ 
  .save-point {
      padding: 25px;
      padding-bottom: 15px;

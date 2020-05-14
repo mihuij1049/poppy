@@ -21,10 +21,14 @@ import kr.co.poppy.model.Address;
 import kr.co.poppy.model.Goods;
 import kr.co.poppy.model.Goodsdetail;
 import kr.co.poppy.model.Members;
+import kr.co.poppy.model.Orderdetail;
+import kr.co.poppy.model.Orders;
 import kr.co.poppy.model.Points;
 import kr.co.poppy.service.AddressService;
 import kr.co.poppy.service.GoodsService;
 import kr.co.poppy.service.GoodsdetailService;
+import kr.co.poppy.service.OrderdetailService;
+import kr.co.poppy.service.OrdersService;
 import kr.co.poppy.service.PointsService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,6 +47,15 @@ public class PayRestController {
 	/** Service 패턴 구현체 주입 */
 	@Autowired
 	AddressService addressService;
+	
+	@Autowired
+	OrdersService ordersService;
+	
+	@Autowired
+	OrderdetailService orderdetailService;
+	
+	@Autowired
+	PointsService pointsService;
 	
 	/** 주문결제페이지 */
 	@RequestMapping(value = "/pay", method = RequestMethod.GET)
@@ -75,14 +88,36 @@ public class PayRestController {
 
 	/** 주소 작성 폼에 대한 action 페이지 */
 	@RequestMapping(value = "/pay", method = RequestMethod.POST)
-	public Map<String, Object> addrAdd_ok(@RequestParam(value = "odname", defaultValue = "") String odname,
+	public Map<String, Object> addrAdd_ok(
+			/** 주문 INSERT */
+			@RequestParam(value = "orderno", defaultValue = "0") int orderno,
+			@RequestParam(value = "odmsg", defaultValue = "") String odmsg,
+			@RequestParam(value = "paytype", defaultValue = "") String paytype,
+			@RequestParam(value = "odstatus", defaultValue = "") String odstatus,
+			@RequestParam(value = "deliprice", defaultValue = "0") int deliprice,
+			@RequestParam(value = "regdate", required = false) String regdate,
+			@RequestParam(value = "editdate", required = false) String editdate,
+			/** 주문상품 INSERT */
+			@RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
+			@RequestParam(value = "gcode", defaultValue = "") String gcode,
+			@RequestParam(value = "gname", defaultValue = "") String gname,
+			@RequestParam(value = "ginfo", defaultValue = "") String ginfo,
+			@RequestParam(value = "pay-price", defaultValue = "0") int pay_price,
+			@RequestParam(value = "gsale", defaultValue = "0") int gsale,
+			@RequestParam(value = "gdate", required = false) String gdate,
+			@RequestParam(value = "cate1", defaultValue = "") String cate1,
+			@RequestParam(value = "cate2", defaultValue = "") String cate2,
+			@RequestParam(value = "gdoption", defaultValue = "") String gdoption,
+			@RequestParam(value = "gdcount", defaultValue = "0") int gdcount,
+			/** 주소 INSERT */
+			@RequestParam(value = "addrno", defaultValue = "0") int addrno,
+			@RequestParam(value = "odname", defaultValue = "") String odname,
 			@RequestParam(value = "odphone", defaultValue = "") String odphone,
 			@RequestParam(value = "odemail", defaultValue = "") String odemail,
 			@RequestParam(value = "zcode", defaultValue = "") Integer zcode,
 			@RequestParam(value = "addr1", defaultValue = "") String addr1,
 			@RequestParam(value = "addr2", defaultValue = "") String addr2,
-			@RequestParam(value = "regdate", required = false) String regdate,
-			@RequestParam(value = "editdate", required = false) String editdate) {
+			@RequestParam(value = "memno", defaultValue = "0") int memno) {
 
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
 		// 일반 문자열 입력 컬럼 --> String으로 파라미터가 선언되어 있는 경우는 값이 입력되지 않으면 빈 문자열로 처리된다.
@@ -115,24 +150,56 @@ public class PayRestController {
 
 		/** 2) 데이터 저장하기 */
 		// 저장할 값들을 Beans에 담는다.
-		Address save = new Address();
-		save.setOdname(odname);
-		save.setOdphone(odphone);
-		save.setOdemail(odemail);
-		save.setZcode(zcode);
-		save.setAddr1(addr1);
-		save.setAddr2(addr2);
-		save.setRegdate("now()");
-		save.setEditdate("now()");
-		save.setMemno(myInfo.getMemno());
+		Orders order = new Orders();
+		order.setOrderno(orderno);
+		order.setOdmsg(odmsg);
+		order.setPaytype(paytype);
+		order.setOdstatus(odstatus);
+		order.setDeliprice(deliprice);
+		order.setRegdate("now()");
+		order.setEditdate("now()");
+		order.setMemno(myInfo.getMemno());
+		order.setAddrno(addrno);
+		
+		Orderdetail oddetail = new Orderdetail();
+		oddetail.setOrderdetailno(goodsno);
+		oddetail.setOdgcode(gcode);
+		oddetail.setOdgname(gname);
+		oddetail.setOdgprice(pay_price);
+		oddetail.setOdgsale(gsale);
+		oddetail.setOdgdate(gdate);
+		oddetail.setOdcate1(cate1);
+		oddetail.setOdcate2(cate2);
+		oddetail.setOdgdoption(gdoption);
+		oddetail.setOdgqty(gdcount);
+		oddetail.setRegdate("now()");
+		oddetail.setEditdate("now()");
+		oddetail.setOrderno(orderno);
+		
+		Address address = new Address();
+		address.setAddrno(addrno);
+		address.setOdname(odname);
+		address.setOdphone(odphone);
+		address.setOdemail(odemail);
+		address.setZcode(zcode);
+		address.setAddr1(addr1);
+		address.setAddr2(addr2);
+		address.setRegdate("now()");
+		address.setEditdate("now()");
+		address.setMemno(myInfo.getMemno());
 
 		// 저장된 결과를 조회하기 위한 객체
-		Address saves = null;
-
+		Orders Osave = null;
+		Orderdetail Odsave = null;
+		Address Asave = null;
+	
 		try {
 			// 데이터 저장
 			// --> 데이터 저장에 성공하면 파라미터로 전달하는 save 객체에 PK값이 저장된다.
-			addressService.addAddress(save);
+			ordersService.addOrders(order);
+			orderdetailService.addOrderdetail(oddetail);
+			addressService.addAddress(address);
+		
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
@@ -142,7 +209,9 @@ public class PayRestController {
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
 		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야 한다.
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("orders", save);
+		map.put("order", order);
+		map.put("oddetail", oddetail);
+		map.put("address", address);	
 		return webHelper.getJsonData(map);
 	}
 	

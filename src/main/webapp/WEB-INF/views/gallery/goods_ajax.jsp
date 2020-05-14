@@ -37,7 +37,7 @@
 			<fieldset class="btn-group">
 				<button type="button" class="like-btn" aria-label="좋아요">
 					<span class="glyphicon glyphicon-heart-empty like"></span> <span
-						class="like-txt">좋아요</span> <span class="like-count ct">18</span>
+						class="like-txt">좋아요</span> <span class="like-count ct">${heart}</span>
 				</button>
 				<button type="button" class="share-btn">
 					<span class="glyphicon glyphicon-link"></span> <span>공유하기</span>
@@ -47,8 +47,10 @@
 			<div class="prd-title">
 				<div class="prd-name">${goods.gname}</div>
 				<div class="prd-price">
-					<strike class="price"><fmt:formatNumber value="${goods.gprice}" pattern="#,###" /></strike><b>원</b><br /> <b
-						class="sale"><fmt:formatNumber value="${goods.gsale}" pattern="#,###" /></b><b>원</b>
+					<strike class="price"><fmt:formatNumber
+							value="${goods.gprice}" pattern="#,###" /></strike><b>원</b><br /> <b
+						class="sale"><fmt:formatNumber value="${goods.gsale}"
+							pattern="#,###" /></b><b>원</b>
 				</div>
 				<div class="prd-delivery">
 					<ul>
@@ -89,8 +91,8 @@
 										</button>
 									</p>
 								</td>
-								<td class="add-price"><span id=add-price>${goods.gsale}</span>
-									<span>원</span></td>
+								<td class="add-price"><span id=add-price><fmt:formatNumber
+											value="${goods.gsale}" pattern="#,###" /></span> <span>원</span></td>
 								<td class="cencel">
 									<div class="cencel-btn">
 										<button type="button" class="btn" id="prd-del">
@@ -105,8 +107,9 @@
 				<div class="prd-total">
 					<strong>총 상품금액(수량)</strong>
 					<div class="total-price">
-						<b id="total-price"><fmt:formatNumber value="${goods.gsale}" pattern="#,###" /></b> <b>원</b> <b>(</b><b
-							id="price-count" name="gdcount">1</b><b>개)</b>
+						<b id="total-price"><fmt:formatNumber value="${goods.gsale}"
+								pattern="#,###" /></b> <b>원</b> <b>(</b><input type="number" id="price-count"
+							name="gdcount" value="1" min="1" max="99" style="width:12%; text-align:center; font-weight:bold;"/><b>개)</b>
 					</div>
 				</div>
 				<div class="prd-action">
@@ -117,11 +120,11 @@
 						<button type="button"
 							onclick="location.href='${pageContext.request.contextPath}/myInfo/like_goods.do'"
 							id="action-like">관심상품</button>
-						<input type="hidden" name="goodsno" value="${goods.goodsno}" /> <input
-							type="hidden" name="memno" value="${userInfo.memno}" />
 						<button type="submit"
 							onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do'"
 							id="action-orderform">구매하기</button>
+						<input type="hidden" name="goodsno" value="${goods.goodsno}" /> 
+						<input type="hidden" name="memno" value="${userInfo.memno}" />
 					</div>
 				</div>
 			</div>
@@ -151,12 +154,14 @@
 								</tr>
 								<tr>
 									<th><span>소비자가</span></th>
-									<td><span> <b><fmt:formatNumber value="${goods.gprice}" pattern="#,###" />원</b>
+									<td><span> <b><fmt:formatNumber
+													value="${goods.gprice}" pattern="#,###" />원</b>
 									</span></td>
 								</tr>
 								<tr>
 									<th><span>판매가</span></th>
-									<td><span> <b><fmt:formatNumber value="${goods.gsale}" pattern="#,###" />원</b>
+									<td><span> <b><fmt:formatNumber
+													value="${goods.gsale}" pattern="#,###" />원</b>
 									</span></td>
 								</tr>
 								<tr>
@@ -274,7 +279,7 @@
 								<%-- 이전 그룹으로 이동 가능하다면? --%>
 								<c:when test="${pageData.prevPage > 0}">
 									<%-- 이동할 URL 생성 --%>
-									<c:url value="/gallery_ajax/goods.do" var="prevPageUrl">
+									<c:url value="/gallery_ajax/goods.do?goodsno=${goods.goodsno}" var="prevPageUrl">
 										<c:param name="page" value="${pageData.prevPage}" />
 									</c:url>
 									<a href="${prevPageUrl}" class="prevok">≪</a>
@@ -287,7 +292,7 @@
 							<c:forEach var="i" begin="${pageData.startPage}"
 								end="${pageData.endPage}" varStatus="status">
 								<%-- 이동할 URL 생성 --%>
-								<c:url value="/gallery_ajax/goods.do" var="pageUrl">
+								<c:url value="/gallery_ajax/goods.do?goodsno=${goods.goodsno}" var="pageUrl">
 									<c:param name="page" value="${i}" />
 								</c:url>
 
@@ -308,7 +313,7 @@
 								<%-- 다음 그룹으로 이동 가능하다면? --%>
 								<c:when test="${pageData.nextPage > 0}">
 									<%-- 이동할 URL 생성 --%>
-									<c:url value="/gallery_ajax/goods.do" var="nextPageUrl">
+									<c:url value="/gallery_ajax/goods.do?goodsno=${goods.goodsno}" var="nextPageUrl">
 										<c:param name="page" value="${pageData.nextPage}" />
 									</c:url>
 									<a href="${nextPageUrl}" class="nextok">≫</a>
@@ -391,7 +396,7 @@
 										<%-- 이전 그룹으로 이동 가능하다면? --%>
 										<c:when test="${pageData.prevPage > 0}">
 											<%-- 이동할 URL 생성 --%>
-											<c:url value="/gallery_ajax/goods.do" var="prevPageUrl">
+											<c:url value="/gallery_ajax/goods.do?goodsno=${goods.goodsno}" var="prevPageUrl">
 												<c:param name="page" value="${pageData.prevPage}" />
 											</c:url>
 											<a href="${prevPageUrl}" class="prevok">≪</a>
@@ -405,7 +410,7 @@
 									<c:forEach var="i" begin="${pageData.startPage}"
 										end="${pageData.endPage}" varStatus="status">
 										<%-- 이동할 URL 생성 --%>
-										<c:url value="/gallery_ajax/goods.do" var="pageUrl">
+										<c:url value="/gallery_ajax/goods.do?goodsno=${goods.goodsno}" var="pageUrl">
 											<c:param name="page" value="${i}" />
 										</c:url>
 
@@ -427,7 +432,7 @@
 										<%-- 다음 그룹으로 이동 가능하다면? --%>
 										<c:when test="${pageData.nextPage > 0}">
 											<%-- 이동할 URL 생성 --%>
-											<c:url value="/gallery_ajax/goods.do" var="nextPageUrl">
+											<c:url value="/gallery_ajax/goods.do?goodsno=${goods.goodsno}" var="nextPageUrl">
 												<c:param name="page" value="${pageData.nextPage}" />
 											</c:url>
 											<a href="${nextPageUrl}" class="nextok">≫</a>
@@ -592,41 +597,41 @@
 								$(".goods-select option:selected"));
 						if (index) {
 							jQuery(".select-prd").show();
-							acount = 0;
+							counted = 0;
 
 						}
 					});
 
 			var counter = 1;
 			var counted = $("#count").val();
-			var acount = parseInt(counted);
-			var price = $(".sale").text();
-			var total_price = $("#total-price").text();
+			var price = parseInt($(".sale").html());
+			var total_price = price * counter;
 
 			$(".btnUp").click(function(e) {
 				counter++;
 
 				$("#count").val(counter);
-				$("#price-count").html(counter);
-				$("#add-price").html(price * counter)
-				$("#total-price").html(price * counter);
+				$("#price-count").val(counter);
+				$("#add-price").html(total_price.toLocaleString());
+				$("#total-price").html(total_price.toLocaleString());
 			});
 
 			$(".btnDown").click(function(e) {
 				if (counter < 2) {
 					alert("최소 주문수량은 1개 입니다.");
-					return;
+					return false;
 				}
 				counter--;
 
 				$("#count").val(counter);
-				$("#price-count").html(counter);
-				$("#add-price").html(price * counter)
-				$("#total-price").html(price * counter);
+				$("#price-count").val(counter);
+				$("#add-price").html(total_price)
+				$("#total-price").html(total_price);
 			});
 
-			$(document).on("click", "#prd-del", function() {
-				$(this).parents(".select-prd").hide();
+			$(document).on("click", "#prd-del", function(e) {
+				e.preventDefault();
+				$(this).parents(".select-prd").remove();
 				$("#price-count").html(counted);
 				$("#total-price").html(total_price);
 				$("#count").val(counted);
