@@ -375,9 +375,7 @@ public class KRTController {
 		String originName = item.getOrginName();
 		int pos = originName.lastIndexOf(".");
 		String ext = originName.substring(pos + 1);
-
-		/** 5) view 처리 */
-		// 텍스트 정보를 View로 전달한다.
+		String fileName = originName.substring(0, pos);
 
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
 		// 포토리뷰 제목은 필수 항목 이므로 입력 여부를 검사
@@ -397,7 +395,6 @@ public class KRTController {
 		bbs.setMemno(myInfo.getMemno());
 		bbs.setGoodsno(1);
 
-		System.out.println("===============" + bbs.getBbsno());
 		try {
 			// 데이터 저장
 			bbsService.addBbs(bbs);
@@ -405,19 +402,18 @@ public class KRTController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-		System.out.println("===============" + item.getFileSize());
-		System.out.println("===============" + bbs.getBbsno());
+
 		Imgs imgs = new Imgs();
-		imgs.setImgname("primg" + bbs.getBbsno());
+		imgs.setImgname(fileName);
 		imgs.setImgext(ext);
 		imgs.setImgpath("/upload/img/");
-		imgs.setImgsize(3);
+		imgs.setImgsize((int) item.getFileSize());
 		imgs.setImgtype("C");
 		imgs.setRegdate(date);
 		imgs.setEditdate(date);
 		imgs.setGoodsno(1);
 		imgs.setBbsno(bbs.getBbsno());
-		
+
 		try {
 			// 데이터 저장
 			imgService.addImgs(imgs);

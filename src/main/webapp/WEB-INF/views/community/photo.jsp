@@ -40,7 +40,7 @@
 					<a href="${pageContext.request.contextPath}/gallery/goods.do">
 						${output.bbstitle}</a><br>
 					<div class="star">
-						<p>${output.rvlike}(.0)</p>
+						<p>${output.rvlike}</p>
 						<br>
 					</div>
 					<div class="writer">
