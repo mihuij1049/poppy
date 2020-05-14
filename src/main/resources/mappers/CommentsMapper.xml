@@ -70,7 +70,7 @@
 	<!-- 데이터 갱신을 위한 기능 정의 -->
 	<update id="updateItem"
 		parameterType="kr.co.poppy.model.Comments">
-		UPDATE comments SET cmtcontent=#{cmtcontent}, editdate=#{editdate}
+		UPDATE comments SET cmtcontent=#{cmtcontent}, editdate=now()
 		WHERE cmtno=#{cmtno};
 	</update>
 </mapper>

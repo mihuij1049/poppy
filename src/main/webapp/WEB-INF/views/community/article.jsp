@@ -9,20 +9,18 @@
 <html>
 <style type="text/css">
 .cannot {
-	text-align: center;
-	width: auto;
-	color: white;
-}
-
-.cannotbox {
+display: block;
+	width: 100%;
 	border: 1px solid #ffc7c1;
 	background: #ffc7c1;
-	width: auto;
-	height: 50px;
+	padding:10px;
+	color:white;
 }
 
 .nai {
 	padding-top: 15px;
+	padding-left: 10px;
+	padding-right: 10px;
 	margin-bottom: 50px;
 }
 
@@ -35,13 +33,14 @@
 }
 
 /** 동적 생성된 textaread */
-
 .editForm {
-width:75%;
+	width: 75%;
 }
+
 .all {
-width:100%;
+	width: 100%;
 }
+
 .cmtcontent {
 	width: 65%;
 	margin-right: 10px;
@@ -66,10 +65,11 @@ width:100%;
 .arbuttons {
 	float: right;
 }
+
 #editTextarea {
-width: 120%;
-overflow-x: hedden;
-overflow-y: auto;
+	width: 120%;
+	overflow-x: hedden;
+	overflow-y: auto;
 }
 </style>
 <head>
@@ -94,7 +94,7 @@ overflow-y: auto;
 					공지사항
 					</c:when>
 							<c:otherwise>
-					QnA
+					Q&A
 					</c:otherwise>
 						</c:choose>
 					</b>
@@ -143,7 +143,7 @@ overflow-y: auto;
 								</a>
 								<a
 									href="${pageContext.request.contextPath}/community/editqna.do?bbsno=${output.bbsno}">
-									<button type="submit" class="btn btn-sm btn-edit" >수정</button>
+									<button type="submit" class="btn btn-sm btn-edit">수정</button>
 								</a>
 
 
@@ -189,16 +189,17 @@ overflow-y: auto;
 												<small class="small"><span>${item.username} |
 												</span><span>${item.regdate}</span></small>
 											</div>
-											
+
 											<div class="all">
-											<!---------------- 동적생성 영역 --------------------->
+												<!---------------- 동적생성 영역 --------------------->
 												<div class="cmtcontent">
 													<span class="span">${item.cmtcontent}</span><br />
 												</div>
 												<div class="arbuttons">
 													<c:if test="${userInfo.username==item.username}">
 														<button type="submit" class="btn btn-sm btn-editar"
-															id="btn-editar" data-cmtno="${item.cmtno}" data-bbsno="${item.bbsno}">수정</button>
+															id="btn-editar" data-cmtno="${item.cmtno}"
+															data-bbsno="${item.bbsno}">수정</button>
 														<button type="button"
 															class="btn btn-inverse btn-sm btn-delar" id="btn-delar"
 															data-cmtno="${item.cmtno}" data-bbsno="${item.bbsno}">삭제</button>
@@ -206,7 +207,7 @@ overflow-y: auto;
 												</div>
 												<!---------------- // 동적생성 영역 --------------------->
 											</div>
-											
+
 										</div>
 									</c:forEach>
 								</c:otherwise>
@@ -230,12 +231,14 @@ overflow-y: auto;
 							</div>
 							<textarea class="comment_area" id="comment_area"
 								name="cmtcontent"></textarea>
-							<button type="submit" class="enter btn btn-sm" id="enter" >등록</button>
+							<button type="submit" class="enter btn btn-sm" id="enter">등록</button>
 						</form>
 					</c:when>
 					<c:otherwise>
 						<div class="cannotbox">
+
 							<b class="cannot">작성 권한이 없습니다. 로그인 후 이용 부탁드립니다.</b>
+
 						</div>
 					</c:otherwise>
 				</c:choose>
@@ -328,7 +331,7 @@ overflow-y: auto;
 					$(this).next().text("취소");
 					$(this).next().attr("id", "cancelar");
 					$("#cancelar").on("click", function(e) {
-						
+						$("#editForm").remove();
 						$(this).text("삭제");
 						$(this).prev().text("수정");
 						$(this).next().attr("id", "btn-delar");
@@ -344,13 +347,10 @@ overflow-y: auto;
 				 		  let bbsno= current.data('bbsno');
 				 		 var aaa = $("#editTextarea").val();
 				 		 console.log(aaa);
-				 		 $('#editTextarea').remove();
-				 		  if(!confirm("댓글을 수정하시겠습니까?")) {
-				 			  return false;
-				 		  }
 						$.put("${pageContext.request.contextPath}/community/article_cmtEdit", {
 			                "cmtno": cmtno,
-			                "cmtcontent": aaa
+			                "cmtcontent": aaa,
+			                "bbsno": bbsno
 			            }, function(json) {
 			                if (json.rt == "OK") {
 			                    alert("수정되었습니다.");

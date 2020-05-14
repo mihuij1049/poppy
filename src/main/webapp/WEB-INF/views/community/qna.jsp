@@ -11,11 +11,16 @@
 <style type="text/css">
 .customer_pass {
 	position: fixed;
-	left: 24%;
+	left: 33%;
 	margin-left: -20%;
 	top: 55%;
 	margin-top: -150px;
 	display: none;
+	border: 1px solid #ffc7c1;
+	border-radius: 10px;
+	background: #ffc7c1;
+	text-align: center;
+	padding: 20px 20px;
 }
 
 
@@ -32,7 +37,7 @@
 		<div class="page-title clearfix">
 			<h4>
 				<b> <a href="#" onclick="history.back(); return false;"><i
-						class="glyphicon glyphicon-chevron-left"></i></a>QnA
+						class="glyphicon glyphicon-chevron-left"></i></a>Q&A
 				</b>
 			</h4>
 		</div>
