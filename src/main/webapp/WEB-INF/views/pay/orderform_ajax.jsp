@@ -494,7 +494,7 @@
 					</span>원 <span>결제하기</span>
 				</button>
 			</div>
-			<input type="hidden" name="odmasg" value="" />
+			<input type="hidden" name="odmsg" value="" />
 			<input type="hidden" name="paytype" value="" />
 			<input type="hidden" name="odstatus" value="" /> 
 			<input type="hidden" name="deliprice" value="" />
