@@ -58,7 +58,7 @@
 										<b>${item.gname}</b><br>
 										<div class="plz-opt">
 											<select id="select-option">
-												<option value="opt">옵션을 선택해 주세요.</option>
+												<option class="sel-opt" data-goodsnum="${item.goodsno }">옵션을 선택해 주세요.</option>
 											</select>
 										</div>
 										<div class="qty">
@@ -316,6 +316,23 @@
 			console.log(goodsno);
 			console.log(opt);
 			console.log(qty);
+		});
+		
+		$(".plz-opt").on("click", "#select-option", function(e) {
+			let current = $(this);
+			current.attr("id", "select-on");
+			let goodsno = current.children(".sel-opt").data("goodsnum");
+			$.get("${pageContext.request.contextPath}/myInfo/select_opt",
+					{ "goodsnum" : goodsno },
+					function(json) {
+						var opt_tag = $("<option></option>");
+						for (var i=0;i<json.item.length;i++) {
+							var option = json.item[i].gdoption;
+							opt_tag.attr("value", json.item[i].gddetailno);
+							opt_tag.text(option);
+						}
+						current.append(opt_tag);
+					});
 		});
 	</script>
 

@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
+import kr.co.poppy.model.Goodsdetail;
 import kr.co.poppy.model.Heart;
 import kr.co.poppy.model.Members;
+import kr.co.poppy.service.GoodsdetailService;
 import kr.co.poppy.service.HeartService;
 import kr.co.poppy.service.MembersService;
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +40,8 @@ public class MyInfoRestController {
 	MembersService membersService;
 	@Autowired
 	HeartService heartService;
+	@Autowired
+	GoodsdetailService goodsDetailService;
 
 	/**
 	 * 삭제 처리
@@ -105,9 +109,11 @@ public class MyInfoRestController {
 		return webHelper.getJsonData();
 	}
 
+	/** ID 중복확인과 Email 중복 확인을 검사 */
+
 	@RequestMapping(value = "/myInfo/same_check", method = RequestMethod.GET)
-	public Map<String, Object> id_check(@RequestParam(value="userid", required=false) String userid,
-			@RequestParam(value="useremail", required=false) String useremail) {
+	public Map<String, Object> id_check(@RequestParam(value = "userid", required = false) String userid,
+			@RequestParam(value = "useremail", required = false) String useremail) {
 
 		/** 요청 받은 파라미터의 유효성 검사 */
 		if (userid != null) {
@@ -119,9 +125,8 @@ public class MyInfoRestController {
 			} catch (Exception e) {
 				return webHelper.getJsonData(200, "Fail", null);
 			}
-			
-		}
-		else if (useremail != null) {
+
+		} else if (useremail != null) {
 			Members input = new Members();
 			input.setUseremail(useremail);
 			Members output = null;
@@ -130,9 +135,33 @@ public class MyInfoRestController {
 			} catch (Exception e) {
 				return webHelper.getJsonData(200, "Fail", null);
 			}
-			
+
 		}
 		return webHelper.getJsonData();
 
 	}
+
+	@RequestMapping(value = "/myInfo/select_opt", method = RequestMethod.GET)
+	public Map<String, Object> select_opt(@RequestParam(value = "goodsnum", defaultValue = "0") int goodsno) {
+
+		if (goodsno == 0) {
+			return webHelper.getJsonWarning("결과없음");
+		}
+		Goodsdetail gd = new Goodsdetail();
+		gd.setGoodsno(goodsno);
+
+		List<Goodsdetail> output = null;
+
+		try {
+			output = goodsDetailService.getGoodsdetailList(gd);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			return webHelper.getJsonWarning("결과없음");
+		}
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("item", output);
+			
+		return webHelper.getJsonData(data);
+	}
+	
 }
