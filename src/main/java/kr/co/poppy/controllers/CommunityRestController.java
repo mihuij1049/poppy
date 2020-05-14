@@ -84,15 +84,14 @@ public class CommunityRestController {
 		return webHelper.getJsonData(map);
 	}
 
-	@RequestMapping(value = "/community/article_cmtEdit", method = {RequestMethod.GET, RequestMethod.PUT})
-	public Map<String, Object> put(@RequestParam(value = "cmtno", defaultValue = "0") int cmtno,
+	@RequestMapping(value = "/community/article_cmtEdit", method = RequestMethod.PUT)
+	public Map<String, Object> put(
+			@RequestParam(value = "cmtno", defaultValue = "0") int cmtno,
 			@RequestParam(value = "cmtcontent", required = false) String cmtcontent,
 			@RequestParam(value = "editdate", required = false) String editdate,
 			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
 		/** 1) 유효성 검사 */
-		if (cmtcontent.equals("")) {
-			return webHelper.getJsonWarning("댓글을 입력하세요");
-		}
+	
 
 		/** 2) 데이터 수정하기 */
 		Comments input = new Comments();

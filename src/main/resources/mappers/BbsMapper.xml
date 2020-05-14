@@ -17,6 +17,7 @@
 		<result property="editdate" column="editdate" />
 		<result property="memno" column="memno" />
 		<result property="goodsno" column="goodsno" />
+		<result property="cmtcount" column="cmtcount" />
 	</resultMap>
 
 
@@ -123,7 +124,7 @@
 	<insert id="insertItem" parameterType="kr.co.poppy.model.Bbs"
 		useGeneratedKeys="true" keyProperty="bbsno">
 		INSERT INTO bbs 
-		(bbstype, bbstitle, bbscontent, qnasec, qnapw, rvlike regdate, editdate, memno, goodsno) 
+		(bbstype, bbstitle, bbscontent, qnasec, qnapw, rvlike, regdate, editdate, memno, goodsno) 
 		VALUES (#{bbstype}, #{bbstitle}, #{bbscontent}, #{qnasec}, #{qnapw}, #{rvlike}, #{regdate}, #{editdate}, #{memno}, #{goodsno})
 	</insert>
 

@@ -46,7 +46,7 @@ public class Bbs {
 	private String imgext;
 	
 	/** 게시판 목록에 댓글 갯수를 위한 변수 */
-	private int cmtCount;
+	private int cmtcount;
 	
 	 // 3) 페이지 구현을 위한 static 변수
     /** LIMIT 절에서 사용할 조회 시작 위치 */

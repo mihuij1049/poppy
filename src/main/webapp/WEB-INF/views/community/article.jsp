@@ -143,7 +143,7 @@ overflow-y: auto;
 								</a>
 								<a
 									href="${pageContext.request.contextPath}/community/editqna.do?bbsno=${output.bbsno}">
-									<button type="submit" class="btn btn-sm btn-edit">수정</button>
+									<button type="submit" class="btn btn-sm btn-edit" >수정</button>
 								</a>
 
 
@@ -198,7 +198,7 @@ overflow-y: auto;
 												<div class="arbuttons">
 													<c:if test="${userInfo.username==item.username}">
 														<button type="submit" class="btn btn-sm btn-editar"
-															id="btn-editar">수정</button>
+															id="btn-editar" data-cmtno="${item.cmtno}" data-bbsno="${item.bbsno}">수정</button>
 														<button type="button"
 															class="btn btn-inverse btn-sm btn-delar" id="btn-delar"
 															data-cmtno="${item.cmtno}" data-bbsno="${item.bbsno}">삭제</button>
@@ -230,7 +230,7 @@ overflow-y: auto;
 							</div>
 							<textarea class="comment_area" id="comment_area"
 								name="cmtcontent"></textarea>
-							<button type="submit" class="enter btn btn-sm" id="enter">등록</button>
+							<button type="submit" class="enter btn btn-sm" id="enter" >등록</button>
 						</form>
 					</c:when>
 					<c:otherwise>
@@ -277,7 +277,7 @@ overflow-y: auto;
  		   e.preventDefault();
  		   let current = $(this);
  		   let cmtno = current.data('cmtno');
- 		   let bbsno= current.data('bbsno')
+ 		  let bbsno = current.data('bbsno');
  		   //삭제 확인
  		   if(!confirm("댓글을 삭제하시겠습니까?")) {
  			   return false;
@@ -313,6 +313,7 @@ overflow-y: auto;
                 	$(this).parent().prev().append(comment_form);
 					// set attribute <form>
 					comment_form.attr("id", "editForm");
+					comment_form.attr("method", "PUT");
 					comment_form.attr("class", "editForm");
 					comment_form.attr("action", "${pageContext.request.contextPath}/community/article_cmtEdit"); 
 					
@@ -320,14 +321,14 @@ overflow-y: auto;
 					var comment_textarea = $("<textarea></textarea>");
 					$(comment_form).append(comment_textarea);
 					comment_textarea.attr("id", "editTextarea");
-					
+				
 					// 생성된 태그에 원래의 댓글 내용 original 추가하기
 					comment_textarea.html(original);
 					$(this).text("등록");
 					$(this).next().text("취소");
 					$(this).next().attr("id", "cancelar");
 					$("#cancelar").on("click", function(e) {
-						$('#editTextarea').remove();
+						
 						$(this).text("삭제");
 						$(this).prev().text("수정");
 						$(this).next().attr("id", "btn-delar");
@@ -338,23 +339,32 @@ overflow-y: auto;
 				} else {
 					var result = confirm("수정하시겠습니까?");
 					if (result) {
-						$("#editForm").ajaxForm({
-				            // 전송 메서드 지정
-				            method: "PUT",
-				            // 서버에서 200 응답을 전달한 경우 실행됨
-				            success: function(json) {
-				                console.log(json);
-			                // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
+						let current = $(this);
+						let cmtno = current.data('cmtno');
+				 		  let bbsno= current.data('bbsno');
+				 		 var aaa = $("#editTextarea").val();
+				 		 console.log(aaa);
+				 		 $('#editTextarea').remove();
+				 		  if(!confirm("댓글을 수정하시겠습니까?")) {
+				 			  return false;
+				 		  }
+						$.put("${pageContext.request.contextPath}/community/article_cmtEdit", {
+			                "cmtno": cmtno,
+			                "cmtcontent": aaa
+			            }, function(json) {
 			                if (json.rt == "OK") {
-			                	window.location = "${pageContext.request.contextPath}/community/article.do?bbstype=B" + "&bbsno=" + json.item.bbsno; 
+			                    alert("수정되었습니다.");
+			                    // 삭제 완료 후 목록 페이지로 이동
+			                    window.location="${pageContext.request.contextPath}/community/article.do?bbstype=B&bbsno=" + bbsno;
 			                }
-			            }
-				        }); 
+			            });
 						$(this).text("수정");
 						$(this).next().text("삭제");
 						$(this).next().attr("id", "cancelar");
+			                
+			            
 					}
-				   }
+				}
 			});
 			});
     </script>
