@@ -61,7 +61,7 @@
 					<div width="50%">
 						<div class="pr_box">
 							<div class="pr_in_box">
-								<a href="${pageContext.request.contextPath}/community/photo_rv.do"> <img alt="사진"
+								<a href="${pageContext.request.contextPath}/community/photo.do"> <img alt="사진"
 									src="${item.imgpath}${item.imgname}.${item.imgext}" class="img_size" />
 									<div>
 										<h5>
@@ -88,7 +88,7 @@
 					<div width="50%">
 						<div class="pr_box">
 							<div class="pr_in_box">
-								<a href="${pageContext.request.contextPath}/community/photo_rv.do"> <img alt="사진"
+								<a href="${pageContext.request.contextPath}/community/photo.do"> <img alt="사진"
 									src="${item.imgpath}${item.imgname}.${item.imgext}" class="img_size" />
 									<div>
 										<h5>
