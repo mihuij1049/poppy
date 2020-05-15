@@ -72,7 +72,8 @@
 										<div class="pr_content">${item.bbscontent}</div>
 									</div>
 								</a>
-								<button type="submit" class="btn btn-inverse insert-one" id="insert-one" data-rvheartno="${item.rvheartno}" data-goodsno="${item.goodsno}"></i> 추천
+								<button type="submit" class="btn btn-inverse insert-one" id="insert-one" data-bbsno="${item.bbsno}" data-rvheartno="${item.rvheartno}">
+								추천
 								</button>
 							</div>
 						</div>
@@ -99,7 +100,7 @@
 										<div class="pr_content">${item.bbscontent}</div>
 									</div>
 								</a>
-								<button type="submit" class="btn btn-inverse insert-one" id="insert-one" data-memno="${item.memno}" data-goodsno="${item.goodsno}">
+								<button type="submit" class="btn btn-inverse insert-one" id="insert-one" data-memno="${item.memno}" data-bbsno="${item.bbsno}">
 									<i class="glyphicon glyphicon-heart icon_size"></i> 추천
 								</button>
 							</div>
@@ -134,9 +135,9 @@
         	window.location="${pageContext.request.contextPath}/member/login.do";
         } else {
         
-       	let goodsno = $(this).data("goodsno");
+       	let bbsno = $(this).data("bbsno");
         $.post("${pageContext.request.contextPath}/community/in_item",
-              { "goodsno" : goodsno },
+              { "bbsno" : bbsno },
                    function(json) {
                      if(json.rt=="OK");
                   }

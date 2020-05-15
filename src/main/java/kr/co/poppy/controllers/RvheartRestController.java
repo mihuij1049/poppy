@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
-import kr.co.poppy.model.Heart;
 import kr.co.poppy.model.Members;
 import kr.co.poppy.model.Rvheart;
-import kr.co.poppy.service.GoodsService;
 import kr.co.poppy.service.MembersService;
 import kr.co.poppy.service.RvheartService;
 import lombok.extern.slf4j.Slf4j;
@@ -60,7 +58,6 @@ public class RvheartRestController {
 				return webHelper.getJsonError(e.getLocalizedMessage());
 			}
 		}
-		
-		return null;
+		return webHelper.getJsonData();
 	}
 }
