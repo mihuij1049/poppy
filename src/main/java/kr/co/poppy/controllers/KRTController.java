@@ -313,11 +313,9 @@ public class KRTController {
 
 	/** 작성 폼에 대한 action 페이지 */
 	@RequestMapping(value = "/community/photo_wri_ok.do", method = RequestMethod.POST)
-	public ModelAndView photo_wri_ok(Model model, @RequestParam(value = "bbssno", defaultValue = "0") int bbssno,
-			@RequestParam(value = "bbstitle", required = false) String bbstitle,
+	public ModelAndView photo_wri_ok(Model model, @RequestParam(value = "bbstitle", required = false) String bbstitle,
 			@RequestParam(value = "rvlike", required = false) String rvlike,
 			@RequestParam(value = "bbscontent", required = false) String bbscontent,
-			@RequestParam(value = "memno", defaultValue = "0") int memno,
 			@RequestParam(value = "goodsno", defaultValue = "0") int goodsno, @RequestParam MultipartFile photo) {
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
@@ -378,9 +376,14 @@ public class KRTController {
 		String fileName = originName.substring(0, pos);
 
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
-		// 포토리뷰 제목은 필수 항목 이므로 입력 여부를 검사
 		if (bbstitle == null) {
 			return webHelper.redirect(null, "포토리뷰 제목을 입력하세요.");
+		}
+		if (rvlike == null) {
+			return webHelper.redirect(null, "리뷰 평점을 입력하세요.");
+		}
+		if (bbscontent == null) {
+			return webHelper.redirect(null, "포토리뷰 내용을 입력하세요.");
 		}
 
 		/** 2) 데이터 저장하기 */
@@ -425,10 +428,175 @@ public class KRTController {
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
 		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야한다.
 		model.addAttribute("myInfo", myInfo);
-		System.out.println("===============" + bbs.getBbsno());
 		String redirectUrl = contextPath + "/community/photo.do?bbsno=" + bbs.getBbsno();
 
 		return webHelper.redirect(redirectUrl, "저장되었습니다.");
+	}
+
+	/** photo_edit (포토리뷰 수정) */
+	/** 포토리뷰 수정 폼 페이지 */
+	@RequestMapping(value = "/community/photo_edit.do", method = RequestMethod.GET)
+	public ModelAndView photo_edit(Model model, @RequestParam(value = "bbsno", defaultValue = "0") int bbsno,
+			@RequestParam(value = "memno", defaultValue = "0") int memno) {
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+
+		/** 1) 파라미터 유효성 검사 */
+		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
+		if (bbsno == 0) {
+			return webHelper.redirect(null, "커뮤니티 번호가 없습니다.");
+		}
+
+		/** 2) 데이터 조회하기 */
+		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
+		Bbs bbs = new Bbs();
+		bbs.setBbsno(bbsno);
+
+		// 포토리뷰 조회결과를 저장할 객체 선언
+		Bbs output = null;
+
+		try {
+			// 포토리뷰 기본 정보 조회
+			output = bbsService.getBbsrv_Item(bbs);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+
+		// 본인이 작성한 글만 수정 가능하도록 처리
+		if (myInfo.getMemno() != output.getMemno()) {
+			return webHelper.redirect(null, "본인이 작성한 리뷰만 수정 가능합니다.");
+		}
+
+		/** 3) View 처리 */
+		model.addAttribute("output", output);
+		return new ModelAndView("community/photo_edit");
+	}
+
+	/** 포토리뷰 수정 폼 action 페이지 */
+	@RequestMapping(value = "/community/photo_edit_ok.do", method = RequestMethod.POST)
+	public ModelAndView photo_edit_ok(Model model, @RequestParam(value = "bbsno", defaultValue = "0") int bbsno,
+			@RequestParam(value = "imgsno", defaultValue = "0") int imgsno,
+			@RequestParam(value = "bbstitle", required = false) String bbstitle,
+			@RequestParam(value = "rvlike", required = false) String rvlike,
+			@RequestParam(value = "bbscontent", required = false) String bbscontent,
+			@RequestParam(value = "goodsno", defaultValue = "0") int goodsno, @RequestParam MultipartFile photo) {
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+
+		Calendar c = Calendar.getInstance();
+		String date = String.format("%04d-%02d-%02d %02d:%02d:%02d", c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1,
+				c.get(Calendar.DAY_OF_MONTH), c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE),
+				c.get(Calendar.SECOND));
+
+		/** 1) 업로드 파일 수정하기 */
+		// 업로드 된 파일이 존재하는지 확인한다.
+		if (photo.getOriginalFilename().isEmpty()) {
+			return webHelper.redirect(null, "업로드 된 파일이 없습니다.");
+		}
+
+		// 업로드 된 파일이 저장될 경로 정보를 생성한다.
+		File targetFile = new File(webHelper.getUploadDir(), photo.getOriginalFilename());
+
+		// 업로드 된 파일을 지정된 경로로 복사한다.
+		try {
+			photo.transferTo(targetFile);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return webHelper.redirect(null, "업로드 된 파일 저장에 실패했습니다.");
+		}
+
+		/** 2) 업로드 경로 정보 처리하기 */
+		// 복사된 파일의 절대경로를 추출한다.
+		// --> 운영체제 호환을 위해 역슬래시를 슬래시로 변환한다.
+		String absPath = targetFile.getAbsolutePath().replace("\\", "/");
+
+		// 절대경로에서 이미 root-context에 지정되어 있는 업로드 폴더 경로를 삭제한다.
+		String filePath = absPath.replace(webHelper.getUploadDir(), "");
+
+		/** 3) 썸네일 이미지 생성하기 */
+		// 업로드 결과로부터 썸네일 이미지를 생성한다.
+		String thumbnail = null;
+		try {
+			thumbnail = webHelper.createThumbnail(filePath, 320, 320, true);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return webHelper.redirect(null, "썸네일 생성에 실패했습니다.");
+		}
+
+		/** 4) 업로드 결과를 Beans에 저장 */
+		UploadItem item = new UploadItem();
+		item.setContentType(photo.getContentType());
+		item.setFieldName(photo.getName());
+		item.setFileSize(photo.getSize());
+		item.setOrginName(photo.getOriginalFilename());
+
+		// 업로드 경로와 썸네일 경로는 웹 상에서 접근 가능한 경로 문자열로 변환하여 Beans에 추가한다.
+		item.setFilePath(webHelper.getUploadPath(filePath));
+		item.setThumbnail(webHelper.getUploadPath(thumbnail));
+		String originName = item.getOrginName();
+		int pos = originName.lastIndexOf(".");
+		String ext = originName.substring(pos + 1);
+		String fileName = originName.substring(0, pos);
+
+		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
+		if (bbstitle == null) {
+			return webHelper.redirect(null, "포토리뷰 제목을 입력하세요.");
+		}
+		if (rvlike == null) {
+			return webHelper.redirect(null, "리뷰 평점을 입력하세요.");
+		}
+		if (bbscontent == null) {
+			return webHelper.redirect(null, "포토리뷰 내용을 입력하세요.");
+		}
+
+		/** 2) 데이터 수정하기 */
+		// 수정할 값들을 Beans에 담는다.
+		Bbs bbs = new Bbs();
+		bbs.setBbsno(bbsno);
+		bbs.setBbstype("C");
+		bbs.setBbstitle(bbstitle);
+		bbs.setBbscontent(bbscontent);
+		bbs.setRvlike(rvlike);
+		bbs.setRegdate(date);
+		bbs.setEditdate(date);
+		bbs.setMemno(myInfo.getMemno());
+		bbs.setGoodsno(1);
+		System.out.println("========="+bbs.getBbsno());
+
+		try {
+			// 데이터 수정
+			bbsService.editBbs(bbs);
+
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+
+		Imgs imgs = new Imgs();
+		imgs.setImgsno(imgsno);
+		imgs.setImgname(fileName);
+		imgs.setImgext(ext);
+		imgs.setImgpath("/upload/img/");
+		imgs.setImgsize((int) item.getFileSize());
+		imgs.setImgtype("C");
+		imgs.setRegdate(date);
+		imgs.setEditdate(date);
+		imgs.setGoodsno(1);
+		imgs.setBbsno(bbs.getBbsno());
+
+		try {
+			// 데이터 수정
+			imgService.editImgs(imgs);
+
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+
+		/** 3) 결과를 확인하기 위한 페이지 이동 */
+		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야한다.
+		model.addAttribute("myInfo", myInfo);
+		String redirectUrl = contextPath + "/community/photo.do?bbsno=" + bbs.getBbsno();
+
+		return webHelper.redirect(redirectUrl, "수정되었습니다.");
 	}
 
 	/** photo (포토리뷰 상세조회) */

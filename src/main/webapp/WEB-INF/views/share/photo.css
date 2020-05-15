@@ -62,10 +62,24 @@ p {
 	padding: 10px 0;
 }
 
-.date {
+.rv-content button {
+	float: right;
+}
+
+.rv-content .btn {
+	margin-left: 10px;
+}
+
+.rv-content .date {
+	display: inline;
 	color: #aaa;
 	font-size: 12px;
-	padding-bottom: 10px;
+	padding-bottom: 15px;
+	line-height: -5px;
+}
+
+.bbscontent {
+	margin-top: 15px;
 }
 
 .recommend {
@@ -77,6 +91,10 @@ p {
 .recommend p {
 	display: inline;
 	padding-right: 10px;
+}
+
+.recommend button {
+	float: right;
 }
 
 .btn:hover {

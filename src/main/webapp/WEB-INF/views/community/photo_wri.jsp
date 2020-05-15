@@ -30,7 +30,7 @@
 		<div class="page-title clearfix">
 			<h4>
 				<b> <a href="#" onclick="history.back(); return false;"><i
-						class="glyphicon glyphicon-chevron-left"></i></a>포토리뷰
+						class="glyphicon glyphicon-chevron-left"></i></a>포토리뷰 작성
 				</b>
 			</h4>
 		</div>
@@ -117,13 +117,6 @@
 					</div>
 					<input type="file" name="photo" id="photo" />
 				</div>
-				<div class="password">
-					<div>
-						<p>비밀번호</p>
-						<span class="redStar">＊</span>
-					</div>
-					<input type="password" name="password" class="pass" id="password">
-				</div>
 				<div class="sign">
 					<button type="submit" class="btn btn2">등록</button>
 					<button type="reset" class="btn btn2 btn-inverse"
@@ -200,10 +193,6 @@
 					bbscontent : {
 						required : true,
 						minlength : 4
-					},
-					password : {
-						required : true,
-						minlength : 4
 					}
 				},
 
@@ -215,10 +204,6 @@
 					bbscontent : {
 						required : "내용을 입력하세요.",
 						minlength : "내용은 4글자 이상 입력하셔야 합니다."
-					},
-					password : {
-						required : "비밀번호를 입력하세요.",
-						minlength : "비밀번호는 4글자 이상 입력하셔야 합니다."
 					}
 				}
 			});

@@ -10,7 +10,7 @@
 <head>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/share/photo.css?ver=1" />
+	href="${pageContext.request.contextPath}/share/photo.css" />
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -34,10 +34,10 @@
 		<div class="container">
 			<img src="${output.imgpath}${output.imgname}.${output.imgext}" alt="리뷰사진" class="big-image">
 			<div class="info-box">
-				<a href="${pageContext.request.contextPath}/gallery/goods.do"><img
+				<a href="${pageContext.request.contextPath}/gallery_ajax/goods.do?goodsno=${output.goodsno}"><img
 					src="${output.gipath}${output.giname}.${output.giext}" class="small-image"></a>
 				<div class="info-content clear">
-					<a href="${pageContext.request.contextPath}/gallery/goods.do">
+					<a href="${pageContext.request.contextPath}/gallery_ajax/goods.do?goodsno=${output.goodsno}">
 						${output.bbstitle}</a><br>
 					<div class="star">
 						<p>${output.rvlike}</p>
@@ -50,11 +50,9 @@
 			</div>
 			<div class="rv-content">
 				<p class="date">${output.regdate}</p>
-				<p>${output.bbscontent}</p>
-			</div>
-			<div class="recommend">
-				<p>이 리뷰가 도움이 되셨다면 눌러주세요.</p>
-				<button class="btn" id="recommend">추천</button>
+				<button type=button class="btn">삭제</button>
+				<button type=button class="btn btn-inverse" onclick="location.href='${pageContext.request.contextPath}/community/photo_edit.do?bbsno=${output.bbsno}'">수정</button>
+				<p class="bbscontent">${output.bbscontent}</p>
 			</div>
 			<div class="rv-footer">
 				<p>관리자에게만 댓글작성 권한이 있습니다.</p>
