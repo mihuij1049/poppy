@@ -512,7 +512,7 @@
 				<hr />
 				<div class="prd-action2">
 					<form class="action-btn2" id="goodsno"
-						data-goodsno="${goods.goodsno}" method="GET"
+						data-goodsno="${goods.goodsno}" method="POST"
 						action="${pageContext.request.contextPath}/pay_ajax/orderform.do">
 						<button type="submit"
 							onclick="location.href='${pageContext.request.contextPath }/pay/cart.do'"
