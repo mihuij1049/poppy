@@ -29,8 +29,19 @@
 			<h4>
 				<b> <a href="#" onclick="history.back(); return false;"><i
 						class="glyphicon glyphicon-chevron-left"></i></a>
+						
 						<c:forEach var="item" items="${output}" varStatus="status" end="0">
-							${item.cate1}
+							<c:choose>
+								<c:when test="${item.heartCnt > 0}">
+								BEST
+								</c:when>
+								<c:when test="${item.cate1 != null}">
+								${item.cate1}
+								</c:when>
+								<c:otherwise>
+								NEW
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 				</b>
 			</h4>
@@ -104,15 +115,19 @@
 	$("#result").on("click", "#insert-one", function(e) {
         e.preventDefault();
   
-        let goodsno = $(this).data("goodsno");
+        if (${empty userInfo.userid}) {
+        	alert("로그인 후 이용해 주세요.")
+        	window.location="${pageContext.request.contextPath}/member/login.do";
+        } else {
         
-        // 여기서 이미 추천했는지 검사하던지 컨트롤러에서 해주던지
+       	let goodsno = $(this).data("goodsno");
         $.post("${pageContext.request.contextPath}/gallery/in_item",
               { "goodsno" : goodsno },
                    function(json) {
                      if(json.rt=="OK");
                   }
               )
+        }
         /* $(this).css('color', 'red');
         clicked = false; */
      });

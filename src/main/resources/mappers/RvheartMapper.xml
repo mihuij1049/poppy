@@ -34,8 +34,9 @@
 	<insert id="insertItem"
 		parameterType="kr.co.poppy.model.Rvheart" useGeneratedKeys="true"
 		keyProperty="rvheartno">
-		INSERT INTO rvheart (regdate, editdate, memno, bbsno) VALUES (
-		#{regdate}, #{editdate}, #{memno}, #{bbsno});
+		INSERT INTO rvheart (regdate, editdate, memno, goodsno)
+        SELECT now(), now(), #{memno}, #{goodsno} FROM rvheart
+		WHERE NOT EXISTS (SELECT memno FROM rvheart WHERE memno=#{memno} AND goodsno=#{goodsno}) LIMIT 1
 	</insert>
 
 	<!-- 게시글 삭제 시 rvheart도 삭제 -->

@@ -53,7 +53,7 @@
 						</div>
 					</form>
 				</div>
-				<div>
+				<div id="result">
 				<c:set var="a" value="${keyword}" />
 				<c:if test="${a == null}">
 					<!-- 게시물 하나 시작 -->
@@ -72,8 +72,7 @@
 										<div class="pr_content">${item.bbscontent}</div>
 									</div>
 								</a>
-								<button class="btn btn-inverse" id="heart_bt">
-									<i class="glyphicon glyphicon-heart icon_size"></i> 추천
+								<button type="submit" class="btn btn-inverse insert-one" id="insert-one" data-rvheartno="${item.rvheartno}" data-goodsno="${item.goodsno}"></i> 추천
 								</button>
 							</div>
 						</div>
@@ -81,6 +80,7 @@
 					</c:forEach>
 					<!-- 게시물 하나 끝 -->
 				</c:if>
+				</div>
 				<c:set var="a" value="${keyword}" />
 				<c:if test="${a == a}">
 					<!-- 게시물 하나 시작 -->
@@ -99,7 +99,7 @@
 										<div class="pr_content">${item.bbscontent}</div>
 									</div>
 								</a>
-								<button class="btn btn-inverse" id="heart_bt">
+								<button type="submit" class="btn btn-inverse insert-one" id="insert-one" data-memno="${item.memno}" data-goodsno="${item.goodsno}">
 									<i class="glyphicon glyphicon-heart icon_size"></i> 추천
 								</button>
 							</div>
@@ -124,13 +124,28 @@
 		</div>
 	</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
+	
 	<script type="text/javascript">
-    $(function() {
-        $('.pr_box button').click(function() {
-            $(this).toggleClass("btn, btn-inverse");
-        });
-    });
-    </script>
+	$("#result").on("click", "#insert-one", function(e) {
+        e.preventDefault();
+  
+        if (${empty userInfo.userid}) {
+        	alert("로그인 후 이용해 주세요.")
+        	window.location="${pageContext.request.contextPath}/member/login.do";
+        } else {
+        
+       	let goodsno = $(this).data("goodsno");
+        $.post("${pageContext.request.contextPath}/community/in_item",
+              { "goodsno" : goodsno },
+                   function(json) {
+                     if(json.rt=="OK");
+                  }
+              )
+        }
+        /* $(this).css('color', 'red');
+        clicked = false; */
+     });
+	</script>
 </body>
 
 </html>
