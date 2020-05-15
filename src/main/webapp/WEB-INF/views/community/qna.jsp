@@ -9,6 +9,10 @@
 
 <head>
 <style type="text/css">
+
+.table>tbody>tr>td.subject {
+padding-left : 20px;
+}
 .customer_pass {
 	position: fixed;
 	left: 33%;
@@ -68,6 +72,7 @@
 								<c:set var="username" value="${item.username}" />
 								<c:set var="qnapw" value="${item.qnapw}" />
 								<c:set var="bbsno" value="${item.bbsno}" />
+								<c:set var="cmtcount" value="${item.cmtcount}" />
 								<%-- 검색어가 있다면? --%>
 								<c:if test="${keyword != ''}">
 									<%-- 검색어에 <mark> 태그를 적용하여 형광팬 효과 준비 --%>
@@ -93,7 +98,7 @@
 													class="glyphicon glyphicon-lock"></span> <a
 													href="${viewUrl}" class="subject" id="confirm-pw"
 													data-qnapw="${item.qnapw}" data-bbsno="${item.bbsno }">${bbstitle}</a> <span
-													class="comment">[댓글수]</span></strong><br /> <span class="name"
+													class="comment">&nbsp;[${item.cmtcount}]</span></strong><br /> <span class="name"
 												title="작성자">${item.username}</span> <span class="date"
 												title="작성일">${item.regdate}</span></td>
 										</tr>
@@ -102,7 +107,7 @@
 										<tr>
 											<td class="subject"><strong> <a
 													href="${viewUrl}" class="subject">${bbstitle}</a> <span
-													class="comment">[댓글수]</span></strong><br /> <span class="name"
+													class="comment">[${item.cmtcount}]</span></strong><br /> <span class="name"
 												title="작성자">${item.username}</span> <span class="date"
 												title="작성일">${item.regdate}</span></td>
 										</tr>
@@ -194,7 +199,7 @@
 			<b class="plz_pass">비밀번호를 입력해 주세요.</b><br> <label for="cs_pass"
 				class="pass_label">비밀번호</label> 
 				<input type="password"
-				name="cs_pass" class="cs_pass" id="cs_pass" /><br>
+				name="cs_pass" class="cs_pass" id="cs_pass" maxlength="4" /><br>
 
 			<div class="cs_pass_2btns">
 				<button type="button" class="btn btn-sm btn-ok" id="confirm_qnapw">확인</button>
@@ -225,6 +230,7 @@
 				window.location = "${pageContext.request.contextPath}/community/article.do?bbstype=B&bbsno=" + bbsno;
 			} else {
 				alert("비밀번호를 확인해주세요.");
+				$("#cs_pass").val("");
 			}
 		});
 			$("#modal-cancel-btn").click(function() {

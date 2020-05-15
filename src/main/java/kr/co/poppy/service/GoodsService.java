@@ -93,4 +93,13 @@ public interface GoodsService {
 	 * @throws Exception
 	 */
 	public int deleteGoods(Goods input) throws Exception;
+	
+	/**
+	 * qna글작성 모달창의 상품 전체조회
+	 * 
+	 * @param Goods 검색조건과 페이지 구현 정보를 담고 있는 Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	public List<Goods> selectqnagoods(Goods input) throws Exception;
 }

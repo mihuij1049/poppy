@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.poppy.model.Bbs;
 import kr.co.poppy.model.Goods;
 import kr.co.poppy.service.GoodsService;
 import lombok.extern.slf4j.Slf4j;
@@ -267,4 +268,23 @@ public class GoodsServiceImpl implements GoodsService {
 		} 
 		return result;
 	}
+
+	@Override
+	public List<Goods> selectqnagoods(Goods input) throws Exception {
+		List<Goods> result = null;
+		try {
+			result = sqlSession.selectList("GoodsMapper.selectqnagoods", input);
+			if(result==null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다. g-");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+
 }

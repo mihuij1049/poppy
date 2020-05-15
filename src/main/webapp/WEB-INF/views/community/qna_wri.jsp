@@ -240,7 +240,7 @@ a {
 			<div class="page-title clearfix">
 				<h4>
 					<b> <a href="#" onclick="history.back(); return false;"><i
-							class="glyphicon glyphicon-chevron-left"></i></a>QnA 글쓰기
+							class="glyphicon glyphicon-chevron-left"></i></a>Q&A 글쓰기
 					</b>
 				</h4>
 			</div>
@@ -318,9 +318,9 @@ a {
 							<label>비밀글설정</label>
 						</div>
 						<div class="col-xs-8">
-							<input type="radio" name="qnasec" value="0" id="public"> <label>공개글
-								&nbsp;</label> <input type="radio" id="private" name="qnasec" value="1" checked>
-							<label>비밀글</label>
+							<input type="radio" name="qnasec" value="0" id="public">
+							<label>공개글 &nbsp;</label> 
+							<input type="radio" id="private" name="qnasec" value="1" checked> <label>비밀글</label>
 						</div>
 					</div>
 					<div class="qna-pw">
@@ -365,25 +365,9 @@ a {
 		</div>
 	</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
-	<!-- Handlebars 를 이용한 HTML 템플릿 구성 -->
-	<script id="goods_item_tmpl" type="text/x-handlebars-template">
-		{{#each goods}}
-			<li class="search-list-item">
-				<div class="search-item-img">
-					<img src="{{url}}" />
-				</div>
-				<div class="search-item-content">
-					<p>
-						{{name}}<br /> 
-						<b class="search-item-price">{{price}}원</b>
-					</p>
-				</div>
-				<div class="search-item-btn">
-					<button type="button" class="btn btn-sm search-item-select" id="select_btn">선택</button>
-				</div>
-			</li>
-		{{/each}}
-	</script>
+
+	
+
 	<script type="text/javascript">
 		$(function() {
 			// 체크박스의 상태가 변화되면
@@ -392,10 +376,12 @@ a {
 				var none = $("#password").prop('disabled');
 				// 가져온 값을 역으로 변경하여 다시 적용
 				$("#password").prop('disabled', !none);
-				
+
 			});
 		});
-	
+		
+		
+
 		/** 모달창 켜고 끄기 */
 		$(function() {
 			$(".item-select").click(function(e) {
@@ -438,7 +424,7 @@ a {
 					'click',
 					'button',
 					function(e) {
-						
+
 						// 클릭된 상품의 href 속성 가져오기
 						var src = $(event.target).parent().prev().prev()
 								.children().attr('src');
@@ -462,14 +448,13 @@ a {
 		});
 		$("#qna_ok").click(function(e) {
 			e.preventDefault();
-			
+
 			$("#myModal2").modal("show");
 		});
-		
+
 		$(".qna-submit").click(function(e) {
 			$("#qna_wri").submit();
 		});
-		
 	</script>
 </body>
 

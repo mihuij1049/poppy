@@ -13,12 +13,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import kr.co.poppy.helper.PageData;
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Comments;
+import kr.co.poppy.model.Goods;
 import kr.co.poppy.model.Members;
 import kr.co.poppy.service.BbsService;
 import kr.co.poppy.service.CommentsService;
+import kr.co.poppy.service.GoodsService;
 
 @RestController
 public class CommunityRestController {
@@ -33,6 +36,9 @@ public class CommunityRestController {
 	/** Serivce 패턴 구현체 주입 */
 	@Autowired
 	BbsService bbsService;
+	
+	@Autowired
+	GoodsService goodService;
 
 	@Autowired
 	CommentsService commentsService;
@@ -142,8 +148,52 @@ public class CommunityRestController {
 		/** 3) 결과를 확인하기 위한 JSON출력 */
 		Map<String, Object> map = new HashMap<String, Object>();
 		return webHelper.getJsonData(map);
-		
 	}
+	
+	/** qna 모달창 상품조회 리스트 */
+	@RequestMapping(value = "/community/qna_goods", method=RequestMethod.GET)
+		public Map<String, Object> get_list (
+				// 검색어
+				@RequestParam(value="keyword", required=false) String keyword,
+				@RequestParam(value="page", defaultValue="1") int nowPage) {
+		
+		/** 1) 페이지 구현에 필요한 변수값 생성 */
+		int totalCount = 0;
+		int listCount = 5;
+		int pageCount = 3;
+		
+		/** 2) 데이터 조회하기 */
+		Goods input = new Goods();
+		input.setGname(keyword);
+		
+		List<Goods> output = null;
+		PageData pageData = null;
+		
+		try {
+			// 전체 게시글 수 조회
+			totalCount = goodService.getGoodsCount(input);
+			// 페이지 번호 계산 
+			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+			
+			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
+			Goods.setOffset(pageData.getOffset());
+			Goods.setListCount(pageData.getListCount());
+			
+			// 데이터 조회하기
+			output = goodService.selectqnagoods(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		/** 3) JSON 출력하기 */
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("keyword", keyword);
+		data.put("item", output);
+		data.put("meta", pageData);
+		return webHelper.getJsonData(data);
+	}
+		
+		
 	
 	
 }
