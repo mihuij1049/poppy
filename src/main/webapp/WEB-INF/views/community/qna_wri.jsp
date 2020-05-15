@@ -443,6 +443,7 @@ a {
 			// 공개글
 			if (this.value == '0') {
 				$("#password").attr("readonly", true).attr("disabled", false);
+				$("#password").val("");
 				$("#password").removeAttr("placeholder");
 			}
 			// 비밀글 
@@ -460,9 +461,9 @@ a {
 				if ($("input:radio[id='private']").is(":checked") == true) {
 					// 비밀번호를 pw에 담는다.
 					var pw = $("#password").val();
-					console.log(pw);
-					var pwlength = $("#password").length;
-					// 비밀번호가 null이라면 경고메시지
+					// 비밀번호 길이를 변수에 담기
+					var pwlength = $("#password").val().length;
+					// 비밀번호가 null / 4자리수 이하라면 경고메시지
 					if (pw == "" || pwlength < 4) {
 						alert("비밀번호는 4자리로 입력해주세요.");
 						return false;
