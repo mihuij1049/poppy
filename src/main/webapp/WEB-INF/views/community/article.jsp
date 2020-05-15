@@ -18,9 +18,7 @@ display: block;
 }
 
 .nai {
-	padding-top: 15px;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding: 15px;
 	margin-bottom: 50px;
 }
 
@@ -125,7 +123,7 @@ display: block;
 						class="btn btn-inverse btn-sm list" style="margin-bottom: 10px;">목록</button>
 					<hr class="solidhr">
 				</c:when>
-
+				
 				<c:otherwise>
 					<div class="comment">
 						<hr class="solidhr">
@@ -145,18 +143,11 @@ display: block;
 									href="${pageContext.request.contextPath}/community/editqna.do?bbsno=${output.bbsno}">
 									<button type="submit" class="btn btn-sm btn-edit">수정</button>
 								</a>
-
-
 							</c:if>
 						</div>
 					</div>
 				</c:otherwise>
-
 			</c:choose>
-
-
-
-
 			<div class="comment-list">
 				<c:if test="${output.bbstype=='B'}">
 					<div class="list-subject">
@@ -177,7 +168,6 @@ display: block;
 									<c:forEach var="item" items="${output2}" varStatus="status">
 										<%-- 출력을 위해 준비한 변수 --%>
 										<c:set var="cmtno" value="${item.cmtno}" />
-
 										<%-- 상세페이지로 이동하기 위한 URL --%>
 										<c:url value="/community/article.do" var="viewUrl">
 											<c:param name="bbsno" value="${item.bbsno}" />

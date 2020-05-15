@@ -133,6 +133,22 @@
 		INNER JOIN imgs i on g.goodsno = i.goodsno
 		WHERE i.imgtype="A" AND g.cate1=#{cate1};
 	</select>
+	
+	<!-- qna글작성 모달창의 상품 전체조회를 위한 sql -->
+	<select id="selectqnagoods"					
+		parameterType="kr.co.poppy.model.Goods" resultMap="goodsMap">
+		SELECT *, i.imgname, i.imgpath, i.imgext from goods g 
+      	INNER JOIN imgs i on g.goodsno=i.goodsno
+      	<where>
+			<if test="gname != null and gname != ''">
+				and gname LIKE concat('%', #{gname}, '%')
+			</if> 
+		</where>
+		ORDER BY gname desc
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if>
+	</select>
 
 	<!-- 정렬방식에 따른 조회 기능 정의 -->
 	<select id="selectRange" parameterType="kr.co.poppy.model.Goods"
@@ -195,4 +211,5 @@
 		WHERE
 		goodsno=#{goodsno}
 	</delete>
+	
 </mapper>

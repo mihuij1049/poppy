@@ -8,8 +8,14 @@
 <html lang="ko">
 
 <head>
+<style type="text/css">
+.table>tbody>tr>td.subject {
+	padding-left: 20px;
+}
+</style>
 <%@ include file="../share/head_tp.jsp"%>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/share/notice.css" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/share/notice.css" />
 
 </head>
 
@@ -41,7 +47,7 @@
 								<c:set var="bbstitle" value="${item.bbstitle}" />
 								<c:set var="bbscontent" value="${item.bbscontent}" />
 								<c:set var="username" value="${item.username}" />
-
+								<c:set var="cmtcount" value="${item.cmtcount}" />
 								<%-- 검색어가 있다면? --%>
 								<c:if test="${keyword != ''}">
 									<%-- 검색어에 <mark> 태그를 적용하여 형광팬 효과 준비 --%>
@@ -53,9 +59,9 @@
 										value="${fn:replace(bbscontent, keyword, mark)}" />
 									<c:set var="username"
 										value="${fn:replace(username, keyword, mark)}" />
-									
+
 								</c:if>
-								
+
 								<%-- 상세페이지로 이동하기 위한 URL --%>
 								<c:url value="/community/article.do" var="viewUrl">
 									<c:param name="bbstype" value="${item.bbstype}" />
@@ -63,11 +69,9 @@
 								</c:url>
 								<tr>
 									<td class="subject" style="cursor: pointer;"><strong>
-											<a href="${viewUrl}" class="subject">${bbstitle}</a> <span
-											class="comment">[댓글수]</span>
+											<a href="${viewUrl}" class="subject" id="subject">${bbstitle}</a>
 									</strong><br /> <span class="name" title="작성자">${item.username}</span>
-										<span class="date" title="작성일">${item.regdate}</span> <span>조회
-											[조회수]</span></td>
+										<span class="date" title="작성일">${item.regdate}</span></td>
 								</tr>
 							</c:forEach>
 						</c:otherwise>
@@ -139,14 +143,14 @@
 					<option value="bbstitle">제목</option>
 					<option value="bbscontent">내용</option>
 					<option value="username">이름</option>
-				</select>  <input type="search" name="keyword"
-					id="keyword" class="keyword" value="${keyword}" />
-				<button type="submit"
-					class="btn btn-sm btn-search">검색</button>
+				</select> <input type="search" name="keyword" id="keyword" class="keyword"
+					value="${keyword}" />
+				<button type="submit" class="btn btn-sm btn-search">검색</button>
 			</form>
 		</div>
 	</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
+
 </body>
 
 </html>
