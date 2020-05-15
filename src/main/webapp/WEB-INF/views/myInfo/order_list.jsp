@@ -70,7 +70,7 @@
 				<div class="col-xs-1"></div>
 				<input type="text" id="datepicker_before" />&nbsp;~ <input
 					type="text" id="datepicker_after" />
-				<button type="button" class="btn btn2">조회</button>
+				<button type="button" id="check" class="btn btn2">조회</button>
 			</div>
 			<div id="list">
 				<c:choose>
@@ -108,8 +108,8 @@
 									<div class="prd-box">
 										<div class="thumbnail">
 											<a href="${viewUrl}"> <img
-												src="${item.imgpath}${item.imgname}.${item.imgext}" width="70"
-												height="70">
+												src="${item.imgpath}${item.imgname}.${item.imgext}"
+												width="70" height="70">
 											</a>
 										</div>
 										<div class="prd-content">
@@ -144,7 +144,8 @@
 										aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
-									<h4 class="modal-title" data-orderno="${item.orderno}">주문 취소</h4>
+									<h4 class="modal-title" data-orderno="${item.orderno}">주문
+										취소</h4>
 								</div>
 								<div class="modal-body2">
 									<p>
@@ -222,12 +223,17 @@
 			function set_term(days) {
 				var length = $(".view").length;
 
-				days = days * 24 * 60 * 60 * 1000;
+				var days2 = days * 24 * 60 * 60 * 1000;
 
 				var date = new Date();
 				var yy = date.getFullYear();
 				var mm = date.getMonth() + 1;
 				var dd = date.getDate();
+				if (mm < 10) {
+					mm = "0" + mm;
+				} else if (dd < 10) {
+					dd = "0" + dd;
+				}
 				var today = yy + "-" + mm + "-" + dd;
 
 				var setday = date.getTime() - days;
@@ -236,20 +242,53 @@
 				var s_yy = date.getFullYear();
 				var s_mm = date.getMonth() + 1;
 				var s_dd = date.getDate();
+				if (s_mm < 10) {
+					s_mm = "0" + s_mm;
+				} else if (s_dd < 10) {
+					s_dd = "0" + s_dd;
+				}console.log("days==="+days);
 
 				alert(s_yy + "년 " + s_mm + "월 " + s_dd + "일 " + "~" + yy + "년 "
 						+ mm + "월 " + dd + "일" + "의 주문조회 결과");
-
-				console.log(today);
-
+				$(".view").parent().hide();
 				for (var i = 0; i < length; i++) {
 					var oddate = $(".date").eq(i).html();
-					console.log(oddate);
-					if (oddate == today) {
-						$(".view").eq(i).parent().hide();
-					}
+						var date1 = new Date(today).getTime() / 1000;
+						var date2 = new Date(oddate).getTime() / 1000;
+						var date3 = (date1 - date2) / 60 / 60 / 24;
+						
+					if (days == 0 && oddate == today) {
+						$(".view").eq(i).parent().show();
+					} else if (days==30 && date3 <= 30) {
+						$(".view").eq(i).parent().show();
+					} else if (days==90 && date3 <= 90) {
+						$(".view").eq(i).parent().show();
+					} else if (days==180 && date3 <= 180) {
+						$(".view").eq(i).parent().show();
+					}					
 				}
 			}
+			
+			$(document).on("click","#check", function(e) {
+				alert("클리233됨");
+				date1 = $("#datepicker_before").val();
+				date2 = $("#datepicker_after").val();
+				date1_stm = new Date(date1).getTime() / 1000;
+				date2_stm = new Date(date2).getTime() / 1000;
+				console.log(date1);
+				console.log(date2);
+				console.log(date1_stm);
+				console.log(date2_stm);
+				length = $(".view").length;
+				for (var i = 0; i < length; i++) {
+					var oddate = $(".date").eq(i).html();
+						var date1 = new Date(today).getTime() / 1000;
+						var date2 = new Date(oddate).getTime() / 1000;
+						if (i==0) {
+							console.log(date2);
+						}
+				}
+			});
 
 			$(function() {
 				$(".dateSearch").hide();
@@ -280,21 +319,27 @@
 				});
 			});
 			$(function() {
-				$(document).on(
-						"click",
-						"#change",
-						function(e) {
-							let current = $(this);   // 이벤트가 발생한 객체 자신 #delete-one
-							let order_no = current.data('orderno');
-							$("#myModal2").modal("show");
-							var change_item = $(this).parent().parent()
-									.parent().parent();
-							$(document).on("click", ".change_ok", function(e) {
-								
-								window.location.href='${pageContext.request.contextPath}/myInfo/order_change.do?orderno='+order_no;
-								change_item.remove();
-							});
-						});
+				$(document)
+						.on(
+								"click",
+								"#change",
+								function(e) {
+									let current = $(this); // 이벤트가 발생한 객체 자신 #delete-one
+									let order_no = current.data('orderno');
+									$("#myModal2").modal("show");
+									var change_item = $(this).parent().parent()
+											.parent().parent();
+									$(document)
+											.on(
+													"click",
+													".change_ok",
+													function(e) {
+
+														window.location.href = '${pageContext.request.contextPath}/myInfo/order_change.do?orderno='
+																+ order_no;
+														change_item.remove();
+													});
+								});
 			});
 		</script>
 </body>
