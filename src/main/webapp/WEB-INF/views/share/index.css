@@ -145,41 +145,6 @@
 
 /* 글리피콘, 버튼, 기타옵션 끝 */
 
-/** 이건 그겁니다. 하트 버튼이요! 누르면 숫자가 올라가는 그거. */
-
-#pay {
-	display: inline-block;
-	float: right;
-}
-
-#pay i {
-	margin: 0px 2px 0px 0px;
-}
-
-#pay p {
-	display: inline-block;
-	float: right;
-	margin: 1px 0px 0px 2px;
-}
-
-#pay .glyphicon-heart {
-	height: 8px;
-	font-size: 20px;
-	color: #ff8f83;
-	margin-right: 10px;
-	z-index: 10000;
-}
-
-#pay .glyphicon-heart-empty {
-	height: 8px;
-	font-size: 20px;
-	color: #ff8f83;
-	margin-right: 10px;
-	z-index: 10000;
-}
-
-/** 하트버튼 끝입니다! */
-
 /* 광고 배너 시작 */
 .img_banner {
     display: inline-block;
@@ -274,4 +239,14 @@
 
 .pr_box a {
     color: #777;
+}
+
+.price_box #gprice {
+	font-size: 10px;
+	font-color: #ffff00;
+}
+
+.price_box #gsale {
+	font-size: 15px;
+	margin-bottom: 10px;	
 }

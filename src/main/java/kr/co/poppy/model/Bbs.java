@@ -49,9 +49,13 @@ public class Bbs {
 	private String giname;
 	private String gipath;
 	private String giext;
+
+	/* rvheart를 위한 join 변수 */
+	private int rvheartno;
 	
 	/** 게시판 목록에 댓글 갯수를 위한 변수 */
 	private int cmtcount;
+	
 	
 	
 	 // 3) 페이지 구현을 위한 static 변수

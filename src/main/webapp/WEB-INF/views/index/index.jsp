@@ -15,7 +15,15 @@
 .gal_best_main #delete-one {
 	padding: 0px 10px;
 	margin-left : 15px;
+	border-solid: 1px;
+}
+
+.price_box button {
+	width: 60px;
+	height: 30px;
+	padding: 0px 10px;
 	border: 0px;
+	font-size: 13px;
 }
 </style>
 </head>
@@ -80,7 +88,11 @@
 								</div>
 								<span class="sal_name">${item.gname}</span>
 								<hr />
-								${item.gprice}
+								<div class="price_box">
+									<span id="gprice"><del>₩${item.gprice}원</del></span>
+									<br>
+									<span id="gsale"><b>₩${item.gsale}원</b></span>
+								</div>
 							</div>
 							</a>
 							</c:forEach>
@@ -96,7 +108,11 @@
 								</div>
 								<span class="sal_name">${item.gname}</span>
 								<hr />
-								${item.gprice}
+								<div class="price_box">
+									<span id="gprice"><del>₩${item.gprice}원</del></span>
+									<br>
+									<span id="gsale"><b>₩${item.gsale}원</b></span>
+								</div>
 							</div>
 							</a>
 							</c:forEach>
@@ -112,7 +128,11 @@
 								</div>
 								<span class="sal_name">${item.gname}</span>
 								<hr />
-								${item.gprice}
+								<div class="price_box">
+									<span id="gprice"><del>₩${item.gprice}원</del></span>
+									<br>
+									<span id="gsale"><b>₩${item.gsale}원</b></span>
+								</div>
 							</div>
 							</a>
 							</c:forEach>
@@ -149,8 +169,7 @@
 							<br>
 							<span id="gsale"><b>₩${item.gsale}원</b></span>
 							<button type="submit" class="btn btn-inverse insert-one" id="insert-one" data-heartno="${item.heartno}" data-goodsno="${item.goodsno}">
-							like
-							♥
+							like ♥
 							</button>
 						</div>
 					</div>
@@ -165,6 +184,36 @@
 				<img src="/upload/img/index_banner2.jpg">
 				<img src="/upload/img/index_banner3.jpg">
 			</div>
+			<center>
+				<i class="glyphicon glyphicon-bullhorn icon_size1 t_btn"
+					id="glyp_list"></i>
+				<h3 id="sale_h3">실시간 리뷰</h3>
+			</center>
+			<!-- 게시물 하나 시작 -->
+				<c:forEach var="item" items="${output3}" varStatus="status" begin="0" end="3">
+				<div width="50%">
+					<div class="pr_box">
+						<div class="pr_in_box">
+							<a href="${pageContext.request.contextPath}/community/photo.do?bbsno=${item.bbsno}"> <img alt="사진"
+								src="${item.imgpath}${item.imgname}.${item.imgext}" class="img_size" />
+								<div>
+									<h5>
+										<b>${item.bbstitle}</b>
+									</h5>
+									${item.userid}<br>
+									<hr />
+									<div class="pr_content">${item.bbscontent}</div>
+								</div>
+							</a>
+							<button class="btn btn-inverse" id="heart_bt">
+								<i class="glyphicon glyphicon-heart icon_size"></i> 추천
+							</button>
+						</div>
+					</div>
+				</div>			
+				</c:forEach>
+			<!-- 게시물 하나 끝 -->
+			
 				<center>
 					<button type="button" class="btn btn-inverse index_btn"
 						onclick="location.href='${pageContext.request.contextPath }/community/photo_rv.do'">실시간
@@ -172,9 +221,23 @@
 				</center>
 			</div>
 			<%@ include file="../share/bottom_tp.jsp"%>
-			<!-- Javascript -->
-			<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
-			<script type="text/javascript">
+		<!-- Javascript -->
+		<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+		<script type="text/javascript">
+		$(".gal_best_main").on("click", "#insert-one", function(e) {
+	        e.preventDefault();
+	  
+	        let goodsno = $(this).data("goodsno");
+
+	        $.post("${pageContext.request.contextPath}/gallery/in_item",
+	              { "goodsno" : goodsno },
+	                   function(json) {
+	                     if(json.rt=="OK");
+	                  }
+	              )
+	        /* $(this).css('color', 'red');
+	        clicked = false; */
+	     });
         var mySwiper = new Swiper('.swiper-container', {
 
             // 현재 페이지를 나타내는 점이 생깁니다. 클릭하면 이동합니다.

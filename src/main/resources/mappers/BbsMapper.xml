@@ -29,6 +29,8 @@
 		<result property="giext" column="giext" />
 		<!-- members 테이블의 조인 컬럼 -->
 		<result property="username" column="username" />
+		<!-- rvheart 테이블의 조인 컬럼 -->
+		<result property="rvheartno" column="rvheartno" />
 	</resultMap>
 
 
@@ -107,23 +109,24 @@
 	</select>
 
 	<!-- 후기관리 글 목록 페이지 -->
+	<!-- 이게 내거... 저 자꾸 헷갈려서 써둔거예요 나중에 지울게요... -->
 	<select id="selectList_myrv"
 		parameterType="kr.co.poppy.model.Bbs" resultMap="bbsMap">
 		SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,
 		b.goodsno,
 		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,
 		i.goodsno,
-		m.memno, m.userid
+		m.memno, m.userid,
+		r.rvheartno
 		FROM bbs b
-		INNER JOIN imgs i
-		INNER JOIN
-		members m
-		<where>
-			b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			<if test="bbstitle != null and bbstitle != ''">
+		INNER JOIN members m ON b.memno=m.memno
+		INNER JOIN rvheart r ON r.memno=b.memno
+		INNER JOIN imgs i ON b.bbsno=i.bbsno 
+			WHERE i.imgtype="C" AND b.bbstype="C"
+			<!-- <if test="bbstitle != null and bbstitle != ''">
 				and bbstitle LIKE concat('%', #{bbstitle}, '%')
-			</if>
-		</where>
+			</if> -->
+			ORDER BY bbsno ASC
 	</select>
 
 	<!-- 데이터 수 조회를 위한 기능 정의 -->

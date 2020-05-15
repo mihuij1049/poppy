@@ -42,7 +42,7 @@ public class RvheartServiceImpl implements RvheartService {
             }
         } catch (NullPointerException e) {
             log.error(e.getLocalizedMessage());
-            throw new Exception("저장된 데이터가 없습니다.");
+            throw new Exception("이미 추천한 게시물입니다.");
         } catch (Exception e) {
             log.error(e.getLocalizedMessage());
             throw new Exception("데이터 저장에 실패했습니다.");
