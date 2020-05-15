@@ -27,6 +27,12 @@ padding-left : 20px;
 	padding: 20px 20px;
 }
 
+/** 글쓰기 버튼 */
+.btn-list {
+	float: right;
+	padding-right: 10px;
+}
+
 
 </style>
 <%@ include file="../share/head_tp.jsp"%>

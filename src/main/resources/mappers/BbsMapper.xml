@@ -99,7 +99,7 @@
 		INNER JOIN members m ON b.memno=m.memno
 		WHERE bbstype=#{bbstype}
 		AND b.goodsno = #{goodsno}
-		ORDER BY bbsno DESC
+		ORDER BY bbsno ASC
 		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
 		</if>
