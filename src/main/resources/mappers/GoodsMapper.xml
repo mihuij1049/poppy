@@ -27,6 +27,7 @@
 		<result property="imgpath" column="imgpath" />
 		<result property="imgext" column="imgext" />
 		<result property="imgtype" column="imgtype" />
+		<result property="heartCnt"  column="heartCnt" />
 	</resultMap>
 	
 	<!-- 상품상세 페이지 단일행 조회를 위한 기능 정의 -->
@@ -49,6 +50,13 @@
 		from goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
 		WHERE i.imgtype="A"
+	</select>
+	
+	<!-- 다중행 조회(베스트상품)을 위한 기능 정의 -->
+	<select id="selectListBest" parameterType="kr.co.poppy.model.Goods"
+		resultMap="goodsMap">
+		select *, (SELECT count(h.goodsno) from heart h where h.goodsno = g.goodsno)
+		AS heartCnt from goods g order by heartCnt desc;
 	</select>
 	
 	<!-- 다중행 조회(신상품)을 위한 기능 정의 -->
