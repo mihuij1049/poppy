@@ -140,9 +140,10 @@
 	<!-- qna글작성 모달창의 상품 전체조회를 위한 sql -->
 	<select id="selectqnagoods"					
 		parameterType="kr.co.poppy.model.Goods" resultMap="goodsMap">
-		SELECT *, i.imgname, i.imgpath, i.imgext from goods g 
+		SELECT *, i.imgname, i.imgpath, i.imgext, i.imgtype from goods g 
       	INNER JOIN imgs i on g.goodsno=i.goodsno
       	<where>
+      		i.imgtype='A'
 			<if test="gname != null and gname != ''">
 				and gname LIKE concat('%', #{gname}, '%')
 			</if> 

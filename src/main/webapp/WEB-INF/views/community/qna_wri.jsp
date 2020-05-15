@@ -253,7 +253,7 @@ a {
 				<div class="search-searching">
 					<div class="search-bar">
 						<div class="search-textbar">
-							<input type="text" name="search-goods" placeholder="상품명을 입력하세요." />
+							<input type="text" id="search-keyword" name="search-goods" placeholder="상품명을 입력하세요." />
 						</div>
 						<button class="btn btn-sm btn-searching" id="search_goods_btn">검
 							색</button>
@@ -328,7 +328,7 @@ a {
 							<label>비밀번호</label>
 						</div>
 						<div class="col-xs-8">
-							<input type="password" id="password" name="qnapw" maxlength="4" placeholder="비밀번호 4자리를 입력하세요.">
+							<input type="text" id="password" name="qnapw" maxlength="4" placeholder="비밀번호 4자리를 입력하세요.">
 						</div>
 					</div>
 
@@ -365,23 +365,67 @@ a {
 		</div>
 	</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
-
-	
+	<!-- Handlebars 를 이용한 HTML 템플릿 구성 -->
+	<script id="goods_item_tmpl" type="text/x-handlebars-template">
+		{{#each item}}
+			<li class="search-list-item">
+				<div class="search-item-img">
+					<img src="{{imgpath}}{{imgname}}.{{imgext}}" />
+				</div>
+				<div class="search-item-content">
+					<p>
+						{{gname}}<br /> 
+						<b class="search-item-price">{{gprice}}원</b>
+					</p>
+				</div>
+				<div class="search-item-btn">
+					<button type="button" class="btn btn-sm search-item-select" id="select_btn">선택</button>
+				</div>
+			</li>
+		{{/each}}
+	</script>
 
 	<script type="text/javascript">
-		$(function() {
-			// 체크박스의 상태가 변화되면
-			$("#public").change(function() {
-				// 비밀번호 입력창 비활성화
-				var none = $("#password").prop('disabled');
-				// 가져온 값을 역으로 변경하여 다시 적용
-				$("#password").prop('disabled', !none);
-
-			});
+	/** 공개글 / 비밀글 라디오박스 체크 이벤트 */
+	$('input[type=radio]').change(function() {
+		// 공개글
+	    if (this.value == '0') {
+	        $("#password").attr("readonly",true).attr("disabled",false);
+	        $("#password").removeAttr("placeholder");
+	    }
+		// 비밀글 
+	    else {
+	    	 $("#password").attr("disabled",false).attr("readonly",false);
+	    	 $("#password").attr("placeholder", "비밀번호 4자리를 입력하세요.");
+	    }
+	});
+	
+	
+	$(function() {
+		/** 등록버튼을 눌렀을 때 */
+		$("#qna_ok").on("click",function(e) {
+			e.preventDefault();
+			// 비밀글에 체크된 상태라면
+			if($("input:radio[id='private']").is(":checked") == true){
+				// 비밀번호를 pw에 담는다.
+			 	var pw = $("#password").val();
+			 	console.log(pw);
+			 	var pwlength = $("#password").length;
+			 	// 비밀번호가 null이라면 경고메시지
+			 	if(pw=="" || pwlength<4) {
+			 		alert("비밀번호는 4자리로 입력해주세요.");
+			 		return false;
+			 	}
+			 	$("#myModal2").modal("show");
+			 // 공개글에 체크된 상태라면
+			 	} else {
+			 	// 클릭시 모달창이 뜨는 이벤트
+					$("#myModal2").modal("show");
+				}
 		});
-		
-		
+	});	// end function
 
+	
 		/** 모달창 켜고 끄기 */
 		$(function() {
 			$(".item-select").click(function(e) {
@@ -393,10 +437,14 @@ a {
 				$(".search-qty").text("0");
 			});
 		}); // end 모달창 켜고 끄기
-
+		
+		
 		/** 검색 버튼 클릭시 검색 결과 화면에 나타내기 */
 		function get_list() {
-			$.get("../share/plugins/goods_list.json",
+			let keyword = $("#search-keyword").val();
+			let page = 1;
+			$.get("${pageContext.request.contextPath}/community/qna_goods", 
+					{ "keyword": keyword, "page": page},
 					function(req) {
 						// 미리 준비한 HTML틀을 읽어온다.
 						var template = Handlebars.compile($("#goods_item_tmpl")
@@ -446,11 +494,7 @@ a {
 
 					});
 		});
-		$("#qna_ok").click(function(e) {
-			e.preventDefault();
-
-			$("#myModal2").modal("show");
-		});
+		
 
 		$(".qna-submit").click(function(e) {
 			$("#qna_wri").submit();

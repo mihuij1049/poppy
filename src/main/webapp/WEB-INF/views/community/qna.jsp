@@ -105,11 +105,11 @@ padding-left : 20px;
 									</c:when>
 									<c:otherwise>
 										<tr>
-											<td class="subject"><strong> <a
-													href="${viewUrl}" class="subject">${bbstitle}</a> <span
-													class="comment">[${item.cmtcount}]</span></strong><br /> <span class="name"
-												title="작성자">${item.username}</span> <span class="date"
-												title="작성일">${item.regdate}</span></td>
+											<td class="subject">
+											<strong> <a href="${viewUrl}" class="subject">${bbstitle}</a> 
+											<span class="comment">[${item.cmtcount}]</span></strong><br /> 
+											<span class="name" title="작성자">${item.username}</span> 
+											<span class="date" title="작성일">${item.regdate}</span></td>
 										</tr>
 									</c:otherwise>
 
