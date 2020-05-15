@@ -17,7 +17,7 @@ p {
 
 .info-box {
 	padding: 10px 0;
-	font-size: 11px;
+	font-size: 14px;
 	border-bottom: 1px solid #ddd;
 }
 
@@ -85,12 +85,14 @@ p {
 .recommend {
 	padding: 5px;
 	border: 1px dashed #ddd;
+	height: 44px;
 	margin-bottom: 30px;
 }
 
 .recommend p {
 	display: inline;
 	padding-right: 10px;
+	vertical-align: -5px;
 }
 
 .recommend button {

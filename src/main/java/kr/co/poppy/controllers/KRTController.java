@@ -57,7 +57,7 @@ public class KRTController {
 	@Autowired
 	CartService cartService;
 	@Autowired
-	ImgsService imgService;
+	ImgsService imgsService;
 
 	/** "/프로젝트이름"에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -304,6 +304,37 @@ public class KRTController {
 		return new ModelAndView(viewPath);
 	}
 
+	/** photo_rv */
+	/** photo (포토리뷰 상세조회) */
+	/** 상세 페이지 */
+	@RequestMapping(value = "/community/photo.do", method = RequestMethod.GET)
+	public ModelAndView photo(Model model, @RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
+		/** 1) 유효성 검사 */
+		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
+		if (bbsno == 0) {
+			return webHelper.redirect(null, "커뮤니티 번호가 없습니다.");
+		}
+
+		/** 2) 데이터 조회하기 */
+		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
+		Bbs input = new Bbs();
+		input.setBbsno(bbsno);
+
+		// 조회 결과를 저장할 객체 선언
+		Bbs output = null;
+
+		try {
+			// 데이터 조회
+			output = bbsService.getBbsrv_Item(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+
+		/** 3) view 처리 */
+		model.addAttribute("output", output);
+		return new ModelAndView("community/photo");
+	}
+
 	/** photo_wri (포토리뷰 쓰기) */
 	/** 작성 폼 페이지 */
 	@RequestMapping(value = "/community/photo_wri.do", method = RequestMethod.GET)
@@ -419,7 +450,7 @@ public class KRTController {
 
 		try {
 			// 데이터 저장
-			imgService.addImgs(imgs);
+			imgsService.addImgs(imgs);
 
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
@@ -462,9 +493,9 @@ public class KRTController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
-		// 본인이 작성한 글만 수정 가능하도록 처리
+		// 본인이 작성한 리뷰만 삭제 가능하도록 처리
 		if (myInfo.getMemno() != output.getMemno()) {
-			return webHelper.redirect(null, "본인이 작성한 리뷰만 수정 가능합니다.");
+			return webHelper.redirect(null, "본인이 작성한 리뷰만 삭제 가능합니다.");
 		}
 
 		/** 3) View 처리 */
@@ -561,7 +592,6 @@ public class KRTController {
 		bbs.setEditdate(date);
 		bbs.setMemno(myInfo.getMemno());
 		bbs.setGoodsno(1);
-		System.out.println("========="+bbs.getBbsno());
 
 		try {
 			// 데이터 수정
@@ -585,7 +615,7 @@ public class KRTController {
 
 		try {
 			// 데이터 수정
-			imgService.editImgs(imgs);
+			imgsService.editImgs(imgs);
 
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
@@ -599,34 +629,52 @@ public class KRTController {
 		return webHelper.redirect(redirectUrl, "수정되었습니다.");
 	}
 
-	/** photo (포토리뷰 상세조회) */
-	/** 상세 페이지 */
-	@RequestMapping(value = "/community/photo.do", method = RequestMethod.GET)
-	public ModelAndView photo(Model model, @RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
-		/** 1) 유효성 검사 */
-		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
+	/** 포토리뷰 삭제 처리 */
+	@RequestMapping(value = "/community/photo_delete", method = RequestMethod.GET)
+	public ModelAndView photo_delete(Model model, @RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+
+		/** 1) 파라미터 유효성 검사 */
+		// 이 값이 존재하지 않는다면 데이터 삭제가 불가능하므로 반드시 필수값으로 처리해야 한다.
 		if (bbsno == 0) {
 			return webHelper.redirect(null, "커뮤니티 번호가 없습니다.");
 		}
 
-		/** 2) 데이터 조회하기 */
-		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
-		Bbs input = new Bbs();
-		input.setBbsno(bbsno);
+		/** 2) 데이터 삭제하기 */
+		// 데이터 삭제에 필요한 조건값을 Beans에 저장하기
+		Bbs bbs = new Bbs();
+		Imgs imgs = new Imgs();
 
-		// 조회 결과를 저장할 객체 선언
+		bbs.setBbsno(bbsno);
+		imgs.setBbsno(bbsno);
+
+		// 포토리뷰 조회결과를 저장할 객체 선언
 		Bbs output = null;
 
 		try {
-			// 데이터 조회
-			output = bbsService.getBbsrv_Item(input);
+			// 포토리뷰 기본 정보 조회
+			output = bbsService.getBbsrv_Item(bbs);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
-		/** 3) view 처리 */
-		model.addAttribute("output", output);
-		return new ModelAndView("community/photo");
+		// 본인이 작성한 리뷰만 수정 가능하도록 처리
+		if (myInfo.getMemno() != output.getMemno()) {
+			return webHelper.redirect(null, "본인이 작성한 리뷰만 수정 가능합니다.");
+		}
+
+		try {
+			imgsService.deleteImgs(imgs);
+			bbsService.deleteBbs(bbs);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+
+		/** 페이지 이동 */
+		// 확인할 대상이 삭제된 상태이므로 목록 페이지로 이동
+		return webHelper.redirect(contextPath + "/community/photo_rv.do", "삭제되었습니다.");
+
 	}
 
 	/** 장바구니 */

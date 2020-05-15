@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -32,12 +32,17 @@
 			</h4>
 		</div>
 		<div class="container">
-			<img src="${output.imgpath}${output.imgname}.${output.imgext}" alt="리뷰사진" class="big-image">
+			<input type="hidden" name="bbsno" value="${output.bbsno}" /> <img
+				src="${output.imgpath}${output.imgname}.${output.imgext}" alt="리뷰사진"
+				class="big-image">
 			<div class="info-box">
-				<a href="${pageContext.request.contextPath}/gallery_ajax/goods.do?goodsno=${output.goodsno}"><img
-					src="${output.gipath}${output.giname}.${output.giext}" class="small-image"></a>
+				<a
+					href="${pageContext.request.contextPath}/gallery_ajax/goods.do?goodsno=${output.goodsno}"><img
+					src="${output.gipath}${output.giname}.${output.giext}"
+					class="small-image"></a>
 				<div class="info-content clear">
-					<a href="${pageContext.request.contextPath}/gallery_ajax/goods.do?goodsno=${output.goodsno}">
+					<a
+						href="${pageContext.request.contextPath}/gallery_ajax/goods.do?goodsno=${output.goodsno}">
 						${output.bbstitle}</a><br>
 					<div class="star">
 						<p>${output.rvlike}</p>
@@ -48,11 +53,22 @@
 					</div>
 				</div>
 			</div>
+			<div class="rv-title">
+				<p>이 리뷰에 대해 n명의 고객님께서 추천해 주셨습니다.</p>
+			</div>
 			<div class="rv-content">
 				<p class="date">${output.regdate}</p>
-				<button type=button class="btn">삭제</button>
-				<button type=button class="btn btn-inverse" onclick="location.href='${pageContext.request.contextPath}/community/photo_edit.do?bbsno=${output.bbsno}'">수정</button>
+				<button type=button class="btn"
+					onclick="location.href='${pageContext.request.contextPath}/community/photo_delete.do?bbsno=${output.bbsno}'">삭제</button>
+				<button type=button class="btn btn-inverse"
+					onclick="location.href='${pageContext.request.contextPath}/community/photo_edit.do?bbsno=${output.bbsno}'">수정</button>
 				<p class="bbscontent">${output.bbscontent}</p>
+			</div>
+			<div class="recommend">
+				<p>이 리뷰가 도움이 되셨다면 눌러주세요.</p>
+				<button class="btn">
+					<span>추천</span>
+				</button>
 			</div>
 			<div class="rv-footer">
 				<p>관리자에게만 댓글작성 권한이 있습니다.</p>
