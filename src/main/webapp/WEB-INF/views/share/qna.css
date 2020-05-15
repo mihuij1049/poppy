@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-
-
 .notice {
 	margin-top: 20px;
 }
@@ -18,16 +16,11 @@
 	vertical-align: middle;
 }
 
-
 .searchmenu {
 	padding-bottom: 15px;
 	margin: auto;
 	text-align: center;
 }
-
-
-
-
 
 .pass_label {
 	padding-top: 15px;
@@ -95,9 +88,7 @@
 	color: #ff6261;
 	text-decoration: none;
 }
-.prevok:hover {
-	text-decoration:none;
-}
+
 
 .prevno {
 	border: 1px solid #ffc7c1;
@@ -113,9 +104,6 @@
 	text-decoration: none;
 }
 
-.nextof:hover {
-	text-decoration: none;
-}
 .nextno {
 	border: 1px solid #ffc7c1;
 	padding: 6px 10px;

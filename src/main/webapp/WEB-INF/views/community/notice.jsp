@@ -11,6 +11,21 @@
 <style type="text/css">
 .table>tbody>tr>td.subject {
 	padding-left: 20px;
+	border-top: none;
+	border-bottom: 1px solid #eee;
+}
+
+.hr {
+	margin-bottom: 0px;
+}
+.prevok:hover {
+	text-decoration:none;
+	color: #FF6261;
+}
+
+.nextok:hover {
+	text-decoration: none;
+		color: #FF6261;
 }
 </style>
 <%@ include file="../share/head_tp.jsp"%>
@@ -73,7 +88,9 @@
 									</strong><br /> <span class="name" title="작성자">${item.username}</span>
 										<span class="date" title="작성일">${item.regdate}</span></td>
 								</tr>
+								
 							</c:forEach>
+							<hr class="hr" />
 						</c:otherwise>
 					</c:choose>
 

@@ -253,31 +253,81 @@ a {
 				<div class="search-searching">
 					<div class="search-bar">
 						<div class="search-textbar">
-							<input type="text" id="search-keyword" name="search-goods" placeholder="상품명을 입력하세요." />
+							<input type="text" id="search-keyword" name="search-goods"
+								placeholder="상품명을 입력하세요." />
 						</div>
 						<button class="btn btn-sm btn-searching" id="search_goods_btn">검
 							색</button>
 					</div>
 
 					<div class="search-result">
-						총 <b class="search-qty">0</b>개의 상품이 검색되었습니다.
+						총 <b class=""></b>개의 상품이 검색되었습니다.
 					</div>
 				</div>
 				<div class="search-body">
 					<ul class="search-list" id="search_goods_list">
 
 					</ul>
+					<div class="pagenumber">
+						<!-- 페이지 번호 구현 -->
+						<%-- 이전 그룹에 대한 링크 --%>
+						<c:choose>
+							<%-- 이전 그룹으로 이동 가능하다면? --%>
+							<c:when test="${pageData.prevPage > 0}">
+								<%-- 이동할 URL 생성 --%>
+								<c:url value="/community/qna_goods.do" var="prevPageUrl">
+									<c:param name="page" value="${pageData.prevPage}" />
+									<c:param name="keyword" value="${keyword}" />
+								</c:url>
+								<a href="${prevPageUrl}" class="prevok">≪</a>
+							</c:when>
+							<c:otherwise>
+								<span class="prevno">≪</span>
+							</c:otherwise>
+						</c:choose>
+
+						<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+						<c:forEach var="i" begin="${pageData.startPage}"
+							end="${pageData.endPage}" varStatus="status">
+							<%-- 이동할 URL 생성 --%>
+							<c:url value="/community/qna_goods.do" var="pageUrl">
+								<c:param name="page" value="${i}" />
+								<c:param name="keyword" value="${keyword}" />
+							</c:url>
+
+							<%-- 페이지 번호 출력 --%>
+							<c:choose>
+								<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+								<c:when test="${pageData.nowPage == i}">
+									<strong class="nowpage">${i}</strong>
+								</c:when>
+								<%-- 나머지 페이지의 경우 링크 적용함 --%>
+								<c:otherwise>
+									<a href="${pageUrl}" class="otherpage">${i}</a>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+
+						<%-- 다음 그룹에 대한 링크 --%>
+						<c:choose>
+							<%-- 다음 그룹으로 이동 가능하다면? --%>
+							<c:when test="${pageData.nextPage > 0}">
+								<%-- 이동할 URL 생성 --%>
+								<c:url value="/community/qna_goods.do" var="nextPageUrl">
+									<c:param name="page" value="${pageData.nextPage}" />
+									<c:param name="keyword" value="${keyword}" />
+								</c:url>
+								<a href="${nextPageUrl}" class="nextok">≫</a>
+							</c:when>
+							<c:otherwise>
+								<span class="nextno">≫</span>
+							</c:otherwise>
+						</c:choose>
+					</div>
 				</div>
-				<div class="search-item-paging">
-					<ul class="pagination pagination-xs">
-						<li class="disabled"><a href="#">«</a></li>
-						<!-- 활성화 버튼은 아래의 구조로 구성하시면 됩니다. sr-only는 스크린리더 전용입니다. -->
-						<li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
-						<li><span>2</span></li>
-						<li><span>3</span></li>
-						<li class="paging-right"><a href="#">»</a></li>
-					</ul>
-				</div>
+
+
+
 				<div class="search-modal-layer"></div>
 			</div>
 			<!-- 모달창 끝 -->
@@ -319,8 +369,8 @@ a {
 						</div>
 						<div class="col-xs-8">
 							<input type="radio" name="qnasec" value="0" id="public">
-							<label>공개글 &nbsp;</label> 
-							<input type="radio" id="private" name="qnasec" value="1" checked> <label>비밀글</label>
+							<label>공개글 &nbsp;</label> <input type="radio" id="private"
+								name="qnasec" value="1" checked> <label>비밀글</label>
 						</div>
 					</div>
 					<div class="qna-pw">
@@ -328,7 +378,8 @@ a {
 							<label>비밀번호</label>
 						</div>
 						<div class="col-xs-8">
-							<input type="text" id="password" name="qnapw" maxlength="4" placeholder="비밀번호 4자리를 입력하세요.">
+							<input type="text" id="password" name="qnapw" maxlength="4"
+								placeholder="비밀번호 4자리를 입력하세요.">
 						</div>
 					</div>
 
@@ -382,50 +433,49 @@ a {
 					<button type="button" class="btn btn-sm search-item-select" id="select_btn">선택</button>
 				</div>
 			</li>
+
 		{{/each}}
 	</script>
 
 	<script type="text/javascript">
-	/** 공개글 / 비밀글 라디오박스 체크 이벤트 */
-	$('input[type=radio]').change(function() {
-		// 공개글
-	    if (this.value == '0') {
-	        $("#password").attr("readonly",true).attr("disabled",false);
-	        $("#password").removeAttr("placeholder");
-	    }
-		// 비밀글 
-	    else {
-	    	 $("#password").attr("disabled",false).attr("readonly",false);
-	    	 $("#password").attr("placeholder", "비밀번호 4자리를 입력하세요.");
-	    }
-	});
-	
-	
-	$(function() {
-		/** 등록버튼을 눌렀을 때 */
-		$("#qna_ok").on("click",function(e) {
-			e.preventDefault();
-			// 비밀글에 체크된 상태라면
-			if($("input:radio[id='private']").is(":checked") == true){
-				// 비밀번호를 pw에 담는다.
-			 	var pw = $("#password").val();
-			 	console.log(pw);
-			 	var pwlength = $("#password").length;
-			 	// 비밀번호가 null이라면 경고메시지
-			 	if(pw=="" || pwlength<4) {
-			 		alert("비밀번호는 4자리로 입력해주세요.");
-			 		return false;
-			 	}
-			 	$("#myModal2").modal("show");
-			 // 공개글에 체크된 상태라면
-			 	} else {
-			 	// 클릭시 모달창이 뜨는 이벤트
+		/** 공개글 / 비밀글 라디오박스 체크 이벤트 */
+		$('input[type=radio]').change(function() {
+			// 공개글
+			if (this.value == '0') {
+				$("#password").attr("readonly", true).attr("disabled", false);
+				$("#password").removeAttr("placeholder");
+			}
+			// 비밀글 
+			else {
+				$("#password").attr("disabled", false).attr("readonly", false);
+				$("#password").attr("placeholder", "비밀번호 4자리를 입력하세요.");
+			}
+		});
+
+		$(function() {
+			/** 등록버튼을 눌렀을 때 */
+			$("#qna_ok").on("click", function(e) {
+				e.preventDefault();
+				// 비밀글에 체크된 상태라면
+				if ($("input:radio[id='private']").is(":checked") == true) {
+					// 비밀번호를 pw에 담는다.
+					var pw = $("#password").val();
+					console.log(pw);
+					var pwlength = $("#password").length;
+					// 비밀번호가 null이라면 경고메시지
+					if (pw == "" || pwlength < 4) {
+						alert("비밀번호는 4자리로 입력해주세요.");
+						return false;
+					}
+					$("#myModal2").modal("show");
+					// 공개글에 체크된 상태라면
+				} else {
+					// 클릭시 모달창이 뜨는 이벤트
 					$("#myModal2").modal("show");
 				}
-		});
-	});	// end function
+			});
+		}); // end function
 
-	
 		/** 모달창 켜고 끄기 */
 		$(function() {
 			$(".item-select").click(function(e) {
@@ -437,32 +487,32 @@ a {
 				$(".search-qty").text("0");
 			});
 		}); // end 모달창 켜고 끄기
-		
-		
+
 		/** 검색 버튼 클릭시 검색 결과 화면에 나타내기 */
 		function get_list() {
-			let keyword = $("#search-keyword").val();
-			let page = 1;
-			$.get("${pageContext.request.contextPath}/community/qna_goods", 
-					{ "keyword": keyword, "page": page},
-					function(req) {
-						// 미리 준비한 HTML틀을 읽어온다.
-						var template = Handlebars.compile($("#goods_item_tmpl")
-								.html());
-						// Ajax 를 통해서 읽어온 JSON 을 템플릿에 병합한다.
-						var html = template(req);
-						// #search_goods_list 에 읽어온 내용을 추가한다.
-						$("#search_goods_list").append(html);
-					});
-		} // 검색 결과를 템플릿을 이용해서 화면에 나타낼 함수 정의
+
+		}
+		// 검색 결과를 템플릿을 이용해서 화면에 나타낼 함수 정의
 
 		$(function() {
+			// 검색버튼 클릭이벤트 
 			$("#search_goods_btn").click(function(e) {
-				get_list(); // 버튼이 클릭되면 호출된다.
-				var length = $("ul").length;
-				// console.log(length);
-				$(".search-qty").text(length);
-			});
+								let keyword = $("#search-keyword").val();
+								let page = 1;
+								$.get("${pageContext.request.contextPath}/community/qna_goods",
+												{"keyword" : keyword, "page" : page},
+												function(req) {
+													// 미리 준비한 HTML틀을 읽어온다.
+													var template = Handlebars.compile($("#goods_item_tmpl").html());
+													// Ajax 를 통해서 읽어온 JSON 을 템플릿에 병합한다.
+													var html = template(req);
+													// #search_goods_list 에 읽어온 내용을 추가한다.
+													$("#search_goods_list").append(html);
+												});
+								var length = $("li[class=search-list-item").length;
+								console.log(length);
+								$(".search-qty").text(length);
+							});
 		}); // 함수 호출하며 검색 결과 n개 나타내기 
 
 		/** 선택 버튼을 누르면 item의 정보를 본문으로 넣기 */
@@ -494,7 +544,6 @@ a {
 
 					});
 		});
-		
 
 		$(".qna-submit").click(function(e) {
 			$("#qna_wri").submit();

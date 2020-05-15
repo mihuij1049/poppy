@@ -416,7 +416,7 @@ public class CommunityController {
 	}
 
 	/** 공지사항 검색 기능 구현 */
-	@RequestMapping(value = "/community/noticesearch.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/community/noticesearch.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView noticeSearch(Model model,
 			// 검색어
 			@RequestParam(value = "searchType", required = false) String searchType,
@@ -430,7 +430,7 @@ public class CommunityController {
 
 		/** 2) 어떤 범주로 검색할지 받은 파라미터 검사 */
 		Bbs input = new Bbs();
-		input.setBbstype("B");
+		input.setBbstype("A");
 		if (searchType.equals("bbstitle")) {
 			input.setBbstitle(keyword);
 		}

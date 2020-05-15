@@ -9,10 +9,12 @@
 
 <head>
 <style type="text/css">
-
 .table>tbody>tr>td.subject {
-padding-left : 20px;
+	padding-left: 20px;
+	border-top: none;
+	border-bottom: 1px solid #eee;
 }
+
 .customer_pass {
 	position: fixed;
 	left: 33%;
@@ -30,10 +32,23 @@ padding-left : 20px;
 /** 글쓰기 버튼 */
 .btn-list {
 	float: right;
-	padding-right: 10px;
+	margin-right: 15px;
 }
 
+.hr {
+	margin-bottom: 0px;
 
+}
+
+.prevok:hover {
+	text-decoration:none;
+	color: #FF6261;
+}
+
+.nextok:hover {
+	text-decoration: none;
+		color: #FF6261;
+}
 </style>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
@@ -50,17 +65,22 @@ padding-left : 20px;
 						class="glyphicon glyphicon-chevron-left"></i></a>Q&A
 				</b>
 			</h4>
+			<c:if test="${!empty userInfo.userid }">
+						<div class="wbutton">
+							<button type="button"
+								onclick="location.href='${pageContext.request.contextPath}/community/qna_wri.do'"
+								class="btn btn-sm btn-list">글쓰기</button><br>
+								
+						</div>
+					</c:if>
 		</div>
 		<!-- 로그인 시에만 글쓰기 버튼 보이게 하기 -->
 
 		<div class="notice">
 			<table class="table">
 				<tbody>
-					<c:if test="${!empty userInfo.userid }">
-						<button type="button"
-							onclick="location.href='${pageContext.request.contextPath}/community/qna_wri.do'"
-							class="btn btn-sm btn-list">글쓰기</button>
-					</c:if>
+					
+					<hr class="hr" />
 					<c:choose>
 						<%-- 조회결과가 없는 경우 --%>
 						<c:when test="${output == null || fn:length(output) == 0}">
@@ -103,19 +123,19 @@ padding-left : 20px;
 											<td class="subject" id="subject"><strong> <span
 													class="glyphicon glyphicon-lock"></span> <a
 													href="${viewUrl}" class="subject" id="confirm-pw"
-													data-qnapw="${item.qnapw}" data-bbsno="${item.bbsno }">${bbstitle}</a> <span
-													class="comment">&nbsp;[${item.cmtcount}]</span></strong><br /> <span class="name"
-												title="작성자">${item.username}</span> <span class="date"
-												title="작성일">${item.regdate}</span></td>
+													data-qnapw="${item.qnapw}" data-bbsno="${item.bbsno }">${bbstitle}</a>
+													<span class="comment">&nbsp;[${item.cmtcount}]</span></strong><br />
+												<span class="name" title="작성자">${item.username}</span> <span
+												class="date" title="작성일">${item.regdate}</span></td>
 										</tr>
 									</c:when>
 									<c:otherwise>
 										<tr>
-											<td class="subject">
-											<strong> <a href="${viewUrl}" class="subject">${bbstitle}</a> 
-											<span class="comment">[${item.cmtcount}]</span></strong><br /> 
-											<span class="name" title="작성자">${item.username}</span> 
-											<span class="date" title="작성일">${item.regdate}</span></td>
+											<td class="subject"><strong> <a
+													href="${viewUrl}" class="subject">${bbstitle}</a> <span
+													class="comment">[${item.cmtcount}]</span></strong><br /> <span
+												class="name" title="작성자">${item.username}</span> <span
+												class="date" title="작성일">${item.regdate}</span></td>
 										</tr>
 									</c:otherwise>
 
@@ -203,8 +223,7 @@ padding-left : 20px;
 		<!--   비밀번호 입력 모달 ------------------------->
 		<div class="customer_pass" id="customer_pass">
 			<b class="plz_pass">비밀번호를 입력해 주세요.</b><br> <label for="cs_pass"
-				class="pass_label">비밀번호</label> 
-				<input type="password"
+				class="pass_label">비밀번호</label> <input type="password"
 				name="cs_pass" class="cs_pass" id="cs_pass" maxlength="4" /><br>
 
 			<div class="cs_pass_2btns">
@@ -223,28 +242,30 @@ padding-left : 20px;
 				e.preventDefault();
 				$("#customer_pass").show();
 			});
-			
-			$("#confirm_qnapw").click(function(e) {
-				e.preventDefault();
-			var inputpw = $("#cs_pass").val();
-			let current = $("#confirm-pw");
-			let bbsno=current.data("bbsno"); 
-			let qnapw=current.data("qnapw");
-			console.log(qnapw);
-			console.log(inputpw);
-			if(qnapw==inputpw) {
-				window.location = "${pageContext.request.contextPath}/community/article.do?bbstype=B&bbsno=" + bbsno;
-			} else {
-				alert("비밀번호를 확인해주세요.");
-				$("#cs_pass").val("");
-			}
-		});
+
+			$("#confirm_qnapw")
+					.click(
+							function(e) {
+								e.preventDefault();
+								var inputpw = $("#cs_pass").val();
+								let current = $("#confirm-pw");
+								let bbsno = current.data("bbsno");
+								let qnapw = current.data("qnapw");
+								console.log(qnapw);
+								console.log(inputpw);
+								if (qnapw == inputpw) {
+									window.location = "${pageContext.request.contextPath}/community/article.do?bbstype=B&bbsno="
+											+ bbsno;
+								} else {
+									alert("비밀번호를 확인해주세요.");
+									$("#cs_pass").val("");
+								}
+							});
 			$("#modal-cancel-btn").click(function() {
 				$("#customer_pass").hide();
 			});
-			
+
 		});
-		
 	</script>
 </body>
 
