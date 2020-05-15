@@ -44,7 +44,7 @@ public class CommunityController {
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 
-	/** article 공지사항/Q&A 글보기 페이지 */
+	/** ========== article 공지사항/Q&A 글보기 페이지 ========== */
 	@RequestMapping(value = "/community/article.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView view(Model model, 
 			@RequestParam(value = "bbstype", required = false) String bbstype,
@@ -92,13 +92,15 @@ public class CommunityController {
 		return new ModelAndView("community/article");
 	}
 
-	/** Q&A 작성폼 페이지 */
+	
+	/** ========== Q&A 작성폼 페이지 ========== */
 	@RequestMapping(value = "/community/qna_wri.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView add(Model model) {
 		return new ModelAndView("community/qna_wri");
 	}
 
-	/** Q&A 작성폼에 대한 action페이지 */
+	
+	/** ========== Q&A 작성폼에 대한 action페이지 ========== */
 	@RequestMapping(value = "/community/qna_wri_ok.do", method = RequestMethod.POST)
 	public ModelAndView add_qna(Model model, @RequestParam(value = "bbstype", required = false) String bbstype,
 			@RequestParam(value = "bbstitle", required = false) String bbstitle,
@@ -108,7 +110,13 @@ public class CommunityController {
 			@RequestParam(value = "regdate", required = false) String regdate,
 			@RequestParam(value = "editdate", required = false) String editdate,
 			@RequestParam(value = "memno", defaultValue = "0") Integer memno,
-			@RequestParam(value = "goodsno", defaultValue = "0") Integer goodsno) {
+			@RequestParam(value = "goodsno", defaultValue = "0") Integer goodsno,
+			@RequestParam(value = "gname", required = false) String gname,
+			@RequestParam(value = "gprice", defaultValue = "0") int gprice,
+			@RequestParam(value = "imgname", required = false) String imgname,
+			@RequestParam(value = "imgpath", required = false) String imgpath,
+			@RequestParam(value = "imgext", required = false) String imgext,
+			@RequestParam(value = "imgtype", required = false) String imgtype) {
 		// 가입한 시각을 담은 date 생성
 		Calendar c = Calendar.getInstance();
 		String date = String.format("%04d-%02d-%02d %02d:%02d:%02d", c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1,
@@ -134,8 +142,13 @@ public class CommunityController {
 		input.setRegdate(date);
 		input.setEditdate(date);
 		input.setMemno(myInfo.getMemno());
-		input.setGoodsno(1);
-
+		input.setGoodsno(goodsno);
+		input.setGname(gname);
+		input.setGprice(gprice);
+		input.setImgext(imgext);
+		input.setImgpath(imgpath);
+		input.setImgtype(imgtype);
+		
 		try {
 			// 데이터 저장 --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
 			bbsService.addBbs(input);
@@ -149,7 +162,8 @@ public class CommunityController {
 		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 	}
 
-	/** Q&A 수정 폼 페이지 */
+	
+	/** ========== Q&A 수정 폼 페이지 ========== */
 	@RequestMapping(value = "/community/editqna.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView edit(Model model, @RequestParam(value = "bbstype", required = false) String bbstype,
 			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
@@ -188,7 +202,8 @@ public class CommunityController {
 		return new ModelAndView("community/qna_edit");
 	}
 
-	/** Q&A 수정폼에 대한 action페이지 */
+	
+	/** ========== Q&A 수정폼에 대한 action페이지 ========== */
 	@RequestMapping(value = "/community/qna_edit_ok.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView add_qna(Model model, @RequestParam(value = "memno", required = false) Integer memno,
 			@RequestParam(value = "bbsno", required = false) int bbsno,

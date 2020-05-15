@@ -268,66 +268,7 @@ a {
 					<ul class="search-list" id="search_goods_list">
 
 					</ul>
-					<div class="pagenumber">
-						<!-- 페이지 번호 구현 -->
-						<%-- 이전 그룹에 대한 링크 --%>
-						<c:choose>
-							<%-- 이전 그룹으로 이동 가능하다면? --%>
-							<c:when test="${pageData.prevPage > 0}">
-								<%-- 이동할 URL 생성 --%>
-								<c:url value="/community/qna_goods.do" var="prevPageUrl">
-									<c:param name="page" value="${pageData.prevPage}" />
-									<c:param name="keyword" value="${keyword}" />
-								</c:url>
-								<a href="${prevPageUrl}" class="prevok">≪</a>
-							</c:when>
-							<c:otherwise>
-								<span class="prevno">≪</span>
-							</c:otherwise>
-						</c:choose>
-
-						<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
-						<c:forEach var="i" begin="${pageData.startPage}"
-							end="${pageData.endPage}" varStatus="status">
-							<%-- 이동할 URL 생성 --%>
-							<c:url value="/community/qna_goods.do" var="pageUrl">
-								<c:param name="page" value="${i}" />
-								<c:param name="keyword" value="${keyword}" />
-							</c:url>
-
-							<%-- 페이지 번호 출력 --%>
-							<c:choose>
-								<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
-								<c:when test="${pageData.nowPage == i}">
-									<strong class="nowpage">${i}</strong>
-								</c:when>
-								<%-- 나머지 페이지의 경우 링크 적용함 --%>
-								<c:otherwise>
-									<a href="${pageUrl}" class="otherpage">${i}</a>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-
-						<%-- 다음 그룹에 대한 링크 --%>
-						<c:choose>
-							<%-- 다음 그룹으로 이동 가능하다면? --%>
-							<c:when test="${pageData.nextPage > 0}">
-								<%-- 이동할 URL 생성 --%>
-								<c:url value="/community/qna_goods.do" var="nextPageUrl">
-									<c:param name="page" value="${pageData.nextPage}" />
-									<c:param name="keyword" value="${keyword}" />
-								</c:url>
-								<a href="${nextPageUrl}" class="nextok">≫</a>
-							</c:when>
-							<c:otherwise>
-								<span class="nextno">≫</span>
-							</c:otherwise>
-						</c:choose>
-					</div>
 				</div>
-
-
-
 				<div class="search-modal-layer"></div>
 			</div>
 			<!-- 모달창 끝 -->
@@ -491,7 +432,6 @@ a {
 
 		/** 검색 버튼 클릭시 검색 결과 화면에 나타내기 */
 		function get_list() {
-
 		}
 		// 검색 결과를 템플릿을 이용해서 화면에 나타낼 함수 정의
 
@@ -518,12 +458,11 @@ a {
 
 		/** 선택 버튼을 누르면 item의 정보를 본문으로 넣기 */
 		$(function() {
-			// 링크가 클릭된 경우
+			// 검색된 상품이 클릭되는 경우
 			$("#search_goods_list").on(
 					'click',
 					'button',
 					function(e) {
-
 						// 클릭된 상품의 href 속성 가져오기
 						var src = $(event.target).parent().prev().prev()
 								.children().attr('src');
@@ -542,13 +481,10 @@ a {
 						$("#search-modal").fadeOut();
 						$("li").remove(".search-list-item");
 						$(".search-qty").text("0");
-
 					});
 		});
 
-		$(".qna-submit").click(function(e) {
-			$("#qna_wri").submit();
-		});
+		
 	</script>
 </body>
 

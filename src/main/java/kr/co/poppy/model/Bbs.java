@@ -34,6 +34,8 @@ public class Bbs {
 	private String userid;
 	// 상품 이름
 	private String gname;
+	// 상품가격
+	private int gprice;
 	// 이미지 일련번호
 	private int imgsno;
 	// 이미지 이름
