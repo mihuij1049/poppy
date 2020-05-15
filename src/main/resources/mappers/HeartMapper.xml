@@ -43,8 +43,9 @@
         parameterType="kr.co.poppy.model.Heart"
         useGeneratedKeys="true"
         keyProperty="heartno">
-        INSERT INTO heart (regdate, editdate, memno, goodsno) VALUES (
-        now(), now(), #{memno}, #{goodsno});
+        INSERT INTO heart (regdate, editdate, memno, goodsno)
+        SELECT now(), now(), #{memno}, #{goodsno} FROM heart
+		WHERE NOT EXISTS (SELECT memno FROM heart WHERE memno=#{memno} AND goodsno=#{goodsno}) LIMIT 1
     </insert>
 
     <!-- 데이터 삭제를 위한 기능 정의 -->

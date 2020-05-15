@@ -87,3 +87,13 @@
 	background-color: #FF8F83;
 	border-color: #FF8F83;
 }
+
+.price_box #gprice {
+	font-size: 12px;
+	font-color: #ffff00;
+	
+}
+
+.price_box #gsale {
+	font-size: 16px;	
+}

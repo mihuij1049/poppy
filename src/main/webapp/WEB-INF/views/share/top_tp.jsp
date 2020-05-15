@@ -14,7 +14,7 @@
 		</a>
 		<hr>
 		<ul class="category">
-			<a href="${pageContext.request.contextPath }/gallery/gal_list_all.do">
+			<a href="${pageContext.request.contextPath }/gallery/gal_list_best.do">
 				<li>BEST</li>
 			</a>
 			<a href="${pageContext.request.contextPath }/gallery/gal_list_new.do">

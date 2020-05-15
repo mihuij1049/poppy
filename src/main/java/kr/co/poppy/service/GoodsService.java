@@ -23,6 +23,15 @@ public interface GoodsService {
 	 * @throws Exception
 	 */
 	public List<Goods> getGoodsList(Goods input) throws Exception;
+
+	/**
+	 * 상품 데이터 목록(신상품) 조회
+	 * 
+	 * @param Goods 검색조건과 페이지 구현 정보를 담고 있는 Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	public List<Goods> getGoodsListBest(Goods input) throws Exception;
 	
 	/**
 	 * 상품 데이터 목록(신상품) 조회

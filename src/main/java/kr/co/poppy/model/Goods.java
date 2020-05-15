@@ -27,6 +27,8 @@ public class Goods {
 	private String regdate;
 	/** 최종변경일시 */
 	private String editdate;
+	/** 베스트상품 카운트 */
+	private int heartCnt;
 
 	// JOIN절에 따른 추가 컬럼 미정
 	

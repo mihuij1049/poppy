@@ -58,18 +58,21 @@ public class HomeController {
 		Goods input = new Goods();
 				
 		// 데이터저장할곳
-		List<Goods> output = null;
+		List<Goods> output1 = null;
+		List<Goods> output2 = null;
 				
 		try {
 			// 데이터조회
-			output = goodsService.getGoodsList(input);
+			output1 = goodsService.getGoodsListBest(input);
+			output2 = goodsService.getGoodsListNew(input);
 					
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 				
 		// 3) 뷰처리
-		model.addAttribute("output", output);
+		model.addAttribute("output1", output1);
+		model.addAttribute("output2", output2);
 		
 		return new ModelAndView("index/index");
 	}

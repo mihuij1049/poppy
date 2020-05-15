@@ -50,12 +50,8 @@ public class GalleryRestController {
 		
 		int ifmemno = myInfo.getMemno();
 		
-		if (ifmemno == 0) {
-			return webHelper.getJsonWarning("로그인해주세요.");
-		}
-		
 		/** 1) 요청받은 파라미터가 0이 아니라면? */
-		if (goodsno != 0) {
+		if (goodsno != 0 && ifmemno != 0) {
 			Heart input = new Heart();
 			input.setMemno(myInfo.getMemno());
 			input.setGoodsno(goodsno);

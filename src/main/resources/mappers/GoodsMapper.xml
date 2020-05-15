@@ -56,7 +56,10 @@
 	<select id="selectListBest" parameterType="kr.co.poppy.model.Goods"
 		resultMap="goodsMap">
 		select *, (SELECT count(h.goodsno) from heart h where h.goodsno = g.goodsno)
-		AS heartCnt from goods g order by heartCnt desc;
+		AS heartCnt from goods g
+		INNER JOIN imgs i on g.goodsno = i.goodsno
+		WHERE i.imgtype="A"
+		order by heartCnt desc;
 	</select>
 	
 	<!-- 다중행 조회(신상품)을 위한 기능 정의 -->

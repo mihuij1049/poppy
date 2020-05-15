@@ -18,7 +18,7 @@
 	height: 45px;
 	padding: 0px 10px;
 	border: 0px;
-	font-size: 10px;
+	font-size: 13px;
 }
 </style>
 <body>
@@ -67,13 +67,13 @@
 										<hr />
 									</a>
 									<div class="price_box">
-										<del>₩${item.gprice}원</del>
+										<span id="gprice"><del>₩${item.gprice}원</del></span>
 										<button type="submit" class="btn btn-inverse insert-one" id="insert-one" data-heartno="${item.heartno}" data-goodsno="${item.goodsno}">
 										like
 										♥
 										</button>
 										<br>
-										₩${item.gsale}원
+										<span id="gsale"><b>₩${item.gsale}원</b></span>
 									</div>
 								</div>
 							</div>

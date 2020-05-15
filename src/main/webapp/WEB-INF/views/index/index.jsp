@@ -39,11 +39,15 @@
 				<div class="carousel-inner">
 					<!-- 항목 (1) -->
 					<div class="item active">
+					<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=33">
 						<img src="/upload/img/main_M.jpg" alt="슬라이더(1)">
+					</a>
 					</div>
 					<!-- 항목 (2) -->
 					<div class="item">
+					<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=6">
 						<img src="/upload/img/2_M.jpg" alt="슬라이더(2)">
+					</a>
 					</div>
 					<!-- 항목 (3) -->
 					<div class="item">
@@ -68,7 +72,7 @@
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
 						<div class="gal_sug_main">
-							<c:forEach var="item" items="${output}" varStatus="status" begin="0" end="2">
+							<c:forEach var="item" items="${output1}" varStatus="status" begin="0" end="2">
 							<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=${item.goodsno}">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
@@ -84,8 +88,8 @@
 					</div>
 					<div class="swiper-slide">
 						<div class="gal_sug_main">
-							<c:forEach var="item" items="${output}" varStatus="status" begin="3" end="5">
-							<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do">
+							<c:forEach var="item" items="${output1}" varStatus="status" begin="3" end="5">
+							<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=${item.goodsno}">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
 									<img src="${item.imgpath}${item.imgname}.jpg" id="img_sug">
@@ -100,8 +104,8 @@
 					</div>
 					<div class="swiper-slide">
 						<div class="gal_sug_main">
-							<c:forEach var="item" items="${output}" varStatus="status" begin="6" end="8">
-							<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do">
+							<c:forEach var="item" items="${output1}" varStatus="status" begin="6" end="8">
+							<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=${item.goodsno}">
 							<div class="gal_sug">
 								<div class="gal_sug_img">
 									<img src="${item.imgpath}${item.imgname}.jpg" id="img_sug">
@@ -121,33 +125,40 @@
 			<!-- 스와이퍼 플러그인 갤러리 끝!!! -->
 			<center>
 				<button type="button" class="btn btn-inverse index_btn"
-					onclick="location.href='${pageContext.request.contextPath }/gallery/gal_list_best_.do'">베스트 상품
+					onclick="location.href='${pageContext.request.contextPath }/gallery/gal_list_best.do'">베스트 상품
 					더보기</button>
 			</center>
 			<center>
 				<i class="glyphicon glyphicon-bullhorn icon_size1 t_btn"
 					id="glyp_list"></i>
-				<h3 id="sale_h3">TIME SALE</h3>
+				<h3 id="sale_h3">신상품</h3>
 			</center>
 			<div class="gal_best_main">
 			<!-- jstl 반복문 시작 -->
-				<c:forEach var="item" items="${output}" varStatus="status" end="8">
+				<c:forEach var="item" items="${output2}" varStatus="status" end="8">
 					<div class="gal_best">
-					<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do">
+					<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=${item.goodsno}">
 						<div class="gal_sug_img">
 							<img src="${item.imgpath}${item.imgname}.jpg" id="img_sug">
 						</div>
 						<span class="sal_name">${item.gname}</span>
 						</a>
 						<hr />
-						${item.gprice}<button type="button" class="btn btn-inverse delete-one"
-									id="delete-one" data-heartno="${item.heartno}">♥</button>
+						<div class="price_box">
+							<span id="gprice"><del>₩${item.gprice}원</del></span>
+							<br>
+							<span id="gsale"><b>₩${item.gsale}원</b></span>
+							<button type="submit" class="btn btn-inverse insert-one" id="insert-one" data-heartno="${item.heartno}" data-goodsno="${item.goodsno}">
+							like
+							♥
+							</button>
+						</div>
 					</div>
 				</c:forEach>
 			<!-- jstl 반복문 끝 -->
 				<button type="button" class="btn btn-inverse index_btn"
-					onclick="location.href='${pageContext.request.contextPath }/gallery/gal_list_.do'">뽀삐뽀삐 단독
-					최저가 보장</button>
+					onclick="location.href='${pageContext.request.contextPath }/gallery/gal_list_new.do'">뽀삐뽀삐 단독
+					신상품 출시</button>
 			</div>
 			<div class="img_banner">
 				<img src="/upload/img/index_banner1.jpg">

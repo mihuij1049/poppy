@@ -71,6 +71,31 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 	
 	/**
+	 * 상품 데이터 목록(베스트상품) 조회
+	 * 
+	 * @param Goods 검색조건과 페이지 구현 정보를 담고 있는 Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	@Override
+	public List<Goods> getGoodsListBest(Goods input) throws Exception {
+		List<Goods> result = null;
+		try {
+			result = sqlSession.selectList("GoodsMapper.selectListBest", input);
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+	
+	/**
 	 * 상품 데이터 목록(신상품) 조회
 	 * 
 	 * @param Goods 검색조건과 페이지 구현 정보를 담고 있는 Beans

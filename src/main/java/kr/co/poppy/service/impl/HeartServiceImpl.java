@@ -85,7 +85,7 @@ public class HeartServiceImpl implements HeartService {
             }
         } catch (NullPointerException e) {
             log.error(e.getLocalizedMessage());
-            throw new Exception("저장된 데이터가 없습니다.");
+            throw new Exception("이미 등록된 상품입니다.");
         } catch (Exception e) {
             log.error(e.getLocalizedMessage());
             throw new Exception("데이터 저장에 실패했습니다.");

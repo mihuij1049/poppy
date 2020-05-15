@@ -69,6 +69,7 @@
 
 #sale_h3 {
     color: #ff8f83;
+    margin-bottom: 20px;
 }
 
 .gal_sug_main hr {
@@ -81,6 +82,14 @@
 .sal_name {
 	font-weight: bold;
 	color: #ff8f83;
+	
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	/* 라인수 */
+	-webkit-box-orient: vertical;
+	word-wrap: break-word;
 }
 /* 상품갤러리 제목 끝 */
 
