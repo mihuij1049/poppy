@@ -51,7 +51,7 @@ public class PayAjaxController {
 
 	@Autowired
 	GoodsdetailService goodsdetailService;
-	
+
 	@Autowired
 	MembersService membersService;
 
@@ -61,8 +61,7 @@ public class PayAjaxController {
 
 	/** 주문결제페이지 */
 	@RequestMapping(value = "/pay_ajax/orderform.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView addrList(Model model, 
-			@RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
+	public ModelAndView addrList(Model model, @RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
 			@RequestParam(value = "memno", defaultValue = "0") int memno,
 			@RequestParam(value = "addrno", defaultValue = "0") int addrno,
 			@RequestParam(value = "gddetailno", defaultValue = "0") int gddetailno,
@@ -77,7 +76,7 @@ public class PayAjaxController {
 		if (goodsno == 0) {
 			return webHelper.redirect(null, "상품번호가 없습니다.");
 		}
-		if (gdoptions.equals("")) {
+		if (gdoptions.equals("active")) {
 			return webHelper.redirect(null, "상품옵션을 선택해주세요.");
 		}
 
@@ -89,7 +88,7 @@ public class PayAjaxController {
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
 		Members mb = new Members();
 		mb.setMemno(myInfo.getMemno());
-		
+
 		Address input = new Address();
 		input.setAddrno(addrno);
 		input.setMemno(myInfo.getMemno());
@@ -118,36 +117,55 @@ public class PayAjaxController {
 		Goods goods = null;
 		Goodsdetail gdoutput = null;
 
+		// 신규 - 기존 회원 검사
+		int result = 0;
+
 		try {
-			// 데이터 조회
-			output = addressService.getAddressItem(input);
-			output2 = addressService.getAddressList(input2);
-			output3 = pointsService.getPointsMbList(input3);
-			goods = goodsService.getGoodsItem(gd);
-			gdoutput = goodsdetailService.getGoodsdetailItem(gdetail);
+			result = addressService.getAddressCount(input);
 		} catch (Exception e) {
-			// 신규회원일 경우, 조회된 데이터가 없으므로 오류를 발생시키면 안된다.
-			return webHelper.redirect(null, e.getLocalizedMessage());
+
 		}
 
-		/** 조회된 List객체에서 적립금 총합 구하기 */
-		int sumAvpoint = 0;
+		if (result > 0) {
+			try {
+				// 데이터 조회
+				output = addressService.getAddressItem(input);
+				output2 = addressService.getAddressList(input2);
+				output3 = pointsService.getPointsMbList(input3);
+				goods = goodsService.getGoodsItem(gd);
+				gdoutput = goodsdetailService.getGoodsdetailItem(gdetail);
 
-		for (int i = 0; i < output3.size(); i++) {
-			Points temp = null;
-			temp = output3.get(i);
-			if (temp.getAvpoint() == null || temp.getAvpoint() == 0) {
-				temp.setAvpoint(0);
+			} catch (Exception e) {
+				// 신규회원일 경우, 조회된 데이터가 없으므로 오류를 발생시키면 안된다.
+				return webHelper.redirect(null, e.getLocalizedMessage());
 			}
-			sumAvpoint += temp.getAvpoint();
+
+			/** 조회된 List객체에서 적립금 총합 구하기 */
+			int sumAvpoint = 0;
+
+			for (int i = 0; i < output3.size(); i++) {
+				Points temp = null;
+				temp = output3.get(i);
+				if (temp.getAvpoint() == null || temp.getAvpoint() == 0) {
+					temp.setAvpoint(0);
+				}
+				sumAvpoint += temp.getAvpoint();
+			}
+
+			input3.setAvpoint(sumAvpoint);
+			// 세션에도 정보 담기
+			myInfo.setSumAvpoint(sumAvpoint);
+
+			mySession.setAttribute("userInfo", myInfo);
+		} else {
+			try {
+				goods = goodsService.getGoodsItem(gd);
+				gdoutput = goodsdetailService.getGoodsdetailItem(gdetail);
+			} catch (Exception e) {
+				// 신규회원일 경우, 조회된 데이터가 없으므로 오류를 발생시키면 안된다.
+				return webHelper.redirect(null, e.getLocalizedMessage());
+			}
 		}
-
-		input3.setAvpoint(sumAvpoint);
-
-		// 세션에도 정보 담기
-		myInfo.setSumAvpoint(sumAvpoint);
-
-		mySession.setAttribute("userInfo", myInfo);
 
 		/** View 처리 */
 		model.addAttribute("gdcount", gdcount);

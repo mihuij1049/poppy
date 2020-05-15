@@ -779,11 +779,12 @@
      text-align: center;
  }
 
- .button-list {
+#button-list {
      width: 100%;
  }
-
- .button-list div {
+ 
+ #button-list label {
+     position: relative;
      display: inline-block;
      padding: 8px;
      width: 40%;
@@ -793,7 +794,34 @@
      color: #fff;
      background-color: #997C7A;
  }
-
+ 
+ #button-list label input {
+     position: absolute;
+     top:0;
+     left:0;
+     width:100%;
+     height:100%;
+     margin:0;
+     outline:0;
+ }
+ 
+ #button-list input:not(:disabled):checked[type="radio"] {
+  
+     -webkit-appearance: none;
+ }
+ 
+ #button-list label input:checked + .text {
+     color: #000;
+     font-weight: bold;
+     background: #ff6261;
+ }
+ 
+ #button-list input[type="radio"] {
+     border: 0;
+     cursor: pointer;
+     -webkit-appearance: none;
+ }
+ 
  .content-detail {
      color: #777;
      padding: 15px;

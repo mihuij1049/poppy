@@ -34,7 +34,8 @@
 	<select id="selectItem" parameterType="kr.co.poppy.model.Goods"
 		resultMap="goodsMap">
 		SELECT i.imgname, i.imgpath, imgtype, imgext,
-		g.goodsno, g.gcode, g.gname, g.ginfo, g.gprice, g.gsale
+		g.goodsno, g.gcode, g.gname, g.ginfo, g.gprice, g.gsale,
+		g.gdate, g.cate1, g.cate2
 		FROM goods g
 		INNER JOIN imgs i ON
 		g.goodsno = i.goodsno

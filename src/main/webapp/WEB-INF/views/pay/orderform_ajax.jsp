@@ -161,7 +161,7 @@
 										</div>
 									</div>
 									<div class="form-group2">
-										<select id="selbox2">
+										<select id="selbox2" name="odmsg">
 											<option value="">-- 메시지 선택(선택사항) --</option>
 											<option value="1">배송전에 미리 연락바랍니다.</option>
 											<option value="2">부재시 경비실에 맡겨주세요.</option>
@@ -419,11 +419,23 @@
 									class="pay-method-sel"> <span>결제수단 선택</span>
 								</label></li>
 								<div class="content">
-									<div class="button-list">
-										<div>신용카드</div>
-										<div>계좌이체</div>
-										<div>휴대폰</div>
-										<div>무통장입금</div>
+									<div class="button-list" id="button-list">
+										<label for="paytype1">
+										    <input type="radio" id="paytype1" name="paytype" value="credit" checked="checked" />
+										    <span class="text">신용카드</span>
+										</label>	
+										<label for="paytype2">
+										    <input type="radio" id="paytype2" name="paytype" value="BankTransfer" />
+										    <span class="text">계좌이체</span>
+										</label>	
+										<label for="paytype3">
+										    <input type="radio" id="paytype3" name="paytype" value="phone" />
+										    <span class="text">휴대폰</span>
+										</label>	
+										<label for="paytype4">
+										    <input type="radio" id="paytype4" name="paytype" value="NotBankTransfer" />
+										    <span class="text">무통장입금</span>
+										</label>	
 									</div>
 								</div>
 							</ul>
@@ -494,15 +506,17 @@
 					</span>원 <span>결제하기</span>
 				</button>
 			</div>
-			<input type="hidden" name="odmsg" value="" />
-			<input type="hidden" name="paytype" value="" />
-			<input type="hidden" name="odstatus" value="" /> 
-			<input type="hidden" name="deliprice" value="" />
-			<input type="hidden" name="gname" value="${goods.gname}" />
-			<input type="hidden" name="pay-price" value="" />
-			<input type="hidden" name="gsale" value="${goods.gsale}" /> 
-			<input type="hidden" name="gdoption" value="${gdoutput.gdoption}" />
-			<input type="hidden" name="gdcount" value="${gdcount}" />					
+		    <input type="hidden" name="goodsno" value="${goods.goodsno}" />
+            <input type="hidden" name="gcode" value="${goods.gcode}" />
+            <input type="hidden" name="gname" value="${goods.gname}" /> 
+            <input type="hidden" name="ginfo" value="${goods.ginfo}" />
+            <input type="hidden" name="gprice" value="${goods.gprice}" />
+            <input type="hidden" name="gsale" value="${goods.gsale}" />
+            <input type="hidden" name="gdate" value="${goods.gdate}" /> 
+            <input type="hidden" name="cate1" value="${goods.cate1}" />
+            <input type="hidden" name="cate2" value="${goods.cate2}" />
+            <input type="hidden" name="gdoption" value="${gdoutput.gdoption}" />
+            <input type="hidden" name="gdcount" value="${gdcount}">
 			<div class="order-info">
 				<ul class="order-info-box">
 					<li>무이자할부가 적용되지 않은 상품과 무이자할부가 가능한 상품을 동시에 구매할 경우 전체 주문 상품 금액에

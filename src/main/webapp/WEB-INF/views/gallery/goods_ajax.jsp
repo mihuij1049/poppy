@@ -31,8 +31,7 @@
 			method="POST"
 			action="${pageContext.request.contextPath}/pay_ajax/orderform.do">
 			<div class="prd-img">
-				<img src="${goods.imgpath}${goods.imgname}.${goods.imgext}"
-					name="gImg">
+				<img src="${goods.imgpath}${goods.imgname}.${goods.imgext}">
 			</div>
 			<fieldset class="btn-group">
 				<button type="button" class="like-btn" aria-label="좋아요">
@@ -49,8 +48,8 @@
 				<div class="prd-price">
 					<strike class="price"><fmt:formatNumber
 							value="${goods.gprice}" pattern="#,###" /></strike><b>원</b><br /> <b
-						class="sale"><fmt:formatNumber value="${goods.gsale}"
-							pattern="#,###" /></b><b>원</b>
+						class="sale"><fmt:formatNumber
+					value="${goods.gsale}" pattern="#,###" /></b><b>원</b>
 				</div>
 				<div class="prd-delivery">
 					<ul>
@@ -109,7 +108,7 @@
 					<div class="total-price">
 						<b id="total-price"><fmt:formatNumber value="${goods.gsale}"
 								pattern="#,###" /></b> <b>원</b> <b>(</b><input type="number" id="price-count"
-							name="gdcount" value="1" min="1" max="99" style="width:12%; text-align:center; font-weight:bold;"/><b>개)</b>
+							name="gdcount" value="1" min="1" max="99" style="width:10px; text-align:center; font-weight:bold;"/><b>개)</b>
 					</div>
 				</div>
 				<div class="prd-action">
@@ -133,8 +132,8 @@
 			<ul class="nav nav-tabs" id="mytab">
 				<li class="active"><a href="#Tpage1" data-toggle="tab">상세정보</a></li>
 				<li><a href="#Tpage2" data-toggle="tab">구매안내</a></li>
-				<li><a href="#Tpage3" data-toggle="tab" id="photo_rv">상품후기(2)</a></li>
-				<li><a href="#Tpage4" data-toggle="tab" id="qna_rv">Q&A(0)</a></li>
+				<li><a href="#Tpage3" data-toggle="tab" id="photo_rv">상품후기()</a></li>
+				<li><a href="#Tpage4" data-toggle="tab" id="qna_rv">Q&A()</a></li>
 			</ul>
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane fade active in" id="Tpage1">
@@ -604,22 +603,25 @@
 
 			var counter = 1;
 			var counted = $("#count").val();
-			var price = parseInt($(".sale").html());
-			var total_price = price * counter;
+			var price = $(".sale").html();
+			var price2 = parseInt($(".price").replace(/,/gi,""));
+			var total_price = price2 * counter;
+			var total_price2 = total_price.toString.replace(
+					/\B(?=(\d{3})+(?!\d))/g, ",");
 
 			$(".btnUp").click(function(e) {
 				counter++;
 
 				$("#count").val(counter);
 				$("#price-count").val(counter);
-				$("#add-price").html(total_price.toLocaleString());
-				$("#total-price").html(total_price.toLocaleString());
+				$("#add-price").html(total_price);
+				$("#total-price").html(total_price);
 			});
 
 			$(".btnDown").click(function(e) {
 				if (counter < 2) {
 					alert("최소 주문수량은 1개 입니다.");
-					return false;
+					return;
 				}
 				counter--;
 
