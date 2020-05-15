@@ -45,7 +45,7 @@
 						<ul class="nav nav-tabs" id="mytab">
 							<li class="active"><a href="#page1" data-toggle="tab">최근
 									배송지</a></li>
-							<li><a href="#page2" data-toggle="tab">직접입력</a></li>
+							<li><a href="#page2" data-toggle="tab" id="new_addr">직접입력</a></li>
 						</ul>
 						<!-- 탭 페이지 구성 -->
 						<div class="tab-content">
@@ -168,7 +168,7 @@
 											<option value="3">부재시 문 앞에 놓아주세요.</option>
 											<option value="4">빠른 배송 부탁드립니다.</option>
 											<option value="5">택배함에 보관해 주세요.</option>
-											<option value="direct2">직접입력</option>
+											<option value="direct">직접입력</option>
 										</select>
 										<textarea id="selboxDirect2" name="selboxDirect"
 											style="resize: none;"></textarea>
@@ -421,19 +421,19 @@
 								<div class="content">
 									<div class="button-list" id="button-list">
 										<label for="paytype1">
-										    <input type="radio" id="paytype1" name="paytype" value="credit" checked="checked" />
+										    <input type="radio" id="paytype1" name="paytype" value="신용카드" checked="checked" />
 										    <span class="text">신용카드</span>
 										</label>	
 										<label for="paytype2">
-										    <input type="radio" id="paytype2" name="paytype" value="BankTransfer" />
+										    <input type="radio" id="paytype2" name="paytype" value="계좌이체" />
 										    <span class="text">계좌이체</span>
 										</label>	
 										<label for="paytype3">
-										    <input type="radio" id="paytype3" name="paytype" value="phone" />
+										    <input type="radio" id="paytype3" name="paytype" value="휴대폰" />
 										    <span class="text">휴대폰</span>
 										</label>	
 										<label for="paytype4">
-										    <input type="radio" id="paytype4" name="paytype" value="NotBankTransfer" />
+										    <input type="radio" id="paytype4" name="paytype" value="무통장입금" />
 										    <span class="text">무통장입금</span>
 										</label>	
 									</div>
@@ -492,8 +492,8 @@
 						</div>
 						<div class="save-price">
 							<h4 class="head">적립 예정금액</h4>
-							<strong class="total-price"> <span id="pay-price"><fmt:formatNumber
-										value="${(goods.gsale * gdcount) * 0.02}" pattern="#,###" /></span>원
+							<strong class="total-price"> <span id="pay-price"><fmt:parseNumber var="(goods.gsale * gdcount) * 0.02"
+										value="${(goods.gsale * gdcount) * 0.02}" integerOnly="true" /></span>원
 							</strong>
 						</div>
 					</div>
@@ -517,6 +517,7 @@
             <input type="hidden" name="cate2" value="${goods.cate2}" />
             <input type="hidden" name="gdoption" value="${gdoutput.gdoption}" />
             <input type="hidden" name="gdcount" value="${gdcount}">
+            <input type="hidden" id="pay-price" name="pay-price" value="${(goods.gsale * gdcount) * 0.02}" />
 			<div class="order-info">
 				<ul class="order-info-box">
 					<li>무이자할부가 적용되지 않은 상품과 무이자할부가 가능한 상품을 동시에 구매할 경우 전체 주문 상품 금액에
@@ -635,7 +636,7 @@
 
 			$("#selbox2").change(function() {
 				// 직접입력을 누를 때 나타남
-				if ($("#selbox2").val() == "direct2") {
+				if ($("#selbox2").val() == "direct") {
 					$("#selboxDirect2").show();
 				} else {
 					$("#selboxDirect2").hide();
@@ -680,6 +681,7 @@
 			});
 		});
 
+		/** 배송지목록 조회 */
 		$(function() {
 			$("#recent-address-list").click(
 					function(e) {
@@ -782,22 +784,48 @@
 		});
 
 		$(function() {
-			// #new-addr에 대한 submit 이벤트롤 가로채서 Ajax 요청을 전송한다.
-			$("#orderform")
-					.ajaxForm(
-							{
-								// 전송 메서드 지정
-								method : "POST",
-								// 서버에서 200 응답을 전달한 경우 실행됨
-								success : function(json) {
-									console.log(json);
-									if (json.rt == "OK") {
-										window.location = "${pageContext.request.contextPath}/myInfo/order_list.do?memno="
-												+ json.address.memno;
-									}
-								}
-							});
+			$("#same-addr1").click(function(e) {
+				$("#delivery-name").val("${Moutput.username}");
+				$("#delivery-phone").val("${Moutput.userphone}");
+				$("#delivery-email").val("${Moutput.useremail}");
+			});
 		});
+		
+		$(function() {
+			$("#new_addr").click(function(e) {
+				$("input:radio[id='same-addr2']").prop("checked", true);
+			// #new-addr에 대한 submit 이벤트롤 가로채서 Ajax 요청을 전송한다.
+			$("#orderform").ajaxForm({
+				// 전송 메서드 지정
+				method : "POST",
+				// 서버에서 200 응답을 전달한 경우 실행됨
+				success : function(json) {
+					console.log(json);
+					if (json.rt == "OK") {
+				    	window.location = "${pageContext.request.contextPath}/myInfo/order_list.do?memno="
+								+ json.address.memno;
+					}
+				 }
+			  });
+		   });
+		});
+			
+	    $(function() {
+			$(".recent-addr").click(function(e) {
+		    // #addForm에 대한 submit 이벤트를 가로채서 Ajax요청을 전송한다.
+		    $("#orderform").ajaxForm({
+		    	// 전송 메서드 지정
+		        method : "PUT",
+		    	// 서버에서 200 응답을 전달한 경우 실행됨
+		    	success : function(json) {
+		    	    // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
+		    	    if (json.rt == "OK") {
+		    	    	window.location = "${pageContext.request.contextPath}/myInfo/order_list.do?memno=" + + json.address.memno;
+		    	    }
+		         }
+		      });
+	       });
+	    });		
 	</script>
 </body>
 

@@ -597,16 +597,16 @@
 						if (index) {
 							jQuery(".select-prd").show();
 							counted = 0;
-
 						}
 					});
-
+			
+			var total_price= 0;
 			var counter = 1;
 			var counted = $("#count").val();
 			var price = $(".sale").html();
-			var price2 = parseInt($(".price").replace(/,/gi,""));
+			var price2 = price.toString().replace(/,/gi, "");
 			var total_price = price2 * counter;
-			var total_price2 = total_price.toString.replace(
+			var total_price2 = total_price.toString().replace(
 					/\B(?=(\d{3})+(?!\d))/g, ",");
 
 			$(".btnUp").click(function(e) {
@@ -614,8 +614,8 @@
 
 				$("#count").val(counter);
 				$("#price-count").val(counter);
-				$("#add-price").html(total_price);
-				$("#total-price").html(total_price);
+				$("#add-price").html(total_price2);
+				$("#total-price").html(total_price2);
 			});
 
 			$(".btnDown").click(function(e) {
@@ -627,8 +627,8 @@
 
 				$("#count").val(counter);
 				$("#price-count").val(counter);
-				$("#add-price").html(total_price)
-				$("#total-price").html(total_price);
+				$("#add-price").html(total_price2)
+				$("#total-price").html(total_price2);
 			});
 
 			$(document).on("click", "#prd-del", function(e) {

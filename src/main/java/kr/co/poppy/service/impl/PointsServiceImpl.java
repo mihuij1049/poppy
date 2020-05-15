@@ -23,7 +23,7 @@ public class PointsServiceImpl implements PointsService {
 	 * @return int
 	 */
 	@Override
-	public int addPoints(Orders input) throws Exception {
+	public int addPoints(Points input) throws Exception {
 		int result = 0;
 		try {
 			result = sqlSession.insert("PointsMapper.add_points", input);

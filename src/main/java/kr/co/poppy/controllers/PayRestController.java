@@ -87,7 +87,7 @@ public class PayRestController {
 	}
 
 	/** 주소 작성 폼에 대한 action 페이지 */
-	@RequestMapping(value = "/pay", method = RequestMethod.POST)
+	@RequestMapping(value = "/pay", method = { RequestMethod.PUT, RequestMethod.POST })
 	public Map<String, Object> addrAdd_ok(
 			/** 주소 INSERT */
 			@RequestParam(value = "addrno", defaultValue = "0") int addrno,
@@ -106,6 +106,7 @@ public class PayRestController {
 			@RequestParam(value = "deliprice", defaultValue = "0") int deliprice,
 			@RequestParam(value = "regdate", required = false) String regdate,
 			@RequestParam(value = "editdate", required = false) String editdate,
+			@RequestParam(value = "selboxDirect", required = false) String selboxDirect,
 			/** 주문상품 INSERT */
 			@RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
 			@RequestParam(value = "gcode", defaultValue = "") String gcode,
@@ -117,7 +118,11 @@ public class PayRestController {
 			@RequestParam(value = "cate1", defaultValue = "") String cate1,
 			@RequestParam(value = "cate2", defaultValue = "") String cate2,
 			@RequestParam(value = "gdoption", defaultValue = "") String gdoption,
-			@RequestParam(value = "gdcount", defaultValue = "0") int gdcount) {
+			@RequestParam(value = "gdcount", defaultValue = "0") int gdcount,
+			/** 포인트 적립 INSERT */
+			@RequestParam(value = "pointno", defaultValue = "0") int pointno,
+			@RequestParam(value = "pay-price", defaultValue = "0") double napoint,
+			@RequestParam(value = "pointtype", defaultValue = "") String pointtype) {
 
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
 		// 일반 문자열 입력 컬럼 --> String으로 파라미터가 선언되어 있는 경우는 값이 입력되지 않으면 빈 문자열로 처리된다.
@@ -151,6 +156,21 @@ public class PayRestController {
 		if (paytype.equals("BankTransfer") || paytype.equals("NotBankTransfer")) {
 			odstatus = "0";
 		}
+		
+		if (odmsg.equals("1")) { odmsg = "배송전에 미리 연락드립니다."; }
+		
+		if (odmsg.equals("2")) { odmsg = "부재시 경비실에 맡겨주세요."; }
+		
+		if (odmsg.equals("3")) { odmsg = "부재시 문 앞에 놓아주세요."; }
+		
+		if (odmsg.equals("4")) { odmsg = "빠른 배송 부탁드립니다."; }
+		
+		if (odmsg.equals("5")) { odmsg = "택배함에 보관해 주세요."; }
+		
+		if (odmsg.equals("direct")) { odmsg= selboxDirect; }
+		
+		/** napoint 형변환 */
+		double pay_price = napoint;
 
 		// 세션 객체를 이용하여 저장된 세션값 얻기
 		HttpSession mySession = webHelper.getSession();
@@ -199,13 +219,20 @@ public class PayRestController {
 		oddetail.setEditdate("now()");
 		oddetail.setOrderno(orderno);
 		
-		
+		Points poi = new Points();
+		poi.setPointno(pointno);
+		poi.setNapoint((int) pay_price);
+		poi.setPointtype("상품구입 적립금");
+		poi.setRegdate("now()");
+		poi.setEditdate("now()");
+		poi.setMemno(myInfo.getMemno());
+			
 		// 저장된 결과를 조회하기 위한 객체
 		Address Asave = null;
 		Orders Osave = null;
 		Orderdetail Odsave = null;
+		Points Psave = null;
 		
-	
 		try {
 			// 데이터 저장
 			// --> 데이터 저장에 성공하면 파라미터로 전달하는 save 객체에 PK값이 저장된다.
@@ -214,6 +241,12 @@ public class PayRestController {
 			ordersService.addOrders(order);
 			oddetail.setOrderno(order.getOrderno());
 			orderdetailService.addOrderdetail(oddetail);
+			poi.setOrderno(order.getOrderno());
+			pointsService.addPoints(poi);
+			addressService.editAddress(address);
+			
+			// 데이터조회
+			Asave = addressService.getAddressItem(address);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
@@ -226,84 +259,11 @@ public class PayRestController {
 		map.put("order", order);
 		map.put("oddetail", oddetail);
 		map.put("address", address);	
+		map.put("poi", poi);
+		map.put("Asave", Asave);
 		return webHelper.getJsonData(map);
 	}
 	
-	/** 주소 수정 폼 페이지 */
-	@RequestMapping(value = "/pay", method = RequestMethod.PUT)
-	public Map<String, Object> addrEdit_ok(
-			@RequestParam(value = "addrno", defaultValue = "0") int addrno,
-			@RequestParam(value = "odname", required = false) String odname,
-			@RequestParam(value = "zcode", required = false) Integer zcode,
-			@RequestParam(value = "addr1", required = false) String addr1,
-			@RequestParam(value = "addr2", required = false) String addr2,
-			@RequestParam(value = "odphone", required = false) String odphone,
-			@RequestParam(value = "odemail", required = false) String odemail,
-			@RequestParam(value = "editdate", required = false) String editdate) {
-
-		/** 1) 사용자가 입력한 파라미터 유효성 검사 */
-		if (addrno == 0) {
-			return webHelper.getJsonWarning("주소번호가 없습니다.");
-		}
-		if (odname == null) {
-			return webHelper.getJsonWarning("이름을 입력하세요.");
-		}
-		if (!regexHelper.isKor(odname)) {
-			return webHelper.getJsonWarning("이름은 한글만 가능합니다.");
-		}
-		if (odemail == null) {
-			return webHelper.getJsonWarning("이메일을 입력하세요.");
-		}
-		if (!regexHelper.isEmail(odemail)) {
-			return webHelper.getJsonWarning("이메일 형식이 아닙니다.");
-		}
-		if (addr1 == null) {
-			return webHelper.getJsonWarning("주소를 입력하세요.");
-		}
-		if (addr2 == null) {
-			return webHelper.getJsonWarning("상세주소를 입력하세요.");
-		}
-		if (!regexHelper.isKor(addr2)) {
-			return webHelper.getJsonWarning("상세주소는 한글만 가능합니다.");
-		}
-		if (odphone == null) {
-			return webHelper.getJsonWarning("핸드폰 번호를 입력하세요.");
-		}
-		if (!regexHelper.isNum(odphone)) {
-			return webHelper.getJsonWarning("핸드폰 번호는 숫자만 가능합니다.");
-		}
-		if (zcode == null) {
-			return webHelper.getJsonWarning("우편번호를 입력하세요.");
-		}
-
-		/** 2) 데이터 수정하기 */
-		// 수정할 값들을 Beans에 담는다.
-		Address addr = new Address();
-		addr.setAddrno(addrno);
-		addr.setOdname(odname);
-		addr.setZcode(zcode);
-		addr.setAddr1(addr1);
-		addr.setAddr2(addr2);
-		addr.setOdphone(odphone);
-		addr.setOdemail(odemail);
-		addr.setEditdate(editdate);
-		
-		// 수정된 결과를 조회하기 위한 객체 
-		Address addrup = null;
-
-		try {
-			// 데이터 수정
-			addressService.editAddress(addr);
-			// 수정결과 조회
-			addrup = addressService.getAddressItem(addr);
-		} catch (Exception e) {
-			return webHelper.getJsonError(e.getLocalizedMessage());
-		}
-
-		/** 3) 결과를 확인하기 위한 페이지 이동 */
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("item", addrup);
-		return webHelper.getJsonData(map);	
-	}
+	
 
 }

@@ -111,6 +111,7 @@ public class PayAjaxController {
 		gdetail.setMemno(myInfo.getMemno());
 
 		// 조회결과를 저장할 객체 선언
+		Members Moutput = null;
 		Address output = null;
 		List<Address> output2 = null;
 		List<Points> output3 = null;
@@ -123,18 +124,18 @@ public class PayAjaxController {
 		try {
 			result = addressService.getAddressCount(input);
 		} catch (Exception e) {
-
+			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
 		if (result > 0) {
 			try {
 				// 데이터 조회
+				Moutput = membersService.getMembersItem(mb);
 				output = addressService.getAddressItem(input);
 				output2 = addressService.getAddressList(input2);
 				output3 = pointsService.getPointsMbList(input3);
 				goods = goodsService.getGoodsItem(gd);
 				gdoutput = goodsdetailService.getGoodsdetailItem(gdetail);
-
 			} catch (Exception e) {
 				// 신규회원일 경우, 조회된 데이터가 없으므로 오류를 발생시키면 안된다.
 				return webHelper.redirect(null, e.getLocalizedMessage());
@@ -159,6 +160,8 @@ public class PayAjaxController {
 			mySession.setAttribute("userInfo", myInfo);
 		} else {
 			try {
+				Moutput = membersService.getMembersItem(mb);
+				output3 = pointsService.getPointsMbList(input3);
 				goods = goodsService.getGoodsItem(gd);
 				gdoutput = goodsdetailService.getGoodsdetailItem(gdetail);
 			} catch (Exception e) {
@@ -168,6 +171,7 @@ public class PayAjaxController {
 		}
 
 		/** View 처리 */
+		model.addAttribute("Moutput", Moutput);
 		model.addAttribute("gdcount", gdcount);
 		model.addAttribute("output", output);
 		model.addAttribute("item", output2);

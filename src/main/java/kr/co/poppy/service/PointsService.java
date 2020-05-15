@@ -13,7 +13,7 @@ public interface PointsService {
 	 * @return int 
 	 * @throws Exception
 	 */
-	public int addPoints(Orders input) throws Exception;
+	public int addPoints(Points input) throws Exception;
 	
 	/** 주문의 적립금 정보 조회
 	 * @Param 주문정보(orderno)를 담은 Beans 객체

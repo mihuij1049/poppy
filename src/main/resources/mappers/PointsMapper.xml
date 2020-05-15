@@ -24,7 +24,7 @@
 			parameterType="kr.co.poppy.model.Points"
 			useGeneratedKeys="true" keyProperty="pointno">
 			INSERT INTO points (avpoint, napoint, usedpoint, pointtype, regdate, editdate, memno, orderno)
-				VALUES (#{avpoint}, #{napoint}, #{usedpoint}, #{pointtype}, #{regdate}, #{editdate}, #{memno}, #{orderno} )
+				VALUES (#{avpoint}, #{napoint}, #{usedpoint}, #{pointtype}, now(), now(), #{memno}, #{orderno} )
 	</insert>
 	
 	<!-- 시간이 지나고 미가용 -> 가용으로 갱신 ** 추후 수정 필요 ** -->
