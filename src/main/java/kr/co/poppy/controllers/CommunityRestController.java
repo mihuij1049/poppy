@@ -180,7 +180,7 @@ public class CommunityRestController {
 			Goods.setListCount(pageData.getListCount());
 			
 			// 데이터 조회하기
-			output = goodService.selectqnagoods(input);
+			output = (List<Goods>) goodService.selectqnagoods(input);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}

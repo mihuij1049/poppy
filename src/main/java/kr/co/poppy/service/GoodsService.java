@@ -129,4 +129,9 @@ public interface GoodsService {
 	 * @throws Exception
 	 */
 	public List<Goods> selectqnagoods(Goods input) throws Exception;
+	
+	/** Article페이지 상품정보 불러오기 
+	 * 
+	 */
+	public Goods selectqnaitem (Goods input) throws Exception;
 }
