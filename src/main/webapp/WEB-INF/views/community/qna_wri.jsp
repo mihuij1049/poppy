@@ -288,7 +288,7 @@ a {
 							</div>
 							<button type="button" class="item-select">상품정보선택</button>
 						</div>
-						<input type="hidden" name="goodsno" id="setting-goodsno" />
+						<input type="hidden" name="goodsno" id="setting-goodsno" value="${goodsno}"/>
 					</div>
 
 					<div class="qna-title">

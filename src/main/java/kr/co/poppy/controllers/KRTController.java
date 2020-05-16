@@ -66,110 +66,18 @@ public class KRTController {
 	/** order_list (주문조회) */
 	/** 목록 페이지 */
 	@RequestMapping(value = "/myInfo/order_list.do", method = RequestMethod.GET)
-	public ModelAndView order_list(Model model, @RequestParam(value = "page", defaultValue = "1") int nowPage,
-			@RequestParam(value = "odstatus", required = false) String odstatus,
-			@RequestParam(value = "goodsno", defaultValue = "0") int goodsno) {
+	public ModelAndView order_list(Model model, @RequestParam(value = "odstatus", required = false) String odstatus) {
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
 
-		/** 1) 페이지 구현에 필요한 변수값 생성 */
-		// 전체 게시글 수
-		int totalCount = 0;
-		// 한 페이지당 표시할 목록 수
-		int listCount = 10;
-		// 한 그룹당 표시할 페이 번호 수
-		int pageCount = 5;
-
-		/** 2) 데이터 조회하기 */
+		/** 1) 데이터 조회하기 */
 		Orders orders = new Orders();
 		orders.setMemno(myInfo.getMemno());
 
 		List<Orders> ordersList = null;
 		List<Orders> output = new ArrayList<Orders>();
-		PageData pageData = null;
 
 		try {
-			// 전체 게시글 수 조회
-			totalCount = orderService.getOrdersCount(orders);
-			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
-			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
-
-			// SQL의 LIMIT 절에서 사용될 값을 Beans의 static 변수에 저장
-			Orders.setOffset(pageData.getOffset());
-			Orders.setListCount(pageData.getListCount());
-
-			// 데이터 조회하기
-			// input = orderService.getOrdersItem(input);
-			ordersList = orderService.getOrdersList(orders);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-
-		for (int i = 0; i < ordersList.size(); i++) {
-			orders = ordersList.get(i);
-			if (orders.getOdstatus().equals("0")) {
-				orders.setOdstatus("입금전");
-			} else if (orders.getOdstatus().equals("1")) {
-				orders.setOdstatus("배송준비중");
-			} else if (orders.getOdstatus().equals("2")) {
-				orders.setOdstatus("배송중");
-			} else if (orders.getOdstatus().equals("3")) {
-				orders.setOdstatus("배송완료");
-			} else if (orders.getOdstatus().equals("4")) {
-				orders.setOdstatus("취소");
-			} else if (orders.getOdstatus().equals("5")) {
-				orders.setOdstatus("교환");
-			} else if (orders.getOdstatus().equals("6")) {
-				orders.setOdstatus("반품");
-			}
-			output.add(orders);
-		}
-
-		/** 3) view 처리 */
-		model.addAttribute("myInfo", myInfo);
-		model.addAttribute("output", output);
-
-		String viewPath = "myInfo/order_list";
-		return new ModelAndView(viewPath);
-	}
-
-	/** 주문 상태 조회 */
-	@RequestMapping(value = "/myInfo/order_status.do", method = RequestMethod.GET)
-	public ModelAndView order_status(Model model, @RequestParam(value = "page", defaultValue = "1") int nowPage,
-			@RequestParam(value = "orderno", defaultValue = "0") int orderno,
-			@RequestParam(value = "odstatus", required = false) String odstatus,
-			@RequestParam(value = "goodsno", defaultValue = "0") int goodsno) {
-		HttpSession mySession = webHelper.getSession();
-		Members myInfo = (Members) mySession.getAttribute("userInfo");
-
-		/** 1) 페이지 구현에 필요한 변수값 생성 */
-		// 전체 게시글 수
-		int totalCount = 0;
-		// 한 페이지당 표시할 목록 수
-		int listCount = 10;
-		// 한 그룹당 표시할 페이 번호 수
-		int pageCount = 5;
-
-		/** 2) 데이터 조회하기 */
-		Orders orders = new Orders();
-		Imgs imgs = new Imgs();
-		orders.setMemno(myInfo.getMemno());
-		imgs.setGoodsno(1);
-
-		List<Orders> ordersList = null;
-		List<Orders> output = new ArrayList<Orders>();
-		PageData pageData = null;
-
-		try {
-			// 전체 게시글 수 조회
-			totalCount = orderService.getOrdersCount(orders);
-			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
-			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
-
-			// SQL의 LIMIT 절에서 사용될 값을 Beans의 static 변수에 저장
-			Orders.setOffset(pageData.getOffset());
-			Orders.setListCount(pageData.getListCount());
-
 			// 데이터 조회하기
 			ordersList = orderService.getOrdersList(orders);
 		} catch (Exception e) {
@@ -196,7 +104,7 @@ public class KRTController {
 			output.add(orders);
 		}
 
-		/** 3) view 처리 */
+		/** 2) view 처리 */
 		model.addAttribute("myInfo", myInfo);
 		model.addAttribute("output", output);
 
@@ -251,19 +159,9 @@ public class KRTController {
 	/** cancel_list (주문취소내역) */
 	/** 목록 페이지 */
 	@RequestMapping(value = "/myInfo/cancel_list.do", method = RequestMethod.GET)
-	public ModelAndView cancel_list(Model model, @RequestParam(value = "page", defaultValue = "1") int nowPage,
-			@RequestParam(value = "orderno", defaultValue = "0") int orderno,
-			@RequestParam(value = "goodsno", defaultValue = "0") int goodsno) {
+	public ModelAndView cancel_list(Model model) {
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
-
-		/** 1) 페이지 구현에 필요한 변수값 생성 */
-		// 전체 게시글 수
-		int totalCount = 0;
-		// 한 페이지당 표시할 목록 수
-		int listCount = 10;
-		// 한 그룹당 표시할 페이 번호 수
-		int pageCount = 5;
 
 		Orders orders = new Orders();
 		orders.setMemno(myInfo.getMemno());
@@ -271,18 +169,7 @@ public class KRTController {
 		List<Orders> ordersList = null;
 		List<Orders> output = new ArrayList<Orders>();
 
-		PageData pageData = null;
-
 		try {
-			// 전체 게시글 수 조회
-			totalCount = orderService.getOrdersCount(orders);
-			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
-			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
-
-			// SQL의 LIMIT 절에서 사용될 값을 Beans의 static 변수에 저장
-			Orders.setOffset(pageData.getOffset());
-			Orders.setListCount(pageData.getListCount());
-
 			// 데이터 조회하기
 			ordersList = orderService.getOrdersList2(orders);
 		} catch (Exception e) {
@@ -427,7 +314,7 @@ public class KRTController {
 		bbs.setRegdate(date);
 		bbs.setEditdate(date);
 		bbs.setMemno(myInfo.getMemno());
-		bbs.setGoodsno(1);
+		bbs.setGoodsno(goodsno);
 
 		try {
 			// 데이터 저장
@@ -445,7 +332,7 @@ public class KRTController {
 		imgs.setImgtype("C");
 		imgs.setRegdate(date);
 		imgs.setEditdate(date);
-		imgs.setGoodsno(1);
+		imgs.setGoodsno(goodsno);
 		imgs.setBbsno(bbs.getBbsno());
 
 		try {
@@ -591,7 +478,7 @@ public class KRTController {
 		bbs.setRegdate(date);
 		bbs.setEditdate(date);
 		bbs.setMemno(myInfo.getMemno());
-		bbs.setGoodsno(1);
+		bbs.setGoodsno(goodsno);
 
 		try {
 			// 데이터 수정
@@ -610,8 +497,8 @@ public class KRTController {
 		imgs.setImgtype("C");
 		imgs.setRegdate(date);
 		imgs.setEditdate(date);
-		imgs.setGoodsno(1);
 		imgs.setBbsno(bbs.getBbsno());
+		imgs.setGoodsno(goodsno);
 
 		try {
 			// 데이터 수정
@@ -695,6 +582,7 @@ public class KRTController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
+		model.addAttribute("myInfo", myInfo);
 		model.addAttribute("output", output);
 
 		String viewPath = "pay/cart";

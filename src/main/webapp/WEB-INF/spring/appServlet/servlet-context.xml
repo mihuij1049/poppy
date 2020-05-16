@@ -40,6 +40,7 @@
 		<interceptor>
 			<mapping path="/myInfo/**" />
 			<mapping path="/pay/**" />
+			<mapping path="/pay_ajax/**" />
 			<mapping path="/community/photo_wri.do" />
 			<mapping path="/community/qna_wri.do" />
 			<mapping path="/community/photo_edit.do" />

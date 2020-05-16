@@ -43,27 +43,20 @@
 			<div class="search-searching">
 				<div class="search-bar">
 					<div class="search-textbar">
-						<input type="text" name="search-goods" placeholder="상품명을 입력하세요." />
+						<input type="text" id="search-keyword" name="search-goods"
+							placeholder="상품명을 입력하세요." />
 					</div>
 					<button class="btn btn-sm btn-searching" id="search_goods_btn">검
 						색</button>
 				</div>
 
 				<div class="search-result">
-					총 <b class="search-qty">0</b>개의 상품이 검색되었습니다.
+					총 <b class=""></b>개의 상품이 검색되었습니다.
 				</div>
 			</div>
 			<div class="search-body">
-				<ul class="search-list" id="search_goods_list"></ul>
-			</div>
-			<div class="search-item-paging">
-				<ul class="pagination pagination-xs">
-					<li class="disabled"><a href="#">«</a></li>
-					<!-- 활성화 버튼은 아래의 구조로 구성하시면 됩니다. sr-only는 스크린리더 전용입니다. -->
-					<li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
-					<li><span>2</span></li>
-					<li><span>3</span></li>
-					<li class="paging-right"><a href="#">»</a></li>
+				<ul class="search-list" id="search_goods_list">
+
 				</ul>
 			</div>
 			<div class="search-modal-layer"></div>
@@ -86,6 +79,7 @@
 								</p>
 							</div>
 							<button type="button" class="btn item-select">상품정보선택</button>
+							<input type="hidden" name="goodsno" id="setting-goodsno" />
 						</div>
 					</div>
 				</div>
@@ -128,21 +122,22 @@
 	<!-- Javascript -->
 	<%@ include file="../share/bottom_tp.jsp"%>
 	<script id="goods_item_tmpl" type="text/x-handlebars-template">
-		{{#each goods}}
+		{{#each item}}
 			<li class="search-list-item">
 				<div class="search-item-img">
-					<img src="{{url}}" />
+					<img src="{{imgpath}}{{imgname}}.{{imgext}}" />
 				</div>
 				<div class="search-item-content">
 					<p>
-						{{name}}<br /> 
-						<b class="search-item-price">{{price}}원</b>
+						{{gname}}<br /> 
+						<b class="search-item-price">{{gprice}}원</b>
 					</p>
 				</div>
 				<div class="search-item-btn">
-					<button type="button" class="btn btn-sm search-item-select">선택</button>
+					<button type="button" class="btn btn-sm search-item-select" id="select_btn" data-goodsno={{goodsno}}>선택</button>
 				</div>
 			</li>
+
 		{{/each}}
 	</script>
 	<!-- 플러그인 JS 참조 -->
@@ -219,35 +214,45 @@
 				});
 			}); // end 모달창 켜고 끄기
 
-			/** 검색 버튼 클릭시 검색 결과 화면에 나타내기 */
-			function get_list() {
-				$.get("../share/plugins/goods_list.json", function(req) {
-					// 미리 준비한 HTML틀을 읽어온다.
-					var template = Handlebars.compile($("#goods_item_tmpl")
-							.html());
-					// Ajax 를 통해서 읽어온 JSON 을 템플릿에 병합한다.
-					var html = template(req);
-					// #search_goods_list 에 읽어온 내용을 추가한다.
-					$("#search_goods_list").append(html);
-				});
-			} // 검색 결과를 템플릿을 이용해서 화면에 나타낼 함수 정의
-
 			$(function() {
-				$("#search_goods_btn").click(function(e) {
-					get_list(); // 버튼이 클릭되면 호출된다.
-					var length = $("ul").length;
-					// console.log(length);
-					$(".search-qty").text(length);
-				});
+				// 검색버튼 클릭이벤트 
+				$("#search_goods_btn")
+						.click(
+								function(e) {
+									let keyword = $("#search-keyword").val();
+									let page = 1;
+									$
+											.get(
+													"${pageContext.request.contextPath}/community/qna_goods",
+													{
+														"keyword" : keyword,
+														"page" : page
+													},
+													function(req) {
+														// 미리 준비한 HTML틀을 읽어온다.
+														var template = Handlebars
+																.compile($(
+																		"#goods_item_tmpl")
+																		.html());
+														// Ajax 를 통해서 읽어온 JSON 을 템플릿에 병합한다.
+														var html = template(req);
+														// #search_goods_list 에 읽어온 내용을 추가한다.
+														$("#search_goods_list")
+																.append(html);
+													});
+									var length = $("li[class=search-list-item").length;
+									console.log(length);
+									$(".search-qty").text(length);
+								});
 			}); // 함수 호출하며 검색 결과 n개 나타내기 
+
 			/** 선택 버튼을 누르면 item의 정보를 본문으로 넣기 */
 			$(function() {
-				// 링크가 클릭된 경우
+				// 검색된 상품이 클릭되는 경우
 				$("#search_goods_list").on(
 						'click',
 						'button',
 						function(e) {
-							alert("선택버튼 테스트 중");
 							// 클릭된 상품의 href 속성 가져오기
 							var src = $(event.target).parent().prev().prev()
 									.children().attr('src');
@@ -256,17 +261,19 @@
 							// 클릭된 상품의 이름 및 가격 가져오기
 							var name = $(event.target).parent().prev()
 									.children().html();
-							// console.log(name);
+							var goodsno = $(event.target).data("goodsno");
+							console.log(goodsno);
 							// 1) 본문의 '#item_img'를 찾아 상품이미지 설정
 							$("#item_img").attr('src', src);
 							// 2) 제목 및 가격 설정
 							$("#item_name").html(name);
+							// 3) 굿즈넘버 데이터 설정
+							$("#setting-goodsno").attr("value", goodsno);
 
 							// 모달창 닫기
 							$("#search-modal").fadeOut();
 							$("li").remove(".search-list-item");
 							$(".search-qty").text("0");
-
 						});
 			});
 		});

@@ -101,7 +101,7 @@
 											data-cartno="${item.cartno}">삭제</button>
 										<button type="button">관심상품</button>
 										<button type="button" class="btn btn2"
-											onclick="location.href='${pageContext.request.contextPath}/pay/orderform.do'">주문하기</button>
+											onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do'">주문하기</button>
 									</div>
 								</div>
 							</div>
@@ -136,9 +136,9 @@
 			</table>
 			<div class="pay">
 				<button class="btn btn2 btn-inverse"
-					onclick="location.href='${pageContext.request.contextPath}/pay/orderform.do'">선택상품주문</button>
+					onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do'">선택상품주문</button>
 				<button class="btn btn2"
-					onclick="location.href='${pageContext.request.contextPath}/pay/orderform.do'">
+					onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do'">
 					전체상품주문</button>
 			</div>
 		</div>

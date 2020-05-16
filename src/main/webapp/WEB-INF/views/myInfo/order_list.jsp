@@ -163,24 +163,17 @@
 						</div>
 					</div>
 				</div>
-				<div class=" paging">
-					<ul class="pagination pagination-sm">
-						<li class="disabled"><a href="#">&laquo;</a></li>
-						<!-- 활성화 버튼은 아래의 구조로 구성하시면 됩니다. sr-only는 스크린리더 전용입니다. -->
-						<li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
-						<li class="paging-right"><a href="#">&raquo;</a></li>
-					</ul>
-				</div>
 			</div>
 		</div>
+	</div>
 
-		<!-- Javascript -->
-		<%@ include file="../share/bottom_tp.jsp"%>
-		<!-- 플러그인 JS 참조 -->
-		<script src="../share/plugins/datepicker/datepicker.min.js"></script>
-		<script src="../share/plugins/datepicker/datepicker.ko-KR.js"></script>
-		<!-- 사용자 정의 스크립트 -->
-		<script type="text/javascript">
+	<!-- Javascript -->
+	<%@ include file="../share/bottom_tp.jsp"%>
+	<!-- 플러그인 JS 참조 -->
+	<script src="../share/plugins/datepicker/datepicker.min.js"></script>
+	<script src="../share/plugins/datepicker/datepicker.ko-KR.js"></script>
+	<!-- 사용자 정의 스크립트 -->
+	<script type="text/javascript">
 			$(function() {
 				$(document).on(
 						"change",
