@@ -139,18 +139,18 @@
 		b.goodsno,
 		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,
 		i.goodsno,
-		m.memno, m.userid,
-		r.rvheartno
+		m.memno, m.userid
 		FROM bbs b
-		INNER JOIN members m
-		ON b.memno=m.memno
-		INNER JOIN rvheart r ON r.memno=b.memno
-		INNER JOIN
-		imgs i ON b.bbsno=i.bbsno
+		INNER JOIN members m ON b.memno=m.memno
+		INNER JOIN imgs i ON b.bbsno=i.bbsno
 		WHERE i.imgtype="C" AND b.bbstype="C"
-		<!-- <if test="bbstitle != null and bbstitle != ''"> and bbstitle LIKE 
-			concat('%', #{bbstitle}, '%') </if> -->
+		<if test="bbstitle != null and bbstitle != ''">
+			and bbstitle LIKE concat('%', #{bbstitle}, '%')
+		</if>
 		ORDER BY bbsno ASC
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if>
 	</select>
 
 

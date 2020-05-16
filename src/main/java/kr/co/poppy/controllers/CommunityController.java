@@ -305,13 +305,14 @@ public class CommunityController {
 
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
 		int totalCount = 0;
-		int listCount = 5;
+		int listCount = 6;
 		int pageCount = 3;
 
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(겁색어)를 Beans에 담는다.
 		Bbs input = new Bbs();
 		input.setBbstitle(keyword);
+		input.setBbstype("C");
 
 		// 조회 결과가 저장될 객체
 		List<Bbs> output = null;
@@ -325,6 +326,7 @@ public class CommunityController {
 			// SQL의 limit절에서 사용될 값을 Beans의 static 변수에 저장
 			Bbs.setOffset(pageData.getOffset());
 			Bbs.setListCount(pageData.getListCount());
+			
 			// 데이터 조회하기 -->
 			output = bbsService.getBbsList_myrv(input);
 		} catch (Exception e) {
