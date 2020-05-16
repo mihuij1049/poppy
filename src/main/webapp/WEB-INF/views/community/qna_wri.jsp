@@ -288,6 +288,7 @@ a {
 							</div>
 							<button type="button" class="item-select">상품정보선택</button>
 						</div>
+						<input type="hidden" name="goodsno" id="setting-goodsno" />
 					</div>
 
 					<div class="qna-title">
@@ -371,7 +372,7 @@ a {
 					</p>
 				</div>
 				<div class="search-item-btn">
-					<button type="button" class="btn btn-sm search-item-select" id="select_btn">선택</button>
+					<button type="button" class="btn btn-sm search-item-select" id="select_btn" data-goodsno={{goodsno}}>선택</button>
 				</div>
 			</li>
 
@@ -471,12 +472,15 @@ a {
 						// 클릭된 상품의 이름 및 가격 가져오기
 						var name = $(event.target).parent().prev().children()
 								.html();
-						// console.log(name);
+						var goodsno = $(event.target).data("goodsno");
+						console.log(goodsno);
 						// 1) 본문의 '#item_img'를 찾아 상품이미지 설정
 						$("#item_img").attr('src', src);
 						// 2) 제목 및 가격 설정
 						$("#item_name").html(name);
-
+						// 3) 굿즈넘버 데이터 설정
+						$("#setting-goodsno").attr("value", goodsno);
+						
 						// 모달창 닫기
 						$("#search-modal").fadeOut();
 						$("li").remove(".search-list-item");

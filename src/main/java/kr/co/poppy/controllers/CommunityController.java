@@ -97,7 +97,6 @@ public class CommunityController {
 			// 데이터 조회
 			output = bbsService.getBbsItem(input);
 			output2 = commentsService.getCommentsList(input2);
-			output3 = goodsService.getGoodsItem(input3);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
@@ -126,6 +125,7 @@ public class CommunityController {
 			@RequestParam(value = "qnapw", required = false) String qnapw,
 			@RequestParam(value = "regdate", required = false) String regdate,
 			@RequestParam(value = "editdate", required = false) String editdate,
+			@RequestParam(value = "goodsno", required = false) Integer goodsno,
 			@RequestParam(value = "memno", defaultValue = "0") Integer memno) {
 		// 가입한 시각을 담은 date 생성
 		Calendar c = Calendar.getInstance();
@@ -152,6 +152,7 @@ public class CommunityController {
 		input.setRegdate(date);
 		input.setEditdate(date);
 		input.setMemno(myInfo.getMemno());
+		input.setGoodsno(goodsno);
 		
 		
 		try {
@@ -217,7 +218,8 @@ public class CommunityController {
 			@RequestParam(value = "bbscontent", required = false) String bbscontent,
 			@RequestParam(value = "qnasec", defaultValue = "0") Integer qnasec,
 			@RequestParam(value = "qnapw", required = false) String qnapw,
-			@RequestParam(value = "editdate", required = false) String editdate) {
+			@RequestParam(value = "editdate", required = false) String editdate)
+			 {
 		// 가입한 시각을 담은 date 생성
 		Calendar c = Calendar.getInstance();
 		String date = String.format("%04d-%02d-%02d %02d:%02d:%02d", c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1,
@@ -243,6 +245,7 @@ public class CommunityController {
 		input.setQnapw(qnapw);
 		input.setEditdate(date);
 		input.setMemno(myInfo.getMemno());
+		
 
 		try {
 			// 데이터 수정
