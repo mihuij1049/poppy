@@ -37,12 +37,14 @@
 			<!-- QNA 상품정보 불러오기 -->
 				<div class="qnagoods">
 					<img class="photo"
-						src="${output.imgpath}${output.imgname}.${output.imgext}" />
-					<div class="goodsinfo">
-						<div class="goodsname">${output.gname}</div>
-						<br>
-						<div class="goodsprice">${output.gprice}</div>
+						src="${output.imgpath}${output.imgname}.${output.imgext}" data-goodsno="${output.goodsno}" />
+					<div class="goodsname">
+						<div class="goodsname">
+							${output.gname}<br>
+						</div>
+						<div class="goodsprice">${output.gprice}원</div>
 					</div>
+					<br>
 				</div>
 			<div class="nai">
 				<p id="main_text">${output.bbscontent}</p>
@@ -92,6 +94,7 @@
 										<c:url value="/community/article.do" var="viewUrl">
 											<c:param name="bbsno" value="${item.bbsno}" />
 											<c:param name="bbstype" value="${item.bbstype}" />
+											<c:param name="goodsno" value="${item.goodsno}" />
 										</c:url>
 										<div class="comment-nai"
 											style="border-bottom: 1px dotted #eee;">
@@ -207,6 +210,14 @@
             });
         });
  	   
+    /** 사진 클릭 시 상품상세페이지로 이동 */
+   $(function() {
+	   $(".photo").on("click", function(e) {
+		   let current = $(this);
+		   let goodsno = current.data('goodsno');
+		   window.location="${pageContext.request.contextPath}/gallery_ajax/goods.do?goodsno=" + goodsno;  
+	   });
+   });
 	   $(function() { 
 			
 			// 수정 버튼 클릭시

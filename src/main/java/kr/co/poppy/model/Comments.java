@@ -27,6 +27,7 @@ public class Comments {
 	
 	private String username;
 	
+	private int goodsno;
 	
 	// JOIN 절에 따른 추가 컬럼
 

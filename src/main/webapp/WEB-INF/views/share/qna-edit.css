@@ -1,0 +1,242 @@
+.choice {
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.choice .col-xs-8 {
+	margin-top: 30px;
+}
+
+.qna-title, .qna-desc, .qna-url, .qna-pw, .qna-private {
+	margin-bottom: 10px;
+}
+
+.edittitle {
+	margin-top: 15px;
+}
+
+.editinputtitle {
+	margin-top: 15px;
+}
+
+.col-xs-4, .col-xs-8, .col-xs-12 {
+	margin-bottom: 15px;
+}
+
+.item-img>img {
+	width: 100px;
+	height: 100px;
+}
+
+input[type=text], input[type=password] {
+	width: 100%;
+}
+
+.qna_area {
+	width: 100%;
+	min-height: 180px;
+	resize: none;
+}
+
+.qna_private {
+	
+}
+
+.qna_btn {
+	margin-top: 0px;
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+#qna_ok {
+	width: 45%;
+}
+
+#qna_re {
+	width: 45%;
+}
+/** 모달창 CSS */
+#search-modal {
+	display: none;
+	position: absolute;
+	left: 5%;
+	z-index: 1;
+	border: 1px solid #ff8f83;
+	width: 90%;
+	margin: auto;
+}
+
+.search-title {
+	width: 100%;
+	margin: auto;
+	padding: 10px 10px;
+	background: #ff8f83;
+	color: #fff;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+
+.search-searching {
+	width: 100%;
+	margin: auto;
+	padding: 10px 10px;
+	background: #fff5f4;
+}
+
+.search-body {
+	width: 100%;
+	margin: auto;
+	padding: 10px 10px;
+	background: #fff5f4;
+}
+
+.search-item-paging {
+	width: 100%;
+	margin: auto;
+	padding: 20px 10px;
+	background: #fff5f4;
+	text-align: center;
+}
+
+.search-modal-layer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: -1;
+}
+
+.search-close {
+	width: 15%;
+	cursor: pointer;
+	height: 30px;
+}
+
+.search-bar {
+	width: 100%;
+}
+
+.search-textbar {
+	width: 75%;
+	display: inline-block;
+	font-size: 16px;
+	margin-top: 10px;
+}
+
+.search-bar>.btn-searching {
+	display: inline-block;
+	width: 20%;
+	margin-left: 10px;
+	margin-bottom: 3px;
+	font-size: 14px;
+	padding: 3px 3px;
+}
+
+.search-list-item {
+	list-style: none;
+	width: 100%;
+	height: 80px;
+}
+
+.search-item-img {
+	float: left;
+	width: 22%;
+}
+
+.search-item-img img {
+	width: 60px;
+	border: 1px solid #ffc7c1;
+}
+
+.search-item-content {
+	float: left;
+	width: 63%;
+	font-size: 12px;
+}
+
+.search-item-content>p {
+	margin: 0px;
+	padding-right: 5px;
+}
+
+.search-item-btn {
+	float: left;
+	width: 15%;
+	margin-top: 15px;
+}
+
+ul.pagination-xs {
+	margin: 20px 0px;
+	margin-top: 40px;
+}
+
+.search-item-paging>.pagination-xs>li {
+	font-size: 12px;
+}
+
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover,
+	.pagination>.active>span:hover, .pagination>.active>a:focus,
+	.pagination>.active>span:focus {
+	z-index: 2;
+	color: #fff;
+	cursor: default;
+	background-color: #ff8f83;
+	border-color: #ff8f83;
+}
+
+a {
+	color: #333;
+	text-decoration: none;
+}
+/** 모달창 CSS 끝 */
+
+/** 글 등록 확인 모달창 */
+#myModal2 {
+	padding-top: 50%;
+}
+
+.cart-modal {
+	padding: 10px;
+}
+
+.modal-footer2 .btn2 {
+	width: 65px;
+	height: 34px;
+	float: right;
+	margin-left: 5px;
+}
+
+.modal-header2 {
+	height: 50px;
+}
+
+.modal-body2 {
+	padding-left: 50px;
+	height: 50px;
+}
+
+.modal-footer2 {
+	height: 40px;
+}
+
+.qnagoods {
+	border: 1px solid #ff6261;
+	margin: 10px;
+	padding: 10px 10px;
+}
+
+.photo {
+	width: 25%;
+	margin-right: 10px;
+}
+
+.goodsname {
+	display: inline-block;
+	overflow: hidden;
+	font-size: 12px;
+	vertical-align: middle;
+}

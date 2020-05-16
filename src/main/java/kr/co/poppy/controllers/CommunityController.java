@@ -206,7 +206,8 @@ public class CommunityController {
 	
 	/** ========== Q&A 수정 폼 페이지 ========== */
 	@RequestMapping(value = "/community/editqna.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView edit(Model model, @RequestParam(value = "bbstype", required = false) String bbstype,
+	public ModelAndView edit(Model model, 
+			@RequestParam(value = "bbstype", required = false) String bbstype,
 			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
 
 		/** 1) 파라미터 유효성 검사 */

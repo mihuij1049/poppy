@@ -9,226 +9,10 @@
 
 <head>
 <%@ include file="../share/head_tp.jsp"%>
-<style type="text/css">
-.choice {
-	margin-top: 20px;
-	margin-bottom: 10px;
-}
 
-.choice .col-xs-8 {
-	margin-top: 30px;
-}
-
-.qna-title, .qna-desc, .qna-url, .qna-pw, .qna-private {
-	margin-bottom: 10px;
-}
-
-.col-xs-4, .col-xs-8, .col-xs-12 {
-	margin-bottom: 15px;
-}
-
-.item-img>img {
-	width: 100px;
-	height: 100px;
-}
-
-input[type=text], input[type=password] {
-	width: 100%;
-}
-
-.qna_area {
-	width: 100%;
-	min-height: 180px;
-	resize: none;
-}
-
-.qna_private {
-	
-}
-
-.qna_btn {
-	margin-top: 0px;
-	text-align: center;
-	margin-bottom: 50px;
-}
-
-#qna_ok {
-	width: 45%;
-}
-
-#qna_re {
-	width: 45%;
-}
-/** 모달창 CSS */
-#search-modal {
-	display: none;
-	position: absolute;
-	left: 5%;
-	z-index: 1;
-	border: 1px solid #ff8f83;
-	width: 90%;
-	margin: auto;
-}
-
-.search-title {
-	width: 100%;
-	margin: auto;
-	padding: 10px 10px;
-	background: #ff8f83;
-	color: #fff;
-	text-align: center;
-	font-size: 16px;
-	font-weight: bold;
-	letter-spacing: 1px;
-}
-
-.search-searching {
-	width: 100%;
-	margin: auto;
-	padding: 10px 10px;
-	background: #fff5f4;
-}
-
-.search-body {
-	width: 100%;
-	margin: auto;
-	padding: 10px 10px;
-	background: #fff5f4;
-}
-
-.search-item-paging {
-	width: 100%;
-	margin: auto;
-	padding: 20px 10px;
-	background: #fff5f4;
-	text-align: center;
-}
-
-.search-modal-layer {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.5);
-	z-index: -1;
-}
-
-.search-close {
-	width: 15%;
-	cursor: pointer;
-	height: 30px;
-}
-
-.search-bar {
-	width: 100%;
-}
-
-.search-textbar {
-	width: 75%;
-	display: inline-block;
-	font-size: 16px;
-	margin-top: 10px;
-}
-
-.search-bar>.btn-searching {
-	display: inline-block;
-	width: 20%;
-	margin-left: 10px;
-	margin-bottom: 3px;
-	font-size: 14px;
-	padding: 3px 3px;
-}
-
-.search-list-item {
-	list-style: none;
-	width: 100%;
-	height: 80px;
-}
-
-.search-item-img {
-	float: left;
-	width: 22%;
-}
-
-.search-item-img img {
-	width: 60px;
-	border: 1px solid #ffc7c1;
-}
-
-.search-item-content {
-	float: left;
-	width: 63%;
-	font-size: 12px;
-}
-
-.search-item-content>p {
-	margin: 0px;
-	padding-right: 5px;
-}
-
-.search-item-btn {
-	float: left;
-	width: 15%;
-	margin-top: 15px;
-}
-
-ul.pagination-xs {
-	margin: 20px 0px;
-	margin-top: 40px;
-}
-
-.search-item-paging>.pagination-xs>li {
-	font-size: 12px;
-}
-
-.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover,
-	.pagination>.active>span:hover, .pagination>.active>a:focus,
-	.pagination>.active>span:focus {
-	z-index: 2;
-	color: #fff;
-	cursor: default;
-	background-color: #ff8f83;
-	border-color: #ff8f83;
-}
-
-a {
-	color: #333;
-	text-decoration: none;
-}
-/** 모달창 CSS 끝 */
-
-/** 글 등록 확인 모달창 */
-#myModal2 {
-	padding-top: 50%;
-}
-
-.cart-modal {
-	padding: 10px;
-}
-
-.modal-footer2 .btn2 {
-	width: 65px;
-	height: 34px;
-	float: right;
-	margin-left: 5px;
-}
-
-.modal-header2 {
-	height: 50px;
-}
-
-.modal-body2 {
-	padding-left: 50px;
-	height: 50px;
-}
-
-.modal-footer2 {
-	height: 40px;
-}
-/** 글등록 확인 모달창 CSS 끝 */
-</style>
 <script src="../share/plugins/handlebars/handlebars-v4.0.5.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/share/qna-edit.css" />
 </head>
 
 <body>
@@ -240,7 +24,7 @@ a {
 			<div class="page-title clearfix">
 				<h4>
 					<b> <a href="#" onclick="history.back(); return false;"><i
-							class="glyphicon glyphicon-chevron-left"></i></a>QnA 글쓰기
+							class="glyphicon glyphicon-chevron-left"></i></a>Q&A 수정하기
 					</b>
 				</h4>
 			</div>
@@ -287,66 +71,64 @@ a {
 					/* action 페이지에서 사용할 WHERE 조건값을 hidden 필드로 숨겨서 전송한다. */
 				%>
 				<input type="hidden" name="bbsno" value="${output.bbsno}" />
-				<div class="container">
-					<div class="choice clearfix">
+				<div class="container"></div>
+				<!-- QNA 상품정보 불러오기 -->
+				<div class="qnagoods">
+					<img class="photo"
+						src="${output.imgpath}${output.imgname}.${output.imgext}" />
+					<div class="goodsname">
+						<div class="goodsname">
+							${output.gname}<br>
+						</div>
+						<div class="goodsprice">${output.gprice}원</div>
+					</div>
+					<br>
+				</div>
+
+				<div class="qna-title">
+					<div class="col-xs-4 edittitle">
+						<label>제목</label>
+					</div>
+					<div class="col-xs-8 editinputtitle">
+						<input type="text" name="bbstitle" value="${output.bbstitle}" />
+					</div>
+				</div>
+				<div class="qna-desc">
+					<div class="col-xs-12">
+						<textarea class="qna_area" id="bbsconten" placeholder="내용을 입력하세요."
+							maxlength="1800" name="bbscontent">${output.bbscontent}</textarea>
+					</div>
+				</div>
+
+
+				<div class="qna-private">
+					<div class="col-xs-4">
+						<label>비밀글설정</label>
+					</div>
+					<div class="col-xs-8">
+						<label> <input type="radio" name="qnasec" value="0"
+							id="public" <c:if test="${output.qnasec==0}">checked</c:if> />
+							공개글 &nbsp;
+						</label> <label> <input type="radio" name="qnasec" value="1"
+							<c:if test="${output.qnasec==1}">checked</c:if> />비밀글
+						</label>
+					</div>
+
+					<div class="qna-pw">
 						<div class="col-xs-4">
-							<a href="#" class="item-img"><img
-								src="../share/img/noimage.JPG" id="item_img"></a>
+							<label>비밀번호</label>
 						</div>
 						<div class="col-xs-8">
-							<div class="select-item-content">
-								<p id="item_name">
-									<br /> <b class="select-item-price" id="item_price"></b>
-								</p>
-							</div>
-							<button type="button" class="item-select">상품정보선택</button>
+							<input type="password" id="password" name="qnapw" maxlength="4" />
 						</div>
 					</div>
 
-					<div class="qna-title">
-						<div class="col-xs-4">
-							<label>제목</label>
-						</div>
-						<div class="col-xs-8">
-							<input type="text" name="bbstitle" value="${output.bbstitle}" />
-						</div>
-					</div>
-					<div class="qna-desc">
-						<div class="col-xs-12">
-							<textarea class="qna_area" id="bbsconten"
-								placeholder="내용을 입력하세요." maxlength="1800" name="bbscontent">${output.bbscontent}</textarea>
-						</div>
-					</div>
-
-
-					<div class="qna-private">
-						<div class="col-xs-4">
-							<label>비밀글설정</label>
-						</div>
-						<div class="col-xs-8">
-							<label> <input type="radio" name="qnasec" value="0"
-								id="public" <c:if test="${output.qnasec==0}">checked</c:if> />
-								공개글 &nbsp;
-							</label> <label> <input type="radio" name="qnasec" value="1"
-								<c:if test="${output.qnasec==1}">checked</c:if> />비밀글
-							</label>
-						</div>
-						
-						<div class="qna-pw">
-							<div class="col-xs-4">
-								<label>비밀번호</label>
-							</div>
-							<div class="col-xs-8">
-								<input type="password" id="password" name="qnapw" maxlength="4" />
-							</div>
-						</div>
-
-					</div>
-					<div class="qna_btn">
-						<button type="submit" id="qna_ok" class="btn">등록</button>
-						<button type="button" id="qna_re" class="btn btn-inverse"
-							onclick="history.back(); return false;">취소</button>
-					</div>
+				</div>
+				<div class="qna_btn">
+					<button type="submit" id="qna_ok" class="btn">등록</button>
+					<button type="button" id="qna_re" class="btn btn-inverse"
+						onclick="history.back(); return false;">취소</button>
+				</div>
 			</form>
 		</div>
 	</div>
@@ -374,7 +156,7 @@ a {
 		</div>
 	</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
-	<script>
+
 		<script type="text/javascript">
 		$(function() {
 			// 체크박스의 상태가 변화되면

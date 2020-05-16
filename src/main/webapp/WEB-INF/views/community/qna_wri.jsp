@@ -107,7 +107,7 @@
 							<label>비밀번호</label>
 						</div>
 						<div class="col-xs-8">
-							<input type="text" id="password" name="qnapw" maxlength="4"
+							<input type="password" id="password" name="qnapw" maxlength="4"
 								placeholder="비밀번호 4자리를 입력하세요.">
 						</div>
 					</div>
