@@ -103,6 +103,46 @@ public class CommunityController {
 		return new ModelAndView("community/article");
 	}
 
+	/** ========== article 공지사항========== */
+	@RequestMapping(value = "/community/noticearticle.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView view(Model model, 
+			@RequestParam(value = "bbstype", required = false) String bbstype,
+			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno){
+		/** 1) 유효성 검사 */
+
+
+		/** 2) 데이터 조회하기 */
+		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
+		Bbs input = new Bbs();
+		input.setBbstype(bbstype);
+		input.setBbsno(bbsno);
+
+
+		// 조회 결과를 저장할 객체 선언
+		Bbs output = null;
+
+		// 세션 객체를 이용하여 저장된 세션값 얻기
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+		Comments myCmt = new Comments();
+
+		if (myInfo != null) {
+			myCmt.setUsername(myInfo.getUsername());
+			myCmt.setMemno(myInfo.getMemno());
+			model.addAttribute("myCmt", myCmt);
+		}
+
+		try {
+			// 데이터 조회
+			output = bbsService.getNoticeItem(input);
+			
+		} catch (Exception e) {	
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		model.addAttribute("output", output);
+		return new ModelAndView("community/noticearticle");
+	}
 	
 	/** ========== Q&A 작성폼 페이지 ========== */
 	@RequestMapping(value = "/community/qna_wri.do", method = { RequestMethod.GET, RequestMethod.POST })

@@ -8,26 +8,7 @@
 <html lang="ko">
 
 <head>
-<style type="text/css">
-.table>tbody>tr>td.subject {
-	padding-left: 20px;
-	border-top: none;
-	border-bottom: 1px solid #eee;
-}
 
-.hr {
-	margin-bottom: 0px;
-}
-.prevok:hover {
-	text-decoration:none;
-	color: #FF6261;
-}
-
-.nextok:hover {
-	text-decoration: none;
-		color: #FF6261;
-}
-</style>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/share/notice.css" />
@@ -78,7 +59,7 @@
 								</c:if>
 
 								<%-- 상세페이지로 이동하기 위한 URL --%>
-								<c:url value="/community/article.do" var="viewUrl">
+								<c:url value="/community/noticearticle.do" var="viewUrl">
 									<c:param name="bbstype" value="${item.bbstype}" />
 									<c:param name="bbsno" value="${item.bbsno}" />
 								</c:url>

@@ -1,4 +1,22 @@
 @charset "UTF-8";
+.table>tbody>tr>td.subject {
+	padding-left: 20px;
+	border-top: none;
+	border-bottom: 1px solid #eee;
+}
+
+.hr {
+	margin-bottom: 0px;
+}
+.prevok:hover {
+	text-decoration:none;
+	color: #FF6261;
+}
+
+.nextok:hover {
+	text-decoration: none;
+		color: #FF6261;
+}
 
 .notice {
 	margin-top: 20px;

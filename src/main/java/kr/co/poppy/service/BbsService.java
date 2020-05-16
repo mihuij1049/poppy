@@ -11,12 +11,20 @@ public interface BbsService {
 	public Bbs getBbsrv_Item(Bbs input) throws Exception;
 	
 	/**
-	 * 공지사항 / QNA / 포토리뷰 글 목록
+	 * QNA 글목록
 	 * @param Imgs 검색조건과 페이지 구현 정보를 담고 있는 Beans
 	 * @return 조회 결과에 대한 컬렉션
 	 * @throws Exception
 	 */
 	public List<Bbs> getBbsList(Bbs input) throws Exception;
+	
+	/**
+	 * 공지사항 상세보기
+	 * @param Imgs 검색조건과 페이지 구현 정보를 담고 있는 Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	public Bbs getNoticeItem(Bbs input) throws Exception;
 	
 	/**
 	 * 상품상세페이지 / 포토리뷰 글 목록

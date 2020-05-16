@@ -152,3 +152,87 @@
 	margin: 10px;
 }
 
+.cannot {
+	display: block;
+	width: 100%;
+	border: 1px solid #ffc7c1;
+	background: #ffc7c1;
+	padding: 10px;
+	color: white;
+}
+
+.nai {
+	padding: 15px;
+	margin-bottom: 50px;
+}
+
+.list {
+	margin: 10px 10px;
+}
+
+.solidhr {
+	margin: 0px;
+}
+
+/** 동적 생성된 textaread */
+.editForm {
+	width: 75%;
+}
+
+.all {
+	width: 100%;
+}
+
+.cmtcontent {
+	width: 65%;
+	margin-right: 10px;
+	float: left;
+	padding-left: 18px;
+}
+
+.span {
+	padding-bottom: 25px;
+	width: auto;
+	word-break: break-all;
+}
+
+.btn-delar, .btn-editar {
+	margin-right: 10px;
+}
+
+.comment-nai {
+	min-height: 100px;
+}
+
+.arbuttons {
+	float: right;
+}
+
+#editTextarea {
+	width: 120%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.photo {
+	width: 60px;
+	margin-top: 5px;
+	margin-left: 20px;
+	border: 1px solid #ff8f83;
+}
+
+.qnagoods {
+	border: 1px solid #ff8f83;
+	padding-bottom: 20px;
+
+}
+.goodsinfo {
+	display: inline-block;
+	padding-left: 15px;
+}
+
+.goodsname {
+display: inline-block;
+	padding-top: 30px;
+}
+

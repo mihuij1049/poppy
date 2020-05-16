@@ -37,7 +37,7 @@
 	</resultMap>
 
 
-	<!-- ========== 글 상세보기 페이지 Article ========== -->
+	<!-- ========== 글 상세보기 페이지 Q&A Article ========== -->
 	<select id="selectItem" parameterType="kr.co.poppy.model.Bbs"
 		resultMap="bbsMap">
 		SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent,
@@ -50,19 +50,22 @@
         INNER JOIN goods g ON b.goodsno = g.goodsno
         INNER JOIN imgs i ON g.goodsno = i.goodsno
 		WHERE b.bbstype=#{bbstype} and b.bbsno=#{bbsno} and i.imgtype="A";
-	
 	</select>
 	
-	<!-- ========== Article페이지 상품정보 보여주기 ========== -->
-	<select id="selectItem_qnagoods" parameterType="kr.co.poppy.model.Bbs"
+	<!-- ========== 글 상세보기 페이지 공지사항 Article ========== -->
+	<select id="selectnoticeItem" parameterType="kr.co.poppy.model.Bbs"
 		resultMap="bbsMap">
-		SELECT b.bbsno, b.goodsno, g.gname, g.gprice, 
-		i.imgsno, i.imgname, i.imgext, i.imgpath 
-		FROM bbs b 
-		INNER JOIN goods g ON b.goodsno=g.goodsno
-		INNER JOIN imgs i ON i.bbsno=b.bbsno
-		WHERE b.goodsno=#{goodsno} and i.imgtype="A"
+		SELECT bbsno, bbstype, bbstitle, bbscontent,
+		b.regdate,
+		b.editdate, b.memno,
+		m.username, m.userid
+		FROM bbs b
+		INNER JOIN members m
+		ON b.memno=m.memno
+		WHERE bbstype=#{bbstype} and bbsno=#{bbsno}
 	</select>
+	
+
 
 	<!-- 포토리뷰 글 보기 페이지 -->
 	<select id="selectrv_Item" parameterType="kr.co.poppy.model.Bbs"

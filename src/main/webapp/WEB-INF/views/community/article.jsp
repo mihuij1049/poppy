@@ -7,85 +7,7 @@
 
 <!doctype html>
 <html>
-<style type="text/css">
-.cannot {
-	display: block;
-	width: 100%;
-	border: 1px solid #ffc7c1;
-	background: #ffc7c1;
-	padding: 10px;
-	color: white;
-}
 
-.nai {
-	padding: 15px;
-	margin-bottom: 50px;
-}
-
-.list {
-	margin: 10px 10px;
-}
-
-.solidhr {
-	margin: 0px;
-}
-
-/** 동적 생성된 textaread */
-.editForm {
-	width: 75%;
-}
-
-.all {
-	width: 100%;
-}
-
-.cmtcontent {
-	width: 65%;
-	margin-right: 10px;
-	float: left;
-	padding-left: 18px;
-}
-
-.span {
-	padding-bottom: 25px;
-	width: auto;
-	word-break: break-all;
-}
-
-.btn-delar, .btn-editar {
-	margin-right: 10px;
-}
-
-.comment-nai {
-	min-height: 100px;
-}
-
-.arbuttons {
-	float: right;
-}
-
-#editTextarea {
-	width: 120%;
-	overflow-x: hedden;
-	overflow-y: auto;
-}
-
-.photo {
-	width: 30%;
-	margin-left: 30px;
-	margin-top: 5px;
-	border: 1px solid #ff8f83;
-}
-
-.goodsinfo {
-	display: inline-block;
-	padding-left: 25px;
-}
-.goodsname {
-padding-top: 20px;
-}
-
-</style>
 <head>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
@@ -103,53 +25,28 @@ padding-top: 20px;
 
 				<h4>
 					<b> <a href="#" onclick="history.back(); return false;"><i
-							class="glyphicon glyphicon-chevron-left"></i></a> <c:choose>
-							<c:when test="${output.bbstype=='A'}">
-					공지사항
-					</c:when>
-							<c:otherwise>
+							class="glyphicon glyphicon-chevron-left"></i></a> 
 					Q&A
-					</c:otherwise>
-						</c:choose>
 					</b>
 				</h4>
-
 			</div>
 			<div class="wriinfo">
-				<c:choose>
-					<c:when test="${output.bbstype=='A'}">
-						<p class="articletitle">[공지사항] ${output.bbstitle}</p>
-					</c:when>
-					<c:otherwise>
 						<p class="articletitle">[Q&A] ${output.bbstitle}</p>
-					</c:otherwise>
-				</c:choose>
 				<p class="articlewriter">${output.username }</p>
 			</div>
 			<!-- QNA 상품정보 불러오기 -->
-			<c:if test="${output.bbstype=='B'}">
-			<img class="photo" src="${output.imgpath}${output.imgname}.${output.imgext}" />
+				<div class="qnagoods">
+					<img class="photo"
+						src="${output.imgpath}${output.imgname}.${output.imgext}" />
 					<div class="goodsinfo">
 						<div class="goodsname">${output.gname}</div>
 						<br>
 						<div class="goodsprice">${output.gprice}</div>
 					</div>
-			</c:if>
-			<div class="nai clearfix">
+				</div>
+			<div class="nai">
 				<p id="main_text">${output.bbscontent}</p>
 			</div>
-
-
-			<c:choose>
-				<c:when test="${output.bbstype=='A'}">
-					<hr class="solidhr">
-					<button type="button"
-						onclick="location.href='${pageContext.request.contextPath}/community/notice.do'"
-						class="btn btn-inverse btn-sm list" style="margin-bottom: 10px;">목록</button>
-					<hr class="solidhr">
-				</c:when>
-
-				<c:otherwise>
 					<div class="comment">
 						<hr class="solidhr">
 						<div class="eddlbuttons clearfix">
@@ -171,10 +68,8 @@ padding-top: 20px;
 							</c:if>
 						</div>
 					</div>
-				</c:otherwise>
-			</c:choose>
+
 			<div class="comment-list">
-				<c:if test="${output.bbstype=='B'}">
 					<div class="list-subject">
 						<b style="color: white;">댓글목록</b>
 					</div>
@@ -230,10 +125,8 @@ padding-top: 20px;
 						</tbody>
 
 					</table>
-				</c:if>
 				<hr class="solidhr">
 			</div>
-			<c:if test="${output.bbstype=='B'}">
 				<c:choose>
 					<c:when test="${!empty userInfo.username }">
 						<form class="article-comment" id="addForm" method="POST"
@@ -257,7 +150,6 @@ padding-top: 20px;
 						</div>
 					</c:otherwise>
 				</c:choose>
-			</c:if>
 		</div>
 	</div>
 
