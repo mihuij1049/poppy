@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.javassist.compiler.ast.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,9 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
+import kr.co.poppy.model.Cart;
 import kr.co.poppy.model.Goodsdetail;
 import kr.co.poppy.model.Heart;
 import kr.co.poppy.model.Members;
+import kr.co.poppy.service.CartService;
 import kr.co.poppy.service.GoodsdetailService;
 import kr.co.poppy.service.HeartService;
 import kr.co.poppy.service.MembersService;
@@ -42,7 +46,8 @@ public class MyInfoRestController {
 	HeartService heartService;
 	@Autowired
 	GoodsdetailService goodsDetailService;
-
+	@Autowired
+	CartService cartService;
 	/**
 	 * 삭제 처리
 	 * 
@@ -162,6 +167,60 @@ public class MyInfoRestController {
 		data.put("item", output);
 			
 		return webHelper.getJsonData(data);
+	}
+	
+	@RequestMapping(value = "/gallery/cart", method = RequestMethod.POST)
+	public Map<String, Object> getItem_cart(
+			@RequestParam(value = "cartqty", defaultValue = "0") int cartqty,
+			@RequestParam(value = "gddetailno", defaultValue = "0") int gddetailno) {
+		// 요청보낸 회원의 멤버노 획득
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+		
+		if (cartqty<1) {
+			return webHelper.getJsonWarning("수량을 선택해주세요");
+		}
+		
+		if (gddetailno==0) {
+			return webHelper.getJsonWarning("옵션을 선택해주세요");
+		}
+		
+		/** 장바구니에 이미 상품이 담겼는지 확인 */
+		// 확인절차를 위한 빈즈 생성
+		Cart myCart = new Cart();
+		myCart.setMemno(myInfo.getMemno());
+		myCart.setGddetailno(gddetailno);
+		
+		int result = 0;
+		try {
+			// 데이터 저장 갯수 조회 
+			result = cartService.getCartItemCount(myCart);
+			
+		} catch (Exception e) {
+			/* return webHelper.getJsonWarning("조회실패"); */
+		}
+		
+		if (result > 0) {
+			
+			return webHelper.getJsonWarning("이미 해당 상품이 장바구니에 담겨있어요~!");
+		}
+		
+		/** 장바구니에 저장하기 */
+		// 저장을 위한 빈즈 생성
+		Cart inCart = new Cart();
+		inCart.setCartqty(cartqty);
+		inCart.setGddetailno(gddetailno);
+		inCart.setMemno(myInfo.getMemno());
+		
+		try {
+			// 데이터 저장
+			cartService.addCartItem(inCart);
+		} catch (Exception e) {
+			return webHelper.getJsonWarning("장바구니에 담지 못했습니다.");
+		}
+		
+		return webHelper.getJsonData();
+		
 	}
 	
 }

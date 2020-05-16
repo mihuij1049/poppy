@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [2020-05-15 09:09:01.515][ERROR] CommentsServiceImpl.editComments(CommentsServiceImpl.java:122) result=0
 [2020-05-15 09:32:55.199][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
 [2020-05-15 09:32:58.009][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
@@ -330,11 +331,16 @@ Caused by: java.lang.Error: Unresolved compilation problems:
 	... 33 more
 [2020-05-15 15:27:20.649][ERROR] FrameworkServlet.initServletBean(FrameworkServlet.java:534) Context initialization failed
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'rvheartRestController' defined in file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\kr\co\poppy\controllers\RvheartRestController.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [kr.co.poppy.controllers.RvheartRestController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
+=======
+[2020-05-15 00:03:02.077][ERROR] FrameworkServlet.initServletBean(FrameworkServlet.java:534) Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'myInfoRestController' defined in file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\kr\co\poppy\controllers\MyInfoRestController.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [kr.co.poppy.controllers.MyInfoRestController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
+>>>>>>> 74afe51d66cc6389d5866755cb89b22d4a09bb4f
 	Syntax error, insert "}" to complete ClassBody
 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1320)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1214)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
+<<<<<<< HEAD
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
@@ -1101,19 +1107,28 @@ java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check th
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in ServletContext resource [/WEB-INF/spring/root-context.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\mappers\BbsMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error creating document instance.  Cause: org.xml.sax.SAXParseException; lineNumber: 125; columnNumber: 11; Element type "WHERE" must be declared.
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1803)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+=======
+>>>>>>> 74afe51d66cc6389d5866755cb89b22d4a09bb4f
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:860)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:879)
 	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878)
 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
-	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:401)
-	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:292)
-	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:103)
-	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4699)
-	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5165)
+	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:702)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:668)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:716)
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:591)
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:530)
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:170)
+	at javax.servlet.GenericServlet.init(GenericServlet.java:158)
+	at org.apache.catalina.core.StandardWrapper.initServlet(StandardWrapper.java:1144)
+	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1091)
+	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:985)
+	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:4885)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5199)
 	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
 	at org.apache.catalina.core.StandardContext.reload(StandardContext.java:3759)
 	at org.apache.catalina.loader.WebappLoader.backgroundProcess(WebappLoader.java:291)
@@ -1122,6 +1137,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
 	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
 	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1353)
+<<<<<<< HEAD
 	at java.base/java.lang.Thread.run(Thread.java:830)
 Caused by: org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\mappers\BbsMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error creating document instance.  Cause: org.xml.sax.SAXParseException; lineNumber: 125; columnNumber: 11; Element type "WHERE" must be declared.
 	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:595)
@@ -1674,3 +1690,23 @@ java.sql.SQLSyntaxErrorException: Unknown column 'goodsno' in 'where clause'
 [2020-05-15 18:41:42.585][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
 [2020-05-15 18:42:27.865][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
 [2020-05-15 18:42:48.626][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
+=======
+	at java.lang.Thread.run(Unknown Source)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [kr.co.poppy.controllers.MyInfoRestController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
+	Syntax error, insert "}" to complete ClassBody
+
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:213)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1312)
+	... 31 more
+Caused by: java.lang.Error: Unresolved compilation problem: 
+	Syntax error, insert "}" to complete ClassBody
+
+	at kr.co.poppy.controllers.MyInfoRestController.<init>(MyInfoRestController.java:167)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:200)
+	... 33 more
+>>>>>>> 74afe51d66cc6389d5866755cb89b22d4a09bb4f

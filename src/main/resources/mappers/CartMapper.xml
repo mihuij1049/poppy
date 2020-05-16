@@ -39,14 +39,20 @@
         INNER JOIN orders o ON m.memno = o.orderno
 		WHERE c.memno=#{memno} AND i.imgtype="A";
 	</select>
+	
+	<!-- 중복 담기를 방지하기 위한 카운트(갯수) 조회 -->
+	<select id="selectItemCount" parameterType="kr.co.poppy.model.Cart"
+		resultType="int">
+		SELECT count(*) from cart WHERE memno = #{memno} and gddetailno = #{gddetailno}
+	</select>
 
 	<!-- 데이터 저장을 위한 기능 정의 -->
 	<insert id="insertItem" parameterType="kr.co.poppy.model.Cart"
 		useGeneratedKeys="true" keyProperty="cartno">
 		INSERT INTO cart(cartqty, regdate,
 		editdate, gddetailno, memno)
-		VALUES (#{cartqty}, #{regdate},
-		#{editdate}, #{gddetailno}, #{memno});
+		VALUES (#{cartqty}, now(),
+		now(), #{gddetailno}, #{memno});
 	</insert>
 
 	<!-- 데이터 갱신을 위한 기능 정의 -->

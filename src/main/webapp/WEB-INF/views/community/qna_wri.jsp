@@ -282,7 +282,7 @@ a {
 						</div>
 						<div class="col-xs-8">
 							<div class="select-item-content">
-								<p id="item_name">
+								<p id="item_name" >
 									<br /> <b class="select-item-price" id="item_price"></b>
 								</p>
 							</div>
@@ -349,7 +349,7 @@ a {
 					</div>
 					<div class="modal-footer2">
 						<button type="button" class="btn btn2" data-dismiss="modal">아니오</button>
-						<button type="button" class="btn btn2 qna-submit"
+						<button type="submit" class="btn btn2 qna-submit"
 							data-dismiss="modal">예</button>
 					</div>
 				</div>
@@ -482,6 +482,9 @@ a {
 						$("li").remove(".search-list-item");
 						$(".search-qty").text("0");
 					});
+		});
+		$(".qna-submit").click(function(e) {
+			$("#qna_wri").submit();
 		});
 
 		

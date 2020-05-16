@@ -110,6 +110,14 @@ display: block;
 				</c:choose>
 				<p class="articlewriter">${output.username }</p>
 			</div>
+			<!-- QNA 상품정보 불러오기 -->
+			<c:if test="${output.bbstype=='B'}">
+				<div class="qnagoods" id="qnagoods">
+					<div class="goodsphogo">${output3.imgpath}${output3.imgname}${output3.imgext}</div>
+					<div class="goodsname">${output3.goodsname}</div>
+					<div class="goodsprice">${output3.goodsprice}</div>
+				</div>
+			</c:if>
 			<div class="nai">
 				<p id="main_text">${output.bbscontent}</p>
 			</div>

@@ -38,29 +38,45 @@
 	<!-- ========== 글 상세보기 페이지 Article ========== -->
 	<select id="selectItem" parameterType="kr.co.poppy.model.Bbs"
 		resultMap="bbsMap">
-		SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.regdate, b.editdate, b.memno,
-		m.username, m.userid,
-		g.goodsno, g.gname, g.gprice,
-		i.imgname, i.imgpath, i.imgext, i.imgtype
+		SELECT bbsno, bbstype, bbstitle, bbscontent,
+		b.regdate,
+		b.editdate, b.memno,
+		m.username, m.userid
 		FROM bbs b
-		INNER JOIN members m ON b.memno=m.memno
-		INNER JOIN goods g ON b.goodsno=g.goodsno
-		INNER JOIN imgs i ON i.bbsno = b.bbsno
-		WHERE b.bbstype=#{bbstype} and b.bbsno=#{bbsno}
+		INNER JOIN members m
+		ON b.memno=m.memno
+		WHERE bbstype=#{bbstype} and bbsno=#{bbsno}
+	</select>
+	
+	<!-- ========== Article페이지 상품정보 보여주기 ========== -->
+	<select id="selectItem_qnagoods" parameterType="kr.co.poppy.model.Bbs"
+		resultMap="bbsMap">
+		SELECT b.bbsno, g.goodsno, g.gname, g.gprice, 
+		i.imgsno, i.imgname, i.imgext, i.imgpath 
+		FROM bbs b 
+		INNER JOIN goods ON b.goodsno=g.goodsno
+		INNER JOIN imgs ON i.bbsno=b.bbsno
+		WHERE goodsno=#{goodsno}
 	</select>
 
 	<!-- 포토리뷰 글 보기 페이지 -->
 	<select id="selectrv_Item" parameterType="kr.co.poppy.model.Bbs"
 		resultMap="bbsMap">
-		SELECT m.memno, m.username, b.bbsno, b.bbstype, b.bbstitle, b.bbscontent,
+		SELECT m.memno, m.username, b.bbsno, b.bbstype, b.bbstitle,
+		b.bbscontent,
 		b.rvlike, b.regdate, b.editdate, b.goodsno,
-		i.imgname, i.imgpath, i.imgext, i.imgtype, 
-        (SELECT i.imgname FROM imgs i WHERE i.goodsno = b.goodsno AND imgtype="A") AS giname,
-        (SELECT i.imgpath FROM imgs i WHERE i.goodsno = b.goodsno AND imgtype="A") AS gipath,
-        (SELECT i.imgext FROM imgs i WHERE i.goodsno = b.goodsno AND imgtype="A") AS giext
-        FROM bbs b
+		i.imgname,
+		i.imgpath, i.imgext, i.imgtype,
+		(SELECT i.imgname FROM imgs i WHERE i.goodsno = b.goodsno AND imgtype="A") AS
+		giname,
+		(SELECT i.imgpath FROM imgs i WHERE i.goodsno = b.goodsno AND imgtype="A") AS
+		gipath,
+		(SELECT i.imgext FROM imgs i WHERE i.goodsno = b.goodsno AND imgtype="A") AS
+		giext
+		FROM bbs b
 		INNER JOIN imgs i ON i.bbsno = b.bbsno
-		INNER JOIN members m ON b.memno = m.memno
+		INNER JOIN members m ON
+		b.memno = m.memno
 		WHERE b.bbsno = #{bbsno};
 	</select>
 
@@ -72,7 +88,7 @@
 		(SELECT count(*) FROM comments c WHERE c.bbsno=b.bbsno) AS cmtcount
 		FROM bbs b
 		INNER JOIN members m ON b.memno=m.memno
-		
+
 		<where>
 			bbstype=#{bbstype}
 			<if test="bbscontent != null and bbscontent != ''">
@@ -121,18 +137,19 @@
 		m.memno, m.userid,
 		r.rvheartno
 		FROM bbs b
-		INNER JOIN members m ON b.memno=m.memno
+		INNER JOIN members m
+		ON b.memno=m.memno
 		INNER JOIN rvheart r ON r.memno=b.memno
-		INNER JOIN imgs i ON b.bbsno=i.bbsno 
-			WHERE i.imgtype="C" AND b.bbstype="C"
-			<!-- <if test="bbstitle != null and bbstitle != ''">
-				and bbstitle LIKE concat('%', #{bbstitle}, '%')
-			</if> -->
-			ORDER BY bbsno ASC
+		INNER JOIN
+		imgs i ON b.bbsno=i.bbsno
+		WHERE i.imgtype="C" AND b.bbstype="C"
+		<!-- <if test="bbstitle != null and bbstitle != ''"> and bbstitle LIKE 
+			concat('%', #{bbstitle}, '%') </if> -->
+		ORDER BY bbsno ASC
 	</select>
 
 
-	<!-- ========== 데이터 수 조회를 위한 기능 정의  ========== -->
+	<!-- ========== 데이터 수 조회를 위한 기능 정의 ========== -->
 	<select id="selectCountAll"
 		parameterType="kr.co.poppy.model.Bbs" resultType="int">
 		SELECT COUNT(*)
@@ -160,8 +177,10 @@
 	<insert id="insertItem" parameterType="kr.co.poppy.model.Bbs"
 		useGeneratedKeys="true" keyProperty="bbsno">
 		INSERT INTO bbs
-		(bbstype, bbstitle, bbscontent, qnasec, qnapw, rvlike, regdate, editdate, memno, goodsno)
-		VALUES (#{bbstype}, #{bbstitle}, #{bbscontent}, #{qnasec}, #{qnapw}, #{rvlike}, #{regdate}, #{editdate}, #{memno}, #{goodsno})
+		(bbstype, bbstitle,
+		bbscontent, qnasec, qnapw, rvlike, regdate, editdate, memno, goodsno)
+		VALUES (#{bbstype}, #{bbstitle}, #{bbscontent}, #{qnasec}, #{qnapw},
+		#{rvlike}, #{regdate}, #{editdate}, #{memno}, #{goodsno})
 	</insert>
 
 

@@ -50,6 +50,24 @@ public class CartServiceImpl implements CartService {
 	}
 
 	/**
+	 * 장바구니 데이터 목록 조회
+	 * @Param  담는 상품의 갯수(int), 옵션이 선택된 상품번호 gddetailno, 담는 사람의 정보 memno  
+	 * @return int
+	 */
+	@Override
+	public int addCartItem(Cart input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlSession.insert("CartMapper.insertItem", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 저장에 실패했습니다.");
+		}
+		return result;
+	}
+
+	/**
 	 * 장바구니 데이터가 저장되어 있는 개수 조회
 	 * 
 	 * @return int
@@ -68,12 +86,34 @@ public class CartServiceImpl implements CartService {
 
 		return result;
 	}
+	
+	/**
+	 * 장바구니 데이터의 중복저장을 방지하기 위한 단일 개수 조회
+	 * 
+	 * @param 특정회원 Memno 과 특정 상품 gddetailno 를 담고 있는 Beans
+	 * @return int
+	 * @throws Exception
+	 */
+	@Override
+	public int getCartItemCount(Cart input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("CartMapper.selectItemCount", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
 
 	@Override
 	public int editCart(Cart input) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 
 	/**
 	 * 장바구니 데이터 삭제하기
