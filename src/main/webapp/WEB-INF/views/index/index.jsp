@@ -89,9 +89,9 @@
 								<span class="sal_name">${item.gname}</span>
 								<hr />
 								<div class="price_box">
-									<span id="gprice"><del>₩${item.gprice}원</del></span>
+									<span id="gprice"><del>₩<fmt:formatNumber value="${item.gprice}" pattern="#,###" />원</del></span>
 									<br>
-									<span id="gsale"><b>₩${item.gsale}원</b></span>
+									<span id="gsale"><b>₩<fmt:formatNumber value="${item.gsale}" pattern="#,###" />원</b></span>
 								</div>
 							</div>
 							</a>
@@ -109,9 +109,9 @@
 								<span class="sal_name">${item.gname}</span>
 								<hr />
 								<div class="price_box">
-									<span id="gprice"><del>₩${item.gprice}원</del></span>
+									<span id="gprice"><del>₩<fmt:formatNumber value="${item.gprice}" pattern="#,###" /></del></span>
 									<br>
-									<span id="gsale"><b>₩${item.gsale}원</b></span>
+									<span id="gsale"><b>₩<fmt:formatNumber value="${item.gsale}" pattern="#,###" />원</b></span>
 								</div>
 							</div>
 							</a>
@@ -129,9 +129,9 @@
 								<span class="sal_name">${item.gname}</span>
 								<hr />
 								<div class="price_box">
-									<span id="gprice"><del>₩${item.gprice}원</del></span>
+									<span id="gprice"><del>₩<fmt:formatNumber value="${item.gprice}" pattern="#,###" />원</del></span>
 									<br>
-									<span id="gsale"><b>₩${item.gsale}원</b></span>
+									<span id="gsale"><b>₩<fmt:formatNumber value="${item.gsale}" pattern="#,###" />원</b></span>
 								</div>
 							</div>
 							</a>
@@ -165,12 +165,12 @@
 						</a>
 						<hr />
 						<div class="price_box">
-							<span id="gprice"><del>₩${item.gprice}원</del></span>
+							<span id="gprice"><del>₩<fmt:formatNumber value="${item.gsale}" pattern="#,###" />원</del></span>
 							<br>
-							<span id="gsale"><b>₩${item.gsale}원</b></span>
-							<button type="submit" class="btn btn-inverse insert-one" id="insert-one" data-heartno="${item.heartno}" data-goodsno="${item.goodsno}">
+							<span id="gsale"><b>₩<fmt:formatNumber value="${item.gsale}" pattern="#,###" />원</b></span>
+							<%-- <button type="submit" class="btn btn-inverse insert-one" id="insert-one" data-heartno="${item.heartno}" data-goodsno="${item.goodsno}">
 							like ♥
-							</button>
+							</button> --%>
 						</div>
 					</div>
 				</c:forEach>
@@ -247,22 +247,7 @@
             },
 
         });
-
-        $(".glyphicon-heart").click(function() {
-            $(".glyphicon-heart").toggleClass(".glyphicon-heart-click");
-        });
         
-        $(function() {
-            $('.pr_box button').click(function() {
-                $(this).toggleClass("btn, btn-inverse");
-            });
-        });
-        
-        $(function() {
-            $('i').click(function() {
-                $(this).toggleClass("glyphicon-heart glyphicon-heart-empty");
-            });
-        });
         </script>
 </body>
 

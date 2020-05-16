@@ -28,6 +28,8 @@
 		<result property="imgext" column="imgext" />
 		<result property="imgtype" column="imgtype" />
 		<result property="heartCnt"  column="heartCnt" />
+		<result property="offset"  column="offset" />
+		<result property="listCount"  column="listCount" />
 	</resultMap>
 	
 	<!-- 상품상세 페이지 단일행 조회를 위한 기능 정의 -->
@@ -121,12 +123,17 @@
 		g.gname, g.ginfo, g.gprice, g.gsale, g.gdate, g.cate1, g.cate2
 		from goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
+		<!-- 검색기능 구현 -->
 		<where>
 			i.imgtype="A"
 			<if test="gname != null and gname != ''">
 				and gname LIKE concat('%', #{gname}, '%')
 			</if>
 		</where>
+		<!-- 페이지 번호 구현 -->
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if>
 	</select>
 	
 	<!-- 데이터 수 조회를 위한 기능 정의 -->
@@ -135,7 +142,12 @@
 		SELECT COUNT(*)
 		from goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
-		WHERE i.imgtype="A" AND g.cate1=#{cate1};
+		<where>
+			i.imgtype="A"
+			<if test="gname != null and gname != ''">
+				AND gname LIKE concat('%', #{gname}, '%');
+			</if>
+		</where>
 	</select>
 	
 	<!-- qna글작성 모달창의 상품 전체조회를 위한 sql -->

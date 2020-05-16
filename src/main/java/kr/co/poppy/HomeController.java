@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,7 @@ import kr.co.poppy.helper.RetrofitHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Bbs;
 import kr.co.poppy.model.Goods;
+import kr.co.poppy.model.Members;
 import kr.co.poppy.service.BbsService;
 import kr.co.poppy.service.GoodsService;
 import kr.co.poppy.service.GoodsdetailService;
@@ -56,6 +59,10 @@ public class HomeController {
 	 */
 	@RequestMapping(value = { "/","/index/index.do" }, method = RequestMethod.GET)
 	public ModelAndView home(Locale locale, Model model) {
+		// 로그인한 유저 값 가져오기
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+		
 		// 2) 데이터 조회
 		// 굿즈데이터조회
 		Goods input = new Goods();

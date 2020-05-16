@@ -108,9 +108,6 @@
 	
 	
 	<script type="text/javascript">
-	$('.pr_in_box i').click(function() {
-        $(this).toggleClass("glyphicon-heart glyphicon-heart-empty");
-	});
 	
 	$("#result").on("click", "#insert-one", function(e) {
         e.preventDefault();
