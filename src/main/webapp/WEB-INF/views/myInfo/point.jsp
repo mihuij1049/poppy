@@ -28,13 +28,21 @@
 			<div class="point clearfix">
 				<div class="point-header">적립금</div>
 				<div class="point-sub">총 적립금</div>
-				<div class="point-save">${myInfo.sumAvpoint+myInfo.sumNapoint }원</div>
+				<div class="point-save"><fmt:formatNumber
+										value="${myInfo.sumAvpoint+myInfo.sumNapoint }"
+										pattern="#,###" />원</div>
 				<div class="point-sub">사용가능 적립금</div>
-				<div class="point-save">${myInfo.sumAvpoint }원</div>
+				<div class="point-save"><fmt:formatNumber
+										value="${myInfo.sumAvpoint }"
+										pattern="#,###" />원</div>
 				<div class="point-sub">사용된 적립금</div>
-				<div class="point-save">${myInfo.sumUsedpoint }원</div>
+				<div class="point-save"><fmt:formatNumber
+										value="${myInfo.sumUsedpoint }"
+										pattern="#,###" />원</div>
 				<div class="point-sub">미가용 적립금</div>
-				<div class="point-save">${myInfo.sumNapoint }원</div>
+				<div class="point-save"><fmt:formatNumber
+										value="${myInfo.sumNapoint }"
+										pattern="#,###" />원</div>
 				<div class="point-sub">환불예정 적립금</div>
 				<div class="point-save">0원</div>
 			</div>

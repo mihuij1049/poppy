@@ -70,11 +70,11 @@ public class GoodsAjaxController {
 		
 		if (recentItem==null) {
 			// 쿠키가 없다면? 새로운 쿠키를 생성하면서 상품PK 를 저장
-			webHelper.setCookie("recentItem",""+goodsno, 90);
+			webHelper.setCookie("recentItem",""+goodsno, 60*60*24);
 			System.out.println("============쿠키의값" + webHelper.getCookie("recentItem"));
 		} else {
 		// 쿠키가 있다면?
-		webHelper.setCookie("recentItem", recentItem + "," + goodsno, 90);
+		webHelper.setCookie("recentItem", recentItem + "," + goodsno, 60*60*24);
 		System.out.println("============쿠키의값" + webHelper.getCookie("recentItem"));
 		}
 		/*

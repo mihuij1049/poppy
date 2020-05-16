@@ -42,8 +42,12 @@
 										<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=${item.goodsno}">
 										<img src="${item.imgpath}${item.imgname}.${item.imgext}" class="cart-img"></a>
 										<div class="word">
-											<b>${item.gname}</b><br> <small><span class="price1">${item.gprice }원</span></small><br>
-											<b>${item.gsale}</b>
+											<b>${item.gname}</b><br> <small><span class="price1"><fmt:formatNumber
+										value="${item.gprice }"
+										pattern="#,###" />원</span></small><br>
+											<b><fmt:formatNumber
+										value="${item.gsale}"
+										pattern="#,###" /></b>
 										</div>
 									</div>
 									<div class="btns">

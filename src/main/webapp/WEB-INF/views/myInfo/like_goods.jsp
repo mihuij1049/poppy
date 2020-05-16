@@ -74,7 +74,7 @@
 												</button>
 											</div>
 										</div>
-										<small>배송:2500원[조건]/기본배송</small><br> <small><span>적</span>
+										<small>배송:2,500원[조건]/기본배송</small><br> <small><span>적</span>
 											<fmt:formatNumber value="${item.gsale*0.02}" pattern="#,###" />원</small><br>
 										<b><fmt:formatNumber value="${item.gsale}" pattern="#,###" />원</b>
 									</div>

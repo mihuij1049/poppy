@@ -52,7 +52,9 @@
 									<tbody>
 										<tr>
 											<td class="td-title">적립금</td>
-											<td class="td-mny">${item.usedpoint+item.avpoint+item.napoint }원</td>
+											<td class="td-mny"><fmt:formatNumber
+										value="${item.usedpoint+item.avpoint+item.napoint }"
+										pattern="#,###" />원</td>
 										</tr>
 										<tr id="table-content">
 											<td class="td-title">내용</td>
@@ -89,7 +91,9 @@
 									<tbody>
 										<tr>
 											<td class="td-title">적립금</td>
-											<td class="td-mny">${item.napoint }원</td>
+											<td class="td-mny"><fmt:formatNumber
+										value="${item.napoint }"
+										pattern="#,###" />원</td>
 										</tr>
 										<tr id="table-content">
 											<td class="td-title">내용</td>
@@ -126,7 +130,9 @@
 									<tbody>
 										<tr>
 											<td class="td-title">적립금</td>
-											<td class="td-mny">${item.usedpoint }원</td>
+											<td class="td-mny"><fmt:formatNumber
+										value="${item.usedpoint }"
+										pattern="#,###" />원</td>
 										</tr>
 										<tr id="table-content">
 											<td class="td-title">내용</td>
