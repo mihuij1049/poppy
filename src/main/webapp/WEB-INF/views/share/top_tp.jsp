@@ -17,9 +17,6 @@
 			<a href="${pageContext.request.contextPath }/gallery/gal_list_best.do">
 				<li>BEST</li>
 			</a>
-			<a href="${pageContext.request.contextPath }/gallery/gal_list_new.do">
-				<li>NEW</li>
-			</a>
 			<a href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1=푸드">
 				<li>푸드</li>
 			</a>
@@ -36,10 +33,7 @@
 				<li>대형견</li>
 			</a>
 			<a href="${pageContext.request.contextPath }/gallery/gal_list_all.do">
-				<li>타임세일</li>
-			</a>
-			<a href="${pageContext.request.contextPath }/gallery/gal_list_all.do">
-				<li>유통임박</li>
+				<li>전체상품</li>
 			</a>
 		</ul>
 		<hr>

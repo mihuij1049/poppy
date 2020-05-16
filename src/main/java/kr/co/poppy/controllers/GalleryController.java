@@ -171,6 +171,32 @@ public class GalleryController {
 		return new ModelAndView("gallery/gal_list");
 	}
 	
+	/** 갤러리 목록 페이지 (카테고리별-2) */
+	@RequestMapping(value="/gallery/gal_list_2.do", method=RequestMethod.GET)
+	public ModelAndView gallistcate2(Model model,
+			@RequestParam(value="cate2", required=false) String cate2) {
+		// 2) 데이터 조회
+		// 굿즈데이터조회
+		Goods input = new Goods();
+		input.setCate2(cate2);
+		
+		// 데이터저장할곳
+		List<Goods> output = null;
+		
+		try {
+			// 데이터조회
+			output = goodsService.getGoodsListCate2(input);
+			
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		// 3) 뷰처리
+		model.addAttribute("output", output);
+	
+		return new ModelAndView("gallery/gal_list");
+	}
+	
 	/** 갤러리 목록 페이지 (검색별) */
 	@RequestMapping(value="/gallery/gal_list_search.do", method=RequestMethod.GET)
 	public ModelAndView gallistsearch(Model model,

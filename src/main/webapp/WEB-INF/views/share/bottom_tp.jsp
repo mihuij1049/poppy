@@ -170,14 +170,14 @@
 										<a href="#" class="accordion-toggle fm-toggle clearfix"
 											id="new-good" data-toggle="collapse"
 											data-parent="#accordion-tab">
-											<h4 class="panel-title-new box1">신상품</h4>
+											<h4 class="panel-title-new box1">전체상품</h4>
 										</a>
 									</div>
 								</div>
 								<!-- 항목(2) -->
 								<div class="panel panel-default fm-default">
 									<div class="panel-heading fm-heading">
-										<a onclick="location.href='${pageContext.request.contextPath }/gallery/gal_list.jsp;'" class="accordion-toggle fm-toggle" id="best-good"
+										<a onclick="location.href='${pageContext.request.contextPath }/gallery/gal_list_best.do'" class="accordion-toggle fm-toggle" id="best-good"
 											data-toggle="collapse" data-parent="#accordion-tab">
 											<h4 class="panel-title-best box1">인기상품</h4>
 										</a>
@@ -197,16 +197,10 @@
 									</div>
 									<div id="collapse-One" class="panel-collapse collapse">
 										<div class="panel-body fm-body">
-											<a href="#">- 사료 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=건식사료">- 건식사료 </a>
 										</div>
 										<div class="panel-body fm-body">
-											<a href="#">- 간식 </a>
-										</div>
-										<div class="panel-body fm-body">
-											<a href="#">- 영양제 </a>
-										</div>
-										<div class="panel-body fm-body">
-											<a href="#">- 우유 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=반건식사료">- 반건식사료 </a>
 										</div>
 									</div>
 								</div>
@@ -224,16 +218,10 @@
 									</div>
 									<div id="collapse-Two" class="panel-collapse collapse">
 										<div class="panel-body fm-body">
-											<a href="#">- 아우터 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=아우터">- 아우터 </a>
 										</div>
 										<div class="panel-body fm-body">
-											<a href="#">- 티셔츠 </a>
-										</div>
-										<div class="panel-body fm-body">
-											<a href="#">- 신발 </a>
-										</div>
-										<div class="panel-body fm-body">
-											<a href="#">- 양말 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=티셔츠">- 티셔츠 </a>
 										</div>
 									</div>
 								</div>
@@ -251,22 +239,13 @@
 									</div>
 									<div id="collapse-Three" class="panel-collapse collapse">
 										<div class="panel-body fm-body">
-											<a href="#">- 목줄/리드줄 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=목줄">- 목줄 </a>
 										</div>
 										<div class="panel-body fm-body">
-											<a href="#">- 자동줄 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=하네스">- 하네스 </a>
 										</div>
 										<div class="panel-body fm-body">
-											<a href="#">- 이동장 </a>
-										</div>
-										<div class="panel-body fm-body">
-											<a href="#">- 배변봉투 </a>
-										</div>
-										<div class="panel-body fm-body">
-											<a href="#">- 휴대용식기 </a>
-										</div>
-										<div class="panel-body fm-body">
-											<a href="#">- 입마개 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=이동장">- 이동장 </a>
 										</div>
 									</div>
 								</div>
@@ -284,16 +263,13 @@
 									</div>
 									<div id="collapse-Four" class="panel-collapse collapse">
 										<div class="panel-body fm-body">
-											<a href="#">- 사료,간식 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=사료">- 사료 </a>
 										</div>
 										<div class="panel-body fm-body">
-											<a href="#">- 목줄/리드줄 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=하네스">- 하네스 </a>
 										</div>
 										<div class="panel-body fm-body">
-											<a href="#">- 의류 </a>
-										</div>
-										<div class="panel-body fm-body">
-											<a href="#">- 장난감 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=의류">- 의류 </a>
 										</div>
 									</div>
 								</div>
@@ -311,19 +287,16 @@
 									</div>
 									<div id="collapse-Five" class="panel-collapse collapse">
 										<div class="panel-body fm-body">
-											<a href="#">- 방석 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=방석">- 방석 </a>
 										</div>
 										<div class="panel-body fm-body">
-											<a href="#">- 계단 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=계단">- 계단 </a>
 										</div>
 										<div class="panel-body fm-body">
-											<a href="#">- 식기 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=울타리">- 울타리 </a>
 										</div>
 										<div class="panel-body fm-body">
-											<a href="#">- 하우스/울타리 </a>
-										</div>
-										<div class="panel-body fm-body">
-											<a href="#">- 매트 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=매트">- 매트 </a>
 										</div>
 									</div>
 								</div>

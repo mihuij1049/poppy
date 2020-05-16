@@ -38,9 +38,6 @@
 								<c:when test="${item.cate1 != null}">
 								${item.cate1}
 								</c:when>
-								<c:otherwise>
-								NEW
-								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 				</b>
