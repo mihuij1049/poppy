@@ -72,7 +72,7 @@ html, body {
 	right: 3px;
 }
 
-/** �긽�떒 移댄뀒怨좊━ �꺆 �떆�옉!!! */
+/** 카테고리부분 */
 .category {
 	margin-bottom: 0;
 	height: 36px;
@@ -114,9 +114,8 @@ html, body {
 	padding-left: 0;
 }
 
-/** �긽�떒 移댄뀒怨좊━ �꺆 �걹!!!!! */
 
-/** �뿬湲� �긽�떒�꺆 �븘�옒! �럹�씠吏�蹂� �씠由�<h3>�씠�옉 �뮘濡쒓�湲� 踰꾪듉 �꺆 �떆�옉!!! */
+/** 페이지타이틀부분 */
 .page-title {
 	vertical-align: middle;
 	width: auto;
@@ -145,9 +144,9 @@ html, body {
 	color: #FF8F83;
 }
 
-/** �뿬湲� �긽�떒�꺆 �븘�옒! �럹�씠吏�蹂� �씠由�<h3>�씠�옉 �뮘濡쒓�湲� 踰꾪듉 �꺆 �걹!!! */
+/** 하단 탭 영역 */
 
-/** etc �꺆 �떆�옉! */
+/** etc 하단 정보 부분 */
 .footer {
 	width: auto;
 	padding-top: 10px;
@@ -179,9 +178,6 @@ html, body {
 	text-decoration: none;
 }
 
-/** etc �꺆 �걹! */
-
-/** �뼱�뱶�젅�뒪 諛뺤뒪 �떆�옉! */
 address {
 	margin: 0;
 	padding: 6px 0 6px 0;
@@ -197,18 +193,12 @@ address>p {
 	font-size: 10px;
 }
 
-/** �뼱�뱶�젅�뒪 諛뺤뒪 �걹! */
-
-/** �븯�떒 row�꺆 �떆�옉! */
 .row {
 	margin-left: 0px;
 	margin-right: 0px;
 	padding: 10px 0 10px 0;
 }
 
-/** �븯�떒 row�꺆 �걹! */
-
-/** �븯�떒 �꽕鍮� 諛� �떆�옉! */
 .navbar {
 	z-index: 10000;
 }
@@ -243,7 +233,6 @@ address>p {
 	text-decoration: none;
 }
 
-/** �븯�떒 �꽕鍮� 諛� �걹! */
 
 /** 기본 버튼 스타일 (부트스트랩->뽀삐프젝전용버튼) */
 .btn {

@@ -20,6 +20,59 @@
 	border: 0px;
 	font-size: 13px;
 }
+.nowpage {
+	border: 1px solid #ffc7c1;
+	background: #ffc7c1;
+	padding: 6px 10px;
+	color: #ff6261;
+}
+
+.otherpage {
+	border: 1px solid #ffc7c1;
+	background: #ffc7c1;
+	padding: 6px 10px;
+	color: white;
+}
+
+.otherpage:hover {
+	text-decoration: none;
+	color: #333;
+}
+
+.pagenumber {
+	text-align: center;
+	margin-bottom: 20px;
+	padding-top: 30px;
+}
+
+.prevok {
+	border: 1px solid #ffc7c1;
+	padding: 6px 10px;
+	color: #ff6261;
+	text-decoration: none;
+}
+
+.prevno {
+	border: 1px solid #ffc7c1;
+	padding: 6px 10px;
+	color: #ffc7c1;
+	text-decoration: none;
+}
+
+.nextok {
+	border: 1px solid #ffc7c1;
+	padding: 6px 10px;
+	color: #ff6261;
+	text-decoration: none;
+}
+
+.nextno {
+	border: 1px solid #ffc7c1;
+	padding: 6px 10px;
+	color: #ffc7c1;
+	text-decoration: none;
+}
+
 </style>
 <body>
 	<%@ include file="../share/top_tp.jsp"%>
@@ -129,7 +182,6 @@
 				</c:choose>
 			</div>
 		</div>
-	</div>
-	<%@ include file="../share/bottom_tp.jsp"%>
-</body>
+		<%@ include file="../share/bottom_tp.jsp"%>
+	</body>
 </html>

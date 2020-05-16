@@ -53,6 +53,10 @@
 		from goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
 		WHERE i.imgtype="A"
+		<!-- 페이지 번호 구현 -->
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if>
 	</select>
 	
 	<!-- 다중행 조회(베스트상품)을 위한 기능 정의 -->
@@ -62,7 +66,11 @@
 		AS heartCnt from goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
 		WHERE i.imgtype="A"
-		order by heartCnt desc;
+		order by heartCnt desc
+		<!-- 페이지 번호 구현 -->
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if>
 	</select>
 	
 	<!-- 다중행 조회(신상품)을 위한 기능 정의 -->
@@ -87,6 +95,10 @@
 		from goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
 		WHERE i.imgtype="A" AND g.cate1=#{cate1}
+		<!-- 페이지 번호 구현 -->
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if>
 	</select>
 	
 	<!-- 다중행 조회(카테고리별-셀렉트)를 위한 기능 정의 -->
@@ -99,19 +111,23 @@
 		INNER JOIN imgs i on g.goodsno = i.goodsno
 		WHERE i.imgtype="A" AND g.cate1=#{cate1} 
 		<if test='searchCondition.equals("A")'>
-			ORDER BY g.regdate ASC;
+			ORDER BY g.regdate ASC
 		</if>
 		<if test='searchCondition.equals("B")'>
-			ORDER BY g.gname ASC;
+			ORDER BY g.gname ASC
 		</if>
 		<if test='searchCondition.equals("C")'>
-			ORDER BY g.gsale ASC;
+			ORDER BY g.gsale ASC
 		</if>
 		<if test='searchCondition.equals("D")'>
-			ORDER BY g.gsale DESC;
+			ORDER BY g.gsale DESC
 		</if>
 		<if test="searchCondition==null">
-			ORDER BY DESC;
+			ORDER BY DESC
+		</if>
+		<!-- 페이지 번호 구현 -->
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
 	
@@ -124,6 +140,10 @@
 		from goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
 		WHERE i.imgtype="A" AND g.cate2=#{cate2}
+		<!-- 페이지 번호 구현 -->
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if>
 	</select>
 	
 	<!-- 다중행 조회(카테고리별-셀렉트)를 위한 기능 정의 -->
@@ -136,19 +156,23 @@
 		INNER JOIN imgs i on g.goodsno = i.goodsno
 		WHERE i.imgtype="A" AND g.cate2=#{cate2} 
 		<if test='searchCondition.equals("A")'>
-			ORDER BY g.regdate ASC;
+			ORDER BY g.regdate ASC
 		</if>
 		<if test='searchCondition.equals("B")'>
-			ORDER BY g.gname ASC;
+			ORDER BY g.gname ASC
 		</if>
 		<if test='searchCondition.equals("C")'>
-			ORDER BY g.gsale ASC;
+			ORDER BY g.gsale ASC
 		</if>
 		<if test='searchCondition.equals("D")'>
-			ORDER BY g.gsale DESC;
+			ORDER BY g.gsale DESC
 		</if>
 		<if test="searchCondition==null">
-			ORDER BY DESC;
+			ORDER BY DESC
+		</if>
+		<!-- 페이지 번호 구현 -->
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
 	
@@ -173,7 +197,7 @@
 		</if>
 	</select>
 	
-	<!-- 데이터 수 조회를 위한 기능 정의 -->
+	<!-- 데이터 수 조회를 위한 기능 정의(전체) -->
 	<select id="selectCountAll"
 		parameterType="kr.co.poppy.model.Goods" resultType="int">
 		SELECT COUNT(*)
@@ -185,6 +209,24 @@
 				AND gname LIKE concat('%', #{gname}, '%');
 			</if>
 		</where>
+	</select>
+	
+	<!-- 데이터 수 조회를 위한 기능 정의(cate1) -->
+	<select id="selectCountCate1"
+		parameterType="kr.co.poppy.model.Goods" resultType="int">
+		SELECT COUNT(*)
+		from goods g
+		INNER JOIN imgs i on g.goodsno = i.goodsno
+		WHERE i.imgtype="A" AND g.cate1 = #{cate1}
+	</select>
+	
+	<!-- 데이터 수 조회를 위한 기능 정의(cate2) -->
+	<select id="selectCountCate2"
+		parameterType="kr.co.poppy.model.Goods" resultType="int">
+		SELECT COUNT(*)
+		from goods g
+		INNER JOIN imgs i on g.goodsno = i.goodsno
+		WHERE i.imgtype="A" AND g.cate2 = #{cate2}
 	</select>
 	
 	<!-- qna글작성 모달창의 상품 전체조회를 위한 sql -->

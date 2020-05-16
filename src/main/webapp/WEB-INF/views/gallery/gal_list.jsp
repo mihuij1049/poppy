@@ -114,21 +114,186 @@
 						</div>
 					</c:forEach>
 			</div>
-			<div class="text-center">
-				<ul class="pagination pagination-sm">
-					<li class="disabled"><a href="#">&laquo;</a></li>
-					<li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#">&raquo;</a></li>
-				</ul>
+			<div class="pagenumber">
+			<c:forEach var="item" items="${output}" varStatus="status" end="0">
+			<c:choose>
+				<%-- 베스트 상품일 때의 페이지 번호 --%>
+				<c:when test="${item.heartCnt > 0}">
+				<%-- 페이지 번호 구현 --%>
+				<%-- 이전 그룹에 대한 링크 --%>
+				<c:choose>
+					<%-- 이전 그룹으로 이동 가능하다면? --%>
+					<c:when test="${pageData.prevPage > 0}">
+						<%-- 이동할 URL 생성 --%>
+						<c:url value="/gallery/gal_list_best.do" var="prevPageUrl">
+							<c:param name="page" value="${pageData.prevPage}" />
+						</c:url>
+						<a href="${prevPageUrl}" class="prevok">≪</a>
+					</c:when>
+					<c:otherwise>
+						<span class="prevno">≪</span>
+					</c:otherwise>
+				</c:choose>
+				<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+				<c:forEach var="i" begin="${pageData.startPage}"
+					end="${pageData.endPage}" varStatus="status">
+					<%-- 이동할 URL 생성 --%>
+					<c:url value="/gallery/gal_list_best.do" var="pageUrl">
+						<c:param name="page" value="${i}" />
+					</c:url>
+
+					<%-- 페이지 번호 출력 --%>
+					<c:choose>
+						<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+						<c:when test="${pageData.nowPage == i}">
+							<strong class="nowpage">${i}</strong>
+						</c:when>
+						<%-- 나머지 페이지의 경우 링크 적용함 --%>
+						<c:otherwise>
+							<a href="${pageUrl}" class="otherpage">${i}</a>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+				<%-- 다음 그룹에 대한 링크 --%>
+				<c:choose>
+					<%-- 다음 그룹으로 이동 가능하다면? --%>
+					<c:when test="${pageData.nextPage > 0}">
+						<%-- 이동할 URL 생성 --%>
+						<c:url value="/gallery/gal_list_best.do" var="nextPageUrl">
+							<c:param name="page" value="${pageData.nextPage}" />
+						</c:url>
+						<a href="${nextPageUrl}" class="nextok">≫</a>
+					</c:when>
+					<c:otherwise>
+						<span class="nextno">≫</span>
+					</c:otherwise>
+				</c:choose>
+				</c:when>
+				
+				
+				<%-- cate1을 조회했을 때 나타나는 페이지 번호 --%>
+				<c:when test="${item.cate1 != null}">
+				<%-- 페이지 번호 구현 --%>
+				<%-- 이전 그룹에 대한 링크 --%>
+				<c:choose>
+					<%-- 이전 그룹으로 이동 가능하다면? --%>
+					<c:when test="${pageData.prevPage > 0}">
+						<%-- 이동할 URL 생성 --%>
+						<c:url value="/gallery/gal_list.do" var="prevPageUrl">
+							<c:param name="page" value="${pageData.prevPage}" />
+							<c:param name="cate1" value="${item.cate1}" />
+						</c:url>
+						<a href="${prevPageUrl}" class="prevok">≪</a>
+					</c:when>
+					<c:otherwise>
+						<span class="prevno">≪</span>
+					</c:otherwise>
+				</c:choose>
+				<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+				<c:forEach var="i" begin="${pageData.startPage}"
+					end="${pageData.endPage}" varStatus="status">
+					<%-- 이동할 URL 생성 --%>
+					<c:url value="/gallery/gal_list.do" var="pageUrl">
+						<c:param name="page" value="${i}" />
+						<c:param name="cate1" value="${item.cate1}" />
+					</c:url>
+
+					<%-- 페이지 번호 출력 --%>
+					<c:choose>
+						<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+						<c:when test="${pageData.nowPage == i}">
+							<strong class="nowpage">${i}</strong>
+						</c:when>
+						<%-- 나머지 페이지의 경우 링크 적용함 --%>
+						<c:otherwise>
+							<a href="${pageUrl}" class="otherpage">${i}</a>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+				<%-- 다음 그룹에 대한 링크 --%>
+				<c:choose>
+					<%-- 다음 그룹으로 이동 가능하다면? --%>
+					<c:when test="${pageData.nextPage > 0}">
+						<%-- 이동할 URL 생성 --%>
+						<c:url value="/gallery/gal_list.do" var="nextPageUrl">
+							<c:param name="page" value="${pageData.nextPage}" />
+							<c:param name="cate1" value="${item.cate1}" />
+						</c:url>
+						<a href="${nextPageUrl}" class="nextok">≫</a>
+					</c:when>
+					<c:otherwise>
+						<span class="nextno">≫</span>
+					</c:otherwise>
+				</c:choose>
+				</c:when>
+				
+				
+				<%-- cate2를 조회했을 때 나타나는 페이지 번호 --%>
+				<c:when test="${item.cate1 == null}">
+				<%-- 페이지 번호 구현 --%>
+				<%-- 이전 그룹에 대한 링크 --%>
+				<c:choose>
+					<%-- 이전 그룹으로 이동 가능하다면? --%>
+					<c:when test="${pageData.prevPage > 0}">
+						<%-- 이동할 URL 생성 --%>
+						<c:url value="/gallery/gal_list.do" var="prevPageUrl">
+							<c:param name="page" value="${pageData.prevPage}" />
+							<c:param name="cate1" value="${item.cate1}" />
+						</c:url>
+						<a href="${prevPageUrl}" class="prevok">≪</a>
+					</c:when>
+					<c:otherwise>
+						<span class="prevno">≪</span>
+					</c:otherwise>
+				</c:choose>
+				<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+				<c:forEach var="i" begin="${pageData.startPage}"
+					end="${pageData.endPage}" varStatus="status">
+					<%-- 이동할 URL 생성 --%>
+					<c:url value="/gallery/gal_list.do" var="pageUrl">
+						<c:param name="page" value="${i}" />
+						<c:param name="cate1" value="${item.cate1}" />
+					</c:url>
+
+					<%-- 페이지 번호 출력 --%>
+					<c:choose>
+						<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+						<c:when test="${pageData.nowPage == i}">
+							<strong class="nowpage">${i}</strong>
+						</c:when>
+						<%-- 나머지 페이지의 경우 링크 적용함 --%>
+						<c:otherwise>
+							<a href="${pageUrl}" class="otherpage">${i}</a>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+				<%-- 다음 그룹에 대한 링크 --%>
+				<c:choose>
+					<%-- 다음 그룹으로 이동 가능하다면? --%>
+					<c:when test="${pageData.nextPage > 0}">
+						<%-- 이동할 URL 생성 --%>
+						<c:url value="/gallery/gal_list.do" var="nextPageUrl">
+							<c:param name="page" value="${pageData.nextPage}" />
+							<c:param name="cate1" value="${item.cate1}" />
+						</c:url>
+						<a href="${nextPageUrl}" class="nextok">≫</a>
+					</c:when>
+					<c:otherwise>
+						<span class="nextno">≫</span>
+					</c:otherwise>
+				</c:choose>
+				</c:when>				
+				</c:choose>
+				</c:forEach>
 			</div>
 		</div>
+	</div>
+	<br>
+		
 	<%@ include file="../share/bottom_tp.jsp"%>
-	
-	
 	
 	<script type="text/javascript">
 	
