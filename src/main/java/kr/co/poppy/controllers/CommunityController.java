@@ -19,9 +19,12 @@ import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Bbs;
 import kr.co.poppy.model.Comments;
+import kr.co.poppy.model.Goods;
 import kr.co.poppy.model.Members;
 import kr.co.poppy.service.BbsService;
 import kr.co.poppy.service.CommentsService;
+import kr.co.poppy.service.GoodsService;
+import kr.co.poppy.service.ImgsService;
 
 @Controller
 public class CommunityController {
@@ -39,6 +42,12 @@ public class CommunityController {
 
 	@Autowired
 	CommentsService commentsService;
+	
+	@Autowired
+	GoodsService goodsService;
+	
+	@Autowired
+	ImgsService imgdService;
 
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -49,7 +58,8 @@ public class CommunityController {
 	public ModelAndView view(Model model, 
 			@RequestParam(value = "bbstype", required = false) String bbstype,
 			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno,
-	@RequestParam(value = "cmtno", defaultValue = "0") int cmtno){
+			@RequestParam(value = "goodsno", defaultValue = "0") Integer goodsno,
+			@RequestParam(value = "cmtno", defaultValue = "0") int cmtno){
 		/** 1) 유효성 검사 */
 
 
@@ -62,10 +72,15 @@ public class CommunityController {
 		Comments input2 = new Comments();
 		input2.setBbsno(bbsno);
 		input2.setBbstype(bbstype);
+		
+		Goods input3 = new Goods();
+		input3.setGoodsno(goodsno);
+		
 
 		// 조회 결과를 저장할 객체 선언
 		Bbs output = null;
 		List<Comments> output2 = null;
+		Goods output3 = null;
 
 		// 세션 객체를 이용하여 저장된 세션값 얻기
 		HttpSession mySession = webHelper.getSession();
@@ -82,6 +97,7 @@ public class CommunityController {
 			// 데이터 조회
 			output = bbsService.getBbsItem(input);
 			output2 = commentsService.getCommentsList(input2);
+			output3 = goodsService.getGoodsItem(input3);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
@@ -89,6 +105,7 @@ public class CommunityController {
 	
 		model.addAttribute("output", output);
 		model.addAttribute("output2", output2);
+		model.addAttribute("output3", output3);
 		return new ModelAndView("community/article");
 	}
 
@@ -109,14 +126,7 @@ public class CommunityController {
 			@RequestParam(value = "qnapw", required = false) String qnapw,
 			@RequestParam(value = "regdate", required = false) String regdate,
 			@RequestParam(value = "editdate", required = false) String editdate,
-			@RequestParam(value = "memno", defaultValue = "0") Integer memno,
-			@RequestParam(value = "goodsno", defaultValue = "0") Integer goodsno,
-			@RequestParam(value = "gname", required = false) String gname,
-			@RequestParam(value = "gprice", defaultValue = "0") int gprice,
-			@RequestParam(value = "imgname", required = false) String imgname,
-			@RequestParam(value = "imgpath", required = false) String imgpath,
-			@RequestParam(value = "imgext", required = false) String imgext,
-			@RequestParam(value = "imgtype", required = false) String imgtype) {
+			@RequestParam(value = "memno", defaultValue = "0") Integer memno) {
 		// 가입한 시각을 담은 date 생성
 		Calendar c = Calendar.getInstance();
 		String date = String.format("%04d-%02d-%02d %02d:%02d:%02d", c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1,
@@ -142,12 +152,7 @@ public class CommunityController {
 		input.setRegdate(date);
 		input.setEditdate(date);
 		input.setMemno(myInfo.getMemno());
-		input.setGoodsno(goodsno);
-		input.setGname(gname);
-		input.setGprice(gprice);
-		input.setImgext(imgext);
-		input.setImgpath(imgpath);
-		input.setImgtype(imgtype);
+		
 		
 		try {
 			// 데이터 저장 --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
