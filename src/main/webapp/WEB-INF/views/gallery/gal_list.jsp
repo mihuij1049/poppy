@@ -38,6 +38,9 @@
 								<c:when test="${item.cate1 != null}">
 								${item.cate1}
 								</c:when>
+								<c:when test="${item.cate1 == null}">
+								${item.cate2}
+								</c:when>
 							</c:choose>
 						</c:forEach>
 				</b>
@@ -45,19 +48,42 @@
 		</div>
 			<div class="container_1">
 				<div>
-					<form action="${pageContext.request.contextPath}/gallery/gal_list_cate.do" method="get">
-						<div class="search_tab_bg">
-							<select name="searchCondition" class="cate_select" id="cate_select">
-								<c:forEach var="item" items="${output}" varStatus="status" end="0">
-								<option value="NONE">정렬방식</option>
-								<option value="A">신상품</option>
-								<option value="B">상품명</option>
-								<option value="C">낮은가격</option>
-								<option value="D">높은가격</option>
-								</c:forEach>
-							</select>
-						</div>
-					</form>
+				<c:forEach var="item" items="${output}" varStatus="status" end="0">
+					<c:choose>
+						<c:when test="${item.cate1 != null }">
+						<%-- cate1 조회할 때 사용하는 searchCondition --%>
+							<form action="${pageContext.request.contextPath}/gallery/gal_list_cate.do" method="get">
+								<div class="search_tab_bg">
+									<select name="searchCondition" class="cate_select" id="cate_select">
+										<c:forEach var="item" items="${output}" varStatus="status" end="0">
+										<option value="NONE">정렬방식</option>
+										<option value="A">신상품</option>
+										<option value="B">상품명</option>
+										<option value="C">낮은가격</option>
+										<option value="D">높은가격</option>
+										</c:forEach>
+									</select>
+								</div>
+							</form>
+						</c:when>
+						<c:when test="${item.cate1 == null }">
+						<%-- cate2 조회할 때 사용하는 searchCondition --%>
+							<form action="${pageContext.request.contextPath}/gallery/gal_list_cate.do" method="get">
+								<div class="search_tab_bg">
+									<select name="searchCondition2" class="cate_select" id="cate_select2">
+										<c:forEach var="item" items="${output}" varStatus="status" end="0">
+										<option value="NONE">정렬방식</option>
+										<option value="A">신상품</option>
+										<option value="B">상품명</option>
+										<option value="C">낮은가격</option>
+										<option value="D">높은가격</option>
+										</c:forEach>
+									</select>
+								</div>
+							</form>
+						</c:when>
+					</c:choose>
+				</c:forEach>
 				</div>
 				<!-- 게시물 영역 시작 -->
 				<div id="result">
@@ -126,6 +152,7 @@
         clicked = false; */
      });
 	
+	/* cate1 에 대한 셀렉트 */
 	$(function() {
     	$(document).on('change', '#cate_select', function(e) {
     		var choice = $(this).find("option:selected").val();
@@ -137,6 +164,20 @@
         	</c:forEach>
     	});
     });
+	
+	/* cate2 에 대한 셀렉트 */
+	$(function() {
+    	$(document).on('change', '#cate_select2', function(e) {
+    		var choice = $(this).find("option:selected").val();
+        	if(!choice) {
+        		return false;
+        	}
+        	<c:forEach var="item" items="${output}" varStatus="status" end="0">
+        	location.href="../gallery/gal_list_select2.do?cate2=${item.cate2}"+"&searchCondition2="+choice;
+        	</c:forEach>
+    	});
+    });
+	
     </script>
 </body>
 

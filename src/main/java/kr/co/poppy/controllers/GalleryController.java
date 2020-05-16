@@ -143,10 +143,10 @@ public class GalleryController {
 			@RequestParam(value="cate1", required=false) String cate1,
 			@RequestParam(value="searchCondition", defaultValue="A") String searchCondition) {
 		if (searchCondition == null) {
-			return webHelper.redirect(null, "ㅁㄴㅇㄹ");
+			return webHelper.redirect(null, "서치컨디션없음1");
 		}
 		if (cate1 == null) {
-			return webHelper.redirect(null, "ㅁㄴㅇㄹ");
+			return webHelper.redirect(null, "카테1값업슴1");
 		}
 		// 2) 데이터 조회
 		// 굿즈데이터조회
@@ -196,6 +196,41 @@ public class GalleryController {
 	
 		return new ModelAndView("gallery/gal_list");
 	}
+	
+	/** Goods 카테고리별 select 탭2 */
+	@RequestMapping(value="/gallery/gal_list_select2.do", method=RequestMethod.GET)
+	public ModelAndView gallistcate2(Model model,
+			@RequestParam(value="cate2", required=false) String cate2,
+			@RequestParam(value="searchCondition2", defaultValue="A") String searchCondition2) {
+		if (searchCondition2 == null) {
+			return webHelper.redirect(null, "서치컨디션없음");
+		}
+		if (cate2 == null) {
+			return webHelper.redirect(null, "카테2값없음");
+		}
+		// 2) 데이터 조회
+		// 굿즈데이터조회
+		Goods input = new Goods();
+		String category = cate2;
+		input.setCate2(category);
+		input.setSearchCondition(searchCondition2);
+		
+		// 데이터저장할곳
+		List<Goods> output = null;		
+		
+		try {
+			// 데이터조회
+			output = goodsService.getGoodsListCateS2(input);
+			
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+			
+		// 3) 뷰처리
+		model.addAttribute("output", output);
+		return new ModelAndView("gallery/gal_list");
+	}
+	
 	
 	/** 갤러리 목록 페이지 (검색별) */
 	@RequestMapping(value="/gallery/gal_list_search.do", method=RequestMethod.GET)

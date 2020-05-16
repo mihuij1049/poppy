@@ -70,6 +70,15 @@ public interface GoodsService {
 	public List<Goods> getGoodsListCate2(Goods input) throws Exception;
 	
 	/**
+	 * 상품 데이터 목록(카테고리별-셀렉트-2) 조회
+	 * 
+	 * @param Goods 검색조건과 페이지 구현 정보를 담고 있는 Beans
+	 * @return 조회 결과에 대한 컬렉션
+	 * @throws Exception
+	 */
+	public List<Goods> getGoodsListCateS2(Goods input) throws Exception;
+	
+	/**
 	 * 상품 데이터 목록(검색별) 조회
 	 * 
 	 * @param Goods 검색조건과 페이지 구현 정보를 담고 있는 Beans

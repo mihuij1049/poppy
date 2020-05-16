@@ -120,10 +120,36 @@
 		resultMap="goodsMap">
 		SELECT i.imgname, i.imgpath, i.imgext,
 		g.goodsno, g.gcode,
-		g.gname, g.ginfo, g.gprice, g.gsale, g.gdate, g.cate1, g.cate2, g.regdate, g.editdate
+		g.gname, g.ginfo, g.gprice, g.gsale, g.gdate, g.cate2, g.regdate, g.editdate
 		from goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
 		WHERE i.imgtype="A" AND g.cate2=#{cate2}
+	</select>
+	
+	<!-- 다중행 조회(카테고리별-셀렉트)를 위한 기능 정의 -->
+	<select id="selectListCateS2" parameterType="kr.co.poppy.model.Goods"
+		resultMap="goodsMap">
+		SELECT i.imgname, i.imgpath, i.imgext,
+		g.goodsno, g.gcode,
+		g.gname, g.ginfo, g.gprice, g.gsale, g.gdate, g.cate2, g.regdate, g.editdate
+		from goods g
+		INNER JOIN imgs i on g.goodsno = i.goodsno
+		WHERE i.imgtype="A" AND g.cate2=#{cate2} 
+		<if test='searchCondition.equals("A")'>
+			ORDER BY g.regdate ASC;
+		</if>
+		<if test='searchCondition.equals("B")'>
+			ORDER BY g.gname ASC;
+		</if>
+		<if test='searchCondition.equals("C")'>
+			ORDER BY g.gsale ASC;
+		</if>
+		<if test='searchCondition.equals("D")'>
+			ORDER BY g.gsale DESC;
+		</if>
+		<if test="searchCondition==null">
+			ORDER BY DESC;
+		</if>
 	</select>
 	
 	<!-- 다중행 조회(검색기능)를 위한 기능 정의 -->

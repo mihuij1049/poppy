@@ -167,7 +167,7 @@
 								<!-- 항목(1) -->
 								<div class="panel panel-default fm-default">
 									<div class="panel-heading fm-heading ">
-										<a href="#" class="accordion-toggle fm-toggle clearfix"
+										<a onclick="location.href='${pageContext.request.contextPath }/gallery/gal_list_all.do'" class="accordion-toggle fm-toggle clearfix"
 											id="new-good" data-toggle="collapse"
 											data-parent="#accordion-tab">
 											<h4 class="panel-title-new box1">전체상품</h4>
