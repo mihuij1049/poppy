@@ -2,6 +2,7 @@ package kr.co.poppy.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +62,30 @@ public class GoodsAjaxController {
 	@RequestMapping(value = "/gallery_ajax/goods.do", method =  RequestMethod.GET)
 	public ModelAndView goods(Model model, @RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
-
+		
+		/** 쿠키 생성 여부 확인 */
+		/* Cookie[] cookieList = webHelper.getRequest().getCookies(); */
+		
+		String recentItem = webHelper.getCookie("recentItem");
+		
+		if (recentItem==null) {
+			// 쿠키가 없다면? 새로운 쿠키를 생성하면서 상품PK 를 저장
+			webHelper.setCookie("recentItem",""+goodsno, 90);
+			System.out.println("============쿠키의값" + webHelper.getCookie("recentItem"));
+		} else {
+		// 쿠키가 있다면?
+		webHelper.setCookie("recentItem", recentItem + "," + goodsno, 90);
+		System.out.println("============쿠키의값" + webHelper.getCookie("recentItem"));
+		}
+		/*
+		 * if (cookieList!=null) { for(Cookie c : cookieList) {
+		 * System.out.println("============쿠키이름" + c.getName());
+		 * System.out.println("============쿠키의값" + c.getValue()); // 최근본상품 을 위한 쿠키가 있다면?
+		 * if (c.getName().equals("recentItem")) { // 쿠키 객체를 생성하고 값을 담는다. Cookie
+		 * recentItem = null; recentItem.setValue(c.getValue() + ", " + goodsno);
+		 * webHelper.setCookie("recentItem", recentItem, 60*60); } } }
+		 */
+		
 		/** 유효성 검사 */
 		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
 		if (goodsno == 0) {

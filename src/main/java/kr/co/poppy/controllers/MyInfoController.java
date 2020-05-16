@@ -1,5 +1,7 @@
 package kr.co.poppy.controllers;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -405,10 +408,41 @@ public class MyInfoController {
 
 		return new ModelAndView("myInfo/my_rv");
 	}
-
+	
+	/** 쿠키값을 이용한 최근본 상품 페이지 */
 	@RequestMapping(value = "/myInfo/recent.do", method = RequestMethod.GET)
-	public String recent() {
-		return "myInfo/recent";
+	public ModelAndView recent(Model model,
+			@CookieValue(value="recentItem", required=false) String recentItem) {
+		
+			// 스트링 배열에 쿠키에서 넘어온 goodsno 받기
+			if (recentItem!=null) {
+				String[] recentList = recentItem.split(",");
+				// goodsno 배열을 List<Goods>에 담기
+				List<GoodsForRv> goodsList = new ArrayList<GoodsForRv>();
+				for (int i=0;i<recentList.length;i++) {
+					GoodsForRv temp = new GoodsForRv();
+					temp.setGoodsno(Integer.parseInt(recentList[i]));
+					goodsList.add(temp);
+				}
+				
+				// MyBatis의 파라미터로 전달할 Map 객체 생성 및 할당
+				Map<String, Object> input = new HashMap<String, Object>();
+				input.put("input", goodsList);
+				
+				List<GoodsForRv> output = null;
+				/** 데이터 조회하기 */
+				try {
+					output = goodsForRvService.getRecentList(input);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				model.addAttribute("output", output);
+				System.out.println("-------결과물은 " + output.toString());
+			}
+		
+		return new ModelAndView("myInfo/recent");
 	}
 	
 	/** myinfo_edit.jsp 개인정보 수정 페이지 */

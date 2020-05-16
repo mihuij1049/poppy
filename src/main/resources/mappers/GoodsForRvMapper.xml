@@ -56,4 +56,13 @@
 	inner join goodsdetail d on g.goodsno=d.goodsno
 	where g.goodsno in (SELECT h.goodsno from heart WHERE h.memno=#{memno}); 
 	</select>
+	<!-- 최근본상품 을 위한 다중 조회 -->
+	<select id="recentList"
+        parameterType="hashmap"
+        resultMap="GoodsForRvMap">
+        SELECT *, i.imgname, i.imgpath, i.imgext, i.imgtype FROM goods g
+        inner join imgs i on g.goodsno = i.goodsno
+        WHERE g.goodsno in <foreach collection="input" item="item" index="index" open="(" separator="," close=")">${item.goodsno}</foreach>
+        and i.imgtype="A"
+    </select>
 </mapper>
