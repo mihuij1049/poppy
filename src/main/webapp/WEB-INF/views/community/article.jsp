@@ -116,6 +116,7 @@ display: block;
 					<div class="goodsphogo">${output3.imgpath}${output3.imgname}${output3.imgext}</div>
 					<div class="goodsname">${output3.goodsname}</div>
 					<div class="goodsprice">${output3.goodsprice}</div>
+					<div class="goodsprice">${output3.goodsno}</div>
 				</div>
 			</c:if>
 			<div class="nai">

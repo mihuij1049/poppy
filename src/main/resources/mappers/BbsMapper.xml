@@ -40,7 +40,7 @@
 		resultMap="bbsMap">
 		SELECT bbsno, bbstype, bbstitle, bbscontent,
 		b.regdate,
-		b.editdate, b.memno,
+		b.editdate, b.memno, b.goodsno, 
 		m.username, m.userid
 		FROM bbs b
 		INNER JOIN members m
@@ -51,12 +51,12 @@
 	<!-- ========== Article페이지 상품정보 보여주기 ========== -->
 	<select id="selectItem_qnagoods" parameterType="kr.co.poppy.model.Bbs"
 		resultMap="bbsMap">
-		SELECT b.bbsno, g.goodsno, g.gname, g.gprice, 
+		SELECT b.bbsno, b.goodsno, g.gname, g.gprice, 
 		i.imgsno, i.imgname, i.imgext, i.imgpath 
 		FROM bbs b 
-		INNER JOIN goods ON b.goodsno=g.goodsno
-		INNER JOIN imgs ON i.bbsno=b.bbsno
-		WHERE goodsno=#{goodsno}
+		INNER JOIN goods g ON b.goodsno=g.goodsno
+		INNER JOIN imgs i ON i.bbsno=b.bbsno
+		WHERE b.goodsno=#{goodsno}
 	</select>
 
 	<!-- 포토리뷰 글 보기 페이지 -->

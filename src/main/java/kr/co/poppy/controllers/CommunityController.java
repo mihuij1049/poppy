@@ -58,7 +58,7 @@ public class CommunityController {
 	public ModelAndView view(Model model, 
 			@RequestParam(value = "bbstype", required = false) String bbstype,
 			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno,
-			@RequestParam(value = "goodsno", defaultValue = "0") Integer goodsno,
+			@RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
 			@RequestParam(value = "cmtno", defaultValue = "0") int cmtno){
 		/** 1) 유효성 검사 */
 
@@ -97,7 +97,9 @@ public class CommunityController {
 			// 데이터 조회
 			output = bbsService.getBbsItem(input);
 			output2 = commentsService.getCommentsList(input2);
-		} catch (Exception e) {
+			output3 = goodsService.selectqnaitem(input3);
+			
+		} catch (Exception e) {	
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
@@ -125,7 +127,7 @@ public class CommunityController {
 			@RequestParam(value = "qnapw", required = false) String qnapw,
 			@RequestParam(value = "regdate", required = false) String regdate,
 			@RequestParam(value = "editdate", required = false) String editdate,
-			@RequestParam(value = "goodsno", required = false) Integer goodsno,
+			@RequestParam(value = "goodsno", required = false) int goodsno,
 			@RequestParam(value = "memno", defaultValue = "0") Integer memno) {
 		// 가입한 시각을 담은 date 생성
 		Calendar c = Calendar.getInstance();
