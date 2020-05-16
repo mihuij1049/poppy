@@ -17,6 +17,8 @@
 		<result property="editdate" column="editdate" />
 		<result property="memno" column="memno" />
 		<result property="goodsno" column="goodsno" />
+		<result property="gname" column="gname" />
+		<result property="gprice" column="gprice" />
 		<result property="cmtcount" column="cmtcount" />
 		<!-- imgs 테이블의 조인 컬럼 -->
 		<result property="imgsno" column="imgsno" />
@@ -38,14 +40,24 @@
 	<!-- ========== 글 상세보기 페이지 Article ========== -->
 	<select id="selectItem" parameterType="kr.co.poppy.model.Bbs"
 		resultMap="bbsMap">
-		SELECT bbsno, bbstype, bbstitle, bbscontent,
+		SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent,
+		b.regdate,
+		b.editdate, b.memno, b.goodsno, 
+		m.username, m.userid, g.gname, g.gprice, g.goodsno,
+		i.imgname, i.imgpath, i.imgext
+		FROM bbs b
+		INNER JOIN members m ON b.memno=m.memno
+        INNER JOIN goods g ON b.goodsno = g.goodsno
+        INNER JOIN imgs i ON g.goodsno = i.goodsno
+		WHERE b.bbstype=#{bbstype} and b.bbsno=#{bbsno} and i.imgtype="A";
+		<!-- SELECT bbsno, bbstype, bbstitle, bbscontent,
 		b.regdate,
 		b.editdate, b.memno, b.goodsno, 
 		m.username, m.userid
 		FROM bbs b
 		INNER JOIN members m
 		ON b.memno=m.memno
-		WHERE bbstype=#{bbstype} and bbsno=#{bbsno}
+		WHERE bbstype=#{bbstype} and bbsno=#{bbsno} -->
 	</select>
 	
 	<!-- ========== Article페이지 상품정보 보여주기 ========== -->
@@ -56,7 +68,7 @@
 		FROM bbs b 
 		INNER JOIN goods g ON b.goodsno=g.goodsno
 		INNER JOIN imgs i ON i.bbsno=b.bbsno
-		WHERE b.goodsno=#{goodsno}
+		WHERE b.goodsno=#{goodsno} and i.imgtype="A"
 	</select>
 
 	<!-- 포토리뷰 글 보기 페이지 -->

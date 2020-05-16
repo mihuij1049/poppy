@@ -113,10 +113,10 @@ display: block;
 			<!-- QNA 상품정보 불러오기 -->
 			<c:if test="${output.bbstype=='B'}">
 				<div class="qnagoods" id="qnagoods">
-					<div class="goodsphogo">${output3.imgpath}${output3.imgname}${output3.imgext}</div>
-					<div class="goodsname">${output3.goodsname}</div>
-					<div class="goodsprice">${output3.goodsprice}</div>
-					<div class="goodsprice">${output3.goodsno}</div>
+					<div class="goodsphogo"><img src="${output.imgpath}${output.imgname}.${output.imgext}" /></div>
+					<div class="goodsname">${output.gname}</div>
+					<div class="goodsprice">${output.gprice}</div>
+					<div class="goodsno">${output.goodsno}</div>
 				</div>
 			</c:if>
 			<div class="nai">

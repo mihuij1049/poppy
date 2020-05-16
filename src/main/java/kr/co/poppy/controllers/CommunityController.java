@@ -72,15 +72,10 @@ public class CommunityController {
 		Comments input2 = new Comments();
 		input2.setBbsno(bbsno);
 		input2.setBbstype(bbstype);
-		
-		Goods input3 = new Goods();
-		input3.setGoodsno(goodsno);
-		
 
 		// 조회 결과를 저장할 객체 선언
 		Bbs output = null;
 		List<Comments> output2 = null;
-		Goods output3 = null;
 
 		// 세션 객체를 이용하여 저장된 세션값 얻기
 		HttpSession mySession = webHelper.getSession();
@@ -97,16 +92,25 @@ public class CommunityController {
 			// 데이터 조회
 			output = bbsService.getBbsItem(input);
 			output2 = commentsService.getCommentsList(input2);
-			output3 = goodsService.selectqnaitem(input3);
+			
 			
 		} catch (Exception e) {	
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
-	
+		// 조회할 파라미터 Beans설정 및 결과를 담을 Beans 설정
+		/*
+		 * Goods input3 = new Goods(); input3.setGoodsno(output.getGoodsno());
+		 * 
+		 * Goods output3 = null;
+		 * 
+		 * try { output3 = goodsService.selectqnaitem(input3); } catch (Exception e) {
+		 * // TODO Auto-generated catch block e.printStackTrace(); }
+		 */
+		
 		model.addAttribute("output", output);
 		model.addAttribute("output2", output2);
-		model.addAttribute("output3", output3);
+		/* model.addAttribute("output3", output3); */
 		return new ModelAndView("community/article");
 	}
 
