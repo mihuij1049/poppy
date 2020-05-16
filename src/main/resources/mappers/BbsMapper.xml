@@ -50,14 +50,7 @@
         INNER JOIN goods g ON b.goodsno = g.goodsno
         INNER JOIN imgs i ON g.goodsno = i.goodsno
 		WHERE b.bbstype=#{bbstype} and b.bbsno=#{bbsno} and i.imgtype="A";
-		<!-- SELECT bbsno, bbstype, bbstitle, bbscontent,
-		b.regdate,
-		b.editdate, b.memno, b.goodsno, 
-		m.username, m.userid
-		FROM bbs b
-		INNER JOIN members m
-		ON b.memno=m.memno
-		WHERE bbstype=#{bbstype} and bbsno=#{bbsno} -->
+	
 	</select>
 	
 	<!-- ========== Article페이지 상품정보 보여주기 ========== -->

@@ -9,12 +9,12 @@
 <html>
 <style type="text/css">
 .cannot {
-display: block;
+	display: block;
 	width: 100%;
 	border: 1px solid #ffc7c1;
 	background: #ffc7c1;
-	padding:10px;
-	color:white;
+	padding: 10px;
+	color: white;
 }
 
 .nai {
@@ -69,6 +69,22 @@ display: block;
 	overflow-x: hedden;
 	overflow-y: auto;
 }
+
+.photo {
+	width: 30%;
+	margin-left: 30px;
+	margin-top: 5px;
+	border: 1px solid #ff8f83;
+}
+
+.goodsinfo {
+	display: inline-block;
+	padding-left: 25px;
+}
+.goodsname {
+padding-top: 20px;
+}
+
 </style>
 <head>
 <%@ include file="../share/head_tp.jsp"%>
@@ -112,14 +128,14 @@ display: block;
 			</div>
 			<!-- QNA 상품정보 불러오기 -->
 			<c:if test="${output.bbstype=='B'}">
-				<div class="qnagoods" id="qnagoods">
-					<div class="goodsphogo"><img src="${output.imgpath}${output.imgname}.${output.imgext}" /></div>
-					<div class="goodsname">${output.gname}</div>
-					<div class="goodsprice">${output.gprice}</div>
-					<div class="goodsno">${output.goodsno}</div>
-				</div>
+			<img class="photo" src="${output.imgpath}${output.imgname}.${output.imgext}" />
+					<div class="goodsinfo">
+						<div class="goodsname">${output.gname}</div>
+						<br>
+						<div class="goodsprice">${output.gprice}</div>
+					</div>
 			</c:if>
-			<div class="nai">
+			<div class="nai clearfix">
 				<p id="main_text">${output.bbscontent}</p>
 			</div>
 
@@ -132,7 +148,7 @@ display: block;
 						class="btn btn-inverse btn-sm list" style="margin-bottom: 10px;">목록</button>
 					<hr class="solidhr">
 				</c:when>
-				
+
 				<c:otherwise>
 					<div class="comment">
 						<hr class="solidhr">

@@ -97,20 +97,9 @@ public class CommunityController {
 		} catch (Exception e) {	
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-
-		// 조회할 파라미터 Beans설정 및 결과를 담을 Beans 설정
-		/*
-		 * Goods input3 = new Goods(); input3.setGoodsno(output.getGoodsno());
-		 * 
-		 * Goods output3 = null;
-		 * 
-		 * try { output3 = goodsService.selectqnaitem(input3); } catch (Exception e) {
-		 * // TODO Auto-generated catch block e.printStackTrace(); }
-		 */
 		
 		model.addAttribute("output", output);
 		model.addAttribute("output2", output2);
-		/* model.addAttribute("output3", output3); */
 		return new ModelAndView("community/article");
 	}
 
