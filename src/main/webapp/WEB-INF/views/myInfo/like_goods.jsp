@@ -106,79 +106,11 @@
 				</a>
 			</div>
 		</div>
-		<!--   장바구니 옵션 및 수량 선택 모달 ------------------------->
-		<div class="cart_in" id="cart_in">
-			<div class="cart-in-title">
-				<strong>* 장바구니 담기 *</strong>
-			</div>
-			<div class="plz-opt">
-				<select>
-					<option value="0">옵션을 선택해 주세요.</option>
-				</select>
-			</div>
-			<div class="qty">
-				<b class="plz_qty">수량을 입력해 주세요.</b><br>
-				<div class="word-btn">
-					<button class="count minus">
-						<img src="../share/img/마이너스.png">
-					</button>
-					<input type="number" class="count-label" value="1" id="count-label">
-					<button class="count plus">
-						<img src="../share/img/플러스.png">
-					</button>
-				</div>
-			</div>
-
-			<div class="cs_pass_2btns">
-				<button type="button" class="btn btn-sm btn-ok" id="confirm_cart">확인</button>
-				<button type="button" class="btn btn-inverse btn-sm btn-cancel"
-					id="modal-cancel-btn">취소</button>
-			</div>
-		</div>
 	</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
-	<script
-		src="${pageContext.request.contextPath}/share/plugins/ajax/ajax_helper.js"></script>
-	<!-- 여기서부터 핸들바 템플릿 구조 만들기 -->
-	<!-- <script id="goods_item_tmpl" type="text/x-handlebars-template"> -->
-	<!-- {{#each item}} -->
-	<!-- <li class="mycart" id="mycart1">
-		<div class="mygoods clearfix">
-			<span class="chkbox"> <input type="checkbox" class="cart"
-				name="check-select" ></span> <a
-				href="#"><img src="{{url}}" class="cart-img"></a>
-			<div class="word">
-				<b>{{item.gname}}</b><br> <small>배송:2500원[조건]/기본배송</small><br>
-				<small><span>적</span>{{item.gsale*0.02}}원</small><br> <b>{{item.gsale}}원</b>
-			</div>
-		</div>
-		<div class="btns">
-			<button type="button" class="btn btn-inverse delete-one"
-				id="delete-one">삭제</button>
-			<button type="button" class="btn gocart" id="gotocart">장바구니담기</button>
-		</div>
-	</li> -->
-	<!-- {{/each}} -->
-	<!-- </script> -->
-	<!-- 핸들바 템플릿 구조 끝 -->
+
 	<script type="text/javascript">
-		/* /** Ajax 통신을 통해 json 파일을 읽어들여 핸들바 템플릿에 적용
-		$(function() {
-			// get요청을 통한 핸들바 템플릿 태그 조립하기
-			function get_list() {
-				$.get("like_goodsajax.do?item", function(req) {
-					// 미리 준비한 HTML틀을 읽어온다.
-					var template = Handlebars.compile($("#goods_item_tmpl")
-							.html());
-					// Ajax 를 통해서 읽어온 JSON 을 템플릿에 병합한다.
-					var html = template(req);
-					// #interest-item-group 에 읽어온 내용을 추가한다.
-					$("#interest-item-group").append(html);
-				});
-			} // 검색 결과를 템플릿을 이용해서 화면에 나타낼 함수 정의 끝
-			/** 함수 호출 -> 이 부분에서 상품 리스트가 화면에 뿌려짐 
-			get_list();
-		}); // end ajax */
+	
 		/** 전체선택 */
 		$(function() {
 			$("#select-all").click(function() {
@@ -232,23 +164,7 @@
 				return false;
 			}
 		});
-
-		/** 장바구니 담기 */
-		/* $(function() {
-			var count = $("#cart-qty").text();
-			var put_cart = count;
-			$("#cart-qty").text(put_cart);
-			$("#interest-item-group").on("click", "#gotocart", function(e) {
-				put_cart++;
-				if (put_cart == Number(count) + 1) {
-					$("#cart-qty").text(put_cart);
-					alert("해당 상품을 장바구니에 담았습니다.");
-				} else {
-					alert("이미 해당 상품을 장바구니에 담았습니다.");
-				}
-			});
-		}); */
-
+		
 		/** 상품삭제 */
 		$("#interest-item-group").on("click", "#delete-one", function(e) {
 			e.preventDefault();
@@ -273,19 +189,7 @@
 			
 			$(this).parent().parent().remove();
 		});
-		/** 장바구니 담기 모달창 */
-		$(function() {
-			// 장바구니 모달창 띄우기
-			$("#confirm_cart").click(function(e) {
-				e.preventDefault();
-			console.log(goodsno);
-			
-		});
-			$("#modal-cancel-btn").click(function() {
-				$("#cart_in").hide();
-			});
-			
-		});
+
 		$(".qty").on(
 				"click",
 				".plus",
@@ -308,14 +212,23 @@
 					$(this).next().val(value);
 				});
 		$("#interest-item-group").on("click", "#gotocart", function(e) {
-			/* e.preventDefault(); */
+			e.preventDefault();
 			/* $("#cart_in").show(); */
-			let goodsno = $(this).data("goodsno");
 			let opt = $(this).parent().prev().children().eq(2).children().eq(2).children().val();
 			let qty = $(this).parent().prev().children().eq(2).children().eq(3).children().children("input").val();
-			console.log(goodsno);
 			console.log(opt);
 			console.log(qty);
+			console.log(!opt.isNan);
+			
+			if (isNaN(opt)) {
+				alert("옵션을 선택해주세요!");
+				return false;
+			}
+			
+			$.post("${pageContext.request.contextPath}/gallery/cart",
+					{ "cartqty" : qty , "gddetailno" : opt }, function(json) {
+						alert("장바구니에 해당 상품이 안전하게 보관되었습니다.");
+					});
 		});
 		
 		$(".plz-opt").on("click", "#select-option", function(e) {
