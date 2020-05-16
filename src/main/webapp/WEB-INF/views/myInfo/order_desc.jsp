@@ -79,13 +79,15 @@
 								<c:set var="odgqty" value="${item.odgqty}" />
 								<div class="prd-info clearfix">
 									<div class="prd-img pull-left">
-										<a href="#"> <img src="../share/img/slide.jpg" width="80"
+										<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=${item.goodsno}"> 
+										<img src="${item.imgpath }${item.imgname}.${item.imgext}" width="80"
 											height="80">
 										</a>
 									</div>
 									<div class="prd pull-left">
 										<div id="prd-title">
-											<strong class="prd-name" title="상품명"> <a href="#">${item.odgname }</a>
+											<strong class="prd-name" title="상품명"> 
+											<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=${item.goodsno}">${item.odgname }</a>
 											</strong>
 										</div>
 										<div class="prd-li">

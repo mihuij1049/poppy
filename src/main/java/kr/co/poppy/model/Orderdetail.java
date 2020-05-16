@@ -33,7 +33,10 @@ public class Orderdetail {
     private int orderno;
 
     // JOIN절에 따른 추가 컬럼 미정
-    
+    private int goodsno;
+    private String imgname;
+	private String imgpath;
+	private String imgext;
     // 페이지 관련 static 변수 미정
 
 }

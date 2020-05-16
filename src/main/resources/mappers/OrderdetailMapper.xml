@@ -20,21 +20,29 @@
         <result property="regdate"          column="regdate" />
         <result property="editdate"         column="editdate" />
         <result property="orderno"          column="orderno" />
+        <result property="goodsno"          column="goodsno" />
+        <result property="imgname"          column="imgname" />
+        <result property="imgpath"         column="imgpath" />
+        <result property="imgext"          column="imgext" />
     </resultMap>
     
     <!-- 단일행 조회를 위한 기능 정의  -->
     <select id="selectItem"
 		parameterType="kr.co.poppy.model.Orderdetail"
 		resultMap="orderdetailMap">
-		SELECT * FROM orderdetail WHERE orderdetailno=#{orderdetailno};
+		SELECT *, g.goodsno, i.imgname, i.imgpath, i.imgext FROM orderdetail od 
+		inner join goods g on od.odgcode=g.gcode 
+		inner join imgs i on g.goodsno = i.goodsno
+		where od.orderdetailno=#{orderdetailno} and i.imgtype="A";
 	</select>
     <!-- 다중행 조회를 위한 기능 정의 -->
      <select id="selectList"
         parameterType="kr.co.poppy.model.Orderdetail"
         resultMap="orderdetailMap">
-        SELECT * FROM orderdetail   
-        WHERE orderno = #{orderno}
-              
+        SELECT *, g.goodsno, i.imgname, i.imgpath, i.imgext FROM orderdetail od 
+		inner join goods g on od.odgcode=g.gcode 
+		inner join imgs i on g.goodsno = i.goodsno
+		where od.orderno=#{orderno} and i.imgtype="A";
     </select>
     
     <!-- 데이터 수 조회를 위한 기능 정의  -->
