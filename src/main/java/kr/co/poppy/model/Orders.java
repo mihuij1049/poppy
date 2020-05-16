@@ -29,11 +29,13 @@ public class Orders {
     private String odgcode;
     /** 상품이름 (orderdetail 테이블 참조) */
     private String odgname;
-    /** 상품이름 (orderdetail 테이블 참조) */
+    /** 상품가격 (orderdetail 테이블 참조) */
     private int odgprice;
-    /** 상품이름 (orderdetail 테이블 참조) */
+    /** 상품 세일가격 (orderdetail 테이블 참조) */
+    private int odgsale;
+    /** 상품 주문수량 (orderdetail 테이블 참조) */
     private int odgqty;
-    /** 상품이름 (orderdetail 테이블 참조) */
+    /** 상품 주문옵션 (orderdetail 테이블 참조) */
     private String odgdoption;
     /** 이미지명 (imgs 테이블 참조) */
     private String imgname;

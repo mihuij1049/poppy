@@ -493,9 +493,9 @@ public class KRTController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
-		// 본인이 작성한 리뷰만 삭제 가능하도록 처리
+		// 본인이 작성한 리뷰만 수정 가능하도록 처리
 		if (myInfo.getMemno() != output.getMemno()) {
-			return webHelper.redirect(null, "본인이 작성한 리뷰만 삭제 가능합니다.");
+			return webHelper.redirect(null, "본인이 작성한 리뷰만 수정 가능합니다.");
 		}
 
 		/** 3) View 처리 */
@@ -659,9 +659,9 @@ public class KRTController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
-		// 본인이 작성한 리뷰만 수정 가능하도록 처리
+		// 본인이 작성한 리뷰만 삭제 가능하도록 처리
 		if (myInfo.getMemno() != output.getMemno()) {
-			return webHelper.redirect(null, "본인이 작성한 리뷰만 수정 가능합니다.");
+			return webHelper.redirect(null, "본인이 작성한 리뷰만 삭제 가능합니다.");
 		}
 
 		try {

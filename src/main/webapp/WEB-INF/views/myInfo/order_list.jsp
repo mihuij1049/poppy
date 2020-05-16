@@ -117,7 +117,8 @@
 												href="${viewUrl}"> ${item.odgname}</a>
 											</strong>
 											<ul class="prd-li">
-												<li><span class="price" title="판매가"> <strong>${item.odgprice}</strong>원
+												<li><span class="price" title="판매가"> <strong><fmt:formatNumber
+																value="${item.odgsale}" pattern="#,###" /></strong>원
 												</span> <span class="prd-count" title="수량"> <strong>${item.odgqty}</strong>개
 												</span></li>
 											</ul>
@@ -220,6 +221,7 @@
 							}
 						});
 			});
+			
 			function set_term(days) {
 				var length = $(".view").length;
 
@@ -269,8 +271,7 @@
 				}
 			}
 			
-			$(document).on("click","#check", function(e) {
-				alert("클리233됨");
+			$(document).on("click","#check", function(e) {				
 				date1 = $("#datepicker_before").val();
 				date2 = $("#datepicker_after").val();
 				date1_stm = new Date(date1).getTime() / 1000;
@@ -279,14 +280,15 @@
 				console.log(date2);
 				console.log(date1_stm);
 				console.log(date2_stm);
+				$(".view").parent().hide();
 				length = $(".view").length;
 				for (var i = 0; i < length; i++) {
 					var oddate = $(".date").eq(i).html();
-						var date1 = new Date(today).getTime() / 1000;
-						var date2 = new Date(oddate).getTime() / 1000;
-						if (i==0) {
-							console.log(date2);
-						}
+					oddate = new Date(oddate).getTime() / 1000;
+					console.log(oddate);
+					if(oddate>=date1_stm && oddate<=date2_stm) {
+						$(".view").eq(i).parent().show();
+					}	
 				}
 			});
 

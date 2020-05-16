@@ -18,6 +18,7 @@
 		<result property="odgcode" column="odgcode" />
 		<result property="odgname" column="odgname" />
 		<result property="odgprice" column="odgprice" />
+		<result property="odgsale" column="odgsale" />
 		<result property="odgqty" column="odgqty" />
 		<result property="odgdoption" column="odgdoption" />
 		<result property="goodsno" column="goodsno" />
@@ -39,17 +40,23 @@
 		SELECT Distinct o.orderno,
 		o.odstatus, od.orderdetailno,
 		o.regdate, od.odgcode,g.gcode, od.odgname, g.gname,od.odgprice,
+		od.odgsale,
 		od.odgqty,
-		od.odgdoption, g.goodsno, i.imgname, i.imgext, i.imgpath,
+		od.odgdoption, g.goodsno, i.imgname, i.imgext,
+		i.imgpath,
 		i.imgtype,
-		g.goodsno FROM imgs i, goods g, orders o INNER JOIN
+		g.goodsno FROM imgs i, goods g, orders o INNER
+		JOIN
 		orderdetail od ON o.orderno =
 		od.orderno
-		INNER JOIN cart c ON c.memno =
+		INNER JOIN cart c ON
+		c.memno =
 		o.memno
-		INNER JOIN goodsdetail gd ON gd.gddetailno = c.gddetailno
+		INNER JOIN goodsdetail gd ON gd.gddetailno =
+		c.gddetailno
 		WHERE
-		o.memno=1 AND i.imgtype = "A" AND od.odgcode=g.gcode AND
+		o.memno=1 AND i.imgtype = "A" AND od.odgcode=g.gcode
+		AND
 		i.goodsno=g.goodsno
 		AND o.odstatus IN ("0", "1", "2", "3");
 	</select>
@@ -61,7 +68,7 @@
 		o.orderno,
 		o.odstatus, od.orderdetailno,
 		o.regdate, od.odgcode,g.gcode,
-		od.odgname, g.gname,od.odgprice, od.odgqty,
+		od.odgname, g.gname,od.odgprice, od.odgsale, od.odgqty,
 		od.odgdoption, g.goodsno,
 		i.imgname, i.imgext, i.imgpath, i.imgtype,
 		g.goodsno
@@ -74,7 +81,8 @@
 		gd.gddetailno = c.gddetailno
 		WHERE o.memno=1 AND i.imgtype = "A" AND
 		od.odgcode=g.gcode AND i.goodsno=g.goodsno
-		AND o.odstatus IN ("4", "5", "6");
+		AND o.odstatus IN ("4", "5",
+		"6");
 	</select>
 
 	<!-- 데이터 수 조회를 위한 기능 정의 -->
