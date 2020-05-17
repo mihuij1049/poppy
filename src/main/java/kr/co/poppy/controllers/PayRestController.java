@@ -126,29 +126,6 @@ public class PayRestController {
 
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
 		// 일반 문자열 입력 컬럼 --> String으로 파라미터가 선언되어 있는 경우는 값이 입력되지 않으면 빈 문자열로 처리된다.
-		if (odname.equals("")) {
-			return webHelper.getJsonWarning("이름을 입력하세요.");
-		}
-		if (!regexHelper.isKor(odname)) {
-			return webHelper.getJsonWarning("이름은 한글만 가능합니다.");
-		}
-		if (odemail.equals("")) {
-			return webHelper.getJsonWarning("이메일을 입력하세요.");
-		}
-		if (!regexHelper.isEmail(odemail)) {
-			return webHelper.getJsonWarning("이메일 형식이 아닙니다.");
-		}
-		if (addr1.equals("")) {
-			return webHelper.getJsonWarning("주소를 입력하세요.");
-		}
-		if (addr2.equals("")) {
-			return webHelper.getJsonWarning("상세주소를 입력하세요.");
-		}
-		// 숫자형으로 선언된 파라미터()
-		if (zcode == null) {
-			return webHelper.getJsonWarning("우편번호를 입력하세요.");
-		}
-	 
 		if (paytype.equals("credit") || paytype.equals("phone")) {
 		    odstatus = "1";
 		}
@@ -229,24 +206,102 @@ public class PayRestController {
 			
 		// 저장된 결과를 조회하기 위한 객체
 		Address Asave = null;
+		int AEsave = 0;
 		Orders Osave = null;
 		Orderdetail Odsave = null;
 		Points Psave = null;
 		
 		try {
 			// 데이터 저장
-			// --> 데이터 저장에 성공하면 파라미터로 전달하는 save 객체에 PK값이 저장된다.
-			addressService.addAddress(address);
+			// --> 데이터 저장에 성공하면 파라미터로 전달하는 객체에 PK값이 저장된다.
+			addressService.editAddress(address);
 			order.setAddrno(address.getAddrno());
 			ordersService.addOrders(order);
 			oddetail.setOrderno(order.getOrderno());
 			orderdetailService.addOrderdetail(oddetail);
 			poi.setOrderno(order.getOrderno());
 			pointsService.addPoints(poi);
-			addressService.editAddress(address);
 			
 			// 데이터조회
-			Asave = addressService.getAddressItem(address);
+			AEsave = addressService.editAddress(address);
+			Osave = ordersService.getOrdersItem(order);
+			Odsave = orderdetailService.getOrderdetailItem(oddetail);
+			Psave = pointsService.getPointsOdItem(poi);
+			
+			if (odname.equals("")) {
+				return webHelper.getJsonWarning("이름을 입력하세요.");
+			}
+			if (!regexHelper.isKor(odname)) {
+				return webHelper.getJsonWarning("이름은 한글만 가능합니다.");
+			}
+			if (odemail.equals("")) {
+				return webHelper.getJsonWarning("이메일을 입력하세요.");
+			}
+			if (!regexHelper.isEmail(odemail)) {
+				return webHelper.getJsonWarning("이메일 형식이 아닙니다.");
+			}
+			if (addr1.equals("")) {
+				return webHelper.getJsonWarning("주소를 입력하세요.");
+			}
+			if (addr2.equals("")) {
+				return webHelper.getJsonWarning("상세주소를 입력하세요.");
+			}
+			// 숫자형으로 선언된 파라미터()
+			if (zcode == null) {
+				return webHelper.getJsonWarning("우편번호를 입력하세요.");
+			}
+			
+			if (addressService.editAddress(address) == 0) {
+				addressService.addAddress(address);
+				order.setAddrno(address.getAddrno());
+				ordersService.addOrders(order);
+				oddetail.setOrderno(order.getOrderno());
+				orderdetailService.addOrderdetail(oddetail);
+				poi.setOrderno(order.getOrderno());
+				pointsService.addPoints(poi);
+				
+				// 데이터조회
+				Asave = addressService.getAddressItem(address);
+				Osave = ordersService.getOrdersItem(order);
+				Odsave = orderdetailService.getOrderdetailItem(oddetail);
+				Psave = pointsService.getPointsOdItem(poi);
+				
+				if (odname.equals("")) {
+					return webHelper.getJsonWarning("이름을 입력하세요.");
+				}
+				if (!regexHelper.isKor(odname)) {
+					return webHelper.getJsonWarning("이름은 한글만 가능합니다.");
+				}
+				if (odemail.equals("")) {
+					return webHelper.getJsonWarning("이메일을 입력하세요.");
+				}
+				if (!regexHelper.isEmail(odemail)) {
+					return webHelper.getJsonWarning("이메일 형식이 아닙니다.");
+				}
+				if (addr1.equals("")) {
+					return webHelper.getJsonWarning("주소를 입력하세요.");
+				}
+				if (addr2.equals("")) {
+					return webHelper.getJsonWarning("상세주소를 입력하세요.");
+				}
+				// 숫자형으로 선언된 파라미터()
+				if (zcode == null) {
+					return webHelper.getJsonWarning("우편번호를 입력하세요.");
+				}	 
+			} else {
+				order.setAddrno(address.getAddrno());
+				ordersService.addOrders(order);
+				oddetail.setOrderno(order.getOrderno());
+				orderdetailService.addOrderdetail(oddetail);
+				poi.setOrderno(order.getOrderno());
+				pointsService.addPoints(poi);
+				
+				// 데이터조회
+				AEsave = addressService.editAddress(address);
+				Osave = ordersService.getOrdersItem(order);
+				Odsave = orderdetailService.getOrderdetailItem(oddetail);
+				Psave = pointsService.getPointsOdItem(poi);
+			}
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
@@ -256,14 +311,11 @@ public class PayRestController {
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
 		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야 한다.
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("order", order);
-		map.put("oddetail", oddetail);
-		map.put("address", address);	
-		map.put("poi", poi);
 		map.put("Asave", Asave);
+		map.put("AEsave", AEsave);
+		map.put("Osave", Osave);
+		map.put("Odsave", Odsave);
+		map.put("Psave", Psave);
 		return webHelper.getJsonData(map);
 	}
-	
-	
-
 }

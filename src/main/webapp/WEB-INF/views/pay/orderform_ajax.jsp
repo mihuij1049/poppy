@@ -421,19 +421,19 @@
 								<div class="content">
 									<div class="button-list" id="button-list">
 										<label for="paytype1">
-										    <input type="radio" id="paytype1" name="paytype" value="신용카드" checked="checked" />
+										    <input type="radio" id="paytype1" name="paytype" value="credit" checked="checked" />
 										    <span class="text">신용카드</span>
 										</label>	
 										<label for="paytype2">
-										    <input type="radio" id="paytype2" name="paytype" value="계좌이체" />
+										    <input type="radio" id="paytype2" name="paytype" value="BankTransfer" />
 										    <span class="text">계좌이체</span>
 										</label>	
 										<label for="paytype3">
-										    <input type="radio" id="paytype3" name="paytype" value="휴대폰" />
+										    <input type="radio" id="paytype3" name="paytype" value="phone" />
 										    <span class="text">휴대폰</span>
 										</label>	
 										<label for="paytype4">
-										    <input type="radio" id="paytype4" name="paytype" value="무통장입금" />
+										    <input type="radio" id="paytype4" name="NotBankTransfer" value="무통장입금" />
 										    <span class="text">무통장입금</span>
 										</label>	
 									</div>
