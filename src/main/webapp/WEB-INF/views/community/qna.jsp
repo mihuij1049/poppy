@@ -118,29 +118,28 @@
 									<c:param name="bbsno" value="${item.bbsno}" />
 								</c:url>
 								<c:choose>
+								<%--  비밀글 --%>
 									<c:when test="${!empty item.qnapw}">
 										<tr>
-											<td class="subject" id="subject"><strong> <span
+											<td class="subject" id="subject" data-qnapw="${item.qnapw}" data-bbsno="${item.bbsno }"><strong> <span
 													class="glyphicon glyphicon-lock"></span> <a
 													href="${viewUrl}" class="subject" id="confirm-pw"
-													data-qnapw="${item.qnapw}" data-bbsno="${item.bbsno }">${bbstitle}</a>
+													>${bbstitle}</a>
 													<span class="comment">&nbsp;[${item.cmtcount}]</span></strong><br />
 												<span class="name" title="작성자">${item.username}</span> <span
 												class="date" title="작성일">${item.regdate}</span></td>
 										</tr>
 									</c:when>
+									<%--  공개글 --%>
 									<c:otherwise>
 										<tr>
-											<td class="subject"><strong> <a
-													href="${viewUrl}" class="subject">${bbstitle}</a> <span
+											<td class="subjectok"><strong> <a
+													href="${viewUrl}" class="subjectok">${bbstitle}</a> <span
 													class="comment">[${item.cmtcount}]</span></strong><br /> <span
 												class="name" title="작성자">${item.username}</span> <span
 												class="date" title="작성일">${item.regdate}</span></td>
 										</tr>
-										
 									</c:otherwise>
-
-
 								</c:choose>
 							</c:forEach>
 						</c:otherwise>
@@ -238,20 +237,21 @@
 	<%@ include file="../share/bottom_tp.jsp"%>
 	<script type="text/javascript">
 		$(function() {
+				let bbsno=null;
+				let qnapw = null;
 			// 비밀번호 모달창 띄우기
-			$("#subject").click(function(e) {
+			$(".subject").click(function(e) {
 				e.preventDefault();
+				bbsno = $(this).data("bbsno");
+				qnapw = $(this).data("qnapw");
 				$("#customer_pass").show();
 			});
 
 			$("#confirm_qnapw")
-					.click(
-							function(e) {
+					.click(function(e) {
 								e.preventDefault();
 								var inputpw = $("#cs_pass").val();
-								let current = $("#confirm-pw");
-								let bbsno = current.data("bbsno");
-								let qnapw = current.data("qnapw");
+								console.log(bbsno);
 								console.log(qnapw);
 								console.log(inputpw);
 								if (qnapw == inputpw) {

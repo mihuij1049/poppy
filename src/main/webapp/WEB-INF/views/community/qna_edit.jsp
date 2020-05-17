@@ -80,7 +80,7 @@
 						<div class="goodsname">
 							${output.gname}<br>
 						</div>
-						<div class="goodsprice">${output.gprice}원</div>
+						<div class="goodsprice"><fmt:formatNumber value="${output.gprice}" pattern="#,###" />원</div>
 					</div>
 					<br>
 				</div>

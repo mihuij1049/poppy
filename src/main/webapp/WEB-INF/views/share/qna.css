@@ -16,6 +16,10 @@
 	vertical-align: middle;
 }
 
+.table .subject {
+	vertical-align: middle;
+}
+
 .searchmenu {
 	padding-bottom: 15px;
 	margin: auto;
@@ -52,7 +56,16 @@
 	color: #777;
 }
 
+.subjectok {
+	text-decoration: none;
+	color: #777;
+}
+
 .subject:hover {
+	text-decoration: none;
+	color: #777;
+}
+.subjectok:hover {
 	text-decoration: none;
 	color: #777;
 }

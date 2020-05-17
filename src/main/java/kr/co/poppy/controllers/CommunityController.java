@@ -53,7 +53,7 @@ public class CommunityController {
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 
-	/** ========== article 공지사항/Q&A 글보기 페이지 ========== */
+	/** ========== article Q&A 글보기 페이지 ========== */
 	@RequestMapping(value = "/community/article.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView view(Model model, 
 			@RequestParam(value = "bbstype", required = false) String bbstype,
@@ -61,7 +61,7 @@ public class CommunityController {
 			@RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
 			@RequestParam(value = "cmtno", defaultValue = "0") int cmtno){
 		/** 1) 유효성 검사 */
-
+		
 
 		/** 2) 데이터 조회하기 */
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
