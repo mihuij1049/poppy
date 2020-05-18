@@ -9,6 +9,9 @@
 
 <head>
 <%@ include file="../share/head_tp.jsp"%>
+<style type="text/css">
+
+</style>
 
 <script src="../share/plugins/handlebars/handlebars-v4.0.5.js"></script>
 <link rel="stylesheet" type="text/css"

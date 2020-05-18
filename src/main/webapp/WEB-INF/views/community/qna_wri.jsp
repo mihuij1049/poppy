@@ -14,7 +14,25 @@
 <script src="../share/plugins/handlebars/handlebars-v4.0.5.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/share/qna-wri.css" />
+<style type="text/css">
+.qnagoods {
+	border: 1px solid #ff6261;
+	margin: 20px 10px;
+	padding: 10px 10px;
+}
 
+.photo {
+	width: 25%;
+	margin-right: 10px;
+}
+
+.goodsname {
+	display: inline-block;
+	overflow: hidden;
+	font-size: 12px;
+	vertical-align: middle;
+}
+</style>
 </head>
 
 <body>
@@ -31,38 +49,38 @@
 				</h4>
 			</div>
 			<!-- 모달창 시작 -->
-			<c:choose>
-				<c:when test="${empty output.goodsno}">
-					<div id="search-modal">
-						<div class="search-title clearfix">
-							상품정보선택
-							<div class="search-close pull-right">X</div>
+			<div id="search-modal">
+				<div class="search-title clearfix">
+					상품정보선택
+					<div class="search-close pull-right">X</div>
+				</div>
+				<div class="search-searching">
+					<div class="search-bar">
+						<div class="search-textbar">
+							<input type="text" id="search-keyword" name="search-goods"
+								placeholder="상품명을 입력하세요." />
 						</div>
-						<div class="search-searching">
-							<div class="search-bar">
-								<div class="search-textbar">
-									<input type="text" id="search-keyword" name="search-goods"
-										placeholder="상품명을 입력하세요." />
-								</div>
-								<button class="btn btn-sm btn-searching" id="search_goods_btn">검
-									색</button>
-							</div>
-
-							<div class="search-result">
-								총 <b class=""></b>개의 상품이 검색되었습니다.
-							</div>
-						</div>
-						<div class="search-body">
-							<ul class="search-list" id="search_goods_list">
-
-							</ul>
-						</div>
-						<div class="search-modal-layer"></div>
+						<button class="btn btn-sm btn-searching" id="search_goods_btn">검
+							색</button>
 					</div>
-					<!-- 모달창 끝 -->
-					<form name="qna_wri" id="qna_wri" method="POST"
-						action="${pageContext.request.contextPath}/community/qna_wri_ok.do">
-						<div class="container">
+
+					<div class="search-result">
+						총 <b class=""></b>개의 상품이 검색되었습니다.
+					</div>
+				</div>
+				<div class="search-body">
+					<ul class="search-list" id="search_goods_list">
+
+					</ul>
+				</div>
+				<div class="search-modal-layer"></div>
+			</div>
+			<!-- 모달창 끝 -->
+			<form name="qna_wri" id="qna_wri" method="POST"
+				action="${pageContext.request.contextPath}/community/qna_wri_ok.do">
+				<div class="container">
+					<c:choose>
+						<c:when test="${empty output.goodsno}">
 							<div class="choice clearfix">
 								<div class="col-xs-4">
 									<a href="#" class="item-img"><img
@@ -76,128 +94,67 @@
 									</div>
 									<button type="button" class="item-select">상품정보선택</button>
 								</div>
-								<input type="hidden" name="goodsno" id="setting-goodsno"
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="qnagoods">
+							<input type="hidden" name="goodsno" id="setting-goodsno"
 									value="${goodsno}" />
-							</div>
-							<div class="qna-title">
-								<div class="col-xs-4">
-									<label>제목</label>
-								</div>
-								<div class="col-xs-8">
-									<input type="text" name="bbstitle" id="bbstitle">
-								</div>
-							</div>
-							<div class="qna-desc">
-								<div class="col-xs-12">
-									<textarea name="bbscontent" class="qna_area"
-										placeholder="내용을 입력하세요." maxlength="1800" id="content"></textarea>
-								</div>
-							</div>
-							<div class="qna-private">
-								<div class="col-xs-4">
-									<label>비밀글설정</label>
-								</div>
-								<div class="col-xs-8">
-									<input type="radio" name="qnasec" value="0" id="public">
-									<label>공개글 &nbsp;</label> <input type="radio" id="private"
-										name="qnasec" value="1" checked> <label>비밀글</label>
-								</div>
-							</div>
-							<div class="qna-pw">
-								<div class="col-xs-4">
-									<label>비밀번호</label>
-								</div>
-								<div class="col-xs-8">
-									<input type="password" id="password" name="qnapw" maxlength="4"
-										placeholder="비밀번호 4자리를 입력하세요.">
-								</div>
-							</div>
-
-						</div>
-						<div class="qna_btn">
-							<button type="submit" id="qna_ok" class="btn">등록</button>
-							<button type="button" id="qna_re" class="btn btn-inverse"
-								onclick="history.back(); return false;">취소</button>
-						</div>
-					</form>
-				</c:when>
-				<c:otherwise>
-					<div class="qnagoods">
-						<img class="photo"
-							src="${output.imgpath}${output.imgname}.${output.imgext}" />
-						<div class="goodsname">
-							<div class="goodsname">
-								${gname}<br>
-							</div>
-							<div class="goodsprice">
-								<fmt:formatNumber value="${output.gprice}" pattern="#,###" />
-								원
-							</div>
-						</div>
-						<br>
-					</div>
-					<form name="qna_wri" id="qna_wri" method="POST"
-						action="${pageContext.request.contextPath}/community/qna_wri_ok.do">
-						<div class="container">
-							<div class="choice clearfix">
-								<div class="col-xs-4">
-									<a href="#" class="item-img"><img
-										src="../share/img/noimage.JPG" id="item_img"></a>
-								</div>
-								<div class="col-xs-8">
-									<div class="select-item-content">
-										<p id="item_name">
-											<br /> <b class="select-item-price" id="item_price"></b>
-										</p>
+								<img class="photo"
+									src="${output.imgpath}${output.imgname}.${output.imgext}" />
+								<div class="goodsname">
+									<div class="goodsname">
+										${output.gname}<br>
 									</div>
-									<button type="button" class="item-select">상품정보선택</button>
+									<div class="goodsprice">
+										<fmt:formatNumber value="${output.gprice}" pattern="#,###" />
+										원
+									</div>
 								</div>
-								<input type="hidden" name="goodsno" id="setting-goodsno"
-									value="${goodsno}" />
+								<br>
 							</div>
-							<div class="qna-title">
-								<div class="col-xs-4">
-									<label>제목</label>
-								</div>
-								<div class="col-xs-8">
-									<input type="text" name="bbstitle" id="bbstitle">
-								</div>
-							</div>
-							<div class="qna-desc">
-								<div class="col-xs-12">
-									<textarea name="bbscontent" class="qna_area"
-										placeholder="내용을 입력하세요." maxlength="1800" id="content"></textarea>
-								</div>
-							</div>
-							<div class="qna-private">
-								<div class="col-xs-4">
-									<label>비밀글설정</label>
-								</div>
-								<div class="col-xs-8">
-									<input type="radio" name="qnasec" value="0" id="public">
-									<label>공개글 &nbsp;</label> <input type="radio" id="private"
-										name="qnasec" value="1" checked> <label>비밀글</label>
-								</div>
-							</div>
-							<div class="qna-pw">
-								<div class="col-xs-4">
-									<label>비밀번호</label>
-								</div>
-								<div class="col-xs-8">
-									<input type="password" id="password" name="qnapw" maxlength="4"
-										placeholder="비밀번호 4자리를 입력하세요.">
-								</div>
-							</div>
-
+						</c:otherwise>
+					</c:choose>
+					<div class="qna-title">
+						<div class="col-xs-4">
+							<label>제목</label>
 						</div>
-						<div class="qna_btn">
-							<button type="submit" id="qna_ok" class="btn">등록</button>
-							<button type="button" id="qna_re" class="btn btn-inverse"
-								onclick="history.back(); return false;">취소</button>
+						<div class="col-xs-8">
+							<input type="text" name="bbstitle" id="bbstitle">
 						</div>
-					</form>
-				</c:otherwise>
-			</c:choose>
+					</div>
+					<div class="qna-desc">
+						<div class="col-xs-12">
+							<textarea name="bbscontent" class="qna_area"
+								placeholder="내용을 입력하세요." maxlength="1800" id="content"></textarea>
+						</div>
+					</div>
+					<div class="qna-private">
+						<div class="col-xs-4">
+							<label>비밀글설정</label>
+						</div>
+						<div class="col-xs-8">
+							<input type="radio" name="qnasec" value="0" id="public">
+							<label>공개글 &nbsp;</label> <input type="radio" id="private"
+								name="qnasec" value="1" checked> <label>비밀글</label>
+						</div>
+					</div>
+					<div class="qna-pw">
+						<div class="col-xs-4">
+							<label>비밀번호</label>
+						</div>
+						<div class="col-xs-8">
+							<input type="password" id="password" name="qnapw" maxlength="4"
+								placeholder="비밀번호 4자리를 입력하세요.">
+						</div>
+					</div>
+				</div>
+				<div class="qna_btn">
+					<button type="submit" id="qna_ok" class="btn" data-goodsno="${output.goodsno}">등록</button>
+					<button type="button" id="qna_re" class="btn btn-inverse"
+						onclick="history.back(); return false;">취소</button>
+				</div>
+			</form>
 		</div>
 	</div>
 	<div class="modal fade" id="myModal2">
@@ -268,11 +225,7 @@
 				var content = $("#content").val();
 				var goodsno = $("#setting-goodsno").val();
 				e.preventDefault();
-
-				if (goodsno == 0) {
-					alert("상품을 선택해주세요.");
-					return false;
-				}
+				
 				if (title == "") {
 					alert("제목을 입력해주세요.");
 					return false;

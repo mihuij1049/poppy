@@ -160,7 +160,7 @@ public class CommunityController {
 			Goods output = null;
 	
 			try {
-				goodsService.getGoodsItem(input);
+				output=goodsService.getGoodsItem(input);
 			} catch (Exception e) {
 				return webHelper.redirect(null, e.getLocalizedMessage());
 			}
@@ -197,11 +197,6 @@ public class CommunityController {
 		if (bbscontent == null) {
 			return webHelper.redirect(null, "내용을 입력하세요.");
 		}
-		
-		if(goodsno==0) {
-			return webHelper.redirect(null, "상품을 선택해주세요.");
-		}
-		
 		
 		// 세션 객체를 이용하여 저장된 세션값 얻기
 		HttpSession mySession = webHelper.getSession();
