@@ -478,25 +478,6 @@
      margin-bottom: 10px;
  }
 
- .addr-save {
-     border-top: 1px solid #eee;
-     height: 50px;
- }
-
- .addr-save input {
-     margin-left: 15px;
-     width: 18px;
-     height: 18px;
-     position: relative;
-     top: 10px;
- }
-
- .addr-save span {
-     margin-left: 3px;
-     position: relative;
-     top: 5px;
- }
-
  /** 배송지 끝 */
 
  /** 주문상품 시작 */
@@ -786,7 +767,7 @@
  #button-list label {
      position: relative;
      display: inline-block;
-     padding: 8px;
+     padding: 8px 0;
      width: 40%;
      height: 30%;
      margin: 5px;
@@ -806,12 +787,16 @@
  }
  
  #button-list input:not(:disabled):checked[type="radio"] {
-  
      -webkit-appearance: none;
  }
  
+ #button-list span {
+     height: 100%;
+     padding: 10px 24px;
+ }
+ 
  #button-list label input:checked + .text {
-     color: #000;
+     color: #fff;
      font-weight: bold;
      background: #ff6261;
  }
@@ -826,29 +811,6 @@
      color: #777;
      padding: 15px;
      padding-top: 0px;
- }
-
-
- .save {
-     color: #666;
-     font-size: 15px;
-     height: 54px;
-     padding: 10px;
-     padding-left: 15px;
-     text-align: left;
-     background-color: #eff1f4;
-     border-top: 1px solid #ddd;
- }
-
- .save label {
-     font-weight: 200;
- }
-
- .save #pay-method-save {
-     width: 17px;
-     height: 17px;
-     position: relative;
-     top: 3px;
  }
 
  /** 결제수단 끝 */

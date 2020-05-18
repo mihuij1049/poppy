@@ -63,7 +63,7 @@
 				</div>
 				<div class="gdoption">
 					<div class="gdtitle">상품선택</div>
-					<select class="goods-select" name="gdoptions">
+					<select class="goods-select" name="gdoption">
 						<option value="active">- [필수] 옵션을 선택해 주세요. -</option>
 						<c:if test="${gdoutput != null}">
 							<c:forEach var="gdoutput" items="${gdoutput}" varStatus="status">
@@ -103,12 +103,12 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="prd-total">
+				<div class="prd-total" style="display:none">
 					<strong>총 상품금액(수량)</strong>
 					<div class="total-price">
-						<b id="total-price"><fmt:formatNumber value="${goods.gsale}"
+						<b id="total-price"><fmt:formatNumber value="${goods.gsale+2500}"
 								pattern="#,###" /></b> <b>원</b> <b>(</b><input type="number" id="price-count"
-							name="gdcount" value="1" min="1" max="99" style="width:10px; text-align:center; font-weight:bold;"/><b>개)</b>
+							name="gdcount" value="1" min="1" max="99" style="width:auto; text-align:center; font-weight:bold;"/><b>개)</b>
 					</div>
 				</div>
 				<div class="prd-action">
@@ -523,6 +523,8 @@
 						<button type="submit"
 							onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do'"
 							id="action-orderform2">구매하기</button>
+						<input type="hidden" name="goodsno" value="${goods.goodsno}" /> 
+						<input type="hidden" name="memno" value="${userInfo.memno}" />
 					</form>
 				</div>
 			</div>
@@ -596,26 +598,33 @@
 								$(".goods-select option:selected"));
 						if (index) {
 							jQuery(".select-prd").show();
-							counted = 0;
+							jQuery(".prd-total").show();
+							counted = 1;
 						}
 					});
 			
-			var total_price= 0;
+			var delivery = 2500;
 			var counter = 1;
 			var counted = $("#count").val();
 			var price = $(".sale").html();
-			var price2 = price.toString().replace(/,/gi, "");
-			var total_price = price2 * counter;
-			var total_price2 = total_price.toString().replace(
-					/\B(?=(\d{3})+(?!\d))/g, ",");
-
+			var price2 = parseInt($(".sale").html().replace(/,/gi, ""));
+	
 			$(".btnUp").click(function(e) {
 				counter++;
-
+				
+				add_price = price2 * counter
+				add_price2 = add_price.toString().replace(
+						/\B(?=(\d{3})+(?!\d))/g, ",");
+				if (add_price >= 30000) {
+					delivery = 0;
+				} 
+				total_price = price2 * counter + delivery;
+				total_price2 = total_price.toString().replace(
+						/\B(?=(\d{3})+(?!\d))/g, ",");
 				$("#count").val(counter);
 				$("#price-count").val(counter);
-				$("#add-price").html(total_price2);
-				$("#total-price").html(total_price2);
+				$("#add-price").html(add_price2);
+				$("#total-price").html(total_price2);			
 			});
 
 			$(".btnDown").click(function(e) {
@@ -625,19 +634,28 @@
 				}
 				counter--;
 
+				add_price = price2 * counter
+				add_price2 = add_price.toString().replace(
+						/\B(?=(\d{3})+(?!\d))/g, ",");
+				if (add_price < 30000) {
+					delivery = 2500;
+				} 
+				total_price = price2 * counter + delivery;
+				total_price2 = total_price.toString().replace(
+						/\B(?=(\d{3})+(?!\d))/g, ",");
 				$("#count").val(counter);
 				$("#price-count").val(counter);
-				$("#add-price").html(total_price2)
-				$("#total-price").html(total_price2);
+				$("#add-price").html(add_price2)		
+				$("#total-price").html(total_price2);						
 			});
 
 			$(document).on("click", "#prd-del", function(e) {
 				e.preventDefault();
-				$(this).parents(".select-prd").remove();
-				$("#price-count").html(counted);
-				$("#total-price").html(total_price);
+				$(this).parents(".select-prd").hide();
 				$("#count").val(counted);
-				$("#add-price").html(total_price);
+				$("#price-count").val(counted);
+				$("#add-price").html(price);
+				$("#total-price").html(price);
 			});
 		});
 

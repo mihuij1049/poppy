@@ -62,9 +62,15 @@
 											<div class="phone">
 												<div id="delivery-info-phone">${output.odphone}</div>
 											</div>
-
 										</div>
-										<span class="side-right">
+										<input type="hidden" id="delivery-info-name" name="odname" value="${output.odname}" /> 
+										<input type="hidden" id="zipcode" name="zcode" value="${output.zcode}" /> 
+										<input type="hidden" id="addr1" name="addr1" value="${output.addr1}" />
+										<input type="hidden" id="addr2" name="addr2" value="${output.addr2}" /> 
+										<input type="hidden" name="odphone" value="${output.odphone}" /> 
+										<input type="hidden" name="odemail" value="${output.odemail}" /> 
+										<span
+											class="side-right">
 											<button type="button" id="recent-address-list">배송지
 												목록</button>
 										</span>
@@ -77,7 +83,7 @@
 										</span>
 									</div>
 									<div class="form-group">
-										<select id="selbox">
+										<select id="selbox" name="odmsg">
 											<option value="">-- 메시지 선택(선택사항) --</option>
 											<option value="1">배송전에 미리 연락바랍니다.</option>
 											<option value="2">부재시 경비실에 맡겨주세요.</option>
@@ -172,10 +178,6 @@
 										</select>
 										<textarea id="selboxDirect2" name="selboxDirect"
 											style="resize: none;"></textarea>
-									</div>
-									<div class="addr-save">
-										<input type="checkbox" name="default"> <span>
-											기본 배송지로 저장 </span>
 									</div>
 								</div>
 							</div>
@@ -420,22 +422,19 @@
 								</label></li>
 								<div class="content">
 									<div class="button-list" id="button-list">
-										<label for="paytype1">
-										    <input type="radio" id="paytype1" name="paytype" value="credit" checked="checked" />
-										    <span class="text">신용카드</span>
-										</label>	
-										<label for="paytype2">
-										    <input type="radio" id="paytype2" name="paytype" value="BankTransfer" />
-										    <span class="text">계좌이체</span>
-										</label>	
-										<label for="paytype3">
-										    <input type="radio" id="paytype3" name="paytype" value="phone" />
-										    <span class="text">휴대폰</span>
-										</label>	
-										<label for="paytype4">
-										    <input type="radio" id="paytype4" name="NotBankTransfer" value="무통장입금" />
-										    <span class="text">무통장입금</span>
-										</label>	
+										<label for="paytype1"> <input type="radio"
+											id="paytype1" name="paytype" value="credit" checked="checked" />
+											<span class="text">신용카드</span>
+										</label> <label for="paytype2"> <input type="radio"
+											id="paytype2" name="paytype" value="BankTransfer" /> <span
+											class="text">계좌이체</span>
+										</label> <label for="paytype3"> <input type="radio"
+											id="paytype3" name="paytype" value="phone" /> <span
+											class="text">휴대폰</span>
+										</label> <label for="paytype4"> <input type="radio"
+											id="paytype4" name="paytype" value="NotBankTransfer" /> <span
+											class="text">무통장입금</span>
+										</label>
 									</div>
 								</div>
 							</ul>
@@ -443,11 +442,7 @@
 						<div class="content-detail">
 							<span>- 소액 결제의 경우 PG사 정책에 따라 결제 금액 제한이 있을 수 있습니다.</span>
 						</div>
-						<div class="save">
-							<input type="checkbox" name="pay-method-save"
-								id="pay-method-save"> <label for="pay-method-save">결제수단과
-								입력정보를 다음에도 사용</label>
-						</div>
+
 					</div>
 				</div>
 			</div>
@@ -492,7 +487,8 @@
 						</div>
 						<div class="save-price">
 							<h4 class="head">적립 예정금액</h4>
-							<strong class="total-price"> <span id="pay-price"><fmt:parseNumber var="(goods.gsale * gdcount) * 0.02"
+							<strong class="total-price"> <span id="pay-price"><fmt:parseNumber
+										var="(goods.gsale * gdcount) * 0.02"
 										value="${(goods.gsale * gdcount) * 0.02}" integerOnly="true" /></span>원
 							</strong>
 						</div>
@@ -506,18 +502,19 @@
 					</span>원 <span>결제하기</span>
 				</button>
 			</div>
-		    <input type="hidden" name="goodsno" value="${goods.goodsno}" />
-            <input type="hidden" name="gcode" value="${goods.gcode}" />
-            <input type="hidden" name="gname" value="${goods.gname}" /> 
-            <input type="hidden" name="ginfo" value="${goods.ginfo}" />
-            <input type="hidden" name="gprice" value="${goods.gprice}" />
-            <input type="hidden" name="gsale" value="${goods.gsale}" />
-            <input type="hidden" name="gdate" value="${goods.gdate}" /> 
-            <input type="hidden" name="cate1" value="${goods.cate1}" />
-            <input type="hidden" name="cate2" value="${goods.cate2}" />
-            <input type="hidden" name="gdoption" value="${gdoutput.gdoption}" />
-            <input type="hidden" name="gdcount" value="${gdcount}">
-            <input type="hidden" id="pay-price" name="pay-price" value="${(goods.gsale * gdcount) * 0.02}" />
+			<input type="hidden" name="goodsno" value="${goods.goodsno}" /> <input
+				type="hidden" name="gcode" value="${goods.gcode}" /> <input
+				type="hidden" name="gname" value="${goods.gname}" /> <input
+				type="hidden" name="ginfo" value="${goods.ginfo}" /> <input
+				type="hidden" name="gprice" value="${goods.gprice}" /> <input
+				type="hidden" name="gsale" value="${goods.gsale}" /> <input
+				type="hidden" name="gdate" value="${goods.gdate}" /> <input
+				type="hidden" name="cate1" value="${goods.cate1}" /> <input
+				type="hidden" name="cate2" value="${goods.cate2}" /> <input
+				type="hidden" name="gdoption" value="${gdoutput.gdoption}" /> <input
+				type="hidden" name="gdcount" value="${gdcount}"> <input
+				type="hidden" id="pay-price" name="pay-price"
+				value="${(goods.gsale * gdcount) * 0.02}" />
 			<div class="order-info">
 				<ul class="order-info-box">
 					<li>무이자할부가 적용되지 않은 상품과 무이자할부가 가능한 상품을 동시에 구매할 경우 전체 주문 상품 금액에
@@ -790,42 +787,51 @@
 				$("#delivery-email").val("${Moutput.useremail}");
 			});
 		});
-		
+
 		$(function() {
 			$("#new_addr").click(function(e) {
 				$("input:radio[id='same-addr2']").prop("checked", true);
-			// #new-addr에 대한 submit 이벤트롤 가로채서 Ajax 요청을 전송한다.
-			$("#orderform").ajaxForm({
-				// 전송 메서드 지정
-				method : "POST",
-				// 서버에서 200 응답을 전달한 경우 실행됨
-				success : function(json) {
-					console.log(json);
-					if (json.rt == "OK") {
-				    	window.location = "${pageContext.request.contextPath}/myInfo/order_list.do?memno="
-								+ json.address.memno;
-					}
-				 }
-			  });
-		   });
+			});
 		});
-			
-	    $(function() {
-			$(".recent-addr").click(function(e) {
-		    // #addForm에 대한 submit 이벤트를 가로채서 Ajax요청을 전송한다.
-		    $("#orderform").ajaxForm({
-		    	// 전송 메서드 지정
-		        method : "PUT",
-		    	// 서버에서 200 응답을 전달한 경우 실행됨
-		    	success : function(json) {
-		    	    // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
-		    	    if (json.rt == "OK") {
-		    	    	window.location = "${pageContext.request.contextPath}/myInfo/order_list.do?memno=" + + json.address.memno;
-		    	    }
-		         }
-		      });
-	       });
-	    });		
+
+		$(function() {
+			$("#orderform")
+					.ajaxForm(
+							{
+								// 전송 메서드 지정
+								method : "POST",
+								// 서버에서 200 응답을 전달한 경우 실행됨
+								success : function(json) {
+									console.log(json);
+									if (json.rt == "OK") {
+										window.location = "${pageContext.request.contextPath}/myInfo/order_list.do?memno="
+												+ json.Asave.memno;
+									}
+								}
+							});
+		});
+
+		$(function() {
+			$(".recent-addr")
+					.click(
+							function(e) {
+								// #addForm에 대한 submit 이벤트를 가로채서 Ajax요청을 전송한다.
+								$("#orderform")
+										.ajaxForm(
+												{
+													// 전송 메서드 지정
+													method : "PUT",
+													// 서버에서 200 응답을 전달한 경우 실행됨
+													success : function(json) {
+														// json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
+														if (json.rt == "OK") {
+															window.location = "${pageContext.request.contextPath}/myInfo/order_list.do?memno="
+																	 +json.address.memno;
+														}
+													}
+												});
+							});
+		});
 	</script>
 </body>
 

@@ -63,9 +63,8 @@ public class PayAjaxController {
 	@RequestMapping(value = "/pay_ajax/orderform.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView addrList(Model model, @RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
 			@RequestParam(value = "memno", defaultValue = "0") int memno,
-			@RequestParam(value = "addrno", defaultValue = "0") int addrno,
 			@RequestParam(value = "gddetailno", defaultValue = "0") int gddetailno,
-			@RequestParam(value = "gdoptions", defaultValue = "") String gdoptions,
+			@RequestParam(value = "gdoption", defaultValue = "") String gdoption,
 			@RequestParam(value = "gdcount", defaultValue = "0") int gdcount) {
 
 		/** 유효성 검사 */
@@ -76,7 +75,7 @@ public class PayAjaxController {
 		if (goodsno == 0) {
 			return webHelper.redirect(null, "상품번호가 없습니다.");
 		}
-		if (gdoptions.equals("active")) {
+		if (gdoption.equals("active")) {
 			return webHelper.redirect(null, "상품옵션을 선택해주세요.");
 		}
 
@@ -90,11 +89,9 @@ public class PayAjaxController {
 		mb.setMemno(myInfo.getMemno());
 
 		Address input = new Address();
-		input.setAddrno(addrno);
 		input.setMemno(myInfo.getMemno());
 
 		Address input2 = new Address();
-		input2.setAddrno(addrno);
 		input2.setMemno(myInfo.getMemno());
 
 		Points input3 = new Points();
@@ -107,7 +104,7 @@ public class PayAjaxController {
 		Goodsdetail gdetail = new Goodsdetail();
 		gdetail.setGoodsno(goodsno);
 		gdetail.setGddetailno(gddetailno);
-		gdetail.setGdoption(gdoptions);
+		gdetail.setGdoption(gdoption);
 		gdetail.setMemno(myInfo.getMemno());
 
 		// 조회결과를 저장할 객체 선언
