@@ -93,13 +93,13 @@
 										</p>
 									</div>
 									<button type="button" class="item-select">상품정보선택</button>
+									<input type="hidden" name="goodsno" id="setting-goodsno" value="${goodsno}" />
 								</div>
 							</div>
 						</c:when>
 						<c:otherwise>
 							<div class="qnagoods">
-							<input type="hidden" name="goodsno" id="setting-goodsno"
-									value="${goodsno}" />
+							 <input type="hidden" name="goodsno" value="${output.goodsno}" />
 								<img class="photo"
 									src="${output.imgpath}${output.imgname}.${output.imgext}" />
 								<div class="goodsname">
@@ -150,7 +150,7 @@
 					</div>
 				</div>
 				<div class="qna_btn">
-					<button type="submit" id="qna_ok" class="btn" data-goodsno="${output.goodsno}">등록</button>
+					<button type="submit" id="qna_ok" class="btn">등록</button>
 					<button type="button" id="qna_re" class="btn btn-inverse"
 						onclick="history.back(); return false;">취소</button>
 				</div>
@@ -225,6 +225,11 @@
 				var content = $("#content").val();
 				var goodsno = $("#setting-goodsno").val();
 				e.preventDefault();
+				
+				if (goodsno == 0) {
+					alert("상품을 선택해주세요.");
+					return false;
+				}
 				
 				if (title == "") {
 					alert("제목을 입력해주세요.");
