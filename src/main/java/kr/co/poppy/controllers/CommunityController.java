@@ -165,7 +165,7 @@ public class CommunityController {
 			@RequestParam(value = "qnapw", required = false) String qnapw,
 			@RequestParam(value = "regdate", required = false) String regdate,
 			@RequestParam(value = "editdate", required = false) String editdate,
-			@RequestParam(value = "goodsno", required = false) Integer goodsno,
+			@RequestParam(value = "goodsno", defaultValue="0") int goodsno,
 			@RequestParam(value = "memno", defaultValue = "0") Integer memno) {
 		// 가입한 시각을 담은 date 생성
 		Calendar c = Calendar.getInstance();
@@ -182,10 +182,11 @@ public class CommunityController {
 			return webHelper.redirect(null, "내용을 입력하세요.");
 		}
 		
-		if (goodsno == 0) {
+		if(goodsno==0) {
 			return webHelper.redirect(null, "상품을 선택해주세요.");
 		}
-
+		
+		
 		// 세션 객체를 이용하여 저장된 세션값 얻기
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
@@ -277,14 +278,7 @@ public class CommunityController {
 				c.get(Calendar.SECOND));
 
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
-		if (bbstitle == null) {
-			return webHelper.redirect(null, "제목을 입력하세요.");
-		}
-		
-		if (bbscontent == null) {
-			return webHelper.redirect(null, "내용을 입력하세요.");
-		}
-		
+
 		// 세션 객체를 이용하여 저장된 세션값 얻기
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");

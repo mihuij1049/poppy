@@ -83,13 +83,13 @@
 							<label>제목</label>
 						</div>
 						<div class="col-xs-8">
-							<input type="text" name="bbstitle">
+							<input type="text" name="bbstitle" id="bbstitle">
 						</div>
 					</div>
 					<div class="qna-desc">
 						<div class="col-xs-12">
 							<textarea name="bbscontent" class="qna_area"
-								placeholder="내용을 입력하세요." maxlength="1800"></textarea>
+								placeholder="내용을 입력하세요." maxlength="1800" id="content"></textarea>
 						</div>
 					</div>
 					<div class="qna-private">
@@ -185,7 +185,24 @@
 		$(function() {
 			/** 등록버튼을 눌렀을 때 */
 			$("#qna_ok").on("click", function(e) {
+				var title = $("#bbstitle").val();
+				var content = $("#content").val();
+				var goodsno=$("#setting-goodsno").val();
 				e.preventDefault();
+				
+				if(goodsno==0) {
+					alert("상품을 선택해주세요.");
+					return false;
+				}
+				if(title=="") {
+					alert("제목을 입력해주세요.");
+					return false;
+				}
+				if(content=="") {
+					alert("내용을 입력해주세요.");
+					return false;
+				}
+				
 				// 비밀글에 체크된 상태라면
 				if ($("input:radio[id='private']").is(":checked") == true) {
 					// 비밀번호를 pw에 담는다.
@@ -197,7 +214,9 @@
 						alert("비밀번호는 4자리로 입력해주세요.");
 						return false;
 					}
+					if (pwlength=4) {
 					$("#myModal2").modal("show");
+					}
 					// 공개글에 체크된 상태라면
 				} else {
 					// 클릭시 모달창이 뜨는 이벤트
