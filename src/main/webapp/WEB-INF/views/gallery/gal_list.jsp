@@ -12,14 +12,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/share/gal_list.css" />
 </head>
 <style>
-.pr_in_box button {
-	float: right;
-	width: 50px;
-	height: 45px;
-	padding: 0px 10px;
-	border: 0px;
-	font-size: 13px;
-}
+
 </style>
 <body>
 	<%@ include file="../share/top_tp.jsp"%>
@@ -113,7 +106,8 @@
 							</div>
 						</div>
 					</c:forEach>
-			</div>
+				</div>
+				<br class="clear">
 			<div class="pagenumber">
 			<c:forEach var="item" items="${output}" varStatus="status" end="0">
 			<c:choose>

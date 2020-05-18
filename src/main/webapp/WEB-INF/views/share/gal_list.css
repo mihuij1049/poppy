@@ -153,3 +153,14 @@
 	color: #ffc7c1;
 	text-decoration: none;
 }
+
+.pr_in_box button {
+	float: right;
+	width: 50px;
+	height: 45px;
+	padding: 0px 10px;
+	border: 0px;
+	font-size: 13px;
+}
+
+.clear{clear:both;}

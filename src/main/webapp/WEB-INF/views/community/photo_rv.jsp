@@ -41,7 +41,7 @@
 								</select>
 								<div>
 									<div class="cate_ip">
-										<i class="glyphicon glyphicon-search icon_size"></i> 상품검색
+										<i class="glyphicon glyphicon-search icon_size"></i> 리뷰검색
 									</div>
 									<form method="get" action="${pageContext.request.contextPath}/community/photo_rv.do">
 										<input type="search" name="keyword" id="keyword" class="h_input" value="${keyword}">
@@ -73,7 +73,7 @@
 									</div>
 								</a>
 								<button type="submit" class="btn btn-inverse insert-one" id="insert-one" data-bbsno="${item.bbsno}" data-rvheartno="${item.rvheartno}">
-								추천
+								<i class="glyphicon glyphicon-heart icon_size"></i> 추천
 								</button>
 							</div>
 						</div>
@@ -81,15 +81,14 @@
 					</c:forEach>
 					<!-- 게시물 하나 끝 -->
 				</c:if>
-				</div>
 				<c:set var="a" value="${keyword}" />
-				<c:if test="${a == a}">
+				<c:if test="${keyword != null}">					
 					<!-- 게시물 하나 시작 -->
 					<c:forEach var="item" items="${output}" varStatus="status">
 					<div width="50%">
 						<div class="pr_box">
 							<div class="pr_in_box">
-								<a href="${pageContext.request.contextPath}/community/photo.do"> <img alt="사진"
+								<a href="${pageContext.request.contextPath}/community/photo.do?bbsno=${item.bbsno}"> <img alt="사진"
 									src="${item.imgpath}${item.imgname}.${item.imgext}" class="img_size" />
 									<div>
 										<h5>
@@ -100,8 +99,8 @@
 										<div class="pr_content">${item.bbscontent}</div>
 									</div>
 								</a>
-								<button type="submit" class="btn btn-inverse insert-one" id="insert-one" data-memno="${item.memno}" data-bbsno="${item.bbsno}">
-									<i class="glyphicon glyphicon-heart icon_size"></i> 추천
+								<button type="submit" class="btn btn-inverse insert-one" id="insert-one" data-bbsno="${item.bbsno}" data-rvheartno="${item.rvheartno}">
+								<i class="glyphicon glyphicon-heart icon_size"></i> 추천
 								</button>
 							</div>
 						</div>
@@ -109,6 +108,7 @@
 					</c:forEach>
 					<!-- 게시물 하나 끝 -->
 				</c:if>
+				</div>
 				<%-- 조회결과가 없는 경우 --%>
 					<c:if test="${output == null || fn:length(output) == 0}">
 						조회결과가 없습니다.

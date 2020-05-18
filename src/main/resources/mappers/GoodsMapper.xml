@@ -62,10 +62,14 @@
 	<!-- 다중행 조회(베스트상품)을 위한 기능 정의 -->
 	<select id="selectListBest" parameterType="kr.co.poppy.model.Goods"
 		resultMap="goodsMap">
-		select *, (SELECT count(h.goodsno) from heart h where h.goodsno = g.goodsno)
+		select i.imgname, i.imgpath, i.imgext, 
+		g.goodsno, g.gcode,
+		g.gname, g.ginfo, g.gprice, g.gsale, g.gdate,
+		(SELECT count(h.goodsno) from heart h where h.goodsno = g.goodsno HAVING COUNT(*)>=2)
 		AS heartCnt from goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
 		WHERE i.imgtype="A"
+		AND (SELECT count(h.goodsno) from heart h where h.goodsno = g.goodsno HAVING COUNT(*)>=2) IS NOT NULL
 		order by heartCnt desc
 		<!-- 페이지 번호 구현 -->
 		<if test="listCount > 0">
@@ -201,10 +205,11 @@
 	<select id="selectCountAll"
 		parameterType="kr.co.poppy.model.Goods" resultType="int">
 		SELECT COUNT(*)
-		from goods g
+		FROM goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
 		<where>
 			i.imgtype="A"
+			AND (SELECT count(h.goodsno) from heart h where h.goodsno = g.goodsno HAVING COUNT(*)>=2) IS NOT NULL
 			<if test="gname != null and gname != ''">
 				AND gname LIKE concat('%', #{gname}, '%');
 			</if>

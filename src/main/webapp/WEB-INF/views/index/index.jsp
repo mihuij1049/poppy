@@ -48,18 +48,18 @@
 					<!-- 항목 (1) -->
 					<div class="item active">
 					<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=33">
-						<img src="/upload/img/main_M.jpg" alt="슬라이더(1)">
+						<img src="/upload/main_M.jpg" alt="슬라이더(1)">
 					</a>
 					</div>
 					<!-- 항목 (2) -->
 					<div class="item">
 					<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=6">
-						<img src="/upload/img/2_M.jpg" alt="슬라이더(2)">
+						<img src="/upload/2_M.jpg" alt="슬라이더(2)">
 					</a>
 					</div>
 					<!-- 항목 (3) -->
 					<div class="item">
-						<img src="/upload/img/3_M.jpg" alt="슬라이더(3)">
+						<img src="/upload/3_M.jpg" alt="슬라이더(3)">
 					</div>
 				</div>
 				<!-- // 내용영역 구성 -->
@@ -176,19 +176,19 @@
 				</c:forEach>
 			<!-- jstl 반복문 끝 -->
 				<button type="button" class="btn btn-inverse index_btn"
-					onclick="location.href='${pageContext.request.contextPath }/gallery/gal_list_new.do'">뽀삐뽀삐 단독
-					신상품 출시</button>
+					onclick="location.href='${pageContext.request.contextPath }/gallery/gal_list_new.do'">뽀삐뽀삐 전체상품 보러가기</button>
 			</div>
 			<div class="img_banner">
-				<img src="/upload/img/index_banner1.jpg">
-				<img src="/upload/img/index_banner2.jpg">
-				<img src="/upload/img/index_banner3.jpg">
+				<img src="/upload/index_banner1.jpg">
+				<img src="/upload/index_banner2.jpg">
+				<img src="/upload/index_banner3.jpg">
 			</div>
 			<center>
 				<i class="glyphicon glyphicon-bullhorn icon_size1 t_btn"
 					id="glyp_list"></i>
 				<h3 id="sale_h3">실시간 리뷰</h3>
 			</center>
+			<div id="result">
 			<!-- 게시물 하나 시작 -->
 				<c:forEach var="item" items="${output3}" varStatus="status" begin="0" end="3">
 				<div width="50%">
@@ -205,7 +205,7 @@
 									<div class="pr_content">${item.bbscontent}</div>
 								</div>
 							</a>
-							<button class="btn btn-inverse" id="heart_bt">
+							<button type="submit" class="btn btn-inverse insert-one" id="insert-one" data-bbsno="${item.bbsno}" data-rvheartno="${item.rvheartno}">
 								<i class="glyphicon glyphicon-heart icon_size"></i> 추천
 							</button>
 						</div>
@@ -213,7 +213,7 @@
 				</div>			
 				</c:forEach>
 			<!-- 게시물 하나 끝 -->
-			
+			</div>
 				<center>
 					<button type="button" class="btn btn-inverse index_btn"
 						onclick="location.href='${pageContext.request.contextPath }/community/photo_rv.do'">실시간
@@ -247,6 +247,26 @@
             },
 
         });
+        
+        $("#result").on("click", "#insert-one", function(e) {
+            e.preventDefault();
+      
+            if (${empty userInfo.userid}) {
+            	alert("로그인 후 이용해 주세요.")
+            	window.location="${pageContext.request.contextPath}/member/login.do";
+            } else {
+            
+           	let bbsno = $(this).data("bbsno");
+            $.post("${pageContext.request.contextPath}/community/in_item",
+                  { "bbsno" : bbsno },
+                       function(json) {
+                         if(json.rt=="OK");
+                      }
+                  )
+            }
+            /* $(this).css('color', 'red');
+            clicked = false; */
+         });
         
         </script>
 </body>
