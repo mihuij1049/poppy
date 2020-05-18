@@ -58,10 +58,12 @@ public class CommunityController {
 	public ModelAndView view(Model model, 
 			@RequestParam(value = "bbstype", required = false) String bbstype,
 			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno,
-			@RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
+			
 			@RequestParam(value = "cmtno", defaultValue = "0") int cmtno){
 		/** 1) 유효성 검사 */
-		
+		if (bbsno == 0) {
+			return webHelper.redirect(null, "존재하는 게시글이 아닙니다.");
+		}
 
 		/** 2) 데이터 조회하기 */
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
@@ -107,9 +109,11 @@ public class CommunityController {
 	@RequestMapping(value = "/community/noticearticle.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView view(Model model, 
 			@RequestParam(value = "bbstype", required = false) String bbstype,
-			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno){
+			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
 		/** 1) 유효성 검사 */
-
+		if (bbsno == 0) {
+			return webHelper.redirect(null, "존재하는 게시글이 아닙니다.");
+		}
 
 		/** 2) 데이터 조회하기 */
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
@@ -153,14 +157,15 @@ public class CommunityController {
 	
 	/** ========== Q&A 작성폼에 대한 action페이지 ========== */
 	@RequestMapping(value = "/community/qna_wri_ok.do", method = RequestMethod.POST)
-	public ModelAndView add_qna(Model model, @RequestParam(value = "bbstype", required = false) String bbstype,
+	public ModelAndView add_qna(Model model, 
+			@RequestParam(value = "bbstype", required = false) String bbstype,
 			@RequestParam(value = "bbstitle", required = false) String bbstitle,
 			@RequestParam(value = "bbscontent", required = false) String bbscontent,
 			@RequestParam(value = "qnasec", defaultValue = "0") Integer qnasec,
 			@RequestParam(value = "qnapw", required = false) String qnapw,
 			@RequestParam(value = "regdate", required = false) String regdate,
 			@RequestParam(value = "editdate", required = false) String editdate,
-			@RequestParam(value = "goodsno", required = false) int goodsno,
+			@RequestParam(value = "goodsno", required = false) Integer goodsno,
 			@RequestParam(value = "memno", defaultValue = "0") Integer memno) {
 		// 가입한 시각을 담은 date 생성
 		Calendar c = Calendar.getInstance();
@@ -169,6 +174,17 @@ public class CommunityController {
 				c.get(Calendar.SECOND));
 
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
+		if (bbstitle == null) {
+			return webHelper.redirect(null, "제목을 입력하세요.");
+		}
+		
+		if (bbscontent == null) {
+			return webHelper.redirect(null, "내용을 입력하세요.");
+		}
+		
+		if (goodsno == 0) {
+			return webHelper.redirect(null, "상품을 선택해주세요.");
+		}
 
 		// 세션 객체를 이용하여 저장된 세션값 얻기
 		HttpSession mySession = webHelper.getSession();
@@ -211,9 +227,7 @@ public class CommunityController {
 			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
 
 		/** 1) 파라미터 유효성 검사 */
-		if (bbsno == 0) {
-			return webHelper.redirect(null, "게시글이 없습니다.");
-		}
+
 		/** 2) 데이터 조회하기 */
 		// 데이터 조회에 필요한 값을 beans에 저장하기
 		Bbs input = new Bbs();
@@ -263,7 +277,14 @@ public class CommunityController {
 				c.get(Calendar.SECOND));
 
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
-
+		if (bbstitle == null) {
+			return webHelper.redirect(null, "제목을 입력하세요.");
+		}
+		
+		if (bbscontent == null) {
+			return webHelper.redirect(null, "내용을 입력하세요.");
+		}
+		
 		// 세션 객체를 이용하여 저장된 세션값 얻기
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
@@ -296,7 +317,7 @@ public class CommunityController {
 		return webHelper.redirect(redirectUrl, "수정되었습니다.");
 	}
 
-	/** notice 목록페이지 다중행조회 */
+	/** ========== notice 목록페이지 다중행조회 ==========  */
 	@RequestMapping(value = "/community/notice.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView list(Model model,
 			// 페이지 구현에서 사용할 현재 페이지 번호
@@ -336,7 +357,7 @@ public class CommunityController {
 		return new ModelAndView("community/notice");
 	}
 
-	/** photo_rv 목록페이지 다중행조회 */
+	/** ========== photo_rv 목록페이지 다중행조회 ==========  */
 	@RequestMapping(value = "/community/photo_rv.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView photo_rv(Model model,
 			// 검색어
@@ -381,7 +402,7 @@ public class CommunityController {
 		return new ModelAndView("community/photo_rv");
 	}
 
-	/** qna 목록페이지 다중행조회 */
+	/** ========== qna 목록페이지 다중행조회  ========== */
 	@RequestMapping(value = "/community/qna.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView listqna(Model model,
 			// 페이지 구현에서 사용할 현재 페이지 번호
@@ -421,7 +442,7 @@ public class CommunityController {
 		return new ModelAndView("community/qna");
 	}
 
-	/** QnA 검색 기능 구현 */
+	/** ========== QnA 검색 기능 구현 ==========  */
 	@RequestMapping(value = "/community/qnasearch.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView qnaSearch(Model model,
 			// 검색어
@@ -476,7 +497,7 @@ public class CommunityController {
 		return new ModelAndView("community/qna");
 	}
 
-	/** 공지사항 검색 기능 구현 */
+	/** ========== 공지사항 검색 기능 구현  ========== */
 	@RequestMapping(value = "/community/noticesearch.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView noticeSearch(Model model,
 			// 검색어
@@ -531,13 +552,13 @@ public class CommunityController {
 		return new ModelAndView("community/notice");
 	}
 
-	/** Q&A 삭제 */
+	/** ========== Q&A 삭제 ==========  */
 	@RequestMapping(value = "/community/deleteqna.do", method = RequestMethod.GET)
 	public ModelAndView delete_ok(Model model, @RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
 
 		/** 1) 파라미터 유효성 검사 */
 		if (bbsno == 0) {
-			return webHelper.redirect(null, "게시글 번호가 없습니다.");
+			return webHelper.redirect(null, "존재하는 게시글이 아닙니다.");
 		}
 
 		/** 2) 데이터 삭제하기 */

@@ -15,6 +15,12 @@
 	border-bottom: 1px solid #eee;
 }
 
+.table>tbody>tr>td.subjectok {
+	padding-left: 20px;
+	border-top: none;
+	border-bottom: 1px solid #eee;
+}
+
 .customer_pass {
 	position: fixed;
 	left: 33%;

@@ -43,7 +43,7 @@ public class CommunityRestController {
 	@Autowired
 	CommentsService commentsService;
 
-	/** 댓글 작성폼에 대한 action page */
+	/** ========== 댓글 작성폼에 대한 action page ========== */
 	@RequestMapping(value = "/community/article_cmtAdd", method = RequestMethod.POST)
 	public Map<String, Object> post(@RequestParam(value = "cmtcontent", required = false) String cmtcontent,
 			@RequestParam(value = "regdate", required = false) String regdate,
@@ -90,13 +90,22 @@ public class CommunityRestController {
 		return webHelper.getJsonData(map);
 	}
 
+	/** ========== 댓글 수정폼에 대한 action page ========== */
 	@RequestMapping(value = "/community/article_cmtEdit", method = RequestMethod.PUT)
 	public Map<String, Object> put(
 			@RequestParam(value = "cmtno", defaultValue = "0") int cmtno,
 			@RequestParam(value = "cmtcontent", required = false) String cmtcontent,
 			@RequestParam(value = "editdate", required = false) String editdate,
 			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
+
 		/** 1) 유효성 검사 */
+		if (cmtcontent.equals("")) {
+			return webHelper.getJsonWarning("댓글을 입력하세요");
+		}
+		
+		if(cmtno==0) {
+			return webHelper.getJsonWarning("존재하는 댓글이 아닙니다.");
+		}
 	
 
 		/** 2) 데이터 수정하기 */
@@ -124,7 +133,7 @@ public class CommunityRestController {
 
 	}
 	
-	/** 댓글 삭제 */
+	/** ========== 댓글 삭제  ========== */
 	@RequestMapping(value = "/community/article", method = RequestMethod.DELETE)
 	public Map<String, Object> delete(
 			@RequestParam(value = "bbstype", required = false) String bbstype,
@@ -132,7 +141,7 @@ public class CommunityRestController {
 			@RequestParam(value = "bbsno", defaultValue = "0") int bbsno){
 		/** 1) 유효성 검사 */
 		if(cmtno==0) {
-			return webHelper.getJsonWarning("댓글번호가 없습니다.");
+			return webHelper.getJsonWarning("존재하는 댓글이 아닙니다.");
 		}
 		/** 2) 데이터 삭제하기 */
 		Comments input = new Comments();
@@ -150,12 +159,16 @@ public class CommunityRestController {
 		return webHelper.getJsonData(map);
 	}
 	
-	/** qna 모달창 상품조회 리스트 */
+	/** ========== qna 모달창 상품조회 리스트 ========== */
 	@RequestMapping(value = "/community/qna_goods", method=RequestMethod.GET)
 		public Map<String, Object> get_list (
 				// 검색어
 				@RequestParam(value="keyword", required=false) String keyword,
 				@RequestParam(value="page", defaultValue="1") int nowPage) {
+		
+		if (keyword.equals("")) {
+			return webHelper.getJsonWarning("검색 키워드가 없습니다.");
+		}
 		
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
 		int totalCount = 0;
