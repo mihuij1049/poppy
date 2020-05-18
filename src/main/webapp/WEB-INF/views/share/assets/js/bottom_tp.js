@@ -1,6 +1,24 @@
 
 /** 검색탭 영역 시작! */
+// 검색 쿠키 값 가져오기 메서드 정의
 $(".click-searchtab").click(function() {
+	// 검색 쿠키 값 가져오기 메서드 정의
+	var getCookie = function(name) {
+		var value= document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+		return vluae? vluae[2] : null;
+	}
+	// 쿠키 값 가져오기
+	var searchGoods = getCookie("searchGoods");
+	// 가져온 쿠키값을 배열에 담기
+	var searchList = [];
+	searchGoods.split(",");
+	// 배열에 담긴 검색어를 화면에 뿌려주기
+	for (var i = 0; i<searchList.length; i++) {
+		var temp = $("<p></p>");
+		temp.text(searchList[i]);
+		$("#recent-search").append(temp);
+	}
+	
     $(".container").toggleClass("searchtab-open");
 })
 /** 검색탭 영역 끝! */

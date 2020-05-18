@@ -111,7 +111,7 @@
 						</div>
 						<div class="search_md_footer">
 							<hr />
-							<p>최근검색어</p>
+							<p id="recent-search">최근검색어</p>
 						</div>
 					</div>
 					<!-- /.modal-content -->
