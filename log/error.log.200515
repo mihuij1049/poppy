@@ -1,42 +1,20 @@
-<<<<<<< HEAD
-[2020-05-15 09:09:01.515][ERROR] CommentsServiceImpl.editComments(CommentsServiceImpl.java:122) result=0
-[2020-05-15 09:32:55.199][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 09:32:58.009][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 09:33:00.439][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 09:33:02.841][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 09:33:06.638][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 09:40:33.930][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 09:40:36.319][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 09:43:34.061][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 09:43:40.526][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 09:44:30.775][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 09:46:20.954][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 09:46:26.010][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 09:46:33.226][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 09:49:23.566][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 09:56:44.042][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 09:57:39.387][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 09:57:42.138][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 09:59:32.598][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:88) result=0
-[2020-05-15 11:21:04.573][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 12:08:43.255][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 12:08:46.004][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 12:08:49.904][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 12:08:51.885][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 12:08:54.109][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 12:08:58.489][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 12:09:01.417][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 12:09:03.346][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 12:09:06.309][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 12:09:15.999][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 12:09:18.062][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 12:10:06.053][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 15:08:50.230][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 15:08:53.423][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 15:24:12.432][ERROR] FrameworkServlet.initServletBean(FrameworkServlet.java:534) Context initialization failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'rvheartRestController' defined in file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\kr\co\poppy\controllers\RvheartRestController.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [kr.co.poppy.controllers.RvheartRestController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
-	Syntax error, insert "enum Identifier" to complete EnumHeader
-	Syntax error, insert "EnumBody" to complete EnumDeclaration
+[2020-05-15 10:17:20.132][ERROR] BbsServiceImpl.getBbsItem(BbsServiceImpl.java:35) result=null
+[2020-05-15 10:17:23.645][ERROR] BbsServiceImpl.getBbsItem(BbsServiceImpl.java:35) result=null
+[2020-05-15 10:17:50.968][ERROR] BbsServiceImpl.getBbsItem(BbsServiceImpl.java:35) result=null
+[2020-05-15 10:24:41.278][ERROR] MembersServiceImpl.loginMembers(MembersServiceImpl.java:76) result=null
+[2020-05-15 10:27:56.559][ERROR] BbsServiceImpl.getBbsrv_Item(BbsServiceImpl.java:58) result=null
+[2020-05-15 10:28:03.022][ERROR] BbsServiceImpl.getBbsrv_Item(BbsServiceImpl.java:58) result=null
+[2020-05-15 10:28:05.991][ERROR] BbsServiceImpl.getBbsrv_Item(BbsServiceImpl.java:58) result=null
+[2020-05-15 11:49:31.637][ERROR] BbsServiceImpl.getBbsrv_Item(BbsServiceImpl.java:58) result=null
+[2020-05-15 12:06:34.976][ERROR] BbsServiceImpl.editBbs(BbsServiceImpl.java:190) result=0
+[2020-05-15 12:10:02.639][ERROR] BbsServiceImpl.editBbs(BbsServiceImpl.java:190) result=0
+[2020-05-15 12:11:18.924][ERROR] BbsServiceImpl.editBbs(BbsServiceImpl.java:190) result=0
+[2020-05-15 12:15:03.192][ERROR] BbsServiceImpl.editBbs(BbsServiceImpl.java:190) result=0
+[2020-05-15 12:15:13.802][ERROR] BbsServiceImpl.editBbs(BbsServiceImpl.java:190) result=0
+[2020-05-15 13:32:17.951][ERROR] MembersServiceImpl.loginMembers(MembersServiceImpl.java:76) result=null
+[2020-05-15 13:50:47.067][ERROR] FrameworkServlet.initServletBean(FrameworkServlet.java:534) Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'KRTController' defined in file [D:\KRT\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\kr\co\poppy\controllers\KRTController.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [kr.co.poppy.controllers.KRTController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
+	Syntax error on token "Invalid Character", delete this token
 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1320)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1214)
@@ -59,1654 +37,164 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at org.apache.catalina.core.StandardWrapper.initServlet(StandardWrapper.java:1144)
 	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1091)
 	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:985)
-	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:4885)
-	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5199)
+	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:4887)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5201)
 	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
-	at org.apache.catalina.core.StandardContext.reload(StandardContext.java:3759)
-	at org.apache.catalina.loader.WebappLoader.backgroundProcess(WebappLoader.java:291)
-	at org.apache.catalina.core.StandardContext.backgroundProcess(StandardContext.java:5537)
+	at org.apache.catalina.core.StandardContext.reload(StandardContext.java:3761)
+	at org.apache.catalina.loader.WebappLoader.backgroundProcess(WebappLoader.java:296)
+	at org.apache.catalina.core.StandardContext.backgroundProcess(StandardContext.java:5539)
 	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1381)
 	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
 	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
 	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1353)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [kr.co.poppy.controllers.RvheartRestController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
-	Syntax error, insert "enum Identifier" to complete EnumHeader
-	Syntax error, insert "EnumBody" to complete EnumDeclaration
-
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:213)
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1312)
-	... 31 more
-Caused by: java.lang.Error: Unresolved compilation problems: 
-	Syntax error, insert "enum Identifier" to complete EnumHeader
-	Syntax error, insert "EnumBody" to complete EnumDeclaration
-
-	at kr.co.poppy.controllers.RvheartRestController.<init>(RvheartRestController.java:21)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:200)
-	... 33 more
-[2020-05-15 15:25:20.689][ERROR] FrameworkServlet.initServletBean(FrameworkServlet.java:534) Context initialization failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'rvheartRestController' defined in file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\kr\co\poppy\controllers\RvheartRestController.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [kr.co.poppy.controllers.RvheartRestController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
-	RvheartService cannot be resolved to a type
-	Syntax error, insert "enum Identifier" to complete EnumHeader
-	Syntax error, insert "EnumBody" to complete EnumDeclaration
-
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1320)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1214)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:879)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
-	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:702)
-	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:668)
-	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:716)
-	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:591)
-	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:530)
-	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:170)
-	at javax.servlet.GenericServlet.init(GenericServlet.java:158)
-	at org.apache.catalina.core.StandardWrapper.initServlet(StandardWrapper.java:1144)
-	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1091)
-	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:985)
-	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:4885)
-	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5199)
-	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
-	at org.apache.catalina.core.StandardContext.reload(StandardContext.java:3759)
-	at org.apache.catalina.loader.WebappLoader.backgroundProcess(WebappLoader.java:291)
-	at org.apache.catalina.core.StandardContext.backgroundProcess(StandardContext.java:5537)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1381)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1353)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [kr.co.poppy.controllers.RvheartRestController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
-	RvheartService cannot be resolved to a type
-	Syntax error, insert "enum Identifier" to complete EnumHeader
-	Syntax error, insert "EnumBody" to complete EnumDeclaration
-
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:213)
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1312)
-	... 31 more
-Caused by: java.lang.Error: Unresolved compilation problems: 
-	RvheartService cannot be resolved to a type
-	Syntax error, insert "enum Identifier" to complete EnumHeader
-	Syntax error, insert "EnumBody" to complete EnumDeclaration
-
-	at kr.co.poppy.controllers.RvheartRestController.<init>(RvheartRestController.java:26)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:200)
-	... 33 more
-[2020-05-15 15:26:28.687][ERROR] FrameworkServlet.initServletBean(FrameworkServlet.java:534) Context initialization failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping': Invocation of init method failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [kr.co.poppy.controllers.RvheartRestController] from ClassLoader [ParallelWebappClassLoader
-  context: poppy
-  delegate: false
-----------> Parent Classloader:
-java.net.URLClassLoader@5e9f23b4
-]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1803)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:879)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
-	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:702)
-	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:668)
-	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:716)
-	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:591)
-	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:530)
-	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:170)
-	at javax.servlet.GenericServlet.init(GenericServlet.java:158)
-	at org.apache.catalina.core.StandardWrapper.initServlet(StandardWrapper.java:1144)
-	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1091)
-	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:985)
-	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:4885)
-	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5199)
-	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
-	at org.apache.catalina.core.StandardContext.reload(StandardContext.java:3759)
-	at org.apache.catalina.loader.WebappLoader.backgroundProcess(WebappLoader.java:291)
-	at org.apache.catalina.core.StandardContext.backgroundProcess(StandardContext.java:5537)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1381)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1353)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-Caused by: java.lang.IllegalStateException: Failed to introspect Class [kr.co.poppy.controllers.RvheartRestController] from ClassLoader [ParallelWebappClassLoader
-  context: poppy
-  delegate: false
-----------> Parent Classloader:
-java.net.URLClassLoader@5e9f23b4
-]
-	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:477)
-	at org.springframework.util.ReflectionUtils.doWithMethods(ReflectionUtils.java:355)
-	at org.springframework.core.MethodIntrospector.selectMethods(MethodIntrospector.java:72)
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:273)
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:258)
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:217)
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:205)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:171)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1862)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1799)
-	... 30 more
-Caused by: java.lang.NoClassDefFoundError: Map
-	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
-	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3167)
-	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2310)
-	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:459)
-	... 39 more
-Caused by: java.lang.ClassNotFoundException: Map
-	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1358)
-	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1180)
-	... 43 more
-[2020-05-15 15:26:42.053][ERROR] FrameworkServlet.initServletBean(FrameworkServlet.java:534) Context initialization failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'rvheartRestController' defined in file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\kr\co\poppy\controllers\RvheartRestController.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [kr.co.poppy.controllers.RvheartRestController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
-	RequestParam cannot be resolved to a type
-	Syntax error, insert "}" to complete ClassBody
-
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1320)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1214)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:879)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
-	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:702)
-	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:668)
-	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:716)
-	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:591)
-	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:530)
-	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:170)
-	at javax.servlet.GenericServlet.init(GenericServlet.java:158)
-	at org.apache.catalina.core.StandardWrapper.initServlet(StandardWrapper.java:1144)
-	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1091)
-	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:985)
-	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:4885)
-	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5199)
-	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
-	at org.apache.catalina.core.StandardContext.reload(StandardContext.java:3759)
-	at org.apache.catalina.loader.WebappLoader.backgroundProcess(WebappLoader.java:291)
-	at org.apache.catalina.core.StandardContext.backgroundProcess(StandardContext.java:5537)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1381)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1353)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [kr.co.poppy.controllers.RvheartRestController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
-	RequestParam cannot be resolved to a type
-	Syntax error, insert "}" to complete ClassBody
-
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:213)
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1312)
-	... 31 more
-Caused by: java.lang.Error: Unresolved compilation problems: 
-	RequestParam cannot be resolved to a type
-	Syntax error, insert "}" to complete ClassBody
-
-	at kr.co.poppy.controllers.RvheartRestController.<init>(RvheartRestController.java:35)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:200)
-	... 33 more
-[2020-05-15 15:27:06.955][ERROR] FrameworkServlet.initServletBean(FrameworkServlet.java:534) Context initialization failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'rvheartRestController' defined in file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\kr\co\poppy\controllers\RvheartRestController.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [kr.co.poppy.controllers.RvheartRestController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
-	RequestParam cannot be resolved to a type
-	Syntax error, insert "}" to complete ClassBody
-
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1320)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1214)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:879)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
-	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:702)
-	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:668)
-	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:716)
-	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:591)
-	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:530)
-	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:170)
-	at javax.servlet.GenericServlet.init(GenericServlet.java:158)
-	at org.apache.catalina.core.StandardWrapper.initServlet(StandardWrapper.java:1144)
-	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1091)
-	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:985)
-	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:4885)
-	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5199)
-	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
-	at org.apache.catalina.core.StandardContext.reload(StandardContext.java:3759)
-	at org.apache.catalina.loader.WebappLoader.backgroundProcess(WebappLoader.java:291)
-	at org.apache.catalina.core.StandardContext.backgroundProcess(StandardContext.java:5537)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1381)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1353)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [kr.co.poppy.controllers.RvheartRestController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
-	RequestParam cannot be resolved to a type
-	Syntax error, insert "}" to complete ClassBody
-
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:213)
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1312)
-	... 31 more
-Caused by: java.lang.Error: Unresolved compilation problems: 
-	RequestParam cannot be resolved to a type
-	Syntax error, insert "}" to complete ClassBody
-
-	at kr.co.poppy.controllers.RvheartRestController.<init>(RvheartRestController.java:37)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:200)
-	... 33 more
-[2020-05-15 15:27:20.649][ERROR] FrameworkServlet.initServletBean(FrameworkServlet.java:534) Context initialization failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'rvheartRestController' defined in file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\kr\co\poppy\controllers\RvheartRestController.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [kr.co.poppy.controllers.RvheartRestController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
-=======
-[2020-05-15 00:03:02.077][ERROR] FrameworkServlet.initServletBean(FrameworkServlet.java:534) Context initialization failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'myInfoRestController' defined in file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\kr\co\poppy\controllers\MyInfoRestController.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [kr.co.poppy.controllers.MyInfoRestController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
->>>>>>> 74afe51d66cc6389d5866755cb89b22d4a09bb4f
-	Syntax error, insert "}" to complete ClassBody
-
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1320)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1214)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
-<<<<<<< HEAD
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:879)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
-	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:702)
-	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:668)
-	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:716)
-	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:591)
-	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:530)
-	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:170)
-	at javax.servlet.GenericServlet.init(GenericServlet.java:158)
-	at org.apache.catalina.core.StandardWrapper.initServlet(StandardWrapper.java:1144)
-	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1091)
-	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:985)
-	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:4885)
-	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5199)
-	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
-	at org.apache.catalina.core.StandardContext.reload(StandardContext.java:3759)
-	at org.apache.catalina.loader.WebappLoader.backgroundProcess(WebappLoader.java:291)
-	at org.apache.catalina.core.StandardContext.backgroundProcess(StandardContext.java:5537)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1381)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1353)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [kr.co.poppy.controllers.RvheartRestController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
-	Syntax error, insert "}" to complete ClassBody
-
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:213)
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1312)
-	... 31 more
-Caused by: java.lang.Error: Unresolved compilation problem: 
-	Syntax error, insert "}" to complete ClassBody
-
-	at kr.co.poppy.controllers.RvheartRestController.<init>(RvheartRestController.java:39)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:200)
-	... 33 more
-[2020-05-15 16:24:03.068][ERROR] Slf4jSpyLogDelegator.exceptionOccured(Slf4jSpyLogDelegator.java:144) 3. PreparedStatement.execute() SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,
-		b.goodsno,
-		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,
-		i.goodsno,
-		m.memno, m.userid
-		FROM bbs b
-		INNER JOIN members m ON b.memno=m.memno
-		INNER JOIN rvheart r ON r.memno=b.memno
-		INNER JOIN imgs i ON 
-		 WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-
-			ORDER BY bbsno ASC
-
-java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			
-		' at line 10
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
-	at net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy.execute(PreparedStatementSpy.java:443)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
-	at com.sun.proxy.$Proxy28.execute(Unknown Source)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:324)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:83)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
-	at com.sun.proxy.$Proxy8.selectList(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:223)
-	at kr.co.poppy.service.impl.BbsServiceImpl.getBbsList_myrv(BbsServiceImpl.java:123)
-	at kr.co.poppy.HomeController.home(HomeController.java:73)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:543)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
-	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:688)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:609)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:818)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1623)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-[2020-05-15 16:24:03.206][ERROR] BbsServiceImpl.getBbsList_myrv(BbsServiceImpl.java:131) 
-### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			
-		' at line 10
-### The error may exist in file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\mappers\BbsMapper.xml]
-### The error may involve BbsMapper.selectList_myrv-Inline
-### The error occurred while setting parameters
-### SQL: SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,   b.goodsno,   i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,   i.goodsno,   m.memno, m.userid   FROM bbs b   INNER JOIN members m ON b.memno=m.memno   INNER JOIN rvheart r ON r.memno=b.memno   INNER JOIN imgs i ON     WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"        ORDER BY bbsno ASC
-### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			
-		' at line 10
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			
-		' at line 10
-[2020-05-15 16:24:17.387][ERROR] Slf4jSpyLogDelegator.exceptionOccured(Slf4jSpyLogDelegator.java:144) 7. PreparedStatement.execute() SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,
-		b.goodsno,
-		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,
-		i.goodsno,
-		m.memno, m.userid
-		FROM bbs b
-		INNER JOIN members m ON b.memno=m.memno
-		INNER JOIN rvheart r ON r.memno=b.memno
-		INNER JOIN imgs i ON 
-		 WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-
-			ORDER BY bbsno ASC
-
-java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			
-		' at line 10
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
-	at net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy.execute(PreparedStatementSpy.java:443)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
-	at com.sun.proxy.$Proxy28.execute(Unknown Source)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:324)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:83)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
-	at com.sun.proxy.$Proxy8.selectList(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:223)
-	at kr.co.poppy.service.impl.BbsServiceImpl.getBbsList_myrv(BbsServiceImpl.java:123)
-	at kr.co.poppy.HomeController.home(HomeController.java:73)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:543)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
-	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:688)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:609)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:818)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1623)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-[2020-05-15 16:24:17.394][ERROR] BbsServiceImpl.getBbsList_myrv(BbsServiceImpl.java:131) 
-### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			
-		' at line 10
-### The error may exist in file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\mappers\BbsMapper.xml]
-### The error may involve BbsMapper.selectList_myrv-Inline
-### The error occurred while setting parameters
-### SQL: SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,   b.goodsno,   i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,   i.goodsno,   m.memno, m.userid   FROM bbs b   INNER JOIN members m ON b.memno=m.memno   INNER JOIN rvheart r ON r.memno=b.memno   INNER JOIN imgs i ON     WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"        ORDER BY bbsno ASC
-### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			
-		' at line 10
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			
-		' at line 10
-[2020-05-15 16:24:54.914][ERROR] Slf4jSpyLogDelegator.exceptionOccured(Slf4jSpyLogDelegator.java:144) 10. PreparedStatement.execute() SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,
-		b.goodsno,
-		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,
-		i.goodsno,
-		m.memno, m.userid
-		FROM bbs b
-		INNER JOIN members m ON b.memno=m.memno
-		INNER JOIN rvheart r ON r.memno=b.memno
-		INNER JOIN imgs i ON 
-		 WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-
-			ORDER BY bbsno ASC
-
-java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			
-		' at line 10
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
-	at net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy.execute(PreparedStatementSpy.java:443)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
-	at com.sun.proxy.$Proxy28.execute(Unknown Source)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:324)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:83)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
-	at com.sun.proxy.$Proxy8.selectList(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:223)
-	at kr.co.poppy.service.impl.BbsServiceImpl.getBbsList_myrv(BbsServiceImpl.java:123)
-	at kr.co.poppy.HomeController.home(HomeController.java:73)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:543)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
-	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:688)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:609)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:818)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1623)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-[2020-05-15 16:24:54.917][ERROR] BbsServiceImpl.getBbsList_myrv(BbsServiceImpl.java:131) 
-### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			
-		' at line 10
-### The error may exist in file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\mappers\BbsMapper.xml]
-### The error may involve BbsMapper.selectList_myrv-Inline
-### The error occurred while setting parameters
-### SQL: SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,   b.goodsno,   i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,   i.goodsno,   m.memno, m.userid   FROM bbs b   INNER JOIN members m ON b.memno=m.memno   INNER JOIN rvheart r ON r.memno=b.memno   INNER JOIN imgs i ON     WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"        ORDER BY bbsno ASC
-### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			
-		' at line 10
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			
-		' at line 10
-[2020-05-15 16:27:57.314][ERROR] Slf4jSpyLogDelegator.exceptionOccured(Slf4jSpyLogDelegator.java:144) 3. PreparedStatement.execute() SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,
-		b.goodsno,
-		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,
-		i.goodsno,
-		m.memno, m.userid,
-		r.rvheartno
-		FROM bbs b
-		INNER JOIN members m ON b.memno=m.memno
-		INNER JOIN rvheart r ON r.memno=b.memno
-		INNER JOIN imgs i ON 
-		 WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			ORDER BY bbsno ASC
-
-java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			ORD' at line 11
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
-	at net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy.execute(PreparedStatementSpy.java:443)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
-	at com.sun.proxy.$Proxy28.execute(Unknown Source)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:324)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:83)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
-	at com.sun.proxy.$Proxy8.selectList(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:223)
-	at kr.co.poppy.service.impl.BbsServiceImpl.getBbsList_myrv(BbsServiceImpl.java:123)
-	at kr.co.poppy.HomeController.home(HomeController.java:73)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:543)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
-	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:688)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:609)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:818)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1623)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-[2020-05-15 16:27:57.488][ERROR] BbsServiceImpl.getBbsList_myrv(BbsServiceImpl.java:131) 
-### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			ORD' at line 11
-### The error may exist in file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\mappers\BbsMapper.xml]
-### The error may involve BbsMapper.selectList_myrv-Inline
-### The error occurred while setting parameters
-### SQL: SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,   b.goodsno,   i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,   i.goodsno,   m.memno, m.userid,   r.rvheartno   FROM bbs b   INNER JOIN members m ON b.memno=m.memno   INNER JOIN rvheart r ON r.memno=b.memno   INNER JOIN imgs i ON     WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"    ORDER BY bbsno ASC
-### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			ORD' at line 11
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			ORD' at line 11
-[2020-05-15 16:28:20.439][ERROR] Slf4jSpyLogDelegator.exceptionOccured(Slf4jSpyLogDelegator.java:144) 7. PreparedStatement.execute() SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,
-		b.goodsno,
-		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,
-		i.goodsno,
-		m.memno, m.userid,
-		r.rvheartno
-		FROM bbs b
-		INNER JOIN members m ON b.memno=m.memno
-		INNER JOIN rvheart r ON r.memno=b.memno
-		INNER JOIN imgs i ON 
-		 WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			ORDER BY bbsno ASC
-
-java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			ORD' at line 11
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
-	at net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy.execute(PreparedStatementSpy.java:443)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
-	at com.sun.proxy.$Proxy28.execute(Unknown Source)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:324)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:83)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
-	at com.sun.proxy.$Proxy8.selectList(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:223)
-	at kr.co.poppy.service.impl.BbsServiceImpl.getBbsList_myrv(BbsServiceImpl.java:123)
-	at kr.co.poppy.HomeController.home(HomeController.java:73)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:543)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
-	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:688)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:609)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:818)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1623)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-[2020-05-15 16:28:20.443][ERROR] BbsServiceImpl.getBbsList_myrv(BbsServiceImpl.java:131) 
-### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			ORD' at line 11
-### The error may exist in file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\mappers\BbsMapper.xml]
-### The error may involve BbsMapper.selectList_myrv-Inline
-### The error occurred while setting parameters
-### SQL: SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,   b.goodsno,   i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,   i.goodsno,   m.memno, m.userid,   r.rvheartno   FROM bbs b   INNER JOIN members m ON b.memno=m.memno   INNER JOIN rvheart r ON r.memno=b.memno   INNER JOIN imgs i ON     WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"    ORDER BY bbsno ASC
-### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			ORD' at line 11
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			ORD' at line 11
-[2020-05-15 16:29:50.440][ERROR] Slf4jSpyLogDelegator.exceptionOccured(Slf4jSpyLogDelegator.java:144) 3. PreparedStatement.execute() SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,
-		b.goodsno,
-		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,
-		i.goodsno,
-		m.memno, m.userid,
-		r.rvheartno
-		FROM bbs b
-		INNER JOIN members m ON b.memno=m.memno
-		INNER JOIN rvheart yr ON r.memno=b.memno
-		INNER JOIN imgs i ON 
-		 WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-
-			ORDER BY bbsno ASC
-
-java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			
-		' at line 11
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
-	at net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy.execute(PreparedStatementSpy.java:443)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
-	at com.sun.proxy.$Proxy28.execute(Unknown Source)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:324)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:83)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
-	at com.sun.proxy.$Proxy8.selectList(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:223)
-	at kr.co.poppy.service.impl.BbsServiceImpl.getBbsList_myrv(BbsServiceImpl.java:123)
-	at kr.co.poppy.HomeController.home(HomeController.java:73)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:543)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
-	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:688)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:609)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:818)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1623)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-[2020-05-15 16:29:50.557][ERROR] BbsServiceImpl.getBbsList_myrv(BbsServiceImpl.java:131) 
-### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			
-		' at line 11
-### The error may exist in file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\mappers\BbsMapper.xml]
-### The error may involve BbsMapper.selectList_myrv-Inline
-### The error occurred while setting parameters
-### SQL: SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,   b.goodsno,   i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,   i.goodsno,   m.memno, m.userid,   r.rvheartno   FROM bbs b   INNER JOIN members m ON b.memno=m.memno   INNER JOIN rvheart yr ON r.memno=b.memno   INNER JOIN imgs i ON     WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"        ORDER BY bbsno ASC
-### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			
-		' at line 11
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			
-		' at line 11
-[2020-05-15 16:31:38.817][ERROR] Slf4jSpyLogDelegator.exceptionOccured(Slf4jSpyLogDelegator.java:144) 3. PreparedStatement.execute() SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,
-		b.goodsno,
-		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,
-		i.goodsno,
-		m.memno, m.userid,
-		r.rvheartno
-		FROM bbs b
-		INNER JOIN members m ON b.memno=m.memno
-		INNER JOIN rvheart r ON r.memno=b.memno
-		INNER JOIN imgs i ON 
-		 WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-
-			ORDER BY bbsno ASC
-
-java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			
-		' at line 11
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
-	at net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy.execute(PreparedStatementSpy.java:443)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
-	at com.sun.proxy.$Proxy28.execute(Unknown Source)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:324)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:83)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
-	at com.sun.proxy.$Proxy8.selectList(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:223)
-	at kr.co.poppy.service.impl.BbsServiceImpl.getBbsList_myrv(BbsServiceImpl.java:123)
-	at kr.co.poppy.HomeController.home(HomeController.java:73)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:543)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
-	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:688)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:609)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:818)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1623)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-[2020-05-15 16:31:38.977][ERROR] BbsServiceImpl.getBbsList_myrv(BbsServiceImpl.java:131) 
-### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			
-		' at line 11
-### The error may exist in file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\mappers\BbsMapper.xml]
-### The error may involve BbsMapper.selectList_myrv-Inline
-### The error occurred while setting parameters
-### SQL: SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,   b.goodsno,   i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,   i.goodsno,   m.memno, m.userid,   r.rvheartno   FROM bbs b   INNER JOIN members m ON b.memno=m.memno   INNER JOIN rvheart r ON r.memno=b.memno   INNER JOIN imgs i ON     WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"        ORDER BY bbsno ASC
-### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			
-		' at line 11
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE b.bbsno=i.bbsno AND b.memno=m.memno AND imgtype="C" AND bbstype="C"
-			
-		' at line 11
-[2020-05-15 16:44:19.957][ERROR] ContextLoader.initWebApplicationContext(ContextLoader.java:313) Context initialization failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in ServletContext resource [/WEB-INF/spring/root-context.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\mappers\BbsMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error creating document instance.  Cause: org.xml.sax.SAXParseException; lineNumber: 125; columnNumber: 11; Element type "WHERE" must be declared.
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1803)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
-=======
->>>>>>> 74afe51d66cc6389d5866755cb89b22d4a09bb4f
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:879)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
-	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:702)
-	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:668)
-	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:716)
-	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:591)
-	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:530)
-	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:170)
-	at javax.servlet.GenericServlet.init(GenericServlet.java:158)
-	at org.apache.catalina.core.StandardWrapper.initServlet(StandardWrapper.java:1144)
-	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1091)
-	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:985)
-	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:4885)
-	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5199)
-	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
-	at org.apache.catalina.core.StandardContext.reload(StandardContext.java:3759)
-	at org.apache.catalina.loader.WebappLoader.backgroundProcess(WebappLoader.java:291)
-	at org.apache.catalina.core.StandardContext.backgroundProcess(StandardContext.java:5537)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1381)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1353)
-<<<<<<< HEAD
-	at java.base/java.lang.Thread.run(Thread.java:830)
-Caused by: org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\mappers\BbsMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error creating document instance.  Cause: org.xml.sax.SAXParseException; lineNumber: 125; columnNumber: 11; Element type "WHERE" must be declared.
-	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:595)
-	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:475)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1862)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1799)
-	... 23 more
-Caused by: org.apache.ibatis.builder.BuilderException: Error creating document instance.  Cause: org.xml.sax.SAXParseException; lineNumber: 125; columnNumber: 11; Element type "WHERE" must be declared.
-	at org.apache.ibatis.parsing.XPathParser.createDocument(XPathParser.java:263)
-	at org.apache.ibatis.parsing.XPathParser.<init>(XPathParser.java:127)
-	at org.apache.ibatis.builder.xml.XMLMapperBuilder.<init>(XMLMapperBuilder.java:80)
-	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:592)
-	... 26 more
-Caused by: org.xml.sax.SAXParseException; lineNumber: 125; columnNumber: 11; Element type "WHERE" must be declared.
-	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:204)
-	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.error(ErrorHandlerWrapper.java:135)
-	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:396)
-	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
-	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:284)
-	at java.xml/com.sun.org.apache.xerces.internal.impl.dtd.XMLDTDValidator.handleStartElement(XMLDTDValidator.java:1835)
-	at java.xml/com.sun.org.apache.xerces.internal.impl.dtd.XMLDTDValidator.startElement(XMLDTDValidator.java:728)
-	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanStartElement(XMLDocumentFragmentScannerImpl.java:1406)
-	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2725)
-	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:605)
-	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:541)
-	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:888)
-	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:824)
-	at java.xml/com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
-	at java.xml/com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:246)
-	at java.xml/com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
-	at org.apache.ibatis.parsing.XPathParser.createDocument(XPathParser.java:261)
-	... 29 more
-[2020-05-15 16:44:47.719][ERROR] ContextLoader.initWebApplicationContext(ContextLoader.java:313) Context initialization failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in ServletContext resource [/WEB-INF/spring/root-context.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\mappers\BbsMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error creating document instance.  Cause: org.xml.sax.SAXParseException; lineNumber: 125; columnNumber: 11; Element type "WHERE" must be declared.
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1803)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:860)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
-	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:401)
-	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:292)
-	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:103)
-	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4699)
-	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5165)
-	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
-	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1412)
-	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1402)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-Caused by: org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\mappers\BbsMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error creating document instance.  Cause: org.xml.sax.SAXParseException; lineNumber: 125; columnNumber: 11; Element type "WHERE" must be declared.
-	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:595)
-	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:475)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1862)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1799)
-	... 21 more
-Caused by: org.apache.ibatis.builder.BuilderException: Error creating document instance.  Cause: org.xml.sax.SAXParseException; lineNumber: 125; columnNumber: 11; Element type "WHERE" must be declared.
-	at org.apache.ibatis.parsing.XPathParser.createDocument(XPathParser.java:263)
-	at org.apache.ibatis.parsing.XPathParser.<init>(XPathParser.java:127)
-	at org.apache.ibatis.builder.xml.XMLMapperBuilder.<init>(XMLMapperBuilder.java:80)
-	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:592)
-	... 24 more
-Caused by: org.xml.sax.SAXParseException; lineNumber: 125; columnNumber: 11; Element type "WHERE" must be declared.
-	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:204)
-	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.error(ErrorHandlerWrapper.java:135)
-	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:396)
-	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
-	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:284)
-	at java.xml/com.sun.org.apache.xerces.internal.impl.dtd.XMLDTDValidator.handleStartElement(XMLDTDValidator.java:1835)
-	at java.xml/com.sun.org.apache.xerces.internal.impl.dtd.XMLDTDValidator.startElement(XMLDTDValidator.java:728)
-	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanStartElement(XMLDocumentFragmentScannerImpl.java:1406)
-	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2725)
-	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:605)
-	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:541)
-	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:888)
-	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:824)
-	at java.xml/com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
-	at java.xml/com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:246)
-	at java.xml/com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
-	at org.apache.ibatis.parsing.XPathParser.createDocument(XPathParser.java:261)
-	... 27 more
-[2020-05-15 16:50:20.284][ERROR] FrameworkServlet.initServletBean(FrameworkServlet.java:534) Context initialization failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'rvheartRestController' defined in file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\kr\co\poppy\controllers\RvheartRestController.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [kr.co.poppy.controllers.RvheartRestController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
-	GoodsService cannot be resolved to a type
-	The method setGoodsno(int) is undefined for the type Rvheart
-
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1320)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1214)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:879)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
-	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:702)
-	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:668)
-	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:716)
-	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:591)
-	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:530)
-	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:170)
-	at javax.servlet.GenericServlet.init(GenericServlet.java:158)
-	at org.apache.catalina.core.StandardWrapper.initServlet(StandardWrapper.java:1144)
-	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1091)
-	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:985)
-	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:4885)
-	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5199)
-	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
-	at org.apache.catalina.core.StandardContext.reload(StandardContext.java:3759)
-	at org.apache.catalina.loader.WebappLoader.backgroundProcess(WebappLoader.java:291)
-	at org.apache.catalina.core.StandardContext.backgroundProcess(StandardContext.java:5537)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1381)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1353)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [kr.co.poppy.controllers.RvheartRestController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
-	GoodsService cannot be resolved to a type
-	The method setGoodsno(int) is undefined for the type Rvheart
-
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:213)
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1312)
-	... 31 more
-Caused by: java.lang.Error: Unresolved compilation problems: 
-	GoodsService cannot be resolved to a type
-	The method setGoodsno(int) is undefined for the type Rvheart
-
-	at kr.co.poppy.controllers.RvheartRestController.<init>(RvheartRestController.java:42)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:200)
-	... 33 more
-[2020-05-15 17:00:45.508][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 17:20:09.254][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 17:20:16.687][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 17:20:26.978][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 17:25:01.871][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 17:25:10.211][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 17:39:40.234][ERROR] FrameworkServlet.initServletBean(FrameworkServlet.java:534) Context initialization failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping': Invocation of init method failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [kr.co.poppy.controllers.RvheartRestController] from ClassLoader [ParallelWebappClassLoader
-  context: poppy
-  delegate: false
-----------> Parent Classloader:
-java.net.URLClassLoader@5e9f23b4
-]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1803)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:879)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
-	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:702)
-	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:668)
-	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:716)
-	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:591)
-	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:530)
-	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:170)
-	at javax.servlet.GenericServlet.init(GenericServlet.java:158)
-	at org.apache.catalina.core.StandardWrapper.initServlet(StandardWrapper.java:1144)
-	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1091)
-	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:985)
-	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:4885)
-	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5199)
-	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
-	at org.apache.catalina.core.StandardContext.reload(StandardContext.java:3759)
-	at org.apache.catalina.loader.WebappLoader.backgroundProcess(WebappLoader.java:291)
-	at org.apache.catalina.core.StandardContext.backgroundProcess(StandardContext.java:5537)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1381)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1353)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-Caused by: java.lang.IllegalStateException: Failed to introspect Class [kr.co.poppy.controllers.RvheartRestController] from ClassLoader [ParallelWebappClassLoader
-  context: poppy
-  delegate: false
-----------> Parent Classloader:
-java.net.URLClassLoader@5e9f23b4
-]
-	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:477)
-	at org.springframework.util.ReflectionUtils.doWithMethods(ReflectionUtils.java:355)
-	at org.springframework.core.MethodIntrospector.selectMethods(MethodIntrospector.java:72)
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:273)
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:258)
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:217)
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:205)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:171)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1862)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1799)
-	... 30 more
-Caused by: java.lang.NoClassDefFoundError: M
-	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
-	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3167)
-	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2310)
-	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:459)
-	... 39 more
-Caused by: java.lang.ClassNotFoundException: M
-	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1358)
-	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1180)
-	... 43 more
-[2020-05-15 17:40:04.917][ERROR] FrameworkServlet.initServletBean(FrameworkServlet.java:534) Context initialization failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping': Invocation of init method failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [kr.co.poppy.controllers.RvheartRestController] from ClassLoader [ParallelWebappClassLoader
-  context: poppy
-  delegate: false
-----------> Parent Classloader:
-java.net.URLClassLoader@5e9f23b4
-]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1803)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:879)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
-	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:702)
-	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:668)
-	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:716)
-	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:591)
-	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:530)
-	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:170)
-	at javax.servlet.GenericServlet.init(GenericServlet.java:158)
-	at org.apache.catalina.core.StandardWrapper.initServlet(StandardWrapper.java:1144)
-	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1091)
-	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:985)
-	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:4885)
-	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5199)
-	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
-	at org.apache.catalina.core.StandardContext.reload(StandardContext.java:3759)
-	at org.apache.catalina.loader.WebappLoader.backgroundProcess(WebappLoader.java:291)
-	at org.apache.catalina.core.StandardContext.backgroundProcess(StandardContext.java:5537)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1381)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1385)
-	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1353)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-Caused by: java.lang.IllegalStateException: Failed to introspect Class [kr.co.poppy.controllers.RvheartRestController] from ClassLoader [ParallelWebappClassLoader
-  context: poppy
-  delegate: false
-----------> Parent Classloader:
-java.net.URLClassLoader@5e9f23b4
-]
-	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:477)
-	at org.springframework.util.ReflectionUtils.doWithMethods(ReflectionUtils.java:355)
-	at org.springframework.core.MethodIntrospector.selectMethods(MethodIntrospector.java:72)
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:273)
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:258)
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:217)
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:205)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:171)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1862)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1799)
-	... 30 more
-Caused by: java.lang.NoClassDefFoundError: ModelAndView
-	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
-	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3167)
-	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2310)
-	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:459)
-	... 39 more
-Caused by: java.lang.ClassNotFoundException: ModelAndView
-	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1358)
-	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1180)
-	... 43 more
-[2020-05-15 17:45:57.443][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 17:52:36.724][ERROR] RvheartServiceImpl.addRvheart(RvheartServiceImpl.java:47) nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'goodsno' in 'class kr.co.poppy.model.Rvheart'
-[2020-05-15 17:53:34.631][ERROR] RvheartServiceImpl.addRvheart(RvheartServiceImpl.java:47) nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'goodsno' in 'class kr.co.poppy.model.Rvheart'
-[2020-05-15 17:56:09.864][ERROR] RvheartServiceImpl.addRvheart(RvheartServiceImpl.java:47) nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'goodsno' in 'class kr.co.poppy.model.Rvheart'
-[2020-05-15 17:58:47.507][ERROR] Slf4jSpyLogDelegator.exceptionOccured(Slf4jSpyLogDelegator.java:144) 9. PreparedStatement.execute() INSERT INTO rvheart (regdate, editdate, memno, bbssno)
-        SELECT now(), now(), 2, 25 FROM rvheart
-		WHERE NOT EXISTS (SELECT memno FROM rvheart WHERE memno=2 AND goodsno=25) LIMIT 1
-
-java.sql.SQLSyntaxErrorException: Unknown column 'bbssno' in 'field list'
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
-	at net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy.execute(PreparedStatementSpy.java:443)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
-	at com.sun.proxy.$Proxy28.execute(Unknown Source)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
-	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
-	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
-	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
-	at com.sun.proxy.$Proxy8.insert(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:271)
-	at kr.co.poppy.service.impl.RvheartServiceImpl.addRvheart(RvheartServiceImpl.java:38)
-	at kr.co.poppy.controllers.RvheartRestController.insert_item(RvheartRestController.java:57)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:543)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
-	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:688)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:609)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:818)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1623)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-[2020-05-15 17:58:47.565][ERROR] RvheartServiceImpl.addRvheart(RvheartServiceImpl.java:47) 
-### Error updating database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'bbssno' in 'field list'
-### The error may exist in file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\mappers\RvheartMapper.xml]
-### The error may involve RvheartMapper.insertItem-Inline
-### The error occurred while setting parameters
-### SQL: INSERT INTO rvheart (regdate, editdate, memno, bbssno)         SELECT now(), now(), ?, ? FROM rvheart   WHERE NOT EXISTS (SELECT memno FROM rvheart WHERE memno=? AND goodsno=?) LIMIT 1
-### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'bbssno' in 'field list'
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'bbssno' in 'field list'
-[2020-05-15 17:59:44.971][ERROR] Slf4jSpyLogDelegator.exceptionOccured(Slf4jSpyLogDelegator.java:144) 9. PreparedStatement.execute() INSERT INTO rvheart (regdate, editdate, memno, bbsno)
-        SELECT now(), now(), 2, 25 FROM rvheart
-		WHERE NOT EXISTS (SELECT memno FROM rvheart WHERE memno=2 AND goodsno=25) LIMIT 1
-
-java.sql.SQLSyntaxErrorException: Unknown column 'goodsno' in 'where clause'
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
-	at net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy.execute(PreparedStatementSpy.java:443)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
-	at com.sun.proxy.$Proxy28.execute(Unknown Source)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
-	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
-	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
-	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
-	at com.sun.proxy.$Proxy8.insert(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:271)
-	at kr.co.poppy.service.impl.RvheartServiceImpl.addRvheart(RvheartServiceImpl.java:38)
-	at kr.co.poppy.controllers.RvheartRestController.insert_item(RvheartRestController.java:57)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:543)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
-	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:688)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:609)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:818)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1623)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-[2020-05-15 17:59:45.023][ERROR] RvheartServiceImpl.addRvheart(RvheartServiceImpl.java:47) 
-### Error updating database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'goodsno' in 'where clause'
-### The error may exist in file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\mappers\RvheartMapper.xml]
-### The error may involve RvheartMapper.insertItem-Inline
-### The error occurred while setting parameters
-### SQL: INSERT INTO rvheart (regdate, editdate, memno, bbsno)         SELECT now(), now(), ?, ? FROM rvheart   WHERE NOT EXISTS (SELECT memno FROM rvheart WHERE memno=? AND goodsno=?) LIMIT 1
-### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'goodsno' in 'where clause'
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'goodsno' in 'where clause'
-[2020-05-15 18:07:12.679][ERROR] Slf4jSpyLogDelegator.exceptionOccured(Slf4jSpyLogDelegator.java:144) 8. PreparedStatement.execute() INSERT INTO rvheart (regdate, editdate, memno, bbsno)
-        SELECT now(), now(), 2, 25 FROM rvheart
-		WHERE NOT EXISTS (SELECT memno FROM rvheart WHERE memno=2 AND goodsno=25) LIMIT 1
-
-java.sql.SQLSyntaxErrorException: Unknown column 'goodsno' in 'where clause'
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
-	at net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy.execute(PreparedStatementSpy.java:443)
-	at jdk.internal.reflect.GeneratedMethodAccessor131.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
-	at com.sun.proxy.$Proxy28.execute(Unknown Source)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
-	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
-	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
-	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
-	at com.sun.proxy.$Proxy34.insert(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:271)
-	at kr.co.poppy.service.impl.RvheartServiceImpl.addRvheart(RvheartServiceImpl.java:38)
-	at kr.co.poppy.controllers.RvheartRestController.insert_item(RvheartRestController.java:56)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:543)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
-	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:688)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:609)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:818)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1623)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-[2020-05-15 18:07:12.732][ERROR] RvheartServiceImpl.addRvheart(RvheartServiceImpl.java:47) 
-### Error updating database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'goodsno' in 'where clause'
-### The error may exist in file [C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\mappers\RvheartMapper.xml]
-### The error may involve RvheartMapper.insertItem-Inline
-### The error occurred while setting parameters
-### SQL: INSERT INTO rvheart (regdate, editdate, memno, bbsno)         SELECT now(), now(), ?, ? FROM rvheart   WHERE NOT EXISTS (SELECT memno FROM rvheart WHERE memno=? AND goodsno=?) LIMIT 1
-### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'goodsno' in 'where clause'
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'goodsno' in 'where clause'
-[2020-05-15 18:12:52.572][ERROR] RvheartServiceImpl.addRvheart(RvheartServiceImpl.java:44) result=0
-[2020-05-15 18:12:55.566][ERROR] RvheartServiceImpl.addRvheart(RvheartServiceImpl.java:44) result=0
-[2020-05-15 18:33:04.541][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 18:33:08.034][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 18:33:44.937][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 18:35:11.992][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 18:35:32.462][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 18:35:34.626][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 18:35:49.932][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 18:35:52.823][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 18:35:56.596][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 18:35:59.076][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 18:36:02.299][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 18:37:28.063][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 18:41:42.585][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 18:42:27.865][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-[2020-05-15 18:42:48.626][ERROR] HeartServiceImpl.addHeart(HeartServiceImpl.java:87) result=0
-=======
 	at java.lang.Thread.run(Unknown Source)
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [kr.co.poppy.controllers.MyInfoRestController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
-	Syntax error, insert "}" to complete ClassBody
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [kr.co.poppy.controllers.KRTController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
+	Syntax error on token "Invalid Character", delete this token
 
 	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:213)
 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1312)
 	... 31 more
 Caused by: java.lang.Error: Unresolved compilation problem: 
-	Syntax error, insert "}" to complete ClassBody
+	Syntax error on token "Invalid Character", delete this token
 
-	at kr.co.poppy.controllers.MyInfoRestController.<init>(MyInfoRestController.java:167)
+	at kr.co.poppy.controllers.KRTController.<init>(KRTController.java:634)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
 	at java.lang.reflect.Constructor.newInstance(Unknown Source)
 	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:200)
 	... 33 more
->>>>>>> 74afe51d66cc6389d5866755cb89b22d4a09bb4f
+[2020-05-15 14:01:15.658][ERROR] ImgsServiceImpl.deleteImgs(ImgsServiceImpl.java:124) 
+[2020-05-15 14:01:27.970][ERROR] ImgsServiceImpl.deleteImgs(ImgsServiceImpl.java:124) 
+[2020-05-15 14:01:40.553][ERROR] ImgsServiceImpl.deleteImgs(ImgsServiceImpl.java:124) 
+[2020-05-15 14:01:45.002][ERROR] ImgsServiceImpl.deleteImgs(ImgsServiceImpl.java:124) 
+[2020-05-15 14:04:11.049][ERROR] ImgsServiceImpl.deleteImgs(ImgsServiceImpl.java:124) 
+[2020-05-15 14:04:17.184][ERROR] ImgsServiceImpl.deleteImgs(ImgsServiceImpl.java:124) 
+[2020-05-15 14:04:24.816][ERROR] ImgsServiceImpl.deleteImgs(ImgsServiceImpl.java:124) 
+[2020-05-15 14:04:25.554][ERROR] ImgsServiceImpl.deleteImgs(ImgsServiceImpl.java:124) 
+[2020-05-15 14:04:26.014][ERROR] ImgsServiceImpl.deleteImgs(ImgsServiceImpl.java:124) 
+[2020-05-15 14:04:40.305][ERROR] ImgsServiceImpl.deleteImgs(ImgsServiceImpl.java:124) 
+[2020-05-15 14:05:14.679][ERROR] ImgsServiceImpl.deleteImgs(ImgsServiceImpl.java:124) 
+[2020-05-15 14:06:42.443][ERROR] ImgsServiceImpl.deleteImgs(ImgsServiceImpl.java:124) 
+[2020-05-15 14:06:51.871][ERROR] Slf4jSpyLogDelegator.exceptionOccured(Slf4jSpyLogDelegator.java:144) 13. PreparedStatement.execute() DELETE FROM Bbs WHERE
+		bbsno=58
+
+java.sql.SQLIntegrityConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`poppypoppy`.`imgs`, CONSTRAINT `fk_imgs_bbs1` FOREIGN KEY (`bbsno`) REFERENCES `bbs` (`bbsno`))
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
+	at net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy.execute(PreparedStatementSpy.java:443)
+	at sun.reflect.GeneratedMethodAccessor114.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
+	at com.sun.proxy.$Proxy27.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.delete(DefaultSqlSession.java:212)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
+	at com.sun.proxy.$Proxy33.delete(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.delete(SqlSessionTemplate.java:303)
+	at kr.co.poppy.service.impl.BbsServiceImpl.deleteBbs(BbsServiceImpl.java:212)
+	at kr.co.poppy.controllers.KRTController.photo_delete(KRTController.java:651)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:543)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:688)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:615)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:818)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1623)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Unknown Source)
+[2020-05-15 14:06:51.923][ERROR] BbsServiceImpl.deleteBbs(BbsServiceImpl.java:221) 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`poppypoppy`.`imgs`, CONSTRAINT `fk_imgs_bbs1` FOREIGN KEY (`bbsno`) REFERENCES `bbs` (`bbsno`))
+### The error may exist in file [D:\KRT\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JAVA20_4\WEB-INF\classes\mappers\BbsMapper.xml]
+### The error may involve BbsMapper.deleteItem-Inline
+### The error occurred while setting parameters
+### SQL: DELETE FROM Bbs WHERE   bbsno=?
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`poppypoppy`.`imgs`, CONSTRAINT `fk_imgs_bbs1` FOREIGN KEY (`bbsno`) REFERENCES `bbs` (`bbsno`))
+; Cannot delete or update a parent row: a foreign key constraint fails (`poppypoppy`.`imgs`, CONSTRAINT `fk_imgs_bbs1` FOREIGN KEY (`bbsno`) REFERENCES `bbs` (`bbsno`)); nested exception is java.sql.SQLIntegrityConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`poppypoppy`.`imgs`, CONSTRAINT `fk_imgs_bbs1` FOREIGN KEY (`bbsno`) REFERENCES `bbs` (`bbsno`))
+[2020-05-15 14:07:21.277][ERROR] ImgsServiceImpl.deleteImgs(ImgsServiceImpl.java:124) 
+[2020-05-15 14:07:57.882][ERROR] ImgsServiceImpl.deleteImgs(ImgsServiceImpl.java:124) 
+[2020-05-15 14:08:01.370][ERROR] ImgsServiceImpl.deleteImgs(ImgsServiceImpl.java:124) 
+[2020-05-15 14:09:29.389][ERROR] ImgsServiceImpl.deleteImgs(ImgsServiceImpl.java:124) 
+[2020-05-15 14:09:36.567][ERROR] ImgsServiceImpl.deleteImgs(ImgsServiceImpl.java:124) 
+[2020-05-15 14:09:44.602][ERROR] ImgsServiceImpl.deleteImgs(ImgsServiceImpl.java:124) 
+[2020-05-15 14:09:53.330][ERROR] ImgsServiceImpl.deleteImgs(ImgsServiceImpl.java:124) 
+[2020-05-15 14:30:19.737][ERROR] ContextLoader.initWebApplicationContext(ContextLoader.java:313) Context initialization failed
+org.springframework.beans.factory.CannotLoadBeanClassException: Cannot find class [kr.co.poppy.helper.WebHelper] for bean with name 'webHelper' defined in ServletContext resource [/WEB-INF/spring/root-context.xml]; nested exception is java.lang.ClassNotFoundException: kr.co.poppy.helper.WebHelper
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1477)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineTargetType(AbstractAutowireCapableBeanFactory.java:682)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.predictBeanType(AbstractAutowireCapableBeanFactory.java:649)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.isFactoryBean(AbstractBeanFactory.java:1605)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.isFactoryBean(AbstractBeanFactory.java:1080)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:859)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:401)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:292)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:103)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4701)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5167)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1412)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1402)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.ClassNotFoundException: kr.co.poppy.helper.WebHelper
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1358)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1180)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Unknown Source)
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:277)
+	at org.springframework.beans.factory.support.AbstractBeanDefinition.resolveBeanClass(AbstractBeanDefinition.java:456)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doResolveBeanClass(AbstractBeanFactory.java:1542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1469)
+	... 19 more

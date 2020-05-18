@@ -68,7 +68,8 @@
 									<div class="word">
 										<input type="checkbox" name="cart_check"
 											class="cart cart-size"> <a href="${viewUrl}"> <img
-											src="${item.imgpath}${item.imgname}.${item.imgext}" class="cart-img" />
+											src="${item.imgpath}${item.imgname}.${item.imgext}"
+											class="cart-img" />
 										</a>
 
 										<p>
@@ -78,7 +79,7 @@
 											class="point-icon">적</span>&nbsp;<span class="point">${fn:substring(item.gsale*0.02, 0, fn:indexOf(item.gsale*0.02,"."))}</span>원</small>
 										<b>
 											<p class="item_price">${item.gsale}원</p>
-										</b> </br></br>
+										</b> </br> </br>
 									</div>
 									<div class="word-btn">
 										<button class="count minus">
@@ -101,7 +102,7 @@
 											data-cartno="${item.cartno}">삭제</button>
 										<button type="button">관심상품</button>
 										<button type="button" class="btn btn2"
-											onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do'">주문하기</button>
+											onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do?memno=${myInfo.memno},goodsno=${item.goodsno}'">주문하기</button>
 									</div>
 								</div>
 							</div>

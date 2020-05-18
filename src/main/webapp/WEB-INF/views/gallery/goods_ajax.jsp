@@ -122,8 +122,8 @@
 						<button type="submit"
 							onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do'"
 							id="action-orderform">구매하기</button>
-						<input type="hidden" name="goodsno" value="${goods.goodsno}" /> 
-						<input type="hidden" name="memno" value="${userInfo.memno}" />
+						<input type="hidden" name="memno" value="${myInfo.memno}" />
+						<input type="hidden" name="goodsno" value="${goods.goodsno}" />
 					</div>
 				</div>
 			</div>

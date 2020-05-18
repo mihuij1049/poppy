@@ -567,7 +567,7 @@ public class KRTController {
 	/** 장바구니 */
 	/** 목록 페이지 */
 	@RequestMapping(value = "/pay/cart.do", method = RequestMethod.GET)
-	public ModelAndView cart_list(Model model) {
+	public ModelAndView cart_list(Model model, @RequestParam(value = "memno", defaultValue = "0") int memno) {
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
 
