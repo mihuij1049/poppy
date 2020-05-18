@@ -150,9 +150,25 @@ public class CommunityController {
 	
 	/** ========== Q&A 작성폼 페이지 ========== */
 	@RequestMapping(value = "/community/qna_wri.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView add(Model model) {
-		return new ModelAndView("community/qna_wri");
+	public ModelAndView add(Model model,
+		@RequestParam(value = "goodsno", defaultValue="0") int goodsno) {
+		if(goodsno!=0) {
+			
+			Goods input = new Goods();
+			input.setGoodsno(goodsno);
+			
+			Goods output = null;
+	
+			try {
+				goodsService.getGoodsItem(input);
+			} catch (Exception e) {
+				return webHelper.redirect(null, e.getLocalizedMessage());
+			}
+			model.addAttribute("output", output);
+		}
+			return new ModelAndView("community/qna_wri");
 	}
+
 
 	
 	/** ========== Q&A 작성폼에 대한 action페이지 ========== */

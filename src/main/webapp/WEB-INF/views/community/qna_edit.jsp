@@ -28,43 +28,7 @@
 					</b>
 				</h4>
 			</div>
-			<!-- 모달창 시작 -->
-			<div id="search-modal">
-				<div class="search-title clearfix">
-					상품정보선택
-					<div class="search-close pull-right">X</div>
-				</div>
-				<div class="search-searching">
-					<div class="search-bar">
-						<div class="search-textbar">
-							<input type="text" name="search-goods" placeholder="상품명을 입력하세요." />
-						</div>
-						<button class="btn btn-sm btn-searching" id="search_goods_btn">검
-							색</button>
-					</div>
-
-					<div class="search-result">
-						총 <b class="search-qty">0</b>개의 상품이 검색되었습니다.
-					</div>
-				</div>
-				<div class="search-body">
-					<ul class="search-list" id="search_goods_list">
-
-					</ul>
-				</div>
-				<div class="search-item-paging">
-					<ul class="pagination pagination-xs">
-						<li class="disabled"><a href="#">«</a></li>
-						<!-- 활성화 버튼은 아래의 구조로 구성하시면 됩니다. sr-only는 스크린리더 전용입니다. -->
-						<li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
-						<li><span>2</span></li>
-						<li><span>3</span></li>
-						<li class="paging-right"><a href="#">»</a></li>
-					</ul>
-				</div>
-				<div class="search-modal-layer"></div>
-			</div>
-			<!-- 모달창 끝 -->
+			
 			<form name="qna_wri" id="editForm"
 				action="${pageContext.request.contextPath}/community/qna_edit_ok.do">
 				<%
