@@ -22,6 +22,8 @@
 		<result property="deliprice" column="deliprice" />
 		<result property="gprice" column="gprice" />
 		<result property="gsale" column="gsale" />
+		<result property="gdoption" column="gdoption" />
+		<result property="gddetailno" column="gddetailno" />
 		<result property="goodsno" column="goodsno" />
 		<result property="orderno" column="orderno" />
 	</resultMap>
@@ -30,20 +32,26 @@
 	<select id="selectList" parameterType="kr.co.poppy.model.Cart"
 		resultMap="cartMap">
 		SELECT c.cartno, i.imgname, i.imgext, i.imgpath, i.imgtype,
-		g.gname, g.goodsno, o.deliprice, g.gprice, g.gsale, c.cartqty
+		g.gname,
+		g.goodsno, o.deliprice, g.gprice, g.gsale, c.cartqty,
+		gd.gddetailno, gd.gdoption
 		FROM goods g
 		INNER JOIN imgs i ON g.goodsno=i.goodsno
-		INNER JOIN goodsdetail gd ON g.goodsno = gd.goodsno
-		INNER JOIN cart c ON gd.gddetailno = c.gddetailno
+		INNER
+		JOIN goodsdetail gd ON g.goodsno = gd.goodsno
+		INNER JOIN cart c ON
+		gd.gddetailno = c.gddetailno
 		INNER JOIN members m ON c.memno = m.memno
-        INNER JOIN orders o ON m.memno = o.orderno
-		WHERE c.memno=#{memno} AND i.imgtype="A";
+		INNER JOIN orders o ON m.memno = o.orderno
+		WHERE c.memno=#{memno} AND
+		i.imgtype="A";
 	</select>
-	
+
 	<!-- 중복 담기를 방지하기 위한 카운트(갯수) 조회 -->
-	<select id="selectItemCount" parameterType="kr.co.poppy.model.Cart"
-		resultType="int">
-		SELECT count(*) from cart WHERE memno = #{memno} and gddetailno = #{gddetailno}
+	<select id="selectItemCount"
+		parameterType="kr.co.poppy.model.Cart" resultType="int">
+		SELECT count(*) from
+		cart WHERE memno = #{memno} and gddetailno = #{gddetailno}
 	</select>
 
 	<!-- 데이터 저장을 위한 기능 정의 -->
@@ -52,7 +60,8 @@
 		INSERT INTO cart(cartqty, regdate,
 		editdate, gddetailno, memno)
 		VALUES (#{cartqty}, now(),
-		now(), #{gddetailno}, #{memno});
+		now(),
+		#{gddetailno}, #{memno});
 	</insert>
 
 	<!-- 데이터 갱신을 위한 기능 정의 -->
@@ -71,7 +80,8 @@
 		memno=#{memno} AND cartno=#{cartno};
 	</delete>
 	<!-- 회원탈퇴시 모든 카트 삭제를 위한 기능 정의 -->
-	<delete id="delete_members_item" parameterType="kr.co.poppy.model.Members">
+	<delete id="delete_members_item"
+		parameterType="kr.co.poppy.model.Members">
 		DELETE FROM cart
 		WHERE
 		memno=#{memno}

@@ -11,7 +11,7 @@
 <head>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/share/cart.css" />
+	href="${pageContext.request.contextPath}/share/cart.css?ver=1" />
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -57,6 +57,8 @@
 							<c:set var="deliprice" value="${item.deliprice }" />
 							<c:set var="gprice" value="${item.gprice }" />
 							<c:set var="gsale" value="${item.gsale }" />
+							<c:set var="gdoption" value="${item.gdoption }" />
+							<c:set var="gddetailno" value="${item.gddetailno }" />
 							<c:set var="cartqty" value="${item.cartqty }" />
 							<c:set var="goodsno" value="${item.goodsno }" />
 							<%-- 상세페이지로 이동하기 위한 URL --%>
@@ -79,14 +81,15 @@
 											class="point-icon">적</span>&nbsp;<span class="point">${fn:substring(item.gsale*0.02, 0, fn:indexOf(item.gsale*0.02,"."))}</span>원</small>
 										<b>
 											<p class="item_price">${item.gsale}원</p>
-										</b> </br> </br>
+										</b>
+										<p class="option">[옵션: ${item.gdoption}]</p>
 									</div>
 									<div class="word-btn">
 										<button class="count minus">
 											<img src="../share/img/마이너스.png">
 										</button>
 										<input type="number" class="count-label" value="1"
-											id="count-label">
+											id="count-label" name="gdcount">
 										<button class="count plus">
 											<img src="../share/img/플러스.png">
 										</button>
@@ -102,7 +105,7 @@
 											data-cartno="${item.cartno}">삭제</button>
 										<button type="button">관심상품</button>
 										<button type="button" class="btn btn2"
-											onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do?memno=${myInfo.memno},goodsno=${item.goodsno}'">주문하기</button>
+											onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do?goodsno=${item.goodsno},memno=${myInfo.memno},gddetailno=${item.gddetailno},gdoption=${item.gdoption},gdcount=3'">주문하기</button>
 									</div>
 								</div>
 							</div>

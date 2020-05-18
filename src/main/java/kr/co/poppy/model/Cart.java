@@ -39,4 +39,6 @@ public class Cart {
 	private int goodsno;
 	/** 주문 번호 */
     private int orderno;
+    /** 상품상세 옵션 */
+    private String gdoption;
 }

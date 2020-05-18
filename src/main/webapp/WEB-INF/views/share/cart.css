@@ -8,7 +8,6 @@
 	margin-bottom: 0;
 }
 
-
 .cart-box {
 	padding: 10px;
 	border-bottom: 1px solid #ddd;
@@ -38,9 +37,15 @@
 
 .word p {
 	font-size: 13px;
+	margin-bottom: 0;
 }
 
-.word .name {
+.name {
+	display: inline-block;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width:60%;
+	overflow: hidden;
 	color: #000;
 }
 
@@ -69,6 +74,10 @@
 .word-btn .count {
 	padding: 0;
 	border: none;
+}
+
+.option {
+	padding-left: 15px;
 }
 
 .count-label {
