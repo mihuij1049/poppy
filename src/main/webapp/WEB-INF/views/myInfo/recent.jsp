@@ -54,10 +54,9 @@
 									<div class="btns">
 										<button type="button" class="btn btn-inverse btn-delete-item"
 											id="delete-list-item" data-goodsno="${item.goodsno}">삭제</button>
-										<button type="button" class="btn btn-inverse in-cart"
-											id="put-cart">장바구니담기</button>
+										
 										<button type="button" class="btn btn1 btn-order-item"
-											id="order">주문하기</button>
+											id="order" >주문하기</button>
 									</div>
 								</div>
 							</li>
@@ -93,36 +92,25 @@
 						"click",
 						".btn-order-item",
 						function(e) {
-							location.href = "${pageContext.request.contextPath}/pay/orderform.do";
+							var goodsno = $(this).prev().data("goodsno");
+							console.log(goodsno);
+							location.href = "${pageContext.request.contextPath}/gallery_ajax/goods.do?goodsno="+goodsno;
 						});
 		/** 최근 본 상품에서 삭제 */
 		$("#recent-item-group").on("click", ".btn-delete-item", function(e) {
 
 			var goodsno = $(this).data("goodsno");
-			console.log(goodsno);
 			var c = getCookie("recentItem");
 			c = unescape(c);
-			console.log(c);
-			/* var c1 = c.indexOf(goodsno);
-			var c.replace(c1) */
-			c = c.replaceAll(goodsno+",", "");
-			console.log(c);
+			var c1 = c.indexOf(goodsno);
+			if (c1!=0) { 
+			c = c.replaceAll(","+goodsno, "");
+			} else {
+				c = c.replaceAll(goodsno+",", "");
+			}
 			c = escape(c);
 			setCookie("recentItem", c, 1);
 			$(this).parent().parent().parent().remove();
-		});
-		/** 장바구니 담기 */
-		var count = $("#cart-qty").text();
-		var put_cart = count;
-		$("#cart-qty").text(put_cart);
-		$("#recent-item-group").on("click", "#put-cart", function(e) {
-			put_cart++;
-			if (put_cart == Number(count) + 1) {
-				$("#cart-qty").text(put_cart);
-				alert("해당 상품을 장바구니에 담았습니다.");
-			} else {
-				alert("이미 해당 상품을 장바구니에 담았습니다.");
-			}
 		});
 	</script>
 </body>
