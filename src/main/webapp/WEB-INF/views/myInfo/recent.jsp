@@ -34,20 +34,21 @@
 				</c:when>
 				<c:otherwise>
 					<!-- 최근본 상품 목록 시작 -->
-						<ul class="recent" id="recent-item-group">
+					<ul class="recent" id="recent-item-group">
 						<c:forEach var="item" items="${output}" varStatus="status">
 							<li class="recent-item-list">
 								<div class="mycart">
 									<div class="mygoods clearfix">
-										<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=${item.goodsno}">
-										<img src="${item.imgpath}${item.imgname}.${item.imgext}" class="cart-img"></a>
+										<a
+											href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=${item.goodsno}">
+											<img src="${item.imgpath}${item.imgname}.${item.imgext}"
+											class="cart-img">
+										</a>
 										<div class="word">
-											<b>${item.gname}</b><br> <small><span class="price1"><fmt:formatNumber
-										value="${item.gprice }"
-										pattern="#,###" />원</span></small><br>
-											<b><fmt:formatNumber
-										value="${item.gsale}"
-										pattern="#,###" /></b>
+											<b>${item.gname}</b><br> <small><span
+												class="price1"><fmt:formatNumber
+														value="${item.gprice }" pattern="#,###" />원</span></small><br> <b><fmt:formatNumber
+													value="${item.gsale}" pattern="#,###" /></b>
 										</div>
 									</div>
 									<div class="btns">
@@ -60,8 +61,8 @@
 									</div>
 								</div>
 							</li>
-							</c:forEach>
-						</ul>				
+						</c:forEach>
+					</ul>
 				</c:otherwise>
 			</c:choose>
 		</div>
@@ -69,7 +70,13 @@
 	</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
 	<script type="text/javascript">
-	
+		// 검색 쿠키 값 가져오기 메서드 정의
+		var getCookie = function(name) {
+			var value = document.cookie.match('(^|;) ?' + name
+					+ '=([^;]*)(;|$)');
+			return value? value[2] : null;
+		}
+
 		/** 주문하기 */
 		$("#recent-item-group")
 				.on(
@@ -80,14 +87,14 @@
 						});
 		/** 최근 본 상품에서 삭제 */
 		$("#recent-item-group").on("click", ".btn-delete-item", function(e) {
-			$(this).parent().parent().parent().remove();
+
 			var goodsno = $(this).data("goodsno");
 			console.log(goodsno);
-			var c = document.cookie;
+			var c = getCookie("recentItem");
 			console.log(c);
 			c.indexOf(goodsno);
 			console.log(c.indexOf(goodsno));
-			
+			$(this).parent().parent().parent().remove();
 		});
 		/** 장바구니 담기 */
 		var count = $("#cart-qty").text();

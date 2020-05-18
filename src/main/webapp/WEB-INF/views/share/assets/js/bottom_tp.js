@@ -5,7 +5,7 @@ $(".click-searchtab").click(function() {
 	// 검색 쿠키 값 가져오기 메서드 정의
 	var getCookie = function(name) {
 		var value= document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-		return vluae? vluae[2] : null;
+		return value? value[2] : null;
 	}
 	// 쿠키 값 가져오기
 	var searchGoods = getCookie("searchGoods");
