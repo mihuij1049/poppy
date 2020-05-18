@@ -375,6 +375,19 @@ public class GalleryController {
 		List<Goods> output = null;
 		PageData pageData = null;
 		
+		String searchGoods = webHelper.getCookie("searchGoods");
+	     
+		/** 검색어 쿠키 */
+	    if (searchGoods==null) {
+	    	// 쿠키가 없다면? 새로운 쿠키를 생성하면서 검색어 를 저장
+	         webHelper.setCookie("searchGoods", keyword, 60*60*24);
+	         System.out.println("============쿠키의값" + webHelper.getCookie("searchGoods"));
+	    } else {
+	    	// 쿠키가 있다면?
+	    	webHelper.setCookie("searchGoods", searchGoods + "," + searchGoods, 60*60*24);
+	    	System.out.println("============쿠키의값" + webHelper.getCookie("searchGoods"));
+	    }
+		
 		try {
 			// 전체 게시글 수 조회
 			totalCount = goodsService.getGoodsCount(input);

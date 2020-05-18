@@ -10,6 +10,10 @@
 <head>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/share/photo_rv.css" />
+<style>
+
+</style>
+
 </head>
 
 <body>
@@ -29,7 +33,7 @@
 					<form>
 						<div class="pr_search_tab_bg">
 							<div class="pr_search_tab">
-								<div class="cate_ip">
+								<!-- <div class="cate_ip">
 									<i class="glyphicon glyphicon-th-list icon_size"></i> 카테고리선택
 								</div>
 								<select name="category" class="cate_select">
@@ -38,7 +42,7 @@
 									<option value="">외출용품</option>
 									<option value="">대형견코너</option>
 									<option value="">홈리빙</option>
-								</select>
+								</select> -->
 								<div>
 									<div class="cate_ip">
 										<i class="glyphicon glyphicon-search icon_size"></i> 리뷰검색
@@ -111,7 +115,8 @@
 				</div>
 				<%-- 조회결과가 없는 경우 --%>
 					<c:if test="${output == null || fn:length(output) == 0}">
-						조회결과가 없습니다.
+						<br><br>
+						<span><b>조회결과가 없습니다.</b></span>
 					</c:if>
 				</div>
 				<div class="pagenumber">

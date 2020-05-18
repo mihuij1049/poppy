@@ -162,6 +162,12 @@
 	color: #777;
 }
 
+.container_1 span {
+	text-align: center;
+	font-size: 20px;
+	color: #ffc7c1;
+}
+
 /* 페이지 버튼 css */
 .nowpage {
 	border: 1px solid #ffc7c1;

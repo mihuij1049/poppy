@@ -20,6 +20,13 @@
 	border: 0px;
 	font-size: 13px;
 }
+
+.container_1 span {
+	text-align: center;
+	font-size: 20px;
+	color: #ffc7c1;
+}
+
 .nowpage {
 	border: 1px solid #ffc7c1;
 	background: #ffc7c1;
@@ -86,11 +93,13 @@
 				</b>
 			</h4>
 		</div>
+			<br class="clear">
 			<div class="container_1">
 			<c:choose>
 				<%-- 조회결과 있으면 --%>
 				<c:when test="${output == null || fn:length(output) == 0 }">
-					조회결과가 없습니다.
+					<br><br>
+					<span><b>조회결과가 없습니다.</b></span>
 				</c:when>
 				<c:otherwise>
 				<%-- 게시물 영역 시작 --%>
@@ -180,6 +189,7 @@
 						<span class="nextno">≫</span>
 					</c:otherwise>
 				</c:choose>
+				<br><br>
 			</div>
 		</div>
 		<%@ include file="../share/bottom_tp.jsp"%>
