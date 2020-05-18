@@ -329,7 +329,7 @@
 						<div class="qna-head">
 							<p class="qna-btn">
 								<button type="button"
-									onclick="location.href='${pageContext.request.contextPath}/community/qna_wri.do'"
+									onclick="location.href='${pageContext.request.contextPath}/community/qna_wri.do?goodsno=${goods.goodsno}'" 
 									id="qna-write">상품문의하기</button>
 								<button type="button"
 									onclick="location.href='${pageContext.request.contextPath}/community/qna.do'"
@@ -561,7 +561,7 @@
             <tr>
 			    <td class="subjects"><strong> <span
 				         class="glyphicon glyphicon-lock"></span> <a href="${pageContext.request.contextPath}/community/article.do?bbsno={{bbsno}}&bbstype={{bbstype}}" 
-                         class="subject">{{bbstitle}}</a> <span class="comment">[{{cmtCount}}]</span>
+                         class="subject">{{bbstitle}}</a> <span class="comment">[{{cmtcount}}]</span>
 				</strong><br /> <span class="name" title="작성자"></span> <span
 				    class="date" title="작성일">{{regdate}}</span> <span>조회
 						235</span></td>

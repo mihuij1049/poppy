@@ -121,7 +121,8 @@
 	<select id="selectList_goods"
 		parameterType="kr.co.poppy.model.Bbs" resultMap="bbsMap">
 		SELECT bbsno, bbstype, bbstitle, bbscontent, rvlike, qnasec, qnapw,
-		b.regdate, b.editdate, b.memno, b.goodsno, m.username, m.userid
+		b.regdate, b.editdate, b.memno, b.goodsno, m.username, m.userid,
+		(SELECT count(*) FROM comments c WHERE c.bbsno=b.bbsno) AS cmtcount
 		FROM
 		bbs b
 		INNER JOIN members m ON b.memno=m.memno
