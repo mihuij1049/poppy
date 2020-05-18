@@ -63,13 +63,16 @@
 												<div id="delivery-info-phone">${output.odphone}</div>
 											</div>
 										</div>
-										<input type="hidden" id="delivery-info-name" name="odname" value="${output.odname}" /> 
-										<input type="hidden" id="zipcode" name="zcode" value="${output.zcode}" /> 
-										<input type="hidden" id="addr1" name="addr1" value="${output.addr1}" />
-										<input type="hidden" id="addr2" name="addr2" value="${output.addr2}" /> 
-										<input type="hidden" name="odphone" value="${output.odphone}" /> 
-										<input type="hidden" name="odemail" value="${output.odemail}" /> 
-										<span
+										<input type="hidden" name="addrno" value="${output.addrno}" />
+										<input type="hidden" id="delivery-info-name" name="odname"
+											value="${output.odname}" /> <input type="hidden"
+											id="zipcode" name="zcode" value="${output.zcode}" /> <input
+											type="hidden" id="addr1" name="addr1" value="${output.addr1}" />
+										<input type="hidden" id="addr2" name="addr2"
+											value="${output.addr2}" /> <input type="hidden"
+											id="delivery-info-phone" name="odphone"
+											value="${output.odphone}" /> <input type="hidden"
+											name="odemail" value="${output.odemail}" /> <span
 											class="side-right">
 											<button type="button" id="recent-address-list">배송지
 												목록</button>
@@ -524,9 +527,8 @@
 				</ul>
 			</div>
 		</div>
-	</form>
-	<!-- 배송지 목록 조회 -->
-	<script id="recent_addr_tmpl" type="text/x-handlebars-template">
+		<!-- 배송지 목록 조회 -->
+		<script id="recent_addr_tmpl" type="text/x-handlebars-template">
         {{#each item}}
 		   	<ul class="addr-content" style="list-style: none">
 	            <li delivery-list>
@@ -554,7 +556,8 @@
                  </li>
 			</ul>
         {{/each}}
-    </script>
+        </script>
+	</form>
 	<!-- Javascript -->
 	<script
 		src="${pageContext.request.contextPath}/share/assets/js/jquery-3.2.1.min.js"></script>
@@ -789,31 +792,33 @@
 		});
 
 		$(function() {
-			$("#new_addr").click(function(e) {
-				$("input:radio[id='same-addr2']").prop("checked", true);
-			});
-		});
-
-		$(function() {
-			$("#orderform")
-					.ajaxForm(
-							{
-								// 전송 메서드 지정
-								method : "POST",
-								// 서버에서 200 응답을 전달한 경우 실행됨
-								success : function(json) {
-									console.log(json);
-									if (json.rt == "OK") {
-										window.location = "${pageContext.request.contextPath}/myInfo/order_list.do?memno="
-												+ json.Asave.memno;
-									}
-								}
+			$("#new_addr")
+					.click(
+							function(e) {
+								$("input:radio[id='same-addr2']").prop(
+										"checked", true);
+								$("#orderform")
+										.ajaxForm(
+												{
+													// 전송 메서드 지정
+													method : "POST",
+													// 서버에서 200 응답을 전달한 경우 실행됨
+													success : function(json) {
+														console.log(json);
+														if (json.rt == "OK") {
+															window.location = "${pageContext.request.contextPath}/myInfo/order_list.do?memno="
+																	+ json.Asave.memno;
+														}
+													}
+												});
 							});
 		});
-
 		$(function() {
+			// 수정 버튼이 클릭된 경우
 			$(".recent-addr")
-					.click(
+					.on(
+							'click',
+							'#choice-modify',
 							function(e) {
 								// #addForm에 대한 submit 이벤트를 가로채서 Ajax요청을 전송한다.
 								$("#orderform")
@@ -826,7 +831,7 @@
 														// json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
 														if (json.rt == "OK") {
 															window.location = "${pageContext.request.contextPath}/myInfo/order_list.do?memno="
-																	 +json.address.memno;
+																	+ json.address.memno;
 														}
 													}
 												});
