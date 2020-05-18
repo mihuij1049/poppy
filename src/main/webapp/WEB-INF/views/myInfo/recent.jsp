@@ -70,13 +70,23 @@
 	</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
 	<script type="text/javascript">
-		// 검색 쿠키 값 가져오기 메서드 정의
+		// 쿠키 값 가져오기 메서드 정의
 		var getCookie = function(name) {
 			var value = document.cookie.match('(^|;) ?' + name
 					+ '=([^;]*)(;|$)');
 			return value? value[2] : null;
 		}
-
+		// replaceAll prototype 선언
+		String.prototype.replaceAll = function(org, dest) {
+			return this.split(org).join(dest);
+		}
+		// 쿠키 값 저장하기 메서드 정의
+		function setCookie(name, value, exp) {
+			var date = new Date();
+			date.setTime(date.getTime() + exp*24*60*60*1000);
+			document.cookie = name + '=' +  value + ';expires=' + date.toUTCString() + ';path=/';
+		}	
+	
 		/** 주문하기 */
 		$("#recent-item-group")
 				.on(
@@ -91,9 +101,14 @@
 			var goodsno = $(this).data("goodsno");
 			console.log(goodsno);
 			var c = getCookie("recentItem");
+			c = unescape(c);
 			console.log(c);
-			c.indexOf(goodsno);
-			console.log(c.indexOf(goodsno));
+			/* var c1 = c.indexOf(goodsno);
+			var c.replace(c1) */
+			c = c.replaceAll(goodsno+",", "");
+			console.log(c);
+			c = escape(c);
+			setCookie("recentItem", c, 1);
 			$(this).parent().parent().parent().remove();
 		});
 		/** 장바구니 담기 */
