@@ -78,9 +78,12 @@
 											<a href="${viewUrl}"><b class="name">${item.gname}</b></a>
 										</p>
 										<span>배송:${item.deliprice}원[조건]/기본배송</span><br> <small><span
-											class="point-icon">적</span>&nbsp;<span class="point">${fn:substring(item.gsale*0.02, 0, fn:indexOf(item.gsale*0.02,"."))}</span>원</small>
+											class="point-icon">적</span>&nbsp;<span class="point">${fn:substring(item.gsale*item.cartqty*0.02, 0, fn:indexOf(item.gsale*item.cartqty*0.02,"."))}</span>원</small>
 										<b>
-											<p class="item_price">${item.gsale}원</p>
+											<p>
+												<fmt:formatNumber value="${item.gsale}" pattern="#,###" />
+												원
+											</p>
 										</b>
 										<p class="option">[옵션: ${item.gdoption}]</p>
 									</div>
@@ -88,8 +91,8 @@
 										<button class="count minus">
 											<img src="../share/img/마이너스.png">
 										</button>
-										<input type="number" class="count-label" value="1"
-											id="count-label" name="gdcount">
+										<input type="number" class="count-label" id="count-label"
+											name="gdcount" value="${item.cartqty}">
 										<button class="count plus">
 											<img src="../share/img/플러스.png">
 										</button>
@@ -98,14 +101,14 @@
 									<div class="word-botm">
 										<p>
 											<b>합계: <span class="price"><fmt:formatNumber
-														value="${item.gsale}" pattern="#,###" /></span>원
+														value="${item.gsale*item.cartqty}" pattern="#,###" /></span>원
 											</b>
 										</p>
 										<button type="button" class="delete"
 											data-cartno="${item.cartno}">삭제</button>
 										<button type="button">관심상품</button>
 										<button type="button" class="btn btn2"
-											onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do?goodsno=${item.goodsno},memno=${myInfo.memno},gddetailno=${item.gddetailno},gdoption=${item.gdoption},gdcount=3'">주문하기</button>
+											onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do?goodsno=${item.goodsno},memno=${myInfo.memno},gddetailno=${item.gddetailno},gdoption=${item.gdoption},gdcount=${item.cartqty}'">주문하기</button>
 									</div>
 								</div>
 							</div>
@@ -209,36 +212,32 @@
 			$(".cart-count").html(length);
 
 			for (var i = 0; i < length; i++) {
-				sum_price += parseInt($(".price").eq(i).html().replace(/,/gi,
-						""));
+
+			}
+
+			for (var i = 0; i < length; i++) {
+
 			}
 
 			$("#table_price").html(sum_price);
 			if (sum_price >= 30000) {
-				table_delivery = 0;
-				$("#table_delivery").html(table_delivery);
+
 			}
 
 			// 로딩시 초기 하단 테이블 금액 표시
 			for (var i = 0; i < length; i++) {
-				item_price = $(".item_price").eq(i).html();
-				item_price2 = item_price.toString().replace(
-						/\B(?=(\d{3})+(?!\d))/g, ",");
-				$(".item_price").html(item_price2);
-				table_price += parseInt($(".price").eq(i).html().replace(/,/gi,
-						""));
-				if (i == length - 1) {
-					table_sum = table_price + table_delivery;
-					table_sum2 = table_sum.toString().replace(
-							/\B(?=(\d{3})+(?!\d))/g, ",");
-					$("#table_sum").html(table_sum2);
-					table_price2 = table_price.toString().replace(
-							/\B(?=(\d{3})+(?!\d))/g, ",");
-					$("#table_price").html(table_price2);
-					table_delivery2 = table_delivery.toString().replace(
-							/\B(?=(\d{3})+(?!\d))/g, ",");
-					$("#table_delivery").html(table_delivery2);
+				sum += parseInt($(".price").eq(i).html().replace(/,/gi, ""));
+				sum2 = sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				console.log(sum2);
+				$("#table_price").html(sum2);
+				if (sum >= 30000) {
+					table_delivery = 0;
+					$("#table_delivery").html(table_delivery);
 				}
+				table_sum = sum + table_delivery;
+				table_sum2 = table_sum.toString().replace(
+						/\B(?=(\d{3})+(?!\d))/g, ",");
+				$("#table_sum").html(table_sum2);
 			}
 
 			// 수량 플러스 버튼 클릭시 금액 조정
@@ -249,8 +248,10 @@
 						var value = $(this).prev().val();
 						value++;
 						$(this).prev().val(value);
+						// 합계가격의 위치
 						sum_price = $(this).parent().next().children()
 								.children().children();
+						// 상품 하나의 가격
 						item_price = $(this).parent().prev().children("b")
 								.children().html().replace(/,/gi, "").replace(
 										"원", "");
@@ -267,6 +268,7 @@
 										/\B(?=(\d{3})+(?!\d))/g, ","));
 
 						// 장바구니에 담긴 상품 수 많큼 반복 하여 상품가격 테이블에 값을 출력
+						sum=0;
 						length = $(".cart-box").length;
 						for (var i = 0; i < length; i++) {
 							sum += parseInt($(".price").eq(i).html().replace(
@@ -316,6 +318,7 @@
 										/\B(?=(\d{3})+(?!\d))/g, ","));
 
 						// 장바구니에 담긴 상품 수 많큼 반복 하여 상품가격 테이블에 값을 출력
+						sum=0;
 						length = $(".cart-box").length;
 						for (var i = 0; i < length; i++) {
 							sum += parseInt($(".price").eq(i).html().replace(
@@ -362,6 +365,7 @@
 										/\B(?=(\d{3})+(?!\d))/g, ","));
 
 						// 장바구니에 담긴 상품 수 많큼 반복 하여 상품가격 테이블에 값을 출력
+						sum=0;
 						length = $(".cart-box").length;
 						for (var i = 0; i < length; i++) {
 							sum += parseInt($(".price").eq(i).html().replace(
