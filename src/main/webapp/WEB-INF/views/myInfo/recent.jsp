@@ -52,7 +52,7 @@
 									</div>
 									<div class="btns">
 										<button type="button" class="btn btn-inverse btn-delete-item"
-											id="delete-list-item">삭제</button>
+											id="delete-list-item" data-goodsno="${item.goodsno}">삭제</button>
 										<button type="button" class="btn btn-inverse in-cart"
 											id="put-cart">장바구니담기</button>
 										<button type="button" class="btn btn1 btn-order-item"
@@ -68,45 +68,8 @@
 
 	</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
-	<!-- Handlebars 를 이용한 HTML 템플릿 구성 -->
-	<!-- <script id="goods_item_tmpl" type="text/x-handlebars-template"> -->
-		<!-- {{#each goods}}
-			<li class="recent-item-list">
-				<div class="mycart">
-					<div class="mygoods clearfix">
-						<a href="#"><img src="{{url}}" class="cart-img"></a>
-						<div class="word">
-							<b>{{name}}</b><br> <small><span
-								class="price1">7,000원</span></small><br> <b>{{price}}</b>
-						</div>
-					</div>
-					<div class="btns">
-						<button type="button" class="btn btn-inverse btn-delete-item"
-							id="delete-list-item">삭제</button>
-						<button type="button" class="btn btn-inverse in-cart"
-							id="put-cart">장바구니담기</button>
-						<button type="button" class="btn btn1 btn-order-item" id="order">주문하기</button>
-					</div>
-				</div>
-			</li>
-		{{/each}} -->
-	<!-- </script> -->
 	<script type="text/javascript">
-		/* $(function() {
-			function get_list() {
-				$.get("../share/plugins/goods_list.json", function(req) {
-					// 미리 준비한 HTML틀을 읽어온다.
-					var template = Handlebars.compile($("#goods_item_tmpl")
-							.html());
-					// Ajax 를 통해서 읽어온 JSON 을 템플릿에 병합한다.
-					var html = template(req);
-					// #search_goods_list 에 읽어온 내용을 추가한다.
-					$("#recent-item-group").append(html);
-				});
-			} // 검색 결과를 템플릿을 이용해서 화면에 나타낼 함수 정의
-			get_list();
-		}); */
-
+	
 		/** 주문하기 */
 		$("#recent-item-group")
 				.on(
@@ -118,6 +81,13 @@
 		/** 최근 본 상품에서 삭제 */
 		$("#recent-item-group").on("click", ".btn-delete-item", function(e) {
 			$(this).parent().parent().parent().remove();
+			var goodsno = $(this).data("goodsno");
+			console.log(goodsno);
+			var c = document.cookie;
+			console.log(c);
+			c.indexOf(goodsno);
+			console.log(c.indexOf(goodsno));
+			
 		});
 		/** 장바구니 담기 */
 		var count = $("#cart-qty").text();

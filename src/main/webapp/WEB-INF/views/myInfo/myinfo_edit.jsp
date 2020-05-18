@@ -195,27 +195,9 @@
 					}
 				}
 			});
-			var id_check = 0;
+			
 			var email_check = 0;
-			$("#id_check").click(function(e) {
-				e.preventDefault();
-				
-				var user_id = $("#user_id").val();
-				
-				id_check = 0;
-				if (user_id.length != 0) {
-					$.get("${pageContext.request.contextPath}/myInfo/same_check",
-							{ "userid" : user_id },
-						function(json) {
-							if (json.rt == "OK") {
-								alert("사용이 불가능한 아이디 입니다.");
-							} else {
-								alert("사용이 가능한 아이디 입니다^^");
-								id_check++;
-							}
-						});
-				} 
-			});
+			var used_email = $("#email").val();
 			$("#email_check").click(function() {
 				var useremail = $("#email").val();
 				email_check = 0;
@@ -235,7 +217,10 @@
 
 			$("#join").click(function() {
 				email = $("#email").val();
-				if (email.length != 0 && email_check == 0) {
+				if (email==used_email) {
+					alert("기존 이메일을 사용합니다.");
+					email_check++;
+				} else if (email.length != 0 && email_check == 0) {
 					alert("이메일 중복확인 바랍니다.");
 					return false;
 				}

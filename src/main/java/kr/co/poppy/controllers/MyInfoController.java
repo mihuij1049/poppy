@@ -493,9 +493,17 @@ public class MyInfoController {
 		/** 2) 정보 조회 및 정보 수정 */
 		try {
 			membersSerivce.editMembers(members);
+			
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
+		
+		/** 3) 수정된 사항으로 세션정보 갱신하기 */
+		myInfo.setUserpw(members.getUserpw());
+		myInfo.setUserphone(members.getUserphone());
+		myInfo.setUseremail(members.getUseremail());
+		
+		mySession.setAttribute("userInfo", myInfo);
 
 		String redirectUrl = contextPath + "/myInfo/myinfo.do";
 		return webHelper.redirect(redirectUrl, "고객님의 소중한 정보가 수정되었습니다.");
