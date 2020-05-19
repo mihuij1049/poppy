@@ -88,13 +88,22 @@ public interface GoodsService {
 	public List<Goods> getGoodsListSearch(Goods input) throws Exception;
 	
 	/**
+	 * 상품 데이터(베스트상품)이 저장되어있는 개수 조회
+	 * 
+	 * @param Goods 검색조건을 담고 있는 Beans
+	 * @return int
+	 * @throws Exception
+	 */
+	public int getGoodsCountBest(Goods input) throws Exception;
+	
+	/**
 	 * 상품 데이터 전체가 저장되어있는 개수 조회
 	 * 
 	 * @param Goods 검색조건을 담고 있는 Beans
 	 * @return int
 	 * @throws Exception
 	 */
-	public int getGoodsCount(Goods input) throws Exception;
+	public int getGoodsCountAll(Goods input) throws Exception;
 	
 	/**
 	 * 상품 데이터 cate1 이 저장되어있는 개수 조회

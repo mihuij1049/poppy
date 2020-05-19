@@ -201,8 +201,8 @@
 		</if>
 	</select>
 	
-	<!-- 데이터 수 조회를 위한 기능 정의(전체) -->
-	<select id="selectCountAll"
+	<!-- 데이터 수 조회를 위한 기능 정의(베스트상품) -->
+	<select id="selectCountBest"
 		parameterType="kr.co.poppy.model.Goods" resultType="int">
 		SELECT COUNT(*)
 		FROM goods g
@@ -213,6 +213,17 @@
 			<if test="gname != null and gname != ''">
 				AND gname LIKE concat('%', #{gname}, '%');
 			</if>
+		</where>
+	</select>
+	
+	<!-- 데이터 수 조회를 위한 기능 정의(전체상품) -->
+	<select id="selectCountAll"
+		parameterType="kr.co.poppy.model.Goods" resultType="int">
+		SELECT COUNT(*)
+		FROM goods g
+		INNER JOIN imgs i on g.goodsno = i.goodsno
+		<where>
+			i.imgtype="A"
 		</where>
 	</select>
 	

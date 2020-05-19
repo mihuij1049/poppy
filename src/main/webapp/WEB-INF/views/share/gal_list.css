@@ -19,6 +19,12 @@
 	font-size: 15px;
 }
 
+.ppbanner img {
+	max-width: 100%;
+	height: auto;
+	margin-top:10px;
+}
+
 .container .cate_select {
 	width: 30%;
 	height: 23px;

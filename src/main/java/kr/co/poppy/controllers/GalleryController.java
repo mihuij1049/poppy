@@ -62,7 +62,7 @@ public class GalleryController {
 		
 		try {
 			// 전체 게시글 수 조회
-	        totalCount = goodsService.getGoodsCount(input);
+	        totalCount = goodsService.getGoodsCountAll(input);
 	        // 페이지 번호 계신 --> 계산 결과 로그 출력
 	        pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 	        // sql의 limit절에서 사용될 값을 beans의 static 변수에 저장
@@ -106,7 +106,7 @@ public class GalleryController {
 		
 		try {
 			// 전체 게시글 수 조회
-	        totalCount = goodsService.getGoodsCount(input);
+	        totalCount = goodsService.getGoodsCountBest(input);
 	        // 페이지 번호 계신 --> 계산 결과 로그 출력
 	        pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 	        // sql의 limit절에서 사용될 값을 beans의 static 변수에 저장
@@ -151,7 +151,7 @@ public class GalleryController {
 		
 		try {
 			// 전체 게시글 수 조회
-	        totalCount = goodsService.getGoodsCount(input);
+	        totalCount = goodsService.getGoodsCountAll(input);
 	        // 페이지 번호 계신 --> 계산 결과 로그 출력
 	        pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 	        // sql의 limit절에서 사용될 값을 beans의 static 변수에 저장
@@ -426,7 +426,7 @@ public class GalleryController {
 		
 		try {
 			// 전체 게시글 수 조회
-			totalCount = goodsService.getGoodsCount(input);
+			totalCount = goodsService.getGoodsCountAll(input);
 			// 페이지 번호 계신 --> 계산 결과 로그 출력
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 			// sql의 limit절에서 사용될 값을 beans의 static 변수에 저장

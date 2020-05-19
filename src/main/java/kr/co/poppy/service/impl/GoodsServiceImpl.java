@@ -246,14 +246,34 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 
 	/**
-	 * 상품 데이터가 저장되어있는 개수 조회
+	 * 상품 데이터(베스트상품)이 저장되어있는 개수 조회
 	 * 
 	 * @param Goods 검색조건을 담고 있는 Beans
 	 * @return int
 	 * @throws Exception
 	 */
 	@Override
-	public int getGoodsCount(Goods input) throws Exception {
+	public int getGoodsCountBest(Goods input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("GoodsMapper.selectCountBest", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+	
+	/**
+	 * 상품 데이터(전체상품)이 저장되어있는 개수 조회
+	 * 
+	 * @param Goods 검색조건을 담고 있는 Beans
+	 * @return int
+	 * @throws Exception
+	 */
+	@Override
+	public int getGoodsCountAll(Goods input) throws Exception {
 		int result = 0;
 
 		try {

@@ -44,7 +44,7 @@
 				<c:forEach var="item" items="${output}" varStatus="status" end="0">
 					<c:choose>
 						<c:when test="${item.heartCnt > 0}">
-							<div class="search_tab_bg">
+							<div class="ppbanner">
 							<img src="${pageContext.request.contextPath }/share/img/ppbanner4.jpg">
 							</div>
 						</c:when>
