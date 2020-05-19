@@ -420,7 +420,7 @@ public class GalleryController {
 	         System.out.println("============쿠키의값" + webHelper.getCookie("searchGoods"));
 	    } else {
 	    	// 쿠키가 있다면?
-	    	webHelper.setCookie("searchGoods", searchGoods + "," + searchGoods, 60*60*24);
+	    	webHelper.setCookie("searchGoods", searchGoods + "," + keyword, 60*60*24);
 	    	System.out.println("============쿠키의값" + webHelper.getCookie("searchGoods"));
 	    }
 		

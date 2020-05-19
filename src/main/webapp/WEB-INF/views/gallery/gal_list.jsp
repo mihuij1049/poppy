@@ -34,6 +34,9 @@
 								<c:when test="${item.cate1 == null}">
 								${item.cate2}
 								</c:when>
+								<c:when test="${item.cate1 == null && item.cate2 == null}">
+								전체상품
+								</c:when>
 							</c:choose>
 						</c:forEach>
 				</b>
@@ -284,7 +287,7 @@
 						<span class="nextno">≫</span>
 					</c:otherwise>
 				</c:choose>
-				</c:when>				
+				</c:when>
 				</c:choose>
 				</c:forEach>
 			</div>

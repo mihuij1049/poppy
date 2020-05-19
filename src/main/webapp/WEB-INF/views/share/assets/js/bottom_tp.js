@@ -9,6 +9,8 @@ $(".click-searchtab").click(function() {
 	}
 	// 쿠키 값 가져오기
 	var searchGoods = getCookie("searchGoods");
+	searchGoods = unescape(searchGoods);
+	console.log(searchGoods);
 	// 가져온 쿠키값을 배열에 담기
 	var searchList = [];
 	searchGoods.split(",");
