@@ -88,7 +88,7 @@ public class GalleryController {
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 		// 페이지 구현 변수값
 	    int totalCount = 0; // 전체글수
-	    int listCount = 6; // 페이지당 표시 목록 수
+	    int listCount = 10; // 페이지당 표시 목록 수
 	    int pageCount = 5; // 한 그룹 당 표시할 페이지 번호 수
 		
 		// 2) 데이터 조회

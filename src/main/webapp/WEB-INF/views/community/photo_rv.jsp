@@ -116,7 +116,9 @@
 				<%-- 조회결과가 없는 경우 --%>
 					<c:if test="${output == null || fn:length(output) == 0}">
 						<br><br>
-						<span><b>조회결과가 없습니다.</b></span>
+						<div id=searchnull>
+						<b>조회결과가 없습니다.</b>
+						</div>
 					</c:if>
 				</div>
 				<div class="pagenumber">

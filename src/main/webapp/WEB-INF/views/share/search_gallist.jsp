@@ -10,77 +10,8 @@
 <head>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/share/gal_list.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/share/search_gallist.css" />
 </head>
-<style>
-.pr_in_box button {
-	float: right;
-	width: 50px;
-	height: 45px;
-	padding: 0px 10px;
-	border: 0px;
-	font-size: 13px;
-}
-
-.container_1 span {
-	text-align: center;
-	font-size: 20px;
-	color: #ffc7c1;
-}
-
-.nowpage {
-	border: 1px solid #ffc7c1;
-	background: #ffc7c1;
-	padding: 6px 10px;
-	color: #ff6261;
-}
-
-.otherpage {
-	border: 1px solid #ffc7c1;
-	background: #ffc7c1;
-	padding: 6px 10px;
-	color: white;
-}
-
-.otherpage:hover {
-	text-decoration: none;
-	color: #333;
-}
-
-.pagenumber {
-	text-align: center;
-	margin-bottom: 20px;
-	padding-top: 30px;
-}
-
-.prevok {
-	border: 1px solid #ffc7c1;
-	padding: 6px 10px;
-	color: #ff6261;
-	text-decoration: none;
-}
-
-.prevno {
-	border: 1px solid #ffc7c1;
-	padding: 6px 10px;
-	color: #ffc7c1;
-	text-decoration: none;
-}
-
-.nextok {
-	border: 1px solid #ffc7c1;
-	padding: 6px 10px;
-	color: #ff6261;
-	text-decoration: none;
-}
-
-.nextno {
-	border: 1px solid #ffc7c1;
-	padding: 6px 10px;
-	color: #ffc7c1;
-	text-decoration: none;
-}
-
-</style>
 <body>
 	<%@ include file="../share/top_tp.jsp"%>
 	<div class="content">
@@ -99,7 +30,9 @@
 				<%-- 조회결과 있으면 --%>
 				<c:when test="${output == null || fn:length(output) == 0 }">
 					<br><br>
-					<span><b>조회결과가 없습니다.</b></span>
+					<div id=searchnull>
+					<b>조회결과가 없습니다.</b>
+					</div>
 				</c:when>
 				<c:otherwise>
 				<%-- 게시물 영역 시작 --%>

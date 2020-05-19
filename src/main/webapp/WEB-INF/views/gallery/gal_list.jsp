@@ -43,6 +43,11 @@
 				<div>
 				<c:forEach var="item" items="${output}" varStatus="status" end="0">
 					<c:choose>
+						<c:when test="${item.heartCnt > 0}">
+							<div class="search_tab_bg">
+							<img src="/views/share/img/ppbanner4">
+							</div>
+						</c:when>
 						<c:when test="${item.cate1 != null }">
 						<%-- cate1 조회할 때 사용하는 searchCondition --%>
 							<form action="${pageContext.request.contextPath}/gallery/gal_list_cate.do" method="get">

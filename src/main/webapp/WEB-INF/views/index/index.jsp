@@ -48,18 +48,18 @@
 					<!-- 항목 (1) -->
 					<div class="item active">
 					<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=33">
-						<img src="/upload/1_M.jpg" alt="슬라이더(1)">
+						<img src="share/img/ppcarousel1.jpg" alt="슬라이더(1)">
 					</a>
 					</div>
 					<!-- 항목 (2) -->
 					<div class="item">
 					<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=6">
-						<img src="/upload/2_M.jpg" alt="슬라이더(2)">
+						<img src="share/img/ppcarousel2.jpg" alt="슬라이더(2)">
 					</a>
 					</div>
 					<!-- 항목 (3) -->
 					<div class="item">
-						<img src="/upload/3_M.jpg" alt="슬라이더(3)">
+						<img src="share/img/ppcarousel3.jpg" alt="슬라이더(3)">
 					</div>
 				</div>
 				<!-- // 내용영역 구성 -->
@@ -168,9 +168,6 @@
 							<span id="gprice"><del>₩<fmt:formatNumber value="${item.gsale}" pattern="#,###" />원</del></span>
 							<br>
 							<span id="gsale"><b>₩<fmt:formatNumber value="${item.gsale}" pattern="#,###" />원</b></span>
-							<%-- <button type="submit" class="btn btn-inverse insert-one" id="insert-one" data-heartno="${item.heartno}" data-goodsno="${item.goodsno}">
-							like ♥
-							</button> --%>
 						</div>
 					</div>
 				</c:forEach>
@@ -179,9 +176,9 @@
 					onclick="location.href='${pageContext.request.contextPath }/gallery/gal_list_new.do'">뽀삐뽀삐 전체상품 보러가기</button>
 			</div>
 			<div class="img_banner">
-				<img src="/upload/index_banner1.jpg">
-				<img src="/upload/index_banner2.jpg">
-				<img src="/upload/index_banner3.jpg">
+				<img src="share/img/ppbanner1.jpg">
+				<img src="share/img/ppbanner2.jpg">
+				<img src="share/img/ppbanner3.jpg">
 			</div>
 			<center>
 				<i class="glyphicon glyphicon-bullhorn icon_size1 t_btn"

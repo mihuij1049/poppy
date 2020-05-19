@@ -7,7 +7,7 @@
 <div class="footer">
 		<div id="topbt">
 		<a style="display:scroll;position:fixed;bottom:80px; right:10px;" href="#">
-			<img src="${pageContext.request.contextPath }/share/img/top_btn.png">
+			<img src="share/img/pptopbt.png">
 		</div>
 	<!-- 하단 네비게이션 고정-->
 	<!--- 소개 4인방 링크 -->

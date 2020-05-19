@@ -14,6 +14,11 @@
 	color: #fff;
 }
 
+.search_tab_bg span {
+	text-align:center;
+	font-size: 15px;
+}
+
 .container .cate_select {
 	width: 30%;
 	height: 23px;

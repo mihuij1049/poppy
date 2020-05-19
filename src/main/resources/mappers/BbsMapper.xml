@@ -136,16 +136,17 @@
 	</select>
 
 	<!-- 후기관리 글 목록 페이지 -->
-	<!-- 이게 내거... 저 자꾸 헷갈려서 써둔거예요 나중에 지울게요... -->
 	<select id="selectList_myrv"
 		parameterType="kr.co.poppy.model.Bbs" resultMap="bbsMap">
 		SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,
 		b.goodsno,
 		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,
 		i.goodsno,
-		m.memno, m.userid
+		m.memno, m.userid,
+		g.cate1, g.cate2
 		FROM bbs b
 		INNER JOIN members m ON b.memno=m.memno
+		INNER JOIN goods g ON b.goodsno=g.goodsno
 		INNER JOIN imgs i ON b.bbsno=i.bbsno
 		WHERE i.imgtype="C" AND b.bbstype="C"
 		<if test="bbstitle != null and bbstitle != ''">
@@ -156,7 +157,40 @@
 			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
-
+	
+	<!-- 후기관리 글 목록 페이지(카테고리별-셀렉트) -->
+	<!-- <select id="selectList_myrv2"
+		parameterType="kr.co.poppy.model.Bbs" resultMap="bbsMap">
+		SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,
+		b.goodsno,
+		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,
+		i.goodsno,
+		m.memno, m.userid,
+		g.cate1, g.cate2
+		FROM bbs b
+		INNER JOIN members m ON b.memno=m.memno
+		INNER JOIN goods g ON b.goodsno=g.goodsno
+		INNER JOIN imgs i ON b.bbsno=i.bbsno
+		<WHERE>
+		i.imgtype="C" AND b.bbstype="C"
+		<if test='searchCondition.equals("A")'>
+			g.cate1="푸드"
+		</if>
+		<if test='searchCondition.equals("B")'>
+			g.cate1="의류"
+		</if>
+		<if test='searchCondition.equals("C")'>
+			g.cate1="외출용품"
+		</if>
+		<if test='searchCondition.equals("D")'>
+			g.cate1="홈리빙"
+		</if>
+		<if test='searchCondition.equals("E")'>
+			g.cate1="대형견"
+		</if>
+		ORDER BY bbsno ASC
+		</WHERE>
+	</select> -->
 
 	<!-- ========== 데이터 수 조회를 위한 기능 정의 ========== -->
 	<select id="selectCountAll"
