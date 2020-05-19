@@ -70,7 +70,7 @@ padding-bottom: 50px;
 					</div>
 
 					<div class="search-result">
-						총 <b class=""></b>개의 상품이 검색되었습니다.
+						총 <b class="search-qty">0</b>개의 상품이 검색되었습니다.
 					</div>
 				</div>
 				<div class="search-body">
@@ -307,12 +307,12 @@ padding-bottom: 50px;
 													// Ajax 를 통해서 읽어온 JSON 을 템플릿에 병합한다.
 													var html = template(req);
 													// #search_goods_list 에 읽어온 내용을 추가한다.
-													$("#search_goods_list")
-															.append(html);
+													$("#search_goods_list").append(html);
+													var length = $(".search-item-img").length;
+													console.log(length);
+													$(".search-qty").text(length);
 												});
-								var length = $("li[class=search-list-item]").length;
-								console.log(length);
-								$(".search-qty").text(length);
+							
 							});
 		}); // 함수 호출하며 검색 결과 n개 나타내기 
 
