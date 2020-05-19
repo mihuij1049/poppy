@@ -48,7 +48,7 @@
 					<!-- 항목 (1) -->
 					<div class="item active">
 					<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=33">
-						<img src="/upload/main_M.jpg" alt="슬라이더(1)">
+						<img src="/upload/1_M.jpg" alt="슬라이더(1)">
 					</a>
 					</div>
 					<!-- 항목 (2) -->
