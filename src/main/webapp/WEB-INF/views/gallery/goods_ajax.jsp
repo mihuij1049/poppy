@@ -113,10 +113,10 @@
 				</div>
 				<div class="prd-action">
 					<div class="action-btn">
-						<button type="button"
+						<button type="submit"
 							onclick="location.href='${pageContext.request.contextPath}/pay/cart.do'"
 							id="action-cart">장바구니</button>
-						<button type="button"
+						<button type="submit"
 							onclick="location.href='${pageContext.request.contextPath}/myInfo/like_goods.do'"
 							id="action-like">관심상품</button>
 						<button type="submit"

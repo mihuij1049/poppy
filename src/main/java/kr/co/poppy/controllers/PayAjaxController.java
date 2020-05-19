@@ -64,7 +64,7 @@ public class PayAjaxController {
 	public ModelAndView addrList(Model model, @RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
 			@RequestParam(value = "memno", defaultValue = "0") int memno,
 			@RequestParam(value = "gddetailno", defaultValue = "0") int gddetailno,
-			@RequestParam(value = "gdoption", defaultValue = "") String gdoption,
+			@RequestParam(value = "gdoption") String gdoption,
 			@RequestParam(value = "gdcount", defaultValue = "0") int gdcount) {
 
 		/** 유효성 검사 */
@@ -113,7 +113,7 @@ public class PayAjaxController {
 		List<Address> output2 = null;
 		List<Points> output3 = null;
 		Goods goods = null;
-		Goodsdetail gdoutput = null;
+		List<Goodsdetail> gdoutput = null;
 
 		// 신규 - 기존 회원 검사
 		int result = 0;
@@ -132,7 +132,7 @@ public class PayAjaxController {
 				output2 = addressService.getAddressList(input2);
 				output3 = pointsService.getPointsMbList(input3);
 				goods = goodsService.getGoodsItem(gd);
-				gdoutput = goodsdetailService.getGoodsdetailItem(gdetail);
+				gdoutput = goodsdetailService.getGoodsdetailList(gdetail);
 			} catch (Exception e) {
 				// 신규회원일 경우, 조회된 데이터가 없으므로 오류를 발생시키면 안된다.
 				return webHelper.redirect(null, e.getLocalizedMessage());
@@ -160,7 +160,7 @@ public class PayAjaxController {
 				Moutput = membersService.getMembersItem(mb);
 				output3 = pointsService.getPointsMbList(input3);
 				goods = goodsService.getGoodsItem(gd);
-				gdoutput = goodsdetailService.getGoodsdetailItem(gdetail);
+				gdoutput = goodsdetailService.getGoodsdetailList(gdetail);
 			} catch (Exception e) {
 				// 신규회원일 경우, 조회된 데이터가 없으므로 오류를 발생시키면 안된다.
 				return webHelper.redirect(null, e.getLocalizedMessage());

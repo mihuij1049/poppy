@@ -133,7 +133,7 @@ public class PayRestController {
 		if (odemail.equals("")) {
 			return webHelper.getJsonWarning("이메일을 입력하세요.");
 		}
-		
+
 		if (addr1.equals("")) {
 			return webHelper.getJsonWarning("주소를 입력하세요.");
 		}
@@ -203,15 +203,6 @@ public class PayRestController {
 		address.setMemno(myInfo.getMemno());
 		
 		Address addr = new Address();
-		addr.setAddrno(addrno);
-		addr.setOdname(odname);
-		addr.setOdphone(odphone);
-		addr.setOdemail(odemail);
-		addr.setZcode(zcode);
-		addr.setAddr1(addr1);
-		addr.setAddr2(addr2);
-		addr.setRegdate("now()");
-		addr.setEditdate("now()");
 		addr.setMemno(myInfo.getMemno());
 
 		Orders order = new Orders();
@@ -263,7 +254,6 @@ public class PayRestController {
 
 		if (Asave == null) {
 			try {
-				if (Addr == null) {
 				// 데이터 저장
 				// --> 데이터 저장에 성공하면 파라미터로 전달하는 객체에 PK값이 저장된다.
 				addressService.addAddress(address);
@@ -279,41 +269,24 @@ public class PayRestController {
 				Osave = ordersService.getOrdersItem(order);
 				Odsave = orderdetailService.getOrderdetailItem(oddetail);
 				Psave = pointsService.getPointsOdItem(poi);
-				}
 			} catch (Exception e) {
 				return webHelper.getJsonError(e.getLocalizedMessage());
 			}
-		} else {
+		} else if (Asave != null) {
 			try {
 				addressService.editAddress(addr);
-				if (addressService.editAddress(addr) == 0) {
-					addressService.getAddressItem(address);
-					order.setAddrno(address.getAddrno());
-					ordersService.addOrders(order);
-					oddetail.setOrderno(order.getOrderno());
-					orderdetailService.addOrderdetail(oddetail);
-					poi.setOrderno(order.getOrderno());
-					pointsService.addPoints(poi);
+				order.setAddrno(addr.getAddrno());
+				ordersService.addOrders(order);
+				oddetail.setOrderno(order.getOrderno());
+				orderdetailService.addOrderdetail(oddetail);
+				poi.setOrderno(order.getOrderno());
+				pointsService.addPoints(poi);
 
-					// 데이터조회
-					Asave = addressService.getAddressItem(address);
-					Osave = ordersService.getOrdersItem(order);
-					Odsave = orderdetailService.getOrderdetailItem(oddetail);
-					Psave = pointsService.getPointsOdItem(poi);
-				} else {
-					addressService.editAddress(addr);
-					order.setAddrno(addr.getAddrno());
-					ordersService.addOrders(order);
-					oddetail.setOrderno(order.getOrderno());
-					orderdetailService.addOrderdetail(oddetail);
-					poi.setOrderno(order.getOrderno());
-					pointsService.addPoints(poi);
-					
-					Asave = addressService.getAddressItem(addr);
-					Osave = ordersService.getOrdersItem(order);
-					Odsave = orderdetailService.getOrderdetailItem(oddetail);
-					Psave = pointsService.getPointsOdItem(poi);
-				}
+				// 데이터조회
+				Asave = addressService.getAddressItem(addr);
+				Osave = ordersService.getOrdersItem(order);
+				Odsave = orderdetailService.getOrderdetailItem(oddetail);
+				Psave = pointsService.getPointsOdItem(poi);
 			} catch (Exception e) {
 				return webHelper.getJsonError(e.getLocalizedMessage());
 			}

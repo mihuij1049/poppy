@@ -205,60 +205,90 @@
 					role="tabpanel" aria-labelledby="headingTwo">
 					<div class="panel-body">
 						<div class="prd-info">
-							<div class="prd-box">
-								<div class=goods-box>
-									<div class="thumbnail">
-										<a
-											href="${pageContext.request.contextPath}/gallery_ajax/goods.do?goodno=${goods.goodsno}">
-											<img src="${goods.imgpath}${goods.imgname}.${goods.imgext}"
-											width="70" height="70">
-										</a>
+							<c:choose>
+								<%--조회결과가 없는 경우 --%>
+								<c:when test="${goods == null}">
+									<div>
+										<div align="center">조회결과가 없습니다.</div>
 									</div>
-									<div class="prd">
-										<div id="prd-title">
-											<strong class="prd-name" title="상품명"> <a
-												href="${pageContext.request.contextPath}/gallery_ajax/goods.jsp">${goods.gname}</a>
-											</strong><br /> <span class="prd-option">${gdoutput.gdoption}</span>
-										</div>
-										<ul class="prd-li">
-											<li style="list-style: none"><span class="prd-price"
-												title="판매가"> <strong><fmt:formatNumber
-															value="${goods.gsale}" pattern="#,###" /></strong>원
-											</span> <span class="prd-count" title="수량"> <strong>${gdcount}</strong>개
-											</span> <br> <span class="prd-deli"> <span>[조건]/기본배송</span>
-											</span></li>
-										</ul>
-									</div>
-								</div>
-								<div class="cencel-btn">
-									<button type="button" class="btn" id="prd-del">
-										<span>&times;</span>
-									</button>
-								</div>
-								<div class="modal fade" id="myModal">
-									<div class="modal-dialog modal-sm">
-										<div class="modal-content">
-											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal"
-													aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-												</button>
-												<h4 class="modal-title">상품 취소</h4>
-											</div>
-											<div class="modal-body">
-												<p>선택하신 상품을 삭제하시겠습니까?</p>
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-delete"
-													data-dismiss="modal">예</button>
-												<button type="button" class="btn" data-dismiss="modal">아니오</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="prd-foot" title="합계">
+								</c:when>
+								<%--조회결과가 있는경우 --%>
+								<c:otherwise>
+									<%-- 조회결과에 따른 반복 처리 --%>
+									<c:forEach var="item" items="${gdoutput}" varStatus="status">
+										
+										<c:set var="goodsno" value="${item.goodsno}" />
+										<c:set var="imgpath" value="${item.imgpath}" />
+										<c:set var="imgname" value="${item.imgname}" />
+										<c:set var="imgext" value="${item.imgext}" />
+										<c:set var="gname" value="${item.gname}" />
+										<c:set var="gdoption" value="${item.gdoption}" />
+										<c:set var="gname" value="${item.gname}" />
+										<c:set var="gsale" value="${item.gsale}" />
+			
 
+										<%-- 상세페이지로 이동하기 위한 URL --%>
+										<c:url value="/gallery/goods_ajax.do" var="viewUrl">
+											<c:param name="goodsno" value="${item.goodsno}" />
+										</c:url>
+
+										<div class="prd-box">
+											<div class=goods-box>
+												<div class="thumbnail">
+													<a
+														href="${pageContext.request.contextPath}/gallery/goods_ajax.do?goodno=${goods.goodsno}">
+														<img
+														src="${goods.imgpath}${goods.imgname}.${goods.imgext}"
+														width="70" height="70">
+													</a>
+												</div>
+												<div class="prd">
+													<div id="prd-title">
+														<strong class="prd-name" title="상품명"> <a
+															href="${pageContext.request.contextPath}/gallery_ajax/goods.jsp">${goods.gname}</a>
+														</strong><br /> <span class="prd-option">${gdoutput.gdoption}</span>
+													</div>
+													<ul class="prd-li">
+														<li style="list-style: none"><span class="prd-price"
+															title="판매가"> <strong><fmt:formatNumber
+																		value="${goods.gsale}" pattern="#,###" /></strong>원
+														</span> <span class="prd-count" title="수량"> <strong>${gdcount}</strong>개
+														</span> <br> <span class="prd-deli"> <span>[조건]/기본배송</span>
+														</span></li>
+													</ul>
+												</div>
+											</div>
+											<div class="cencel-btn">
+												<button type="button" class="btn" id="prd-del">
+													<span>&times;</span>
+												</button>
+											</div>
+											<div class="modal fade" id="myModal">
+												<div class="modal-dialog modal-sm">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h4 class="modal-title">상품 취소</h4>
+														</div>
+														<div class="modal-body">
+															<p>선택하신 상품을 삭제하시겠습니까?</p>
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-delete"
+																data-dismiss="modal">예</button>
+															<button type="button" class="btn" data-dismiss="modal">아니오</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
+							<div class="prd-foot" title="합계">
 								<span id="prd-total">합계</span> <span class="pt-right"> <span
 									id="prd-tal-pri"> <fmt:formatNumber
 											value="${goods.gsale * gdcount}" pattern="#,###" />
@@ -527,8 +557,9 @@
 				</ul>
 			</div>
 		</div>
-		<!-- 배송지 목록 조회 -->
-		<script id="recent_addr_tmpl" type="text/x-handlebars-template">
+	</form>
+	<!-- 배송지 목록 조회 -->
+	<script id="recent_addr_tmpl" type="text/x-handlebars-template">
         {{#each item}}
 		   	<ul class="addr-content" style="list-style: none">
 	            <li delivery-list>
@@ -557,7 +588,6 @@
 			</ul>
         {{/each}}
         </script>
-	</form>
 	<!-- Javascript -->
 	<script
 		src="${pageContext.request.contextPath}/share/assets/js/jquery-3.2.1.min.js"></script>
@@ -820,7 +850,7 @@
 							'click',
 							'#choice-modify',
 							function(e) {
-								// #addForm에 대한 submit 이벤트를 가로채서 Ajax요청을 전송한다.
+								// #orderform에 대한 submit 이벤트를 가로채서 Ajax요청을 전송한다.
 								$("#orderform")
 										.ajaxForm(
 												{
