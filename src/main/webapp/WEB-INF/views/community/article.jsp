@@ -37,7 +37,7 @@
 			<!-- QNA 상품정보 불러오기 -->
 				<div class="qnagoods">
 					<img class="photo"
-						src="${output.imgpath}${output.imgname}.${output.imgext}" data-goodsno="${output.goodsno}" />
+						src="${output.imgpath}" data-goodsno="${output.goodsno}" />
 					<div class="goodsname">
 						<div class="goodsname">
 							${output.gname}<br>

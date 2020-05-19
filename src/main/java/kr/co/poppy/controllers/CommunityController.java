@@ -94,11 +94,12 @@ public class CommunityController {
 			// 데이터 조회
 			output = bbsService.getBbsItem(input);
 			output2 = commentsService.getCommentsList(input2);
-			
-			
+				
 		} catch (Exception e) {	
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
+		String imgPath = output.getImgpath()+output.getImgname()+"."+output.getImgext();
+		output.setImgpath(webHelper.getUploadPath(imgPath));
 		
 		model.addAttribute("output", output);
 		model.addAttribute("output2", output2);
@@ -164,6 +165,10 @@ public class CommunityController {
 			} catch (Exception e) {
 				return webHelper.redirect(null, e.getLocalizedMessage());
 			}
+			
+			String imgPath = output.getImgpath()+output.getImgname()+"."+output.getImgext();
+			output.setImgpath(webHelper.getUploadPath(imgPath));
+			
 			model.addAttribute("output", output);
 		}
 			return new ModelAndView("community/qna_wri");
@@ -265,6 +270,10 @@ public class CommunityController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
+		
+		String imgPath = output.getImgpath()+output.getImgname()+"."+output.getImgext();
+		output.setImgpath(webHelper.getUploadPath(imgPath));
+		
 		/** 3) view 처리 */
 		model.addAttribute("output", output);
 		return new ModelAndView("community/qna_edit");

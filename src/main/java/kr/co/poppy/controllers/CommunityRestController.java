@@ -197,6 +197,10 @@ public class CommunityRestController {
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
+		for(Goods item: output) {
+			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			item.setImgpath(webHelper.getUploadPath(imgPath));
+		}
 		
 		/** 3) JSON 출력하기 */
 		Map<String, Object> data = new HashMap<String, Object>();

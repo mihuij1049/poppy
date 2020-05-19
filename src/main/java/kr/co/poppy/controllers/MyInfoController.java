@@ -399,6 +399,16 @@ public class MyInfoController {
 		} catch (Exception e) {
 			e.getLocalizedMessage();
 		}
+		
+		for (Bbs item : myBbsList) {
+			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			item.setImgpath(webHelper.getUploadPath(imgPath));
+		}
+		
+		for (GoodsForRv item : avRvList) {
+			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			item.setImgpath(webHelper.getUploadPath(imgPath));
+		}
 
 		/** 1) 작성 가능한 리뷰 탭 (내가 구매한 상품목록(다중행조회)필요 param=memno) */
 		model.addAttribute("avRvList", avRvList);

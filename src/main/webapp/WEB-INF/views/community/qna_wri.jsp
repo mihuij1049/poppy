@@ -101,7 +101,7 @@
 							<div class="qnagoods">
 							 <input type="hidden" name="goodsno" value="${output.goodsno}" />
 								<img class="photo"
-									src="${output.imgpath}${output.imgname}.${output.imgext}" />
+									src="${output.imgpath}" />
 								<div class="goodsname">
 									<div class="goodsname">
 										${output.gname}<br>
@@ -186,7 +186,7 @@
 		{{#each item}}
 			<li class="search-list-item">
 				<div class="search-item-img">
-					<img src="{{imgpath}}{{imgname}}.{{imgext}}" />
+					<img src="{{imgpath}}" />
 				</div>
 				<div class="search-item-content">
 					<p>
