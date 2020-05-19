@@ -5,20 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.co.poppy.helper.PageData;
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Comments;
 import kr.co.poppy.model.Goods;
-import kr.co.poppy.model.Members;
 import kr.co.poppy.service.BbsService;
 import kr.co.poppy.service.CommentsService;
 import kr.co.poppy.service.GoodsService;
@@ -163,35 +159,19 @@ public class CommunityRestController {
 	@RequestMapping(value = "/community/qna_goods", method=RequestMethod.GET)
 		public Map<String, Object> get_list (
 				// 검색어
-				@RequestParam(value="keyword", required=false) String keyword,
-				@RequestParam(value="page", defaultValue="1") int nowPage) {
+				@RequestParam(value="keyword", required=false) String keyword) {
 		
 		if (keyword.equals("")) {
 			return webHelper.getJsonWarning("검색 키워드가 없습니다.");
 		}
-		
-		/** 1) 페이지 구현에 필요한 변수값 생성 */
-		int totalCount = 0;
-		int listCount = 5;
-		int pageCount = 3;
 		
 		/** 2) 데이터 조회하기 */
 		Goods input = new Goods();
 		input.setGname(keyword);
 		
 		List<Goods> output = null;
-		PageData pageData = null;
 		
 		try {
-			// 전체 게시글 수 조회
-			totalCount = goodService.getGoodsCount(input);
-			// 페이지 번호 계산 
-			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
-			
-			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
-			Goods.setOffset(pageData.getOffset());
-			Goods.setListCount(pageData.getListCount());
-			
 			// 데이터 조회하기
 			output = (List<Goods>) goodService.selectqnagoods(input);
 		} catch (Exception e) {
@@ -206,7 +186,6 @@ public class CommunityRestController {
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("keyword", keyword);
 		data.put("item", output);
-		data.put("meta", pageData);
 		return webHelper.getJsonData(data);
 	}
 		

@@ -32,6 +32,11 @@
 	font-size: 12px;
 	vertical-align: middle;
 }
+
+.search-body {
+padding-bottom: 50px;
+	
+}
 </style>
 </head>
 
@@ -305,7 +310,7 @@
 													$("#search_goods_list")
 															.append(html);
 												});
-								var length = $("li[class=search-list-item").length;
+								var length = $("li[class=search-list-item]").length;
 								console.log(length);
 								$(".search-qty").text(length);
 							});
