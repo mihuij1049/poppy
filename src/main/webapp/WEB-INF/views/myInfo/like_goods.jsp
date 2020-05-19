@@ -12,7 +12,12 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/share/like_goods.css" />
 <script src="../share/plugins/handlebars/handlebars-v4.0.5.js"></script>
-
+<style type="text/css">
+#select-option .sel-opt {
+overflow-x : hidden;
+overflow-y : hidden;
+}
+</style>
 </head>
 
 <body>
@@ -53,7 +58,7 @@
 									<span class="chkbox"> <input type="checkbox"
 										class="cart" name="check-select"
 										data-checknum="${item.heartno }" /></span> <a href="#"><img
-										src="${item.imgpath}${item.imgname}.${item.imgext}" class="cart-img"></a>
+										src="${item.imgpath}" class="cart-img"></a>
 									<div class="word">
 										<b>${item.gname}</b><br>
 										<div class="plz-opt">

@@ -130,7 +130,7 @@
 						<!-- 제목 -->
 						<div class="modal-header footer-header">
 							<div class="logo">
-								<img alt="사진" src="${pageContext.request.contextPath }/share/img/logojpg.jpg">
+								<img alt="사진" src="${pageContext.request.contextPath }/share/img/pplogo.jpg">
 							</div>
 							<!-- 닫기버튼 -->
 							<div class="button-close">
@@ -190,7 +190,7 @@
 											data-toggle="collapse" data-parent="#accordion-tab"
 											href="#collapse-One">
 											<h4 class="panel-title1 box1">
-												푸드<img src="${pageContext.request.contextPath }/share/img/arrow-down.png" align=right
+												푸드<img src="${pageContext.request.contextPath }/share/img/pparrowdown.png" align=right
 													class="arrow-down11 icon-rotate11">
 											</h4>
 										</a>
@@ -211,7 +211,7 @@
 											data-toggle="collapse" data-parent="#accordion-tab"
 											href="#collapse-Two">
 											<h4 class="panel-title2 box1">
-												의류<img src="${pageContext.request.contextPath }/share/img/arrow-down.png" align=right
+												의류<img src="${pageContext.request.contextPath }/share/img/pparrowdown.png" align=right
 													class="arrow-down22 icon-rotate22">
 											</h4>
 										</a>
@@ -232,7 +232,7 @@
 											data-toggle="collapse" data-parent="#accordion-tab"
 											href="#collapse-Three">
 											<h4 class="panel-title3 box1">
-												외출용품<img src="${pageContext.request.contextPath }/share/img/arrow-down.png" align=right
+												외출용품<img src="${pageContext.request.contextPath }/share/img/pparrowdown.png" align=right
 													class="arrow-down33 icon-rotate33">
 											</h4>
 										</a>
@@ -256,7 +256,7 @@
 											data-toggle="collapse" data-parent="#accordion-tab"
 											href="#collapse-Four">
 											<h4 class="panel-title4 box1">
-												대형견코너<img src="${pageContext.request.contextPath }/share/img/arrow-down.png" align=right
+												대형견코너<img src="${pageContext.request.contextPath }/share/img/pparrowdown.png" align=right
 													class="arrow-down44 icon-rotate44">
 											</h4>
 										</a>
@@ -280,7 +280,7 @@
 											data-toggle="collapse" data-parent="#accordion-tab"
 											href="#collapse-Five">
 											<h4 class="panel-title5 box1">
-												홈/리빙<img src="${pageContext.request.contextPath }/share/img/arrow-down.png" align=right
+												홈/리빙<img src="${pageContext.request.contextPath }/share/img/pparrowdown.png" align=right
 													class="arrow-down55 icon-rotate55">
 											</h4>
 										</a>

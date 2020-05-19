@@ -1,6 +1,5 @@
 package kr.co.poppy.controllers;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -239,7 +238,11 @@ public class MyInfoController {
 		}
 		orders.setSumOdgprice(sumOdgprice);
 		orders.setSumOdgsale(sumOdgsale);
-
+		
+		for (Orderdetail item : orderDetail) {
+			String imgPath = item.getImgpath() + item.getImgname() + "." + item.getImgext();
+			item.setImgpath(webHelper.getUploadPath(imgPath));
+		}
 		model.addAttribute("myInfo", myInfo);
 		model.addAttribute("orderInfo", orders);
 		model.addAttribute("detailInfo", orderDetail);
@@ -267,14 +270,19 @@ public class MyInfoController {
 		List<GoodsForRv> output2 = null;
 		try {
 			output = goodsForRvService.getGoodsLikeList(input);
-			output2 = goodsForRvService.getGoodsLikeListDetail(input);
+			/* output2 = goodsForRvService.getGoodsLikeListDetail(input); */
 		} catch (Exception e) {
 			log.debug(e.getLocalizedMessage());
 		}
 		
+		for (GoodsForRv item : output) {
+			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			item.setImgpath(webHelper.getUploadPath(imgPath));
+		}
+		
 		// View에 리스트 전달
 		model.addAttribute("output", output);
-		model.addAttribute("output2", output);
+		/* model.addAttribute("output2", output); */
 		return new ModelAndView("myInfo/like_goods");
 	}
 

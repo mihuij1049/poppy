@@ -33,7 +33,7 @@
 							<a data-toggle="collapse" data-parent="#accordion"
 								href="#collapseOne" aria-expanded="true"
 								aria-controls="collapseOne"> <b>주문정보</b> <img
-								src="../share/img/arrow-down.png" align=right
+								src="../share/img/pparrowdown.png" align=right
 								class="arrow-down1 icon-rotate1">
 							</a>
 						</h4>
@@ -63,7 +63,7 @@
 								aria-controls="collapseTwo"> <b>주문상품 (총
 									${detailInfo.size() }개/ <fmt:formatNumber
 										value="${orderInfo.sumOdgprice }" pattern="#,###" />원)
-							</b> <img src="../share/img/arrow-down.png" align=right
+							</b> <img src="../share/img/pparrowdown.png" align=right
 								class="arrow-down2 icon-rotate2">
 							</a>
 						</h4>
@@ -80,7 +80,7 @@
 								<div class="prd-info clearfix">
 									<div class="prd-img pull-left">
 										<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=${item.goodsno}"> 
-										<img src="${item.imgpath }${item.imgname}.${item.imgext}" width="80"
+										<img src="${item.imgpath }" width="80"
 											height="80">
 										</a>
 									</div>
@@ -125,7 +125,7 @@
 							<a data-toggle="collapse" data-parent="#accordion"
 								href="#collapseThree" aria-expanded="true"
 								aria-controls="collapseThree"> <b>결제 정보</b> <img
-								src="../share/img/arrow-down.png" align=right
+								src="../share/img/pparrowdown.png" align=right
 								class="arrow-down3 icon-rotate3">
 							</a>
 						</h4>
@@ -166,7 +166,7 @@
 							<a data-toggle="collapse" data-parent="#accordion"
 								href="#collapseFour" aria-expanded="true"
 								aria-controls="collapseFour"> <b>최종 결제 정보</b> <img
-								src="../share/img/arrow-down.png" align=right
+								src="../share/img/pparrowdown.png" align=right
 								class="arrow-down4 icon-rotate4">
 							</a>
 						</h4>
@@ -212,7 +212,7 @@
 							<a data-toggle="collapse" data-parent="#accordion"
 								href="#collapseFive" aria-expanded="true"
 								aria-controls="collapseFive"> <b>배송지 정보</b> <img
-								src="../share/img/arrow-down.png" align=right
+								src="../share/img/pparrowdown.png" align=right
 								class="arrow-down5 icon-rotate5">
 							</a>
 						</h4>
@@ -243,7 +243,7 @@
 							<a data-toggle="collapse" data-parent="#accordion"
 								href="#collapseSix" aria-expanded="true"
 								aria-controls="collapseSix"> <b>환불 정보</b> <img
-								src="../share/img/arrow-down.png" align=right
+								src="../share/img/pparrowdown.png" align=right
 								class="arrow-down6 icon-rotate6">
 							</a>
 						</h4>
