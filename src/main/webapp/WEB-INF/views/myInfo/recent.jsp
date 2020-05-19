@@ -41,7 +41,7 @@
 									<div class="mygoods clearfix">
 										<a
 											href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=${item.goodsno}">
-											<img src="${item.imgpath}${item.imgname}.${item.imgext}"
+											<img src="${item.imgpath}"
 											class="cart-img">
 										</a>
 										<div class="word">

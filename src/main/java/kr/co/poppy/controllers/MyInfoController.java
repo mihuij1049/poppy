@@ -438,6 +438,11 @@ public class MyInfoController {
 					e.printStackTrace();
 				}
 				
+				for (GoodsForRv item : output) {
+					String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+					item.setImgpath(webHelper.getUploadPath(imgPath));
+				}
+				
 				model.addAttribute("output", output);
 				System.out.println("-------결과물은 " + output.toString());
 			}
