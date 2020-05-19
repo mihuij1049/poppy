@@ -43,7 +43,9 @@
 	margin-top: 41px;
 	margin-bottom: 15px;
 }
-
+.panel-body > a {
+	color:black;
+}
 .footer-body {
 	max-height: calc(100vh-210px);
 	min-height: 200px;

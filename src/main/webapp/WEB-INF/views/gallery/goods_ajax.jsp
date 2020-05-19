@@ -736,34 +736,36 @@
 		});
 
 		$(function() {
-			// 비밀번호 모달창 띄우기
-			$("#subject").click(function(e) {
-				e.preventDefault();
-				$("#customer_pass").show();
-			});
-
-			$("#confirm_qnapw")
-					.click(
-							function(e) {
-								e.preventDefault();
-								var inputpw = $("#cs_pass").val();
-								let current = $("#confirm-pw");
-								let bbsno = current.data("bbsno");
-								let qnapw = current.data("qnapw");
-								console.log(qnapw);
-								console.log(inputpw);
-								if (qnapw == inputpw) {
-									window.location = "${pageContext.request.contextPath}/community/article.do?bbstype=B&bbsno="
-											+ bbsno;
-								} else {
-									alert("비밀번호를 확인해주세요.");
-								}
-							});
-			$("#modal-cancel-btn").click(function() {
-				$("#customer_pass").hide();
-			});
-
+			let bbsno=null;
+			let qnapw = null;
+		// 비밀번호 모달창 띄우기
+		$(".subjects").click(function(e) {
+			e.preventDefault();
+			bbsno = $(this).data("bbsno");
+			qnapw = $(this).data("qnapw");
+			$("#customer_pass").show();
 		});
+
+		$("#confirm_qnapw")
+				.click(function(e) {
+							e.preventDefault();
+							var inputpw = $("#cs_pass").val();
+							console.log(bbsno);
+							console.log(qnapw);
+							console.log(inputpw);
+							if (qnapw == inputpw) {
+								window.location = "${pageContext.request.contextPath}/community/article.do?bbstype=B&bbsno="
+										+ bbsno;
+							} else {
+								alert("비밀번호를 확인해주세요.");
+								$("#cs_pass").val("");
+							}
+						});
+		$("#modal-cancel-btn").click(function() {
+			$("#customer_pass").hide();
+		});
+
+	});
 	</script>
 </body>
 

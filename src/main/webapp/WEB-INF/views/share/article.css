@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 .wriinfo {
 	border: 1px solid #FFc7c1;
 	background: #FFc7c1;
@@ -9,7 +8,7 @@
 
 .articletitle {
 	font-size: 16px;
-	padding-top: 10px;
+	padding-top: 7px;
 	padding-left: 15px;
 }
 

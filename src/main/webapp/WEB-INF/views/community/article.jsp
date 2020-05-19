@@ -17,7 +17,7 @@
 
 <body>
 	<%@ include file="../share/top_tp.jsp"%>
-	<div class="content">
+	<div class="content" id="content">
 		<!-- 여기에 작성 -->
 		<div class="container">
 
@@ -50,7 +50,7 @@
 				<p id="main_text">${output.bbscontent}</p>
 			</div>
 					<div class="comment">
-						<hr class="solidhr">
+						
 						<div class="eddlbuttons clearfix">
 
 							<button type="button"
@@ -128,7 +128,7 @@
 						</tbody>
 
 					</table>
-				<hr class="solidhr">
+				
 			</div>
 				<c:choose>
 					<c:when test="${!empty userInfo.username }">
