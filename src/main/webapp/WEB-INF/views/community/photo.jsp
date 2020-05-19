@@ -33,12 +33,12 @@
 		</div>
 		<div class="container">
 			<input type="hidden" name="bbsno" value="${output.bbsno}" /> <img
-				src="${output.imgpath}${output.imgname}.${output.imgext}" alt="리뷰사진"
+				src="${output.imgpath}" alt="리뷰사진"
 				class="big-image">
 			<div class="info-box">
 				<a
 					href="${pageContext.request.contextPath}/gallery_ajax/goods.do?goodsno=${output.goodsno}"><img
-					src="${output.gipath}${output.giname}.${output.giext}"
+					src="${output.gipath}"
 					class="small-image"></a>
 				<div class="info-content clear">
 					<a

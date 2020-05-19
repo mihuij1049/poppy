@@ -11,7 +11,7 @@
 <head>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/share/cart.css?ver=1" />
+	href="${pageContext.request.contextPath}/share/cart.css" />
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -68,9 +68,15 @@
 							<div class="cart-box clear">
 								<div class="list-item">
 									<div class="word">
-										<input type="checkbox" name="cart_check"
-											class="cart cart-size"> <a href="${viewUrl}"> <img
-											src="${item.imgpath}${item.imgname}.${item.imgext}"
+										<input type="hidden" class="cartno" value="${item.cartno}" />
+										<input type="hidden" class="goodsno" value="${item.goodsno}" />
+										<input type="hidden" class="memno" value="${myInfo.memno}" />
+										<input type="hidden" class="gddetailno"
+											value="${item.gddetailno}" /> <input type="hidden"
+											class="gdoption" value="${item.gdoption}" /> <input
+											type="checkbox" name="cart_check[]" class="cart cart-size">
+										<a href="${viewUrl}"> <img
+											src="${item.imgpath}"
 											class="cart-img" />
 										</a>
 
@@ -78,7 +84,8 @@
 											<a href="${viewUrl}"><b class="name">${item.gname}</b></a>
 										</p>
 										<span>배송:${item.deliprice}원[조건]/기본배송</span><br> <small><span
-											class="point-icon">적</span>&nbsp;<span class="point">${fn:substring(item.gsale*item.cartqty*0.02, 0, fn:indexOf(item.gsale*item.cartqty*0.02,"."))}</span>원</small>
+											class="point-icon">적</span>&nbsp;<span class="point"><fmt:formatNumber
+													value="${item.gsale*item.cartqty*0.02}" pattern="#,###" /></span>원</small>
 										<b>
 											<p>
 												<fmt:formatNumber value="${item.gsale}" pattern="#,###" />
@@ -89,30 +96,31 @@
 									</div>
 									<div class="word-btn">
 										<button class="count minus">
-											<img src="../share/img/마이너스.png">
+											<img src="../share/img/ppminus.png">
 										</button>
 										<input type="number" class="count-label" id="count-label"
 											name="gdcount" value="${item.cartqty}">
 										<button class="count plus">
-											<img src="../share/img/플러스.png">
+											<img src="../share/img/ppplus.png">
 										</button>
 										<button class="change">변경</button>
 									</div>
-									<div class="word-botm">
+									<div class="word-botm clear">
 										<p>
 											<b>합계: <span class="price"><fmt:formatNumber
 														value="${item.gsale*item.cartqty}" pattern="#,###" /></span>원
 											</b>
 										</p>
-										<button type="button" class="delete"
+										<button type="button" class="btn btn2" id="order"
+											data-goodsno="${item.goodsno}" data-memno="${myInfo.memno}"
+											data-gddetailno="${item.gddetailno}"
+											data-gdoption="${item.gdoption}">주문하기</button>
+										<button type="button" class="delete btn btn-inverse"
 											data-cartno="${item.cartno}">삭제</button>
-										<button type="button">관심상품</button>
-										<button type="button" class="btn btn2"
-											onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do?goodsno=${item.goodsno},memno=${myInfo.memno},gddetailno=${item.gddetailno},gdoption=${item.gdoption},gdcount=${item.cartqty}'">주문하기</button>
 									</div>
 								</div>
+								<div class="panel-header3 clearfix">[기본배송]</div>
 							</div>
-							<div class="panel-header2 clearfix">[기본배송]</div>
 						</c:forEach>
 					</c:otherwise>
 				</c:choose>
@@ -142,11 +150,8 @@
 				</tbody>
 			</table>
 			<div class="pay">
-				<button class="btn btn2 btn-inverse"
-					onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do'">선택상품주문</button>
-				<button class="btn btn2"
-					onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do'">
-					전체상품주문</button>
+				<button class="btn btn2 btn-inverse" id="select_order">선택상품주문</button>
+				<button class="btn btn2" id="all_order">전체상품주문</button>
 			</div>
 		</div>
 	</div>
@@ -211,28 +216,19 @@
 			var length = $(".cart-box").length;
 			$(".cart-count").html(length);
 
-			for (var i = 0; i < length; i++) {
-
-			}
-
-			for (var i = 0; i < length; i++) {
-
-			}
-
-			$("#table_price").html(sum_price);
-			if (sum_price >= 30000) {
-
-			}
-
 			// 로딩시 초기 하단 테이블 금액 표시
 			for (var i = 0; i < length; i++) {
 				sum += parseInt($(".price").eq(i).html().replace(/,/gi, ""));
 				sum2 = sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-				console.log(sum2);
 				$("#table_price").html(sum2);
 				if (sum >= 30000) {
 					table_delivery = 0;
 					$("#table_delivery").html(table_delivery);
+				} else {
+					table_delivery = 2500;
+					table_delivery2 = table_delivery.toString().replace(
+							/\B(?=(\d{3})+(?!\d))/g, ",");
+					$("#table_delivery").html(table_delivery2);
 				}
 				table_sum = sum + table_delivery;
 				table_sum2 = table_sum.toString().replace(
@@ -268,7 +264,7 @@
 										/\B(?=(\d{3})+(?!\d))/g, ","));
 
 						// 장바구니에 담긴 상품 수 많큼 반복 하여 상품가격 테이블에 값을 출력
-						sum=0;
+						sum = 0;
 						length = $(".cart-box").length;
 						for (var i = 0; i < length; i++) {
 							sum += parseInt($(".price").eq(i).html().replace(
@@ -318,7 +314,7 @@
 										/\B(?=(\d{3})+(?!\d))/g, ","));
 
 						// 장바구니에 담긴 상품 수 많큼 반복 하여 상품가격 테이블에 값을 출력
-						sum=0;
+						sum = 0;
 						length = $(".cart-box").length;
 						for (var i = 0; i < length; i++) {
 							sum += parseInt($(".price").eq(i).html().replace(
@@ -365,7 +361,7 @@
 										/\B(?=(\d{3})+(?!\d))/g, ","));
 
 						// 장바구니에 담긴 상품 수 많큼 반복 하여 상품가격 테이블에 값을 출력
-						sum=0;
+						sum = 0;
 						length = $(".cart-box").length;
 						for (var i = 0; i < length; i++) {
 							sum += parseInt($(".price").eq(i).html().replace(
@@ -412,6 +408,105 @@
 			$(document)
 					.on(
 							"click",
+							"#order",
+							function(e) {
+								let current = $(this); // 이벤트가 발생한 객체 자신 #order
+								let goodsno = current.data('goodsno');
+								let memno = current.data('memno');
+								let gddetailno = current.data('gddetailno');
+								let gdoption = current.data('gdoption');
+								var cartqty = current.parent().prev()
+										.children().eq(1).val();
+								location.href = '${pageContext.request.contextPath}/pay_ajax/orderform.do?'
+										+ 'goodsno='
+										+ goodsno
+										+ '&memno='
+										+ memno
+										+ '&gddetailno='
+										+ gddetailno
+										+ '&gdoption='
+										+ gdoption
+										+ '&gdcount='
+										+ cartqty;
+							});
+			$(document)
+					.on(
+							"click",
+							"#select_order",
+							function(e) {
+								alert("선택상품주문");
+								var select_array = [];
+								length = $(".cart-box").length;
+								for (var i = 0; i < length; i++) {
+									var checked = $(".cart-size").eq(i).prop(
+											"checked");
+									console.log(checked);
+									if (checked == true) {
+										select_array += i + ",";
+										var goodsno = $(".goodsno").eq(i).val();
+										var memno = $(".memno").eq(i).val();
+										var gddetailno = $(".gddetailno").eq(i)
+												.val();
+										var gdoption = $(".gdoption").eq(i)
+												.val();
+										var cartqty = $(".count-label").eq(i)
+												.val();
+										var order_item = "goodsno=" + goodsno
+												+ "&memno=" + memno
+												+ "&gddetailno=" + gddetailno
+												+ "&gdoption=" + gdoption
+												+ "&gdcount=" + cartqty;
+									}
+									if (i == length - 1) {
+										if (select_array.length == 0) {
+											return;
+										}
+										select_array = select_array.substr(0,
+												select_array.length - 1);
+										console.log(select_array);
+										location.href = '${pageContext.request.contextPath}/pay_ajax/orderform.do?'
+												+ order_item;
+									}
+								}
+
+							});
+
+			$(document)
+					.on(
+							"click",
+							"#all_order",
+							function(e) {
+								alert("전체상품주문");
+								var all_array = [];
+								length = $(".cart-box").length;
+								for (var i = 0; i < length; i++) {
+									all_array += i + ",";
+									if (i == length - 1) {
+										all_array = all_array.substr(0,
+												all_array.length - 1);
+										console.log(all_array);
+										var goodsno = $(".goodsno").eq(i).val();
+										var memno = $(".memno").eq(i).val();
+										var gddetailno = $(".gddetailno").eq(i)
+												.val();
+										var gdoption = $(".gdoption").eq(i)
+												.val();
+										var cartqty = $(".count-label").eq(i)
+												.val();
+										var order_item = "goodsno=" + goodsno
+												+ "&memno=" + memno
+												+ "&gddetailno=" + gddetailno
+												+ "&gdoption=" + gdoption
+												+ "&gdcount=" + cartqty;
+										location.href = '${pageContext.request.contextPath}/pay_ajax/orderform.do?'
+												+ order_item;
+									}
+								}
+							});
+
+			$(document)
+					.on(
+							"click",
 							".delete",
 							function(e) {
 								let current = $(this); // 이벤트가 발생한 객체 자신 #delete-one
@@ -426,7 +521,7 @@
 												"click",
 												".delete_ok",
 												function(e) {
-
+													select_array += i + ",";
 													location.href = '${pageContext.request.contextPath}/pay/cart_delete.do?cartno='
 															+ cartno;
 													delete_item.remove();
@@ -460,8 +555,6 @@
 							function(e) {
 								$("#myModal2").modal("show");
 								$(".delete_message").html("선택하신");
-								var ss = "실행";
-								console.log(ss);
 								$(document)
 										.on(
 												"click",
@@ -472,6 +565,11 @@
 														if ($(".cart-size").eq(
 																i).prop(
 																"checked") == true) {
+															var cartno = $(
+																	".cartno")
+																	.eq(i)
+																	.val();
+															console.log(cartno);
 															$(".cart-size").eq(
 																	i).parent()
 																	.parent()
@@ -484,34 +582,48 @@
 																			length);
 														}
 													}
+													sum = 0;
 													for (var i = 0; i < length; i++) {
-														sum_price += parseInt($(
+														sum += parseInt($(
 																".price").eq(i)
-																.html());
+																.html()
+																.replace(/,/gi,
+																		""));
+														sum2 = sum
+																.toString()
+																.replace(
+																		/\B(?=(\d{3})+(?!\d))/g,
+																		",");
+														$("#table_price").html(
+																sum2);
+														if (sum >= 30000) {
+															table_delivery = 0;
+															$("#table_delivery")
+																	.html(
+																			table_delivery);
+														} else {
+															table_delivery = 2500;
+															table_delivery2 = table_delivery
+																	.toString()
+																	.replace(
+																			/\B(?=(\d{3})+(?!\d))/g,
+																			",");
+															$("#table_delivery")
+																	.html(
+																			table_delivery2);
+														}
+														table_sum = sum
+																+ table_delivery;
+														table_sum2 = table_sum
+																.toString()
+																.replace(
+																		/\B(?=(\d{3})+(?!\d))/g,
+																		",");
+														$("#table_sum").html(
+																table_sum2);
 													}
-													$("#table_price").html(
-															sum_price);
-													if (sum_price < 30000) {
-														table_delivery = 2500;
-														$("#table_delivery")
-																.html(
-																		table_delivery);
-													}
-													$("#table_sum")
-															.html(
-																	sum_price
-																			+ table_delivery);
-													sum_price = 0;
 												});
 							});
-
-			$("#like").click(function(e) {
-				alert("해당상품이 관심상품으로 등록되었습니다.")
-			})
-
-			$("#like2").click(function(e) {
-				alert("해당상품이 관심상품으로 등록되었습니다.")
-			})
 		});
 	</script>
 </body>

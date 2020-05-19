@@ -24,6 +24,7 @@ import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Bbs;
 import kr.co.poppy.model.Cart;
 import kr.co.poppy.model.Goods;
+import kr.co.poppy.model.GoodsForRv;
 import kr.co.poppy.model.Imgs;
 import kr.co.poppy.model.Members;
 import kr.co.poppy.model.Orders;
@@ -102,6 +103,11 @@ public class KRTController {
 				orders.setOdstatus("반품");
 			}
 			output.add(orders);
+		}
+		
+		for (Orders item : output) {
+			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			item.setImgpath(webHelper.getUploadPath(imgPath));
 		}
 
 		/** 2) view 처리 */
@@ -183,6 +189,11 @@ public class KRTController {
 			}
 			output.add(orders);
 		}
+		
+		for (Orders item : output) {
+			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			item.setImgpath(webHelper.getUploadPath(imgPath));
+		}
 
 		model.addAttribute("myInfo", myInfo);
 		model.addAttribute("output", output);
@@ -216,6 +227,13 @@ public class KRTController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
+		
+			String imgPath = output.getImgpath()+output.getImgname()+"."+output.getImgext();
+			output.setImgpath(webHelper.getUploadPath(imgPath));
+			
+			String imgPath2 = output.getGipath()+output.getGiname()+"."+output.getGiext();
+			output.setGipath(webHelper.getUploadPath(imgPath2));
+
 
 		/** 3) view 처리 */
 		model.addAttribute("output", output);
@@ -580,6 +598,11 @@ public class KRTController {
 			output = cartService.getCartList(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		for (Cart item : output) {
+			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			item.setImgpath(webHelper.getUploadPath(imgPath));
 		}
 
 		model.addAttribute("myInfo", myInfo);

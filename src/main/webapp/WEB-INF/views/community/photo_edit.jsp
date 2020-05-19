@@ -72,7 +72,7 @@
 					<div class="choice clearfix">
 						<div class="col-xs-4">
 							<a href="#" class="item-img"><img
-								src="../share/img/noimage.JPG" id="item_img"></a>
+								src="../share/img/ppnoimage.JPG" id="item_img"></a>
 						</div>
 						<div class="col-xs-8">
 							<div class="select-item-content">
