@@ -570,12 +570,12 @@
 													});
 													console.log(delList);
 													
-													$.delete("${pageContext.request.contextPath}/pay/cart_delete", {
+													$.delete("${pageContext.request.contextPath}/pay/cart_delete_list", {
 														"delList" : delList
 													},  function(json) {
 														if(json.rt=="OK") {
 															alert("삭제되었습니다.");
-															window.location = "${pageContext.request.contextPath}/pay/cart_delete_list.do";
+															window.location = "${pageContext.request.contextPath}/pay/cart.do";
 														}
 													})
 													

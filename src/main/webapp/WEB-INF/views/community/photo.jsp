@@ -98,16 +98,6 @@
 		        /* $(this).css('color', 'red');
 		        clicked = false; */
 		     });
-			
-			var count = 5;
-			$("#recommend").click(function() {
-				if (count == 5) {
-					alert("추천되었습니다.");
-					count++;
-					$("#rvcount").html(count);
-				} else {
-					alert("이 게시물에는 더이상 추천하실 수 없습니다.")
-				}
 			});
 		});
 	</script>
