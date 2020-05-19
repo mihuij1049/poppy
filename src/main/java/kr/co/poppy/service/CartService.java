@@ -1,6 +1,7 @@
 package kr.co.poppy.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.co.poppy.model.Cart;
 
@@ -67,4 +68,13 @@ public interface CartService {
 	 * @throws Exception
 	 */
 	public int deleteCart(Cart input) throws Exception;
+	
+	/**
+	 * 장바구니 데이터 선택 삭제하기
+	 * 
+	 * @param Cart 검색조건을 담고 있는 Beans
+	 * @return int
+	 * @throws Exception
+	 */
+	public int delete_list_Cart(Map<String, Object> input) throws Exception;
 }

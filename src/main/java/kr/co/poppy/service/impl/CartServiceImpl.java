@@ -1,6 +1,7 @@
 package kr.co.poppy.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -138,5 +139,31 @@ public class CartServiceImpl implements CartService {
 			throw new Exception("데이터 삭제에 실패했습니다.");
 		}
 		return result;
+	}
+
+	/**
+	 * 장바구니 데이터 선택 삭제하기
+	 *
+	 * @param Cart 삭제할 정보를 담고 있는 Beans
+	 * @throws Exception
+	 */
+	@Override
+	public int delete_list_Cart(Map<String, Object> input) throws Exception {
+		int result = 0;
+
+        try {
+        	result = sqlSession.delete("CartMapper.deleteList", input);
+        	
+            if (result == 0) {
+                throw new NullPointerException("result=0");
+            }
+        } catch (NullPointerException e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("조회된 데이터가 없습니다.");
+        } catch (Exception e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("데이터 조회에 실패했습니다.");
+        }
+        return result;
 	}
 }

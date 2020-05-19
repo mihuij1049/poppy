@@ -79,6 +79,12 @@
 		WHERE
 		memno=#{memno} AND cartno=#{cartno};
 	</delete>
+	
+	<delete id="deleteList"
+        parameterType="hashmap">
+        DELETE FROM cart WHERE cartno IN <foreach collection="input" item="item" index="index" open="(" separator="," close=")">${item.cartno}</foreach> 
+    </delete>
+    
 	<!-- 회원탈퇴시 모든 카트 삭제를 위한 기능 정의 -->
 	<delete id="delete_members_item"
 		parameterType="kr.co.poppy.model.Members">

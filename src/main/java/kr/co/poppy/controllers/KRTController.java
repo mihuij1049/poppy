@@ -345,7 +345,7 @@ public class KRTController {
 		Imgs imgs = new Imgs();
 		imgs.setImgname(fileName);
 		imgs.setImgext(ext);
-		imgs.setImgpath("/upload/img/");
+		imgs.setImgpath("/");
 		imgs.setImgsize((int) item.getFileSize());
 		imgs.setImgtype("C");
 		imgs.setRegdate(date);
@@ -510,7 +510,7 @@ public class KRTController {
 		imgs.setImgsno(imgsno);
 		imgs.setImgname(fileName);
 		imgs.setImgext(ext);
-		imgs.setImgpath("/upload/img/");
+		imgs.setImgpath("/");
 		imgs.setImgsize((int) item.getFileSize());
 		imgs.setImgtype("C");
 		imgs.setRegdate(date);

@@ -74,7 +74,7 @@
 										<input type="hidden" class="gddetailno"
 											value="${item.gddetailno}" /> <input type="hidden"
 											class="gdoption" value="${item.gdoption}" /> <input
-											type="checkbox" name="cart_check[]" class="cart cart-size">
+											type="checkbox" name="cart_check" class="cart cart-size" data-checknum="${item.cartno}" />
 										<a href="${viewUrl}"> <img
 											src="${item.imgpath}"
 											class="cart-img" />
@@ -560,6 +560,25 @@
 												"click",
 												".delete_ok",
 												function(e) {
+													var delList = [];
+													$("input:checkbox[name=cart_check]:checked").each(function(i) {
+														delList.push($(this).data("checknum"));
+														$(this).parent().parent().parent().remove();
+													});
+													$("input:checkbox[name=check-select]:checked").each(function() {
+														/* $("input:checkbox[name=check-select]:checked").parent().parent().parent().remove(); */
+													});
+													console.log(delList);
+													
+													$.delete("${pageContext.request.contextPath}/pay/cart_delete", {
+														"delList" : delList
+													},  function(json) {
+														if(json.rt=="OK") {
+															alert("삭제되었습니다.");
+															window.location = "${pageContext.request.contextPath}/pay/cart_delete_list.do";
+														}
+													})
+													
 													var length = $(".cart-box").length;
 													for (var i = 0; i < length; i++) {
 														if ($(".cart-size").eq(
