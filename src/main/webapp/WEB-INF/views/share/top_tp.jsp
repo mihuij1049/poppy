@@ -4,7 +4,7 @@
 <div class="container">
 	<div class="header">
 		<a href="${pageContext.request.contextPath }/index/index.do" id="logo"> <img
-			src="share/img/pplogo.jpg">
+			src="${pageContext.request.contextPath }/share/img/pplogo.jpg">
 		</a> <a href="${pageContext.request.contextPath }/pay/cart.do"> <span
 			class="glyphicon glyphicon-shopping-cart" id="cart">
 				<h1>장바구니</h1>

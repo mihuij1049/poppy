@@ -48,18 +48,18 @@
 					<!-- 항목 (1) -->
 					<div class="item active">
 					<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=33">
-						<img src="share/img/ppcarousel1.jpg" alt="슬라이더(1)">
+						<img src="${pageContext.request.contextPath }/share/img//ppcarousel1.jpg" alt="슬라이더(1)">
 					</a>
 					</div>
 					<!-- 항목 (2) -->
 					<div class="item">
 					<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=6">
-						<img src="share/img/ppcarousel2.jpg" alt="슬라이더(2)">
+						<img src="${pageContext.request.contextPath }/share/img/ppcarousel2.jpg" alt="슬라이더(2)">
 					</a>
 					</div>
 					<!-- 항목 (3) -->
 					<div class="item">
-						<img src="share/img/ppcarousel3.jpg" alt="슬라이더(3)">
+						<img src="${pageContext.request.contextPath }/share/img/ppcarousel3.jpg" alt="슬라이더(3)">
 					</div>
 				</div>
 				<!-- // 내용영역 구성 -->
@@ -176,9 +176,9 @@
 					onclick="location.href='${pageContext.request.contextPath }/gallery/gal_list_new.do'">뽀삐뽀삐 전체상품 보러가기</button>
 			</div>
 			<div class="img_banner">
-				<img src="share/img/ppbanner1.jpg">
-				<img src="share/img/ppbanner2.jpg">
-				<img src="share/img/ppbanner3.jpg">
+				<img src="${pageContext.request.contextPath }/share/img/ppbanner1.jpg">
+				<img src="${pageContext.request.contextPath }/share/img/ppbanner2.jpg">
+				<img src="${pageContext.request.contextPath }/share/img/ppbanner3.jpg">
 			</div>
 			<center>
 				<i class="glyphicon glyphicon-bullhorn icon_size1 t_btn"

@@ -45,7 +45,7 @@
 					<c:choose>
 						<c:when test="${item.heartCnt > 0}">
 							<div class="search_tab_bg">
-							<img src="/views/share/img/ppbanner4">
+							<img src="${pageContext.request.contextPath }/share/img/ppbanner4.jpg">
 							</div>
 						</c:when>
 						<c:when test="${item.cate1 != null }">
