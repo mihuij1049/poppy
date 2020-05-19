@@ -33,7 +33,7 @@
 						<a data-toggle="collapse" data-parent="#accordion"
 							href="#collapseOne" aria-expanded="true"
 							aria-controls="collapseOne"> <b>배송지</b> <img
-							src="/upload/img/arrow-down.png" align=right
+							src="${pageContext.request.contextPath}/share/img/pparrowdown.png" align=right
 							class="arrow-down1 icon-rotate1">
 						</a>
 					</h4>
@@ -64,15 +64,13 @@
 											</div>
 										</div>
 										<input type="hidden" name="addrno" value="${output.addrno}" />
-										<input type="hidden" id="delivery-info-name" name="odname"
-											value="${output.odname}" /> <input type="hidden"
-											id="zipcode" name="zcode" value="${output.zcode}" /> <input
-											type="hidden" id="addr1" name="addr1" value="${output.addr1}" />
-										<input type="hidden" id="addr2" name="addr2"
-											value="${output.addr2}" /> <input type="hidden"
-											id="delivery-info-phone" name="odphone"
-											value="${output.odphone}" /> <input type="hidden"
-											name="odemail" value="${output.odemail}" /> <span
+										<input type="hidden" id="delivery-info-name" name="odname_1" value="${output.odname}" /> 
+										<input type="hidden" id="zipcode" name="zcode_1" value="${output.zcode}" /> 
+										<input type="hidden" id="addr1" name="addr1_1" value="${output.addr1}" /> 
+										<input type="hidden" id="addr2" name="addr2_1" value="${output.addr2}" /> 
+										<input type="hidden" id="delivery-info-phone" name="odphone_1" value="${output.odphone}" /> 
+										<input type="hidden" name="odemail_1" value="${output.odemail}" /> 
+										<span
 											class="side-right">
 											<button type="button" id="recent-address-list">배송지
 												목록</button>
@@ -195,7 +193,7 @@
 							data-parent="#accordion" href="#collapseTwo"
 							aria-expanded="false" aria-controls="collapseTwo"> <b>주문상품</b>
 							<span id="arrow-down"> <img
-								src="/upload/img/arrow-down.png" align=right
+								src="${pageContext.request.contextPath}/share/img/pparrowdown.png" align=right
 								class="arrow-down2 icon-rotate2">
 						</span>
 						</a>
@@ -205,16 +203,16 @@
 					role="tabpanel" aria-labelledby="headingTwo">
 					<div class="panel-body">
 						<div class="prd-info">
-							<c:choose>
-								<%--조회결과가 없는 경우 --%>
+							<%--<c:choose>
+								<%--조회결과가 없는 경우 
 								<c:when test="${goods == null}">
 									<div>
 										<div align="center">조회결과가 없습니다.</div>
 									</div>
 								</c:when>
-								<%--조회결과가 있는경우 --%>
+								<%--조회결과가 있는경우 
 								<c:otherwise>
-									<%-- 조회결과에 따른 반복 처리 --%>
+									<%-- 조회결과에 따른 반복 처리 
 									<c:forEach var="item" items="${gdoutput}" varStatus="status">
 										
 										<c:set var="goodsno" value="${item.goodsno}" />
@@ -227,67 +225,66 @@
 										<c:set var="gsale" value="${item.gsale}" />
 			
 
-										<%-- 상세페이지로 이동하기 위한 URL --%>
+										<%-- 상세페이지로 이동하기 위한 URL 
 										<c:url value="/gallery/goods_ajax.do" var="viewUrl">
 											<c:param name="goodsno" value="${item.goodsno}" />
-										</c:url>
+										</c:url> --%>
 
-										<div class="prd-box">
-											<div class=goods-box>
-												<div class="thumbnail">
-													<a
-														href="${pageContext.request.contextPath}/gallery/goods_ajax.do?goodno=${goods.goodsno}">
-														<img
-														src="${goods.imgpath}${goods.imgname}.${goods.imgext}"
-														width="70" height="70">
-													</a>
-												</div>
-												<div class="prd">
-													<div id="prd-title">
-														<strong class="prd-name" title="상품명"> <a
-															href="${pageContext.request.contextPath}/gallery_ajax/goods.jsp">${goods.gname}</a>
-														</strong><br /> <span class="prd-option">${gdoutput.gdoption}</span>
-													</div>
-													<ul class="prd-li">
-														<li style="list-style: none"><span class="prd-price"
-															title="판매가"> <strong><fmt:formatNumber
-																		value="${goods.gsale}" pattern="#,###" /></strong>원
-														</span> <span class="prd-count" title="수량"> <strong>${gdcount}</strong>개
-														</span> <br> <span class="prd-deli"> <span>[조건]/기본배송</span>
-														</span></li>
-													</ul>
-												</div>
-											</div>
-											<div class="cencel-btn">
-												<button type="button" class="btn" id="prd-del">
-													<span>&times;</span>
+							<div class="prd-box">
+								<div class=goods-box>
+									<div class="thumbnail">
+										<a
+											href="${pageContext.request.contextPath}/gallery/goods_ajax.do?goodno=${goods.goodsno}">
+											<img src="${goods.imgpath}"
+											width="70" height="70">
+										</a>
+									</div>
+									<div class="prd">
+										<div id="prd-title">
+											<strong class="prd-name" title="상품명"> <a
+												href="${pageContext.request.contextPath}/gallery_ajax/goods.jsp">${goods.gname}</a>
+											</strong><br /> <span class="prd-option">${gdoutput.gdoption}</span>
+										</div>
+										<ul class="prd-li">
+											<li style="list-style: none"><span class="prd-price"
+												title="판매가"> <strong><fmt:formatNumber
+															value="${goods.gsale}" pattern="#,###" /></strong>원
+											</span> <span class="prd-count" title="수량"> <strong>${gdcount}</strong>개
+											</span> <br> <span class="prd-deli"> <span>[조건]/기본배송</span>
+											</span></li>
+										</ul>
+									</div>
+								</div>
+								<div class="cencel-btn">
+									<button type="button" class="btn" id="prd-del">
+										<span>&times;</span>
+									</button>
+								</div>
+								<div class="modal fade" id="myModal">
+									<div class="modal-dialog modal-sm">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
 												</button>
+												<h4 class="modal-title">상품 취소</h4>
 											</div>
-											<div class="modal fade" id="myModal">
-												<div class="modal-dialog modal-sm">
-													<div class="modal-content">
-														<div class="modal-header">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h4 class="modal-title">상품 취소</h4>
-														</div>
-														<div class="modal-body">
-															<p>선택하신 상품을 삭제하시겠습니까?</p>
-														</div>
-														<div class="modal-footer">
-															<button type="button" class="btn btn-delete"
-																data-dismiss="modal">예</button>
-															<button type="button" class="btn" data-dismiss="modal">아니오</button>
-														</div>
-													</div>
-												</div>
+											<div class="modal-body">
+												<p>선택하신 상품을 삭제하시겠습니까?</p>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-delete"
+													data-dismiss="modal">예</button>
+												<button type="button" class="btn" data-dismiss="modal">아니오</button>
 											</div>
 										</div>
-									</c:forEach>
+									</div>
+								</div>
+							</div>
+							<%-- </c:forEach>
 								</c:otherwise>
-							</c:choose>
+							</c:choose> --%>
 							<div class="prd-foot" title="합계">
 								<span id="prd-total">합계</span> <span class="pt-right"> <span
 									id="prd-tal-pri"> <fmt:formatNumber
@@ -307,7 +304,7 @@
 							data-parent="#accordion" href="#collapseThree"
 							aria-expanded="false" aria-controls="collapseThree"> <b>할인/부가결제</b>
 							<span id="arrow-down"> <img
-								src="/upload/img/arrow-down.png" align=right
+								src="${pageContext.request.contextPath}/share/img/pparrowdown.png" align=right
 								class="arrow-down3 icon-rotate3">
 						</span>
 						</a>
@@ -344,7 +341,7 @@
 							data-parent="#accordion" href="#collapseFour"
 							aria-expanded="false" aria-controls="collapseFour"> <b>결제정보</b>
 							<span id="arrow-down"> <img
-								src="/upload/img/arrow-down.png" align=right
+								src="${pageContext.request.contextPath}/share/img/pparrowdown.png" align=right
 								class="arrow-down4 icon-rotate4">
 						</span>
 						</a>
@@ -439,7 +436,7 @@
 							data-parent="#accordion" href="#collapseFive"
 							aria-expanded="false" aria-controls="collapseFive"> <b>결제수단</b>
 							<span id="arrow-down"> <img
-								src="/upload/img/arrow-down.png" align=right
+								src="${pageContext.request.contextPath}/share/img/pparrowdown.png" align=right
 								class="arrow-down5 icon-rotate5">
 						</span>
 						</a>
@@ -488,7 +485,7 @@
 								혜택</b><b id="poi"><fmt:formatNumber
 									value="${(goods.gsale * gdcount) * 0.02}" pattern="#,###" />원
 								예정</b> <span id="arrow-down"> <img
-								src="/upload/img/arrow-down.png" align=right
+								src="${pageContext.request.contextPath}/share/img/pparrowdown.png" align=right
 								class="arrow-down6 icon-rotate6">
 						</span>
 						</a>
@@ -535,19 +532,18 @@
 					</span>원 <span>결제하기</span>
 				</button>
 			</div>
-			<input type="hidden" name="goodsno" value="${goods.goodsno}" /> <input
-				type="hidden" name="gcode" value="${goods.gcode}" /> <input
-				type="hidden" name="gname" value="${goods.gname}" /> <input
-				type="hidden" name="ginfo" value="${goods.ginfo}" /> <input
-				type="hidden" name="gprice" value="${goods.gprice}" /> <input
-				type="hidden" name="gsale" value="${goods.gsale}" /> <input
-				type="hidden" name="gdate" value="${goods.gdate}" /> <input
-				type="hidden" name="cate1" value="${goods.cate1}" /> <input
-				type="hidden" name="cate2" value="${goods.cate2}" /> <input
-				type="hidden" name="gdoption" value="${gdoutput.gdoption}" /> <input
-				type="hidden" name="gdcount" value="${gdcount}"> <input
-				type="hidden" id="pay-price" name="pay-price"
-				value="${(goods.gsale * gdcount) * 0.02}" />
+			<input type="hidden" name="goodsno" value="${goods.goodsno}" /> 
+			<input type="hidden" name="gcode" value="${goods.gcode}" /> 
+			<input type="hidden" name="gname" value="${goods.gname}" /> 
+			<input type="hidden" name="ginfo" value="${goods.ginfo}" /> 
+			<input type="hidden" name="gprice" value="${goods.gprice}" /> 
+			<input type="hidden" name="gsale" value="${goods.gsale}" /> 
+			<input type="hidden" name="gdate" value="${goods.gdate}" /> 
+			<input type="hidden" name="cate1" value="${goods.cate1}" /> 
+			<input type="hidden" name="cate2" value="${goods.cate2}" /> 
+			<input type="hidden" name="gdoption" value="${gdoutput.gdoption}" /> 
+			<input type="hidden" name="gdcount" value="${gdcount}"> 
+		    <input type="hidden" id="pay-price" name="pay-price" value="${(goods.gsale * gdcount) * 0.02}" />
 			<div class="order-info">
 				<ul class="order-info-box">
 					<li>무이자할부가 적용되지 않은 상품과 무이자할부가 가능한 상품을 동시에 구매할 경우 전체 주문 상품 금액에
@@ -557,26 +553,31 @@
 				</ul>
 			</div>
 		</div>
-	</form>
+	<input type="hidden" name="addrno" value="${output2.addrno}" />
+	<input type="hidden" id="tname" name="odname_2" value="${output2.odname}" /> 
+	<input type="hidden" id="tzipcode" name="zcode_2" value="${output2.zcode}" /> 
+	<input type="hidden" id="taddr1" name="addr1_2" value="${output2.addr1}" /> 
+	<input type="hidden" id="taddr2" name="addr2_2" value="${output2.addr2}" /> 
+	<input type="hidden" id="tphone" name="odphone_2" value="${output2.odphone}" />
 	<!-- 배송지 목록 조회 -->
 	<script id="recent_addr_tmpl" type="text/x-handlebars-template">
         {{#each item}}
 		   	<ul class="addr-content" style="list-style: none">
 	            <li delivery-list>
                     <strong class="name">
-                        <span id="name">{{odname}}</span>
+                        <span id="tname">{{odname}}</span>
 					</strong>
 			        <div class="description">
 					    <span class="choice"> 
                             <input type="radio" id="choice-select">
 					    </span>
 					    <p class="recent-content">
-					        [ <span id="zipcode">{{zcode}}</span> ] 
-                            <span id="addr1">{{addr1}}</span>
+					        [ <span id="tzipcode">{{zcode}}</span> ] 
+                            <span id="taddr1">{{addr1}}</span>
                             <br> 
-                            <span id="addr2">{{addr2}}</span>
+                            <span id="taddr2">{{addr2}}</span>
 				    	</p>
-				        <dl class="phone">
+				        <dl class="phone" id="tphone>
 				            <dt></dt>
 				    	    <dd>{{odphone}}</dd>
 				         </dl>
@@ -588,6 +589,7 @@
 			</ul>
         {{/each}}
         </script>
+    </form>
 	<!-- Javascript -->
 	<script
 		src="${pageContext.request.contextPath}/share/assets/js/jquery-3.2.1.min.js"></script>
@@ -822,27 +824,27 @@
 		});
 
 		$(function() {
-			$("#new_addr")
-					.click(
-							function(e) {
-								$("input:radio[id='same-addr2']").prop(
-										"checked", true);
-								$("#orderform")
-										.ajaxForm(
-												{
-													// 전송 메서드 지정
-													method : "POST",
-													// 서버에서 200 응답을 전달한 경우 실행됨
-													success : function(json) {
-														console.log(json);
-														if (json.rt == "OK") {
-															window.location = "${pageContext.request.contextPath}/myInfo/order_list.do?memno="
-																	+ json.Asave.memno;
-														}
-													}
-												});
-							});
+			$("#new_addr").click(function(e) {
+				$("input:radio[id='same-addr2']").prop("checked", true);
+				
+			});
 		});
+		
+		$(function() {
+			$("#orderform").ajaxForm({
+				// 전송 메서드 지정
+				method : "POST",
+				// 서버에서 200 응답을 전달한 경우 실행됨
+			    success : function(json) {
+		        console.log(json);
+				if (json.rt == "OK") {
+			        window.location = "${pageContext.request.contextPath}/myInfo/order_list.do?memno="
+						+ json.osave.orderno;
+									}
+							}
+				});
+			});
+		
 		$(function() {
 			// 수정 버튼이 클릭된 경우
 			$(".recent-addr")

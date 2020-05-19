@@ -89,15 +89,29 @@ public class PayRestController {
 	/** 주소 작성 폼에 대한 action 페이지 */
 	@RequestMapping(value = "/pay", method = { RequestMethod.PUT, RequestMethod.POST })
 	public Map<String, Object> addrAdd_ok(
-			/** 주소 INSERT */
+			/** 단일행 주소 조회 */
 			@RequestParam(value = "addrno", defaultValue = "0") int addrno,
-			@RequestParam(value = "odname", defaultValue = "") String odname,
-			@RequestParam(value = "odphone", defaultValue = "") String odphone,
-			@RequestParam(value = "odemail", defaultValue = "") String odemail,
-			@RequestParam(value = "zcode", defaultValue = "") Integer zcode,
-			@RequestParam(value = "addr1", defaultValue = "") String addr1,
-			@RequestParam(value = "addr2", defaultValue = "") String addr2,
+			@RequestParam(value = "odname_1", required = false) String odname_1,
+			@RequestParam(value = "odphone_1", required = false) String odphone_1,
+			@RequestParam(value = "odemail_1", required = false) String odemail_1,
+			@RequestParam(value = "zcode_1", required = false) Integer zcode_1,
+			@RequestParam(value = "addr1_1", required = false) String addr1_1,
+			@RequestParam(value = "addr2_1", required = false) String addr2_1,
 			@RequestParam(value = "memno", defaultValue = "0") int memno,
+			/** 다중행 주소 조회 */
+			@RequestParam(value = "odname_2", required = false) String odname_2,
+			@RequestParam(value = "odphone_2", required = false) String odphone_2,
+			@RequestParam(value = "odemail_2", required = false) String odemail_2,
+			@RequestParam(value = "zcode_2", required = false) Integer zcode_2,
+			@RequestParam(value = "addr1_2", required = false) String addr1_2,
+			@RequestParam(value = "addr2_2", required = false) String addr2_2,
+			/** 주소 INSERT */
+			@RequestParam(value = "odname", required = false) String odname,
+			@RequestParam(value = "odphone", required = false) String odphone,
+			@RequestParam(value = "odemail", required = false) String odemail,
+			@RequestParam(value = "zcode", required = false) Integer zcode,
+			@RequestParam(value = "addr1", required = false) String addr1,
+			@RequestParam(value = "addr2", required = false) String addr2,
 			/** 주문 INSERT */
 			@RequestParam(value = "orderno", defaultValue = "0") int orderno,
 			@RequestParam(value = "odmsg", defaultValue = "") String odmsg,
@@ -190,21 +204,44 @@ public class PayRestController {
 		gd.setGoodsno(goodsno);
 		gd.setMemno(myInfo.getMemno());
 
-		Address address = new Address();
-		address.setAddrno(addrno);
-		address.setOdname(odname);
-		address.setOdphone(odphone);
-		address.setOdemail(odemail);
-		address.setZcode(zcode);
-		address.setAddr1(addr1);
-		address.setAddr2(addr2);
-		address.setRegdate("now()");
-		address.setEditdate("now()");
-		address.setMemno(myInfo.getMemno());
-		
-		Address addr = new Address();
-		addr.setMemno(myInfo.getMemno());
+		/** 단일행 주소 조회 */
+		Address addrr = new Address();
+		addrr.setAddrno(addrno);
+		addrr.setOdname(odname_1);
+		addrr.setOdphone(odphone_1);
+		addrr.setOdemail(odemail_1);
+		addrr.setZcode(zcode_1);
+		addrr.setAddr1(addr1_1);
+		addrr.setAddr2(addr2_1);
+		addrr.setMemno(myInfo.getMemno());
+		Address assave = null;	
 
+    	/** 다중행 주소 조회 */
+		Address addr = new Address();
+		addr.setAddrno(addrno);
+		addr.setOdname(odname_2);
+		addr.setOdphone(odphone_2);
+		addr.setOdemail(odemail_2);
+		addr.setZcode(zcode_2);
+		addr.setAddr1(addr1_2);
+		addr.setAddr2(addr2_2);
+		addr.setMemno(myInfo.getMemno());
+		List<Address> alsave = null;
+
+		/** 주소 저장 */
+		Address add = new Address();
+		add.setOdname(odname);
+		add.setOdphone(odphone);
+		add.setOdemail(odemail);
+		add.setZcode(zcode);
+		add.setAddr1(addr1);
+		add.setAddr2(addr2);
+		add.setRegdate("now()");
+		add.setEditdate("now()");
+		add.setMemno(myInfo.getMemno());
+		Address asave = null;
+
+		/** 주문 */
 		Orders order = new Orders();
 		order.setOrderno(orderno);
 		order.setOdmsg(odmsg);
@@ -214,7 +251,9 @@ public class PayRestController {
 		order.setRegdate("now()");
 		order.setEditdate("now()");
 		order.setMemno(myInfo.getMemno());
+		Orders osave = null;
 
+		/** 주문 상품 */
 		Orderdetail oddetail = new Orderdetail();
 		oddetail.setOrderdetailno(goodsno);
 		oddetail.setOdgcode(gcode);
@@ -229,6 +268,7 @@ public class PayRestController {
 		oddetail.setRegdate("now()");
 		oddetail.setEditdate("now()");
 		oddetail.setOrderno(orderno);
+		Orderdetail odsave = null;
 
 		Points poi = new Points();
 		poi.setPointno(pointno);
@@ -237,59 +277,40 @@ public class PayRestController {
 		poi.setRegdate("now()");
 		poi.setEditdate("now()");
 		poi.setMemno(myInfo.getMemno());
-
-		// 저장된 결과를 조회하기 위한 객체
-		Address Asave = null;
-		List<Address> Addr = null;
-		Orders Osave = null;
-		Orderdetail Odsave = null;
-		Points Psave = null;
-
+		Points psave = null;
+	
 		try {
-			Asave = addressService.getAddressItem(address);
-			Addr = addressService.getAddressList(addr);
+			if (odname.equals("")) {
+			// 데이터 저장
+			// --> 데이터 저장에 성공하면 파라미터로 전달하는 객체에 PK값이 저장된다.
+				order.setAddrno(addrr.getAddrno());
+				ordersService.addOrders(order);
+				oddetail.setOrderno(order.getOrderno());
+				orderdetailService.addOrderdetail(oddetail);
+				poi.setOrderno(order.getOrderno());
+				pointsService.addPoints(poi);
+
+				// 데이터조회
+				osave = ordersService.getOrdersItem(order);
+				odsave = orderdetailService.getOrderdetailItem(oddetail);
+				psave = pointsService.getPointsOdItem(poi);
+			} else {			
+    			addressService.addAddress(add);
+				order.setAddrno(add.getAddrno());
+				ordersService.addOrders(order);
+				oddetail.setOrderno(order.getOrderno());
+				orderdetailService.addOrderdetail(oddetail);
+				poi.setOrderno(order.getOrderno());
+				pointsService.addPoints(poi);
+
+				// 데이터조회
+				asave = addressService.getAddressItem(add);
+				osave = ordersService.getOrdersItem(order);
+				odsave = orderdetailService.getOrderdetailItem(oddetail);
+				psave = pointsService.getPointsOdItem(poi);
+			}
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
-		}
-
-		if (Asave == null) {
-			try {
-				// 데이터 저장
-				// --> 데이터 저장에 성공하면 파라미터로 전달하는 객체에 PK값이 저장된다.
-				addressService.addAddress(address);
-				order.setAddrno(address.getAddrno());
-				ordersService.addOrders(order);
-				oddetail.setOrderno(order.getOrderno());
-				orderdetailService.addOrderdetail(oddetail);
-				poi.setOrderno(order.getOrderno());
-				pointsService.addPoints(poi);
-
-				// 데이터조회
-				Asave = addressService.getAddressItem(address);
-				Osave = ordersService.getOrdersItem(order);
-				Odsave = orderdetailService.getOrderdetailItem(oddetail);
-				Psave = pointsService.getPointsOdItem(poi);
-			} catch (Exception e) {
-				return webHelper.getJsonError(e.getLocalizedMessage());
-			}
-		} else if (Asave != null) {
-			try {
-				addressService.editAddress(addr);
-				order.setAddrno(addr.getAddrno());
-				ordersService.addOrders(order);
-				oddetail.setOrderno(order.getOrderno());
-				orderdetailService.addOrderdetail(oddetail);
-				poi.setOrderno(order.getOrderno());
-				pointsService.addPoints(poi);
-
-				// 데이터조회
-				Asave = addressService.getAddressItem(addr);
-				Osave = ordersService.getOrdersItem(order);
-				Odsave = orderdetailService.getOrderdetailItem(oddetail);
-				Psave = pointsService.getPointsOdItem(poi);
-			} catch (Exception e) {
-				return webHelper.getJsonError(e.getLocalizedMessage());
-			}
 		}
 
 		mySession.setAttribute("userInfo", myInfo);
@@ -297,10 +318,10 @@ public class PayRestController {
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
 		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야 한다.
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("Asave", Asave);
-		map.put("Osave", Osave);
-		map.put("Odsave", Odsave);
-		map.put("Psave", Psave);
+		map.put("asave", asave);
+		map.put("osave", osave);
+		map.put("odsave", odsave);
+		map.put("psave", psave);
 		return webHelper.getJsonData(map);
 	}
 }

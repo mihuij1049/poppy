@@ -136,6 +136,11 @@ public class GoodsAjaxController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
+		String imgPath = goods.getImgpath()+goods.getImgname()+"."+goods.getImgext();
+		goods.setImgpath(webHelper.getUploadPath(imgPath));
+		
+		
+		
 		mySession.setAttribute("userInfo", myInfo);
 		
 		// 3) 뷰처리

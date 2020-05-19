@@ -17,6 +17,7 @@ import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Address;
 import kr.co.poppy.model.Goods;
+import kr.co.poppy.model.GoodsForRv;
 import kr.co.poppy.model.Goodsdetail;
 import kr.co.poppy.model.Members;
 import kr.co.poppy.model.Points;
@@ -64,7 +65,7 @@ public class PayAjaxController {
 	public ModelAndView addrList(Model model, @RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
 			@RequestParam(value = "memno", defaultValue = "0") int memno,
 			@RequestParam(value = "gddetailno", defaultValue = "0") int gddetailno,
-			@RequestParam(value = "gdoption") String gdoption,
+			@RequestParam(value = "gdoption", defaultValue = "0") String gdoption,
 			@RequestParam(value = "gdcount", defaultValue = "0") int gdcount) {
 
 		/** 유효성 검사 */
@@ -113,7 +114,7 @@ public class PayAjaxController {
 		List<Address> output2 = null;
 		List<Points> output3 = null;
 		Goods goods = null;
-		List<Goodsdetail> gdoutput = null;
+		Goodsdetail gdoutput = null;
 
 		// 신규 - 기존 회원 검사
 		int result = 0;
@@ -132,7 +133,7 @@ public class PayAjaxController {
 				output2 = addressService.getAddressList(input2);
 				output3 = pointsService.getPointsMbList(input3);
 				goods = goodsService.getGoodsItem(gd);
-				gdoutput = goodsdetailService.getGoodsdetailList(gdetail);
+				gdoutput = goodsdetailService.getGoodsdetailItem(gdetail);
 			} catch (Exception e) {
 				// 신규회원일 경우, 조회된 데이터가 없으므로 오류를 발생시키면 안된다.
 				return webHelper.redirect(null, e.getLocalizedMessage());
@@ -160,13 +161,16 @@ public class PayAjaxController {
 				Moutput = membersService.getMembersItem(mb);
 				output3 = pointsService.getPointsMbList(input3);
 				goods = goodsService.getGoodsItem(gd);
-				gdoutput = goodsdetailService.getGoodsdetailList(gdetail);
+				gdoutput = goodsdetailService.getGoodsdetailItem(gdetail);
 			} catch (Exception e) {
 				// 신규회원일 경우, 조회된 데이터가 없으므로 오류를 발생시키면 안된다.
 				return webHelper.redirect(null, e.getLocalizedMessage());
 			}
 		}
-
+	 
+	    String imgPath = goods.getImgpath()+goods.getImgname()+"."+goods.getImgext();
+		goods.setImgpath(webHelper.getUploadPath(imgPath));
+	
 		/** View 처리 */
 		model.addAttribute("Moutput", Moutput);
 		model.addAttribute("gdcount", gdcount);

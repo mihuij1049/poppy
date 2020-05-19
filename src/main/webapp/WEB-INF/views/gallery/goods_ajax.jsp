@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -31,7 +32,7 @@
 			method="POST"
 			action="${pageContext.request.contextPath}/pay_ajax/orderform.do">
 			<div class="prd-img">
-				<img src="${goods.imgpath}${goods.imgname}.${goods.imgext}">
+				<img src="${goods.imgpath}">
 			</div>
 			<fieldset class="btn-group">
 				<button type="button" class="like-btn" aria-label="좋아요">
@@ -82,11 +83,11 @@
 									</p>
 									<p>
 										<button type="button" class="btn btnDown">
-											<img src="/upload/img/마이너스.png">
+											<img src="${pageContext.request.contextPath}/share/img/ppminus.png">
 										</button>
 										<input type="number" value="1" min="1" max="99" id="count" />
 										<button type="button" class="btn btnUp">
-											<img src="/upload/img/플러스.png">
+											<img src="${pageContext.request.contextPath}/share/img/ppplus.png">
 										</button>
 									</p>
 								</td>
@@ -132,15 +133,15 @@
 			<ul class="nav nav-tabs" id="mytab">
 				<li class="active"><a href="#Tpage1" data-toggle="tab">상세정보</a></li>
 				<li><a href="#Tpage2" data-toggle="tab">구매안내</a></li>
-				<li><a href="#Tpage3" data-toggle="tab" id="photo_rv">상품후기()</a></li>
-				<li><a href="#Tpage4" data-toggle="tab" id="qna_rv">Q&A()</a></li>
+				<li><a href="#Tpage3" data-toggle="tab" id="photo_rv">상품후기</a></li>
+				<li><a href="#Tpage4" data-toggle="tab" id="qna_rv">Q&A</a></li>
 			</ul>
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane fade active in" id="Tpage1">
 					<div class="prd-detail">
-						<img src="/upload/img/goods_content.jpg"> <img
-							src="/upload/img/goods_content2.jpg"> <img
-							src="/upload/img/goods_footer.jpg" id="prd-foot">
+						<img src="${pageContext.request.contextPath }/share/img/goods_content.jpg"> <img
+							src="${pageContext.request.contextPath }/share/img/goods_content2.jpg"> <img
+							src="${pageContext.request.contextPath }/share/img/goods_footer.jpg" id="prd-foot">
 					</div>
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="Tpage2">
@@ -178,87 +179,21 @@
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="Tpage3">
 					<div class="prd-photo">
-						<form id="photo-rv" method="post"
-							action="${pageContext.request.contextPath}/gallery_ajax/goods.do">
-							<div class="photo">
-								<h5>별점</h5>
-								<div class="star" name="rvlike">
-									<span class="starR on">별1</span> <span class="starR">별2</span>
-									<span class="starR">별3</span> <span class="starR">별4</span> <span
-										class="starR">별5</span>
-								</div>
-								<div class="photo-add">
-									<h5>사진첨부</h5>
-									<div class="photo-files">
-										<ul>
-											<li>
-												<div class="afile">
-													<input type="file" name="file1" style="display: none;">
-													<input type="text" name="file2" id="file2"
-														style="display: none;"> <img
-														src="/upload/img/photo-file.PNG" border="0"
-														onclick="document.all.file1.click(); document.all.file2.value=document.all.file1.value">
-												</div>
-											</li>
-											<li>
-												<div class="afile">
-													<input type="file" name="file2" style="display: none;">
-													<input type="text" name="file2" id="file2"
-														style="display: none;"> <img
-														src="/upload/img/photo-file.PNG" border="0"
-														onclick="document.all.file1.click(); document.all.file2.value=document.all.file1.value">
-												</div>
-											</li>
-											<li>
-												<div class="afile">
-													<input type="file" name="file2" style="display: none;">
-													<input type="text" name="file2" id="file2"
-														style="display: none;"> <img
-														src="/upload/img/photo-file.PNG" border="0"
-														onclick="document.all.file1.click(); document.all.file2.value=document.all.file1.value">
-												</div>
-											</li>
-											<li>
-												<div class="afile">
-													<input type="file" name="file2" style="display: none;">
-													<input type="text" name="file2" id="file2"
-														style="display: none;"> <img
-														src="/upload/img/photo-file.PNG" border="0"
-														onclick="document.all.file1.click(); document.all.file2.value=document.all.file1.value">
-												</div>
-											</li>
-											<li>
-												<div class="afile">
-													<input type="file" name="file2" style="display: none;">
-													<input type="text" name="file2" id="file2"
-														style="display: none;"> <img
-														src="/upload/img//photo-file.PNG" border="0"
-														onclick="document.all.file1.click(); document.all.file2.value=document.all.file1.value">
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="write  clearfix">
-								<input type="text" class="photo-title" name="bbstitle"
-									placeholder="제목" />
-								<textarea class="photo-content" name="bbscontent"
-									placeholder="리뷰를 남겨주세요."></textarea>
-							</div>
+						<div id="photo-rv">
 							<div class="photo-button">
-								<button type="submit" id="review-submit">리뷰 등록</button>
+								<button type="button"
+									onclick="location.href='${pageContext.request.contextPath}/community/photo_wri.do?goodsno=${goods.goodsno}'" id="review-submit">리뷰 등록</button>
 								<button type="button" id="review-all"
-									onclick="location.href='${pageContext.request.contextPath}/community/photo_rv.jsp'">리뷰
+									onclick="location.href='${pageContext.request.contextPath}/community/photo_rv.do'">리뷰
 									전체보기</button>
 							</div>
-						</form>
+						</div>
 						<div class="prd-review">
 							<c:choose>
 								<%-- 조회결과가 없는 경우 --%>
-								<c:when test="${item == null || fn:length(item) == 0}">
+								<c:when test="${item2 == null || fn:length(item2) == 0}">
 									<div>
-										<div>게시물이 없습니다.</div>
+										<div></div>
 									</div>
 								</c:when>
 								<%-- 조회결과가 있는  경우 --%>
@@ -465,7 +400,7 @@
 		<div id="topbt">
 			<a
 				style="display: scroll; position: fixed; bottom: 80px; right: 10px;"
-				href="#"> <img src="/upload/img/top_btn.png">
+				href="#"> <img src="${pageContext.request.contextPath }/share/img/pptopbt.png">
 			</a>
 		</div>
 		<!-- 하단 네비게이션 고정-->
@@ -545,11 +480,6 @@
 					        <dd class="edit">
 						        <a href="#" class="editt">수정</a>
 				        	</dd>
-					        <dd class="txt">
-						        <span> 리뷰가 도움이 되었나요? <a href="#">추천</a> <span
-							        class="voteCount"> 3 </span>
-						        </span>
-					        </dd>
 				        </dl>
 			        </div>
 		        </li>
@@ -568,7 +498,6 @@
 			</tr>
         {{/each}}
         </script>
-
 	<!-- Javascript -->
 	<script
 		src="${pageContext.request.contextPath}/share/assets/js/jquery-3.2.1.min.js"></script>
@@ -736,36 +665,34 @@
 		});
 
 		$(function() {
-			let bbsno=null;
-			let qnapw = null;
-		// 비밀번호 모달창 띄우기
-		$(".subjects").click(function(e) {
-			e.preventDefault();
-			bbsno = $(this).data("bbsno");
-			qnapw = $(this).data("qnapw");
-			$("#customer_pass").show();
-		});
+			// 비밀번호 모달창 띄우기
+			$("#subject").click(function(e) {
+				e.preventDefault();
+				$("#customer_pass").show();
+			});
 
-		$("#confirm_qnapw")
-				.click(function(e) {
-							e.preventDefault();
-							var inputpw = $("#cs_pass").val();
-							console.log(bbsno);
-							console.log(qnapw);
-							console.log(inputpw);
-							if (qnapw == inputpw) {
-								window.location = "${pageContext.request.contextPath}/community/article.do?bbstype=B&bbsno="
-										+ bbsno;
-							} else {
-								alert("비밀번호를 확인해주세요.");
-								$("#cs_pass").val("");
-							}
-						});
-		$("#modal-cancel-btn").click(function() {
-			$("#customer_pass").hide();
-		});
+			$("#confirm_qnapw")
+					.click(
+							function(e) {
+								e.preventDefault();
+								var inputpw = $("#cs_pass").val();
+								let current = $("#confirm-pw");
+								let bbsno = current.data("bbsno");
+								let qnapw = current.data("qnapw");
+								console.log(qnapw);
+								console.log(inputpw);
+								if (qnapw == inputpw) {
+									window.location = "${pageContext.request.contextPath}/community/article.do?bbstype=B&bbsno="
+											+ bbsno;
+								} else {
+									alert("비밀번호를 확인해주세요.");
+								}
+							});
+			$("#modal-cancel-btn").click(function() {
+				$("#customer_pass").hide();
+			});
 
-	});
+		});
 	</script>
 </body>
 
