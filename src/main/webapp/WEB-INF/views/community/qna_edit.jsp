@@ -42,7 +42,7 @@
 				<!-- QNA 상품정보 불러오기 -->
 				<div class="qnagoods">
 					<img class="photo"
-						src="${output.imgpath}${output.imgname}.${output.imgext}" />
+						src="${output.imgpath}" />
 					<div class="goodsname">
 						<div class="goodsname">
 							${output.gname}<br>

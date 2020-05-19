@@ -50,7 +50,7 @@
 						<%-- <c:set var="bbstitle" value="${item.bbstitle }" /> 이미지 불러올 예정 --%>
 						<div class="onegood clearfix">
 							<div class="solid-bottom clearfix">
-								<a href="#"><img src="${item.imgpath}${item.imgname}.${item.imgext}" class="cart-img">
+								<a href="#"><img src="${item.imgpath}" class="cart-img">
 									<div class="mybought">
 										<span><b class="bar1-good">${item.gname }</b></span><br>
 										<small>구매날짜: <span>${item.regdate }</span>
@@ -81,7 +81,7 @@
 						<c:set var="imgext" value="${item.imgext }" />
 
 						<div class="onegood onegood-bottom">
-							<a href="#"><img src="${item.imgpath}${item.imgname}.${item.imgext}" class="cart-img">
+							<a href="#"><img src="${item.imgpath}" class="cart-img">
 								<div class="mybought">
 									<span><b>${item.gname }</b></span><br>
 								</div></a>
