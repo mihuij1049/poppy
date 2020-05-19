@@ -33,13 +33,11 @@
 		</div>
 		<div class="container">
 			<input type="hidden" name="bbsno" value="${output.bbsno}" /> <img
-				src="${output.imgpath}" alt="리뷰사진"
-				class="big-image">
+				src="${output.imgpath}" alt="리뷰사진" class="big-image">
 			<div class="info-box">
 				<a
 					href="${pageContext.request.contextPath}/gallery_ajax/goods.do?goodsno=${output.goodsno}"><img
-					src="${output.gipath}"
-					class="small-image"></a>
+					src="${output.gipath}" class="small-image"></a>
 				<div class="info-content clear">
 					<a
 						href="${pageContext.request.contextPath}/gallery_ajax/goods.do?goodsno=${output.goodsno}">
@@ -54,7 +52,7 @@
 				</div>
 			</div>
 			<div class="rv-title">
-				<p>이 리뷰에 대해 n명의 고객님께서 추천해 주셨습니다.</p>
+				<p>이 리뷰에 대해 ${output.rvcount}명의 고객님께서 추천해 주셨습니다.</p>
 			</div>
 			<div class="rv-content">
 				<p class="date">${output.regdate}</p>
@@ -66,8 +64,10 @@
 			</div>
 			<div class="recommend">
 				<p>이 리뷰가 도움이 되셨다면 눌러주세요.</p>
-				<button class="btn">
-					<span>추천</span>
+				<button type="submit" class="btn btn-inverse insert-one"
+					id="insert-one" data-bbsno="${output.bbsno}"
+					data-rvheartno="${output.rvheartno}">
+					<i class="glyphicon glyphicon-heart icon_size"></i> 추천
 				</button>
 			</div>
 			<div class="rv-footer">
@@ -79,6 +79,26 @@
 	<!-- Javascript -->
 	<script type="text/javascript">
 		$(function() {
+			$(document).on("click", "#insert-one", function(e) {
+		        e.preventDefault();
+		  
+		        if (${empty userInfo.userid}) {
+		        	alert("로그인 후 이용해 주세요.")
+		        	window.location="${pageContext.request.contextPath}/member/login.do";
+		        } else {
+		        
+		       	let bbsno = $(this).data("bbsno");
+		        $.post("${pageContext.request.contextPath}/community/in_item",
+		              { "bbsno" : bbsno },
+		                   function(json) {
+		                     if(json.rt=="OK");
+		                  }
+		              )
+		        }
+		        /* $(this).css('color', 'red');
+		        clicked = false; */
+		     });
+			
 			var count = 5;
 			$("#recommend").click(function() {
 				if (count == 5) {

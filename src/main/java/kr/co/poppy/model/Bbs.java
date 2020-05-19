@@ -54,6 +54,7 @@ public class Bbs {
 
 	/* rvheart를 위한 join 변수 */
 	private int rvheartno;
+	private int rvcount;
 	
 	/** 게시판 목록에 댓글 갯수를 위한 변수 */
 	private int cmtcount;

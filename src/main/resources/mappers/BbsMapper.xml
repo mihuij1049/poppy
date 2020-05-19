@@ -34,6 +34,7 @@
 		<result property="username" column="username" />
 		<!-- rvheart 테이블의 조인 컬럼 -->
 		<result property="rvheartno" column="rvheartno" />
+		<result property="rvcount" column="rvcount" />
 		<!-- goods 테이블의 조인 컬럼 -->
 		<result property="cate1" column="cate1" />
 		<result property="cate2" column="cate2" />
@@ -76,6 +77,7 @@
 		SELECT m.memno, m.username, b.bbsno, b.bbstype, b.bbstitle,
 		b.bbscontent,
 		b.rvlike, b.regdate, b.editdate, b.goodsno,
+        (SELECT COUNT(*) FROM rvheart WHERE bbsno= #{bbsno}) AS rvcount,
 		i.imgname,
 		i.imgpath, i.imgext, i.imgtype,
 		(SELECT i.imgname FROM imgs i WHERE i.goodsno = b.goodsno AND imgtype="A") AS
