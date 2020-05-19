@@ -212,10 +212,10 @@ public class GalleryController {
 			// 페이지구현
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 		if (searchCondition == null) {
-			return webHelper.redirect(null, "서치컨디션없음1");
+			return webHelper.redirect(null, "정렬방식 선택값이 없습니다.");
 		}
 		if (cate1 == null) {
-			return webHelper.redirect(null, "카테1값업슴1");
+			return webHelper.redirect(null, "카테고리 선택값이 없습니다.");
 		}
 		
 		// 페이지 구현 변수값

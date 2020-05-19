@@ -30,7 +30,7 @@
 
 .pr_search_tab .cate_ip {
 	float: left;
-	width: 35%;
+	width: 25%;
 }
 
 .pr_search_tab .cate_ip .icon_size {
@@ -41,7 +41,7 @@
 
 .pr_search_tab input {
 	height: 23px;
-	width: 33%;
+	width: 42%;
 }
 
 .container .cate_select {

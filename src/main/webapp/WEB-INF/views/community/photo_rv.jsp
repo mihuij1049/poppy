@@ -33,16 +33,10 @@
 					<form>
 						<div class="pr_search_tab_bg">
 							<div class="pr_search_tab">
-								<!-- <div class="cate_ip">
-									<i class="glyphicon glyphicon-th-list icon_size"></i> 카테고리선택
+								
+								<div class="search_tab_bg">
+								
 								</div>
-								<select name="category" class="cate_select">
-									<option value="">푸드</option>
-									<option value="">의류</option>
-									<option value="">외출용품</option>
-									<option value="">대형견코너</option>
-									<option value="">홈리빙</option>
-								</select> -->
 								<div>
 									<div class="cate_ip">
 										<i class="glyphicon glyphicon-search icon_size"></i> 리뷰검색
