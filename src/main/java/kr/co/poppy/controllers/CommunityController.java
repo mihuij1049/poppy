@@ -399,6 +399,12 @@ public class CommunityController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
+		
+		for (Bbs item : output) {
+			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			item.setImgpath(webHelper.getUploadPath(imgPath));
+		}
+		
 		/** 3) view 처리 */
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("output", output);

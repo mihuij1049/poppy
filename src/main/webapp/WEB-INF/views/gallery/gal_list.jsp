@@ -90,7 +90,7 @@
 							<div class="pr_box">
 								<div class="pr_in_box">
 									<a href="${pageContext.request.contextPath }/gallery_ajax/goods.do?goodsno=${item.goodsno}">
-										<img alt="사진" src="${item.imgpath}${item.imgname}.jpg" class="img_size">
+										<img alt="사진" src="${item.imgpath}" class="img_size">
 											<h5>
 												<div class="gnameblock">
 													<b>${item.gname}</b>

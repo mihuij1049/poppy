@@ -60,7 +60,7 @@
 						<div class="pr_box">
 							<div class="pr_in_box">
 								<a href="${pageContext.request.contextPath}/community/photo.do?bbsno=${item.bbsno}"> <img alt="사진"
-									src="${item.imgpath}${item.imgname}.${item.imgext}" class="img_size" />
+									src="${item.imgpath}" class="img_size" />
 									<div>
 										<h5>
 											<b>${item.bbstitle}</b>
@@ -87,7 +87,7 @@
 						<div class="pr_box">
 							<div class="pr_in_box">
 								<a href="${pageContext.request.contextPath}/community/photo.do?bbsno=${item.bbsno}"> <img alt="사진"
-									src="${item.imgpath}${item.imgname}.${item.imgext}" class="img_size" />
+									src="${item.imgpath}" class="img_size" />
 									<div>
 										<h5>
 											<b>${item.bbstitle}</b>

@@ -18,6 +18,7 @@ import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Bbs;
 import kr.co.poppy.model.Goods;
+import kr.co.poppy.model.GoodsForRv;
 import kr.co.poppy.model.Heart;
 import kr.co.poppy.model.Imgs;
 import kr.co.poppy.service.GoodsService;
@@ -74,6 +75,11 @@ public class GalleryController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
+		for (Goods item : output) {
+			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			item.setImgpath(webHelper.getUploadPath(imgPath));
+		}
+		
 		// 3) 뷰처리
 		model.addAttribute("output", output);
 		model.addAttribute("pageData", pageData);
@@ -114,6 +120,11 @@ public class GalleryController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
+		for (Goods item : output) {
+			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			item.setImgpath(webHelper.getUploadPath(imgPath));
+		}
+		
 		// 3) 뷰처리
 		model.addAttribute("output", output);
 		model.addAttribute("pageData", pageData);
@@ -152,6 +163,11 @@ public class GalleryController {
 			
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		for (Goods item : output) {
+			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			item.setImgpath(webHelper.getUploadPath(imgPath));
 		}
 		
 		// 3) 뷰처리
@@ -195,6 +211,11 @@ public class GalleryController {
 			
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		for (Goods item : output) {
+			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			item.setImgpath(webHelper.getUploadPath(imgPath));
 		}
 		
 		// 3) 뷰처리
@@ -249,6 +270,11 @@ public class GalleryController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
+		
+		for (Goods item : output) {
+			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			item.setImgpath(webHelper.getUploadPath(imgPath));
+		}
 			
 		// 3) 뷰처리
 		model.addAttribute("output", output);
@@ -291,6 +317,11 @@ public class GalleryController {
 			
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		for (Goods item : output) {
+			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			item.setImgpath(webHelper.getUploadPath(imgPath));
 		}
 		
 		// 3) 뷰처리
@@ -345,7 +376,12 @@ public class GalleryController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-			
+		
+		for (Goods item : output) {
+			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			item.setImgpath(webHelper.getUploadPath(imgPath));
+		}
+		
 		// 3) 뷰처리
 		model.addAttribute("output", output);
 		model.addAttribute("pageData", pageData);
@@ -401,6 +437,11 @@ public class GalleryController {
 			output = goodsService.getGoodsListSearch(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		for (Goods item : output) {
+			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			item.setImgpath(webHelper.getUploadPath(imgPath));
 		}
 		
 		// 3) 뷰처리

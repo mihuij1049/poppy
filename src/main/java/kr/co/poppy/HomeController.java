@@ -82,6 +82,21 @@ public class HomeController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
+		
+		for (Goods item : output1) {
+			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			item.setImgpath(webHelper.getUploadPath(imgPath));
+		}
+		
+		for (Goods item : output2) {
+			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			item.setImgpath(webHelper.getUploadPath(imgPath));
+		}
+		
+		for (Bbs item : output3) {
+			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			item.setImgpath(webHelper.getUploadPath(imgPath));
+		}
 				
 		// 3) 뷰처리
 		model.addAttribute("output1", output1);
