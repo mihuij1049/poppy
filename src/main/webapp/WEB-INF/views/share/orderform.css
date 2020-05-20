@@ -790,15 +790,15 @@
      -webkit-appearance: none;
  }
  
- #button-list span {
-     height: 100%;
-     padding: 10px 24px;
- }
- 
  #button-list label input:checked + .text {
-     color: #fff;
+     color: #fff; 
      font-weight: bold;
      background: #ff6261;
+ }
+ 
+  #button-list label input:checked + .text {
+     color: #fff;  
+     font-weight: bold;
  }
  
  #button-list input[type="radio"] {

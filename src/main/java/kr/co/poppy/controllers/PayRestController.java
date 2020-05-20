@@ -214,9 +214,9 @@ public class PayRestController {
 		addrr.setAddr1(addr1_1);
 		addrr.setAddr2(addr2_1);
 		addrr.setMemno(myInfo.getMemno());
-		Address assave = null;	
+		Address assave = null;
 
-    	/** 다중행 주소 조회 */
+		/** 다중행 주소 조회 
 		Address addr = new Address();
 		addr.setAddrno(addrno);
 		addr.setOdname(odname_2);
@@ -226,7 +226,7 @@ public class PayRestController {
 		addr.setAddr1(addr1_2);
 		addr.setAddr2(addr2_2);
 		addr.setMemno(myInfo.getMemno());
-		List<Address> alsave = null;
+		List<Address> alsave = null; */
 
 		/** 주소 저장 */
 		Address add = new Address();
@@ -278,37 +278,32 @@ public class PayRestController {
 		poi.setEditdate("now()");
 		poi.setMemno(myInfo.getMemno());
 		Points psave = null;
-	
+
+		
 		try {
-			if (odname.equals("")) {
-			// 데이터 저장
-			// --> 데이터 저장에 성공하면 파라미터로 전달하는 객체에 PK값이 저장된다.
-				order.setAddrno(addrr.getAddrno());
-				ordersService.addOrders(order);
-				oddetail.setOrderno(order.getOrderno());
-				orderdetailService.addOrderdetail(oddetail);
-				poi.setOrderno(order.getOrderno());
-				pointsService.addPoints(poi);
+			assave = addressService.getAddressItem(addrr);
+			/** alsave = addressService.getAddressList(addr); */
+			
+			
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		try {
+			
+			addressService.addAddress(add);
+			order.setAddrno(add.getAddrno());
+			ordersService.addOrders(order);
+			oddetail.setOrderno(order.getOrderno());
+			orderdetailService.addOrderdetail(oddetail);
+			poi.setOrderno(order.getOrderno());
+			pointsService.addPoints(poi);
 
-				// 데이터조회
-				osave = ordersService.getOrdersItem(order);
-				odsave = orderdetailService.getOrderdetailItem(oddetail);
-				psave = pointsService.getPointsOdItem(poi);
-			} else {			
-    			addressService.addAddress(add);
-				order.setAddrno(add.getAddrno());
-				ordersService.addOrders(order);
-				oddetail.setOrderno(order.getOrderno());
-				orderdetailService.addOrderdetail(oddetail);
-				poi.setOrderno(order.getOrderno());
-				pointsService.addPoints(poi);
-
-				// 데이터조회
-				asave = addressService.getAddressItem(add);
-				osave = ordersService.getOrdersItem(order);
-				odsave = orderdetailService.getOrderdetailItem(oddetail);
-				psave = pointsService.getPointsOdItem(poi);
-			}
+			// 데이터조회
+			asave = addressService.getAddressItem(add);
+			osave = ordersService.getOrdersItem(order);
+			odsave = orderdetailService.getOrderdetailItem(oddetail);
+			psave = pointsService.getPointsOdItem(poi);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}

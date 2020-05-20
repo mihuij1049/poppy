@@ -234,7 +234,7 @@
 								<div class=goods-box>
 									<div class="thumbnail">
 										<a
-											href="${pageContext.request.contextPath}/gallery/goods_ajax.do?goodno=${goods.goodsno}">
+											href="${pageContext.request.contextPath}/gallery_ajax/goods.do?goodsno=${goods.goodsno}">
 											<img src="${goods.imgpath}"
 											width="70" height="70">
 										</a>
@@ -242,7 +242,7 @@
 									<div class="prd">
 										<div id="prd-title">
 											<strong class="prd-name" title="상품명"> <a
-												href="${pageContext.request.contextPath}/gallery_ajax/goods.jsp">${goods.gname}</a>
+												href="${pageContext.request.contextPath}/gallery_ajax/goods.do?goodsno=${goods.goodsno}">${goods.gname}</a>
 											</strong><br /> <span class="prd-option">${gdoutput.gdoption}</span>
 										</div>
 										<ul class="prd-li">
