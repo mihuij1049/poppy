@@ -84,7 +84,7 @@ public class GalleryController {
 		model.addAttribute("output", output);
 		model.addAttribute("pageData", pageData);
 
-		return new ModelAndView("gallery/gal_list");
+		return new ModelAndView("gallery/gal_list_all");
 	}
 	
 	/** 갤러리 목록 페이지 (베스트상품별) */
