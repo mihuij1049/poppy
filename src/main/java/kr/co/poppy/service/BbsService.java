@@ -42,6 +42,7 @@ public interface BbsService {
 	 */
 	public List<Bbs> getBbsList_myrv(Bbs input) throws Exception;
 	
+	public List<Bbs> getBbsList_myrv2(Bbs input) throws Exception;
 	/**
 	 * 게시글 데이터가 저장되어 있는 갯수 조회
 	 * @param Bbs 검색조건을 담고 있는 Beans

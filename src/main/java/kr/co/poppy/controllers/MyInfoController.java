@@ -401,7 +401,7 @@ public class MyInfoController {
 		List<Bbs> myBbsList = null;
 
 		try {
-			myBbsList = bbsService.getBbsList_myrv(myBbs);
+			myBbsList = bbsService.getBbsList_myrv2(myBbs);
 
 			avRvList = goodsForRvService.getGoodsList(goodsForRv);
 		} catch (Exception e) {

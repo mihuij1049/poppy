@@ -157,6 +157,24 @@
 			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
+	 <!-- 매퍼 중복 사용으로 오버로드함 --> 
+	<select id="selectList_myrv2"
+		parameterType="kr.co.poppy.model.Bbs" resultMap="bbsMap">
+		SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,
+		b.goodsno, b.rvlike,
+		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,
+		i.goodsno,
+		m.memno, m.userid
+		FROM bbs b
+		INNER JOIN members m ON b.memno=m.memno
+		INNER JOIN imgs i ON b.bbsno=i.bbsno
+		WHERE i.imgtype="C" AND b.bbstype="C" AND b.memno = #{memno}
+		
+		ORDER BY bbsno ASC
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if>
+	</select>
 
 	<!-- ========== 데이터 수 조회를 위한 기능 정의 ========== -->
 	<select id="selectCountAll"

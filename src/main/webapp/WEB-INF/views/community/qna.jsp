@@ -210,9 +210,7 @@
 					.click(function(e) {
 								e.preventDefault();
 								var inputpw = $("#cs_pass").val();
-								console.log(bbsno);
-								console.log(qnapw);
-								console.log(inputpw);
+								
 								if (qnapw == inputpw) {
 									window.location = "${pageContext.request.contextPath}/community/article.do?bbstype=B&bbsno="
 											+ bbsno;
