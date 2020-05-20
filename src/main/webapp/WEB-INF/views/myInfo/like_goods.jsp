@@ -106,9 +106,7 @@ overflow-y : hidden;
 				</c:otherwise>
 			</c:choose>
 			<div class="lastbtn">
-				<a href="${pageContext.request.contextPath }/pay/orderform.do">
-					<button type="button" class="btn btn2" id="all-bye">전체상품주문</button>
-				</a>
+					<button type="button" class="btn btn2" id="all-buy">전체상품주문</button>
 			</div>
 		</div>
 	</div>
@@ -162,12 +160,13 @@ overflow-y : hidden;
 		});
 
 		/** 전체상품 주문 버튼 예외상황 */
-		$("#all-bye").click(function() {
+		$("#all-buy").click(function() {
 			var check_list = $(".cart:checked");
 			if (check_list.length == 0) {
 				alert("선택된 항목이 없습니다.");
 				return false;
 			}
+			alert("아직 구현중인 기능입니다.^^");
 		});
 		
 		/** 상품삭제 */
