@@ -434,7 +434,6 @@
 							"click",
 							"#select_order",
 							function(e) {
-								alert("선택상품주문");
 								var select_array = [];
 								length = $(".cart-box").length;
 								for (var i = 0; i < length; i++) {
@@ -476,7 +475,6 @@
 							"click",
 							"#all_order",
 							function(e) {
-								alert("전체상품주문");
 								var all_array = [];
 								length = $(".cart-box").length;
 								for (var i = 0; i < length; i++) {
