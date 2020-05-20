@@ -82,7 +82,7 @@
 			$(document).on("click", "#insert-one", function(e) {
 		        e.preventDefault();
 		  
-		        if (${empty userInfo.userid}) {
+		        if (${empty myInfo.userid}) {
 		        	alert("로그인 후 이용해 주세요.")
 		        	window.location="${pageContext.request.contextPath}/member/login.do";
 		        } else {
@@ -99,7 +99,6 @@
 		        clicked = false; */
 		     });
 			});
-		});
 	</script>
 </body>
 

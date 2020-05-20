@@ -35,9 +35,6 @@
 		<!-- rvheart 테이블의 조인 컬럼 -->
 		<result property="rvheartno" column="rvheartno" />
 		<result property="rvcount" column="rvcount" />
-		<!-- goods 테이블의 조인 컬럼 -->
-		<result property="cate1" column="cate1" />
-		<result property="cate2" column="cate2" />
 	</resultMap>
 
 

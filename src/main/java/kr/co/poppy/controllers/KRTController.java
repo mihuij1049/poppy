@@ -207,6 +207,9 @@ public class KRTController {
 	/** 상세 페이지 */
 	@RequestMapping(value = "/community/photo.do", method = RequestMethod.GET)
 	public ModelAndView photo(Model model, @RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
+		HttpSession mySession = webHelper.getSession();
+		Members myInfo = (Members) mySession.getAttribute("userInfo");
+		
 		/** 1) 유효성 검사 */
 		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
 		if (bbsno == 0) {
@@ -237,6 +240,8 @@ public class KRTController {
 
 		/** 3) view 처리 */
 		model.addAttribute("output", output);
+		model.addAttribute("myInfo", myInfo);
+		
 		return new ModelAndView("community/photo");
 	}
 
