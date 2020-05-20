@@ -174,7 +174,7 @@ public class GalleryController {
 		model.addAttribute("output", output);
 		model.addAttribute("pageData", pageData);
 	
-		return new ModelAndView("gallery/gal_list");
+		return new ModelAndView("gallery/gal_list_new");
 	}
 	
 	/** 갤러리 목록 페이지 (카테고리별) */

@@ -29,6 +29,10 @@
 				<li>BEST</li>
 			</a>
 			<a
+				href="${pageContext.request.contextPath }/gallery/gal_list_new.do">
+				<li>NEW</li>
+			</a>
+			<a
 				href="${pageContext.request.contextPath }/gallery/gal_list.do?cate1=푸드">
 				<li>푸드</li>
 			</a>

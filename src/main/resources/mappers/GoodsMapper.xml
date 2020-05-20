@@ -86,8 +86,11 @@
 		from goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
 		WHERE i.imgtype="A"
-		ORDER BY g.editdate ASC
-		LIMIT 10;
+		ORDER BY g.editdate DESC
+		<!-- 페이지 번호 구현 -->
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if>
 	</select>
 	
 	<!-- 다중행 조회(카테고리별)을 위한 기능 정의 -->

@@ -22,7 +22,7 @@
 			<h4>
 				<b> <a href="#" onclick="history.back(); return false;"><i
 						class="glyphicon glyphicon-chevron-left"></i></a>
-								전체상품
+								신상품
 				</b>
 			</h4>
 		</div>
@@ -69,7 +69,7 @@
 					<%-- 이전 그룹으로 이동 가능하다면? --%>
 					<c:when test="${pageData.prevPage > 0}">
 						<%-- 이동할 URL 생성 --%>
-						<c:url value="/gallery/gal_list_all.do" var="prevPageUrl">
+						<c:url value="/gallery/gal_list_new.do" var="prevPageUrl">
 							<c:param name="page" value="${pageData.prevPage}" />
 						</c:url>
 						<a href="${prevPageUrl}" class="prevok">≪</a>
@@ -82,7 +82,7 @@
 				<c:forEach var="i" begin="${pageData.startPage}"
 					end="${pageData.endPage}" varStatus="status">
 					<%-- 이동할 URL 생성 --%>
-					<c:url value="/gallery/gal_list_all.do" var="pageUrl">
+					<c:url value="/gallery/gal_list_new.do" var="pageUrl">
 						<c:param name="page" value="${i}" />
 					</c:url>
 
@@ -104,7 +104,7 @@
 					<%-- 다음 그룹으로 이동 가능하다면? --%>
 					<c:when test="${pageData.nextPage > 0}">
 						<%-- 이동할 URL 생성 --%>
-						<c:url value="/gallery/gal_list_all.do" var="nextPageUrl">
+						<c:url value="/gallery/gal_list_new.do" var="nextPageUrl">
 							<c:param name="page" value="${pageData.nextPage}" />
 						</c:url>
 						<a href="${nextPageUrl}" class="nextok">≫</a>

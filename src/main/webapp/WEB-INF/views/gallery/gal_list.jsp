@@ -102,13 +102,13 @@
 										<hr />
 									</a>
 									<div class="price_box">
-										<span id="gprice"><del>₩${item.gprice}원</del></span>
+										<span id="gprice"><del>₩<fmt:formatNumber value="${item.gprice}" pattern="#,###" />원</del></span>
 										<button type="submit" class="btn btn-inverse insert-one" id="insert-one" data-heartno="${item.heartno}" data-goodsno="${item.goodsno}">
 										like
 										♥
 										</button>
 										<br>
-										<span id="gsale"><b>₩${item.gsale}원</b></span>
+										<span id="gsale"><b>₩<fmt:formatNumber value="${item.gsale}" pattern="#,###" />원</b></span>
 									</div>
 								</div>
 							</div>
