@@ -32,6 +32,7 @@ import kr.co.poppy.model.Points;
 import kr.co.poppy.service.BbsService;
 import kr.co.poppy.service.CartService;
 import kr.co.poppy.service.ImgsService;
+import kr.co.poppy.service.MembersService;
 import kr.co.poppy.service.OrderdetailService;
 import kr.co.poppy.service.OrdersService;
 import kr.co.poppy.service.PointsService;
@@ -59,6 +60,8 @@ public class KRTController {
 	CartService cartService;
 	@Autowired
 	ImgsService imgsService;
+	@Autowired
+	MembersService membersService;
 
 	/** "/프로젝트이름"에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -104,9 +107,9 @@ public class KRTController {
 			}
 			output.add(orders);
 		}
-		
+
 		for (Orders item : output) {
-			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			String imgPath = item.getImgpath() + item.getImgname() + "." + item.getImgext();
 			item.setImgpath(webHelper.getUploadPath(imgPath));
 		}
 
@@ -189,9 +192,9 @@ public class KRTController {
 			}
 			output.add(orders);
 		}
-		
+
 		for (Orders item : output) {
-			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			String imgPath = item.getImgpath() + item.getImgname() + "." + item.getImgext();
 			item.setImgpath(webHelper.getUploadPath(imgPath));
 		}
 
@@ -209,7 +212,7 @@ public class KRTController {
 	public ModelAndView photo(Model model, @RequestParam(value = "bbsno", defaultValue = "0") int bbsno) {
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
-		
+
 		/** 1) 유효성 검사 */
 		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
 		if (bbsno == 0) {
@@ -230,18 +233,17 @@ public class KRTController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-		
-			String imgPath = output.getImgpath()+output.getImgname()+"."+output.getImgext();
-			output.setImgpath(webHelper.getUploadPath(imgPath));
-			
-			String imgPath2 = output.getGipath()+output.getGiname()+"."+output.getGiext();
-			output.setGipath(webHelper.getUploadPath(imgPath2));
 
+		String imgPath = output.getImgpath() + output.getImgname() + "." + output.getImgext();
+		output.setImgpath(webHelper.getUploadPath(imgPath));
+
+		String imgPath2 = output.getGipath() + output.getGiname() + "." + output.getGiext();
+		output.setGipath(webHelper.getUploadPath(imgPath2));
 
 		/** 3) view 처리 */
 		model.addAttribute("output", output);
 		model.addAttribute("myInfo", myInfo);
-		
+
 		return new ModelAndView("community/photo");
 	}
 
@@ -604,10 +606,23 @@ public class KRTController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-		
+
 		for (Cart item : output) {
-			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+			String imgPath = item.getImgpath() + item.getImgname() + "." + item.getImgext();
 			item.setImgpath(webHelper.getUploadPath(imgPath));
+		}
+
+		// 세션 갱신
+		try {
+			// 데이터 조회
+			myInfo = membersService.loginMembers(myInfo);
+			// 조회 결과가 있다면 세션 저장
+			if (myInfo != null) {
+				mySession.setAttribute("userInfo", myInfo);
+
+			}
+		} catch (Exception e) {
+
 		}
 
 		model.addAttribute("myInfo", myInfo);

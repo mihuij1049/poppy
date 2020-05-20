@@ -219,6 +219,19 @@ public class MyInfoRestController {
 			return webHelper.getJsonWarning("장바구니에 담지 못했습니다.");
 		}
 		
+		// 세션 갱신
+		try {
+			// 데이터 조회
+			myInfo = membersService.loginMembers(myInfo);
+			// 조회 결과가 있다면 세션 저장 
+			if (myInfo!=null) {
+				mySession.setAttribute("userInfo", myInfo);
+			
+			}
+		} catch (Exception e) {
+			
+		}
+		
 		return webHelper.getJsonData();
 		
 	}

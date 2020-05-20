@@ -11,7 +11,7 @@
 <head>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/share/cart.css" />
+	href="${pageContext.request.contextPath}/share/cart.css?ver=1" />
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -519,7 +519,6 @@
 												"click",
 												".delete_ok",
 												function(e) {
-													select_array += i + ",";
 													location.href = '${pageContext.request.contextPath}/pay/cart_delete.do?cartno='
 															+ cartno;
 													delete_item.remove();

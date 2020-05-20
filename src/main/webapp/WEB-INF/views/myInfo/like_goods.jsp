@@ -70,12 +70,12 @@ overflow-y : hidden;
 											<b class="plz_qty">수량을 입력해 주세요.</b><br>
 											<div class="word-btn">
 												<button class="count minus">
-													<img src="../share/img/마이너스.png">
+													<img src="../share/img/ppminus.png">
 												</button>
 												<input type="number" class="count-label" value="1"
 													id="count-label" />
 												<button class="count plus">
-													<img src="../share/img/플러스.png">
+													<img src="../share/img/ppplus.png">
 												</button>
 											</div>
 										</div>
@@ -221,9 +221,6 @@ overflow-y : hidden;
 			/* $("#cart_in").show(); */
 			let opt = $(this).parent().prev().children().eq(2).children().eq(2).children().val();
 			let qty = $(this).parent().prev().children().eq(2).children().eq(3).children().children("input").val();
-			console.log(opt);
-			console.log(qty);
-			console.log(!opt.isNan);
 			
 			if (isNaN(opt)) {
 				alert("옵션을 선택해주세요!");

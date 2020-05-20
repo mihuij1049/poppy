@@ -38,4 +38,7 @@ public class Members {
 	
 	/** 총 사용된 적립금 */
 	private int sumUsedpoint;
+	
+	/** 장바구니 개수 조회 */
+	private int cartcnt;
 }

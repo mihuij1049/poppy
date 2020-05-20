@@ -16,6 +16,7 @@
 <result property="useremail" column="useremail" />
 <result property="regdate" column="regdate" />
 <result property="editdate" column="editdate" />
+<result property="cartcnt" column="cartcnt" />
 </resultMap>
 <!-- 회원 가입을 위한 멤버테이블 INSERT -->
 <insert id="add_members"
@@ -39,13 +40,13 @@
 <select id="select_item"
 	parameterType="kr.co.poppy.model.Members"
 	resultMap="membersMap">
-	SELECT * from members WHERE memno=#{memno};
+	SELECT *, (SELECT COUNT(cartno) FROM cart WHERE memno=#{memno}) AS cartcnt from members WHERE memno=#{memno};
 </select>
 <!-- 특정 회원의 정보 조회(로그인 확인) -->
 <select id="login_members"
 	parameterType="kr.co.poppy.model.Members"
 	resultMap="membersMap">
-	SELECT * from members WHERE userid=#{userid} and userpw=#{userpw}
+	SELECT *, (SELECT COUNT(cartno) FROM cart c WHERE c.memno=m.memno) AS cartcnt from members m WHERE userid=#{userid} and userpw=#{userpw}
 </select>
 <!-- 특정 회원의 정보 조회(아이디 찾기) -->
 <select id="findId_members"
