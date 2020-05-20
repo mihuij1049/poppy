@@ -414,7 +414,7 @@ public class GalleryController {
 		String searchGoods = webHelper.getCookie("searchGoods");
 	     
 		/** 검색어 쿠키 */
-	    if (searchGoods==null) {
+	    if (searchGoods==null && !keyword.equals("")) {
 	    	// 쿠키가 없다면? 새로운 쿠키를 생성하면서 검색어 를 저장
 	         webHelper.setCookie("searchGoods", keyword, 60*60*24);
 	         System.out.println("============쿠키의값" + webHelper.getCookie("searchGoods"));

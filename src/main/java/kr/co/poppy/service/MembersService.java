@@ -27,6 +27,13 @@ public interface MembersService {
 	 */
 	public Members loginMembers(Members input) throws Exception;
 	
+	/** 세션 정보 조회 로그인 기능(로그인 유지)
+	 * @Param  회원의 세션아이디 를 담고 있는 Beans
+	 * @return  조회된 회원의 정보를 담고 있는 Beans
+	 * @throws Exception
+	 */
+	public Members keepLogin(Members input) throws Exception;
+	
 	/** 회원 정보 조회 아이디찾기 기능
 	 * @Param  회원의 이름(username)과 이메일(useremail)을 담고 있는 Beans
 	 * @return  조회된 회원의 정보를 담고 있는 Beans
@@ -47,6 +54,14 @@ public interface MembersService {
 	 * @throws Exception
 	 */
 	public Members sameCheckMembers(Members input) throws Exception;
+	
+	/** 세션값 수정하기
+	 * @Param 회원의 로그인 시 로그인 아이디 와 세션값
+	 * @void
+	 * @throws Exception
+	 */
+	
+	public void editSessionId(String userid, String sessionid) throws Exception;
 	
 	/** 회원 정보 수정하기
 	 * 

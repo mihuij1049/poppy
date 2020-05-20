@@ -34,7 +34,7 @@
 						<input type="password" name="user_pw" id="user_pw" placeholder="&nbsp;비밀번호">
 					</p>
 					<p>
-						<input type="checkbox" name="login_keep value=" Y" /> 로그인
+						<input type="checkbox" name="login_keep" value="Y" /> 로그인
 						상태유지&nbsp; <span class="glyphicon glyphicon-lock"></span> 보안접속
 					</p>
 					<p>

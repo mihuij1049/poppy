@@ -55,7 +55,7 @@
 		INNER JOIN goodsdetail gd ON gd.gddetailno =
 		c.gddetailno
 		WHERE
-		o.memno=1 AND i.imgtype = "A" AND od.odgcode=g.gcode
+		o.memno=#{memno} AND i.imgtype = "A" AND od.odgcode=g.gcode
 		AND
 		i.goodsno=g.goodsno
 		AND o.odstatus IN ("0", "1", "2", "3");

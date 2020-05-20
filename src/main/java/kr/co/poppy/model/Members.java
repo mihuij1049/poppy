@@ -22,7 +22,10 @@ public class Members {
 		
 	/** 이메일 주소 */
 	private String useremail;
-		
+	
+	/** 세션 아이디 */
+	private String sessionid;
+	
 	/** 등록일시 */
 	private String regdate;
 		

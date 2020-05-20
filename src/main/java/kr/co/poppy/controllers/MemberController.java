@@ -2,6 +2,7 @@ package kr.co.poppy.controllers;
 
 import java.util.Calendar;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -31,11 +32,11 @@ public class MemberController {
 	/** RegexHelper 주입 */
 	@Autowired
 	RegexHelper regexHelper;
-	
+
 	/** MailHelper 주입 */
 	@Autowired
 	MailHelper mailHelper;
-	
+
 	/** Service 패턴 구현체 주입 */
 	@Autowired
 	MembersService membersService;
@@ -43,17 +44,17 @@ public class MemberController {
 	/** Service 패턴 구현체 주입 */
 	@Autowired
 	AgreeService agreeService;
-	
+
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
-	
+
 //-------------------------------------------------------------------------
-	
+
 	/** agree_0.jsp 약관동의 페이지 */
 	@RequestMapping(value = "/member/agree_0.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String agree_0() {
-		
+
 		return "member/agree_0";
 	}
 
@@ -140,14 +141,13 @@ public class MemberController {
 	public String find_pw() {
 		return "member/find_pw";
 	}
-	
+
 	/** find_pw_email.jsp */
 	@RequestMapping(value = "/member/find_pw_email.do", method = RequestMethod.POST)
-	public ModelAndView find_pw_email(Model model,
-			@RequestParam(value="user_name", required=true) String username,
-			@RequestParam(value="user_id", required=true) String userid,
-			@RequestParam(value="user_email", required=true) String useremail) {
-		
+	public ModelAndView find_pw_email(Model model, @RequestParam(value = "user_name", required = true) String username,
+			@RequestParam(value = "user_id", required = true) String userid,
+			@RequestParam(value = "user_email", required = true) String useremail) {
+
 		/** 1) 유효성 검사 */
 		if (username == null) {
 			return webHelper.redirect(null, "이름을 입력하세요.");
@@ -158,7 +158,7 @@ public class MemberController {
 		if (useremail == null) {
 			return webHelper.redirect(null, "이메일을 입력하세요.");
 		}
-		
+
 		/** 2) 데이터 조회하기 */
 		Members input = new Members();
 		input.setUsername(username);
@@ -176,17 +176,16 @@ public class MemberController {
 		}
 
 		model.addAttribute("output", output);
-		
+
 		return new ModelAndView("member/find_pw_email");
 	}
-	
+
 	/** find_pw_ok.jsp */
 	@RequestMapping(value = "/member/find_pw_ok.do", method = RequestMethod.POST)
-	public ModelAndView find_pw_ok(Model model,
-			@RequestParam(value="user_name", required=true) String username,
-			@RequestParam(value="user_id", required=true) String userid,
-			@RequestParam(value="user_email", required=true) String useremail) {
-		
+	public ModelAndView find_pw_ok(Model model, @RequestParam(value = "user_name", required = true) String username,
+			@RequestParam(value = "user_id", required = true) String userid,
+			@RequestParam(value = "user_email", required = true) String useremail) {
+
 		/** 1) 유효성 검사 */
 		if (userid == null) {
 			return webHelper.redirect(null, "아이디를 입력하세요.");
@@ -194,10 +193,10 @@ public class MemberController {
 		if (useremail == null) {
 			return webHelper.redirect(null, "이메일을 입력하세요.");
 		}
-		
-		/** 2) 임시비밀 번호 메일 발송하기  */
+
+		/** 2) 임시비밀 번호 메일 발송하기 */
 		// 임시 비밀번호 생성
-		int randomNum = (int)((Math.random() * (999999-1+1) + 1));
+		int randomNum = (int) ((Math.random() * (999999 - 1 + 1) + 1));
 		String randomPw = String.format("%06d", randomNum);
 		// 임시 비밀번호로 DB 수정하기
 		Members input = new Members();
@@ -205,33 +204,33 @@ public class MemberController {
 		input.setUsername(username);
 		input.setUserid(userid);
 		input.setUseremail(useremail);
-		
+
 		try {
 			membersService.editPwMembers(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, "가입된 회원 정보가 없습니다.");
 		}
-		
+
 		// 메일 발송 변수 설정 -> 받는사람(receiver), 제목(subject), 내용(content)
 		String receiver = useremail;
 		String subject = "뽀삐뽀삐 쇼핑몰에서 발송된 임시비밀번호 입니다.";
-		String content = username + " 님의 뽀삐뽀삐 쇼핑몰 아이디=" + userid + "<br><br>" 
-						+ "임시비밀번호는 " + "<b>" + randomPw +"</b>"+ " 변경되었습니다.";
-		
+		String content = username + " 님의 뽀삐뽀삐 쇼핑몰 아이디=" + userid + "<br><br>" + "임시비밀번호는 " + "<b>" + randomPw + "</b>"
+				+ " 변경되었습니다.";
+
 		try {
 			mailHelper.sendMail(receiver, subject, content);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return webHelper.redirect(null, "메일 발송에 실패했습니다.");
 		}
-		
+
 		/** 3) View에 전달할 Beans */
 		// input 객체의 정보로 전달해도되지만, 임시비밀번호가 담긴 Beans를
 		// 노출시키는것 같아서 output 객체를 새로 생성하여 View에 전달하였다.
 		Members output = new Members();
 		output.setUserid(userid);
 		output.setUseremail(useremail);
-		
+
 		model.addAttribute("output", output);
 		return new ModelAndView("member/find_pw_ok");
 	}
@@ -245,8 +244,8 @@ public class MemberController {
 
 	@RequestMapping(value = "/member/login_ok.do", method = RequestMethod.POST)
 	public ModelAndView login_ok(Model model, @RequestParam(value = "user_id", required = true) String userid,
-			@RequestParam(value = "user_pw", required = true
-			) String userpw) {
+			@RequestParam(value = "user_pw", required = true) String userpw,
+			@RequestParam(value = "login_keep", defaultValue = "N") String keepLogin) {
 		/** 1) 유효성 검사 */
 		if (userid == null) {
 			return webHelper.redirect(null, "아이디를 입력하세요.");
@@ -254,11 +253,14 @@ public class MemberController {
 		if (userpw == null) {
 			return webHelper.redirect(null, "비밀번호를 입력하세요.");
 		}
-		// 세션 저장하기 (WebHelper로 HttpServletRequest의 request객체 받기
+		// 세션처리를 위한 객체 생성 (WebHelper로 HttpServletRequest의 request객체 받기)
 		HttpSession userSession = webHelper.getSession();
-		
-		
-		
+		// 기존에 userInfo 란 세션 값이 존재한다면
+		if (userSession.getAttribute("userInfo") != null) {
+			// 기존 세션을 제거한다.
+			userSession.removeAttribute("userInfo");
+		}
+
 		/** 2) 데이터 조회하기 */
 		Members input = new Members();
 		input.setUserid(userid);
@@ -270,28 +272,40 @@ public class MemberController {
 		try {
 			// 데이터 조회
 			output = membersService.loginMembers(input);
-			// 조회 결과가 있다면 세션 저장 
-			if (output!=null) {
+			// 조회 결과가 있다면 세션 저장
+			if (output != null) {
 				userSession.setAttribute("userInfo", output);
-			
 			}
 		} catch (Exception e) {
 			return webHelper.redirect(null, "아이디와 비밀번호를 확인하세요!");
 		}
+		/** 사용자가 로그인 상태유지 를 체크했다면?? */
+		
+		if (keepLogin.equals("Y")) {
+			// 쿠키 생성
+			webHelper.setCookie("keepLog", userSession.getId(), 60*60);
+			try {
+				membersService.editSessionId(output.getUserid(), userSession.getId());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 		/** 3) View 로 데이터 전달 */
 		model.addAttribute("myinfo", output);
-		
-		return webHelper.redirect(contextPath+"/myInfo/myinfo.do", "환영합니다! 댕댕이 주인님~!");
+
+		return webHelper.redirect(contextPath + "/myInfo/myinfo.do", "환영합니다! 댕댕이 주인님~!");
 	}
-	
+
 	/** 로그아웃 액션 페이지 */
 	@RequestMapping(value = "/member/logout.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView logout(Model model) {
-
+		// 저장된 세션 제거
 		webHelper.removeSession("userInfo");
-		
-		return webHelper.redirect(contextPath+"/index/index.do", "좋은 하루 되세요, 회원님!");
+		webHelper.setCookie("keepLog", webHelper.getSession().getId(), 0);
+
+		return webHelper.redirect(contextPath + "/index/index.do", "좋은 하루 되세요, 회원님!");
 	}
 
 	/**
@@ -310,6 +324,10 @@ public class MemberController {
 			@RequestParam(value = "tel2", required = true) String userphone2,
 			@RequestParam(value = "tel3", required = true) String userphone3,
 			@RequestParam(value = "email", required = true) String useremail) {
+		/** 로그인 관련 세션과 쿠키를 모두 제거한다 */
+		webHelper.removeSession("userInfo");
+		webHelper.setCookie("keepLog", webHelper.getSession().getId(), 0);
+		
 		// 가입한 시각을 담은 date 생성
 		Calendar c = Calendar.getInstance();
 		String date = String.format("%04d-%02d-%02d %02d:%02d:%02d", c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1,
@@ -340,7 +358,7 @@ public class MemberController {
 		newmem.setUserpw(userpw);
 		newmem.setUsername(username);
 		newmem.setUseremail(useremail);
-		newmem.setUserphone(userphone1+"-"+userphone2+"-"+userphone3);
+		newmem.setUserphone(userphone1 + "-" + userphone2 + "-" + userphone3);
 		newmem.setRegdate(date);
 		newmem.setEditdate(date);
 
@@ -358,7 +376,7 @@ public class MemberController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-		
+
 		/** 회원가입 확인 페이지로 세션 저장 후 이동 */
 		// 세션 저장하기 (WebHelper로 HttpServletRequest의 request객체 받기
 		HttpSession userSession = webHelper.getSession();
@@ -370,13 +388,13 @@ public class MemberController {
 	/** 가입을 환영하는 가입완료 페이지 */
 	@RequestMapping(value = "/member/myinfo_wri_ok.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView myinfo_wri_ok(Model model) {
-		
+
 		// 세션 (WebHelper로 HttpServletRequest의 request객체 받기
 		HttpSession userSession = webHelper.getSession();
 		// 세션 불러오기
 		Members newmem = (Members) userSession.getAttribute("userInfo");
 		model.addAttribute("newmembers", newmem);
-		
+
 		return new ModelAndView("member/myinfo_wri_ok");
 	}
 

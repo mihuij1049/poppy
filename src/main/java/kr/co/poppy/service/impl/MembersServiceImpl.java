@@ -1,5 +1,8 @@
 package kr.co.poppy.service.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,13 +14,15 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class MembersServiceImpl implements MembersService {
-	
+
 	/** DB조회를 위한 MyBatis 객체 주입 */
 	@Autowired
 	SqlSession sqlSession;
-	
-	/** 회원가입 
-	 * @Param  회원의 정보를 담고 있는 Beans
+
+	/**
+	 * 회원가입
+	 * 
+	 * @Param 회원의 정보를 담고 있는 Beans
 	 * @return int
 	 */
 	@Override
@@ -25,7 +30,7 @@ public class MembersServiceImpl implements MembersService {
 		int result = 0;
 		try {
 			result = sqlSession.insert("MembersMapper.add_members", input);
-			if(result==0) {
+			if (result == 0) {
 				result = sqlSession.selectOne("MembersMapper.select_item", input);
 			}
 		} catch (NullPointerException e) {
@@ -37,10 +42,12 @@ public class MembersServiceImpl implements MembersService {
 		}
 		return result;
 	}
-	
-	/** 회원 정보 조회
-	 * @Param  회원의 일련번호(memno)를 담고 있는 Beans
-	 * @return  조회된 회원의 정보를 담고 있는 Beans
+
+	/**
+	 * 회원 정보 조회
+	 * 
+	 * @Param 회원의 일련번호(memno)를 담고 있는 Beans
+	 * @return 조회된 회원의 정보를 담고 있는 Beans
 	 */
 	@Override
 	public Members getMembersItem(Members input) throws Exception {
@@ -59,10 +66,12 @@ public class MembersServiceImpl implements MembersService {
 		}
 		return output;
 	}
-	
-	/** 회원 정보 조회 로그인 기능
-	 * @Param  회원의 아이디(userid)와 비밀번호(userpw) 를 담고 있는 Beans
-	 * @return  조회된 회원의 정보를 담고 있는 Beans
+
+	/**
+	 * 회원 정보 조회 로그인 기능
+	 * 
+	 * @Param 회원의 아이디(userid)와 비밀번호(userpw) 를 담고 있는 Beans
+	 * @return 조회된 회원의 정보를 담고 있는 Beans
 	 */
 	@Override
 	public Members loginMembers(Members input) throws Exception {
@@ -81,12 +90,52 @@ public class MembersServiceImpl implements MembersService {
 		}
 		return output;
 	}
-	
-	/** 회원 정보 조회 아이디찾기 기능
-	 * @Param  회원의 이름(username)과 이메일(useremail)을 담고 있는 Beans
-	 * @return  조회된 회원의 정보를 담고 있는 Beans
+
+	/**
+	 * 세션 정보 조회 로그인 기능
+	 * 
+	 * @Param 세션아이디(sessionid) 를 담고 있는 Beans
+	 * @return 조회된 회원의 정보를 담고 있는 Beans
 	 */
-	
+
+	@Override
+	public Members keepLogin(Members input) throws Exception {
+		Members output = null;
+		try {
+			output = sqlSession.selectOne("MembersMapper.keep_login_members", input);
+			if (output == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return output;
+	}
+
+	@Override
+	public void editSessionId(String userid, String sessionid) throws Exception {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("userid", userid);
+		map.put("sessionid", sessionid);
+		try {
+			sqlSession.update("MembersMapper.edit_sessionid", map);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+	}
+
+	/**
+	 * 회원 정보 조회 아이디찾기 기능
+	 * 
+	 * @Param 회원의 이름(username)과 이메일(useremail)을 담고 있는 Beans
+	 * @return 조회된 회원의 정보를 담고 있는 Beans
+	 */
+
 	@Override
 	public Members findIdMembers(Members input) throws Exception {
 		Members output = null;
@@ -104,18 +153,20 @@ public class MembersServiceImpl implements MembersService {
 		}
 		return output;
 	}
-	
-	/** 회원 정보 조회 임시비밀번호 수정 기능
-	 * @Param  회원의 이름(username)과 아이디(userid) 이메일(useremail)을 담고 있는 Beans
+
+	/**
+	 * 회원 정보 조회 임시비밀번호 수정 기능
+	 * 
+	 * @Param 회원의 이름(username)과 아이디(userid) 이메일(useremail)을 담고 있는 Beans
 	 * @return int
 	 */
 
 	@Override
 	public int editPwMembers(Members input) throws Exception {
 		int result = 0;
-		try  {
+		try {
 			result = sqlSession.update("MembersMapper.editPw_members", input);
-			if(result==0) {
+			if (result == 0) {
 				throw new NullPointerException("result=0");
 			}
 		} catch (NullPointerException e) {
@@ -127,10 +178,12 @@ public class MembersServiceImpl implements MembersService {
 		}
 		return result;
 	}
-	
-	/** 회원가입 중복 체크 기능
-	 * @Param  회원의 아이디(userid) 또는 이메일(useremail)을 담고 있는 Beans
-	 * @return  조회된 회원의 정보를 담고 있는 Beans
+
+	/**
+	 * 회원가입 중복 체크 기능
+	 * 
+	 * @Param 회원의 아이디(userid) 또는 이메일(useremail)을 담고 있는 Beans
+	 * @return 조회된 회원의 정보를 담고 있는 Beans
 	 */
 	@Override
 	public Members sameCheckMembers(Members input) throws Exception {
@@ -150,16 +203,18 @@ public class MembersServiceImpl implements MembersService {
 		return output;
 	}
 
-	/** 회원 정보 수정
-	 * @Param  회원의 일련번호를 담고 있는 Beans
-	 * @return int 
+	/**
+	 * 회원 정보 수정
+	 * 
+	 * @Param 회원의 일련번호를 담고 있는 Beans
+	 * @return int
 	 */
 	@Override
 	public int editMembers(Members input) throws Exception {
 		int result = 0;
-		try  {
+		try {
 			result = sqlSession.update("MembersMapper.edit_members", input);
-			if(result==0) {
+			if (result == 0) {
 				throw new NullPointerException("result=0");
 			}
 		} catch (NullPointerException e) {
@@ -172,16 +227,18 @@ public class MembersServiceImpl implements MembersService {
 		return result;
 	}
 
-	/** 회원 탈퇴 기능
-	 * @Param  회원의 일련번호를 담고 있는 Beans
+	/**
+	 * 회원 탈퇴 기능
+	 * 
+	 * @Param 회원의 일련번호를 담고 있는 Beans
 	 * @return int
 	 */
 	@Override
 	public int deleteMembers(Members input) throws Exception {
 		int result = 0;
-		try  {
+		try {
 			result = sqlSession.update("MembersMapper.delete_members", input);
-			if(result==0) {
+			if (result == 0) {
 				throw new NullPointerException("result=0");
 			}
 		} catch (NullPointerException e) {
@@ -193,5 +250,5 @@ public class MembersServiceImpl implements MembersService {
 		}
 		return result;
 	}
-	
+
 }
