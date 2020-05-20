@@ -12,7 +12,9 @@
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/share/article.css" />
+<style type="text/css">
 
+</style>
 </head>
 
 <body>
@@ -138,7 +140,7 @@
 								type="hidden" value="${output.bbsno}" name="bbsno" /> <input
 								type="hidden" value="${output.bbstype}" name="bbstype" />
 							<div class="comment-write">
-								<div class="info-name">이름: ${myCmt.username}</div>
+								<div class="info-name"><span class="glyphicon glyphicon-user"></span> ${myCmt.username}</div>
 							</div>
 							<textarea class="comment_area" id="comment_area"
 								name="cmtcontent"></textarea>

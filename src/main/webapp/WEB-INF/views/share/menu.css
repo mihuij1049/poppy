@@ -85,7 +85,7 @@
 }
 
 .fm-default>.fm-heading {
-	border: 1px solid #ffc7c1;
+	border: 1px solid #ff8f83;
 }
 
 /** 아코디언 클릭이벤트시 화살표 transform 회전 */
@@ -141,4 +141,8 @@
 
 .box2 {
 	color: red;
+}
+span.hhh {
+	padding:0px 0px 10x 0px;
+	color: #ff8f83;
 }

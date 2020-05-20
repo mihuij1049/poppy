@@ -79,8 +79,9 @@
 								<%--  비밀글 --%>
 									<c:when test="${!empty item.qnapw}">
 										<tr>
-											<td class="subject" id="subject" data-qnapw="${item.qnapw}" data-bbsno="${item.bbsno }"><strong> <span
-													class="glyphicon glyphicon-lock"></span> <a
+											<td class="subject" id="subject" data-qnapw="${item.qnapw}" data-bbsno="${item.bbsno }">
+										
+											<strong> <span class="glyphicon glyphicon-lock"></span> <a
 													href="${viewUrl}" class="subject" id="confirm-pw"
 													>${bbstitle}</a>
 													<span class="comment">&nbsp;[${item.cmtcount}]</span></strong><br />

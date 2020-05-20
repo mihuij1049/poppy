@@ -197,10 +197,12 @@
 									</div>
 									<div id="collapse-One" class="panel-collapse collapse">
 										<div class="panel-body fm-body">
-											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=건식사료">- 건식사료 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=건식사료">
+											<span class="hhh">♡</span>건식사료 </a>
 										</div>
 										<div class="panel-body fm-body">
-											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=반건식사료">- 반건식사료 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=반건식사료">
+											<span class="hhh">♡</span>반건식사료 </a>
 										</div>
 									</div>
 								</div>
@@ -218,10 +220,12 @@
 									</div>
 									<div id="collapse-Two" class="panel-collapse collapse">
 										<div class="panel-body fm-body">
-											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=아우터">- 아우터 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=아우터">
+											<span class="hhh">♡</span>아우터 </a>
 										</div>
 										<div class="panel-body fm-body">
-											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=티셔츠">- 티셔츠 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=티셔츠">
+											<span class="hhh">♡</span>티셔츠 </a>
 										</div>
 									</div>
 								</div>
@@ -239,13 +243,16 @@
 									</div>
 									<div id="collapse-Three" class="panel-collapse collapse">
 										<div class="panel-body fm-body">
-											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=목줄">- 목줄 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=목줄">
+											<span class="hhh">♡</span>목줄 </a>
 										</div>
 										<div class="panel-body fm-body">
-											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=하네스">- 하네스 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=하네스">
+											<span class="hhh">♡</span>하네스</a>
 										</div>
 										<div class="panel-body fm-body">
-											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=이동장">- 이동장 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=이동장">
+											<span class="hhh">♡</span>이동장 </a>
 										</div>
 									</div>
 								</div>
@@ -263,13 +270,16 @@
 									</div>
 									<div id="collapse-Four" class="panel-collapse collapse">
 										<div class="panel-body fm-body">
-											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=사료">- 사료 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=사료">
+											<span class="hhh">♡</span>사료 </a>
 										</div>
 										<div class="panel-body fm-body">
-											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=하네스">- 하네스 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=하네스">
+											<span class="hhh">♡</span>하네스 </a>
 										</div>
 										<div class="panel-body fm-body">
-											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=의류">- 의류 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=의류">
+											<span class="hhh">♡</span>의류 </a>
 										</div>
 									</div>
 								</div>
@@ -287,16 +297,20 @@
 									</div>
 									<div id="collapse-Five" class="panel-collapse collapse">
 										<div class="panel-body fm-body">
-											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=방석">- 방석 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=방석">
+											<span class="hhh">♡</span>방석 </a>
 										</div>
 										<div class="panel-body fm-body">
-											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=계단">- 계단 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=계단">
+											<span class="hhh">♡</span></a>
 										</div>
 										<div class="panel-body fm-body">
-											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=울타리">- 울타리 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=울타리">
+											<span class="hhh">♡</span></a>
 										</div>
 										<div class="panel-body fm-body">
-											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=매트">- 매트 </a>
+											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=매트">
+											<span class="hhh">♡</span>매트 </a>
 										</div>
 									</div>
 								</div>
