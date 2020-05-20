@@ -21,7 +21,7 @@
 <title>Poppy-Poppy</title>
 <!-- 플러그인 CSS 참조 -->
 <link rel="stylesheet" type="text/css"
-	href="../share/plugins/datepicker/datepicker.min.css">
+	href="${pageContext.request.contextPath }/share/plugins/datepicker/datepicker.min.css">
 </head>
 
 <body>
@@ -170,8 +170,8 @@
 	<!-- Javascript -->
 	<%@ include file="../share/bottom_tp.jsp"%>
 	<!-- 플러그인 JS 참조 -->
-	<script src="../share/plugins/datepicker/datepicker.min.js"></script>
-	<script src="../share/plugins/datepicker/datepicker.ko-KR.js"></script>
+	<script src="${pageContext.request.contextPath }/share/plugins/datepicker/datepicker.min.js"></script>
+	<script src="${pageContext.request.contextPath }/share/plugins/datepicker/datepicker.ko-KR.js"></script>
 	<!-- 사용자 정의 스크립트 -->
 	<script type="text/javascript">
 			$(function() {

@@ -459,19 +459,21 @@
 												+ "&gddetailno=" + gddetailno
 												+ "&gdoption=" + gdoption
 												+ "&gdcount=" + cartqty;
+										console.log(order_item);
 									}
 									if (i == length - 1) {
 										if (select_array.length == 0) {
+											alert("선택된 항목이 없습니다.");
 											return;
 										}
 										select_array = select_array.substr(0,
 												select_array.length - 1);
 										console.log(select_array);
-										location.href = '${pageContext.request.contextPath}/pay_ajax/orderform.do?'
-												+ order_item;
+										
+										//location.href = '${pageContext.request.contextPath}/pay_ajax/orderform.do?'
+										//		+ order_item;
 									}
 								}
-
 							});
 
 			$(document)

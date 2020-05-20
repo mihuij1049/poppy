@@ -18,9 +18,9 @@
 	href="${pageContext.request.contextPath}/share/photo_wri.css?ver=1" />
 <!-- 플러그인 CSS 참조 -->
 <link rel="stylesheet"
-	href="../share/plugins/sweetalert/sweetalert2.min.css" />
+	href="${pageContext.request.contextPath }/share/plugins/sweetalert/sweetalert2.min.css" />
 
-<script src="../share/plugins/handlebars/handlebars-v4.0.5.js"></script>
+<script src="${pageContext.request.contextPath }/share/plugins/handlebars/handlebars-v4.0.5.js"></script>
 </head>
 
 <body>
@@ -141,9 +141,9 @@
 		{{/each}}
 	</script>
 	<!-- 플러그인 JS 참조 -->
-	<script src="../share/plugins/validate/jquery.validate.min.js"></script>
-	<script src="../share/plugins/validate/additional-methods.min.js"></script>
-	<script src="../share/plugins/sweetalert/sweetalert2.min.js"></script>
+	<script src="${pageContext.request.contextPath }/share/plugins/validate/jquery.validate.min.js"></script>
+	<script src="${pageContext.request.contextPath }/share/plugins/validate/additional-methods.min.js"></script>
+	<script src="${pageContext.request.contextPath }/share/plugins/sweetalert/sweetalert2.min.js"></script>
 	<!-- Javascript -->
 	<script type="text/javascript">
 		$(function() {
