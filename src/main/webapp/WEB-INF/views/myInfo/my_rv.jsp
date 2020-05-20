@@ -82,9 +82,9 @@
 
 						<div class="onegood onegood-bottom">
 							<a href="#"><img src="${item.imgpath}" class="cart-img">
-								<div class="mybought">
+								
 									<span><b>${item.gname }</b></span><br>
-								</div></a>
+								</a>
 
 
 							<div class="star">
@@ -109,7 +109,7 @@
 
 							<br />
 							<div class="review" id="review">
-								<span>${item.bbstitle }</span>
+								<span class="bbstitle">${item.bbstitle }</span>
 							</div>
 						</div>
 

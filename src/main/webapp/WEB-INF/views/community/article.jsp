@@ -31,7 +31,7 @@
 				</h4>
 			</div>
 			<div class="wriinfo">
-						<p class="articletitle">[Q&A] ${output.bbstitle}</p>
+						<b class="articletitle">[Q&A] ${output.bbstitle}</b>
 				<p class="articlewriter">${output.username }</p>
 			</div>
 			<!-- QNA 상품정보 불러오기 -->
@@ -52,7 +52,7 @@
 					<div class="comment">
 						
 						<div class="eddlbuttons clearfix">
-
+						<hr class="solidhr" />
 							<button type="button"
 								onclick="location.href='${pageContext.request.contextPath}/community/qna.do'"
 								class="btn btn-inverse btn-sm list" style="margin-bottom: 10px;">목록</button>

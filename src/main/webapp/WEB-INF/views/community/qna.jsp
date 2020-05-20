@@ -8,54 +8,6 @@
 <html lang="ko">
 
 <head>
-<style type="text/css">
-.table>tbody>tr>td.subject {
-	padding-left: 20px;
-	border-top: none;
-	border-bottom: 1px solid #eee;
-}
-
-.table>tbody>tr>td.subjectok {
-	padding-left: 20px;
-	border-top: none;
-	border-bottom: 1px solid #eee;
-}
-
-.customer_pass {
-	position: fixed;
-	left: 33%;
-	margin-left: -20%;
-	top: 55%;
-	margin-top: -150px;
-	display: none;
-	border: 1px solid #ffc7c1;
-	border-radius: 10px;
-	background: #ffc7c1;
-	text-align: center;
-	padding: 20px 20px;
-}
-
-/** 글쓰기 버튼 */
-.btn-list {
-	float: right;
-	margin-right: 15px;
-}
-
-.hr {
-	margin-bottom: 0px;
-
-}
-
-.prevok:hover {
-	text-decoration:none;
-	color: #FF6261;
-}
-
-.nextok:hover {
-	text-decoration: none;
-		color: #FF6261;
-}
-</style>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/share/qna.css" />

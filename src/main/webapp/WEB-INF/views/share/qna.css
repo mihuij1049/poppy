@@ -35,7 +35,8 @@
 .selectmenu {
 	width: 70px;
 	height: 27px;
-	margin-left: 15px;
+	margin-left: 12px;
+	border: 1px solid #ff8f83;
 }
 
 /** 검색 input */
@@ -43,12 +44,13 @@
 	width: 170px;
 	border: 1px solid;
 	color: #777;
-	margin-left: 5px;
+	margin-left: 7px;
+	border: 1px solid #ff8f83;
 }
 
 /** 검색버튼 */
 .btn-search {
-	margin-left: 13px;
+	margin-left: 7px;
 }
 
 .subject {
@@ -122,4 +124,50 @@
 	padding: 6px 10px;
 	color: #ffc7c1;
 	text-decoration: none;
+}
+.table>tbody>tr>td.subject {
+	padding-left: 20px;
+	border-top: none;
+	border-bottom: 1px solid #eee;
+}
+
+.table>tbody>tr>td.subjectok {
+	padding-left: 20px;
+	border-top: none;
+	border-bottom: 1px solid #eee;
+}
+
+.customer_pass {
+	position: fixed;
+	left: 37%;
+	margin-left: -20%;
+	top: 55%;
+	margin-top: -150px;
+	display: none;
+	border: 1px solid #ffc7c1;
+	border-radius: 10px;
+	background: #ffc7c1;
+	text-align: center;
+	padding: 20px 20px;
+}
+
+/** 글쓰기 버튼 */
+.btn-list {
+	float: right;
+	margin-right: 15px;
+}
+
+.hr {
+	margin-bottom: 0px;
+
+}
+
+.prevok:hover {
+	text-decoration:none;
+	color: #FF6261;
+}
+
+.nextok:hover {
+	text-decoration: none;
+		color: #FF6261;
 }

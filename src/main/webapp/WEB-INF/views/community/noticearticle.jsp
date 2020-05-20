@@ -12,7 +12,10 @@
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/share/article.css" />
-
+	<style type="text/css">
+	
+}
+</style>
 </head>
 
 <body>
@@ -32,7 +35,7 @@
 
 			</div>
 			<div class="wriinfo">
-						<p class="articletitle">[공지사항] ${output.bbstitle}</p>
+						<b class="articletitle">[공지사항] ${output.bbstitle}</b>
 				<p class="articlewriter">${output.username }</p>
 			</div>
 			<div class="nai">

@@ -12,7 +12,12 @@
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/share/notice.css" />
-
+<style type="text/css">
+	#main_text {
+	text-align: middle;
+	white-space: word-breka:keep-all;
+	}
+</style>
 </head>
 
 <body>

@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 .wriinfo {
 	border: 1px solid #FFc7c1;
 	background: #FFc7c1;
@@ -7,15 +8,20 @@
 }
 
 .articletitle {
-	font-size: 16px;
-	padding-top: 7px;
-	padding-left: 15px;
+	text-align: center;
+	padding-top: 10px;
+	display: block;
+}
+
+#main_text {
+	text-align: middle;
+	white-space: word-breka:keep-all;
 }
 
 .articlewriter {
 	text-align: right;
-	margin-top: 5px;
-	margin-right: 10px;
+	margin-top: 10px;
+	margin-right: 15px;
 }
 
 .subject {
@@ -26,7 +32,6 @@
 	display: inline-block;
 	margin-top: 10px;
 }
-
 
 .list-subject {
 	border: 1px solid #ffc7c1;
@@ -116,10 +121,6 @@
 	margin-bottom: 50px;
 }
 
-
-
-
-
 .customer_pass {
 	margin: auto;
 	display: none;
@@ -137,7 +138,6 @@
 	padding-top: 15px;
 	padding-bottom: 15px;
 }
-
 
 .btn-del {
 	float: right;
@@ -215,18 +215,22 @@
 
 .qnagoods {
 	border: 1px solid #ff6261;
-	margin: 10px;
-	padding: 10px 10px;
+	margin: 15px;
+	padding: 15px 15px 15px 5px;
 }
 
 .photo {
-	width: 25%;
-	margin-right: 10px;
+	width: 30%;
+	height: 20%;
+	margin-right: 20px;
 }
 
 .goodsname {
 	display: inline-block;
-	overflow: hidden;
 	font-size: 12px;
 	vertical-align: middle;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	
 }
