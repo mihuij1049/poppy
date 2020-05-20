@@ -196,9 +196,9 @@
 							<div class="prd-review">
 								<c:choose>
 									<%-- 조회결과가 없는 경우 --%>
-									<c:when test="${item2 == null || fn:length(item2) == 0}">
+									<c:when test="${item2 == null}">
 										<div>
-											<div></div>
+											<div>게시물이 없습니다.</div>
 										</div>
 									</c:when>
 									<%-- 조회결과가 있는  경우 --%>
@@ -232,7 +232,7 @@
 								<c:forEach var="i" begin="${pageData.startPage}"
 									end="${pageData.endPage}" varStatus="status">
 									<%-- 이동할 URL 생성 --%>
-									<c:url value="/gallery_ajax/goods.do?goodsno=${goods.goodsno}"
+									<c:url value="/gallery?goodsno=${goods.goodsno}"
 										var="pageUrl">
 										<c:param name="page" value="${i}" />
 									</c:url>
@@ -283,7 +283,7 @@
 										<tbody id="qna_list">
 											<c:choose>
 												<%-- 조회결과가 없는 경우 --%>
-												<c:when test="${qoutput == null || fn:length(qoutput) == 0}">
+												<c:when test="${item == null}">
 													<tr>
 														<td>게시물이 없습니다.</td>
 													</tr>
@@ -331,7 +331,7 @@
 											</c:choose>
 										</tbody>
 									</table>
-									<div class="pagenumber">
+									<div class="pagenumber">	
 										<!-- 페이지 번호 구현 -->
 										<%-- 이전 그룹에 대한 링크 --%>
 										<c:choose>
@@ -491,7 +491,7 @@
 					    	{{bbscontent}}<br>
 					        </dd>
 					        <dd class="edit">
-						        <a href="#" class="editt">수정</a>
+						        <a href="${pageContext.request.contextPath}/community/photo_edit.do?bbsno={{bbsno}}" class="editt">수정</a>
 				        	</dd>
 				        </dl>
 			        </div>

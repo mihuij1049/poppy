@@ -240,105 +240,6 @@ input {
 	width: 25%;
 }
 
-.prd-photo .photo {
-	padding-top: 10px;
-}
-
-.prd-photo h5 {
-	width: 25%;
-	font-size: 12px;
-	padding-left: 15px;
-	display: inline-block;
-}
-
-.prd-photo .star {
-	float: right;
-	display: inline-block;
-	width: 75%;
-}
-
-.starR {
-	background:
-		url('http://miuu227.godohosting.com/images/icon/ico_review.png')
-		no-repeat right 0;
-	background-size: auto 100%;
-	width: 30px;
-	height: 30px;
-	display: inline-block;
-	text-indent: -9999px;
-	cursor: pointer;
-}
-
-.starR.on {
-	background-position: 0 0;
-}
-
-.prd-photo .photo-add {
-	margin-top: 10px;
-	height: 53px;
-}
-
-.photo-add li {
-	width: 20%;
-	height: 100%;
-	list-style: none;
-	float: right;
-}
-
-.photo-add h5 {
-	font-size: 12px;
-	width: 25%;
-	padding-left: 15px;
-	display: inline-block;
-}
-
-.photo-add .photo-files {
-	float: right;
-	width: 75%;
-}
-
-.clearfix:before {
-	content: "";
-	display: block;
-	float: none;
-	clear: both;
-}
-
-.photo-add img {
-	width: 100%;
-	image-rendering: pixelated;
-}
-
-.photo {
-	margin-bottom: 10px;
-}
-
-.write {
-	padding-top: 10px;
-	border-top: 1px solid #ddd;
-}
-
-.write .photo-title {
-	width: 100%;
-	height: 32px;
-	padding: 10px;
-	margin-bottom: 5px;
-	font-size: 14px;
-	background-color: #f5f5f5;
-	border: 1px solid #ffc7c1;
-}
-
-.write textarea {
-	outline: 0;
-	resize: none;
-	width: 100%;
-	height: 100px;
-	padding: 10px;
-	font-size: 14px;
-	background-color: #f5f5f5;
-	border: 1px solid #ffc7c1;
-}
-
 .photo-button {
 	text-align: right;
 	padding-top: 20px;
@@ -346,7 +247,7 @@ input {
 }
 
 .photo-button #review-submit {
-	width: 70px;
+	width: 47%;
 	height: 34px;
 	font-size: 12px;
 	color: #fff;
@@ -355,9 +256,10 @@ input {
 }
 
 .photo-button #review-all {
-	width: 90px;
+	width: 47%;
 	height: 34px;
 	font-size: 12px;
+	margin-left: 2%;
 	border: 1px solid #ddd;
 	background-color: #fff;
 }
@@ -371,9 +273,16 @@ input {
 	width: 100%;
 }
 
+.prd-review .star {
+	color: red;
+	font-size: 20px;
+	
+}
+
 .prd-review .writer {
 	color: #777;
 	font-size: 11px;
+	
 }
 
 .prd-review .writeDate {
@@ -391,12 +300,6 @@ dl {
 	padding-bottom: 15px;
 	margin-bottom: 0px;
 	border-bottom: 1px solid #ddd;
-}
-
-.prd-review .star {
-	color: red;
-	font-size: 20px;
-	display: inline-block;
 }
 
 .box-left .editt {
@@ -616,6 +519,10 @@ dl {
 }
 
 /** qna */
+.qna {
+	padding:0 8px;
+}
+
 .qna table span {
 	font-size: 11px;
 }
@@ -635,7 +542,7 @@ dl {
 	border-bottom: 1px solid #ddd;
 }
 
-.qna  .subject {
+.qna .subject {
 	text-decoration: none;
 	color: #777;
 }

@@ -77,7 +77,6 @@ public class GoodsRestController {
 
 		Bbs input3 = new Bbs();
 		input3.setGoodsno(goodsno);
-
 		input3.setBbstype("C");
 
 		Bbs qna = new Bbs();
@@ -109,7 +108,7 @@ public class GoodsRestController {
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("item", ptrv);
 		data.put("item2", qoutput);
-		data.put("meta", pageData);
+		data.put("pageData", pageData);
 		return webHelper.getJsonData(data);
 	}
 
