@@ -230,6 +230,9 @@ overflow-y : hidden;
 			$.post("${pageContext.request.contextPath}/gallery/cart",
 					{ "cartqty" : qty , "gddetailno" : opt }, function(json) {
 						alert("장바구니에 해당 상품이 안전하게 보관되었습니다.");
+						newqty = $("#cart-qty").text();
+						newqty++;
+						$("#cart-qty").text(newqty);
 					});
 		});
 		

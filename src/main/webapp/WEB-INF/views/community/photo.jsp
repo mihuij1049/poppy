@@ -52,7 +52,7 @@
 				</div>
 			</div>
 			<div class="rv-title">
-				<p>이 리뷰에 대해 ${output.rvcount}명의 고객님께서 추천해 주셨습니다.</p>
+				<p>이 리뷰에 대해 <span id="rvqty">${output.rvcount}</span>명의 고객님께서 추천해 주셨습니다.</p>
 			</div>
 			<div class="rv-content">
 				<p class="date">${output.regdate}</p>
@@ -92,6 +92,9 @@
 		              { "bbsno" : bbsno },
 		                   function(json) {
 		                     if(json.rt=="OK");
+		                     newqty = $("#rvqty").text();
+								newqty++;
+								$("#rvqty").text(newqty);
 		                  }
 		              )
 		        }

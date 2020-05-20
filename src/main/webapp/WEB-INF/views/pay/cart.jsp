@@ -342,6 +342,10 @@
 					".change",
 					function(e) {
 						value = $(this).prev().prev().val();
+						if (value<1) {
+							alert("구매수량은 1미만으로 불가능합니다.");
+							return;
+						}
 						$(this).prev().prev().val(value);
 						sum_price = $(this).parent().next().children()
 								.children().children();
