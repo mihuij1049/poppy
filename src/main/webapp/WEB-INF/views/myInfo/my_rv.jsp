@@ -83,7 +83,7 @@
 						<div class="onegood onegood-bottom">
 							<a href="#"><img src="${item.imgpath}" class="cart-img">
 								
-									<span><b>${item.gname }</b></span><br>
+									<span><b>${item.gname}</b></span><br>
 								</a>
 
 

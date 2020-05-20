@@ -47,7 +47,7 @@
 	display: inline-block;
 	padding-top: 25px;
 	padding-bottom: 5px;
-	padding-left: 15px;
+	padding-left: 10px;
 }
 
 /** 댓글창div 전체 */
@@ -184,20 +184,19 @@
 
 .cmtcontent {
 	width: 65%;
-	margin-right: 10px;
 	float: left;
-	padding-left: 18px;
+	padding-left: 10px;
 }
 
 .span {
-	padding-bottom: 25px;
 	width: auto;
 	word-break: break-all;
 }
 
-.btn-delar, .btn-editar {
+.btn-delar {
 	margin-right: 10px;
 }
+
 
 .comment-nai {
 	min-height: 100px;

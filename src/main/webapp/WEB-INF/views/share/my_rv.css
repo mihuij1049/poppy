@@ -18,6 +18,13 @@
 	color: #333;
 }
 
+.cart-img {
+	display: inline-block;
+	width: 30%;
+	float: left;
+	margin-right: 10px;
+}
+
 .bar1 {
 	text-align: center;
 	background: #ff6261;
@@ -40,20 +47,13 @@
 	margin-top: 5px;
 	margin-bottom: 5px;
 	padding: 20px;
-	border: 1px solid #FFC7C1
-}
-
-.cart-img {
-	display: inline-block;
-	width: 80px;
-	float: left;
-	margin-right: 10px;
+	border: 1px solid #FFC7C1;
 }
 
 .mybought {
 	width: 70%;
 	display: inline-block;
-	float: left;
+	
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -62,19 +62,13 @@
 }
 
 .mybought small {
+	
 	display: inline-block;
 	padding-top: 15px;
 	padding-bottom: 15px;
 }
 
-.star {
-	width: 70%;
-	display: inline-block;
-	float: left;
-}
-
 .review {
-	display: inline-block;
 	width: 70%;
 	white-space: nowrap;
 	overflow: hidden;

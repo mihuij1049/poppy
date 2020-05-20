@@ -141,7 +141,7 @@
 	<select id="selectList_myrv"
 		parameterType="kr.co.poppy.model.Bbs" resultMap="bbsMap">
 		SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,
-		b.goodsno,
+		b.goodsno, b.rvlike,
 		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,
 		i.goodsno,
 		m.memno, m.userid
