@@ -270,16 +270,11 @@
 				date2 = $("#datepicker_after").val();
 				date1_stm = new Date(date1).getTime() / 1000;
 				date2_stm = new Date(date2).getTime() / 1000;
-				//console.log(date1);
-				//console.log(date2);
-				//console.log(date1_stm);
-				//console.log(date2_stm);
 				$(".view").parent().hide();
 				length = $(".view").length;
 				for (var i = 0; i < length; i++) {
 					var oddate = $(".date").eq(i).html();
 					oddate = new Date(oddate).getTime() / 1000;
-					console.log(oddate);
 					if(oddate>=date1_stm && oddate<=date2_stm) {
 						$(".view").eq(i).parent().show();
 					}	

@@ -31,128 +31,131 @@
 			</h4>
 		</div>
 		<div class="container">
-			<div class="panel-title6">장바구니 상품</div>
-			<div class="panel-header2">
-				일반상품 (<span class="cart-count"></span>)
-			</div>
-			<div class="panel-body2">
-				<c:choose>
-					<%--조회결과가 없는 경우 --%>
-					<c:when test="${output==null||fn:length(output) ==0}">
-						<tr>
-							<td colspan="3" align="center">조회결과가 없습니다.</td>
-						</tr>
-					</c:when>
-					<%--조회결과가 있는 경우 --%>
-					<c:otherwise>
-						<%--조회결과에 따른 반복처리 --%>
-						<c:forEach var="item" items="${output }" varStatus="status">
-							<%--출력을 위해 준비한 학과 이름과 위치 --%>
-							<c:set var="cartno" value="${item.cartno}" />
-							<c:set var="imgname" value="${item.imgname }" />
-							<c:set var="imgext" value="${item.imgext }" />
-							<c:set var="imgpath" value="${item.imgpath }" />
-							<c:set var="imgtype" value="${item.imgtype }" />
-							<c:set var="gname" value="${item.gname }" />
-							<c:set var="deliprice" value="${item.deliprice }" />
-							<c:set var="gprice" value="${item.gprice }" />
-							<c:set var="gsale" value="${item.gsale }" />
-							<c:set var="gdoption" value="${item.gdoption }" />
-							<c:set var="gddetailno" value="${item.gddetailno }" />
-							<c:set var="cartqty" value="${item.cartqty }" />
-							<c:set var="goodsno" value="${item.goodsno }" />
-							<%-- 상세페이지로 이동하기 위한 URL --%>
-							<c:url value="/gallery_ajax/goods.do" var="viewUrl">
-								<c:param name="goodsno" value="${item.goodsno}" />
-							</c:url>
-							<div class="cart-box clear">
-								<div class="list-item">
-									<div class="word">
-										<input type="hidden" class="cartno" value="${item.cartno}" />
-										<input type="hidden" class="goodsno" value="${item.goodsno}" />
-										<input type="hidden" class="memno" value="${myInfo.memno}" />
-										<input type="hidden" class="gddetailno"
-											value="${item.gddetailno}" /> <input type="hidden"
-											class="gdoption" value="${item.gdoption}" /> <input
-											type="checkbox" name="cart_check" class="cart cart-size" data-checknum="${item.cartno}" />
-										<a href="${viewUrl}"> <img
-											src="${item.imgpath}"
-											class="cart-img" />
-										</a>
+			<form id="cart-form" class="form-horizontal" method="post"
+				action="${pageContext.request.contextPath}/pay_ajax/orderform.do">
+				<div class="panel-title6">장바구니 상품</div>
+				<div class="panel-header2">
+					일반상품 (<span class="cart-count"></span>)
+				</div>
+				<div class="panel-body2">
+					<c:choose>
+						<%--조회결과가 없는 경우 --%>
+						<c:when test="${output==null||fn:length(output) ==0}">
+							<tr>
+								<td colspan="3" align="center">조회결과가 없습니다.</td>
+							</tr>
+						</c:when>
+						<%--조회결과가 있는 경우 --%>
+						<c:otherwise>
+							<%--조회결과에 따른 반복처리 --%>
+							<c:forEach var="item" items="${output }" varStatus="status">
+								<%--출력을 위해 준비한 학과 이름과 위치 --%>
+								<c:set var="cartno" value="${item.cartno}" />
+								<c:set var="imgname" value="${item.imgname }" />
+								<c:set var="imgext" value="${item.imgext }" />
+								<c:set var="imgpath" value="${item.imgpath }" />
+								<c:set var="imgtype" value="${item.imgtype }" />
+								<c:set var="gname" value="${item.gname }" />
+								<c:set var="deliprice" value="${item.deliprice }" />
+								<c:set var="gprice" value="${item.gprice }" />
+								<c:set var="gsale" value="${item.gsale }" />
+								<c:set var="gdoption" value="${item.gdoption }" />
+								<c:set var="gddetailno" value="${item.gddetailno }" />
+								<c:set var="cartqty" value="${item.cartqty }" />
+								<c:set var="goodsno" value="${item.goodsno }" />
+								<%-- 상세페이지로 이동하기 위한 URL --%>
+								<c:url value="/gallery_ajax/goods.do" var="viewUrl">
+									<c:param name="goodsno" value="${item.goodsno}" />
+								</c:url>
+								<div class="cart-box clear">
+									<div class="list-item">
+										<div class="word">
+											<input type="hidden" class="cartno" value="${item.cartno}" />
+											<input type="hidden" class="goodsno" value="${item.goodsno}" />
+											<input type="hidden" class="memno" value="${myInfo.memno}" />
+											<input type="hidden" class="gddetailno"
+												value="${item.gddetailno}" /> <input type="hidden"
+												class="gdoption" value="${item.gdoption}" /> <input
+												type="checkbox" name="cart_check" class="cart cart-size"
+												data-checknum="${item.cartno}" /> <a href="${viewUrl}">
+												<img src="${item.imgpath}" class="cart-img" />
+											</a>
 
-										<p>
-											<a href="${viewUrl}"><b class="name">${item.gname}</b></a>
-										</p>
-										<span>배송:${item.deliprice}원[조건]/기본배송</span><br> <small><span
-											class="point-icon">적</span>&nbsp;<span class="point"><fmt:formatNumber
-													value="${item.gsale*item.cartqty*0.02}" pattern="#,###" /></span>원</small>
-										<b>
 											<p>
-												<fmt:formatNumber value="${item.gsale}" pattern="#,###" />
-												원
+												<a href="${viewUrl}"><b class="name">${item.gname}</b></a>
 											</p>
-										</b>
-										<p class="option">[옵션: ${item.gdoption}]</p>
-									</div>
-									<div class="word-btn">
-										<button class="count minus">
-											<img src="../share/img/ppminus.png">
-										</button>
-										<input type="number" class="count-label" id="count-label"
-											name="gdcount" value="${item.cartqty}">
-										<button class="count plus">
-											<img src="../share/img/ppplus.png">
-										</button>
-										<button class="change">변경</button>
-									</div>
-									<div class="word-botm clear">
-										<p>
-											<b>합계: <span class="price"><fmt:formatNumber
-														value="${item.gsale*item.cartqty}" pattern="#,###" /></span>원
+											<span>배송:${item.deliprice}원[조건]/기본배송</span><br> <small><span
+												class="point-icon">적</span>&nbsp;<span class="point"><fmt:formatNumber
+														value="${item.gsale*item.cartqty*0.02}" pattern="#,###" /></span>원</small>
+											<b>
+												<p>
+													<fmt:formatNumber value="${item.gsale}" pattern="#,###" />
+													원
+												</p>
 											</b>
-										</p>
-										<button type="button" class="btn btn2" id="order"
-											data-goodsno="${item.goodsno}" data-memno="${myInfo.memno}"
-											data-gddetailno="${item.gddetailno}"
-											data-gdoption="${item.gdoption}">주문하기</button>
-										<button type="button" class="delete btn btn-inverse"
-											data-cartno="${item.cartno}">삭제</button>
+											<p class="option">[옵션: ${item.gdoption}]</p>
+										</div>
+										<div class="word-btn">
+											<button class="count minus">
+												<img src="../share/img/ppminus.png">
+											</button>
+											<input type="number" class="count-label" id="count-label"
+												name="gdcount" value="${item.cartqty}">
+											<button class="count plus">
+												<img src="../share/img/ppplus.png">
+											</button>
+											<button class="change">변경</button>
+										</div>
+										<div class="word-botm clear">
+											<p>
+												<b>합계: <span class="price"><fmt:formatNumber
+															value="${item.gsale*item.cartqty}" pattern="#,###" /></span>원
+												</b>
+											</p>
+											<button type="button" class="btn btn2" id="order"
+												data-goodsno="${item.goodsno}" data-memno="${myInfo.memno}"
+												data-gddetailno="${item.gddetailno}"
+												data-gdoption="${item.gdoption}">주문하기</button>
+											<button type="button" class="delete btn btn-inverse"
+												data-cartno="${item.cartno}">삭제</button>
+										</div>
 									</div>
+									<div class="panel-header3 clearfix">[기본배송]</div>
 								</div>
-								<div class="panel-header3 clearfix">[기본배송]</div>
-							</div>
-						</c:forEach>
-					</c:otherwise>
-				</c:choose>
-			</div>
-			<div class="list-group" id="list"></div>
-			<div class="selectbtn">
-				<button type="button" class="all-check">전체선택</button>
-				<button type="button" class="select_delete">선택삭제</button>
-			</div>
-			<table class="table table-responsive">
-				<thead>
-					<tr>
-						<td class="table-header">결제예정금액</td>
-						<td class="table-header2 td-mny"><span id="table_sum">
-						</span>원</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td class="td-title">총 상품금액</td>
-						<td class="td-mny"><span id="table_price"> </span>원</td>
-					</tr>
-					<tr>
-						<td class="td-title">총 배송비</td>
-						<td class="td-mny"><span id="table_delivery"> </span>원</td>
-					</tr>
-				</tbody>
-			</table>
-			<div class="pay">
-				<button class="btn btn2 btn-inverse" id="select_order">선택상품주문</button>
-				<button class="btn btn2" id="all_order">전체상품주문</button>
-			</div>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+				</div>
+				<div class="list-group" id="list"></div>
+				<div class="selectbtn">
+					<button type="button" class="all-check">전체선택</button>
+					<button type="button" class="select_delete">선택삭제</button>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<td class="table-header">결제예정금액</td>
+							<td class="table-header2 td-mny"><span id="table_sum">
+							</span>원</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="td-title">총 상품금액</td>
+							<td class="td-mny"><span id="table_price"> </span>원</td>
+						</tr>
+						<tr>
+							<td class="td-title">총 배송비</td>
+							<td class="td-mny"><span id="table_delivery"> </span>원</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="pay">
+					<button type="submit" class="btn btn2 btn-inverse"
+						id="select_order">선택상품주문</button>
+					<button class="btn btn2" id="all_order">전체상품주문</button>
+				</div>
+			</form>
 		</div>
 	</div>
 
@@ -439,8 +442,10 @@
 							"#select_order",
 							function(e) {
 								var select_array = [];
+								const cartId = [];
 								length = $(".cart-box").length;
 								for (var i = 0; i < length; i++) {
+									for(var j=0;j<i;j++) {
 									var checked = $(".cart-size").eq(i).prop(
 											"checked");
 									console.log(checked);
@@ -454,12 +459,8 @@
 												.val();
 										var cartqty = $(".count-label").eq(i)
 												.val();
-										var order_item = "goodsno=" + goodsno
-												+ "&memno=" + memno
-												+ "&gddetailno=" + gddetailno
-												+ "&gdoption=" + gdoption
-												+ "&gdcount=" + cartqty;
-										console.log(order_item);
+										order_item = gddetailno, cartqty;
+										console.log(order_item[i][j]);
 									}
 									if (i == length - 1) {
 										if (select_array.length == 0) {
@@ -473,6 +474,7 @@
 										//location.href = '${pageContext.request.contextPath}/pay_ajax/orderform.do?'
 										//		+ order_item;
 									}
+								}
 								}
 							});
 
