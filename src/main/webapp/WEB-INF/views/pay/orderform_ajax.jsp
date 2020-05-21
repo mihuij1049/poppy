@@ -63,16 +63,16 @@
 												<div id="delivery-info-phone">${output.odphone}</div>
 											</div>
 										</div>
-										<input type="hidden" name="addrno" value="${output.addrno}" />
-										<input type="hidden" id="delivery-info-name" name="odname_1"
+										<input type="hidden" name="raddrno" value="${output.addrno}" />
+										<input type="hidden" id="delivery-info-name" name="rodname"
 											value="${output.odname}" /> <input type="hidden"
-											id="zipcode" name="zcode_1" value="${output.zcode}" /> <input
-											type="hidden" id="addr1" name="addr1_1"
+											id="zipcode" name="rzcode" value="${output.zcode}" /> <input
+											type="hidden" id="addr1" name="raddr1"
 											value="${output.addr1}" /> <input type="hidden" id="addr2"
-											name="addr2_1" value="${output.addr2}" /> <input
-											type="hidden" id="delivery-info-phone" name="odphone_1"
+											name="raddr2" value="${output.addr2}" /> <input
+											type="hidden" id="delivery-info-phone" name="rodphone"
 											value="${output.odphone}" /> <input type="hidden"
-											name="odemail_1" value="${output.odemail}" /> <span
+											name="rodemail" value="${output.odemail}" /> <span
 											class="side-right">
 											<button type="button" id="recent-address-list">배송지
 												목록</button>
@@ -86,7 +86,7 @@
 										</span>
 									</div>
 									<div class="form-group">
-										<select id="selbox" name="odmsg">
+										<select id="selbox" name="odmsg1">
 											<option value="">-- 메시지 선택(선택사항) --</option>
 											<option value="1">배송전에 미리 연락바랍니다.</option>
 											<option value="2">부재시 경비실에 맡겨주세요.</option>
@@ -95,7 +95,7 @@
 											<option value="5">택배함에 보관해 주세요.</option>
 											<option value="direct">직접입력</option>
 										</select>
-										<textarea id="selboxDirect" name="selboxDirect"
+										<textarea id="selboxDirect" name="selboxDirect1"
 											style="resize: none;"></textarea>
 									</div>
 								</div>

@@ -7,26 +7,18 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
-
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.WebHelper;
 import kr.co.poppy.model.Address;
-import kr.co.poppy.model.Goods;
-import kr.co.poppy.model.Goodsdetail;
 import kr.co.poppy.model.Members;
 import kr.co.poppy.model.Orderdetail;
 import kr.co.poppy.model.Orders;
 import kr.co.poppy.model.Points;
 import kr.co.poppy.service.AddressService;
-import kr.co.poppy.service.GoodsService;
-import kr.co.poppy.service.GoodsdetailService;
 import kr.co.poppy.service.OrderdetailService;
 import kr.co.poppy.service.OrdersService;
 import kr.co.poppy.service.PointsService;
@@ -89,15 +81,21 @@ public class PayRestController {
 	/** 주소 작성 폼에 대한 action 페이지 */
 	@RequestMapping(value = "/pay", method = { RequestMethod.PUT, RequestMethod.POST })
 	public Map<String, Object> addrAdd_ok(
+			@RequestParam(value = "raddrno", defaultValue = "0") int raddrno,
+			@RequestParam(value = "rodname", required = false) String rodname,
+			@RequestParam(value = "rodphone", required = false) String rodphone,
+			@RequestParam(value = "rodemail", required = false) String rodemail,
+			@RequestParam(value = "rzcode", required = false) int rzcode,
+			@RequestParam(value = "raddr1", required = false) String raddr1,
+			@RequestParam(value = "raddr2", required = false) String raddr2,
 			/** 주소 INSERT */
 			@RequestParam(value = "odname", required = false) String odname,
 			@RequestParam(value = "odphone", required = false) String odphone,
 			@RequestParam(value = "odemail", required = false) String odemail,
-			@RequestParam(value = "zcode", required = false) Integer zcode,
+			@RequestParam(value = "zcode", defaultValue = "") Integer zcode,
 			@RequestParam(value = "addr1", required = false) String addr1,
 			@RequestParam(value = "addr2", required = false) String addr2,
 			/** 주문 INSERT */
-			@RequestParam(value = "orderno", defaultValue = "0") int orderno,
 			@RequestParam(value = "odmsg", defaultValue = "") String odmsg,
 			@RequestParam(value = "paytype", defaultValue = "") String paytype,
 			@RequestParam(value = "odstatus", defaultValue = "") String odstatus,
@@ -124,25 +122,6 @@ public class PayRestController {
 
 		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
 		// 일반 문자열 입력 컬럼 --> String으로 파라미터가 선언되어 있는 경우는 값이 입력되지 않으면 빈 문자열로 처리된다.
-
-		if (odname.equals("")) {
-			return webHelper.getJsonWarning("이름을 입력하세요.");
-		}
-		if (odemail.equals("")) {
-			return webHelper.getJsonWarning("이메일을 입력하세요.");
-		}
-
-		if (addr1.equals("")) {
-			return webHelper.getJsonWarning("주소를 입력하세요.");
-		}
-		if (addr2.equals("")) {
-			return webHelper.getJsonWarning("상세주소를 입력하세요.");
-		}
-		// 숫자형으로 선언된 파라미터()
-		if (zcode == null) {
-			return webHelper.getJsonWarning("우편번호를 입력하세요.");
-		}
-
 		if (paytype.equals("credit") || paytype.equals("phone")) {
 			odstatus = "1";
 		}
@@ -184,11 +163,19 @@ public class PayRestController {
 
 		/** 2) 데이터 저장하기 */
 		// 저장할 값들을 Beans에 담는다.
-		Goods gd = new Goods();
-		gd.setGoodsno(goodsno);
-		gd.setMemno(myInfo.getMemno());
-
 		/** 주소 저장 */
+		Address radd = new Address();
+		radd.setOdname(rodname);
+		radd.setOdphone(rodphone);
+		radd.setOdemail(rodemail);
+		radd.setZcode(rzcode);
+		radd.setAddr1(raddr1);
+		radd.setAddr2(raddr2);
+		radd.setRegdate("now()");
+		radd.setEditdate("now()");
+		radd.setMemno(myInfo.getMemno());
+		Address rasave = null;
+		
 		Address add = new Address();
 		add.setOdname(odname);
 		add.setOdphone(odphone);
@@ -203,7 +190,6 @@ public class PayRestController {
 		
 		/** 주문 */
 		Orders order = new Orders();
-		order.setOrderno(orderno);
 		order.setOdmsg(odmsg);
 		order.setPaytype(paytype);
 		order.setOdstatus(odstatus);
@@ -213,33 +199,6 @@ public class PayRestController {
 		order.setMemno(myInfo.getMemno());
 		Orders osave = null;
 
-		Points poi = new Points();
-		poi.setPointno(pointno);
-		poi.setNapoint((int) pay_price);
-		poi.setPointtype("상품구입 적립금");
-		poi.setRegdate("now()");
-		poi.setEditdate("now()");
-		poi.setMemno(myInfo.getMemno());
-		Points psave = null;
-		
-		try {
-			addressService.addAddress(add);
-			//orderdetailService.addOrderdetail(oddetail);
-			order.setAddrno(add.getAddrno());
-			ordersService.addOrders(order);
-			// oddetail.setOrderno(order.getOrderno());
-			poi.setOrderno(order.getOrderno());
-			pointsService.addPoints(poi);
-
-			// 데이터조회
-			asave = addressService.getAddressItem(add);
-			// odsave = orderdetailService.getOrderdetailItem(oddetail);
-			osave = ordersService.getOrdersItem(order);
-			psave = pointsService.getPointsOdItem(poi);
-		} catch (Exception e) {
-			return webHelper.getJsonError(e.getLocalizedMessage());
-		}
-		
 		/** 주문 상품 */
 		Orderdetail oddetail = new Orderdetail();
 		oddetail.setOrderdetailno(goodsno);
@@ -254,15 +213,73 @@ public class PayRestController {
 		oddetail.setOdgqty(gdcount);
 		oddetail.setRegdate("now()");
 		oddetail.setEditdate("now()");
-		oddetail.setOrderno(osave.getOrderno());
 		Orderdetail odsave = null;
-		
+
+		Points poi = new Points();
+		poi.setPointno(pointno);
+		poi.setNapoint((int) pay_price);
+		poi.setPointtype("상품구입 적립금");
+		poi.setRegdate("now()");
+		poi.setEditdate("now()");
+		poi.setMemno(myInfo.getMemno());
+		Points psave = null;
+
 		try {
+			addressService.addAddress(radd);
+			order.setAddrno(radd.getAddrno());
+			ordersService.addOrders(order);
+			oddetail.setOrderno(order.getOrderno());
 			orderdetailService.addOrderdetail(oddetail);
-		} catch(Exception e) {
+			poi.setOrderno(order.getOrderno());
+			pointsService.addPoints(poi);
+
+			// 데이터조회
+			rasave = addressService.getAddressItem(radd);
+			osave = ordersService.getOrdersItem(order);
+			odsave = orderdetailService.getOrderdetailItem(oddetail);
+			psave = pointsService.getPointsOdItem(poi);
+		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
 
+		if (rasave == null) {
+			try {			
+				if (odname.equals("")) {
+					return webHelper.getJsonWarning("이름을 입력하세요.");
+				}
+				if (odemail.equals("")) {
+					return webHelper.getJsonWarning("이메일을 입력하세요.");
+				}
+				if (!regexHelper.isEmail(odemail)) {
+					return webHelper.getJsonWarning("이메일 형식으로 입력하세요.");
+				}
+				if (addr1.equals("")) {
+					return webHelper.getJsonWarning("주소를 입력하세요.");
+				}
+				if (addr2.equals("")) {
+					return webHelper.getJsonWarning("상세주소를 입력하세요.");
+				}
+				// 숫자형으로 선언된 파라미터()
+				if (zcode == null) {
+					return webHelper.getJsonWarning("우편번호를 입력하세요.");
+				}
+				addressService.addAddress(add);
+				order.setAddrno(add.getAddrno());
+				ordersService.addOrders(order);
+				oddetail.setOrderno(order.getOrderno());
+				orderdetailService.addOrderdetail(oddetail);
+				poi.setOrderno(order.getOrderno());
+				pointsService.addPoints(poi);
+
+				// 데이터조회
+				asave = addressService.getAddressItem(add);
+				osave = ordersService.getOrdersItem(order);
+				odsave = orderdetailService.getOrderdetailItem(oddetail);
+				psave = pointsService.getPointsOdItem(poi);
+			} catch (Exception e) {
+				return webHelper.getJsonError(e.getLocalizedMessage());
+			}
+		}
 		mySession.setAttribute("userInfo", myInfo);
 
 		/** 3) 결과를 확인하기 위한 페이지 이동 */

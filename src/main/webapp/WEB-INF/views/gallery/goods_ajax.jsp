@@ -71,6 +71,11 @@
 									<option value="${gdoutput.gddetailno}">${gdoutput.gdoption}</option>
 								</c:forEach>
 							</c:if>
+							<c:if test="${gdoutput == null}">
+								<c:forEach var="gdoutput" items="${gdoutput}" varStatus="status">
+									<option value="${gdoutput.gddetailno}" disabled>품절</option>
+								</c:forEach>
+							</c:if>
 						</select>
 					</div>
 					<div class="select-prd">
