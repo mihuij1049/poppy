@@ -351,7 +351,7 @@
 					<div class="panel-body">
 						<div class="pay-info">
 							<c:choose>
-								<c:when test="${gdoutput[0].gsale * gdcount} < 30,000">
+								<c:when test="${gdoutput[0].gsale * gdcount < 30000}">
 									<div class="pay-content">
 										<div class="pay-con1">
 											<h5>주문상품</h5>
@@ -369,14 +369,8 @@
 										</div>
 										<div class="pay-con3">
 											<h5>배송비</h5>
-											<span class="total-price"> <c:choose>
-													<c:when test="${gdoutput[0].gsale * gdcount} < 30,000">
-														<span id="delivery-price">2,500</span>원
-													</c:when>
-													<c:otherwise>
-														<span id="delivery-price">0</span>원
-													</c:otherwise>
-												</c:choose>
+											<span class="total-price"> 							
+												<span id="delivery-price">2,500</span>원														
 											</span>
 										</div>
 									</div>
@@ -405,14 +399,8 @@
 										</div>
 										<div class="pay-con3">
 											<h5>배송비</h5>
-											<span class="total-price"> <c:choose>
-													<c:when test="${gdoutput[0].gsale * gdcount} < 30,000">
-														<span id="delivery-price">2,500</span>원
-													</c:when>
-													<c:otherwise>
-														<span id="delivery-price">0</span>원
-													</c:otherwise>
-												</c:choose>
+											<span class="total-price"> 
+												<span id="delivery-price">0</span>원		
 											</span>
 										</div>
 									</div>
