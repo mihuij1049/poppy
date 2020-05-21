@@ -52,7 +52,7 @@
         parameterType="kr.co.poppy.model.Address"
         resultType="int">
         SELECT COUNT(*)
-        FROM Address WHERE memno=#{memno};                    
+        FROM address WHERE memno=#{memno};                    
     </select>
     
     <!-- 주문/결제 주문하기 버튼을 눌렀을때 주소데이터 저장을 위한 기능 정의 -->

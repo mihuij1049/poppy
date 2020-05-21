@@ -519,19 +519,19 @@
 					</span>원 <span>결제하기</span>
 				</button>
 			</div>
-			<input type="hidden" name="goodsno" value="${input.goodsno}" /> <input
-				type="hidden" name="gcode" value="${input.gcode}" /> <input
-				type="hidden" name="gname" value="${input.gname}" /> <input
-				type="hidden" name="ginfo" value="${input.ginfo}" /> <input
-				type="hidden" name="gprice" value="${input.gprice}" /> <input
-				type="hidden" name="gsale" value="${input.gsale}" /> <input
-				type="hidden" name="gdate" value="${input.gdate}" /> <input
-				type="hidden" name="cate1" value="${input.cate1}" /> <input
-				type="hidden" name="cate2" value="${input.cate2}" /> <input
-				type="hidden" name="gdoption" value="${input.gdoption}" /> <input
+			<input type="hidden" name="goodsno" value="${gdoutput[0].goodsno}" /> <input
+				type="hidden" name="gcode" value="${gdoutput[0].gcode}" /> <input
+				type="hidden" name="gname" value="${gdoutput[0].gname}" /> <input
+				type="hidden" name="ginfo" value="${gdoutput[0].ginfo}" /> <input
+				type="hidden" name="gprice" value="${gdoutput[0].gprice}" /> <input
+				type="hidden" name="gsale" value="${gdoutput[0].gsale}" /> <input
+				type="hidden" name="gdate" value="${gdoutput[0].gdate}" /> <input
+				type="hidden" name="cate1" value="${gdoutput[0].cate1}" /> <input
+				type="hidden" name="cate2" value="${gdoutput[0].cate2}" /> <input
+				type="hidden" name="gdoption" value="${gdoutput[0].gdoption}" /> <input
 				type="hidden" name="gdcount" value="${gdcount}"> <input
 				type="hidden" id="pay-price" name="pay-price"
-				value="${(input.gsale * gdcount) * 0.02}" />
+				value="${(gdoutput[0].gsale * gdcount) * 0.02}" />
 			<div class="order-info">
 				<ul class="order-info-box">
 					<li>무이자할부가 적용되지 않은 상품과 무이자할부가 가능한 상품을 동시에 구매할 경우 전체 주문 상품 금액에

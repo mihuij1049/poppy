@@ -89,22 +89,6 @@ public class PayRestController {
 	/** 주소 작성 폼에 대한 action 페이지 */
 	@RequestMapping(value = "/pay", method = { RequestMethod.PUT, RequestMethod.POST })
 	public Map<String, Object> addrAdd_ok(
-			/** 단일행 주소 조회 */
-			@RequestParam(value = "addrno", defaultValue = "0") int addrno,
-			@RequestParam(value = "odname_1", required = false) String odname_1,
-			@RequestParam(value = "odphone_1", required = false) String odphone_1,
-			@RequestParam(value = "odemail_1", required = false) String odemail_1,
-			@RequestParam(value = "zcode_1", required = false) Integer zcode_1,
-			@RequestParam(value = "addr1_1", required = false) String addr1_1,
-			@RequestParam(value = "addr2_1", required = false) String addr2_1,
-			@RequestParam(value = "memno", defaultValue = "0") int memno,
-			/** 다중행 주소 조회 */
-			@RequestParam(value = "odname_2", required = false) String odname_2,
-			@RequestParam(value = "odphone_2", required = false) String odphone_2,
-			@RequestParam(value = "odemail_2", required = false) String odemail_2,
-			@RequestParam(value = "zcode_2", required = false) Integer zcode_2,
-			@RequestParam(value = "addr1_2", required = false) String addr1_2,
-			@RequestParam(value = "addr2_2", required = false) String addr2_2,
 			/** 주소 INSERT */
 			@RequestParam(value = "odname", required = false) String odname,
 			@RequestParam(value = "odphone", required = false) String odphone,
@@ -204,30 +188,6 @@ public class PayRestController {
 		gd.setGoodsno(goodsno);
 		gd.setMemno(myInfo.getMemno());
 
-		/** 단일행 주소 조회 */
-		Address addrr = new Address();
-		addrr.setAddrno(addrno);
-		addrr.setOdname(odname_1);
-		addrr.setOdphone(odphone_1);
-		addrr.setOdemail(odemail_1);
-		addrr.setZcode(zcode_1);
-		addrr.setAddr1(addr1_1);
-		addrr.setAddr2(addr2_1);
-		addrr.setMemno(myInfo.getMemno());
-		Address assave = null;
-
-		/** 다중행 주소 조회 
-		Address addr = new Address();
-		addr.setAddrno(addrno);
-		addr.setOdname(odname_2);
-		addr.setOdphone(odphone_2);
-		addr.setOdemail(odemail_2);
-		addr.setZcode(zcode_2);
-		addr.setAddr1(addr1_2);
-		addr.setAddr2(addr2_2);
-		addr.setMemno(myInfo.getMemno());
-		List<Address> alsave = null; */
-
 		/** 주소 저장 */
 		Address add = new Address();
 		add.setOdname(odname);
@@ -240,18 +200,6 @@ public class PayRestController {
 		add.setEditdate("now()");
 		add.setMemno(myInfo.getMemno());
 		Address asave = null;
-
-		/** 주문 */
-		Orders order = new Orders();
-		order.setOrderno(orderno);
-		order.setOdmsg(odmsg);
-		order.setPaytype(paytype);
-		order.setOdstatus(odstatus);
-		order.setDeliprice(deliprice);
-		order.setRegdate("now()");
-		order.setEditdate("now()");
-		order.setMemno(myInfo.getMemno());
-		Orders osave = null;
 
 		/** 주문 상품 */
 		Orderdetail oddetail = new Orderdetail();
@@ -267,8 +215,19 @@ public class PayRestController {
 		oddetail.setOdgqty(gdcount);
 		oddetail.setRegdate("now()");
 		oddetail.setEditdate("now()");
-		oddetail.setOrderno(orderno);
 		Orderdetail odsave = null;
+		
+		/** 주문 */
+		Orders order = new Orders();
+		order.setOrderno(orderno);
+		order.setOdmsg(odmsg);
+		order.setPaytype(paytype);
+		order.setOdstatus(odstatus);
+		order.setDeliprice(deliprice);
+		order.setRegdate("now()");
+		order.setEditdate("now()");
+		order.setMemno(myInfo.getMemno());
+		Orders osave = null;
 
 		Points poi = new Points();
 		poi.setPointno(pointno);
@@ -278,31 +237,20 @@ public class PayRestController {
 		poi.setEditdate("now()");
 		poi.setMemno(myInfo.getMemno());
 		Points psave = null;
-
 		
 		try {
-			assave = addressService.getAddressItem(addrr);
-			/** alsave = addressService.getAddressList(addr); */
-			
-			
-		} catch (Exception e) {
-			return webHelper.getJsonError(e.getLocalizedMessage());
-		}
-		
-		try {
-			
 			addressService.addAddress(add);
+			orderdetailService.addOrderdetail(oddetail);
 			order.setAddrno(add.getAddrno());
 			ordersService.addOrders(order);
 			oddetail.setOrderno(order.getOrderno());
-			orderdetailService.addOrderdetail(oddetail);
 			poi.setOrderno(order.getOrderno());
 			pointsService.addPoints(poi);
 
 			// 데이터조회
 			asave = addressService.getAddressItem(add);
-			osave = ordersService.getOrdersItem(order);
 			odsave = orderdetailService.getOrderdetailItem(oddetail);
+			osave = ordersService.getOrdersItem(order);
 			psave = pointsService.getPointsOdItem(poi);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
@@ -314,8 +262,8 @@ public class PayRestController {
 		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야 한다.
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("asave", asave);
-		map.put("osave", osave);
 		map.put("odsave", odsave);
+		map.put("osave", osave);
 		map.put("psave", psave);
 		return webHelper.getJsonData(map);
 	}

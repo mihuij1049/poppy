@@ -103,22 +103,17 @@ public class PayAjaxController {
 		
 		List<Goodsdetail> input4 = new ArrayList<Goodsdetail>();
 		
-		System.out.println("=======================" + gddetailList.length);
 		for (int i=0;i<gddetailList.length;i++) {
 			Goodsdetail temp = new Goodsdetail();
 			temp.setGddetailno(gddetailList[i]);
-			System.out.println("====== 담긴 번호는" + gddetailList[i]);
 			input4.add(temp);
 		}
 		Map<String, Object> input = new HashMap<String, Object>();
-		System.out.println("====== 리스트에 담긴 템프는" + input4.get(0).toString());
 		input.put("input", input4);
-		System.out.println("====== 맵에 담긴 템프는" + input.get("input").toString());
 		// 조회결과를 저장할 객체 선언
 		Address output = null;
 		List<Address> output2 = null;
 		List<Points> output3 = null;
-		Goods goods = null;
 		List<Goodsdetail> gdoutput = null;
 
 		// 신규 - 기존 회원 검사
