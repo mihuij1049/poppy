@@ -15,10 +15,14 @@
 		<result property="regdate" column="regdate" />
 		<result property="editdate" column="editdate" />
 		<result property="goodsno" column="goodsno" />
+		<result property="gcode" column="gcode" />
 		<result property="gname" column="gname" />
 		<result property="gsale" column="gsale" />
 		<result property="gprice" column="gprice" />
 		<result property="ginfo" column="ginfo" />
+		<result property="gdate" column="gdate" />
+		<result property="cate1" column="cate1" />
+		<result property="cate2" column="cate2" />
 		<result property="username" column="username" />
 		<result property="bbstitle" column="bbscontent" />
 		<result property="rvlike" column="rvlike" />
@@ -45,13 +49,22 @@
 
 	<!-- 다중행 조회를 위한 기능 정의 -->
 	<select id="selectList"
+		parameterType="hashmap"
+		resultMap="goodsdetailMap">
+		SELECT gd.gddetailno, gd.gdoption, gd.gdstock, g.goodsno, g.gcode, g.gname, g.ginfo, g.gprice, g.gsale, g.gdate, g.cate1, g.cate2, 
+		i.imgname, i.imgext, i.imgpath, i.imgtype 
+		FROM goodsdetail gd
+		INNER JOIN goods g ON gd.goodsno = g.goodsno
+		INNER JOIN imgs i ON g.goodsno = i.goodsno
+		WHERE i.imgtype = "A" AND gd.gddetailno in <foreach collection="input" item="item" index="index" open="(" separator="," close=")">${item.gddetailno}</foreach>
+	</select>
+	<select id="selectList2"
 		parameterType="kr.co.poppy.model.Goodsdetail"
 		resultMap="goodsdetailMap">
 		SELECT *
 		FROM goodsdetail
 		WHERE goodsno = #{goodsno}
 	</select>
-
 	<!-- 데이터 저장을 위한 기능 정의 -->
 	<insert id="insertItem"
 		parameterType="kr.co.poppy.model.Goodsdetail" useGeneratedKeys="true"

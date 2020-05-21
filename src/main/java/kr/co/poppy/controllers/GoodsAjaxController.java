@@ -128,7 +128,7 @@ public class GoodsAjaxController {
 
 			// 데이터 조회
 			goods = goodsService.getGoodsItem(gd);
-			gdoutput = goodsdetailService.getGoodsdetailList(gdetail);
+			gdoutput = goodsdetailService.getGoodsdetailItem(gdetail);
 			heart = heartService.getHeartCount(input2);
 			ptrv = bbsService.getBbsList_goods(input3);
 			qoutput = bbsService.getBbsList_goods(qna);

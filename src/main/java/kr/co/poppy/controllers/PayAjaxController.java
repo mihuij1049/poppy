@@ -1,6 +1,10 @@
 package kr.co.poppy.controllers;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -62,65 +66,66 @@ public class PayAjaxController {
 
 	/** 주문결제페이지 */
 	@RequestMapping(value = "/pay_ajax/orderform.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView addrList(Model model, @RequestParam(value = "goodsno", defaultValue = "0") int goodsno,
-			@RequestParam(value = "memno", defaultValue = "0") int memno,
+	public ModelAndView addrList(Model model,
 			@RequestParam(value = "gddetailno", defaultValue = "0") int gddetailno,
-			@RequestParam(value = "gdoption", defaultValue = "0") String gdoption,
 			@RequestParam(value = "gdcount", defaultValue = "0") int gdcount) {
-
-		/** 유효성 검사 */
-		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
-		if (memno == 0) {
-			return webHelper.redirect("../member/login.do", "로그인이 필요합니다.");
-		}
-		if (goodsno == 0) {
-			return webHelper.redirect(null, "상품번호가 없습니다.");
-		}
-		if (gdoption.equals("active")) {
-			return webHelper.redirect(null, "상품옵션을 선택해주세요.");
-		}
-
+		
 		// 세션 객체를 이용하여 저장된 세션값 얻기
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
 
+		/** 유효성 검사 */
+		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
+		if (myInfo == null) {
+			return webHelper.redirect("../member/login.do", "로그인이 필요합니다.");
+		}
+		/**if (goodsno == 0) {
+			return webHelper.redirect(null, "상품번호가 없습니다.");
+		}
+		if (gdoption.equals("active")) {
+			return webHelper.redirect(null, "상품옵션을 선택해주세요.");
+		} */
+
+
 		/** 데이터 조회하기 */
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
-		Members mb = new Members();
-		mb.setMemno(myInfo.getMemno());
-
-		Address input = new Address();
-		input.setMemno(myInfo.getMemno());
+		Address input1 = new Address();
+		input1.setMemno(myInfo.getMemno());
 
 		Address input2 = new Address();
 		input2.setMemno(myInfo.getMemno());
 
 		Points input3 = new Points();
 		input3.setMemno(myInfo.getMemno());
-
-		Goods gd = new Goods();
-		gd.setGoodsno(goodsno);
-		gd.setMemno(myInfo.getMemno());
-
-		Goodsdetail gdetail = new Goodsdetail();
-		gdetail.setGoodsno(goodsno);
-		gdetail.setGddetailno(gddetailno);
-		gdetail.setGdoption(gdoption);
-		gdetail.setMemno(myInfo.getMemno());
-
+		
+		// 1개 혹은 다수의 gddetailno를 데이터 조회에 필요한 파라미터로 만들기
+		int[] gddetailList = {gddetailno};
+		
+		List<Goodsdetail> input4 = new ArrayList<Goodsdetail>();
+		
+		System.out.println("=======================" + gddetailList.length);
+		for (int i=0;i<gddetailList.length;i++) {
+			Goodsdetail temp = new Goodsdetail();
+			temp.setGddetailno(gddetailList[i]);
+			System.out.println("====== 담긴 번호는" + gddetailList[i]);
+			input4.add(temp);
+		}
+		Map<String, Object> input = new HashMap<String, Object>();
+		System.out.println("====== 리스트에 담긴 템프는" + input4.get(0).toString());
+		input.put("input", input4);
+		System.out.println("====== 맵에 담긴 템프는" + input.get("input").toString());
 		// 조회결과를 저장할 객체 선언
-		Members Moutput = null;
 		Address output = null;
 		List<Address> output2 = null;
 		List<Points> output3 = null;
 		Goods goods = null;
-		Goodsdetail gdoutput = null;
+		List<Goodsdetail> gdoutput = null;
 
 		// 신규 - 기존 회원 검사
 		int result = 0;
 
 		try {
-			result = addressService.getAddressCount(input);
+			result = addressService.getAddressCount(input1);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
@@ -128,12 +133,10 @@ public class PayAjaxController {
 		if (result > 0) {
 			try {
 				// 데이터 조회
-				Moutput = membersService.getMembersItem(mb);
-				output = addressService.getAddressItem(input);
+				output = addressService.getAddressItem(input1);
 				output2 = addressService.getAddressList(input2);
 				output3 = pointsService.getPointsMbList(input3);
-				goods = goodsService.getGoodsItem(gd);
-				gdoutput = goodsdetailService.getGoodsdetailItem(gdetail);
+				gdoutput = goodsdetailService.getGoodsdetailList(input);
 			} catch (Exception e) {
 				// 신규회원일 경우, 조회된 데이터가 없으므로 오류를 발생시키면 안된다.
 				return webHelper.redirect(null, e.getLocalizedMessage());
@@ -158,26 +161,23 @@ public class PayAjaxController {
 			mySession.setAttribute("userInfo", myInfo);
 		} else {
 			try {
-				Moutput = membersService.getMembersItem(mb);
 				output3 = pointsService.getPointsMbList(input3);
-				goods = goodsService.getGoodsItem(gd);
-				gdoutput = goodsdetailService.getGoodsdetailItem(gdetail);
+				gdoutput = goodsdetailService.getGoodsdetailList(input);
 			} catch (Exception e) {
 				// 신규회원일 경우, 조회된 데이터가 없으므로 오류를 발생시키면 안된다.
 				return webHelper.redirect(null, e.getLocalizedMessage());
 			}
 		}
-	 
-	    String imgPath = goods.getImgpath()+goods.getImgname()+"."+goods.getImgext();
-		goods.setImgpath(webHelper.getUploadPath(imgPath));
+	    for (Goodsdetail item : gdoutput) {
+	    String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
+		item.setImgpath(webHelper.getUploadPath(imgPath));
+	    }
 	
 		/** View 처리 */
-		model.addAttribute("Moutput", Moutput);
 		model.addAttribute("gdcount", gdcount);
 		model.addAttribute("output", output);
 		model.addAttribute("item", output2);
 		model.addAttribute("input3", input3);
-		model.addAttribute("goods", goods);
 		model.addAttribute("gdoutput", gdoutput);
 		return new ModelAndView("pay/orderform_ajax");
 	}

@@ -64,7 +64,7 @@
 					</div>
 					<div class="gdoption">
 						<div class="gdtitle">상품선택</div>
-						<select class="goods-select" name="gdoption">
+						<select class="goods-select" name="gddetailno">
 							<option value="active">- [필수] 옵션을 선택해 주세요. -</option>
 							<c:if test="${gdoutput != null}">
 								<c:forEach var="gdoutput" items="${gdoutput}" varStatus="status">
@@ -123,8 +123,6 @@
 							<button type="submit"
 								onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do'"
 								id="action-orderform">구매하기</button>
-							<input type="hidden" name="memno" value="${myInfo.memno}" /> <input
-								type="hidden" name="goodsno" value="${goods.goodsno}" />
 						</div>
 					</div>
 				</div>

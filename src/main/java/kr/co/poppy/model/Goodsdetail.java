@@ -23,10 +23,14 @@ public class Goodsdetail {
 	private String bbstitle;
 	private String rvlike;
 	private int heartno;
+	private String gcode;
 	private String gname;
 	private int gsale;
 	private int gprice;
 	private String ginfo;
+	private String gdate;
+	private String cate1;
+	private String cate2;
 	private String imgname;
 	private String imgtype;
 	private String imgpath;

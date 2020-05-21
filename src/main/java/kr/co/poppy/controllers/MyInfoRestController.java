@@ -158,7 +158,7 @@ public class MyInfoRestController {
 		List<Goodsdetail> output = null;
 
 		try {
-			output = goodsDetailService.getGoodsdetailList(gd);
+			output = goodsDetailService.getGoodsdetailList2(gd);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			return webHelper.getJsonWarning("결과없음");

@@ -1,6 +1,7 @@
 package kr.co.poppy.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +28,11 @@ public class GoodsdetailServiceImpl implements GoodsdetailService {
 	 * @throws Exception
 	 */
 	@Override
-	public Goodsdetail getGoodsdetailItem(Goodsdetail input) throws Exception {
-		Goodsdetail result = null;
+	public List<Goodsdetail> getGoodsdetailItem(Goodsdetail input) throws Exception {
+		List<Goodsdetail> result = null;
 
 		try {
-			result = sqlSession.selectOne("GoodsdetailMapper.selectItem", input);
+			result = sqlSession.selectList("GoodsdetailMapper.selectItem", input);
 			if (result == null) {
 				throw new NullPointerException("result=null");
 			}
@@ -53,10 +54,29 @@ public class GoodsdetailServiceImpl implements GoodsdetailService {
 	 * @throws Exception
 	 */
 	@Override
-	public List<Goodsdetail> getGoodsdetailList(Goodsdetail input) throws Exception {
+	public List<Goodsdetail> getGoodsdetailList(Map<String, Object> input) throws Exception {
 		List<Goodsdetail> result = null;
 		try {
 			result = sqlSession.selectList("GoodsdetailMapper.selectList", input);
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+ 
+	
+	@Override
+	public List<Goodsdetail> getGoodsdetailList2(Goodsdetail input) throws Exception {
+		List<Goodsdetail> result = null;
+		try {
+			result = sqlSession.selectList("GoodsdetailMapper.selectList2", input);
 			if (result == null) {
 				throw new NullPointerException("result=null");
 			}
