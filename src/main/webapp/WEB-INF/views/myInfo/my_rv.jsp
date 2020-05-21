@@ -11,7 +11,56 @@
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/share/my_rv.css" />
+<style type="text/css">
+.review {
+	vertical-align: middle;
+}
 
+.cart-img {
+	display: inline-block;
+	width: 30%;
+	height: 90px; 
+	float : left;
+	margin-right: 20px;
+	float: left;
+}
+
+p.star-rating {
+	margin: 10px 0px 0px 0px;
+	color: #ff8f83;
+}
+
+.onegood {
+	width: 96%;
+	margin: auto;
+	margin-top: 5px; 
+	margin-bottom : 5px;
+	padding: 20px;
+	border: 1px solid #FFC7C1;
+	margin-bottom: 5px;
+}
+
+.onegood2 {
+	width: 96%;
+	min-height:180px;
+	margin: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 20px;
+	border: 1px solid #FFC7C1;
+}
+
+.locationbtns {
+	text-align: center;
+	float: right;
+	margin-top: 5/px;
+	margin-bottom: 10px;
+}
+.gotorv {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+</style>
 </head>
 
 <body>
@@ -79,38 +128,46 @@
 						<c:set var="imgname" value="${item.imgname }" />
 						<c:set var="imgpath" value="${item.imgpath }" />
 						<c:set var="imgext" value="${item.imgext }" />
+						<c:set var="bbsno" value="${item.bbsno }" />
 
-						<div class="onegood onegood-bottom">
+						<div class="onegood2 onegood-bottom">
 							<a href="#"><img src="${item.imgpath}" class="cart-img">
-								
-									<span><b>${item.gname}</b></span><br>
-								</a>
-
-
+								<span><b class="gname">${item.gname}</b></span><br> </a>
 							<div class="star">
 								<c:choose>
 									<c:when test="${item.rvlike=='*****' }">
 										<p class="star-rating">★★★★★</p>
+										<p class="bbstitle">${item.bbstitle }</p>
 									</c:when>
 									<c:when test="${item.rvlike=='****' }">
 										<p class="star-rating">★★★★</p>
+										<p class="bbstitle">${item.bbstitle }</p>
 									</c:when>
 									<c:when test="${item.rvlike=='***' }">
 										<p class="star-rating">★★★</p>
+										<p class="bbstitle">${item.bbstitle }</p>
 									</c:when>
 									<c:when test="${item.rvlike=='**' }">
 										<p class="star-rating">★★</p>
+										<p class="bbstitle">${item.bbstitle }</p>
 									</c:when>
 									<c:otherwise>
 										<p class="star-rating">★</p>
+										<p class="bbstitle">${item.bbstitle }</p>
 									</c:otherwise>
 								</c:choose>
+								
+									<div class="locationbtns">
+										
+										<button type="button" class="gotogood btn btn-sm" id="enter" data-goodsno="${item.goodsno}"><b>상품보러가기</b></button>
+										<button type="button" class="gotorv btn btn-sm" id="enter" data-bbsno="${item.bbsno}"><b>리뷰보러가기</b></button>
+									</div>
+
+
 							</div>
 
 							<br />
-							<div class="review" id="review">
-								<span class="bbstitle">${item.bbstitle }</span>
-							</div>
+
 						</div>
 
 					</c:forEach>
@@ -125,6 +182,20 @@
 		$(function() {
 			$("#mytabs").on("shown.bs.tab", function(e) {
 				$("active").css("background", "#ff6261");
+			});
+		});
+		$(function() {
+			$(".gotogood").on("click", function(e) {
+				let current = $(this);
+				 let goodsno = current.data('goodsno');
+				window.location="${pageContext.request.contextPath}/gallery_ajax/goods.do?goodsno=" + goodsno;
+			});
+		});
+		$(function() {
+			$(".gotorv").on("click", function(e) {
+				let current = $(this);
+				 let bbsno = current.data('bbsno');
+				window.location="${pageContext.request.contextPath}/community/photo.do?bbsno=" + bbsno;
 			});
 		});
 	</script>

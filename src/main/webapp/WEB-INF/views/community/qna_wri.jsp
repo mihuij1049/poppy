@@ -37,6 +37,9 @@
 padding-bottom: 50px;
 	
 }
+
+#bbstitle: focus {
+border: 1px solid #ff8f83;}
 </style>
 </head>
 

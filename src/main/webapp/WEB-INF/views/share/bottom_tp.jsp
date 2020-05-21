@@ -198,11 +198,11 @@
 									<div id="collapse-One" class="panel-collapse collapse">
 										<div class="panel-body fm-body">
 											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=건식사료">
-											<span class="hhh">♡</span>건식사료 </a>
+											<b class="hhh">♡</b>건식사료 </a>
 										</div>
 										<div class="panel-body fm-body">
 											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=반건식사료">
-											<span class="hhh">♡</span>반건식사료 </a>
+											<b class="hhh">♡</b>반건식사료 </a>
 										</div>
 									</div>
 								</div>
@@ -221,11 +221,11 @@
 									<div id="collapse-Two" class="panel-collapse collapse">
 										<div class="panel-body fm-body">
 											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=아우터">
-											<span class="hhh">♡</span>아우터 </a>
+											<b class="hhh">♡</b>아우터 </a>
 										</div>
 										<div class="panel-body fm-body">
 											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=티셔츠">
-											<span class="hhh">♡</span>티셔츠 </a>
+											<b class="hhh">♡</b>티셔츠 </a>
 										</div>
 									</div>
 								</div>
@@ -244,15 +244,15 @@
 									<div id="collapse-Three" class="panel-collapse collapse">
 										<div class="panel-body fm-body">
 											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=목줄">
-											<span class="hhh">♡</span>목줄 </a>
+											<b class="hhh">♡</b>목줄 </a>
 										</div>
 										<div class="panel-body fm-body">
 											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=하네스">
-											<span class="hhh">♡</span>하네스</a>
+											<b class="hhh">♡</b>하네스</a>
 										</div>
 										<div class="panel-body fm-body">
 											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=이동장">
-											<span class="hhh">♡</span>이동장 </a>
+											<b class="hhh">♡</b>이동장 </a>
 										</div>
 									</div>
 								</div>
@@ -271,15 +271,15 @@
 									<div id="collapse-Four" class="panel-collapse collapse">
 										<div class="panel-body fm-body">
 											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=사료">
-											<span class="hhh">♡</span>사료 </a>
+											<b class="hhh">♡</b>사료 </a>
 										</div>
 										<div class="panel-body fm-body">
 											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=하네스">
-											<span class="hhh">♡</span>하네스 </a>
+											<b class="hhh">♡</b>하네스 </a>
 										</div>
 										<div class="panel-body fm-body">
 											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=의류">
-											<span class="hhh">♡</span>의류 </a>
+											<b class="hhh">♡</b>의류 </a>
 										</div>
 									</div>
 								</div>
@@ -298,19 +298,19 @@
 									<div id="collapse-Five" class="panel-collapse collapse">
 										<div class="panel-body fm-body">
 											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=방석">
-											<span class="hhh">♡</span>방석 </a>
+											<b class="hhh">♡</b>방석 </a>
 										</div>
 										<div class="panel-body fm-body">
 											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=계단">
-											<span class="hhh">♡</span></a>
+											<b class="hhh">♡</b>계단</a>
 										</div>
 										<div class="panel-body fm-body">
 											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=울타리">
-											<span class="hhh">♡</span></a>
+											<b class="hhh">♡</b>울타리</a>
 										</div>
 										<div class="panel-body fm-body">
 											<a href="${pageContext.request.contextPath }/gallery/gal_list_2.do?cate2=매트">
-											<span class="hhh">♡</span>매트 </a>
+											<b class="hhh">♡</b>매트 </a>
 										</div>
 									</div>
 								</div>

@@ -162,12 +162,12 @@
 		parameterType="kr.co.poppy.model.Bbs" resultMap="bbsMap">
 		SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,
 		b.goodsno, b.rvlike,
-		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,
-		i.goodsno,
-		m.memno, m.userid
+		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype, g.gname,
+		m.userid
 		FROM bbs b
 		INNER JOIN members m ON b.memno=m.memno
 		INNER JOIN imgs i ON b.bbsno=i.bbsno
+		INNER JOIN goods g ON b.goodsno=g.goodsno
 		WHERE i.imgtype="C" AND b.bbstype="C" AND b.memno = #{memno}
 		
 		ORDER BY bbsno ASC

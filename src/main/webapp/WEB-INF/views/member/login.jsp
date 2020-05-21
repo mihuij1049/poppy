@@ -51,6 +51,21 @@
 	</div>
 	<%@ include file="../share/bottom_tp.jsp"%>
 	<script type="text/javascript">
+	$(function() {
+		$(".login-go").on("click", function(e) {
+			e.preventDefault();
+			let userid = $("#user_id").val();
+			let userpw = $("#user_pw").val();
+			if(userid=="") {
+				alert("아이디를 입력하세요.");
+				return false;
+			}
+			if(userpw=="") {
+				alert("비밀번호를 입력하세요.");
+				return false;
+			}
+		});
+	});
 	</script>
 </body>
 
