@@ -241,7 +241,8 @@
 					s_mm = "0" + s_mm;
 				} else if (s_dd < 10) {
 					s_dd = "0" + s_dd;
-				}console.log("days==="+days);
+				}
+				//console.log("days==="+days);
 
 				alert(s_yy + "년 " + s_mm + "월 " + s_dd + "일 " + "~" + yy + "년 "
 						+ mm + "월 " + dd + "일" + "의 주문조회 결과");
@@ -269,10 +270,10 @@
 				date2 = $("#datepicker_after").val();
 				date1_stm = new Date(date1).getTime() / 1000;
 				date2_stm = new Date(date2).getTime() / 1000;
-				console.log(date1);
-				console.log(date2);
-				console.log(date1_stm);
-				console.log(date2_stm);
+				//console.log(date1);
+				//console.log(date2);
+				//console.log(date1_stm);
+				//console.log(date2_stm);
 				$(".view").parent().hide();
 				length = $(".view").length;
 				for (var i = 0; i < length; i++) {
