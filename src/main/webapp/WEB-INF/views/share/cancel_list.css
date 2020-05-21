@@ -225,3 +225,30 @@
 .pagination>li>a {
 	color: #ffc7c1;
 }
+
+#myModal2 {
+	padding-top: 50%;
+}
+
+.cart-modal {
+	padding: 10px;
+}
+
+.modal-footer2 .btn2 {
+	width: 65px;
+	height: 34px;
+	float: right;
+	margin-left: 5px;
+}
+
+.modal-header2 {
+	height: 50px;
+}
+
+.modal-body2 {
+	height: 50px;
+}
+
+.modal-footer2 {
+	height: 40px;
+}

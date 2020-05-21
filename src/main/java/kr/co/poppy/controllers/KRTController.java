@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
+import com.sun.javafx.scene.paint.GradientUtils.Point;
+
 import kr.co.poppy.helper.PageData;
 import kr.co.poppy.helper.RegexHelper;
 import kr.co.poppy.helper.UploadItem;
@@ -27,6 +30,7 @@ import kr.co.poppy.model.Goods;
 import kr.co.poppy.model.GoodsForRv;
 import kr.co.poppy.model.Imgs;
 import kr.co.poppy.model.Members;
+import kr.co.poppy.model.Orderdetail;
 import kr.co.poppy.model.Orders;
 import kr.co.poppy.model.Points;
 import kr.co.poppy.service.BbsService;
@@ -189,6 +193,10 @@ public class KRTController {
 			orders = ordersList.get(i);
 			if (orders.getOdstatus().equals("4")) {
 				orders.setOdstatus("취소");
+			} else if (orders.getOdstatus().equals("5")) {
+				orders.setOdstatus("교환");
+			} else if (orders.getOdstatus().equals("6")) {
+				orders.setOdstatus("반품");
 			}
 			output.add(orders);
 		}
@@ -203,6 +211,26 @@ public class KRTController {
 
 		String viewPath = "myInfo/cancel_list";
 		return new ModelAndView(viewPath);
+	}
+	
+	/** 취소내역 내역삭제 */
+	@RequestMapping(value="/myInfo/cancel_delete.do", method=RequestMethod.GET)
+	public ModelAndView cancel_delete(Model model, @RequestParam(value="orderno", required=false) int orderno) {
+		if (orderno==0) {
+			return webHelper.redirect(null, "주문번호가 없습니다.");
+		}
+		
+		Orders orders = new Orders();
+		orders.setOrderno(orderno);
+
+		
+		try {
+			// 데이터 삭제
+			orderService.deleteOrders(orders);
+		} catch(Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		return webHelper.redirect(contextPath + "/myInfo/cancel_list.do", "주문취소 내역에서 삭제되었습니다.");
 	}
 
 	/** photo_rv */
@@ -409,6 +437,9 @@ public class KRTController {
 		if (myInfo.getMemno() != output.getMemno()) {
 			return webHelper.redirect(null, "본인이 작성한 리뷰만 수정 가능합니다.");
 		}
+		
+		String imgPath = output.getGipath() + output.getGiname() + "." + output.getGiext();
+		output.setGipath(webHelper.getUploadPath(imgPath));
 
 		/** 3) View 처리 */
 		model.addAttribute("output", output);

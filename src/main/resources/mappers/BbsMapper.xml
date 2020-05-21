@@ -71,7 +71,7 @@
 	<!-- 포토리뷰 글 보기 페이지 -->
 	<select id="selectrv_Item" parameterType="kr.co.poppy.model.Bbs"
 		resultMap="bbsMap">
-		SELECT m.memno, m.username, b.bbsno, b.bbstype, b.bbstitle,
+		SELECT g.gname, g.gprice, m.memno, m.username, b.bbsno, b.bbstype, b.bbstitle,
 		b.bbscontent,
 		b.rvlike, b.regdate, b.editdate, b.goodsno,
         (SELECT COUNT(*) FROM rvheart WHERE bbsno= #{bbsno}) AS rvcount,
@@ -87,6 +87,7 @@
 		INNER JOIN imgs i ON i.bbsno = b.bbsno
 		INNER JOIN members m ON
 		b.memno = m.memno
+        INNER JOIN goods g ON i.goodsno = g.goodsno
 		WHERE b.bbsno = #{bbsno};
 	</select>
 

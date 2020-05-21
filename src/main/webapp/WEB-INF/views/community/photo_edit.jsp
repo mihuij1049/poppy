@@ -20,7 +20,8 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/share/plugins/sweetalert/sweetalert2.min.css" />
 
-<script src="${pageContext.request.contextPath }/share/plugins/handlebars/handlebars-v4.0.5.js"></script>
+<script
+	src="${pageContext.request.contextPath }/share/plugins/handlebars/handlebars-v4.0.5.js"></script>
 </head>
 
 <body>
@@ -34,34 +35,7 @@
 				</b>
 			</h4>
 		</div>
-		<!-- 모달창 시작 -->
-		<div id="search-modal">
-			<div class="search-title clearfix">
-				상품정보선택
-				<div class="search-close pull-right">X</div>
-			</div>
-			<div class="search-searching">
-				<div class="search-bar">
-					<div class="search-textbar">
-						<input type="text" id="search-keyword" name="search-goods"
-							placeholder="상품명을 입력하세요." />
-					</div>
-					<button class="btn btn-sm btn-searching" id="search_goods_btn">검
-						색</button>
-				</div>
 
-				<div class="search-result">
-					총 <b class="search-qty">0</b>개의 상품이 검색되었습니다.
-				</div>
-			</div>
-			<div class="search-body">
-				<ul class="search-list" id="search_goods_list">
-
-				</ul>
-			</div>
-			<div class="search-modal-layer"></div>
-		</div>
-		<!-- 모달창 끝 -->
 		<div class="container">
 			<form class="form-horizontal" name="wri_form" id="wri_form"
 				method="POST" enctype="multipart/form-data"
@@ -71,16 +45,22 @@
 				<div class="select">
 					<div class="choice clearfix">
 						<div class="col-xs-4">
-							<a href="#" class="item-img"><img
-								src="../share/img/ppnoimage.JPG" id="item_img"></a>
+							<a href="#" class="item-img"><img src="${output.gipath}"
+								id="item_img"></a>
 						</div>
 						<div class="col-xs-8">
-							<div class="select-item-content">
-								<p id="item_name">
-									<br /> <b class="select-item-price" id="item_price"></b>
-								</p>
+							<div class="qnagoods">
+								<div class="goodsname">
+									<div class="goodsname">
+										${output.gname}<br>
+									</div>
+									<div class="goodsprice">
+										<fmt:formatNumber value="${output.gprice}" pattern="#,###" />
+										원
+									</div>
+								</div>
+								<br>
 							</div>
-							<button type="button" class="btn item-select">상품정보선택</button>
 							<input type="hidden" name="goodsno" id="setting-goodsno" />
 						</div>
 					</div>
@@ -148,9 +128,12 @@
 		{{/each}}
 	</script>
 	<!-- 플러그인 JS 참조 -->
-	<script src="${pageContext.request.contextPath }/share/plugins/validate/jquery.validate.min.js"></script>
-	<script src="${pageContext.request.contextPath }/share/plugins/validate/additional-methods.min.js"></script>
-	<script src="${pageContext.request.contextPath }/share/plugins/sweetalert/sweetalert2.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/share/plugins/validate/jquery.validate.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/share/plugins/validate/additional-methods.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/share/plugins/sweetalert/sweetalert2.min.js"></script>
 	<!-- Javascript -->
 	<script type="text/javascript">
 		$(function() {
@@ -244,12 +227,14 @@
 														// Ajax 를 통해서 읽어온 JSON 을 템플릿에 병합한다.
 														var html = template(req);
 														// #search_goods_list 에 읽어온 내용을 추가한다.
-														$("#search_goods_list").append(html);
+														$("#search_goods_list")
+																.append(html);
 														var length = $(".search-item-img").length;
 														console.log(length);
-														$(".search-qty").text(length);
+														$(".search-qty").text(
+																length);
 													});
-								
+
 								});
 			}); // 함수 호출하며 검색 결과 n개 나타내기 
 

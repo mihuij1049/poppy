@@ -249,5 +249,4 @@ public class PointsServiceImpl implements PointsService {
 		}
 		return result;
 	}
-	
 }
