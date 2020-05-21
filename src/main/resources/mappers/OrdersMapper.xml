@@ -58,7 +58,8 @@
 		o.memno=#{memno} AND i.imgtype = "A" AND od.odgcode=g.gcode
 		AND
 		i.goodsno=g.goodsno
-		AND o.odstatus IN ("0", "1", "2", "3");
+		AND o.odstatus IN ("0", "1", "2", "3")
+		ORDER BY o.orderno ASC
 	</select>
 
 	<!-- 취소/교환/반품내역 다중행 조회를 위한 기능 정의 -->

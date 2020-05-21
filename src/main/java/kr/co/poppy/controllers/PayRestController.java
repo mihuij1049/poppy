@@ -200,22 +200,6 @@ public class PayRestController {
 		add.setEditdate("now()");
 		add.setMemno(myInfo.getMemno());
 		Address asave = null;
-
-		/** 주문 상품 */
-		Orderdetail oddetail = new Orderdetail();
-		oddetail.setOrderdetailno(goodsno);
-		oddetail.setOdgcode(gcode);
-		oddetail.setOdgname(gname);
-		oddetail.setOdgprice(gprice);
-		oddetail.setOdgsale(gsale);
-		oddetail.setOdgdate(gdate);
-		oddetail.setOdcate1(cate1);
-		oddetail.setOdcate2(cate2);
-		oddetail.setOdgdoption(gdoption);
-		oddetail.setOdgqty(gdcount);
-		oddetail.setRegdate("now()");
-		oddetail.setEditdate("now()");
-		Orderdetail odsave = null;
 		
 		/** 주문 */
 		Orders order = new Orders();
@@ -240,19 +224,42 @@ public class PayRestController {
 		
 		try {
 			addressService.addAddress(add);
-			orderdetailService.addOrderdetail(oddetail);
+			//orderdetailService.addOrderdetail(oddetail);
 			order.setAddrno(add.getAddrno());
 			ordersService.addOrders(order);
-			oddetail.setOrderno(order.getOrderno());
+			// oddetail.setOrderno(order.getOrderno());
 			poi.setOrderno(order.getOrderno());
 			pointsService.addPoints(poi);
 
 			// 데이터조회
 			asave = addressService.getAddressItem(add);
-			odsave = orderdetailService.getOrderdetailItem(oddetail);
+			// odsave = orderdetailService.getOrderdetailItem(oddetail);
 			osave = ordersService.getOrdersItem(order);
 			psave = pointsService.getPointsOdItem(poi);
 		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		/** 주문 상품 */
+		Orderdetail oddetail = new Orderdetail();
+		oddetail.setOrderdetailno(goodsno);
+		oddetail.setOdgcode(gcode);
+		oddetail.setOdgname(gname);
+		oddetail.setOdgprice(gprice);
+		oddetail.setOdgsale(gsale);
+		oddetail.setOdgdate(gdate);
+		oddetail.setOdcate1(cate1);
+		oddetail.setOdcate2(cate2);
+		oddetail.setOdgdoption(gdoption);
+		oddetail.setOdgqty(gdcount);
+		oddetail.setRegdate("now()");
+		oddetail.setEditdate("now()");
+		oddetail.setOrderno(osave.getOrderno());
+		Orderdetail odsave = null;
+		
+		try {
+			orderdetailService.addOrderdetail(oddetail);
+		} catch(Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
 

@@ -829,7 +829,7 @@
 								success : function(json) {
 									console.log(json);
 									if (json.rt == "OK") {
-										window.location = "${pageContext.request.contextPath}/myInfo/order_list.do?memno="
+										window.location = "${pageContext.request.contextPath}/myInfo/order_list.do?orderno="
 												+ json.osave.orderno;
 									}
 								}

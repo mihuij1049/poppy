@@ -61,8 +61,8 @@
 	    useGeneratedKeys="true"
 	    keyProperty="orderdetailno">
 	    INSERT INTO orderdetail (odgcode, odgname, odgprice, odgsale, odcate1, odcate2,
-	    odgdoption, odgqty, regdate, editdate) VALUES (#{odgcode}, #{odgname}, #{odgprice},
-	    #{odgsale}, odcate1, odcate2, #{odgdoption}, #{odgqty}, now(), now());
+	    odgdoption, odgqty, regdate, editdate, orderno) VALUES (#{odgcode}, #{odgname}, #{odgprice},
+	    #{odgsale}, odcate1, odcate2, #{odgdoption}, #{odgqty}, now(), now(), #{orderno});
 	</insert>
 	
     <!-- 데이터 삭제를 위한 기능 정의 -->
