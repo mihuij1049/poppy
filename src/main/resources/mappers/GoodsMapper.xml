@@ -27,9 +27,9 @@
 		<result property="imgpath" column="imgpath" />
 		<result property="imgext" column="imgext" />
 		<result property="imgtype" column="imgtype" />
-		<result property="heartcnt"  column="heartcnt" />
+		<result property="heartCnt"  column="heartCnt" />
 		<result property="offset"  column="offset" />
-		<result property="listcount"  column="listcount" />
+		<result property="listCount"  column="listCount" />
 	</resultMap>
 	
 	<!-- 상품상세 페이지 단일행 조회를 위한 기능 정의 -->
@@ -54,8 +54,8 @@
 		INNER JOIN imgs i on g.goodsno = i.goodsno
 		WHERE i.imgtype="A"
 		<!-- 페이지 번호 구현 -->
-		<if test="listcount > 0">
-			LIMIT #{offset}, #{listcount}
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
 	
@@ -65,15 +65,15 @@
 		select i.imgname, i.imgpath, i.imgext, 
 		g.goodsno, g.gcode,
 		g.gname, g.ginfo, g.gprice, g.gsale, g.gdate,
-		(SELECT count(h.goodsno) from heart h where h.goodsno = g.goodsno HAVING count(*)>=2)
-		AS heartcnt from goods g
+		(SELECT count(h.goodsno) from heart h where h.goodsno = g.goodsno HAVING COUNT(*)>=2)
+		AS heartCnt from goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
 		WHERE i.imgtype="A"
-		AND (SELECT count(h.goodsno) from heart h where h.goodsno = g.goodsno HAVING count(*)>=2) IS NOT NULL
-		order by heartcnt desc
+		AND (SELECT count(h.goodsno) from heart h where h.goodsno = g.goodsno HAVING COUNT(*)>=2) IS NOT NULL
+		order by heartCnt desc
 		<!-- 페이지 번호 구현 -->
-		<if test="listcount > 0">
-			LIMIT #{offset}, #{listcount}
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
 	
@@ -88,8 +88,8 @@
 		WHERE i.imgtype="A"
 		ORDER BY g.editdate DESC
 		<!-- 페이지 번호 구현 -->
-		<if test="listcount > 0">
-			LIMIT #{offset}, #{listcount}
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
 	
@@ -103,8 +103,8 @@
 		INNER JOIN imgs i on g.goodsno = i.goodsno
 		WHERE i.imgtype="A" AND g.cate1=#{cate1}
 		<!-- 페이지 번호 구현 -->
-		<if test="listcount > 0">
-			LIMIT #{offset}, #{listcount}
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
 	
@@ -133,8 +133,8 @@
 			ORDER BY DESC
 		</if>
 		<!-- 페이지 번호 구현 -->
-		<if test="listcount > 0">
-			LIMIT #{offset}, #{listcount}
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
 	
@@ -148,8 +148,8 @@
 		INNER JOIN imgs i on g.goodsno = i.goodsno
 		WHERE i.imgtype="A" AND g.cate2=#{cate2}
 		<!-- 페이지 번호 구현 -->
-		<if test="listcount > 0">
-			LIMIT #{offset}, #{listcount}
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
 	
@@ -178,8 +178,8 @@
 			ORDER BY DESC
 		</if>
 		<!-- 페이지 번호 구현 -->
-		<if test="listcount > 0">
-			LIMIT #{offset}, #{listcount}
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
 	
@@ -199,20 +199,20 @@
 			</if>
 		</where>
 		<!-- 페이지 번호 구현 -->
-		<if test="listcount > 0">
-			LIMIT #{offset}, #{listcount}
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
 	
 	<!-- 데이터 수 조회를 위한 기능 정의(베스트상품) -->
-	<select id="selectcountBest"
+	<select id="selectCountBest"
 		parameterType="kr.co.poppy.model.Goods" resultType="int">
-		SELECT count(*)
+		SELECT COUNT(*)
 		FROM goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
 		<where>
 			i.imgtype="A"
-			AND (SELECT count(h.goodsno) from heart h where h.goodsno = g.goodsno HAVING count(*)>=2) IS NOT NULL
+			AND (SELECT count(h.goodsno) from heart h where h.goodsno = g.goodsno HAVING COUNT(*)>=2) IS NOT NULL
 			<if test="gname != null and gname != ''">
 				AND gname LIKE concat('%', #{gname}, '%');
 			</if>
@@ -220,9 +220,9 @@
 	</select>
 	
 	<!-- 데이터 수 조회를 위한 기능 정의(전체상품) -->
-	<select id="selectcountAll"
+	<select id="selectCountAll"
 		parameterType="kr.co.poppy.model.Goods" resultType="int">
-		SELECT count(*)
+		SELECT COUNT(*)
 		FROM goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
 		<where>
@@ -231,18 +231,18 @@
 	</select>
 	
 	<!-- 데이터 수 조회를 위한 기능 정의(cate1) -->
-	<select id="selectcountCate1"
+	<select id="selectCountCate1"
 		parameterType="kr.co.poppy.model.Goods" resultType="int">
-		SELECT count(*)
+		SELECT COUNT(*)
 		from goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
 		WHERE i.imgtype="A" AND g.cate1 = #{cate1}
 	</select>
 	
 	<!-- 데이터 수 조회를 위한 기능 정의(cate2) -->
-	<select id="selectcountCate2"
+	<select id="selectCountCate2"
 		parameterType="kr.co.poppy.model.Goods" resultType="int">
-		SELECT count(*)
+		SELECT COUNT(*)
 		from goods g
 		INNER JOIN imgs i on g.goodsno = i.goodsno
 		WHERE i.imgtype="A" AND g.cate2 = #{cate2}
@@ -260,8 +260,8 @@
 			</if> 
 		</where>
 		ORDER BY gname desc
-		<if test="listcount > 0">
-			LIMIT #{offset}, #{listcount}
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
 
