@@ -11,7 +11,7 @@
 <head>
 <%@ include file="../share/head_tp.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/share/cart.css?ver=1" />
+	href="${pageContext.request.contextPath}/share/cart.css?ver=2" />
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -31,8 +31,6 @@
 			</h4>
 		</div>
 		<div class="container">
-			<form method="post"
-				action="${pageContext.request.contextPath}/pay_ajax/orderform.do">
 				<div class="panel-title6">장바구니 상품</div>
 				<div class="panel-header2">
 					일반상품 (<span class="cart-count"></span>)
@@ -154,7 +152,6 @@
 						id="select_order">선택상품주문</button>
 					<button type="submit" class="btn btn2" id="all_order">전체상품주문</button>
 				</div>
-			</form>
 		</div>
 
 	</div>
@@ -425,20 +422,16 @@
 								length = $(".cart-box").length;
 								for (var i = 0; i < length; i++) {
 									for(var j=0;j<i;j++) {
-									var checked = $(".cart-size").eq(i).prop(
+									var checked = $(".cart_check").eq(i).prop(
 											"checked");
 									console.log(checked);
 									if (checked == true) {
 										select_array += i + ",";
-										var goodsno = $(".goodsno").eq(i).val();
-										var memno = $(".memno").eq(i).val();
 										var gddetailno = $(".gddetailno").eq(i)
-												.val();
-										var gdoption = $(".gdoption").eq(i)
 												.val();
 										var cartqty = $(".count-label").eq(i)
 												.val();
-										order_item = "&gddetailno="+gddetailno+"&gdcount="+cartqty;
+										order_item = "gddetailno="+gddetailno+"&gdcount="+cartqty;
 									}
 									if (i == length - 1) {
 										if (select_array.length == 0) {
@@ -447,7 +440,6 @@
 										}
 										select_array = select_array.substr(0,
 												select_array.length - 1);
-										console.log(select_array);
 										
 										location.href = '${pageContext.request.contextPath}/pay_ajax/orderform.do?'
 												+ order_item;
@@ -468,17 +460,13 @@
 									if (i == length - 1) {
 										all_array = all_array.substr(0,
 												all_array.length - 1);
-										console.log(all_array);
-										var goodsno = $(".goodsno").eq(i).val();
-										var memno = $(".memno").eq(i).val();
 										var gddetailno = $(".gddetailno").eq(i)
-												.val();
-										var gdoption = $(".gdoption").eq(i)
 												.val();
 										var cartqty = $(".count-label").eq(i)
 												.val();
-										var order_item ="&gddetailno=" + gddetailno
+										var order_item ="gddetailno=" + gddetailno
 												+ "&gdcount=" + cartqty;
+										console.log(order_item);
 										location.href = '${pageContext.request.contextPath}/pay_ajax/orderform.do?'
 												+ order_item;
 									}
@@ -557,9 +545,9 @@
 													
 										var length = $(".cart-box").length;
 										for (var i = 0; i < length; i++) {
-												if ($(".cart-size").eq(i).prop("checked") == true) {
+												if ($(".cart_check").eq(i).prop("checked") == true) {
 													var cartno = $(".cartno").eq(i).val();
-														$(".cart-size").eq(i).parent().parent().parent().remove();
+														$(".cart_check").eq(i).parent().parent().parent().remove();
 															i--;
 															length--;
 															$(".cart-count").html(length);
