@@ -552,7 +552,6 @@
 						if (index) {
 							jQuery(".select-prd").show();
 							jQuery(".prd-total").show();
-							$('select').find('option:first').attr('selected', 'selected');
 						}
 					});
 
