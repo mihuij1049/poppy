@@ -66,10 +66,10 @@ public class PayAjaxController {
 
 	/** 주문결제페이지 */
 	@RequestMapping(value = "/pay_ajax/orderform.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView addrList(Model model,
-			@RequestParam(value = "gddetailno", defaultValue = "0") int gddetailno,
+	public ModelAndView addrList(Model model, @RequestParam(value = "gddetailno", defaultValue = "0") int gddetailno,
+			@RequestParam(value = "gddetailno[]", defaultValue= "0") int[] gddetailList,
 			@RequestParam(value = "gdcount", defaultValue = "0") int gdcount) {
-		
+
 		// 세션 객체를 이용하여 저장된 세션값 얻기
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
@@ -79,13 +79,11 @@ public class PayAjaxController {
 		if (myInfo == null) {
 			return webHelper.redirect("../member/login.do", "로그인이 필요합니다.");
 		}
-		/**if (goodsno == 0) {
-			return webHelper.redirect(null, "상품번호가 없습니다.");
-		}
-		if (gdoption.equals("active")) {
-			return webHelper.redirect(null, "상품옵션을 선택해주세요.");
-		} */
-
+		/**
+		 * if (goodsno == 0) { return webHelper.redirect(null, "상품번호가 없습니다."); } if
+		 * (gdoption.equals("active")) { return webHelper.redirect(null, "상품옵션을
+		 * 선택해주세요."); }
+		 */
 
 		/** 데이터 조회하기 */
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
@@ -97,13 +95,16 @@ public class PayAjaxController {
 
 		Points input3 = new Points();
 		input3.setMemno(myInfo.getMemno());
-		
-		// 1개 혹은 다수의 gddetailno를 데이터 조회에 필요한 파라미터로 만들기
-		int[] gddetailList = {gddetailno};
+
+		// 1개 혹은 다수의 gddetailno를 데이터 조회하기 위한 분기
 		
 		List<Goodsdetail> input4 = new ArrayList<Goodsdetail>();
+		if (gddetailno > 0) {
+			gddetailList[0] = gddetailno;
+		}
 		
-		for (int i=0;i<gddetailList.length;i++) {
+
+		for (int i = 0; i < gddetailList.length; i++) {
 			Goodsdetail temp = new Goodsdetail();
 			temp.setGddetailno(gddetailList[i]);
 			input4.add(temp);
@@ -163,11 +164,11 @@ public class PayAjaxController {
 				return webHelper.redirect(null, e.getLocalizedMessage());
 			}
 		}
-	    for (Goodsdetail item : gdoutput) {
-	    String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
-		item.setImgpath(webHelper.getUploadPath(imgPath));
-	    }
-	
+		for (Goodsdetail item : gdoutput) {
+			String imgPath = item.getImgpath() + item.getImgname() + "." + item.getImgext();
+			item.setImgpath(webHelper.getUploadPath(imgPath));
+		}
+
 		/** View 처리 */
 		model.addAttribute("gdcount", gdcount);
 		model.addAttribute("output", output);

@@ -64,7 +64,7 @@
 											</div>
 										</div>
 										<input type="hidden" name="raddrno" value="${output.addrno}" />
-										<input type="hidden" id="delivery-info-name" name="rodname"
+										<%-- <input type="hidden" id="delivery-info-name" name="rodname"
 											value="${output.odname}" /> <input type="hidden"
 											id="zipcode" name="rzcode" value="${output.zcode}" /> <input
 											type="hidden" id="addr1" name="raddr1"
@@ -72,7 +72,7 @@
 											name="raddr2" value="${output.addr2}" /> <input
 											type="hidden" id="delivery-info-phone" name="rodphone"
 											value="${output.odphone}" /> <input type="hidden"
-											name="rodemail" value="${output.odemail}" /> <span
+											name="rodemail" value="${output.odemail}" /> --%> <span
 											class="side-right">
 											<button type="button" id="recent-address-list">배송지
 												목록</button>
@@ -170,7 +170,7 @@
 										</div>
 									</div>
 									<div class="form-group2">
-										<select id="selbox2" name="odmsg">
+										<select id="selbox2" name="odmsg2">
 											<option value="">-- 메시지 선택(선택사항) --</option>
 											<option value="1">배송전에 미리 연락바랍니다.</option>
 											<option value="2">부재시 경비실에 맡겨주세요.</option>
@@ -179,7 +179,7 @@
 											<option value="5">택배함에 보관해 주세요.</option>
 											<option value="direct">직접입력</option>
 										</select>
-										<textarea id="selboxDirect2" name="selboxDirect"
+										<textarea id="selboxDirect2" name="selboxDirect2"
 											style="resize: none;"></textarea>
 									</div>
 								</div>

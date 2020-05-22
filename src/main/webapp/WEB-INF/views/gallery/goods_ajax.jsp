@@ -115,7 +115,7 @@
 						<strong>총 상품금액(수량)</strong>
 						<div class="total-price">
 							<b id="total-price"><fmt:formatNumber
-									value="${goods.gsale+2500}" pattern="#,###" /></b> <b>원</b> <b>(</b><input
+									value="${goods.gsale}" pattern="#,###" /></b> <b>원</b> <b>(</b><input
 								type="number" id="price-count" name="gdcount" value="1" min="1"
 								max="99"
 								style="width: auto; text-align: center; font-weight: bold;" /><b>개)</b>
@@ -544,7 +544,21 @@
 						if (index) {
 							jQuery(".select-prd").show();
 							jQuery(".prd-total").show();
-							counted = 1;
+							var counted = $("#count").val();
+							var delivery = 2500;
+							var total_price = $("#total-price").html();
+							var total_price2 = parseInt($("#total-price").html().replace(/,/gi, ""));
+							
+							total_price3 = total_price2 * counted + delivery;
+							if (total_price3 >= 30000) {
+								delivery = 0;
+							} else {
+								delivery = 2500;
+							}
+							console.log(total_price3);
+							total_price4 = total_price3.toString().replace(
+									/\B(?=(\d{3})+(?!\d))/g, ",");
+							$("#total-price").html(total_price4);
 						}
 					});
 

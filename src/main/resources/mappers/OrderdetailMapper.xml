@@ -61,8 +61,8 @@
 	    useGeneratedKeys="true"
 	    keyProperty="orderdetailno">
 	    INSERT INTO orderdetail (odgcode, odgname, odgprice, odgsale, odcate1, odcate2,
-	    odgdoption, odgqty, regdate, editdate, orderno) VALUES (#{odgcode}, #{odgname}, #{odgprice},
-	    #{odgsale}, odcate1, odcate2, #{odgdoption}, #{odgqty}, now(), now(), #{orderno});
+	    odgdoption, odgqty, regdate, editdate) VALUES (#{odgcode}, #{odgname}, #{odgprice},
+	    #{odgsale}, odcate1, odcate2, #{odgdoption}, #{odgqty}, now(), now());
 	</insert>
 	
     <!-- 데이터 삭제를 위한 기능 정의 -->
@@ -74,9 +74,7 @@
     <!-- 데이터 갱신을 위한 기능 정의 -->
     <update id="updateItem" parameterType="kr.co.poppy.model.Orderdetail">
 		UPDATE orderdetail SET
-		odgcode=#{odgcode}, odgname=#{odgname}, odgprice=#{odgprice},
-		odgsale=#{odgsale}, odgdate=odgdate, odgdoption=#{odgdoption},
-		odgqty=#{odgqty}, editdate=now()
+		editdate=now(), orderno = #{orderno}
 		WHERE orderdetailno=#{orderdetailno};
 	</update>
 	

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.poppy.model.Address;
 import kr.co.poppy.model.Orderdetail;
+import kr.co.poppy.model.Orders;
 import kr.co.poppy.service.OrderdetailService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -122,9 +123,31 @@ public class OrderdetailServiceImpl implements OrderdetailService {
 	}
 
 	
+	/**
+	 * 주문상세 데이터 수정하기
+	 * 
+	 * @param Orderdetail 수정할 정보를 담고 있는 Beans
+	 * @throws Exception
+	 */
 	@Override
 	public int editOrderdetail(Orderdetail input) throws Exception {
-		return 0;
+		int result = 0;
+
+		try {
+			result = sqlSession.update("OrderdetailMapper.updateItem", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+
+		return result;
 	}
 
 	/**
