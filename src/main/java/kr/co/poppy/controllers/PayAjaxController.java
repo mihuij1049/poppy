@@ -97,7 +97,6 @@ public class PayAjaxController {
 		input3.setMemno(myInfo.getMemno());
 
 		// 1개 혹은 다수의 gddetailno를 데이터 조회하기 위한 분기
-		
 		List<Goodsdetail> input4 = new ArrayList<Goodsdetail>();
 		if (gddetailno > 0) {
 			gddetailList[0] = gddetailno;

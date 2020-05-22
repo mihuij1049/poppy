@@ -72,8 +72,8 @@
 											name="raddr2" value="${output.addr2}" /> <input
 											type="hidden" id="delivery-info-phone" name="rodphone"
 											value="${output.odphone}" /> <input type="hidden"
-											name="rodemail" value="${output.odemail}" /> --%> <span
-											class="side-right">
+											name="rodemail" value="${output.odemail}" /> --%>
+										<span class="side-right">
 											<button type="button" id="recent-address-list">배송지
 												목록</button>
 										</span>
@@ -369,15 +369,15 @@
 										</div>
 										<div class="pay-con3">
 											<h5>배송비</h5>
-											<span class="total-price"> 							
-												<span id="delivery-price">2,500</span>원														
+											<span class="total-price"> <span id="delivery-price">2,500</span>원
 											</span>
 										</div>
 									</div>
 									<div class="pay-price">
 										<h4 class="head">결제금액</h4>
 										<strong class="total-price"> <span id="pay-price"><fmt:formatNumber
-													value="${gdoutput[0].gsale * gdcount + 2500}" pattern="#,###" /></span>원
+													value="${gdoutput[0].gsale * gdcount + 2500}"
+													pattern="#,###" /></span>원
 										</strong>
 									</div>
 								</c:when>
@@ -399,8 +399,7 @@
 										</div>
 										<div class="pay-con3">
 											<h5>배송비</h5>
-											<span class="total-price"> 
-												<span id="delivery-price">0</span>원		
+											<span class="total-price"> <span id="delivery-price">0</span>원
 											</span>
 										</div>
 									</div>
@@ -487,7 +486,8 @@
 									<h5>상품별 적립금</h5>
 									<span class="total-price"> <span
 										id="total-gallery-price"><fmt:formatNumber
-												value="${(gdoutput[0].gsale * gdcount) * 0.02}" pattern="#,###" /></span>원
+												value="${(gdoutput[0].gsale * gdcount) * 0.02}"
+												pattern="#,###" /></span>원
 									</span>
 								</div>
 								<div class="save-con2">
@@ -506,7 +506,8 @@
 							<h4 class="head">적립 예정금액</h4>
 							<strong class="total-price"> <span id="pay-price"><fmt:parseNumber
 										var="(goods.gsale * gdcount) * 0.02"
-										value="${(gdoutput[0].gsale * gdcount) * 0.02}" integerOnly="true" /></span>원
+										value="${(gdoutput[0].gsale * gdcount) * 0.02}"
+										integerOnly="true" /></span>원
 							</strong>
 						</div>
 					</div>
@@ -514,13 +515,20 @@
 			</div>
 			<div class="order">
 				<button type="submit" class="btn">
-					<span id="order-total-price"> <fmt:formatNumber
-							value="${gdoutput[0].gsale * gdcount}" pattern="#,###" />
-					</span>원 <span>결제하기</span>
+					<c:if test="${gdoutput[0].gsale * gdcount >= 30000}">
+						<span id="order-total-price"> <fmt:formatNumber
+								value="${gdoutput[0].gsale * gdcount}" pattern="#,###" />
+						</span>원 <span>결제하기</span>
+					</c:if>
+					<c:if test="${gdoutput[0].gsale * gdcount < 30000}">
+						<span id="order-total-price"> <fmt:formatNumber
+								value="${gdoutput[0].gsale * gdcount + 2500}" pattern="#,###" />
+						</span>원 <span>결제하기</span>
+					</c:if>
 				</button>
 			</div>
-			<input type="hidden" name="goodsno" value="${gdoutput[0].goodsno}" /> <input
-				type="hidden" name="gcode" value="${gdoutput[0].gcode}" /> <input
+			<input type="hidden" name="goodsno" value="${gdoutput[0].goodsno}" />
+			<input type="hidden" name="gcode" value="${gdoutput[0].gcode}" /> <input
 				type="hidden" name="gname" value="${gdoutput[0].gname}" /> <input
 				type="hidden" name="ginfo" value="${gdoutput[0].ginfo}" /> <input
 				type="hidden" name="gprice" value="${gdoutput[0].gprice}" /> <input

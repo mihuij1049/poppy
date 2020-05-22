@@ -137,9 +137,7 @@ public class GoodsAjaxController {
 		}
 		
 		String imgPath = goods.getImgpath()+goods.getImgname()+"."+goods.getImgext();
-		goods.setImgpath(webHelper.getUploadPath(imgPath));
-		
-		
+		goods.setImgpath(webHelper.getUploadPath(imgPath));	
 		
 		mySession.setAttribute("userInfo", myInfo);
 		

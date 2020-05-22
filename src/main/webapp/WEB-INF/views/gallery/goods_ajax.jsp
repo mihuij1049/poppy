@@ -66,12 +66,12 @@
 						<div class="gdtitle">상품선택</div>
 						<select class="goods-select" name="gddetailno">
 							<option value="active">- [필수] 옵션을 선택해 주세요. -</option>
-							<c:if test="${gdoutput != null}">
+							<c:if test="${gdoutput[0].gdstock > 0}">
 								<c:forEach var="gdoutput" items="${gdoutput}" varStatus="status">
 									<option value="${gdoutput.gddetailno}">${gdoutput.gdoption}</option>
 								</c:forEach>
 							</c:if>
-							<c:if test="${gdoutput == null}">
+							<c:if test="${gdoutput[0].gdstock == 0}">
 								<c:forEach var="gdoutput" items="${gdoutput}" varStatus="status">
 									<option value="${gdoutput.gddetailno}" disabled>품절</option>
 								</c:forEach>
@@ -98,8 +98,9 @@
 											</button>
 										</p>
 									</td>
-									<td class="add-price"><span id=add-price><fmt:formatNumber
-												value="${goods.gsale}" pattern="#,###" /></span> <span>원</span></td>
+									<td class="add-price"><span id=add-price> <fmt:formatNumber
+												value="${goods.gsale}" pattern="#,###" />
+									</span> <span>원</span></td>
 									<td class="cencel">
 										<div class="cencel-btn">
 											<button type="button" class="btn" id="prd-del">
@@ -114,17 +115,25 @@
 					<div class="prd-total" style="display: none">
 						<strong>총 상품금액(수량)</strong>
 						<div class="total-price">
-							<b id="total-price"><fmt:formatNumber
-									value="${goods.gsale}" pattern="#,###" /></b> <b>원</b> <b>(</b><input
-								type="number" id="price-count" name="gdcount" value="1" min="1"
-								max="99"
+							<c:if test="${goods.gsale >= 30000}">
+								<b id="total-price"><fmt:formatNumber value="${goods.gsale}"
+										pattern="#,###" /></b>
+							</c:if>
+							<c:if test="${goods.gsale < 30000}">
+								<b id="total-price"><fmt:formatNumber value="${goods.gsale + 2500}"
+										pattern="#,###" /></b>
+							</c:if>
+							<b>원</b> <b>(</b><input type="number" id="price-count"
+								name="gdcount" value="1" min="1" max="99"
 								style="width: auto; text-align: center; font-weight: bold;" /><b>개)</b>
 						</div>
 					</div>
 					<div class="prd-action">
 						<div class="action-btn">
 							<button type="button" id="action-cart">장바구니</button>
-							<button type="button" onclick="location.href='${pageContext.request.contextPath }/myInfo/like_goods.do'" id="action-like">관심상품</button>
+							<button type="button"
+								onclick="location.href='${pageContext.request.contextPath }/myInfo/like_goods.do'"
+								id="action-like">관심상품</button>
 							<button type="submit"
 								onclick="location.href='${pageContext.request.contextPath}/pay_ajax/orderform.do'"
 								id="action-orderform">구매하기</button>
@@ -235,8 +244,7 @@
 								<c:forEach var="i" begin="${pageData.startPage}"
 									end="${pageData.endPage}" varStatus="status">
 									<%-- 이동할 URL 생성 --%>
-									<c:url value="/gallery?goodsno=${goods.goodsno}"
-										var="pageUrl">
+									<c:url value="/gallery?goodsno=${goods.goodsno}" var="pageUrl">
 										<c:param name="page" value="${i}" />
 									</c:url>
 
@@ -334,7 +342,7 @@
 											</c:choose>
 										</tbody>
 									</table>
-									<div class="pagenumber">	
+									<div class="pagenumber">
 										<!-- 페이지 번호 구현 -->
 										<%-- 이전 그룹에 대한 링크 --%>
 										<c:choose>
@@ -544,21 +552,7 @@
 						if (index) {
 							jQuery(".select-prd").show();
 							jQuery(".prd-total").show();
-							var counted = $("#count").val();
-							var delivery = 2500;
-							var total_price = $("#total-price").html();
-							var total_price2 = parseInt($("#total-price").html().replace(/,/gi, ""));
-							
-							total_price3 = total_price2 * counted + delivery;
-							if (total_price3 >= 30000) {
-								delivery = 0;
-							} else {
-								delivery = 2500;
-							}
-							console.log(total_price3);
-							total_price4 = total_price3.toString().replace(
-									/\B(?=(\d{3})+(?!\d))/g, ",");
-							$("#total-price").html(total_price4);
+							$('select').find('option:first').attr('selected', 'selected');
 						}
 					});
 
@@ -724,63 +718,81 @@
 				$("#customer_pass").hide();
 			});
 		});
-		
+
 		/** 장바구니 페이지 가기 */
-		$("#goodsno").on("click", "#action-cart", function(e) {
-			e.preventDefault();
-			/* $("#cart_in").show(); */
-			let opt = $(this).parent().parent().prev().prev().prev().children().next().val();
-			let qty = $(this).parent().parent().prev().prev().children().children().children().children().children().next().children().next().val();
-	        console.log(qty);
-	        
-			if (isNaN(opt)) {
-				alert("옵션을 선택해주세요!");
-				return false;
-			}
-			
-			$.post("${pageContext.request.contextPath}/gallery/cart",
-					{ "cartqty" : qty , "gddetailno" : opt }, function(json) {
+		$("#goodsno").on(
+				"click",
+				"#action-cart",
+				function(e) {
+					e.preventDefault();
+					/* $("#cart_in").show(); */
+					let opt = $(this).parent().parent().prev().prev().prev()
+							.children().next().val();
+					let qty = $(this).parent().parent().prev().prev()
+							.children().children().children().children()
+							.children().next().children().next().val();
+					console.log(qty);
+
+					if (isNaN(opt)) {
+						alert("옵션을 선택해주세요!");
+						return false;
+					}
+
+					$.post("${pageContext.request.contextPath}/gallery/cart", {
+						"cartqty" : qty,
+						"gddetailno" : opt
+					}, function(json) {
 						alert("장바구니에 해당 상품이 안전하게 보관되었습니다.");
 					});
-		});
-		
-		$("#goodsno").on("click", "#action-cart2", function(e) {
-			e.preventDefault();
-			/* $("#cart_in").show(); */
-			let opt = $("#action-cart").parent().parent().prev().prev().prev().children().next().val();
-			let qty = $("#action-cart").parent().parent().prev().prev().children().children().children().children().children().next().children().next().val();
-	        console.log(qty);
-	        
-			if (isNaN(opt)) {
-				alert("옵션을 선택해주세요!");
-				return false;
-			}
-			
-			$.post("${pageContext.request.contextPath}/gallery/cart",
-					{ "cartqty" : qty , "gddetailno" : opt }, function(json) {
+				});
+
+		$("#goodsno").on(
+				"click",
+				"#action-cart2",
+				function(e) {
+					e.preventDefault();
+					/* $("#cart_in").show(); */
+					let opt = $("#action-cart").parent().parent().prev().prev()
+							.prev().children().next().val();
+					let qty = $("#action-cart").parent().parent().prev().prev()
+							.children().children().children().children()
+							.children().next().children().next().val();
+					console.log(qty);
+
+					if (isNaN(opt)) {
+						alert("옵션을 선택해주세요!");
+						return false;
+					}
+
+					$.post("${pageContext.request.contextPath}/gallery/cart", {
+						"cartqty" : qty,
+						"gddetailno" : opt
+					}, function(json) {
 						alert("장바구니에 해당 상품이 안전하게 보관되었습니다.");
 					});
-		});
-		
+				});
+
 		/** 관심상품 페이지 가기 */
 		$("#goodsno").on("click", "#action-like", function(e) {
 			e.preventDefault();
 			let goodsno = $("#goodsno").data("goodsno");
-			
-			$.post("${pageContext.request.contextPath}/gallery/in_item",
-					{ "goodsno" : goodsno }, function(json) {
-						alert("관심상품에 해당 상품이 안전하게 보관되었습니다.");
-					});
+
+			$.post("${pageContext.request.contextPath}/gallery/in_item", {
+				"goodsno" : goodsno
+			}, function(json) {
+				alert("관심상품에 해당 상품이 안전하게 보관되었습니다.");
+			});
 		});
-		
+
 		$("#goodsno").on("click", "#action-like2", function(e) {
 			e.preventDefault();
 			let goodsno = $("#goodsno").data("goodsno");
-			
-			$.post("${pageContext.request.contextPath}/gallery/in_item",
-					{ "goodsno" : goodsno }, function(json) {
-						alert("관심상품에 해당 상품이 안전하게 보관되었습니다.");
-					});
+
+			$.post("${pageContext.request.contextPath}/gallery/in_item", {
+				"goodsno" : goodsno
+			}, function(json) {
+				alert("관심상품에 해당 상품이 안전하게 보관되었습니다.");
+			});
 		});
 	</script>
 </body>

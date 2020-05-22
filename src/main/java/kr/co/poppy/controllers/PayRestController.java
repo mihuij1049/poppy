@@ -115,9 +115,13 @@ public class PayRestController {
 			@RequestParam(value = "pay-price", defaultValue = "0") double napoint,
 			@RequestParam(value = "pointtype", defaultValue = "") String pointtype) {
 
-		/** 1) 사용자가 입력한 파라미터에 대한 유효성 검사 */
-		// 일반 문자열 입력 컬럼 --> String으로 파라미터가 선언되어 있는 경우는 값이 입력되지 않으면 빈 문자열로 처리된다.
+		/**
+		 *  주소조회로 주문시 주소 입력 파라미터를 받지 않기위한 조건 처리 
+		 *  raddrno (사용자의 기존 주소조회의 주소넘버)
+		 */
 		if (raddrno == 0) {
+			/** 사용자가 입력한 파라미터에 대한 유효성 검사 */
+			// 일반 문자열 입력 컬럼 -> String 으로 파라미터가 선언되어 있는  경우는 값이 입력되지 않으면 빈 문자열올 처리된다.
 			if (odname.equals("")) {
 				return webHelper.getJsonWarning("이름을 입력하세요.");
 			}
@@ -139,10 +143,10 @@ public class PayRestController {
 			}
 		}
 
+		/** paytype에 따른 odstatus 저장 처리 */
 		if (paytype.equals("credit") || paytype.equals("phone")) {
 			odstatus = "1";
 		}
-
 		if (paytype.equals("BankTransfer") || paytype.equals("NotBankTransfer")) {
 			odstatus = "0";
 		}
@@ -154,26 +158,14 @@ public class PayRestController {
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
 
-		/** 2) 데이터 저장하기 */
-		// 저장할 값들을 Beans에 담는다.
-		/** 주소 저장 */
+		/** 기존회원의 주문 조회 */
 		Address radd = new Address();
 		radd.setAddrno(raddrno);
 		radd.setMemno(myInfo.getMemno());
-		Address rasave = null;
 
-		
-		/** 주문 */
-		Orders order = new Orders();
-		order.setPaytype(paytype);
-		order.setOdstatus(odstatus);
-		order.setDeliprice(deliprice);
-		order.setRegdate("now()");
-		order.setEditdate("now()");
-		order.setMemno(myInfo.getMemno());
-		Orders osave = null;
-
-		/** 주문 상품 */
+		/** 2) 데이터 저장하기 */
+		// 저장할 값들을 Beans에 담는다.
+		/** 사용자가 선택한 주문상품 저장 */
 		Orderdetail oddetail = new Orderdetail();
 		oddetail.setOrderdetailno(goodsno);
 		oddetail.setOdgcode(gcode);
@@ -187,8 +179,17 @@ public class PayRestController {
 		oddetail.setOdgqty(gdcount);
 		oddetail.setRegdate("now()");
 		oddetail.setEditdate("now()");
-		Orderdetail odsave = null;
+		
+		/** 사용자가 선택한 주문 저장 */
+		Orders order = new Orders();
+		order.setPaytype(paytype);
+		order.setOdstatus(odstatus);
+		order.setDeliprice(deliprice);
+		order.setRegdate("now()");
+		order.setEditdate("now()");
+		order.setMemno(myInfo.getMemno());
 
+		/** 상품 결제시 저장될 미가용 포인트 저장 */
 		Points poi = new Points();
 		poi.setPointno(pointno);
 		poi.setNapoint((int) pay_price);
@@ -196,35 +197,34 @@ public class PayRestController {
 		poi.setRegdate("now()");
 		poi.setEditdate("now()");
 		poi.setMemno(myInfo.getMemno());
-		Points psave = null;
+		
+		// 저장될 결과를 조회할 객체
 		Address asave = null;
-
+		Orderdetail odsave = null;
+		Orders osave = null;
+		Points psave = null;
+		
+		/** 사용자가 조회된 주소로 주문할 경우와 직접 주소를 입력하여 주문할 경우의 조건분기 처리 */
 		if (!odname.equals("") && !odemail.equals("") && !addr1.equals("") && !addr2.equals("") && zcode != null) {
+			// 사용자가 입력한 주소로 주문 
 			try {
-				if (odmsg2.equals("1")) {
-					odmsg2 = "배송전에 미리 연락드립니다.";
-				}
-
-				if (odmsg2.equals("2")) {
-					odmsg2 = "부재시 경비실에 맡겨주세요.";
-				}
-
-				if (odmsg2.equals("3")) {
-					odmsg2 = "부재시 문 앞에 놓아주세요.";
-				}
-
-				if (odmsg2.equals("4")) {
-					odmsg2 = "빠른 배송 부탁드립니다.";
-				}
-
-				if (odmsg2.equals("5")) {
-					odmsg2 = "택배함에 보관해 주세요.";
-				}
-
-				if (odmsg2.equals("direct")) {
-					odmsg2 = selboxDirect2;
-				}
+				/** odmsgg2 <select> 태그의 선택한 value값에 따른 odmsg 저장처리  */
+				if (odmsg2.equals("1")) { odmsg2 = "배송전에 미리 연락바랍니다."; }
 				
+				if (odmsg2.equals("2")) { odmsg2 = "부재시 경비실에 맡겨주세요."; }
+
+				if (odmsg2.equals("3")) { odmsg2 = "부재시 문 앞에 놓아주세요."; }
+
+				if (odmsg2.equals("4")) { odmsg2 = "빠른 배송 부탁드립니다."; }
+
+				if (odmsg2.equals("5")) { odmsg2 = "택배함에 보관해 주세요."; }
+
+				if (odmsg2.equals("direct")) { odmsg2 = selboxDirect2; }
+				
+				/** 선택된 odmsg2 데이터 저장 */
+				order.setOdmsg(odmsg2);
+				
+				/** 사용자가 입력한 주소 저장 */
 				Address add = new Address();
 				add.setOdname(odname);
 				add.setOdphone(odphone);
@@ -235,9 +235,8 @@ public class PayRestController {
 				add.setRegdate("now()");
 				add.setEditdate("now()");
 				add.setMemno(myInfo.getMemno());
-				
-				order.setOdmsg(odmsg2);
 
+				// 데이터 저장
 				addressService.addAddress(add);
 				orderdetailService.addOrderdetail(oddetail);
 				order.setAddrno(add.getAddrno());
@@ -256,33 +255,25 @@ public class PayRestController {
 				return webHelper.getJsonError(e.getLocalizedMessage());
 			}
 		} else {
+			// 사용자의 조회된 주소로 주문
 			try {
-				if (odmsg1.equals("1")) {
-					odmsg1 = "배송전에 미리 연락드립니다.";
-				}
+				/** odmsgg1 <select> 태그의 선택한 value값에 따른 odmsg 저장처리  */
+				if (odmsg1.equals("1")) { odmsg1 = "배송전에 미리 연락바랍니다."; }
 
-				if (odmsg1.equals("2")) {
-					odmsg1 = "부재시 경비실에 맡겨주세요.";
-				}
+				if (odmsg1.equals("2")) { odmsg1 = "부재시 경비실에 맡겨주세요."; }
 
-				if (odmsg1.equals("3")) {
-					odmsg1 = "부재시 문 앞에 놓아주세요.";
-				}
+				if (odmsg1.equals("3")) { odmsg1 = "부재시 문 앞에 놓아주세요."; }
 
-				if (odmsg1.equals("4")) {
-					odmsg1 = "빠른 배송 부탁드립니다.";
-				}
+				if (odmsg1.equals("4")) { odmsg1 = "빠른 배송 부탁드립니다."; }
 
-				if (odmsg1.equals("5")) {
-					odmsg1 = "택배함에 보관해 주세요.";
-				}
+		        if (odmsg1.equals("5")) { odmsg1 = "택배함에 보관해 주세요."; }
 
-				if (odmsg1.equals("direct")) {
-					odmsg1 = selboxDirect1;
-				}
+				if (odmsg1.equals("direct")) { odmsg1 = selboxDirect1; }
 				
+				/** 선택된 odmsg1 데이터 저장 */
 				order.setOdmsg(odmsg1);
 				
+				// 데이터 저장
 				orderdetailService.addOrderdetail(oddetail);
 				order.setAddrno(radd.getAddrno());
 				ordersService.addOrders(order);
