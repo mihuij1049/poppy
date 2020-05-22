@@ -43,7 +43,7 @@
 		i.imgext,
 		i.imgpath, i.imgtype FROM orders o INNER JOIN orderdetail od
 		ON o.orderno=od.orderno INNER JOIN goods g ON g.gcode = od.odgcode
-		INNER JOIN imgs i ON i.goodsno=g.goodsno WHERE o.memno=1 AND
+		INNER JOIN imgs i ON i.goodsno=g.goodsno WHERE o.memno = #{memno} AND
 		o.odstatus IN ("0", "1", "2", "3")
 		ORDER BY o.orderno ASC
 	</select>
@@ -57,7 +57,7 @@
 		i.imgext,
 		i.imgpath, i.imgtype FROM orders o INNER JOIN orderdetail od
 		ON o.orderno=od.orderno INNER JOIN goods g ON g.gcode = od.odgcode
-		INNER JOIN imgs i ON i.goodsno=g.goodsno WHERE o.memno=1 AND
+		INNER JOIN imgs i ON i.goodsno=g.goodsno WHERE o.memno=#{memno} AND
 		o.odstatus IN ("4", "5", "6")
 		ORDER BY o.orderno ASC
 	</select>
