@@ -31,7 +31,7 @@
 			</h4>
 		</div>
 		<div class="container">
-			<form id="cart-form" class="form-horizontal" method="post"
+			<form method="post"
 				action="${pageContext.request.contextPath}/pay_ajax/orderform.do">
 				<div class="panel-title6">장바구니 상품</div>
 				<div class="panel-header2">
@@ -73,12 +73,12 @@
 											<input type="hidden" class="cartno" value="${item.cartno}" />
 											<input type="hidden" class="goodsno" value="${item.goodsno}" />
 											<input type="hidden" class="memno" value="${myInfo.memno}" />
-											<input type="hidden" class="gddetailno"
-												value="${item.gddetailno}" /> <input type="hidden"
-												class="gdoption" value="${item.gdoption}" /> <input
-												type="checkbox" name="cart_check" class="cart cart-size"
-												data-checknum="${item.cartno}" /> <a href="${viewUrl}">
-												<img src="${item.imgpath}" class="cart-img" />
+											<input type="hidden" class="gddetailno" value="${item.gddetailno}" /> 
+											<input type="hidden" class="gdoption" value="${item.gdoption}" /> 
+											<input type="checkbox" name="cart_check" class="cart cart_check"
+												data-checknum="${item.cartno}" checked /> 
+											<a href="${viewUrl}"> 
+											<img src="${item.imgpath}" class="cart-img" />
 											</a>
 
 											<p>
@@ -96,26 +96,25 @@
 											<p class="option">[옵션: ${item.gdoption}]</p>
 										</div>
 										<div class="word-btn">
-											<button class="count minus">
+											<button type="button" class="count minus">
 												<img src="../share/img/ppminus.png">
 											</button>
 											<input type="number" class="count-label" id="count-label"
 												name="gdcount" value="${item.cartqty}">
-											<button class="count plus">
+											<button type="button" class="count plus">
 												<img src="../share/img/ppplus.png">
 											</button>
 											<button class="change">변경</button>
 										</div>
 										<div class="word-botm clear">
 											<p>
-												<b>합계: <span class="price"><fmt:formatNumber
-															value="${item.gsale*item.cartqty}" pattern="#,###" /></span>원
+												<b>합계: <span class="price"> <fmt:formatNumber
+															value="${item.gsale*item.cartqty}" pattern="#,###" />
+												</span>원
 												</b>
 											</p>
 											<button type="button" class="btn btn2" id="order"
-												data-goodsno="${item.goodsno}" data-memno="${myInfo.memno}"
-												data-gddetailno="${item.gddetailno}"
-												data-gdoption="${item.gdoption}">주문하기</button>
+												data-gddetailno="${item.gddetailno}">주문하기</button>
 											<button type="button" class="delete btn btn-inverse"
 												data-cartno="${item.cartno}">삭제</button>
 										</div>
@@ -151,12 +150,13 @@
 					</tbody>
 				</table>
 				<div class="pay">
-					<button type="submit" class="btn btn2 btn-inverse"
+					<button type="button" class="btn btn2 btn-inverse"
 						id="select_order">선택상품주문</button>
-					<button class="btn btn2" id="all_order">전체상품주문</button>
+					<button type="submit" class="btn btn2" id="all_order">전체상품주문</button>
 				</div>
 			</form>
 		</div>
+
 	</div>
 
 	<!-- Modal -->
@@ -403,39 +403,25 @@
 				}
 			});
 
-			$(document).on("click", ".all-check2", function(e) {
-				var choice = $(".cart").prop("checked");
-				if (!choice) {
-					$(".cart2").prop("checked", true);
-				} else {
-					$(".cart2").prop("checked", false);
-				}
-			});
-
-			$(document)
-					.on(
-							"click",
-							"#order",
-							function(e) {
-								let current = $(this); // 이벤트가 발생한 객체 자신 #order
-								let goodsno = current.data('goodsno');
-								let memno = current.data('memno');
+			// 주문 버튼이 클릭되었을 때 실행
+			$(document).on("click", "#order", function(e) {
+								// 이벤트가 발생한 객체 자신 #order
+								let current = $(this);
+								// 해당 상품의 상품상세 번호
 								let gddetailno = current.data('gddetailno');
-								let gdoption = current.data('gdoption');
-								var cartqty = current.parent().prev()
-										.children().eq(1).val();
+								// 해당 상품의 장바구니에 담긴 수량
+								var cartqty = current.parent().prev().children().eq(1).val();
+								// 상품 주문을 위해 상품상세 번호와 주문수량을 주문/결제 페이지로 보냄
 								location.href = '${pageContext.request.contextPath}/pay_ajax/orderform.do?'
-										+ '&gddetailno='+gddetailno
-										+ '&gdcount='
-										+ cartqty;
-							});
+										+'&gddetailno=' + gddetailno + '&gdcount=' + cartqty;
+			});
+			
 			$(document)
 					.on(
 							"click",
 							"#select_order",
 							function(e) {
 								var select_array = [];
-								const cartId = [];
 								length = $(".cart-box").length;
 								for (var i = 0; i < length; i++) {
 									for(var j=0;j<i;j++) {
@@ -452,8 +438,7 @@
 												.val();
 										var cartqty = $(".count-label").eq(i)
 												.val();
-										order_item = gddetailno, cartqty;
-										console.log(order_item[i][j]);
+										order_item = "&gddetailno="+gddetailno+"&gdcount="+cartqty;
 									}
 									if (i == length - 1) {
 										if (select_array.length == 0) {
@@ -464,8 +449,8 @@
 												select_array.length - 1);
 										console.log(select_array);
 										
-										//location.href = '${pageContext.request.contextPath}/pay_ajax/orderform.do?'
-										//		+ order_item;
+										location.href = '${pageContext.request.contextPath}/pay_ajax/orderform.do?'
+												+ order_item;
 									}
 								}
 								}
@@ -492,10 +477,7 @@
 												.val();
 										var cartqty = $(".count-label").eq(i)
 												.val();
-										var order_item = "goodsno=" + goodsno
-												+ "&memno=" + memno
-												+ "&gddetailno=" + gddetailno
-												+ "&gdoption=" + gdoption
+										var order_item ="&gddetailno=" + gddetailno
 												+ "&gdcount=" + cartqty;
 										location.href = '${pageContext.request.contextPath}/pay_ajax/orderform.do?'
 												+ order_item;
@@ -545,60 +527,44 @@
 													sum_price = 0;
 												});
 							});
-
-			$(document)
-					.on(
-							"click",
-							".select_delete",
-							function(e) {
+			// 선택삭제 버튼이 클릭되었을 때 실행
+			$(document).on("click", ".select_delete", function(e) {
 								$("#myModal2").modal("show");
 								$(".delete_message").html("선택하신");
-								$(document)
-										.on(
-												"click",
-												".delete_ok",
-												function(e) {
-													var delList = [];
-													$("input:checkbox[name=cart_check]:checked").each(function(i) {
-														delList.push($(this).data("checknum"));
-														$(this).parent().parent().parent().remove();
-													});
-													$("input:checkbox[name=check-select]:checked").each(function() {
-														/* $("input:checkbox[name=check-select]:checked").parent().parent().parent().remove(); */
-													});
-													console.log(delList);
+								$(document).on("click", ".delete_ok", function(e) {
+										var delList = [];
+										// checkbox가 체크된 상품을 뷰에서 지움
+										$("input:checkbox[name=cart_check]:checked").each(function(i) {
+											delList.push($(this).data("checknum"));
+											$(this).parent().parent().parent().remove();
+										});
+										
+										// 체크된 상품이 없다면 ajax 통신을 취소 하기 위한 return 
+										if (delList.length==0) {
+											alert("선택된 상품이 없습니다.");
+											return;
+										}
 													
-													$.delete("${pageContext.request.contextPath}/pay/cart_delete_list", {
-														"delList" : delList
-													},  function(json) {
-														if(json.rt=="OK") {
-															alert("삭제되었습니다.");
-															window.location = "${pageContext.request.contextPath}/pay/cart.do";
-														}
-													})
+										// checkbox가 체크된 상품을 데이터베이스에서 지움
+										$.delete("${pageContext.request.contextPath}/pay/cart_delete_list", {
+											"delList" : delList
+											},  function(json) {
+													if(json.rt=="OK") {
+														alert("삭제되었습니다.");
+														window.location = "${pageContext.request.contextPath}/pay/cart.do";
+													}
+											})
 													
-													var length = $(".cart-box").length;
-													for (var i = 0; i < length; i++) {
-														if ($(".cart-size").eq(
-																i).prop(
-																"checked") == true) {
-															var cartno = $(
-																	".cartno")
-																	.eq(i)
-																	.val();
-															console.log(cartno);
-															$(".cart-size").eq(
-																	i).parent()
-																	.parent()
-																	.parent()
-																	.remove();
+										var length = $(".cart-box").length;
+										for (var i = 0; i < length; i++) {
+												if ($(".cart-size").eq(i).prop("checked") == true) {
+													var cartno = $(".cartno").eq(i).val();
+														$(".cart-size").eq(i).parent().parent().parent().remove();
 															i--;
 															length--;
-															$(".cart-count")
-																	.html(
-																			length);
-														}
+															$(".cart-count").html(length);
 													}
+												}
 													sum = 0;
 													for (var i = 0; i < length; i++) {
 														sum += parseInt($(

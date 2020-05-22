@@ -212,22 +212,21 @@ public class KRTController {
 		String viewPath = "myInfo/cancel_list";
 		return new ModelAndView(viewPath);
 	}
-	
+
 	/** 취소내역 내역삭제 */
-	@RequestMapping(value="/myInfo/cancel_delete.do", method=RequestMethod.GET)
-	public ModelAndView cancel_delete(Model model, @RequestParam(value="orderno", required=false) int orderno) {
-		if (orderno==0) {
+	@RequestMapping(value = "/myInfo/cancel_delete.do", method = RequestMethod.GET)
+	public ModelAndView cancel_delete(Model model, @RequestParam(value = "orderno", required = false) int orderno) {
+		if (orderno == 0) {
 			return webHelper.redirect(null, "주문번호가 없습니다.");
 		}
-		
+
 		Orders orders = new Orders();
 		orders.setOrderno(orderno);
 
-		
 		try {
 			// 데이터 삭제
 			orderService.deleteOrders(orders);
-		} catch(Exception e) {
+		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		return webHelper.redirect(contextPath + "/myInfo/cancel_list.do", "주문취소 내역에서 삭제되었습니다.");
@@ -437,7 +436,7 @@ public class KRTController {
 		if (myInfo.getMemno() != output.getMemno()) {
 			return webHelper.redirect(null, "본인이 작성한 리뷰만 수정 가능합니다.");
 		}
-		
+
 		String imgPath = output.getGipath() + output.getGiname() + "." + output.getGiext();
 		output.setGipath(webHelper.getUploadPath(imgPath));
 
@@ -620,42 +619,45 @@ public class KRTController {
 
 	}
 
-	/** 장바구니 */
-	/** 목록 페이지 */
+	/** 장바구니 목록 페이지 */
 	@RequestMapping(value = "/pay/cart.do", method = RequestMethod.GET)
 	public ModelAndView cart_list(Model model, @RequestParam(value = "memno", defaultValue = "0") int memno) {
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
 
+		// 세션에서 회원번호를 가져와서 저장
 		Cart input = new Cart();
 		input.setMemno(myInfo.getMemno());
 
+		// 조회결과를 저장하기 위한 객체 선언
 		List<Cart> output = null;
 
 		try {
+			// 다중행 조희를 할당
 			output = cartService.getCartList(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
+		// 이미지 경로 처리
 		for (Cart item : output) {
 			String imgPath = item.getImgpath() + item.getImgname() + "." + item.getImgext();
 			item.setImgpath(webHelper.getUploadPath(imgPath));
 		}
 
-		// 세션 갱신
+		// 장바구니 뱃지를 위한 세션 갱신
 		try {
 			// 데이터 조회
 			myInfo = membersService.loginMembers(myInfo);
 			// 조회 결과가 있다면 세션 저장
 			if (myInfo != null) {
 				mySession.setAttribute("userInfo", myInfo);
-
 			}
 		} catch (Exception e) {
 
 		}
 
+		// 뷰에 조회 결과를 처리
 		model.addAttribute("myInfo", myInfo);
 		model.addAttribute("output", output);
 

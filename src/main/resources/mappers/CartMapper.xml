@@ -36,14 +36,17 @@
 		g.goodsno, o.deliprice, g.gprice, g.gsale, c.cartqty,
 		gd.gddetailno, gd.gdoption
 		FROM goods g
-		INNER JOIN imgs i ON g.goodsno=i.goodsno
+		INNER JOIN imgs i ON
+		g.goodsno=i.goodsno
 		INNER
 		JOIN goodsdetail gd ON g.goodsno = gd.goodsno
 		INNER JOIN cart c ON
 		gd.gddetailno = c.gddetailno
-		INNER JOIN members m ON c.memno = m.memno
+		INNER JOIN members m
+		ON c.memno = m.memno
 		INNER JOIN orders o ON m.memno = o.orderno
-		WHERE c.memno=#{memno} AND
+		WHERE
+		c.memno=#{memno} AND
 		i.imgtype="A";
 	</select>
 
@@ -79,12 +82,15 @@
 		WHERE
 		memno=#{memno} AND cartno=#{cartno};
 	</delete>
-	
-	<delete id="deleteList"
-        parameterType="hashmap">
-        DELETE FROM cart WHERE cartno IN <foreach collection="input" item="item" index="index" open="(" separator="," close=")">${item.cartno}</foreach> 
-    </delete>
-    
+
+	<delete id="deleteList" parameterType="hashmap">
+		DELETE FROM cart WHERE cartno IN
+		<foreach collection="input" item="item" index="index" open="("
+			separator="," close=")">
+			${item.cartno}
+		</foreach>
+	</delete>
+
 	<!-- 회원탈퇴시 모든 카트 삭제를 위한 기능 정의 -->
 	<delete id="delete_members_item"
 		parameterType="kr.co.poppy.model.Members">

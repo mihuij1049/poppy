@@ -130,7 +130,8 @@
 									aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
-								<h4 class="modal-title" data-orderno="${item.orderno}">주문취소내역 삭제</h4>
+								<h4 class="modal-title" data-orderno="${item.orderno}">주문취소내역
+									삭제</h4>
 							</div>
 							<div class="modal-body2">
 								<p>
@@ -212,6 +213,13 @@
 		date2 = $("#datepicker_after").val();
 		date1_stm = new Date(date1).getTime() / 1000;
 		date2_stm = new Date(date2).getTime() / 1000;
+		date3_stm = 0;
+		// datepicker 에서 before이 after보다 크다면 둘을 바꿔줌
+		if (date1_stm > date2_stm) {
+			date3_stm = date1_stm;
+			date1_stm =  date2_stm;
+			date2_stm = date3_stm;
+		}
 		$(".view").parent().hide();
 		length = $(".view").length;
 		for (var i = 0; i < length; i++) {

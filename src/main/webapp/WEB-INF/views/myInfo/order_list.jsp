@@ -107,8 +107,7 @@
 								<div class="prd-info">
 									<div class="prd-box">
 										<div class="thumbnail">
-											<a href="${viewUrl}"> <img
-												src="${item.imgpath}"
+											<a href="${viewUrl}"> <img src="${item.imgpath}"
 												width="70" height="70">
 											</a>
 										</div>
@@ -170,27 +169,33 @@
 	<!-- Javascript -->
 	<%@ include file="../share/bottom_tp.jsp"%>
 	<!-- 플러그인 JS 참조 -->
-	<script src="${pageContext.request.contextPath }/share/plugins/datepicker/datepicker.min.js"></script>
-	<script src="${pageContext.request.contextPath }/share/plugins/datepicker/datepicker.ko-KR.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/share/plugins/datepicker/datepicker.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/share/plugins/datepicker/datepicker.ko-KR.js"></script>
 	<!-- 사용자 정의 스크립트 -->
 	<script type="text/javascript">
 			$(function() {
+				// 주문상태 드롭다운이 변화된 경우 실행
 				$(document).on(
 						"change",
 						"#sel_odstatus",
 						function(e) {
+							// 주문내역의 길이
 							var length = $(".view").length;
-							// console.log(length);
 							var sel_odstatus = $(
 									"#sel_odstatus option:selected").val();
-							// console.log(sel_odstatus);
+							// 전체 주문내역을 숨김
 							$(".view").parent().hide();
+							// 주문내역의 길이만큼 반복
 							for (var i = 0; i < length; i++) {
+								// 주문처리상태의 값을 가져옴
 								var odstatus = $(".ready").eq(i).html();
-								// console.log(odstatus);
+								// 전체 주문처리상태가 선택된 경우 전체를 보여줌
 								if (sel_odstatus == -1) {
 									$(".view").parent().show();
 								}
+								// 특정 주문상태가 선택된 경우 그 주문상태만 보여줌
 								if (sel_odstatus == 0) {
 									if (odstatus == "입금전") {
 										$(".view").eq(i).parent().show();
@@ -242,7 +247,6 @@
 				} else if (s_dd < 10) {
 					s_dd = "0" + s_dd;
 				}
-				//console.log("days==="+days);
 
 				alert(s_yy + "년 " + s_mm + "월 " + s_dd + "일 " + "~" + yy + "년 "
 						+ mm + "월 " + dd + "일" + "의 주문조회 결과");
@@ -265,16 +269,28 @@
 				}
 			}
 			
+			// 조회 버튼이 클릭된 경우 실행
 			$(document).on("click","#check", function(e) {				
 				date1 = $("#datepicker_before").val();
 				date2 = $("#datepicker_after").val();
+				// datepicker에서 입력받은 값을 타임스탬프로 변환
 				date1_stm = new Date(date1).getTime() / 1000;
 				date2_stm = new Date(date2).getTime() / 1000;
+				date3_stm = 0;
+				// datepicker 에서 before이 after보다 크다면 둘을 바꿔줌
+				if (date1_stm > date2_stm) {
+					date3_stm = date1_stm;
+					date1_stm =  date2_stm;
+					date2_stm = date3_stm;
+				}
+				// 모든 주문 내역을 숨김
 				$(".view").parent().hide();
 				length = $(".view").length;
 				for (var i = 0; i < length; i++) {
 					var oddate = $(".date").eq(i).html();
+					// 주문일자를 타임스탬프로 변환
 					oddate = new Date(oddate).getTime() / 1000;
+					// 주문일자가 before 이상이고, after 이하인 경우에만 내역을 보여줌
 					if(oddate>=date1_stm && oddate<=date2_stm) {
 						$(".view").eq(i).parent().show();
 					}	

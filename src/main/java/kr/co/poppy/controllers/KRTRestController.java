@@ -34,8 +34,7 @@ public class KRTRestController {
 	/** 장바구니 선택 삭제 */
 	@RequestMapping(value="/pay/cart_delete_list", method=RequestMethod.DELETE)
 	public Map<String, Object> cart_delete_list(@RequestParam(value="delList[]") List<Integer> delList) {
-		/** 1) 요청받은 파라미터가 null 이 아니라면? */
-
+		/** 1) 요청받은 파라미터가 null이 아닐때 실행 */
 		if (delList != null) {
 
 			// 리스트 객체 생성 및 할당
