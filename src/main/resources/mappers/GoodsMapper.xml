@@ -260,9 +260,6 @@
 			</if> 
 		</where>
 		ORDER BY gname desc
-		<if test="listCount > 0">
-			LIMIT #{offset}, #{listCount}
-		</if>
 	</select>
 
 	<!-- 정렬방식에 따른 조회 기능 정의 -->

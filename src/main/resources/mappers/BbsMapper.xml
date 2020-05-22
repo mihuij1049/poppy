@@ -141,10 +141,8 @@
 	<!-- 후기관리 글 목록 페이지 -->
 	<select id="selectList_myrv"
 		parameterType="kr.co.poppy.model.Bbs" resultMap="bbsMap">
-		SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,
-		b.goodsno, b.rvlike,
-		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype,
-		i.goodsno,
+		SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno, b.goodsno, b.rvlike,
+		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype, i.goodsno,
 		m.memno, m.userid
 		FROM bbs b
 		INNER JOIN members m ON b.memno=m.memno
@@ -158,19 +156,18 @@
 			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
-	 <!-- 매퍼 중복 사용으로 오버로드함 --> 
+	
+	 <!-- 내가 작성한 리뷰 --> 
 	<select id="selectList_myrv2"
 		parameterType="kr.co.poppy.model.Bbs" resultMap="bbsMap">
-		SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno,
-		b.goodsno, b.rvlike,
-		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype, g.gname,
-		m.userid
+		SELECT b.bbsno, b.bbstype, b.bbstitle, b.bbscontent, b.memno, b.goodsno, b.rvlike,
+		i.imgsno, i.imgname, i.imgpath, i.imgext, i.imgtype, 
+		g.gname, m.userid
 		FROM bbs b
 		INNER JOIN members m ON b.memno=m.memno
 		INNER JOIN imgs i ON b.bbsno=i.bbsno
 		INNER JOIN goods g ON b.goodsno=g.goodsno
 		WHERE i.imgtype="C" AND b.bbstype="C" AND b.memno = #{memno}
-		
 		ORDER BY bbsno ASC
 		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}

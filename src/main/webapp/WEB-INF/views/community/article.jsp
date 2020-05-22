@@ -13,7 +13,29 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/share/article.css" />
 <style type="text/css">
+.goodsname {
+	width: 160px;
+	display: inline-block;
+	font-size: 14px;
+	vertical-align: middle;
+	
+	padding-bottom: 5px;
+}
+.gname {
+display: block;
+width: 160px;
+overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
 
+.photo {
+	border: 1px solid #ffc7c1;
+	width: 30%;
+	height: 20%;
+	margin-right: 20px;
+	margin-left: 20px;
+}
 </style>
 </head>
 
@@ -42,7 +64,7 @@
 						src="${output.imgpath}" data-goodsno="${output.goodsno}" />
 					<div class="goodsname">
 						<div class="goodsname">
-							${output.gname}<br>
+							<b class="gname">${output.gname}</b><br>
 						</div>
 						<div class="goodsprice"><fmt:formatNumber value="${output.gprice}" pattern="#,###" />원</div>
 					</div>

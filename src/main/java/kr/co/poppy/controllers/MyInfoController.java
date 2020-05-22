@@ -391,15 +391,12 @@ public class MyInfoController {
 		GoodsForRv goodsForRv = new GoodsForRv();
 		/* goodsForRv.setBbstype("C"); */
 		goodsForRv.setMemno(myInfo.getMemno());
-
 		List<GoodsForRv> avRvList = null;
-
 		// 내가 작성한 리뷰 탭을 조회할 Beans
 		Bbs myBbs = new Bbs();
 		myBbs.setMemno(myInfo.getMemno());
-
 		List<Bbs> myBbsList = null;
-
+		
 		try {
 			myBbsList = bbsService.getBbsList_myrv2(myBbs);
 
@@ -412,7 +409,6 @@ public class MyInfoController {
 			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
 			item.setImgpath(webHelper.getUploadPath(imgPath));
 		}
-		
 		for (GoodsForRv item : avRvList) {
 			String imgPath = item.getImgpath()+item.getImgname()+"."+item.getImgext();
 			item.setImgpath(webHelper.getUploadPath(imgPath));

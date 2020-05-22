@@ -39,6 +39,7 @@ public class CommunityRestController {
 	@Autowired
 	CommentsService commentsService;
 
+	
 	/** ========== 댓글 작성폼에 대한 action page ========== */
 	@RequestMapping(value = "/community/article_cmtAdd", method = RequestMethod.POST)
 	public Map<String, Object> post(@RequestParam(value = "cmtcontent", required = false) String cmtcontent,
@@ -52,7 +53,6 @@ public class CommunityRestController {
 		if (cmtcontent.equals("")) {
 			return webHelper.getJsonWarning("댓글을 입력하세요");
 		}
-
 		// 가입한 시각을 담은 date 생성
 		Calendar c = Calendar.getInstance();
 		String date = String.format("%04d-%02d-%02d %02d:%02d:%02d", c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1,
@@ -68,9 +68,7 @@ public class CommunityRestController {
 		input.setMemno(memno);
 		input.setBbsno(bbsno);
 		input.setBbstype(bbstype);
-
 		Comments output = new Comments();
-
 		try {
 			// 데이터 저장 --> 저장에 성공하면 파라미터로 전달하는 input객체에 pk값이 저장된다.
 			commentsService.addComments(input);
@@ -79,13 +77,14 @@ public class CommunityRestController {
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
-
+		
 		/** 3) 결과를 확인하기 위한 JSON 출력 */
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("item", output);
 		return webHelper.getJsonData(map);
 	}
 
+	
 	/** ========== 댓글 수정폼에 대한 action page ========== */
 	@RequestMapping(value = "/community/article_cmtEdit", method = RequestMethod.PUT)
 	public Map<String, Object> put(
@@ -98,22 +97,18 @@ public class CommunityRestController {
 		if (cmtcontent.equals("")) {
 			return webHelper.getJsonWarning("댓글을 입력하세요");
 		}
-		
 		if(cmtno==0) {
 			return webHelper.getJsonWarning("존재하는 댓글이 아닙니다.");
 		}
 	
-
 		/** 2) 데이터 수정하기 */
 		Comments input = new Comments();
 		input.setCmtno(cmtno);
 		input.setCmtcontent(cmtcontent);
 		input.setEditdate(editdate);
 		input.setBbsno(bbsno);
-
 		// 수정된 결과를 조회하기 위한 객체
 		Comments output = null;
-
 		try {
 			commentsService.editComments(input);
 			// 수정결과 조회
@@ -121,13 +116,13 @@ public class CommunityRestController {
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
-
+		
 		/** 3) 결과를 확인하기 위한 JSON 출력 */
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("item", output);
 		return webHelper.getJsonData(map);
-
 	}
+	
 	
 	/** ========== 댓글 삭제  ========== */
 	@RequestMapping(value = "/community/article", method = RequestMethod.DELETE)
@@ -139,28 +134,30 @@ public class CommunityRestController {
 		if(cmtno==0) {
 			return webHelper.getJsonWarning("존재하는 댓글이 아닙니다.");
 		}
+		
 		/** 2) 데이터 삭제하기 */
 		Comments input = new Comments();
 		input.setCmtno(cmtno);
 		input.setBbsno(bbsno);
 		input.setBbstype(bbstype);
-		
 		try {
 			commentsService.deleteComments(input);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
+		
 		/** 3) 결과를 확인하기 위한 JSON출력 */
 		Map<String, Object> map = new HashMap<String, Object>();
 		return webHelper.getJsonData(map);
 	}
+	
 	
 	/** ========== qna 모달창 상품조회 리스트 ========== */
 	@RequestMapping(value = "/community/qna_goods", method=RequestMethod.GET)
 		public Map<String, Object> get_list (
 				// 검색어
 				@RequestParam(value="keyword", required=false) String keyword) {
-		
+		/** 1) 유효성 검사 */
 		if (keyword.equals("")) {
 			return webHelper.getJsonWarning("검색 키워드가 없습니다.");
 		}
@@ -170,7 +167,6 @@ public class CommunityRestController {
 		input.setGname(keyword);
 		
 		List<Goods> output = null;
-		
 		try {
 			// 데이터 조회하기
 			output = (List<Goods>) goodService.selectqnagoods(input);
@@ -188,8 +184,4 @@ public class CommunityRestController {
 		data.put("item", output);
 		return webHelper.getJsonData(data);
 	}
-		
-		
-	
-	
 }
