@@ -37,53 +37,29 @@
 	<!-- 주문내역 다중행 조회를 위한 기능 정의 -->
 	<select id="selectList" parameterType="kr.co.poppy.model.Orders"
 		resultMap="ordersMap">
-		SELECT Distinct o.orderno,
-		o.odstatus, od.orderdetailno,
-		o.regdate, od.odgcode,g.gcode, od.odgname, g.gname,od.odgprice,
-		od.odgsale,
-		od.odgqty,
-		od.odgdoption, g.goodsno, i.imgname, i.imgext,
-		i.imgpath,
-		i.imgtype,
-		g.goodsno FROM imgs i, goods g, orders o INNER
-		JOIN
-		orderdetail od ON o.orderno =
-		od.orderno
-		INNER JOIN cart c ON
-		c.memno =
-		o.memno
-		INNER JOIN goodsdetail gd ON gd.gddetailno =
-		c.gddetailno
-		WHERE
-		o.memno=#{memno} AND i.imgtype = "A" AND od.odgcode=g.gcode
-		AND
-		i.goodsno=g.goodsno
-		AND o.odstatus IN ("0", "1", "2", "3")
+		SELECT o.orderno, o.odstatus, o.regdate, od.orderdetailno,
+		od.odgname, od.odgcode, od.odgprice, od.odgsale, od.odgqty,
+		od.odgdoption, od.odgsale, g.goodsno, g.gcode, g.gname, i.imgname,
+		i.imgext,
+		i.imgpath, i.imgtype FROM orders o INNER JOIN orderdetail od
+		ON o.orderno=od.orderno INNER JOIN goods g ON g.gcode = od.odgcode
+		INNER JOIN imgs i ON i.goodsno=g.goodsno WHERE o.memno=1 AND
+		o.odstatus IN ("0", "1", "2", "3")
 		ORDER BY o.orderno ASC
 	</select>
 
 	<!-- 취소/교환/반품내역 다중행 조회를 위한 기능 정의 -->
 	<select id="selectList2"
 		parameterType="kr.co.poppy.model.Orders" resultMap="ordersMap">
-		SELECT Distinct
-		o.orderno,
-		o.odstatus, od.orderdetailno,
-		o.regdate, od.odgcode,g.gcode,
-		od.odgname, g.gname,od.odgprice, od.odgsale, od.odgqty,
-		od.odgdoption, g.goodsno,
-		i.imgname, i.imgext, i.imgpath, i.imgtype,
-		g.goodsno
-		FROM imgs i, goods
-		g, orders o INNER JOIN orderdetail od ON o.orderno =
-		od.orderno
-		INNER
-		JOIN cart c ON c.memno = o.memno
-		INNER JOIN goodsdetail gd ON
-		gd.gddetailno = c.gddetailno
-		WHERE o.memno=#{memno} AND i.imgtype = "A" AND
-		od.odgcode=g.gcode AND i.goodsno=g.goodsno
-		AND o.odstatus IN ("4", "5",
-		"6");
+		SELECT o.orderno, o.odstatus, o.regdate, od.orderdetailno,
+		od.odgname, od.odgcode, od.odgprice, od.odgsale, od.odgqty,
+		od.odgdoption, od.odgsale, g.goodsno, g.gcode, g.gname, i.imgname,
+		i.imgext,
+		i.imgpath, i.imgtype FROM orders o INNER JOIN orderdetail od
+		ON o.orderno=od.orderno INNER JOIN goods g ON g.gcode = od.odgcode
+		INNER JOIN imgs i ON i.goodsno=g.goodsno WHERE o.memno=1 AND
+		o.odstatus IN ("4", "5", "6")
+		ORDER BY o.orderno ASC
 	</select>
 
 	<!-- 데이터 수 조회를 위한 기능 정의 -->

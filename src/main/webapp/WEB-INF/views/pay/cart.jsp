@@ -425,14 +425,7 @@
 								var cartqty = current.parent().prev()
 										.children().eq(1).val();
 								location.href = '${pageContext.request.contextPath}/pay_ajax/orderform.do?'
-										+ 'goodsno='
-										+ goodsno
-										+ '&memno='
-										+ memno
 										+ '&gddetailno='
-										+ gddetailno
-										+ '&gdoption='
-										+ gdoption
 										+ '&gdcount='
 										+ cartqty;
 							});
