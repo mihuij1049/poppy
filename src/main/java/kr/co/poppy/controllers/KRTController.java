@@ -286,7 +286,8 @@ public class KRTController {
 	public ModelAndView photo_wri_ok(Model model, @RequestParam(value = "bbstitle", required = false) String bbstitle,
 			@RequestParam(value = "rvlike", required = false) String rvlike,
 			@RequestParam(value = "bbscontent", required = false) String bbscontent,
-			@RequestParam(value = "goodsno", defaultValue = "0") int goodsno, @RequestParam MultipartFile photo) {
+			@RequestParam(value = "goodsno", defaultValue = "0") int goodsno, 
+			@RequestParam MultipartFile photo) {
 		HttpSession mySession = webHelper.getSession();
 		Members myInfo = (Members) mySession.getAttribute("userInfo");
 
