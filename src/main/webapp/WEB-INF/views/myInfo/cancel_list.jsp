@@ -25,11 +25,11 @@
 <body>
 	<%@ include file="../share/top_tp.jsp"%>
 	<div class="content">
-		<!-- 취소내역 -->
+		<!-- 취소/교환/반품 -->
 		<div class="page-title clearfix">
 			<h4>
 				<b> <a href="#" onclick="history.back(); return false;"><i
-						class="glyphicon glyphicon-chevron-left"></i></a>취소내역
+						class="glyphicon glyphicon-chevron-left"></i></a>취소/교환/반품
 				</b>
 			</h4>
 		</div>
@@ -38,7 +38,7 @@
 				<li class="col-xs-6 etc"><a
 					href="${pageContext.request.contextPath}/myInfo/order_list.do">주문조회</a></li>
 				<li class="active col-xs-6 etc"><a
-					href="${pageContext.request.contextPath}/myInfo/cancel_list.do">취소내역</a></li>
+					href="${pageContext.request.contextPath}/myInfo/cancel_list.do">취소/교환/반품</a></li>
 			</ul>
 			<div class="backg fade in">
 				<div class="container">
@@ -130,7 +130,7 @@
 									aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
-								<h4 class="modal-title" data-orderno="${item.orderno}">주문취소내역
+								<h4 class="modal-title" data-orderno="${item.orderno}">취소/교환/반품내역
 									삭제</h4>
 							</div>
 							<div class="modal-body2">

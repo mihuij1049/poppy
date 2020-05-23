@@ -40,7 +40,7 @@
 				<li class="active col-xs-6 etc"><a
 					href="${pageContext.request.contextPath}/myInfo/order_list.do">주문조회</a></li>
 				<li class="col-xs-6 etc"><a
-					href="${pageContext.request.contextPath}/myInfo/cancel_list.do">취소내역</a></li>
+					href="${pageContext.request.contextPath}/myInfo/cancel_list.do">취소/교환/반품</a></li>
 			</ul>
 			<div class="backg">
 				<div class="container">
@@ -123,7 +123,7 @@
 											</ul>
 											<p class="option">[옵션: ${item.odgdoption}]</p>
 											<button type="button" class="btn btn2" id="change"
-												data-orderno="${item.orderno }">주문취소</button>
+												data-orderno="${item.orderno }">주문변경</button>
 										</div>
 									</div>
 									<div class="prd-foot" title="주문처리상태">
@@ -145,14 +145,20 @@
 										<span aria-hidden="true">&times;</span>
 									</button>
 									<h4 class="modal-title" data-orderno="${item.orderno}">주문
-										취소</h4>
+										변경</h4>
 								</div>
 								<div class="modal-body2">
 									<p>
-										<span class="delete_message"></span> 주문을 취소 하시겠습니까?
+										<span class="delete_message"></span> 주문을 변경 하시겠습니까?
 									</p>
 								</div>
 								<div class="modal-footer2">
+									<input type="radio" name="ch_odstatus" id="ch_odstatus" value="4" checked />
+									<label>취소</label>&nbsp;&nbsp;
+									<input type="radio" name="ch_odstatus" id="ch_odstatus" value="5" />
+									<label>교환</label>&nbsp;&nbsp;
+									<input type="radio" name="ch_odstatus" id="ch_odstatus" value="6" />
+									<label>반품</label>
 									<button type="reset" class="btn btn2 change_cancel"
 										data-dismiss="modal">아니오</button>
 									<button type="submit" class="btn btn2 change_ok"
@@ -341,9 +347,11 @@
 													"click",
 													".change_ok",
 													function(e) {
+														var odstatus = $(":input:radio[name=ch_odstatus]:checked").val();
+														console.log(odstatus)
 
 														window.location.href = '${pageContext.request.contextPath}/myInfo/order_change.do?orderno='
-																+ order_no;
+																+ order_no+"&odstatus="+odstatus;
 														change_item.remove();
 													});
 								});

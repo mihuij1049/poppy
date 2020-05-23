@@ -154,7 +154,7 @@ public class KRTController {
 
 		/** 2) 데이터 수정하기 */
 		// 데이터 수정에 필요한 조건값을 조회 결과에 저장하기
-		output.setOdstatus("4");
+		output.setOdstatus(odstatus);
 
 		try {
 			orderService.editOrders(output);
